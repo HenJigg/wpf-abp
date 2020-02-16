@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NoteMoblie.MainWindow" 
+             xmlns:vc="clr-namespace:NoteMoblie.Core.Converters"
+              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            ItemsSource="{Binding Modules}">
+    <TabbedPage.Resources>
+        <vc:IconConverter x:Key="vc_icon"/>
+    </TabbedPage.Resources>
+
+    <TabbedPage.ItemTemplate>
+        <DataTemplate>
+            <ContentPage Title="{Binding Title}" Content="{Binding Content}" 
+                         IconImageSource="{Binding IconImage}">
+               
+            </ContentPage>
+        </DataTemplate>
+    </TabbedPage.ItemTemplate>
+
+</TabbedPage>
