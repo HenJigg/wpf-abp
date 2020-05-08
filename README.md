@@ -11,15 +11,20 @@
 #### 鸣谢以下组织
 
 ##### UI框架
-Xamarin UI: [Syncfusion Community Edition for Xamarin](https://www.syncfusion.com/forums/xamarin.forms)
-WPF UI:[MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
-Blazor UI:[MatBlazor](https://github.com/SamProf/MatBlazor)
+  Xamarin UI: [Syncfusion Community Edition for Xamarin](https://www.syncfusion.com/forums/xamarin.forms)
+  
+  WPF UI:[MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+  
+  Blazor UI:[MatBlazor](https://github.com/SamProf/MatBlazor)
 
 ##### 插件
-log : [Nlog](https://github.com/NLog/NLog)
-api : [RestSharp](https://github.com/restsharp/RestSharp)
-ioc : [Autofac](https://github.com/autofac/Autofac)
-mvvm : [mvvmlight](https://github.com/lbugnion/mvvmlight)
+  log : [Nlog](https://github.com/NLog/NLog)
+  
+  api : [RestSharp](https://github.com/restsharp/RestSharp)
+  
+  ioc : [Autofac](https://github.com/autofac/Autofac)
+  
+  mvvm : [mvvmlight](https://github.com/lbugnion/mvvmlight)
 
 
 #### 软件架构
