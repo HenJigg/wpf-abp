@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Consumption.Core.UI_Interface
+namespace Consumption.Core.Interfaces
 {
     /// <summary>
     /// 弹出式窗口接口

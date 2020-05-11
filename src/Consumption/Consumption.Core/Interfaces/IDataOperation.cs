@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Consumption.Core.UI_Interface
+namespace Consumption.Core.Interfaces
 {
     /// <summary>
     /// 数据操作接口
