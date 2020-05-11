@@ -1,6 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿/*
+*
+* 文件名    ：IMsg                             
+* 程序说明  : 消息提示接口
+* 更新时间  : 2020-05-11
+* 
+* 
+*
+*/
 
 namespace Consumption.Core.Interfaces
 {

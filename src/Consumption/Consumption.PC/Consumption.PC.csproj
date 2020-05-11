@@ -6,4 +6,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignColors" Version="1.2.4" />
+    <PackageReference Include="MaterialDesignThemes" Version="3.1.1" />
+    <PackageReference Include="MvvmLight" Version="5.4.1.1" />
+    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Template\" />
+    <Folder Include="View\" />
+  </ItemGroup>
+
 </Project>

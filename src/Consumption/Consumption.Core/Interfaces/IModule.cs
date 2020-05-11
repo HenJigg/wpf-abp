@@ -1,7 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+*
+* 文件名    ：IModule                             
+* 程序说明  : 程序模块的上下文操作接口
+* 更新时间  : 2020-05-11
+* 
+* 
+*
+*/
 
 namespace Consumption.Core.Interfaces
 {

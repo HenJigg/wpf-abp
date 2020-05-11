@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+*
+* 文件名    ：IModuleDialog                             
+* 程序说明  : 弹出窗口的上下文绑定接口
+* 更新时间  : 2020-05-11
+* 
+* 
+*
+*/
 
 namespace Consumption.Core.Interfaces
 {
+    using System.Threading.Tasks;
+
     /// <summary>
     /// 弹出式窗口接口
     /// </summary>
