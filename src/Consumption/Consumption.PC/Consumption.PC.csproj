@@ -14,8 +14,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Resources\Fonts\" />
+    <Folder Include="Resources\Images\" />
     <Folder Include="Template\" />
     <Folder Include="View\" />
+    <Folder Include="Core\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Consumption.ViewModel\Consumption.ViewModel.csproj" />
   </ItemGroup>
 
 </Project>

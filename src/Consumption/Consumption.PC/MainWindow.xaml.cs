@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Consumption.ViewModel.DeskTop;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace Consumption.PC
         public MainWindow()
         {
             InitializeComponent();
+            this.MouseDown += (sender, e) =>
+            {
+                if (e.LeftButton == MouseButtonState.Pressed)
+                    this.DragMove();
+            };
+            this.DataContext = new MainViewModel();
         }
     }
 }
