@@ -19,15 +19,24 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Foreground" Value="#7A89A5"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="MinHeight" Value="30"/>
+        <Setter Property="MinHeight" Value="40"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
-                        <Border x:Name="border" BorderBrush="Red" BorderThickness="0" CornerRadius="10"  SnapsToDevicePixels="True"/>
-                        <Border x:Name="bd2" />
+                        <Border x:Name="border" Visibility="Hidden" BorderBrush="Red" BorderThickness="0" CornerRadius="20"  SnapsToDevicePixels="True">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#BEBEBE" Opacity="0.3" ShadowDepth="5" BlurRadius="5" Direction="270"  />
+                            </Border.Effect>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#01A5FF" Offset="0.25" />
+                                    <GradientStop Color="#0172FF" Offset="0.75" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
                         <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"
                                               Content="{TemplateBinding Content}" Grid.Column="1" 
                                               ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" 
@@ -52,11 +61,12 @@
                             </Setter>
                             <Setter Property="Padding" Value="4,-1,0,0"/>
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
+                        <!--<Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="Transparent" TargetName="border"/>
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter Property="Background" Value="#2196F3" TargetName="border"/>
+                            <!--<Setter Property="Background" Value="#2196F3" TargetName="border"/>-->
+                            <Setter Property="Visibility" Value="Visible" TargetName="border"/>
                             <Setter Property="Foreground" Value="White"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="{x:Null}"/>
