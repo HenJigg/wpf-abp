@@ -25,7 +25,35 @@ namespace Consumption.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("any", builder =>
+                {
+                    builder.AllowAnyOrigin();
+                });
+            });
             services.AddControllers();
+            services.AddHsts(options =>
+            {
+                options.Preload = true;
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(60);
+            });
+
+            services.AddSwaggerGen(options =>
+            {
+                options.IncludeXmlComments("../docs/NoteApi.xml");
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "Note Service API",
+                    Version = "v1",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                    {
+                        Name = "WPF-Xamarin-Blazor-Examples",
+                        Url = new Uri("https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples")
+                    }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,16 +63,19 @@ namespace Consumption.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseHttpsRedirection();
-
+            app.UseCors("any");
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.ShowExtensions();
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "NoteApi");
             });
         }
     }
