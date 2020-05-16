@@ -3,7 +3,7 @@
 * 文件名    ：IModuleDialog                             
 * 程序说明  : 弹出窗口的上下文绑定接口
 * 更新时间  : 2020-05-11
-* 
+* 更新人    : zhouhaogg789@outlook.com
 * 
 *
 */

@@ -3,7 +3,7 @@
 * 文件名    ：ActionMode.cs                              
 * 程序说明  : 窗口功能区编辑类型
 * 更新时间  : 2020-05-11
-* 
+* 更新人    : zhouhaogg789@outlook.com
 * 
 *
 */
