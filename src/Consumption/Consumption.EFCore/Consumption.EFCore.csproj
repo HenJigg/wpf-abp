@@ -7,6 +7,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200521073353_InitialCreate.cs" />
     <Compile Remove="Migrations\20200521073353_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200521082814_CreateDataBase.cs" />
+    <Compile Remove="Migrations\20200521082814_CreateDataBase.Designer.cs" />
+    <Compile Remove="Migrations\20200522083806_UpdateDataBase.cs" />
+    <Compile Remove="Migrations\20200522083806_UpdateDataBase.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

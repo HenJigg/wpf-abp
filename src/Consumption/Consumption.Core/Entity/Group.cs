@@ -15,7 +15,14 @@ namespace Consumption.Core.Entity
     /// </summary>
     public class Group : BaseEntity
     {
+        /// <summary>
+        /// 组代码
+        /// </summary>
         public string GroupCode { get; set; }
+
+        /// <summary>
+        /// 组名称
+        /// </summary>
         public string GroupName { get; set; }
     }
 }

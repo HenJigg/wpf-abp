@@ -21,8 +21,8 @@ namespace Consumption.EFCore.Orm
     {
         public ConsumptionContext(DbContextOptions<ConsumptionContext> options) : base(options)
         {
-
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
            => options.UseSqlite("Data Source=note.db");
 
@@ -35,5 +35,13 @@ namespace Consumption.EFCore.Orm
         public DbSet<Basic> Basics { get; set; }
         public DbSet<BasicType> BasicTypes { get; set; }
         public DbSet<AuthItem> AuthItems { get; set; }
+
+        public DbSet<Bill> Bills { get; set; }
+        public DbSet<UserConfig> UserConfigs { get; set; }
+        public DbSet<Plan> Plans { get; set; }
+        public DbSet<Quotes> Quotes { get; set; }
+        public DbSet<MonthlyBill> MonthlyBills { get; set; }
+        public DbSet<MonthlyBillDetail> MonthlyBillDetails { get; set; }
+
     }
 }

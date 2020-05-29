@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Consumption.EFCore.Migrations
 {
-    public partial class CreateDataBase : Migration
+    public partial class InitDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,7 +31,7 @@ namespace Consumption.EFCore.Migrations
                     DataCode = table.Column<string>(type: "TEXT", nullable: true),
                     NativeName = table.Column<string>(type: "TEXT", nullable: true),
                     EnglishName = table.Column<string>(type: "TEXT", nullable: true),
-                    CreationDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     CreateBy = table.Column<string>(type: "TEXT", nullable: true),
                     LastUpdate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     LastUpdateBy = table.Column<string>(type: "TEXT", nullable: true)
@@ -53,6 +53,24 @@ namespace Consumption.EFCore.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BasicTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Bills",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Remark = table.Column<string>(type: "TEXT", nullable: true),
+                    Amount = table.Column<decimal>(type: "TEXT", nullable: false),
+                    ConsumptionType = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreateDate = table.Column<string>(type: "TEXT", nullable: true),
+                    UpdateDate = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bills", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,6 +134,81 @@ namespace Consumption.EFCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MonthlyBillDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    No = table.Column<string>(type: "TEXT", nullable: true),
+                    ConsumptionType = table.Column<int>(type: "INTEGER", nullable: false),
+                    Amount = table.Column<decimal>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MonthlyBillDetails", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MonthlyBills",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    No = table.Column<string>(type: "TEXT", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Amount = table.Column<decimal>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MonthlyBills", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Plans",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", nullable: true),
+                    Content = table.Column<string>(type: "TEXT", nullable: true),
+                    Amount = table.Column<decimal>(type: "TEXT", nullable: false),
+                    PlanDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    PlanStatus = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Plans", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Quotes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Content = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Quotes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserConfigs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Account = table.Column<string>(type: "TEXT", nullable: true),
+                    ExpectedOut = table.Column<decimal>(type: "TEXT", nullable: false),
+                    ExpectedIn = table.Column<decimal>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserConfigs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserLogs",
                 columns: table => new
                 {
@@ -146,7 +239,7 @@ namespace Consumption.EFCore.Migrations
                     LastLogouTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     IsLocked = table.Column<int>(type: "INTEGER", nullable: false),
                     CreateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    FlagAdmin = table.Column<string>(type: "TEXT", nullable: true),
+                    FlagAdmin = table.Column<int>(type: "INTEGER", nullable: false),
                     FlagOnline = table.Column<string>(type: "TEXT", nullable: true),
                     LoginCounter = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -168,6 +261,9 @@ namespace Consumption.EFCore.Migrations
                 name: "BasicTypes");
 
             migrationBuilder.DropTable(
+                name: "Bills");
+
+            migrationBuilder.DropTable(
                 name: "GroupFuncs");
 
             migrationBuilder.DropTable(
@@ -178,6 +274,21 @@ namespace Consumption.EFCore.Migrations
 
             migrationBuilder.DropTable(
                 name: "Menus");
+
+            migrationBuilder.DropTable(
+                name: "MonthlyBillDetails");
+
+            migrationBuilder.DropTable(
+                name: "MonthlyBills");
+
+            migrationBuilder.DropTable(
+                name: "Plans");
+
+            migrationBuilder.DropTable(
+                name: "Quotes");
+
+            migrationBuilder.DropTable(
+                name: "UserConfigs");
 
             migrationBuilder.DropTable(
                 name: "UserLogs");

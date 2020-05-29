@@ -15,7 +15,14 @@ namespace Consumption.Core.Entity
     /// </summary>
     public class AuthItem : BaseEntity
     {
+        /// <summary>
+        /// 权限定义名称
+        /// </summary>
         public string AuthName { get; set; }
+
+        /// <summary>
+        /// 所属权限值
+        /// </summary>
 
         public string AuthValue { get; set; }
     }

@@ -42,7 +42,7 @@ namespace Consumption.EFCore.Migrations
                     b.Property<string>("CreateBy")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreationDate")
+                    b.Property<DateTime>("CreateDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DataCode")
@@ -83,6 +83,35 @@ namespace Consumption.EFCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BasicTypes");
+                });
+
+            modelBuilder.Entity("Consumption.Core.Entity.Bill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ConsumptionType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CreateDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UpdateDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bills");
                 });
 
             modelBuilder.Entity("Consumption.Core.Entity.Group", b =>
@@ -165,6 +194,86 @@ namespace Consumption.EFCore.Migrations
                     b.ToTable("Menus");
                 });
 
+            modelBuilder.Entity("Consumption.Core.Entity.MonthlyBill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("No")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MonthlyBills");
+                });
+
+            modelBuilder.Entity("Consumption.Core.Entity.MonthlyBillDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ConsumptionType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("No")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MonthlyBillDetails");
+                });
+
+            modelBuilder.Entity("Consumption.Core.Entity.Plan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("PlanDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PlanStatus")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Plans");
+                });
+
+            modelBuilder.Entity("Consumption.Core.Entity.Quotes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Quotes");
+                });
+
             modelBuilder.Entity("Consumption.Core.Entity.User", b =>
                 {
                     b.Property<int>("Id")
@@ -183,8 +292,8 @@ namespace Consumption.EFCore.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FlagAdmin")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("FlagAdmin")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("FlagOnline")
                         .HasColumnType("TEXT");
@@ -213,6 +322,26 @@ namespace Consumption.EFCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Consumption.Core.Entity.UserConfig", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Account")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("ExpectedIn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("ExpectedOut")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserConfigs");
                 });
 
             modelBuilder.Entity("Consumption.Core.Entity.UserLog", b =>

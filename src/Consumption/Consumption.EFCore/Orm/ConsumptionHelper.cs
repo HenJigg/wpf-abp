@@ -31,9 +31,9 @@ namespace Consumption.EFCore.Orm
             {
                 var users = new[]
                 {
-                    new User(){ Account="admin",UserName="tom",Address="China", FlagAdmin="1",Password="123" },
-                    new User(){ Account="qc001",UserName="marie",Address="USA", FlagAdmin="0",Password="123" },
-                    new User(){ Account="qc002",UserName="darcy",Address="USA", FlagAdmin="0",Password="123" },
+                    new User(){ Account="admin",UserName="tom",Address="China", FlagAdmin=1,Password="123" },
+                    new User(){ Account="qc001",UserName="marie",Address="USA", FlagAdmin=0,Password="123" },
+                    new User(){ Account="qc002",UserName="darcy",Address="USA", FlagAdmin=0,Password="123" },
                 };
 
                 foreach (var U in users)
