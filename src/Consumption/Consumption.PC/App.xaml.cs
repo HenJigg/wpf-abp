@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Consumption.PC.View;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,11 @@ namespace Consumption.PC
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            LoginView view = new LoginView();
+            view.ShowDialog();
+            base.OnStartup(e);
+        }
     }
 }

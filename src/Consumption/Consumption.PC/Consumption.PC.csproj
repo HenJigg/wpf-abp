@@ -7,22 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\background.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignColors" Version="1.2.4" />
     <PackageReference Include="MaterialDesignThemes" Version="3.1.1" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+    <PackageReference Include="NLog" Version="4.7.2" />
+    <PackageReference Include="NLog.Config" Version="4.7.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Fonts\" />
-    <Folder Include="Resources\Images\" />
     <Folder Include="Template\" />
-    <Folder Include="View\" />
     <Folder Include="Core\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Consumption.ViewModel\Consumption.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
