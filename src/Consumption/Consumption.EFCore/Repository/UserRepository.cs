@@ -13,15 +13,28 @@ namespace Consumption.EFCore.Repository
     using Consumption.Core.ApiInterfaes;
     using Consumption.Core.Entity;
     using Consumption.EFCore.Orm;
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
+    using System.Runtime.InteropServices;
     using System.Text;
+    using System.Threading.Tasks;
 
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
         public UserRepository(ConsumptionContext consumptionContext) : base(consumptionContext)
         {
 
+        }
+
+        /// <summary>
+        /// 根据ID获取用户信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            return await consumptionContext.Users.FirstOrDefaultAsync(t => t.Id == id);
         }
     }
 }

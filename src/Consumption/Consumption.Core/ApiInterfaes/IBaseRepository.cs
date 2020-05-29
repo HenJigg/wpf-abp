@@ -19,9 +19,8 @@ namespace Consumption.Core.ApiInterfaes
     public interface IBaseRepository<T> where T : class
     {
         Task<PaginatedList<T>> GetModelList(QueryParameters parameters);
-        Task<T> GetModelByIdAsync(int id);
-        Task<bool> AddModelAsync(T model);
-        Task<bool> UpdateModelAsync(T model);
-        Task<bool> DeleteModelAsync(int id);
+        void AddModelAsync(T model);
+        void UpdateModelAsync(T model);
+        void DeleteModelAsync(T model);
     }
 }

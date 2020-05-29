@@ -4,6 +4,40 @@
         <name>Consumption.Api</name>
     </assembly>
     <members>
+        <member name="T:Consumption.Api.Controllers.UserController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Consumption.Api.Controllers.UserController.GetUsers(Consumption.Core.Query.UserParameters)">
+            <summary>
+            获取用户数据信息
+            </summary>
+            <param name="parameters">请求参数</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.UserController.AddUser(Consumption.Core.Entity.User)">
+            <summary>
+            新增用户
+            </summary>
+            <param name="user">用户信息</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.UserController.UpdateUser(System.Int32,Consumption.Core.Entity.User)">
+            <summary>
+            更新用户
+            </summary>
+            <param name="id">ID</param>
+            <param name="user">用户信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.UserController.DeleteUser(System.Int32)">
+            <summary>
+            删除用户
+            </summary>
+            <param name="id">用户ID</param>
+            <returns>结果</returns>
+        </member>
         <member name="M:Consumption.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             配置服务

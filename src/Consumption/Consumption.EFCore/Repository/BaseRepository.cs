@@ -13,9 +13,11 @@ namespace Consumption.EFCore.Repository
     using Consumption.Core.Common;
     using Consumption.Core.Query;
     using Consumption.EFCore.Orm;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Migrations;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -28,29 +30,29 @@ namespace Consumption.EFCore.Repository
             this.consumptionContext = consumptionContext;
         }
 
-        public Task<bool> AddModelAsync(T model)
+        public void AddModelAsync(T model)
         {
-            throw new NotImplementedException();
+            consumptionContext.Entry<T>(model).State = EntityState.Added;
         }
 
-        public Task<bool> DeleteModelAsync(int id)
+        public void DeleteModelAsync(T model)
         {
-            throw new NotImplementedException();
+            consumptionContext.Entry<T>(model).State = EntityState.Deleted;
         }
 
-        public Task<T> GetModelByIdAsync(int id)
+        public async Task<PaginatedList<T>> GetModelList(QueryParameters parameters)
         {
-            throw new NotImplementedException();
+            var query = consumptionContext.Set<T>().AsQueryable();
+            int count = await query.CountAsync();
+            var data = await query.Skip((parameters.PageIndex - 1) *
+                parameters.PageSize).Take(parameters.PageSize).ToListAsync();
+            return new PaginatedList<T>(parameters.PageIndex - 1,
+                parameters.PageSize, count, data);
         }
 
-        public Task<PaginatedList<T>> GetModelList(QueryParameters parameters)
+        public void UpdateModelAsync(T model)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateModelAsync(T model)
-        {
-            throw new NotImplementedException();
+            consumptionContext.Entry<T>(model).State = EntityState.Modified;
         }
     }
 }

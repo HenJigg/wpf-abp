@@ -61,7 +61,7 @@ namespace Consumption.Api
             services.AddScoped<IBasicRepository, BasicRepository>();
             services.AddScoped<IBasicTypeRepository, BasicTypeRepository>();
             services.AddScoped<IAuthItemRepository, AuthItemRepository>();
-
+            services.AddScoped<IUnitWork, UnitWork>();
 
             services.AddSwaggerGen(options =>
             {
