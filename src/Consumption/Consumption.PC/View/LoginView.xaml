@@ -42,6 +42,7 @@
                          VerticalAlignment="Center" Margin="20 0 20 0"/>
 
                 <Button Grid.Row="3" Margin="20 0 20 0" Height="55" Foreground="Black" FontSize="23" 
+                        Command="{Binding LoginCommand}"
                         Background="White" BorderThickness="0" Content="登录"/>
 
                 <TextBlock Grid.Row="4" Text="忘记密码?" Foreground="White" 

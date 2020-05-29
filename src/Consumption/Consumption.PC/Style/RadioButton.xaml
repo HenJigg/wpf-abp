@@ -19,7 +19,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="Foreground" Value="#7A89A5"/>
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="MinHeight" Value="40"/>
         <Setter Property="Template">
@@ -27,9 +27,9 @@
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
                         <Border x:Name="border" Visibility="Hidden" BorderBrush="Red" BorderThickness="0" CornerRadius="20"  SnapsToDevicePixels="True">
-                            <Border.Effect>
+                            <!--<Border.Effect>
                                 <DropShadowEffect Color="#BEBEBE" Opacity="0.3" ShadowDepth="5" BlurRadius="5" Direction="270"  />
-                            </Border.Effect>
+                            </Border.Effect>-->
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                     <GradientStop Color="#01A5FF" Offset="0.25" />

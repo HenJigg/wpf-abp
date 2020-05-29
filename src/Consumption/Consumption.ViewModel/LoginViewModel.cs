@@ -74,13 +74,13 @@ namespace Consumption.ViewModel
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(PassWord))
-                {
-                    this.Report = "请输入用户名密码";
-                    return;
-                }
+                //if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(PassWord))
+                //{
+                //    this.Report = "请输入用户名密码";
+                //    return;
+                //}
 
-
+                Messenger.Default.Send(true, "NavigationHome");
 
             }
             catch (Exception ex)

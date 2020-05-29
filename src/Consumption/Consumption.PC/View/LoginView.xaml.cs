@@ -15,6 +15,7 @@
 
 namespace Consumption.PC.View
 {
+    using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -35,6 +36,14 @@ namespace Consumption.PC.View
         public LoginView()
         {
             InitializeComponent();
+            Messenger.Default.Register<bool>(this, "NavigationHome", NavigationHome);
+        }
+
+        private void NavigationHome(bool result)
+        {
+            this.Hide();
+            MainWindow view = new MainWindow();
+            view.ShowDialog();
         }
     }
 }

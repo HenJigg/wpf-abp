@@ -9,14 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumption.Moblie.Android"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumption.Moblie.iOS", "Consumption.Moblie.iOS\Consumption.Moblie.iOS.csproj", "{2278957B-D211-4586-98B3-B7E4A979FC49}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Moblie", "Moblie", "{30E613B6-6A9A-4536-80A0-C1EAC4A86F42}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeskTop", "DeskTop", "{36E98852-F558-435D-9B16-8954E37D168A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{28DD90B9-B5A5-4752-9B77-A7EC97A50FFA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{A072C028-3591-4ED3-96E4-58FF51D6A25A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumption.PC", "Consumption.PC\Consumption.PC.csproj", "{A94FECE2-0A82-44EE-8DE3-489DCD492BE3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumption.Web", "Consumption.Web\Consumption.Web.csproj", "{473B4349-1DB7-4E21-BDC1-8EE073B5BC73}"
@@ -29,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumption.Api", "Consumpt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumption.Service", "Consumption.Service\Consumption.Service.csproj", "{1395F23D-FF82-4CFE-A58E-804F189945A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumption.EFCore", "Consumption.EFCore\Consumption.EFCore.csproj", "{7CA63EAB-DA52-4F63-8EF2-E605E9564EE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumption.EFCore", "Consumption.EFCore\Consumption.EFCore.csproj", "{7CA63EAB-DA52-4F63-8EF2-E605E9564EE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -298,14 +290,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{4A8B22EF-05CA-403D-8031-6AC99DB0A97B} = {30E613B6-6A9A-4536-80A0-C1EAC4A86F42}
-		{D6BB0CCF-6FCA-4A55-AEC5-1813659A4250} = {30E613B6-6A9A-4536-80A0-C1EAC4A86F42}
-		{2278957B-D211-4586-98B3-B7E4A979FC49} = {30E613B6-6A9A-4536-80A0-C1EAC4A86F42}
-		{A94FECE2-0A82-44EE-8DE3-489DCD492BE3} = {36E98852-F558-435D-9B16-8954E37D168A}
-		{473B4349-1DB7-4E21-BDC1-8EE073B5BC73} = {28DD90B9-B5A5-4752-9B77-A7EC97A50FFA}
-		{16CFC8C9-8CBC-442A-9947-C863E0409243} = {A072C028-3591-4ED3-96E4-58FF51D6A25A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B1263A6-6658-4242-AA55-2064AD87E9CF}

@@ -1,4 +1,5 @@
 ﻿using Consumption.PC.View;
+using Consumption.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -17,6 +18,7 @@ namespace Consumption.PC
         protected override void OnStartup(StartupEventArgs e)
         {
             LoginView view = new LoginView();
+            view.DataContext = new LoginViewModel();
             view.ShowDialog();
             base.OnStartup(e);
         }

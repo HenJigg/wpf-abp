@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Images\background.png" />
+    <None Remove="Images\test_user.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +31,12 @@
 
   <ItemGroup>
     <Content Include="Images\background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\test_user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
