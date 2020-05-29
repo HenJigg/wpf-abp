@@ -21,6 +21,8 @@ namespace Consumption.Api.Controllers
     /// <summary>
     /// 权限相关数据控制器
     /// </summary>
+    [ApiController]
+    [Route("api/[controller]/[action]")]
     public class AuthItemController : Controller
     {
         private readonly ILogger<AuthItemController> logger;

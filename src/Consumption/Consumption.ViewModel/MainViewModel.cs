@@ -8,7 +8,7 @@
 *
 */
 
-namespace Consumption.ViewModel.DeskTop
+namespace Consumption.ViewModel
 {
     using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight;

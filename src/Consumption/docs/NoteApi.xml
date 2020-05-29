@@ -4,10 +4,141 @@
         <name>Consumption.Api</name>
     </assembly>
     <members>
-        <member name="T:Consumption.Api.Controllers.UserController">
+        <member name="T:Consumption.Api.Controllers.AuthItemController">
+            <summary>
+            权限相关数据控制器
+            </summary>
+        </member>
+        <member name="M:Consumption.Api.Controllers.AuthItemController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.AuthItemController},Consumption.Core.ApiInterfaes.IAuthItemRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
             <summary>
             
             </summary>
+            <param name="logger"></param>
+            <param name="repository"></param>
+            <param name="work"></param>
+        </member>
+        <member name="T:Consumption.Api.Controllers.BasicController">
+            <summary>
+            基础数据控制器
+            </summary>
+        </member>
+        <member name="M:Consumption.Api.Controllers.BasicController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.BasicController},Consumption.Core.ApiInterfaes.IBasicRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="repository"></param>
+            <param name="work"></param>
+        </member>
+        <member name="M:Consumption.Api.Controllers.BasicController.GetBasics(Consumption.Core.Query.QueryParameters)">
+            <summary>
+            获取基础数据列表
+            </summary>
+            <param name="parameters">请求参数</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.BasicController.AddBasic(Consumption.Core.Entity.Basic)">
+            <summary>
+            新增基础数据
+            </summary>
+            <param name="model"></param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.BasicController.UpdateBasic(System.Int32,Consumption.Core.Entity.Basic)">
+            <summary>
+            更新基础数据
+            </summary>
+            <param name="id">ID</param>
+            <param name="model">用户信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.BasicController.DeleteBasic(System.Int32)">
+            <summary>
+            删除基础数数据
+            </summary>
+            <param name="id">用户ID</param>
+            <returns>结果</returns>
+        </member>
+        <member name="T:Consumption.Api.Controllers.GroupController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Consumption.Api.Controllers.GroupController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.GroupController},Consumption.Core.ApiInterfaes.IGroupRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="repository"></param>
+            <param name="work"></param>
+        </member>
+        <member name="M:Consumption.Api.Controllers.GroupController.GetGroups(Consumption.Core.Query.QueryParameters)">
+            <summary>
+            获取组列表
+            </summary>
+            <param name="parameters">请求参数</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.GroupController.AddGroup(Consumption.Core.Entity.Group)">
+            <summary>
+            新增组
+            </summary>
+            <param name="model">用户信息</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.GroupController.DeleteGroup(System.Int32)">
+            <summary>
+            删除组
+            </summary>
+            <param name="id">用户ID</param>
+            <returns>结果</returns>
+        </member>
+        <member name="T:Consumption.Api.Controllers.MenuController">
+            <summary>
+            菜单数据控制器
+            </summary>
+        </member>
+        <member name="M:Consumption.Api.Controllers.MenuController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.MenuController},Consumption.Core.ApiInterfaes.IMenuRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="repository"></param>
+            <param name="work"></param>
+        </member>
+        <member name="M:Consumption.Api.Controllers.MenuController.GetMenus(Consumption.Core.Query.QueryParameters)">
+            <summary>
+            获取菜单列表
+            </summary>
+            <param name="parameters">请求参数</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.MenuController.AddMenu(Consumption.Core.Entity.Menu)">
+            <summary>
+            新增菜单
+            </summary>
+            <param name="model">用户信息</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.MenuController.DeleteMenu(System.Int32)">
+            <summary>
+            删除菜单
+            </summary>
+            <param name="id">用户ID</param>
+            <returns>结果</returns>
+        </member>
+        <member name="T:Consumption.Api.Controllers.UserController">
+            <summary>
+            用户数据控制器
+            </summary>
+        </member>
+        <member name="M:Consumption.Api.Controllers.UserController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.UserController},Consumption.Core.ApiInterfaes.IUserRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="repository"></param>
+            <param name="work"></param>
         </member>
         <member name="M:Consumption.Api.Controllers.UserController.GetUsers(Consumption.Core.Query.UserParameters)">
             <summary>
@@ -34,6 +165,40 @@
         <member name="M:Consumption.Api.Controllers.UserController.DeleteUser(System.Int32)">
             <summary>
             删除用户
+            </summary>
+            <param name="id">用户ID</param>
+            <returns>结果</returns>
+        </member>
+        <member name="T:Consumption.Api.Controllers.UserLogController">
+            <summary>
+            用户日志控制器
+            </summary>
+        </member>
+        <member name="M:Consumption.Api.Controllers.UserLogController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.UserLogController},Consumption.Core.ApiInterfaes.IUserLogRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="repository"></param>
+            <param name="work"></param>
+        </member>
+        <member name="M:Consumption.Api.Controllers.UserLogController.GetUserLogs(Consumption.Core.Query.QueryParameters)">
+            <summary>
+            获取用户日志数据信息
+            </summary>
+            <param name="parameters">请求参数</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.UserLogController.AddUserLog(Consumption.Core.Entity.UserLog)">
+            <summary>
+            新增用户日志
+            </summary>
+            <param name="model">用户信息</param>
+            <returns>结果</returns>
+        </member>
+        <member name="M:Consumption.Api.Controllers.UserLogController.DeleteUserLog(System.Int32)">
+            <summary>
+            删除日志
             </summary>
             <param name="id">用户ID</param>
             <returns>结果</returns>

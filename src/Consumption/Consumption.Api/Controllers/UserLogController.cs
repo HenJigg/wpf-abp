@@ -25,6 +25,8 @@ namespace Consumption.Api.Controllers
     /// <summary>
     /// 用户日志控制器
     /// </summary>
+    [ApiController]
+    [Route("api/[controller]/[action]")]
     public class UserLogController : Controller
     {
         private readonly ILogger<UserLogController> logger;

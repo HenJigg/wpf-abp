@@ -24,6 +24,8 @@ namespace Consumption.Api.Controllers
     /// <summary>
     /// 
     /// </summary>
+    [ApiController]
+    [Route("api/[controller]/[action]")]
     public class GroupController : Controller
     {
         private readonly ILogger<GroupController> logger;

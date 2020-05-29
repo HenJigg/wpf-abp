@@ -24,6 +24,8 @@ namespace Consumption.Api.Controllers
     /// <summary>
     /// 菜单数据控制器
     /// </summary>
+    [ApiController]
+    [Route("api/[controller]/[action]")]
     public class MenuController : Controller
     {
         private readonly ILogger<MenuController> logger;

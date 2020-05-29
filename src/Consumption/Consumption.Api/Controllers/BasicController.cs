@@ -24,6 +24,8 @@ namespace Consumption.Api.Controllers
     /// <summary>
     /// 基础数据控制器
     /// </summary>
+    [ApiController]
+    [Route("api/[controller]/[action]")]
     public class BasicController : Controller
     {
         private readonly ILogger<BasicController> logger;

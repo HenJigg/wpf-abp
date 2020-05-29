@@ -1,4 +1,4 @@
-﻿using Consumption.ViewModel.DeskTop;
+﻿using Consumption.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
