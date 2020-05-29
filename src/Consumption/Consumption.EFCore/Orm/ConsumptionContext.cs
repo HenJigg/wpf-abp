@@ -19,6 +19,10 @@ namespace Consumption.EFCore.Orm
 
     public class ConsumptionContext : DbContext
     {
+        public ConsumptionContext(DbContextOptions<ConsumptionContext> options) : base(options)
+        {
+
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
            => options.UseSqlite("Data Source=note.db");
 

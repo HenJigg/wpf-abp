@@ -2,10 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Consumption.EFCore.Orm;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Writers;
 using NLog.Web;
 
 namespace Consumption.Api
@@ -17,18 +20,23 @@ namespace Consumption.Api
             var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             try
             {
-                logger.Debug("init main");
-                CreateHostBuilder(args).Build().Run();
+                var host = CreateHostBuilder(args).Build();
+                //初次加载插入样本数据
+                using (var scope = host.Services.CreateScope())
+                {
+                    var serivces = scope.ServiceProvider;
+                    var context = serivces.GetRequiredService<ConsumptionContext>();
+                    ConsumptionHelper.InitSampleDataAsync(context).Wait();
+                }
+                host.Run();
             }
             catch (Exception ex)
             {
-                //NLog: catch setup errors
                 logger.Error(ex, "Stopped program because of exception");
                 throw;
             }
             finally
             {
-                // Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
                 NLog.LogManager.Shutdown();
             }
         }
@@ -42,7 +50,7 @@ namespace Consumption.Api
                      {
                          logging.ClearProviders();
                          logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-                     }).UseNLog(); 
+                     }).UseNLog();
                 });
     }
 }

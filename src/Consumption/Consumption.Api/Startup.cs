@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Consumption.Core.ApiInterfaes;
+using Consumption.EFCore.Orm;
 using Consumption.EFCore.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,7 +26,10 @@ namespace Consumption.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// 配置服务
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options =>
@@ -40,6 +45,12 @@ namespace Consumption.Api
                 options.Preload = true;
                 options.IncludeSubDomains = true;
                 options.MaxAge = TimeSpan.FromDays(60);
+            });
+
+            services.AddDbContext<ConsumptionContext>(options =>
+            {
+                var connectionString = Configuration.GetConnectionString("NoteConnection");
+                options.UseSqlite(connectionString);
             });
 
             //添加接口映射关系

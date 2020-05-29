@@ -4,5 +4,11 @@
         <name>Consumption.Api</name>
     </assembly>
     <members>
+        <member name="M:Consumption.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置服务
+            </summary>
+            <param name="services"></param>
+        </member>
     </members>
 </doc>
