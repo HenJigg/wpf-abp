@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Consumption.EFCore.Migrations
 {
     [DbContext(typeof(ConsumptionContext))]
-    [Migration("20200521073353_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200521082814_CreateDataBase")]
+    partial class CreateDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

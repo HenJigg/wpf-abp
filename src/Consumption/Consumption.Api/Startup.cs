@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Consumption.Core.ApiInterfaes;
+using Consumption.EFCore.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +41,16 @@ namespace Consumption.Api
                 options.IncludeSubDomains = true;
                 options.MaxAge = TimeSpan.FromDays(60);
             });
+
+            //添加接口映射关系
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserLogRepository, UserLogRepository>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
+            services.AddScoped<IGroupRepository, GroupRepository>();
+            services.AddScoped<IBasicRepository, BasicRepository>();
+            services.AddScoped<IBasicTypeRepository, BasicTypeRepository>();
+            services.AddScoped<IAuthItemRepository, AuthItemRepository>();
+
 
             services.AddSwaggerGen(options =>
             {
