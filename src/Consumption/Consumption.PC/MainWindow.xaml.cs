@@ -25,13 +25,7 @@ namespace Consumption.PC
         public MainWindow()
         {
             InitializeComponent();
-            this.MouseDown += (sender, e) =>
-            {
-                if (e.LeftButton == MouseButtonState.Pressed)
-                    this.DragMove();
-            };
             page.Content = new HomeView() { };
-            this.DataContext = new MainViewModel();
         }
     }
 }

@@ -31,6 +31,7 @@ namespace Consumption.ViewModel
             LoginCommand = new RelayCommand(Login);
             LogoutCommand = new RelayCommand(LogOut);
         }
+
         #region Property
         private string userName;
         private string passWord;
@@ -79,9 +80,7 @@ namespace Consumption.ViewModel
                 //    this.Report = "请输入用户名密码";
                 //    return;
                 //}
-
                 Messenger.Default.Send(true, "NavigationHome");
-
             }
             catch (Exception ex)
             {

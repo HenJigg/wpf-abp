@@ -1,8 +1,8 @@
 ﻿/*
 *
-* 文件名    ：LoginView                             
-* 程序说明  : 登录页
-* 更新时间  : 2020-05-27 17:53
+* 文件名    ：LoginCenter                             
+* 程序说明  : 登录控制类 
+* 更新时间  : 2020-05-21 17：26
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -12,32 +12,31 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-
-namespace Consumption.PC.View
+namespace Consumption.PC.ViewCenter
 {
     using Consumption.Core.Interfaces;
     using Consumption.PC.Core;
+    using Consumption.PC.View;
+    using Consumption.ViewModel;
     using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Collections.Generic;
     using System.Text;
     using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Data;
-    using System.Windows.Documents;
-    using System.Windows.Input;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Windows.Shapes;
 
     /// <summary>
-    /// LoginView.xaml 的交互逻辑
+    /// 登录控制类
     /// </summary>
-    public partial class LoginView : Window
+    public class LoginCenter : BaseDialogCenter<LoginView, LoginViewModel>
     {
-        public LoginView()
+        public override void RegisterMessenger()
         {
-            InitializeComponent();
+            Messenger.Default.Register<bool>(GetDialog(), "NavigationHome", arg =>
+             {
+                 GetDialog().Hide();
+                 var view = AutofacProvider.Get<IModuleDialog>("MainCenter");
+                 view.ShowDialog();
+             });
         }
     }
 }

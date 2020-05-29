@@ -25,7 +25,6 @@ namespace Consumption.PC.View
         public HomeView()
         {
             InitializeComponent();
-
             SeriesCollection = new SeriesCollection
             {
                 new PieSeries
@@ -177,7 +176,6 @@ namespace Consumption.PC.View
         public SeriesCollection SeriesCollection { get; set; }
         public SeriesCollection SeriesCollection1 { get; set; }
         public SeriesCollection SeriesCollection2 { get; set; }
-
         public SeriesCollection SeriesCollection3 { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }

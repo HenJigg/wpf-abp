@@ -30,9 +30,19 @@ namespace Consumption.Core.Interfaces
         void BindViewModel<TViewModel>(TViewModel viewModel);
 
         /// <summary>
-        /// 注册窗口默认事件
+        /// 注册模块事件
         /// </summary>
         void RegisterDefaultEvent();
+
+        /// <summary>
+        /// 注册模块消息
+        /// </summary>
+        void RegisterMessenger();
+
+        /// <summary>
+        /// 注册窗口默认事件
+        /// </summary>
+        void Register();
 
         /// <summary>
         /// 弹出窗口
@@ -44,10 +54,5 @@ namespace Consumption.Core.Interfaces
         /// </summary>
         void Close();
 
-        /// <summary>
-        /// 获取窗口
-        /// </summary>
-        /// <returns></returns>
-        object GetDialog();
     }
 }
