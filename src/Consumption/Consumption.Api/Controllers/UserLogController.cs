@@ -1,8 +1,8 @@
 ﻿/*
 *
-* 文件名    ：UserController                            
-* 程序说明  : 用户数据控制器
-* 更新时间  : 2020-05-215 10：35
+* 文件名    ：UserLogController                     
+* 程序说明  : 用户日志控制器
+* 更新时间  : 2020-05-215 10：37
 * 更新人    : zhouhaogg789@outlook.com
 * 
 *
@@ -10,26 +10,25 @@
 
 namespace Consumption.Api.Controllers
 {
-    using Consumption.Core.ApiInterfaes;
-    using Consumption.Core.Common;
-    using Consumption.Core.Entity;
-    using Consumption.Core.Query;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Consumption.Core.ApiInterfaes;
+    using Consumption.Core.Common;
+    using Consumption.Core.Entity;
+    using Consumption.Core.Query;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
 
     /// <summary>
-    /// 用户数据控制器
+    /// 用户日志控制器
     /// </summary>
-    [ApiController]
-    [Route("api/[controller]/[action]")]
-    public class UserController : Controller
+    public class UserLogController : Controller
     {
-        private readonly ILogger<UserController> logger;
-        private readonly IUserRepository repository;
+        private readonly ILogger<UserLogController> logger;
+        private readonly IUserLogRepository repository;
         private readonly IUnitWork work;
 
         /// <summary>
@@ -38,8 +37,7 @@ namespace Consumption.Api.Controllers
         /// <param name="logger"></param>
         /// <param name="repository"></param>
         /// <param name="work"></param>
-        public UserController(ILogger<UserController> logger,
-            IUserRepository repository, IUnitWork work)
+        public UserLogController(ILogger<UserLogController> logger, IUserLogRepository repository, IUnitWork work)
         {
             this.logger = logger;
             this.repository = repository;
@@ -47,12 +45,12 @@ namespace Consumption.Api.Controllers
         }
 
         /// <summary>
-        /// 获取用户数据信息
+        /// 获取用户日志数据信息
         /// </summary>
         /// <param name="parameters">请求参数</param>
         /// <returns>结果</returns>
         [HttpGet]
-        public async Task<IActionResult> GetUsers([FromQuery] UserParameters parameters)
+        public async Task<IActionResult> GetUserLogs([FromQuery] QueryParameters parameters)
         {
             try
             {
@@ -79,20 +77,20 @@ namespace Consumption.Api.Controllers
         }
 
         /// <summary>
-        /// 新增用户
+        /// 新增用户日志
         /// </summary>
-        /// <param name="user">用户信息</param>
+        /// <param name="model">用户信息</param>
         /// <returns>结果</returns>
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] User user)
+        public async Task<IActionResult> AddUserLog([FromBody] UserLog model)
         {
             try
             {
-                if (user == null)
+                if (model == null)
                 {
                     return Ok(new ConsumptionResponse() { success = false, message = "Add data error" });
                 }
-                repository.AddModelAsync(user);
+                repository.AddModelAsync(model);
                 if (!await work.SaveChangedAsync())
                 {
                     return Ok(new ConsumptionResponse()
@@ -106,59 +104,21 @@ namespace Consumption.Api.Controllers
             catch (Exception ex)
             {
                 logger.LogDebug(ex, "");
-                return Ok(new ConsumptionResponse() { success = false, message = "Add user error" });
+                return Ok(new ConsumptionResponse() { success = false, message = "Add userLog error" });
             }
         }
 
         /// <summary>
-        /// 更新用户
-        /// </summary>
-        /// <param name="id">ID</param>
-        /// <param name="user">用户信息</param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
-        {
-            if (user == null)
-            {
-                return Ok(new ConsumptionResponse() { success = false, message = "Update data error" });
-            }
-            try
-            {
-                var dbUser = await repository.GetUserByIdAsync(id);
-                if (dbUser == null) return Ok(new ConsumptionResponse() { success = false, message = "The user was not found!" });
-                dbUser.UserName = user.UserName;
-                dbUser.Tel = user.Tel;
-                dbUser.Password = user.Password;
-                dbUser.IsLocked = user.IsLocked;
-                dbUser.Address = user.Address;
-                dbUser.Email = user.Email;
-                dbUser.FlagAdmin = user.FlagAdmin;
-                repository.UpdateModelAsync(dbUser);
-                if (!await work.SaveChangedAsync())
-                {
-                    return Ok(new ConsumptionResponse() { success = false, message = $"update post {user.Id} failed when saving." });
-                }
-                return Ok(new ConsumptionResponse() { success = true });
-            }
-            catch (Exception ex)
-            {
-                logger.LogDebug(ex, "");
-                return Ok(new ConsumptionResponse() { success = false, message = "Update user error" });
-            }
-        }
-
-        /// <summary>
-        /// 删除用户
+        /// 删除日志
         /// </summary>
         /// <param name="id">用户ID</param>
         /// <returns>结果</returns>
         [HttpDelete]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUserLog(int id)
         {
             try
             {
-                var user = await repository.GetUserByIdAsync(id);
+                var user = await repository.GetUserLogByIdAsync(id);
                 if (user == null)
                 {
                     return Ok(new ConsumptionResponse() { success = false, message = "The user was not found!" });

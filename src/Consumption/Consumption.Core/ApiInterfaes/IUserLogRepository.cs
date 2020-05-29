@@ -8,12 +8,14 @@
 *
 */
 
-using Consumption.Core.Entity;
-
 namespace Consumption.Core.ApiInterfaes
 {
+
+    using Consumption.Core.Entity;
+    using System.Threading.Tasks;
+
     public interface IUserLogRepository : IBaseRepository<UserLog>
     {
-
+        Task<UserLog> GetUserLogByIdAsync(int id);
     }
 }

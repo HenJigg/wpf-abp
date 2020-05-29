@@ -8,11 +8,13 @@
 *
 */
 
-using Consumption.Core.Entity;
-using System.Threading.Tasks;
 
 namespace Consumption.Core.ApiInterfaes
 {
+
+    using Consumption.Core.Entity;
+    using System.Threading.Tasks;
+
     public interface IUserRepository : IBaseRepository<User>
     {
         Task<User> GetUserByIdAsync(int id);

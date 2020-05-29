@@ -14,14 +14,21 @@ namespace Consumption.EFCore.Repository
     using Consumption.Core.ApiInterfaes;
     using Consumption.Core.Entity;
     using Consumption.EFCore.Orm;
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     public class BasicRepository : BaseRepository<Basic>, IBasicRepository
     {
         public BasicRepository(ConsumptionContext consumptionContext) : base(consumptionContext)
         {
+        }
+
+        public async Task<Basic> GetBasicByIdAsync(int id)
+        {
+            return await consumptionContext.Basics.FirstOrDefaultAsync(t => t.Id == id);
         }
     }
 }

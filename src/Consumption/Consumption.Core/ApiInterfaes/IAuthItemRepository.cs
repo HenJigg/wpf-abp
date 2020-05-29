@@ -8,10 +8,10 @@
 *
 */
 
-using Consumption.Core.Entity;
-
 namespace Consumption.Core.ApiInterfaes
 {
+    using Consumption.Core.Entity;
+
     public interface IAuthItemRepository : IBaseRepository<AuthItem>
     {
     }

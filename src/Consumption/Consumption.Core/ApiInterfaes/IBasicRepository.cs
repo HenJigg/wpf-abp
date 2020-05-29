@@ -9,10 +9,12 @@
 */
 
 using Consumption.Core.Entity;
+using System.Threading.Tasks;
 
 namespace Consumption.Core.ApiInterfaes
 {
     public interface IBasicRepository : IBaseRepository<Basic>
     {
+        Task<Basic> GetBasicByIdAsync(int id);
     }
 }

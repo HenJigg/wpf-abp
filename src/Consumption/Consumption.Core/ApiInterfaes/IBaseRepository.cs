@@ -11,6 +11,7 @@
 namespace Consumption.Core.ApiInterfaes
 {
     using Consumption.Core.Common;
+    using Consumption.Core.Entity;
     using Consumption.Core.Query;
     using System;
     using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace Consumption.Core.ApiInterfaes
     public interface IBaseRepository<T> where T : class
     {
         Task<PaginatedList<T>> GetModelList(QueryParameters parameters);
+
         void AddModelAsync(T model);
         void UpdateModelAsync(T model);
         void DeleteModelAsync(T model);
