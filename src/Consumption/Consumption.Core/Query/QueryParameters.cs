@@ -5,7 +5,6 @@
 * 更新时间  : 2020-05-16
 * 更新人    : zhouhaogg789@outlook.com
 * 
-*
 */
 
 namespace Consumption.Core.Query
