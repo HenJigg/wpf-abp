@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\iconfont.ttf" />
     <None Remove="Images\background.png" />
     <None Remove="Images\test_user.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
     <PackageReference Include="MaterialDesignColors" Version="1.2.4" />
     <PackageReference Include="MaterialDesignThemes" Version="3.1.1" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
@@ -30,6 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Fonts\iconfont.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

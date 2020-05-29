@@ -21,7 +21,7 @@
                 <ImageBrush ImageSource="pack://application:,,,/Consumption.PC;Component/Images/background.png" Stretch="UniformToFill"/>
             </Grid.Background>
 
-            <Border Background="#0066CC" Opacity="0.4" Grid.RowSpan="2"/>
+            <Border Background="#0066CC" Opacity="0.9" Grid.RowSpan="2"/>
             <Border Background="Black" Opacity="0.5"/>
             <StackPanel Orientation="Horizontal" Height="80">
                 <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" Margin="30 0 0 0" IsChecked="False" Foreground="White"/>
@@ -46,7 +46,8 @@
                 </Grid.ColumnDefinitions>
                 
                 <!--左侧菜单列表-->
-                <Border Background="Black" Opacity="0.5" Margin="3"/>
+                <Border Background="Black" Grid.ColumnSpan="2" Opacity="0.5" Margin="0" BorderThickness="0"/>
+                <Border  Background="Black" Opacity="0.1" Margin="10 10 0 10" CornerRadius="5"/>
                 <StackPanel Margin="5">
                     <ItemsControl ItemsSource="{Binding ModuleManager.ModuleGroups}" Margin="10">
                         <ItemsControl.ItemsPanel>
@@ -110,11 +111,10 @@
                             Width="160" Height="35" CornerRadius="20" BorderThickness="1">
                         <TextBlock VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="18" Text="查看更多"/>
                     </Border>-->
-                    
                 </StackPanel>
                 
                 <!--右侧内容区域-->
-                <Border Grid.Column="1" Background="Black" Opacity="0.5" Margin="0 3 3 3"/>
+                <ContentControl x:Name="page" Grid.Column="1" BorderThickness="0"/>
             </Grid>
         </Grid>
     </materialDesign:DialogHost>

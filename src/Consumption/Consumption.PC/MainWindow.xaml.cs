@@ -1,4 +1,5 @@
-﻿using Consumption.ViewModel;
+﻿using Consumption.PC.View;
+using Consumption.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace Consumption.PC
                 if (e.LeftButton == MouseButtonState.Pressed)
                     this.DragMove();
             };
+            page.Content = new HomeView() { };
             this.DataContext = new MainViewModel();
         }
     }
