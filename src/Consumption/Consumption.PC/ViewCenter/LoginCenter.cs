@@ -14,8 +14,8 @@
 
 namespace Consumption.PC.ViewCenter
 {
+    using Consumption.Core.Common;
     using Consumption.Core.Interfaces;
-    using Consumption.PC.Core;
     using Consumption.PC.View;
     using Consumption.ViewModel;
     using GalaSoft.MvvmLight.Messaging;
@@ -37,6 +37,10 @@ namespace Consumption.PC.ViewCenter
                  var view = AutofacProvider.Get<IModuleDialog>("MainCenter");
                  view.ShowDialog();
              });
+            Messenger.Default.Register<bool>(GetDialog(), "Exit", arg =>
+            {
+                GetDialog().Close();
+            });
         }
     }
 }

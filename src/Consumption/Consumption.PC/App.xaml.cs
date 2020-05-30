@@ -1,6 +1,11 @@
-﻿using Consumption.Core.Interfaces;
-using Consumption.PC.Core;
+﻿using Autofac;
+using Autofac.Builder;
+using Consumption.Core.Common;
+using Consumption.Core.Interfaces;
+using Consumption.Core.IService;
 using Consumption.PC.View;
+using Consumption.PC.ViewCenter;
+using Consumption.Service;
 using Consumption.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -21,7 +26,6 @@ namespace Consumption.PC
         {
             base.OnStartup(e);
             this.ConfigureServices();
-
             var view = AutofacProvider.Get<IModuleDialog>("LoginCenter");
             view.ShowDialog();
         }
@@ -29,7 +33,11 @@ namespace Consumption.PC
         protected void ConfigureServices()
         {
             AutofacLocator locator = new AutofacLocator();
-            locator.Register();
+            ContainerBuilder builder = new ContainerBuilder();
+            builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType(typeof(LoginCenter)).Named("LoginCenter", typeof(IModuleDialog));
+            builder.RegisterType(typeof(MainCenter)).Named("MainCenter", typeof(IModuleDialog));
+            locator.Register(builder);
             AutofacProvider.RegisterServiceLocator(locator);
         }
     }

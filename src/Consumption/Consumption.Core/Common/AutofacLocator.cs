@@ -12,15 +12,12 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-namespace Consumption.PC.Core
+namespace Consumption.Core.Common
 {
     using Autofac;
     using Consumption.Core.Interfaces;
-    using Consumption.PC.ViewCenter;
-    using Consumption.ViewModel;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Text;
 
     /// <summary>
@@ -32,21 +29,19 @@ namespace Consumption.PC.Core
 
         public TInterface Get<TInterface>(string typeName)
         {
+            if (container == null) throw new Exception("IContainer is null");
             return container.ResolveNamed<TInterface>(typeName);
         }
 
         public TInterface Get<TInterface>()
         {
+            if (container == null) throw new Exception("IContainer is null");
             return container.Resolve<TInterface>();
         }
 
-        public void Register()
+        public void Register(ContainerBuilder builder)
         {
-            if (container != null) return;
-            var Container = new ContainerBuilder();
-            Container.RegisterType(typeof(LoginCenter)).Named("LoginCenter", typeof(IModuleDialog));
-            Container.RegisterType(typeof(MainCenter)).Named("MainCenter", typeof(IModuleDialog));
-            container = Container.Build();
+            container = builder.Build();
         }
     }
 }

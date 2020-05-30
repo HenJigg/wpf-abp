@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Consumption.PC.View"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-           WindowStyle="None" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        WindowStyle="None" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen"
         Title="欢迎使用" Width="480" Height="430">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="-1" />
@@ -29,23 +29,32 @@
 
                 <TextBlock Text="登录" Foreground="White" FontSize="35" FontWeight="Bold" VerticalAlignment="Center" Margin="20 0 0 0"/>
 
-                <Button Background="Transparent" Height="60" BorderBrush="Transparent" HorizontalAlignment="Right">
+                <Button Background="Transparent" Height="60" 
+                        Command="{Binding CloseCommand}"
+                        BorderBrush="Transparent" HorizontalAlignment="Right">
                     <materialDesign:PackIcon Kind="Close"  Width="50" Height="50"/>
                 </Button>
 
                 <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="用户名" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Text="{Binding UserName}"
                          Foreground="White" BorderBrush="White" FontSize="22" 
                          VerticalAlignment="Center" Margin="20 0 20 0"/>
 
                 <PasswordBox Grid.Row="2" materialDesign:HintAssist.Hint="密码"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
                          Foreground="White" BorderBrush="White" FontSize="22"
-                         VerticalAlignment="Center" Margin="20 0 20 0"/>
+                         VerticalAlignment="Center" Margin="20 0 20 0"
+                         local:PasswordBoxHelper.Password="{Binding PassWord,
+                    Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <i:Interaction.Behaviors>
+                        <local:PasswordBoxBehavior />
+                    </i:Interaction.Behaviors>
+                </PasswordBox>
 
                 <Button Grid.Row="3" Margin="20 0 20 0" Height="55" Foreground="Black" FontSize="23" 
                         Command="{Binding LoginCommand}"
                         Background="White" BorderThickness="0" Content="登录"/>
 
-                <TextBlock Grid.Row="4" Text="忘记密码?" Foreground="White" 
+                <TextBlock Grid.Row="4" Text="{Binding Report}" Foreground="White" 
                            FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Border>

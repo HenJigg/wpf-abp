@@ -67,22 +67,18 @@ namespace Consumption.PC.ViewCenter
 
         public void BindViewModel<BViewModel>(BViewModel viewModel)
         {
-            throw new NotImplementedException();
         }
 
         public virtual void Close()
         {
-            throw new NotImplementedException();
         }
 
         public void Register()
         {
-            throw new NotImplementedException();
         }
 
         public virtual void RegisterMessenger()
         {
-            throw new NotImplementedException();
         }
     }
 }

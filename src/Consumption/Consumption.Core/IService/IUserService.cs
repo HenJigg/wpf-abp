@@ -1,8 +1,8 @@
 ﻿/*
 *
-* 文件名    ：IAutoFacLocator                             
-* 程序说明  : Autofac IOC Interface
-* 更新时间  : 2020-05-28 16：02
+* 文件名    ：IUserService                             
+* 程序说明  : 用户请求服务接口
+* 更新时间  : 2020-05-30 14：22
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -12,22 +12,19 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-namespace Consumption.Core.Interfaces
+namespace Consumption.Core.IService
 {
-    using Autofac;
+    using Consumption.Core.Response;
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
-    /// Autofac IOC Interface
+    /// 用户请求服务接口
     /// </summary>
-    public interface IAutoFacLocator
+    public interface IUserService
     {
-        void Register(ContainerBuilder builder);
-
-        TInterface Get<TInterface>();
-
-        TInterface Get<TInterface>(string typeName);
+        Task<BaseResponse> LoginAsync(string account, string passWord);
     }
 }

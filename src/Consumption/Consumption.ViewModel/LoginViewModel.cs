@@ -14,6 +14,8 @@
 
 namespace Consumption.ViewModel
 {
+    using Consumption.Core.Common;
+    using Consumption.Core.IService;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using GalaSoft.MvvmLight.Messaging;
@@ -24,10 +26,12 @@ namespace Consumption.ViewModel
     /// <summary>
     /// 登录模块
     /// </summary>
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : BaseViewModel
     {
+        private readonly IUserService userService;
         public LoginViewModel()
         {
+            userService = AutofacProvider.Get<IUserService>();
             LoginCommand = new RelayCommand(Login);
             LogoutCommand = new RelayCommand(LogOut);
         }
@@ -71,15 +75,18 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 登录系统
         /// </summary>
-        private void Login()
+        private async void Login()
         {
             try
             {
-                //if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(PassWord))
-                //{
-                //    this.Report = "请输入用户名密码";
-                //    return;
-                //}
+                if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(PassWord))
+                {
+                    this.Report = "请输入用户名密码!";
+                    return;
+                }
+
+                await userService.LoginAsync(UserName, PassWord);
+
                 Messenger.Default.Send(true, "NavigationHome");
             }
             catch (Exception ex)

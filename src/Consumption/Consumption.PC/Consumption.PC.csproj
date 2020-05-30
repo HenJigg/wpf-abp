@@ -17,6 +17,7 @@
     <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
     <PackageReference Include="MaterialDesignColors" Version="1.2.4" />
     <PackageReference Include="MaterialDesignThemes" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
     <PackageReference Include="NLog" Version="4.7.2" />
@@ -28,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Consumption.Service\Consumption.Service.csproj" />
     <ProjectReference Include="..\Consumption.ViewModel\Consumption.ViewModel.csproj" />
   </ItemGroup>
 

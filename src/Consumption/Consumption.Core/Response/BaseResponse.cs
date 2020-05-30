@@ -1,8 +1,8 @@
 ﻿/*
 *
-* 文件名    ：ConsumptionResponse                             
-* 程序说明  : 请求返回定义类
-* 更新时间  : 2020-05-22 14：08
+* 文件名    ：BaseResponse                             
+* 程序说明  : 返回结果基类
+* 更新时间  : 2020-05-30 14：16
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -12,13 +12,16 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-
-namespace Consumption.Core.Common
+namespace Consumption.Core.Response
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     /// <summary>
-    /// 请求返回定义类
+    /// 返回结果基类
     /// </summary>
-    public class ConsumptionResponse
+    public class BaseResponse
     {
         /// <summary>
         /// 后台消息
@@ -60,6 +63,6 @@ namespace Consumption.Core.Common
         /// </summary>
         public int TotalRecord { get; set; }
 
-        public dynamic dynamicObj { get; set; }
+        public object dynamicObj { get; set; }
     }
 }
