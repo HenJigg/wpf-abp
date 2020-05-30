@@ -85,8 +85,12 @@ namespace Consumption.ViewModel
                     return;
                 }
 
-                await userService.LoginAsync(UserName, PassWord);
-
+                var br = await userService.LoginAsync(UserName, PassWord);
+                if (!br.success)
+                {
+                    this.Report = br.message;
+                    return;
+                }
                 Messenger.Default.Send(true, "NavigationHome");
             }
             catch (Exception ex)

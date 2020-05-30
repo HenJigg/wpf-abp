@@ -52,6 +52,44 @@ namespace Consumption.Api.Controllers
         }
 
         /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="account">账号</param>
+        /// <param name="passWord">密码</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> Login(string account, string passWord)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(account) || string.IsNullOrWhiteSpace(passWord))
+                    return Ok(new ConsumptionResponse() { success = false, message = "Request failed" });
+                var model = await repository.LoginAsync(account, passWord);
+                if (model != null)
+                    return Ok(new ConsumptionResponse()
+                    {
+                        success = true,
+                        dynamicObj = model
+                    });
+                else
+                    return Ok(new ConsumptionResponse()
+                    {
+                        success = false,
+                        message = "用户名或密码错误！"
+                    });
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "");
+                return Ok(new ConsumptionResponse()
+                {
+                    success = false,
+                    message = "Login failed"
+                });
+            }
+        }
+
+        /// <summary>
         /// 获取用户数据信息
         /// </summary>
         /// <param name="parameters">请求参数</param>

@@ -140,6 +140,14 @@
             <param name="repository"></param>
             <param name="work"></param>
         </member>
+        <member name="M:Consumption.Api.Controllers.UserController.Login(System.String,System.String)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="account">账号</param>
+            <param name="passWord">密码</param>
+            <returns></returns>
+        </member>
         <member name="M:Consumption.Api.Controllers.UserController.GetUsers(Consumption.Core.Query.UserParameters)">
             <summary>
             获取用户数据信息
@@ -202,6 +210,17 @@
             </summary>
             <param name="id">用户ID</param>
             <returns>结果</returns>
+        </member>
+        <member name="T:Consumption.Api.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Consumption.Api.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
         </member>
         <member name="M:Consumption.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>

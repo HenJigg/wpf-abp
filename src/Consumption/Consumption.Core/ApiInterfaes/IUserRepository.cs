@@ -21,6 +21,7 @@ namespace Consumption.Core.ApiInterfaes
 
     public interface IUserRepository : IBaseRepository<User>
     {
+        Task<User> LoginAsync(string account, string passWord);
         Task<User> GetUserByIdAsync(int id);
     }
 }

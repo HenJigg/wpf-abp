@@ -80,7 +80,8 @@ namespace Consumption.Core.Request
                                 if (Qpvalue != null && Qpvalue.ToString() != "")
                                 {
                                     if (getBuilder.ToString() == string.Empty) getBuilder.Append("?");
-                                    getBuilder.Append(Qproperty.Name + "=" + HttpUtility.UrlEncode(Convert.ToString(Qpvalue)) + "&");
+                                    getBuilder.Append(Qproperty.Name + "=" + 
+                                        HttpUtility.UrlEncode(Convert.ToString(Qpvalue)) + "&");
                                 }
                             }
                         }
@@ -96,7 +97,7 @@ namespace Consumption.Core.Request
                     {
                         //当属性为C#基础类型得情况下,默认Get传参, 拼接至路由地址中
                         if (getBuilder.ToString() == string.Empty) getBuilder.Append("?");
-                        getBuilder.Append($"&{property.Name}={HttpUtility.UrlEncode(Convert.ToString(pvalue))}&");
+                        getBuilder.Append($"{property.Name}={HttpUtility.UrlEncode(Convert.ToString(pvalue))}&");
                     }
                 }
             }

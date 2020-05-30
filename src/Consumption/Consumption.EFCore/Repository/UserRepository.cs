@@ -41,5 +41,16 @@ namespace Consumption.EFCore.Repository
         {
             return await consumptionContext.Users.FirstOrDefaultAsync(t => t.Id == id);
         }
+
+        /// <summary>
+        /// 登录验证
+        /// </summary>
+        /// <param name="account">账号</param>
+        /// <param name="passWord">密码</param>
+        /// <returns></returns>
+        public async Task<User> LoginAsync(string account, string passWord)
+        {
+            return await consumptionContext.Users.FirstOrDefaultAsync(t => t.Account == account && t.Password == passWord);
+        }
     }
 }
