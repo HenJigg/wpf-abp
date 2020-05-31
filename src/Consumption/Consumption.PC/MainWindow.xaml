@@ -17,11 +17,16 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid.Background>
-                <ImageBrush ImageSource="pack://application:,,,/Consumption.PC;Component/Images/background.png" Stretch="UniformToFill"/>
-            </Grid.Background>
 
-            <Border Background="#0066CC" Opacity="0.9" Grid.RowSpan="2"/>
+            <Image Name="img" Grid.RowSpan="2"
+                 Source="pack://application:,,,/Consumption.PC;Component/Images/background.png" 
+                   Stretch="UniformToFill">
+                <Image.Effect>
+                    <BlurEffect x:Name="img_gaussian" KernelType="Gaussian" Radius="0"/>
+                </Image.Effect>
+            </Image>
+
+            <Border Name="bd_trans" Background="#0066CC" Opacity="0.9" Grid.RowSpan="2"/>
             <Border Background="Black" Opacity="0.5"/>
             <StackPanel Orientation="Horizontal" Height="80">
                 <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" Margin="30 0 0 0" IsChecked="False" Foreground="White"/>
@@ -48,8 +53,8 @@
                 <!--左侧菜单列表-->
                 <Border Background="Black" Grid.ColumnSpan="2" Opacity="0.5" Margin="0" BorderThickness="0"/>
                 <Border  Background="Black" Opacity="0.1" Margin="10 10 0 10" CornerRadius="5"/>
-                <StackPanel Margin="5">
-                    <ItemsControl ItemsSource="{Binding ModuleManager.ModuleGroups}" Margin="10">
+                <StackPanel Margin="20">
+                    <ItemsControl ItemsSource="{Binding ModuleManager.ModuleGroups}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel/>
