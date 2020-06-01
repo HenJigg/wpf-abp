@@ -18,12 +18,44 @@ namespace Consumption.PC.Common
     using System.IO;
     using System.Windows.Media.Imaging;
     using System.Drawing;
+    using System.Collections.ObjectModel;
+    using System.Windows.Interop;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 图标操作类
     /// </summary>
     public class ImageHelper
     {
+        /// <summary>
+        /// 获取背景预览图
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<ObservableCollection<SkinNode>> GetPrewView()
+        {
+            return await Task.Run(() =>
+              {
+                  string path = $"{AppDomain.CurrentDomain.BaseDirectory}Skin\\Preview";
+                  if (Directory.Exists(path))
+                  {
+                      DirectoryInfo info = new DirectoryInfo(path);
+                      var ifs = info.GetFiles()?.ToList();
+                      ObservableCollection<SkinNode> skins = new ObservableCollection<SkinNode>();
+                      ifs.ForEach(arg =>
+                      {
+                          skins.Add(new SkinNode()
+                          {
+                              Name = arg.Name,
+                              Image = ImageHelper.ConvertToImage(arg.FullName)
+                          });
+                      });
+                      return skins;
+                  }
+                  return null;
+              });
+        }
+
         public static BitmapImage ConvertToImage(string fileName)
         {
             BitmapImage bmp = new BitmapImage();

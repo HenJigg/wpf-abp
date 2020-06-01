@@ -16,14 +16,24 @@ namespace Consumption.ViewModel
 {
     using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Command;
+    using GalaSoft.MvvmLight.Messaging;
+    using System.Threading.Tasks;
 
+    /// <summary>
+    /// 应用首页
+    /// </summary>
     public class MainViewModel : ViewModelBase
     {
         public MainViewModel()
         {
-            ModuleManager = new ModuleManager();
+            OpenPageCommand = new RelayCommand<string>(arg =>
+              {
+                  Messenger.Default.Send(arg, "NavigationNewPage");
+              });
         }
 
+        public RelayCommand<string> OpenPageCommand { get; private set; }
         private ModuleManager moduleManager;
 
         /// <summary>
@@ -33,6 +43,12 @@ namespace Consumption.ViewModel
         {
             get { return moduleManager; }
             set { moduleManager = value; RaisePropertyChanged(); }
+        }
+
+        public async Task InitDefaultView()
+        {
+            ModuleManager = new ModuleManager();
+            await ModuleManager.LoadAssemblyModule();
         }
     }
 }

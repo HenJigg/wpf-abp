@@ -23,30 +23,40 @@ namespace Consumption.PC.ViewCenter
     using System.Text;
     using System.Windows;
     using System.Windows.Controls;
+    using IModule = Core.Interfaces.IModule;
 
-    public class BaseCenter<TView, TViewModel> : Consumption.Core.Interfaces.IModule
-        where TView : ContentControl, new()
+    /// <summary>
+    /// View/ViewModel 控制基类
+    /// </summary>
+    /// <typeparam name="TView"></typeparam>
+    /// <typeparam name="TViewModel"></typeparam>
+    public class BaseCenter<TView, TViewModel> : IModule
+        where TView : UserControl, new()
         where TViewModel : ViewModelBase, new()
     {
         public TView View;
         public TViewModel ViewModel;
-        public void BindDefaultModel()
+        public virtual void BindDefaultModel()
         {
             if (ViewModel == null) ViewModel = new TViewModel();
-            (GetView() as Window).DataContext = ViewModel;
+            GetView().DataContext = ViewModel;
         }
 
         public void BindViewModel<BViewModel>(BViewModel viewModel) where BViewModel : class, new()
         {
-            (this.GetView() as Window).DataContext = viewModel;
+            this.GetView().DataContext = viewModel;
         }
 
-        public object GetView()
+        public UserControl GetView()
         {
             if (View == null)
                 View = new TView();
             return View;
         }
 
+        object IModule.GetView()
+        {
+            return GetView();
+        }
     }
 }

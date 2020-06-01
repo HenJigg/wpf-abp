@@ -12,20 +12,40 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-
 namespace Consumption.PC.ViewCenter
 {
-
+    using Consumption.Core.Common;
+    using Consumption.Core.Interfaces;
     using Consumption.ViewModel;
+    using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 首页控制类
     /// </summary>
     public class MainCenter : BaseDialogCenter<MainWindow, MainViewModel>
     {
+        public override void RegisterMessenger()
+        {
+            Messenger.Default.Register<string>(GetDialog(), "NavigationNewPage", arg =>
+            {
+                var module = AutofacProvider.Get<IModule>(arg);
+                module.BindDefaultModel();
+                View.page.Content = module.GetView();
+            });
+        }
 
+        public override async void BindDefaultViewModel()
+        {
+            if (ViewModel == null)
+            {
+                ViewModel = new MainViewModel();
+                await ViewModel.InitDefaultView();
+                GetDialog().DataContext = ViewModel;
+            }
+        }
     }
 }

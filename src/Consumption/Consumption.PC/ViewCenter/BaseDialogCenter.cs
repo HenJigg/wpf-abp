@@ -29,12 +29,20 @@ namespace Consumption.PC.ViewCenter
     {
         public TView View;
         public TViewModel ViewModel;
-        public void BindDefaultViewModel()
+
+        /// <summary>
+        /// 绑定默认ViewModel
+        /// </summary>
+        public virtual void BindDefaultViewModel()
         {
             if (ViewModel == null) ViewModel = new TViewModel();
             GetDialog().DataContext = ViewModel;
         }
 
+        /// <summary>
+        /// 获取窗口
+        /// </summary>
+        /// <returns></returns>
         public Window GetDialog()
         {
             if (View == null)
@@ -42,6 +50,9 @@ namespace Consumption.PC.ViewCenter
             return View;
         }
 
+        /// <summary>
+        /// 注册默认事件
+        /// </summary>
         public void RegisterDefaultEvent()
         {
             var window = GetDialog();
@@ -52,6 +63,10 @@ namespace Consumption.PC.ViewCenter
             };
         }
 
+        /// <summary>
+        /// 打开窗口
+        /// </summary>
+        /// <returns></returns>
         public Task<bool> ShowDialog()
         {
             var window = GetDialog();

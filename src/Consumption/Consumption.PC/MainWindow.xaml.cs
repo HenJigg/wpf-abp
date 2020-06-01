@@ -29,7 +29,6 @@ namespace Consumption.PC
             Messenger.Default.Register<string>(this, "UpdateBackground", UpdateBackground);
             Messenger.Default.Register<double>(this, "UpdateTrans", UpdateTrans);
             Messenger.Default.Register<double>(this, "UpdateGaussian", UpdateGaussian);
-            page.Content = new SkinView() { DataContext = new SkinViewModel() };
         }
 
         private void UpdateGaussian(double obj)

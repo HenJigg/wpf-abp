@@ -14,17 +14,19 @@
 
 namespace Consumption.ViewModel
 {
+    using Consumption.Core.Interfaces;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// MVVM基类
     /// </summary>
-    public class BaseViewModel : ViewModelBase
+    public class BaseViewModel : ViewModelBase, IDataInitialize
     {
         public BaseViewModel()
         {
@@ -34,5 +36,10 @@ namespace Consumption.ViewModel
               });
         }
         public RelayCommand CloseCommand { get; private set; }
+
+        public virtual Task InitDefaultViewData()
+        {
+            return Task.FromResult(true);
+        }
     }
 }

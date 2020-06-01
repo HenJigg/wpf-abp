@@ -31,10 +31,6 @@ namespace Consumption.Core.Interfaces
         /// </summary>
         void BindDefaultModel();
 
-        /// <summary>
-        /// 获取主窗口
-        /// </summary>
-        /// <returns></returns>
         object GetView();
     }
 }

@@ -34,27 +34,11 @@ namespace Consumption.ViewModel
               {
                   Messenger.Default.Send(arg, "UpdateBackground");
               });
-            GetBackGroundList();
         }
 
         /// <summary>
         /// 设置首页背景颜色
         /// </summary>
         public RelayCommand<string> ApplyCommand { get; private set; }
-
-        /// <summary>
-        /// 获取本地的预览背景颜色预览图集合
-        /// </summary>
-        private void GetBackGroundList()
-        {
-            string path = $"{AppDomain.CurrentDomain.BaseDirectory}Skin\\Preview";
-            if (Directory.Exists(path))
-            {
-                DirectoryInfo info = new DirectoryInfo(path);
-                var ifs = info.GetFiles()?.ToList();
-                if (ifs.Count > 0)
-                    Messenger.Default.Send(ifs, "LoadingImage");
-            }
-        }
     }
 }

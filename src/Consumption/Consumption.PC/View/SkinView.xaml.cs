@@ -20,7 +20,9 @@ namespace Consumption.PC.View
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.IO;
+    using System.Linq;
     using System.Text;
+    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Data;
@@ -39,25 +41,6 @@ namespace Consumption.PC.View
         public SkinView()
         {
             InitializeComponent();
-            Messenger.Default.Register<List<FileInfo>>(this, "LoadingImage", LoadingImage);
-        }
-
-        /// <summary>
-        /// 加载默认背景图
-        /// </summary>
-        /// <param name="obj"></param>
-        private void LoadingImage(List<FileInfo> obj)
-        {
-            ObservableCollection<SkinNode> skins = new ObservableCollection<SkinNode>();
-            obj.ForEach(arg =>
-            {
-                skins.Add(new SkinNode()
-                {
-                    Name = arg.Name,
-                    Image = ImageHelper.ConvertToImage(arg.FullName)
-                });
-            });
-            Ic.DataContext = new { Skins = skins };
         }
 
         private void sld_gaussian_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
