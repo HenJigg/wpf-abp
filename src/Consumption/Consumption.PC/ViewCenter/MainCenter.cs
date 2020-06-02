@@ -16,12 +16,14 @@ namespace Consumption.PC.ViewCenter
 {
     using Consumption.Core.Common;
     using Consumption.Core.Interfaces;
+    using Consumption.PC.View;
     using Consumption.ViewModel;
     using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Collections.Generic;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows.Media.Imaging;
 
     /// <summary>
     /// 首页控制类
@@ -36,6 +38,21 @@ namespace Consumption.PC.ViewCenter
                 module.BindDefaultModel();
                 View.page.Content = module.GetView();
             });
+            Messenger.Default.Register<string>(GetDialog(), "UpdateBackground", arg =>
+            {
+                ViewModel.StyleConfig.Url = arg;
+                //保存用户配置...
+            });
+            Messenger.Default.Register<double>(GetDialog(), "UpdateTrans", arg =>
+            {
+                ViewModel.StyleConfig.Trans = arg / 100;
+                //保存用户配置...
+            });
+            Messenger.Default.Register<double>(GetDialog(), "UpdateGaussian", arg =>
+            {
+                ViewModel.StyleConfig.Radius = arg;
+                //保存用户配置...
+            });
         }
 
         public override async void BindDefaultViewModel()
@@ -44,7 +61,8 @@ namespace Consumption.PC.ViewCenter
             {
                 ViewModel = new MainViewModel();
                 await ViewModel.InitDefaultView();
-                GetDialog().DataContext = ViewModel;
+                View.page.Content = new HomeView();
+                View.DataContext = ViewModel;
             }
         }
     }

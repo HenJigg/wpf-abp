@@ -17,6 +17,7 @@ namespace Consumption.PC.ViewCenter
     using Consumption.Core.Attributes;
     using Consumption.PC.View;
     using Consumption.ViewModel;
+    using Consumption.ViewModel.Common;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -32,6 +33,7 @@ namespace Consumption.PC.ViewCenter
             if (ViewModel == null)
             {
                 ViewModel = new SkinViewModel();
+                ViewModel.StyleConfig = UserManager.GetStyleConfig();
                 GetView().DataContext = ViewModel;
                 View.Ic.DataContext = new
                 {

@@ -35,6 +35,16 @@ namespace Consumption.ViewModel
 
         public RelayCommand<string> OpenPageCommand { get; private set; }
         private ModuleManager moduleManager;
+        private StyleConfig styleConfig;
+
+        /// <summary>
+        /// 个性化设置
+        /// </summary>
+        public StyleConfig StyleConfig
+        {
+            get { return styleConfig; }
+            set { styleConfig = value; RaisePropertyChanged(); }
+        }
 
         /// <summary>
         /// 模块管理器
@@ -47,6 +57,9 @@ namespace Consumption.ViewModel
 
         public async Task InitDefaultView()
         {
+            //个性化配置
+            StyleConfig = UserManager.GetStyleConfig();
+            //加载模块
             ModuleManager = new ModuleManager();
             await ModuleManager.LoadAssemblyModule();
         }

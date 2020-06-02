@@ -14,19 +14,25 @@
         </Grid.RowDefinitions>
         <Border Background="Black" Opacity="0.1" Grid.RowSpan="4" Margin="10 10 10 0" CornerRadius="5"/>
         <TextBlock Text="个性化设置" FontSize="32" Foreground="White" Margin="30"  VerticalAlignment="Center"/>
+
+        <Button Width="80" Background="Transparent" BorderThickness="0" 
+                Command="{Binding SaveCommand}"
+                Height="60" HorizontalAlignment="Right">
+            <materialDesign:PackIcon Kind="ContentSave" Width="50" Height="50" />
+        </Button>
+        
         <StackPanel Grid.Row="1" Margin="30 0 0 0">
             <TextBlock Text="透明度" Foreground="White" FontSize="22"/>
             <Slider Name="sld_trans" Minimum="0" Maximum="100" HorizontalAlignment="Left" Height="60"
-                    ValueChanged="sld_trans_ValueChanged"
+                  Value="{Binding StyleConfig.Trans}" ValueChanged="sld_trans_ValueChanged"
             Style="{StaticResource MaterialDesignDiscreteSlider}" 
-            ToolTip="MaterialDesignDiscreteSlider"  Value="50"  Width="300" />
+            ToolTip="MaterialDesignDiscreteSlider"   Width="300" />
         </StackPanel>
         <StackPanel Grid.Row="2"  Margin="30 0 0 0">
             <TextBlock Text="高斯效果" Foreground="White" FontSize="22"/>
             <Slider Name="sld_gaussian"  Minimum="0" Maximum="100" HorizontalAlignment="Left" Height="60"
-                     ValueChanged="sld_gaussian_ValueChanged"
-            Style="{StaticResource MaterialDesignDiscreteSlider}" 
-            ToolTip="MaterialDesignDiscreteSlider"  Value="50"  Width="300" />
+            Style="{StaticResource MaterialDesignDiscreteSlider}"  ValueChanged="sld_gaussian_ValueChanged"
+            ToolTip="MaterialDesignDiscreteSlider"  Value="{Binding StyleConfig.Radius}"  Width="300" />
         </StackPanel>
 
         <Grid Grid.Row="3" Margin="30 0 0 0">

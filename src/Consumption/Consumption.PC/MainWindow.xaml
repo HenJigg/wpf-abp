@@ -6,10 +6,14 @@
            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Consumption.PC"
         mc:Ignorable="d" WindowState="Maximized" 
+        xmlns:ivc="clr-namespace:Consumption.PC.Common.Converters"
              WindowStyle="None" ResizeMode="CanMinimize"  Height="450" Width="800">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="-1" />
     </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <ivc:IUrlToBitmapConverter x:Key="itc"/>
+    </Window.Resources>
     <materialDesign:DialogHost>
 
         <Grid>
@@ -19,14 +23,15 @@
             </Grid.RowDefinitions>
 
             <Image Name="img" Grid.RowSpan="2"
-                 Source="pack://application:,,,/Consumption.PC;Component/Images/background.png" 
+                 Source="{Binding StyleConfig.Url,Converter={StaticResource itc},Mode=TwoWay}" 
                    Stretch="UniformToFill">
                 <Image.Effect>
-                    <BlurEffect x:Name="img_gaussian" KernelType="Gaussian" Radius="0"/>
+                    <BlurEffect x:Name="img_gaussian" KernelType="Gaussian" 
+                                Radius="{Binding StyleConfig.Radius}"/>
                 </Image.Effect>
             </Image>
 
-            <Border Name="bd_trans" Background="#0066CC" Opacity="0.9" Grid.RowSpan="2"/>
+            <Border Name="bd_trans" Background="#0066CC" Opacity="{Binding StyleConfig.Trans,Mode=TwoWay}" Grid.RowSpan="2"/>
             <Border Background="Black" Opacity="0.5"/>
             <StackPanel Orientation="Horizontal" Height="80">
                 <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" Margin="30 0 0 0" IsChecked="False" Foreground="White"/>
