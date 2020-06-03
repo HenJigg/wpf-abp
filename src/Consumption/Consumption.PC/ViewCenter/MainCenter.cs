@@ -35,8 +35,15 @@ namespace Consumption.PC.ViewCenter
             Messenger.Default.Register<string>(GetDialog(), "NavigationNewPage", arg =>
             {
                 var module = AutofacProvider.Get<IModule>(arg);
-                module.BindDefaultModel();
-                View.page.Content = module.GetView();
+                if (module != null)
+                {
+                    module.BindDefaultModel();
+                    View.page.Content = module.GetView();
+                }
+                else
+                {
+                    //...
+                }
             });
             Messenger.Default.Register<string>(GetDialog(), "UpdateBackground", arg =>
             {

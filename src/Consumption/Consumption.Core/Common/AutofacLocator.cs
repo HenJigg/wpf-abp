@@ -30,7 +30,10 @@ namespace Consumption.Core.Common
         public TInterface Get<TInterface>(string typeName)
         {
             if (container == null) throw new Exception("IContainer is null");
-            return container.ResolveNamed<TInterface>(typeName);
+            if (container.IsRegisteredWithName<TInterface>(typeName))
+                return container.ResolveNamed<TInterface>(typeName);
+            else
+                return default;
         }
 
         public TInterface Get<TInterface>()

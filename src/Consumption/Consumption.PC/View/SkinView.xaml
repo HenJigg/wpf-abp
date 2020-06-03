@@ -13,13 +13,15 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border Background="Black" Opacity="0.1" Grid.RowSpan="4" Margin="10 10 10 0" CornerRadius="5"/>
-        <TextBlock Text="个性化设置" FontSize="32" Foreground="White" Margin="30"  VerticalAlignment="Center"/>
-
-        <Button Width="80" Background="Transparent" BorderThickness="0" 
+        <StackPanel Orientation="Horizontal" Margin="30">
+            <TextBlock Text="个性化设置" FontSize="32" Foreground="White" VerticalAlignment="Center"/>
+            <Button Width="80" Background="Transparent" BorderThickness="0" 
                 Command="{Binding SaveCommand}"
-                Height="60" HorizontalAlignment="Right">
-            <materialDesign:PackIcon Kind="ContentSave" Width="50" Height="50" />
-        </Button>
+                Height="60" HorizontalAlignment="Left">
+                <materialDesign:PackIcon Kind="ContentSave" Width="50" Height="50" />
+            </Button>
+        </StackPanel>
+        
         
         <StackPanel Grid.Row="1" Margin="30 0 0 0">
             <TextBlock Text="透明度" Foreground="White" FontSize="22"/>

@@ -89,12 +89,12 @@ namespace Consumption.ViewModel.Common
                             GroupName = desc,
                             Modules = new ObservableCollection<Module>()
                             {
-                                new Module(){ Name=i.Desc, Code=i.Icon, NameSpace=i.TypeName,}
+                                new Module(){ Name=i.Desc, Code=i.Icon, TypeName=i.TypeName,}
                             }
                         });
                     }
                     else
-                        mg.Modules.Add(new Module() { Name = i.Desc, Code = i.Icon, NameSpace = i.NameSpace });
+                        mg.Modules.Add(new Module() { Name = i.Desc, Code = i.Icon, TypeName = i.TypeName });
                 }
                 GC.Collect();
             }

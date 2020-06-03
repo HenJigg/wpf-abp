@@ -24,7 +24,7 @@ namespace Consumption.ViewModel.Common
         private string code;
         private string name;
         private int? auth;
-        private string nameSpace;
+        private string typeName;
 
         /// <summary>
         /// 模块图标代码
@@ -47,10 +47,10 @@ namespace Consumption.ViewModel.Common
         /// <summary>
         /// 模块命名空间
         /// </summary>
-        public string NameSpace
+        public string TypeName
         {
-            get { return nameSpace; }
-            set { nameSpace = value; RaisePropertyChanged(); }
+            get { return typeName; }
+            set { typeName = value; RaisePropertyChanged(); }
         }
 
         /// <summary>

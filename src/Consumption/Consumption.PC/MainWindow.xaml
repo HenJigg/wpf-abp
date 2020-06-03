@@ -22,14 +22,17 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Image Name="img" Grid.RowSpan="2"
-                 Source="{Binding StyleConfig.Url,Converter={StaticResource itc},Mode=TwoWay}" 
-                   Stretch="UniformToFill">
-                <Image.Effect>
+            <Border Name="img" Grid.RowSpan="2">
+                <Border.Background>
+                    <ImageBrush 
+                        Stretch="UniformToFill"
+                        ImageSource="{Binding StyleConfig.Url,Converter={StaticResource itc},Mode=TwoWay}"/>
+                </Border.Background>
+                <Border.Effect>
                     <BlurEffect x:Name="img_gaussian" KernelType="Gaussian" 
                                 Radius="{Binding StyleConfig.Radius}"/>
-                </Image.Effect>
-            </Image>
+                </Border.Effect>
+            </Border>
 
             <Border Name="bd_trans" Background="#0066CC" Opacity="{Binding StyleConfig.Trans,Mode=TwoWay}" Grid.RowSpan="2"/>
             <Border Background="Black" Opacity="0.5"/>
@@ -101,7 +104,7 @@
                                                 <RadioButton  VerticalContentAlignment="Center" 
                                                               Command="{Binding RelativeSource={RelativeSource  
                                                     AncestorType={x:Type local:MainWindow}},
-                                                    Path=DataContext.OpenPageCommand}" CommandParameter="{Binding NameSpace}"
+                                                    Path=DataContext.OpenPageCommand}" CommandParameter="{Binding TypeName}"
                                                           Margin="0 10 0 10" Padding="25 0 25 0" 
                                                           Style="{StaticResource RadioButtonStyle}">
                                                     <RadioButton.IsChecked>
