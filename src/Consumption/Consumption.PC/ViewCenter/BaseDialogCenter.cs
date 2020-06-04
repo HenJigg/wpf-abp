@@ -27,27 +27,16 @@ namespace Consumption.PC.ViewCenter
         where TView : Window, new()
         where TViewModel : ViewModelBase, new()
     {
-        public TView View;
-        public TViewModel ViewModel;
+        public TView View = new TView();
+        public TViewModel ViewModel = new TViewModel();
 
         /// <summary>
         /// 绑定默认ViewModel
         /// </summary>
         public virtual void BindDefaultViewModel()
         {
-            if (ViewModel == null) ViewModel = new TViewModel();
-            GetDialog().DataContext = ViewModel;
-        }
-
-        /// <summary>
-        /// 获取窗口
-        /// </summary>
-        /// <returns></returns>
-        public Window GetDialog()
-        {
-            if (View == null)
-                View = new TView();
-            return View;
+            ViewModel = new TViewModel();
+            View.DataContext = ViewModel;
         }
 
         /// <summary>
@@ -55,11 +44,10 @@ namespace Consumption.PC.ViewCenter
         /// </summary>
         public void RegisterDefaultEvent()
         {
-            var window = GetDialog();
-            window.MouseDown += (sender, e) =>
+            View.MouseDown += (sender, e) =>
             {
                 if (e.LeftButton == MouseButtonState.Pressed)
-                    window.DragMove();
+                    View.DragMove();
             };
         }
 
@@ -67,17 +55,16 @@ namespace Consumption.PC.ViewCenter
         /// 打开窗口
         /// </summary>
         /// <returns></returns>
-        public Task<bool> ShowDialog()
+        public virtual Task<bool> ShowDialog()
         {
-            var window = GetDialog();
-            if (window.DataContext == null)
+            if (View.DataContext == null)
             {
                 this.RegisterMessenger();
                 this.RegisterDefaultEvent();
                 this.BindDefaultViewModel();
             }
-            var result = window.ShowDialog();
-            return Task.FromResult((bool)result);
+            var result = View.ShowDialog();
+            return Task.FromResult(true);
         }
 
         public void BindViewModel<BViewModel>(BViewModel viewModel)

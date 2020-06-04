@@ -34,29 +34,26 @@ namespace Consumption.PC.ViewCenter
         where TView : UserControl, new()
         where TViewModel : ViewModelBase, new()
     {
-        public TView View;
-        public TViewModel ViewModel;
+        public TView View = new TView();
+        public TViewModel ViewModel = new TViewModel();
         public virtual void BindDefaultModel()
         {
-            if (ViewModel == null) ViewModel = new TViewModel();
-            GetView().DataContext = ViewModel;
+            View.DataContext = ViewModel;
         }
 
         public void BindViewModel<BViewModel>(BViewModel viewModel) where BViewModel : class, new()
         {
-            this.GetView().DataContext = viewModel;
+            this.View.DataContext = viewModel;
         }
 
         public UserControl GetView()
         {
-            if (View == null)
-                View = new TView();
             return View;
         }
 
         object IModule.GetView()
         {
-            return GetView();
+            return View;
         }
     }
 }

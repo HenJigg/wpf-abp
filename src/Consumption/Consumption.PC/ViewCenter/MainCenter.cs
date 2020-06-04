@@ -32,7 +32,7 @@ namespace Consumption.PC.ViewCenter
     {
         public override void RegisterMessenger()
         {
-            Messenger.Default.Register<string>(GetDialog(), "NavigationNewPage", arg =>
+            Messenger.Default.Register<string>(View, "NavigationNewPage", arg =>
             {
                 var module = AutofacProvider.Get<IModule>(arg);
                 if (module != null)
@@ -45,17 +45,17 @@ namespace Consumption.PC.ViewCenter
                     //...
                 }
             });
-            Messenger.Default.Register<string>(GetDialog(), "UpdateBackground", arg =>
+            Messenger.Default.Register<string>(View, "UpdateBackground", arg =>
             {
                 ViewModel.StyleConfig.Url = arg;
                 //保存用户配置...
             });
-            Messenger.Default.Register<double>(GetDialog(), "UpdateTrans", arg =>
+            Messenger.Default.Register<double>(View, "UpdateTrans", arg =>
             {
                 ViewModel.StyleConfig.Trans = arg / 100;
                 //保存用户配置...
             });
-            Messenger.Default.Register<double>(GetDialog(), "UpdateGaussian", arg =>
+            Messenger.Default.Register<double>(View, "UpdateGaussian", arg =>
             {
                 ViewModel.StyleConfig.Radius = arg;
                 //保存用户配置...

@@ -37,7 +37,11 @@ namespace Consumption.Service
         public async Task<BaseResponse> LoginAsync(string account, string passWord)
         {
             BaseServiceRequest<BaseResponse> baseService = new BaseServiceRequest<BaseResponse>();
-            var r = await baseService.GetRequest(new UserLoginRequest() { account = account, passWord = passWord }, Method.GET);
+            var r = await baseService.GetRequest(new UserLoginRequest()
+            {
+                account = account,
+                passWord = passWord
+            }, Method.GET);
             return r;
         }
     }

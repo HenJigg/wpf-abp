@@ -24,7 +24,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 用户管理控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.DataManagement, "用户管理", "UserCenter", "Consumption.PC.ViewCenter.UserCenter", "Palette")]
+    [Module(Core.Enums.ModuleType.DataManagement, "用户管理", "UserCenter", "", "Palette")]
     public class UserCenter : BaseCenter<UserView, UserViewModel>
     {
 

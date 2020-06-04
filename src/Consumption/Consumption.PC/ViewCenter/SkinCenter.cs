@@ -25,7 +25,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 样式控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.AppMain, "个性化", "SkinCenter", "Consumption.PC.ViewCenter.SkinCenter", "Palette")]
+    [Module(Core.Enums.ModuleType.AppMain, "个性化", "SkinCenter", "", "Palette")]
     public class SkinCenter : BaseCenter<SkinView, SkinViewModel>
     {
         public override async void BindDefaultModel()

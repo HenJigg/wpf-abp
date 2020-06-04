@@ -25,7 +25,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 计划管理控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.AppMain, "计划管理", "PlanCenter", "Consumption.PC.ViewCenter.PlanCenter", "Palette")]
+    [Module(Core.Enums.ModuleType.AppMain, "计划管理", "PlanCenter", "", "Palette")]
     public class PlanCenter : BaseCenter<PlanView, PlanViewModel>
     {
 
