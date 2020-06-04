@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Consumption.PC"
-        mc:Ignorable="d" WindowState="Maximized" 
-        xmlns:ivc="clr-namespace:Consumption.PC.Common.Converters"
-             WindowStyle="None" ResizeMode="CanMinimize"  Height="450" Width="800">
+        mc:Ignorable="d"   Width="1280" Height="768"
+        xmlns:ivc="clr-namespace:Consumption.PC.Common.Converters" WindowStartupLocation="CenterScreen"
+             WindowStyle="None" ResizeMode="CanResizeWithGrip"  MinWidth="1020" MinHeight="768" >
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="-1" />
     </WindowChrome.WindowChrome>
@@ -35,21 +35,39 @@
             </Border>
 
             <Border Name="bd_trans" Background="#0066CC" Opacity="{Binding StyleConfig.Trans,Mode=TwoWay}" Grid.RowSpan="2"/>
-            <Border Background="Black" Opacity="0.5"/>
+            <Border Background="Black" Opacity="0.5" />
             <StackPanel Orientation="Horizontal" Height="80">
                 <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" Margin="30 0 0 0" IsChecked="False" Foreground="White"/>
                 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="22" Margin="10 0 0 0" Text="菜单"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0">
                 <Image  Source="pack://application:,,,/Consumption.PC;Component/Images/test_user.png"
-                        Width="50" Height="50"
+                        Width="40" Height="40"
                         >
                     <Image.Clip>
-                        <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
+                        <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20"/>
                     </Image.Clip>
                 </Image>
-                <TextBlock Text="Hello,kelly" Foreground="White" FontSize="22" Margin="15 0 20 0" VerticalAlignment="Center"/>
+                <TextBlock Text="Hello,kelly" Foreground="White" FontSize="20" Margin="10 0 10 0" VerticalAlignment="Center"/>
+                <materialDesign:PopupBox Foreground="White" 
+                                         PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                    <StackPanel>
+                        <Button Content="Help"/>
+                        <Button Content="About"/>
+                        <Button Content="Exit"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+
+                <Button Background="Transparent" BorderThickness="0" Click="btnMinus">
+                    <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" />
+                </Button>
+                <Button Background="Transparent" BorderThickness="0" Click="btnMax">
+                    <materialDesign:PackIcon Kind="WindowMaximize" Width="25" Height="25" />
+                </Button>
+                <Button Background="Transparent" BorderThickness="0" Click="btnClose">
+                    <materialDesign:PackIcon Kind="Close" Width="25" Height="25" />
+                </Button>
             </StackPanel>
 
             <Grid Grid.Row="1">

@@ -23,6 +23,7 @@ namespace Consumption.PC.ViewCenter
     using System.Collections.Generic;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
     using System.Windows.Media.Imaging;
 
     /// <summary>
@@ -64,13 +65,10 @@ namespace Consumption.PC.ViewCenter
 
         public override async void BindDefaultViewModel()
         {
-            if (ViewModel == null)
-            {
-                ViewModel = new MainViewModel();
-                await ViewModel.InitDefaultView();
-                View.page.Content = new HomeView();
-                View.DataContext = ViewModel;
-            }
+            ViewModel = new MainViewModel();
+            await ViewModel.InitDefaultView();
+            //View.page.Content = new HomeView();
+            View.DataContext = ViewModel;
         }
     }
 }

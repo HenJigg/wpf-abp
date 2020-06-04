@@ -27,5 +27,29 @@ namespace Consumption.PC
         {
             InitializeComponent();
         }
+
+        private void btnMinus(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void btnMax(object sender, RoutedEventArgs e)
+        {
+            this.SetWindowSize();
+        }
+
+        private void SetWindowSize()
+        {
+            if (this.WindowState == WindowState.Normal)
+                this.WindowState = WindowState.Maximized;
+            else
+                this.WindowState = WindowState.Normal;
+        }
+
+        private void btnClose(object sender, RoutedEventArgs e)
+        {
+            //Question?
+            App.Current.Shutdown();
+        }
     }
 }
