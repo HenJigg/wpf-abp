@@ -18,7 +18,7 @@
             <Button Width="80" Background="Transparent" BorderThickness="0" 
                 Command="{Binding SaveCommand}"
                 Height="60" HorizontalAlignment="Left">
-                <materialDesign:PackIcon Kind="ContentSave" Width="50" Height="50" />
+                <!--<materialDesign:PackIcon Kind="ContentSave" Width="50" Height="50" />-->
             </Button>
         </StackPanel>
         
@@ -53,16 +53,16 @@
 
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn,Duration=0:0:1.5}">
-                                <Button Margin="10" Width="100" Height="75" BorderThickness="0"
+                            <Button Margin="10" Width="100" Height="75" BorderThickness="0"
                                     Command="{Binding RelativeSource={RelativeSource AncestorType=Grid,Mode=FindAncestor},Path=
-                               DataContext.ApplyCommand}" CommandParameter="{Binding Name}"
-                                    >
-                                    <Button.Background>
-                                        <ImageBrush ImageSource="{Binding Image}"  Stretch="Fill"/>
-                                    </Button.Background>
-                                </Button>
-                            </materialDesign:TransitioningContent>
+                               DataContext.ApplyCommand}" CommandParameter="{Binding Name}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="{Binding Image}"  Stretch="Fill"/>
+                                </Button.Background>
+                            </Button>
+                            <!--<materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn,Duration=0:0:1.5}">
+                              
+                            </materialDesign:TransitioningContent>-->
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

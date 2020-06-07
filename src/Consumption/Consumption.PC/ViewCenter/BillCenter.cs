@@ -1,8 +1,8 @@
 ﻿/*
 *
-* 文件名    ：PlanCenter                             
-* 程序说明  : 计划管理控制类 
-* 更新时间  : 2020-06-03 20：23
+* 文件名    ：BillCenter                             
+* 程序说明  : 账单管理控制类 
+* 更新时间  : 2020-06-07 17:39
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -17,17 +17,17 @@ namespace Consumption.PC.ViewCenter
     using Consumption.Core.Attributes;
     using Consumption.PC.View;
     using Consumption.ViewModel;
-    using Consumption.ViewModel.Common;
     using System;
     using System.Collections.Generic;
     using System.Text;
 
     /// <summary>
-    /// 计划管理控制类
+    /// 账单管理控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.AppMain, "计划管理", "PlanCenter", "", "SettingsBox")]
-    public class PlanCenter : BaseCenter<PlanView, PlanViewModel>
+    [Module(Core.Enums.ModuleType.AppMain, "我的账单", "BillCenter", "", "Counter")]
+    public class BillCenter : BaseCenter<BillView, BillViewModel>
     {
 
     }
 }
+

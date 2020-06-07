@@ -30,16 +30,13 @@ namespace Consumption.PC.ViewCenter
     {
         public override async void BindDefaultModel()
         {
-            if (ViewModel == null)
+            ViewModel = new SkinViewModel();
+            ViewModel.StyleConfig = UserManager.GetStyleConfig();
+            View.DataContext = ViewModel;
+            View.Ic.DataContext = new
             {
-                ViewModel = new SkinViewModel();
-                ViewModel.StyleConfig = UserManager.GetStyleConfig();
-                GetView().DataContext = ViewModel;
-                View.Ic.DataContext = new
-                {
-                    Skins = await Common.ImageHelper.GetPrewView()
-                };
-            }
+                Skins = await Common.ImageHelper.GetPrewView()
+            };
         }
     }
 }
