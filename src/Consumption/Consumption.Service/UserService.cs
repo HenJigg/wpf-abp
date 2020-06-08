@@ -22,12 +22,28 @@ namespace Consumption.Service
     using System.Text;
     using System.Threading.Tasks;
     using RestSharp;
+    using Consumption.Core.Query;
 
     /// <summary>
     /// 用户服务
     /// </summary>
     public class UserService : IUserService
     {
+        /// <summary>
+        /// 查询用户列表
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public async Task<BaseResponse> GetUserListAsync(UserParameters parameters)
+        {
+            BaseServiceRequest<BaseResponse> baseService = new BaseServiceRequest<BaseResponse>();
+            var r = await baseService.GetRequest(new UserQueryRequest()
+            {
+                parameters = parameters
+            }, Method.GET);
+            return r;
+        }
+
         /// <summary>
         /// 登录
         /// </summary>

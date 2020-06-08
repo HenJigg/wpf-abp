@@ -14,6 +14,7 @@
 
 namespace Consumption.Core.IService
 {
+    using Consumption.Core.Query;
     using Consumption.Core.Response;
     using System;
     using System.Collections.Generic;
@@ -26,5 +27,7 @@ namespace Consumption.Core.IService
     public interface IUserService
     {
         Task<BaseResponse> LoginAsync(string account, string passWord);
+
+        Task<BaseResponse> GetUserListAsync(UserParameters parameters);
     }
 }

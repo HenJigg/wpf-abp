@@ -15,6 +15,10 @@
 
 namespace Consumption.ViewModel
 {
+    using Consumption.Core.Common;
+    using Consumption.Core.Entity;
+    using Consumption.Core.IService;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -22,7 +26,41 @@ namespace Consumption.ViewModel
     /// <summary>
     /// 用户信息
     /// </summary>
-    public class UserViewModel : BaseViewModel
+    public class UserViewModel : BaseDataViewModel<User>
     {
+        private readonly IUserService userService;
+        public UserViewModel()
+        {
+            userService = AutofacProvider.Get<IUserService>();
+            this.GetPageData(this.PageIndex);
+        }
+
+        public override async void GetPageData(int pageIndex)
+        {
+            try
+            {
+                var r = await userService.GetUserListAsync(new Core.Query.UserParameters()
+                {
+                    PageIndex = pageIndex,
+                    PageSize = PageSize,
+                    Search = SearchText
+                });
+                if (r.success)
+                {
+                    this.TotalCount = r.TotalRecord;
+                    GridModelList = new System.Collections.ObjectModel.ObservableCollection<User>();
+                    var usList = JsonConvert.DeserializeObject<List<User>>(r.dynamicObj?.ToString());
+                    usList.ForEach(arg =>
+                    {
+                        GridModelList.Add(arg);
+                    });
+                    base.SetPageCount();
+                }
+            }
+            catch (Exception ex)
+            {
+                //..
+            }
+        }
     }
 }

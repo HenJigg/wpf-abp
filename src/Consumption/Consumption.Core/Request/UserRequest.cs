@@ -14,6 +14,7 @@
 
 namespace Consumption.Core.Request
 {
+    using Consumption.Core.Query;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -25,8 +26,24 @@ namespace Consumption.Core.Request
     {
         public override string route { get => ServerAddress + "api/User/Login"; }
 
+        /// <summary>
+        /// 账户
+        /// </summary>
         public string account { get; set; }
 
+        /// <summary>
+        /// 密码
+        /// </summary>
         public string passWord { get; set; }
+    }
+
+    /// <summary>
+    /// 用户查询请求
+    /// </summary>
+    public class UserQueryRequest : BaseRequest
+    {
+        public override string route { get => ServerAddress + "api/User/GetUsers"; }
+
+        public UserParameters parameters { get; set; }
     }
 }

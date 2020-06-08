@@ -18,10 +18,9 @@
             <Button Width="80" Background="Transparent" BorderThickness="0" 
                 Command="{Binding SaveCommand}"
                 Height="60" HorizontalAlignment="Left">
-                <!--<materialDesign:PackIcon Kind="ContentSave" Width="50" Height="50" />-->
+                <materialDesign:PackIcon Kind="ContentSave" Width="50" Height="50" />
             </Button>
         </StackPanel>
-        
         
         <StackPanel Grid.Row="1" Margin="30 0 0 0">
             <TextBlock Text="透明度" Foreground="White" FontSize="22"/>
