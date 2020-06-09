@@ -41,5 +41,27 @@ namespace Consumption.ViewModel
         {
             return Task.FromResult(true);
         }
+
+        private bool isOpen;
+        private object dialogContent;
+
+        /// <summary>
+        /// 窗口是否显示
+        /// </summary>
+        public bool DialogIsOpen
+        {
+            get { return isOpen; }
+            set { isOpen = value; RaisePropertyChanged(); }
+        }
+
+        /// <summary>
+        /// 弹出窗口
+        /// </summary>
+        public object DialogContent
+        {
+            get { return dialogContent; }
+            set { dialogContent = value; RaisePropertyChanged(); }
+        }
+
     }
 }

@@ -23,14 +23,11 @@ namespace Consumption.ViewModel
     /// <summary>
     /// 应用首页
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : BaseViewModel
     {
         public MainViewModel()
         {
-            OpenPageCommand = new RelayCommand<string>(arg =>
-              {
-                  Messenger.Default.Send(arg, "NavigationNewPage");
-              });
+            OpenPageCommand = new RelayCommand<string>(arg => { Messenger.Default.Send(arg, "NavigationNewPage"); });
         }
 
         public RelayCommand<string> OpenPageCommand { get; private set; }

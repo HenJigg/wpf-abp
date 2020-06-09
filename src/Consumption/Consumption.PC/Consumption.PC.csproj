@@ -29,10 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Template\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Consumption.Service\Consumption.Service.csproj" />
     <ProjectReference Include="..\Consumption.ViewModel\Consumption.ViewModel.csproj" />
   </ItemGroup>

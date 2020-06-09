@@ -33,17 +33,24 @@ namespace Consumption.PC.ViewCenter
     {
         public override void RegisterMessenger()
         {
-            Messenger.Default.Register<string>(View, "NavigationNewPage", arg =>
+            Messenger.Default.Register<bool>(View, "DisplayView", arg =>
+              {
+                  ViewModel.DialogIsOpen = arg;
+              });
+            Messenger.Default.Register<string>(View, "NavigationNewPage", async arg =>
             {
                 var module = AutofacProvider.Get<IModule>(arg);
                 if (module != null)
                 {
+                    ViewModel.DialogIsOpen = true; //打开等待窗口
+                    await Task.Delay(3000);
                     module.BindDefaultModel();
                     View.page.Content = module.GetView();
+                    ViewModel.DialogIsOpen = false; //关闭等待窗口
                 }
                 else
                 {
-                    //...
+                    //......
                 }
             });
             Messenger.Default.Register<string>(View, "UpdateBackground", arg =>

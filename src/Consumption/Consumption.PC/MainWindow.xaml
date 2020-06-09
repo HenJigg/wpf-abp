@@ -14,8 +14,18 @@
     <Window.Resources>
         <ivc:IUrlToBitmapConverter x:Key="itc"/>
     </Window.Resources>
-    <materialDesign:DialogHost>
-
+    <materialDesign:DialogHost  IsOpen="{Binding DialogIsOpen}">
+        <materialDesign:DialogHost.DialogContent>
+            <Border Width="300" Height="150" BorderThickness="1"  Background="#FFfafafa">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" 
+                                 Value="0" Width="50" IsIndeterminate="True"/>
+                    <TextBlock     Margin="0 50 0 0" 
+                           Text="正在加载,请稍候..."  FontSize="20"
+                           Foreground="#737373" />
+                </StackPanel>
+            </Border>
+        </materialDesign:DialogHost.DialogContent>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
