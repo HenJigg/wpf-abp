@@ -14,24 +14,15 @@
         </Grid.RowDefinitions>
 
         <Border Grid.RowSpan="3"  Background="Black" Opacity="0.1" Margin="10 10 0 10" CornerRadius="5"/>
-        <DataGrid Grid.Row="1" CanUserSortColumns="True" Background="Transparent"
-                  CanUserAddRows="False" AutoGenerateColumns="False" 
-                  Margin="20" Foreground="White" HorizontalGridLinesBrush="Transparent"
-                  ItemsSource="{Binding GridModelList}"
-                  IsReadOnly="True" >
-            <DataGrid.ColumnHeaderStyle>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Foreground" Value="White"></Setter>
-                    <Setter Property="Background" Value="Transparent"/>
-                </Style>
-            </DataGrid.ColumnHeaderStyle>
+        <DataGrid Grid.Row="1" Style="{StaticResource ConsumptionDefaultDataGridStyle}" 
+                  Margin="20" ItemsSource="{Binding GridModelList}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Account}" Foreground="White" Header="登录账号"/>
-                <DataGridTextColumn Binding="{Binding UserName}" Foreground="White" Header="用户名"/>
-                <DataGridTextColumn Binding="{Binding Address}" Foreground="White" Header="地址"/>
-                <DataGridTextColumn Binding="{Binding Tel}" Foreground="White" Header="电话" />
-                <DataGridTextColumn Binding="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}" Foreground="White" Header="创建时间" />
-                <DataGridTextColumn Binding="{Binding LastTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}" Foreground="White" Header="最后登录时间" />
+                <DataGridTextColumn Binding="{Binding Account}"  Header="登录账号"/>
+                <DataGridTextColumn Binding="{Binding UserName}"  Header="用户名"/>
+                <DataGridTextColumn Binding="{Binding Address}"  Header="地址"/>
+                <DataGridTextColumn Binding="{Binding Tel}"  Header="电话" />
+                <DataGridTextColumn Binding="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}" Header="创建时间" />
+                <DataGridTextColumn Binding="{Binding LastTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}"  Header="最后登录时间" />
                 <DataGridTemplateColumn Header="操作" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
