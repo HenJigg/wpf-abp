@@ -22,6 +22,7 @@ namespace Consumption.ViewModel
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 用户信息
@@ -32,10 +33,9 @@ namespace Consumption.ViewModel
         public UserViewModel()
         {
             userService = AutofacProvider.Get<IUserService>();
-            this.GetPageData(this.PageIndex);
         }
 
-        public override async void GetPageData(int pageIndex)
+        public override async Task GetPageData(int pageIndex)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace Consumption.ViewModel
                     PageSize = PageSize,
                     Search = SearchText
                 });
-                if (r.success)
+                if (r != null && r.success)
                 {
                     this.TotalCount = r.TotalRecord;
                     GridModelList = new System.Collections.ObjectModel.ObservableCollection<User>();

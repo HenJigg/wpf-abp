@@ -21,6 +21,7 @@ namespace Consumption.PC.ViewCenter
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
     using IModule = Core.Interfaces.IModule;
@@ -38,7 +39,6 @@ namespace Consumption.PC.ViewCenter
         public TViewModel ViewModel = new TViewModel();
         public virtual void BindDefaultModel()
         {
-            View.DataContext = ViewModel;
         }
 
         public void BindViewModel<BViewModel>(BViewModel viewModel) where BViewModel : class, new()

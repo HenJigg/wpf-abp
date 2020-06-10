@@ -22,6 +22,7 @@ namespace Consumption.ViewModel
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 数据视图基类-GUID
@@ -86,47 +87,50 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 首页
         /// </summary>
-        public virtual void GoHomePage()
+        public virtual async void GoHomePage()
         {
             if (this.PageIndex == 1) return;
             PageIndex = 1;
-            GetPageData(PageIndex);
+            await GetPageData(PageIndex);
         }
 
         /// <summary>
         /// 上一页
         /// </summary>
-        public virtual void GoOnPage()
+        public virtual async void GoOnPage()
         {
             if (this.PageIndex == 1) return;
             PageIndex--;
-            this.GetPageData(PageIndex);
+            await this.GetPageData(PageIndex);
         }
 
         /// <summary>
         /// 下一页
         /// </summary>
-        public virtual void GoNextPage()
+        public virtual async void GoNextPage()
         {
             if (this.PageIndex == PageCount) return;
             PageIndex++;
-            this.GetPageData(PageIndex);
+            await this.GetPageData(PageIndex);
         }
 
         /// <summary>
         /// 尾页
         /// </summary>
-        public virtual void GoEndPage()
+        public virtual async void GoEndPage()
         {
             this.PageIndex = PageCount;
-            GetPageData(PageCount);
+            await GetPageData(PageCount);
         }
 
         /// <summary>
         /// 获取数据
         /// </summary>
         /// <param name="pageIndex"></param>
-        public virtual void GetPageData(int pageIndex) { }
+        public virtual Task GetPageData(int pageIndex)
+        {
+            return default;
+        }
 
         /// <summary>
         /// 设置页数

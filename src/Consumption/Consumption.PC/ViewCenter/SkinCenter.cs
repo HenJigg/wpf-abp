@@ -21,6 +21,7 @@ namespace Consumption.PC.ViewCenter
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 样式控制类

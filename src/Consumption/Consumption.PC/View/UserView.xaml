@@ -14,19 +14,62 @@
         </Grid.RowDefinitions>
 
         <Border Grid.RowSpan="3"  Background="Black" Opacity="0.1" Margin="10 10 0 10" CornerRadius="5"/>
-        <DataGrid Grid.Row="1" Style="{StaticResource ConsumptionDefaultDataGridStyle}" 
+        <DataGrid Grid.Row="1"  Style="{StaticResource ConsumptionDataGridStyle}" 
+                  ColumnHeaderStyle="{StaticResource ConsumptionDataGridColumnHeaderStyle}"
+                  CellStyle="{StaticResource ConsumptionDataGridCellStyle}"
+                  RowStyle="{StaticResource ConsumptionDataGridRowStyle}"
                   Margin="20" ItemsSource="{Binding GridModelList}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Account}"  Header="登录账号"/>
-                <DataGridTextColumn Binding="{Binding UserName}"  Header="用户名"/>
-                <DataGridTextColumn Binding="{Binding Address}"  Header="地址"/>
-                <DataGridTextColumn Binding="{Binding Tel}"  Header="电话" />
-                <DataGridTextColumn Binding="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}" Header="创建时间" />
-                <DataGridTextColumn Binding="{Binding LastTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}"  Header="最后登录时间" />
-                <DataGridTemplateColumn Header="操作" >
+                <DataGridTemplateColumn Header="登录账号" Width="120">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <TextBlock Text="{Binding Account}" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="用户名" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding UserName}" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="地址" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Address}" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="电话" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Tel}" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="创建时间" Width="150">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="最后登录时间" Width="150">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding LastTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridTemplateColumn Header="操作" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <Button Margin="5 0 0 0"  ToolTip="编辑" >
                                     <materialDesign:PackIcon Kind="Pencil" HorizontalAlignment="Center"  
                                                       Width="20 " Height="20"  

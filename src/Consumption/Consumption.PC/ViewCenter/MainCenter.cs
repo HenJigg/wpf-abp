@@ -43,7 +43,7 @@ namespace Consumption.PC.ViewCenter
                 if (module != null)
                 {
                     ViewModel.DialogIsOpen = true; //打开等待窗口
-                    await Task.Delay(3000);
+                    await Task.Delay(10);
                     module.BindDefaultModel();
                     View.page.Content = module.GetView();
                     ViewModel.DialogIsOpen = false; //关闭等待窗口

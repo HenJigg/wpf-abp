@@ -4,29 +4,6 @@
              xmlns:local="clr-namespace:Consumption.PC" ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
         <ResourceDictionary>
-
-            <Style x:Key="defaultDatagridColumnStyle" TargetType="{x:Type DataGridColumnHeader}">
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-            </Style>
-
-            <Style x:Key="defaultDatagridCellStyle" TargetType="{x:Type DataGridCell}">
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Height" Value="50"/>
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="False">
-                        <Setter Property="Background" Value="Transparent" />
-                    </Trigger>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#19222B" />
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Consumption.PC;component/Style/Theme.Default.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

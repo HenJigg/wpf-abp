@@ -16,7 +16,7 @@
     </Window.Resources>
     <materialDesign:DialogHost  IsOpen="{Binding DialogIsOpen}">
         <materialDesign:DialogHost.DialogContent>
-            <Border Width="300" Height="150" BorderThickness="1"  Background="#FFfafafa">
+            <Border Width="300" Height="150">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" 
                                  Value="0" Width="50" IsIndeterminate="True"/>
@@ -43,14 +43,12 @@
                                 Radius="{Binding StyleConfig.Radius}"/>
                 </Border.Effect>
             </Border>
-
             <Border Name="bd_trans" Background="#0066CC" Opacity="{Binding StyleConfig.Trans,Mode=TwoWay}" Grid.RowSpan="2"/>
             <Border Background="Black" Opacity="0.5" />
             <StackPanel Orientation="Horizontal" Height="80">
                 <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" Margin="30 0 0 0" IsChecked="False" Foreground="White"/>
                 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="22" Margin="10 0 0 0" Text="菜单"/>
             </StackPanel>
-
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0">
                 <Image  Source="pack://application:,,,/Consumption.PC;Component/Images/test_user.png"
                         Width="40" Height="40"
@@ -80,6 +78,7 @@
                 </Button>
             </StackPanel>
 
+            <!--菜单和主题内容-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250"/>
@@ -89,19 +88,19 @@
                 <!--左侧菜单列表-->
                 <Border Background="Black" Grid.ColumnSpan="2" Opacity="0.5" Margin="0" BorderThickness="0"/>
                 <Border  Background="Black" Opacity="0.1" Margin="10 10 0 10" CornerRadius="5"/>
-                <StackPanel Margin="20">
-                    <ItemsControl ItemsSource="{Binding ModuleManager.ModuleGroups}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
+                <ItemsControl Margin="15" ItemsSource="{Binding ModuleManager.ModuleGroups}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
 
-                        <!--分组-->
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
+                    <!--分组-->
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Viewbox Stretch="None">
                                 <StackPanel>
-                                    <TextBlock Text="{Binding GroupName}" FontSize="28" FontWeight="ExtraBold" Foreground="White" Margin="20 20 0 10"/>
+                                    <TextBlock Text="{Binding GroupName}" FontSize="25" FontWeight="ExtraBold" Foreground="White" Margin="20 20 0 10"/>
                                     <ListBox  ItemsSource="{Binding Modules}"  HorizontalAlignment="Center" >
                                         <ListBox.ItemContainerStyle>
                                             <Style TargetType="ListBoxItem">
@@ -147,15 +146,10 @@
                                         </ListBox.ItemTemplate>
                                     </ListBox>
                                 </StackPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-
-                    <!--<Border HorizontalAlignment="Center" BorderBrush="White"
-                            Width="160" Height="35" CornerRadius="20" BorderThickness="1">
-                        <TextBlock VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="18" Text="查看更多"/>
-                    </Border>-->
-                </StackPanel>
+                            </Viewbox>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
                 <!--右侧内容区域-->
                 <ContentControl x:Name="page" Grid.Column="1" BorderThickness="0"/>

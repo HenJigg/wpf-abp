@@ -20,6 +20,7 @@ namespace Consumption.PC.ViewCenter
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 用户管理控制类
@@ -27,6 +28,10 @@ namespace Consumption.PC.ViewCenter
     [Module(Core.Enums.ModuleType.DataManagement, "用户管理", "UserCenter", "", "AccountBox")]
     public class UserCenter : BaseCenter<UserView, UserViewModel>
     {
-
+        public override async void BindDefaultModel()
+        {
+            await ViewModel.GetPageData(0);
+            View.DataContext = ViewModel;
+        }
     }
 }
