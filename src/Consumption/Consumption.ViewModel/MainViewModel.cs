@@ -33,6 +33,7 @@ namespace Consumption.ViewModel
         public RelayCommand<string> OpenPageCommand { get; private set; }
         private ModuleManager moduleManager;
         private StyleConfig styleConfig;
+        private Module currentModule;
 
         /// <summary>
         /// 个性化设置
@@ -41,6 +42,12 @@ namespace Consumption.ViewModel
         {
             get { return styleConfig; }
             set { styleConfig = value; RaisePropertyChanged(); }
+        }
+
+        public Module CurrentModule
+        {
+            get { return currentModule; }
+            set { currentModule = value; RaisePropertyChanged(); }
         }
 
         /// <summary>

@@ -57,14 +57,14 @@ namespace Consumption.ViewModel.Common
 
         }
 
-        private ObservableCollection<ModuleGroup> moduleGroups;
+        private ObservableCollection<Module> modules;
         /// <summary>
-        /// 已加载模块<含分组>
+        /// 已加载模块
         /// </summary>
-        public ObservableCollection<ModuleGroup> ModuleGroups
+        public ObservableCollection<Module> Modules
         {
-            get { return moduleGroups; }
-            set { moduleGroups = value; RaisePropertyChanged(); }
+            get { return modules; }
+            set { modules = value; RaisePropertyChanged(); }
         }
 
         /// <summary>
@@ -75,26 +75,13 @@ namespace Consumption.ViewModel.Common
         {
             try
             {
-                ModuleGroups = new ObservableCollection<ModuleGroup>();
+                Modules = new ObservableCollection<Module>();
                 ModuleComponent mc = new ModuleComponent();
                 var ms = await mc.GetAssemblyModules();
                 foreach (var i in ms)
                 {
                     var desc = EnumHelper.GetEnumDescription(i.ModuleType);
-                    var mg = ModuleGroups.FirstOrDefault(t => t.GroupName.Equals(desc));
-                    if (mg == null)
-                    {
-                        ModuleGroups.Add(new ModuleGroup()
-                        {
-                            GroupName = desc,
-                            Modules = new ObservableCollection<Module>()
-                            {
-                                new Module(){ Name=i.Desc, Code=i.Icon, TypeName=i.TypeName,}
-                            }
-                        });
-                    }
-                    else
-                        mg.Modules.Add(new Module() { Name = i.Desc, Code = i.Icon, TypeName = i.TypeName });
+                    Modules.Add(new Module() { Name = i.Desc, Code = i.Icon, TypeName = i.TypeName, });
                 }
                 GC.Collect();
             }

@@ -5,17 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Consumption.PC.View"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         WindowStyle="None" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen"
         Title="欢迎使用" Width="480" Height="430">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="-1" />
     </WindowChrome.WindowChrome>
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Consumption.PC;Component/Images/background.png" Stretch="UniformToFill"/>
-        </Grid.Background>
-
         <Border Background="#0066CC" Opacity="0.9"/>
         <Border Width="480" Height="430" Background="Transparent">
             <Grid Margin="20">
