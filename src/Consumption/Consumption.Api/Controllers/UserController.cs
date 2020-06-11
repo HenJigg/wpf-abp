@@ -101,14 +101,12 @@ namespace Consumption.Api.Controllers
             {
                 var models = await repository.GetModelList(parameters);
 
-                if (models.Count > 0)
-                    return Ok(new ConsumptionResponse()
-                    {
-                        success = true,
-                        dynamicObj = models,
-                        TotalRecord = models.TotalCount
-                    });
-                return Ok();
+                return Ok(new ConsumptionResponse()
+                {
+                    success = true,
+                    dynamicObj = models,
+                    TotalRecord = models.TotalCount
+                });
             }
             catch (Exception ex)
             {
@@ -135,6 +133,10 @@ namespace Consumption.Api.Controllers
                 {
                     return Ok(new ConsumptionResponse() { success = false, message = "Add data error" });
                 }
+                user.CreateTime = DateTime.Now;
+                user.LoginCounter = 0;
+                user.IsLocked = 0;
+                user.FlagAdmin = 0;
                 repository.AddModelAsync(user);
                 if (!await work.SaveChangedAsync())
                 {

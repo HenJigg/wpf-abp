@@ -3,22 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Consumption.PC.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Consumption.PC.View" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:template="clr-namespace:Consumption.PC.Template"
              mc:Ignorable="d" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
+        <StackPanel  Orientation="Horizontal" 
+                     VerticalAlignment="Center"
+                     Panel.ZIndex="1" >
+            <TextBox Margin="40 0 0 0"
+                     Text="{Binding SearchText}"
+                     materialDesign:HintAssist.Hint="请输入条件搜索用户"  
+                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  
+                     Foreground="White" 
+                     MinWidth="200" VerticalAlignment="Center" FontSize="18"/>
+            <Button Grid.Column="1" Style="{DynamicResource MaterialDesignToolButton}" Command="{Binding QueryCommand}">
+                <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" Width="25" Height="30" />
+            </Button>
+            <Button  Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}" ToolTip="添加用户">
+                <materialDesign:PackIcon  Kind="Add"  Opacity=".56" Width="30" Height="30" />
+            </Button>
+        </StackPanel>
+
         <Border Grid.RowSpan="3"  Background="Black" Opacity="0.1" Margin="10 10 0 10" CornerRadius="5"/>
-        <DataGrid Grid.Row="1"  Style="{StaticResource ConsumptionDataGridStyle}" 
-                  ColumnHeaderStyle="{StaticResource ConsumptionDataGridColumnHeaderStyle}"
-                  CellStyle="{StaticResource ConsumptionDataGridCellStyle}"
-                  RowStyle="{StaticResource ConsumptionDataGridRowStyle}"
-                  Margin="20" ItemsSource="{Binding GridModelList}" >
+        <DataGrid Grid.Row="1" Margin="20 0 20 0" ItemsSource="{Binding GridModelList}" >
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="登录账号" Width="120">
                     <DataGridTemplateColumn.CellTemplate>
@@ -50,7 +66,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="创建时间" Width="150">
+                <DataGridTemplateColumn Header="创建时间" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}" VerticalAlignment="Center" />
@@ -58,7 +74,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="最后登录时间" Width="150">
+                <DataGridTemplateColumn Header="最后登录时间" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding LastTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}" VerticalAlignment="Center" />
@@ -70,15 +86,17 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Button Margin="5 0 0 0"  ToolTip="编辑" >
-                                    <materialDesign:PackIcon Kind="Pencil" HorizontalAlignment="Center"  
+                                <Button Margin="5 0 0 0"  ToolTip="编辑" 
+                                        Background="#0F3DEE" BorderThickness="0">
+                                    <materialDesign:PackIcon Kind="Edit" HorizontalAlignment="Center"  
                                                       Width="20 " Height="20"  
                                                          VerticalAlignment="Center">
                                     </materialDesign:PackIcon>
                                 </Button>
 
-                                <Button Margin="5 0 0 0" ToolTip="删除"  >
-                                    <materialDesign:PackIcon Kind="BookmarkRemove" HorizontalAlignment="Center"  
+                                <Button Margin="10 0 0 0" ToolTip="删除"
+                                        Background="#FF4844" BorderThickness="0">
+                                    <materialDesign:PackIcon Kind="PlaylistRemove" HorizontalAlignment="Center"  
                                                       Width="25 " Height="25"  
                                                          VerticalAlignment="Center">
                                     </materialDesign:PackIcon>
@@ -89,5 +107,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <template:DataPager Grid.Row="2" HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

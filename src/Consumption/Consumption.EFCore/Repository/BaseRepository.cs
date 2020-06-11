@@ -34,7 +34,7 @@ namespace Consumption.EFCore.Repository
             this.consumptionContext = consumptionContext;
         }
 
-        public void AddModelAsync(T model)
+        public virtual void AddModelAsync(T model)
         {
             consumptionContext.Entry<T>(model).State = EntityState.Added;
         }
@@ -44,14 +44,18 @@ namespace Consumption.EFCore.Repository
             consumptionContext.Entry<T>(model).State = EntityState.Deleted;
         }
 
-        public async Task<PaginatedList<T>> GetModelList(QueryParameters parameters)
+        public virtual Task<PaginatedList<T>> GetModelList(QueryParameters parameters)
         {
-            var query = consumptionContext.Set<T>().AsQueryable();
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<PaginatedList<T>> GetModelList(IQueryable<T> query, QueryParameters q)
+        {
             int count = await query.CountAsync();
-            var data = await query.Skip((parameters.PageIndex - 1) *
-                parameters.PageSize).Take(parameters.PageSize).ToListAsync();
-            return new PaginatedList<T>(parameters.PageIndex - 1,
-                parameters.PageSize, count, data);
+            var data = await query.Skip((q.PageIndex - 1) *
+                q.PageSize).Take(q.PageSize).ToListAsync();
+            return new PaginatedList<T>(q.PageIndex - 1,
+                q.PageSize, count, data);
         }
 
         public void UpdateModelAsync(T model)

@@ -16,11 +16,14 @@
 namespace Consumption.EFCore.Repository
 {
     using Consumption.Core.ApiInterfaes;
+    using Consumption.Core.Common;
     using Consumption.Core.Entity;
+    using Consumption.Core.Query;
     using Consumption.EFCore.Orm;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.InteropServices;
     using System.Text;
     using System.Threading.Tasks;
@@ -30,6 +33,18 @@ namespace Consumption.EFCore.Repository
         public UserRepository(ConsumptionContext consumptionContext) : base(consumptionContext)
         {
 
+        }
+
+
+        public override async Task<PaginatedList<User>> GetModelList(QueryParameters parameters)
+        {
+            var query = consumptionContext.Users.AsQueryable();
+            if (parameters.Search != null)
+            {
+                query = query.Where(q => q.Account.Contains(parameters.Search) ||
+                        q.UserName.Contains(parameters.Search) || q.Tel.Contains(parameters.Search)).AsQueryable();
+            }
+            return await base.GetModelList(query, parameters);
         }
 
         /// <summary>

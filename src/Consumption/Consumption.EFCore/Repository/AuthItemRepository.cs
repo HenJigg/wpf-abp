@@ -17,13 +17,19 @@
 namespace Consumption.EFCore.Repository
 {
     using Consumption.Core.ApiInterfaes;
+    using Consumption.Core.Common;
     using Consumption.Core.Entity;
+    using Consumption.Core.Query;
     using Consumption.EFCore.Orm;
+    using System.Threading.Tasks;
+
     public class AuthItemRepository : BaseRepository<AuthItem>, IAuthItemRepository
     {
         public AuthItemRepository(ConsumptionContext consumptionContext) : base(consumptionContext)
         {
 
         }
+
+      
     }
 }

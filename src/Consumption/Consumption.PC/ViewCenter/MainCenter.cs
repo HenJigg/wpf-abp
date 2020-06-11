@@ -21,6 +21,7 @@ namespace Consumption.PC.ViewCenter
     using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
@@ -43,7 +44,7 @@ namespace Consumption.PC.ViewCenter
                 if (module != null)
                 {
                     ViewModel.DialogIsOpen = true; //打开等待窗口
-                    await Task.Delay(10);
+                    await Task.Delay(300);
                     module.BindDefaultModel();
                     View.page.Content = module.GetView();
                     ViewModel.DialogIsOpen = false; //关闭等待窗口

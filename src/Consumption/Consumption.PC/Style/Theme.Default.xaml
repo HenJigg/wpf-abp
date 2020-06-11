@@ -4,5 +4,6 @@
         <ResourceDictionary Source="pack://application:,,,/Consumption.PC;component/Style/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Consumption.PC;component/Style/DataGrid.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Consumption.PC;component/Style/RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Consumption.PC;component/Template/DataPager.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -16,7 +16,7 @@
     </Window.Resources>
     <materialDesign:DialogHost  IsOpen="{Binding DialogIsOpen}">
         <materialDesign:DialogHost.DialogContent>
-            <Border Width="300" Height="150">
+            <Border Width="300" Height="150" Background="White">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" 
                                  Value="0" Width="50" IsIndeterminate="True"/>

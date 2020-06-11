@@ -12,6 +12,8 @@
 namespace Consumption.EFCore.Orm
 {
     using Consumption.Core.Entity;
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -29,17 +31,24 @@ namespace Consumption.EFCore.Orm
         {
             if (!context.Users.Any())
             {
-                var users = new[]
+                List<User> userList = new List<User>();
+                for (int i = 0; i < 30; i++)
                 {
-                    new User(){ Account="admin",UserName="tom",Address="China", FlagAdmin=1,Password="123" },
-                    new User(){ Account="qc001",UserName="marie",Address="USA", FlagAdmin=0,Password="123" },
-                    new User(){ Account="qc002",UserName="darcy",Address="USA", FlagAdmin=0,Password="123" },
-                };
-
-                foreach (var U in users)
-                {
-                    await context.Users.AddAsync(U);
+                    userList.Add(new User()
+                    {
+                        Account = $"admin{i}",
+                        UserName = $"tom{i}",
+                        Address = "China",
+                        FlagAdmin = 1,
+                        Password = "123",
+                        CreateTime = DateTime.Now,
+                    });
                 }
+                userList.ForEach(async arg =>
+                {
+                    await context.Users.AddAsync(arg);
+                });
+
                 await context.SaveChangesAsync();
             }
         }

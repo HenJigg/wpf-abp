@@ -29,7 +29,15 @@ namespace Consumption.ViewModel
     /// </summary>
     public class BaseDataViewModel<T> : ViewModelBase, IDataPager where T : class, new()
     {
-        #region GUID基础属性
+        public BaseDataViewModel()
+        {
+            AddCommand = new RelayCommand(Add);
+            EditCommand = new RelayCommand<T>(t => Edit(t));
+            DelCommand = new RelayCommand<T>(t => Del(t));
+            QueryCommand = new RelayCommand(Query);
+        }
+        #region GUID
+
         private string searchText = string.Empty;
         private ObservableCollection<T> gridModelList;
 
@@ -50,6 +58,38 @@ namespace Consumption.ViewModel
             get { return gridModelList; }
             set { gridModelList = value; RaisePropertyChanged(); }
         }
+
+        public RelayCommand AddCommand { get; private set; }
+        public RelayCommand<T> EditCommand { get; private set; }
+        public RelayCommand<T> DelCommand { get; private set; }
+        public RelayCommand QueryCommand { get; private set; }
+
+        #region IDataOperation
+
+        /// <summary>
+        /// 新增
+        /// </summary>
+        public virtual void Add() { }
+
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        public virtual void Edit<TModel>(TModel model) { }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        public virtual void Del<TModel>(TModel model) { }
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public virtual void Query()
+        {
+            this.GetPageData(this.PageIndex);
+        }
+
+        #endregion
 
         #endregion
 
