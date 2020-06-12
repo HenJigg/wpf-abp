@@ -14,6 +14,7 @@
     </WindowChrome.WindowChrome>
     <Window.Resources>
         <ivc:IUrlToBitmapConverter x:Key="itc"/>
+        <ivc:MenuWidthConverter x:Key="mwc"/>
     </Window.Resources>
     <materialDesign:DialogHost  IsOpen="{Binding DialogIsOpen}">
         <materialDesign:DialogHost.DialogContent>
@@ -29,11 +30,11 @@
         </materialDesign:DialogHost.DialogContent>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Border Name="img" Grid.RowSpan="2">
+            <Border Grid.RowSpan="2">
                 <!--<Border.Background>
                     <ImageBrush 
                         Stretch="UniformToFill"
@@ -45,20 +46,13 @@
                 </Border.Effect>
             </Border>
             <Border Name="bd_trans" Background="#0066CC" Opacity="{Binding StyleConfig.Trans,Mode=TwoWay}" Grid.RowSpan="2"/>
-            <Border Background="Black" Opacity="0.5" />
-            <StackPanel Orientation="Horizontal" Height="80">
-                <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Margin="30 0 0 0" IsChecked="False" Foreground="White"/>
-                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="22" Margin="10 0 0 0" Text="菜单"/>
-            </StackPanel>
+  
+            <Border  Background="Black" Opacity="0.7"/>
+            <TextBlock Text="WPF项目实践应用 - 后台数据管理" VerticalAlignment="Center" 
+                       Margin="20 0 0 0" FontSize="22" Foreground="White"/>
+
+            <!--右上角功能区域-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0">
-                <Image  Source="pack://application:,,,/Consumption.PC;Component/Images/test_user.png"
-                        Width="40" Height="40"
-                        >
-                    <Image.Clip>
-                        <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20"/>
-                    </Image.Clip>
-                </Image>
-                <TextBlock Text="Hello,kelly" Foreground="White" FontSize="20" Margin="10 0 10 0" VerticalAlignment="Center"/>
                 <materialDesign:PopupBox Foreground="White" 
                                          PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                     <StackPanel>
@@ -82,61 +76,44 @@
             <!--菜单和主题内容-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"/>
+                    <!--ToggleButton切换IsChecked,动态更新gridMenu宽度-->
+                    <ColumnDefinition x:Name="gridMenu" Width="{Binding ElementName=toggle,Path=IsChecked,Converter={StaticResource mwc}}"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
                 <!--左侧菜单列表-->
-                <Border Background="Black" Grid.ColumnSpan="2" Opacity="0.5" Margin="0" BorderThickness="0"/>
-                <Border  Background="Black" Opacity="0.1" Margin="10 10 0 10" CornerRadius="5"/>
-                <StackPanel HorizontalAlignment="Center" Margin="0 40 0 0">
-                    <TextBlock Text="我的应用" FontSize="25" FontWeight="ExtraBold" Foreground="White" />
+                <Border Background="Black" Grid.ColumnSpan="2" Opacity="0.5" />
+                <Border Background="Black" Opacity="0.1"/>
+                <StackPanel>
+                    <ToggleButton x:Name="toggle" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" 
+                                    FlowDirection="RightToLeft"
+                                  HorizontalAlignment="Left" Margin="18 18 0 0" Width="30" Height="30"  Foreground="White"/>
+                    <StackPanel Orientation="Horizontal" Height="50" Margin="0 10 0 10">
+                        <Image Margin="18 0 0 0" Source="pack://application:,,,/Consumption.PC;Component/Images/test_user.png" 
+                               Width="30" Height="30">
+                            <Image.Clip>
+                                <EllipseGeometry RadiusX="15" RadiusY="15" Center="15,15"/>
+                            </Image.Clip>
+                        </Image>
+                        <StackPanel Margin="20 0 0 0" VerticalAlignment="Center">
+                            <TextBlock Text="Henjigg" Foreground="White" FontSize="16"/>
+                            <TextBlock Text="admin" Foreground="White" FontSize="16"/>
+                        </StackPanel>
+                    </StackPanel>
                     <ListBox  ItemsSource="{Binding ModuleManager.Modules}">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                <Setter Property="BorderThickness" Value="0"/>
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                            <Grid>
-                                                <Border Name="border"  BorderThickness="0" Height="40" CornerRadius="10" >
-                                                    <Border.Background>
-                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                                            <GradientStop Color="#01A5FF" Offset="0.25" />
-                                                            <GradientStop Color="#0172FF" Offset="0.75" />
-                                                        </LinearGradientBrush>
-                                                    </Border.Background>
-                                                </Border>
-                                                <ContentPresenter/>
-                                            </Grid>
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="IsSelected" Value="True">
-                                                    <Setter Property="Visibility" Value="Visible" TargetName="border"/>
-                                                </Trigger>
-                                                <Trigger Property="IsSelected" Value="False">
-                                                    <Setter Property="Visibility" Value="Hidden" TargetName="border"/>
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border Padding="20">
+                                <Border>
                                     <Border.InputBindings>
                                         <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding RelativeSource={RelativeSource  
                                                     AncestorType={x:Type local:MainWindow}},
                                                     Path=DataContext.OpenPageCommand}" CommandParameter="{Binding TypeName}"/>
                                     </Border.InputBindings>
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="{Binding Code}"  Width="25" Height="25" 
+                                        <materialDesign:PackIcon Kind="{Binding Code}"  Height="25" Width="25"
+                                                                            Margin="20 0 0 0"
                                                                             Foreground="White"  VerticalAlignment="Center" />
-                                        <TextBlock Margin="10 0 0 0" Text="{Binding Name}"  FontSize="20"  Foreground="White" 
+                                        <TextBlock Margin="20 0 0 0" Text="{Binding Name}"  FontSize="16"  Foreground="White" 
                                                                    VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </Border>
@@ -144,9 +121,9 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
-         
+
                 <!--右侧内容区域-->
-                <ContentControl x:Name="page" Grid.Column="1" BorderThickness="0"/>
+                <ContentControl x:Name="page" Grid.Column="1" Margin="1 0 0 0"/>
             </Grid>
         </Grid>
     </materialDesign:DialogHost>

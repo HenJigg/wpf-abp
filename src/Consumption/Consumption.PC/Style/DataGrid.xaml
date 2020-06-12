@@ -24,25 +24,25 @@
                 <Setter Property="Background" Value="Transparent" />
             </Trigger>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="#778899" />
+                <Setter Property="Background" Value="#0A2540" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="#232D37"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Opacity" Value="0.5"/>
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 
     <Style  TargetType="{x:Type DataGridCell}">
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Height" Value="55"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="FontSize" Value="15"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Style.Triggers>

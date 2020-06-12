@@ -11,30 +11,62 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="80"/>
             <RowDefinition/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
-        <StackPanel  Orientation="Horizontal" 
-                     VerticalAlignment="Center"
-                     Panel.ZIndex="1" >
-            <TextBox Margin="40 0 0 0"
+        <TextBlock Text="用户管理" FontSize="22" Foreground="White" Padding="20"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0">
+
+            <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Margin="0 0 15 0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon  Kind="TableLarge" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Margin="0 0 15 0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon  Kind="FormatListBulleted" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Margin="0 0 15 0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon  Kind="MicrosoftExcel" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+                    <TextBlock Margin="10 0 0 0" Text="导出文件" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignToolButton}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon  Kind="Add" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+                    <TextBlock Margin="10 0 0 0" Text="新增用户" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1"  Orientation="Horizontal" Panel.ZIndex="1" >
+            <Button VerticalAlignment="Center" Margin="10 0 0 0"
+                    Style="{StaticResource MaterialDesignToolButton}" Command="{Binding QueryCommand}">
+                <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" Width="25" Height="25"/>
+            </Button>
+            <TextBox
                      Text="{Binding SearchText}"
-                     materialDesign:HintAssist.Hint="请输入条件搜索用户"  
+                     materialDesign:HintAssist.Hint="请输入检索条件"  
                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  
                      Foreground="White" 
                      MinWidth="200" VerticalAlignment="Center" FontSize="18"/>
-            <Button Grid.Column="1" Style="{DynamicResource MaterialDesignToolButton}" Command="{Binding QueryCommand}">
-                <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" Width="25" Height="30" />
-            </Button>
-            <Button  Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}" ToolTip="添加用户">
-                <materialDesign:PackIcon  Kind="Add"  Opacity=".56" Width="30" Height="30" />
-            </Button>
         </StackPanel>
-
-        <Border Grid.RowSpan="3"  Background="Black" Opacity="0.1" Margin="10 10 0 10" CornerRadius="5"/>
-        <DataGrid Grid.Row="1" Margin="20 0 20 0" ItemsSource="{Binding GridModelList}" >
+        
+        <Border Grid.RowSpan="4"  Background="Black" Opacity="0.1"/>
+        <DataGrid Grid.Row="2" ItemsSource="{Binding GridModelList}" >
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="登录账号" Width="120">
                     <DataGridTemplateColumn.CellTemplate>
@@ -85,28 +117,19 @@
                 <DataGridTemplateColumn Header="操作" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Button Margin="5 0 0 0"  ToolTip="编辑" 
-                                        Background="#0F3DEE" BorderThickness="0">
-                                    <materialDesign:PackIcon Kind="Edit" HorizontalAlignment="Center"  
-                                                      Width="20 " Height="20"  
-                                                         VerticalAlignment="Center">
-                                    </materialDesign:PackIcon>
-                                </Button>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                                <Button Margin="5 0 0 0"  Content="编辑"
+                                        Background="#28CBA3" BorderThickness="0" />
 
-                                <Button Margin="10 0 0 0" ToolTip="删除"
-                                        Background="#FF4844" BorderThickness="0">
-                                    <materialDesign:PackIcon Kind="PlaylistRemove" HorizontalAlignment="Center"  
-                                                      Width="25 " Height="25"  
-                                                         VerticalAlignment="Center">
-                                    </materialDesign:PackIcon>
-                                </Button>
+                                <Button Margin="10 0 0 0" Content="删除"
+                                        Background="#FF5370" BorderThickness="0"/>
+
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <template:DataPager Grid.Row="2" HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Top"/>
+        <template:DataPager Grid.Row="3" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

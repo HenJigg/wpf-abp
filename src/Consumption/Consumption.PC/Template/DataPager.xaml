@@ -13,9 +13,9 @@
                             Orientation="Horizontal" >
                         <TextBlock Text="共 " Margin="10 0 0 0"  Foreground="White"  FontSize="18" VerticalAlignment="Center" />
                         <TextBlock Text="{Binding TotalCount}" Foreground="#5CACEE" FontSize="18" Margin="4,0" VerticalAlignment="Center"  />
-                        <TextBlock  Text=" 行，每页 "  Foreground="White"  FontSize="18" VerticalAlignment="Center"  />
+                        <TextBlock  Text=" 条，每页 "  Foreground="White"  FontSize="18" VerticalAlignment="Center"  />
                         <TextBlock Text="{Binding PageSize}" Foreground="#5CACEE" FontSize="18" Margin="4,0" VerticalAlignment="Center"  />
-                        <TextBlock Text=" 行，当前 " Foreground="White"   FontSize="18" VerticalAlignment="Center"  />
+                        <TextBlock Text=" 条，当前 " Foreground="White"   FontSize="18" VerticalAlignment="Center"  />
                         <TextBlock Text="{Binding PageIndex}" Foreground="#5CACEE"  FontSize="18"  Margin="4,0,2,0" VerticalAlignment="Center"  />
                         <TextBlock Text=" / "   Foreground="White"  FontSize="18" VerticalAlignment="Center"  />
                         <TextBlock Text="{Binding PageCount}" Foreground="#5CACEE"  FontSize="18"  Margin="4,0,2,0" VerticalAlignment="Center"  />

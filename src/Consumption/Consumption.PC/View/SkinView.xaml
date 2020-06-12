@@ -12,7 +12,7 @@
             <RowDefinition Height="130"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Background="Black" Opacity="0.1" Grid.RowSpan="4" Margin="10 10 10 0" CornerRadius="5"/>
+        <Border Background="Black" Opacity="0.1" Grid.RowSpan="4" />
         <StackPanel Orientation="Horizontal" Margin="30">
             <TextBlock Text="个性化设置" FontSize="32" Foreground="White" VerticalAlignment="Center"/>
             <Button Width="80" Background="Transparent" BorderThickness="0" 

@@ -1,8 +1,7 @@
-﻿
-/*
+﻿/*
 *
-* 文件名    ：IUrlToBitmapConverter                             
-* 程序说明  : 地址转图片转换器
+* 文件名    ：MenuWidthConverter                             
+* 程序说明  : 菜单宽度转换器
 * 更新时间  : 2020-06-02 21：10
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
@@ -15,32 +14,26 @@
 
 namespace Consumption.PC.Common.Converters
 {
-    using System.IO;
-    using System.Text;
-    using System.Windows.Data;
-    using System.Windows.Media.Imaging;
+    using LiveCharts.Wpf.Points;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Text;
+    using System.Windows.Data;
 
     /// <summary>
-    /// 地址转图片转换器
+    /// 菜单宽度转换器
     /// </summary>
-    public class IUrlToBitmapConverter : IValueConverter
+    public class MenuWidthConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value != null && bool.TryParse(value.ToString(), out bool result))
             {
-                string fileurl = $"{AppDomain.CurrentDomain.BaseDirectory}Skin\\Kind\\{value.ToString()}";
-                if (File.Exists(fileurl))
-                {
-                    BitmapImage fileImg = ImageHelper.ConvertToImage(fileurl);
-                    return fileImg;
-                }
+                if (result)
+                    return 250;
             }
-            BitmapImage img = ImageHelper.ConvertToImage($"{AppDomain.CurrentDomain.BaseDirectory}Images\\background.png");
-            return img;
+            return 60;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

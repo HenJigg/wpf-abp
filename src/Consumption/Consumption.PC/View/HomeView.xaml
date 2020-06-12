@@ -25,7 +25,7 @@
             <Border  Background="Black" Opacity="0.1" Margin="10 10 10 0" CornerRadius="5"/>
             <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <TextBlock Text="消费管理后台" FontSize="26" Foreground="White"/>
-                <TextBlock Text="C#多平台项目案例" Foreground="White" FontSize="22"/>
+                <TextBlock Text="C#多平台项目应用" Foreground="White" FontSize="22"/>
             </StackPanel>
 
             <Border Grid.Column="1" Background="Black" Opacity="0.1" Margin="10 10 10 0" CornerRadius="5"/>
