@@ -29,10 +29,10 @@ namespace Consumption.EFCore.Orm
         /// <returns></returns>
         public static async Task InitSampleDataAsync(ConsumptionContext context)
         {
-            if (!context.Users.Any())
+            if (context.Users.Any())
             {
                 List<User> userList = new List<User>();
-                for (int i = 0; i < 30; i++)
+                for (int i = 0; i < 100; i++)
                 {
                     userList.Add(new User()
                     {

@@ -16,6 +16,7 @@
 namespace Consumption.ViewModel
 {
     using Consumption.Core.Interfaces;
+    using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System;
@@ -35,7 +36,22 @@ namespace Consumption.ViewModel
             EditCommand = new RelayCommand<T>(t => Edit(t));
             DelCommand = new RelayCommand<T>(t => Del(t));
             QueryCommand = new RelayCommand(Query);
+            SwitchModeCommand = new RelayCommand<bool>(arg =>
+              {
+                  DisplayType = arg;
+              });
         }
+
+        private bool displayType = true;
+
+        public bool DisplayType
+        {
+            get { return displayType; }
+            set { displayType = value; RaisePropertyChanged(); }
+        }
+
+        public RelayCommand<bool> SwitchModeCommand { get; private set; }
+
         #region GUID
 
         private string searchText = string.Empty;
@@ -100,7 +116,7 @@ namespace Consumption.ViewModel
         public RelayCommand GoEndPageCommand { get { return new RelayCommand(() => GoEndPage()); } }
 
         private int totalCount = 0;
-        private int pageSize = 15;
+        private int pageSize = 30;
         private int pageIndex = 1;
         private int pageCount = 0;
 
