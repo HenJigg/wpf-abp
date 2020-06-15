@@ -3,10 +3,107 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Consumption.PC.View"
+             xmlns:local="clr-namespace:Consumption.PC.View" xmlns:template="clr-namespace:Consumption.PC.Template" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:s="clr-namespace:System;assembly=System.Runtime"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="菜单管理" FontSize="22" Foreground="White" Padding="20"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0" Panel.ZIndex="1">
+            <Button Style="{StaticResource MaterialDesignToolButton}" 
+                    Command="{Binding SwitchModeCommand}"  ToolTip="磁贴模式"
+                    HorizontalAlignment="Right" Margin="0 0 15 0">
+                <Button.CommandParameter>
+                    <s:Boolean>False</s:Boolean>
+                </Button.CommandParameter>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon  Kind="TableLarge" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignToolButton}" 
+                     Command="{Binding SwitchModeCommand}"   ToolTip="列表模式"
+                    HorizontalAlignment="Right" Margin="0 0 15 0">
+                <Button.CommandParameter>
+                    <s:Boolean>True</s:Boolean>
+                </Button.CommandParameter>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon  Kind="FormatListBulleted" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignToolButton}" 
+                    ToolTip="导出文件"
+                    HorizontalAlignment="Right" Margin="0 0 15 0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon  Kind="MicrosoftExcel" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+                    <TextBlock Margin="10 0 0 0" Text="导出文件" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignToolButton}"  ToolTip="新增用户">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon  Kind="Add" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+                    <TextBlock Margin="10 0 0 0" Text="新增用户" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"  Orientation="Horizontal" Panel.ZIndex="1" >
+            <Button VerticalAlignment="Center" Margin="10 0 0 0"
+                    Style="{StaticResource MaterialDesignToolButton}" Command="{Binding QueryCommand}">
+                <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" Width="25" Height="25"/>
+            </Button>
+            <TextBox
+                     Text="{Binding SearchText}"
+                     materialDesign:HintAssist.Hint="请输入检索条件"  
+                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  
+                     Foreground="White" 
+                     MinWidth="200" VerticalAlignment="Center" FontSize="18"/>
+        </StackPanel>
+
+        <Border Grid.RowSpan="4"  Background="Black" Opacity="0.1"/>
+
+        <ListView x:Name="user" Grid.Row="2" ItemsSource="{Binding GridModelList}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                  Foreground="White" >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ContentControl Content="{Binding}">
+                        <ContentControl.Style>
+                            <Style TargetType="{x:Type ContentControl}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource UserListTemplate}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource 
+                                        AncestorType=ListView,Mode=FindAncestor},Path=DataContext.DisplayType,Mode=TwoWay}" Value="False">
+                                        <Setter Property="ContentTemplate" Value="{DynamicResource  UserFormTemplate}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <template:DataPager Grid.Row="3" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

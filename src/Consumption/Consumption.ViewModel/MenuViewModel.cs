@@ -14,16 +14,55 @@
 
 namespace Consumption.ViewModel
 {
+    using Consumption.Core.Common;
+    using Consumption.Core.Entity;
+    using Consumption.Core.IService;
+    using Consumption.Core.Query;
     using GalaSoft.MvvmLight;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 菜单
     /// </summary>
-    public class MenuViewModel : ViewModelBase
+    public class MenuViewModel : BaseDataViewModel<Menu>
     {
+        private readonly IMenuService menuService;
+        public MenuViewModel()
+        {
+            menuService = AutofacProvider.Get<IMenuService>();
+        }
 
+        public override async Task GetPageData(int pageIndex)
+        {
+            try
+            {
+                var r = await menuService.GetMenuListAsync(new MenuParameters()
+                {
+                    PageIndex = pageIndex,
+                    PageSize = PageSize,
+                    Search = SearchText
+                });
+                if (r != null && r.success)
+                {
+                    this.TotalCount = r.TotalRecord;
+                    GridModelList = new ObservableCollection<Menu>();
+                    var usList = JsonConvert.DeserializeObject<List<Menu>>(r.dynamicObj?.ToString());
+                    usList.ForEach(arg =>
+                    {
+                        GridModelList.Add(arg);
+                    });
+                    base.SetPageCount();
+                }
+            }
+            catch (Exception ex)
+            {
+                //..
+            }
+        }
     }
 }
