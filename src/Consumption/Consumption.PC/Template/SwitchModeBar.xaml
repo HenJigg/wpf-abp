@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Consumption.PC.Template.SwitchModeBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Consumption.PC.Template" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:s="clr-namespace:System;assembly=System.Runtime"
+             mc:Ignorable="d" >
+    <StackPanel Orientation="Horizontal">
+        <Button Style="{StaticResource MaterialDesignToolButton}" 
+                    Command="{Binding SwitchModeCommand}"  ToolTip="磁贴模式"
+                    HorizontalAlignment="Right" Margin="0 0 15 0">
+            <Button.CommandParameter>
+                <s:Boolean>False</s:Boolean>
+            </Button.CommandParameter>
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon  Kind="TableLarge" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Style="{StaticResource MaterialDesignToolButton}" 
+                     Command="{Binding SwitchModeCommand}"   ToolTip="列表模式"
+                    HorizontalAlignment="Right" Margin="0 0 15 0">
+            <Button.CommandParameter>
+                <s:Boolean>True</s:Boolean>
+            </Button.CommandParameter>
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon  Kind="FormatListBulleted" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</UserControl>

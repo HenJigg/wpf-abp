@@ -17,11 +17,14 @@
 namespace Consumption.EFCore.Repository
 {
     using Consumption.Core.ApiInterfaes;
+    using Consumption.Core.Common;
     using Consumption.Core.Entity;
+    using Consumption.Core.Query;
     using Consumption.EFCore.Orm;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -29,6 +32,17 @@ namespace Consumption.EFCore.Repository
     {
         public MenuRepository(ConsumptionContext consumptionContext) : base(consumptionContext)
         {
+        }
+
+        public override async Task<PaginatedList<Menu>> GetModelList(QueryParameters parameters)
+        {
+            var query = consumptionContext.Menus.AsQueryable();
+            if (parameters.Search != null)
+            {
+                query = query.Where(q => q.MenuCode.Contains(parameters.Search) ||
+                        q.MenuName.Contains(parameters.Search) || q.MenuNameSpace.Contains(parameters.Search)).AsQueryable();
+            }
+            return await base.GetModelList(query, parameters);
         }
 
         public async Task<Menu> GetMenuByIdAsync(int id)

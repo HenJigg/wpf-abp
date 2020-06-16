@@ -3,10 +3,84 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Consumption.PC.View"
+             xmlns:local="clr-namespace:Consumption.PC.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:template="clr-namespace:Consumption.PC.Template"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="基础数据" FontSize="22" Foreground="White" Padding="20"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0" Panel.ZIndex="1">
+
+            <Button Style="{StaticResource MaterialDesignToolButton}"  ToolTip="添加数据">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon  Kind="Add" Foreground="White" 
+                                              Width="25" Height="25" VerticalAlignment="Center"/>
+                    <TextBlock Margin="10 0 0 0" Text="添加数据" FontSize="16" Foreground="White" VerticalAlignment="Center">
+                        <TextBlock.InputBindings>
+                            <KeyBinding Key="Return" Command="{Binding AddCommand}"/>
+                        </TextBlock.InputBindings>
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"  Orientation="Horizontal" Panel.ZIndex="1" >
+            <materialDesign:PackIcon  Kind="Magnify" Margin="10 0 0 0" Opacity=".56" 
+                                      Width="25" Height="25" VerticalAlignment="Center" Foreground="White"/>
+            <TextBox
+                     Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     materialDesign:HintAssist.Hint="请输入检索条件"  
+                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  
+                     Foreground="White" 
+                     MinWidth="200" VerticalAlignment="Center" FontSize="18">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Return" Command="{Binding QueryCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+        </StackPanel>
+
+        <Border Grid.RowSpan="4"  Background="Black" Opacity="0.1"/>
+
+        <ListView x:Name="user" Grid.Row="2" ItemsSource="{Binding GridModelList}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                  Foreground="White" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <materialDesign:TransitioningContent OpeningEffectsOffset="{materialDesign:IndexedItemOffsetMultiplier 0:0:0.03}">
+                        <materialDesign:TransitioningContent.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" />
+                        </materialDesign:TransitioningContent.OpeningEffects>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="300"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding TypeCode}" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{Binding DataCode}" />
+                            <TextBlock Grid.Column="2" Text="{Binding NativeName}" />
+                            <TextBlock Grid.Column="3" Text="{Binding EnglishName}" />
+                            <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button  Margin="5 0 0 0"  Content="编辑" Background="#28CBA3" BorderThickness="0" />
+                                <Button   Margin="10 0 0 0" Content="删除" Background="#FF5370" BorderThickness="0"/>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:TransitioningContent>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <template:DataPager Grid.Row="3" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

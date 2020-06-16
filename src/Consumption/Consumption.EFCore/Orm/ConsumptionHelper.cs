@@ -12,6 +12,7 @@
 namespace Consumption.EFCore.Orm
 {
     using Consumption.Core.Entity;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -29,26 +30,30 @@ namespace Consumption.EFCore.Orm
         /// <returns></returns>
         public static async Task InitSampleDataAsync(ConsumptionContext context)
         {
-            if (context.Users.Any())
+            if (!context.Users.Any())
             {
                 List<User> userList = new List<User>();
-                for (int i = 0; i < 100; i++)
-                {
-                    userList.Add(new User()
-                    {
-                        Account = $"admin{i}",
-                        UserName = $"tom{i}",
-                        Address = "China",
-                        FlagAdmin = 1,
-                        Password = "123",
-                        CreateTime = DateTime.Now,
-                    });
-                }
-                userList.ForEach(async arg =>
-                {
-                    await context.Users.AddAsync(arg);
-                });
+                userList.Add(new User() { Account = "Test", UserName = "测试员", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Abigail", UserName = "愛比蓋爾", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Ada", UserName = "愛達", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Agatha", UserName = "阿加莎", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Diana", UserName = "黛安娜", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Eliza", UserName = "伊萊扎", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "弗洛拉", UserName = "Flora", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
+                userList.ForEach(async arg => await context.Users.AddAsync(arg));
 
+                List<Menu> menuList = new List<Menu>();
+                menuList.Add(new Menu() { MenuCode = "1001", MenuName = "基础数据", MenuCaption = "", MenuNameSpace = "", });
+                menuList.Add(new Menu() { MenuCode = "1002", MenuName = "用户管理", MenuCaption = "", MenuNameSpace = "", });
+                menuList.Add(new Menu() { MenuCode = "1003", MenuName = "菜单管理", MenuCaption = "", MenuNameSpace = "", });
+                menuList.Add(new Menu() { MenuCode = "1004", MenuName = "权限管理", MenuCaption = "", MenuNameSpace = "", });
+                menuList.Add(new Menu() { MenuCode = "1005", MenuName = "计划管理", MenuCaption = "", MenuNameSpace = "", });
+                menuList.Add(new Menu() { MenuCode = "1006", MenuName = "消费报表", MenuCaption = "", MenuNameSpace = "", });
+                menuList.Add(new Menu() { MenuCode = "1007", MenuName = "消费管理", MenuCaption = "", MenuNameSpace = "", });
+                menuList.Add(new Menu() { MenuCode = "1008", MenuName = "消费管理", MenuCaption = "", MenuNameSpace = "", });
+                menuList.Add(new Menu() { MenuCode = "1009", MenuName = "账户管理", MenuCaption = "", MenuNameSpace = "", });
+                menuList.Add(new Menu() { MenuCode = "1010", MenuName = "我的账单", MenuCaption = "", MenuNameSpace = "", });
+                menuList.ForEach(async arg => await context.Menus.AddAsync(arg));
                 await context.SaveChangesAsync();
             }
         }

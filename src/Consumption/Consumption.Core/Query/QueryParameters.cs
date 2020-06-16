@@ -23,7 +23,7 @@ namespace Consumption.Core.Query
     /// <summary>
     /// 搜索基类
     /// </summary>
-    public abstract class QueryParameters : INotifyPropertyChanged
+    public class QueryParameters : INotifyPropertyChanged
     {
         private const int DefaultPageSize = 10;
         private const int DefaultMaxPageSize = 100;

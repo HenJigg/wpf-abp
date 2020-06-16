@@ -90,36 +90,14 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="80"/>
             <RowDefinition/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="用户管理" FontSize="22" Foreground="White" Padding="20"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0" Panel.ZIndex="1">
 
-            <Button Style="{StaticResource MaterialDesignToolButton}" 
-                    Command="{Binding SwitchModeCommand}"  ToolTip="磁贴模式"
-                    HorizontalAlignment="Right" Margin="0 0 15 0">
-                <Button.CommandParameter>
-                    <s:Boolean>False</s:Boolean>
-                </Button.CommandParameter>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon  Kind="TableLarge" Foreground="White" 
-                                              Width="25" Height="25" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-
-            <Button Style="{StaticResource MaterialDesignToolButton}" 
-                     Command="{Binding SwitchModeCommand}"   ToolTip="列表模式"
-                    HorizontalAlignment="Right" Margin="0 0 15 0">
-                <Button.CommandParameter>
-                    <s:Boolean>True</s:Boolean>
-                </Button.CommandParameter>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon  Kind="FormatListBulleted" Foreground="White" 
-                                              Width="25" Height="25" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
+            <template:SwitchModeBar/>
 
             <Button Style="{StaticResource MaterialDesignToolButton}" 
                     ToolTip="导出文件"
@@ -141,16 +119,18 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1"  Orientation="Horizontal" Panel.ZIndex="1" >
-            <Button VerticalAlignment="Center" Margin="10 0 0 0"
-                    Style="{StaticResource MaterialDesignToolButton}" Command="{Binding QueryCommand}">
-                <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" Width="25" Height="25"/>
-            </Button>
+            <materialDesign:PackIcon  Kind="Magnify" Margin="10 0 0 0" Opacity=".56" 
+                                      Width="25" Height="25" VerticalAlignment="Center" Foreground="White"/>
             <TextBox
-                     Text="{Binding SearchText}"
+                     Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      materialDesign:HintAssist.Hint="请输入检索条件"  
                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  
                      Foreground="White" 
-                     MinWidth="200" VerticalAlignment="Center" FontSize="18"/>
+                     MinWidth="200" VerticalAlignment="Center" FontSize="18">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Return" Command="{Binding QueryCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
         </StackPanel>
 
         <Border Grid.RowSpan="4"  Background="Black" Opacity="0.1"/>

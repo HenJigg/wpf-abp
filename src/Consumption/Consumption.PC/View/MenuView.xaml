@@ -11,66 +11,39 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="80"/>
             <RowDefinition/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="菜单管理" FontSize="22" Foreground="White" Padding="20"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0" Panel.ZIndex="1">
-            <Button Style="{StaticResource MaterialDesignToolButton}" 
-                    Command="{Binding SwitchModeCommand}"  ToolTip="磁贴模式"
-                    HorizontalAlignment="Right" Margin="0 0 15 0">
-                <Button.CommandParameter>
-                    <s:Boolean>False</s:Boolean>
-                </Button.CommandParameter>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon  Kind="TableLarge" Foreground="White" 
-                                              Width="25" Height="25" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
 
-            <Button Style="{StaticResource MaterialDesignToolButton}" 
-                     Command="{Binding SwitchModeCommand}"   ToolTip="列表模式"
-                    HorizontalAlignment="Right" Margin="0 0 15 0">
-                <Button.CommandParameter>
-                    <s:Boolean>True</s:Boolean>
-                </Button.CommandParameter>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon  Kind="FormatListBulleted" Foreground="White" 
-                                              Width="25" Height="25" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-
-            <Button Style="{StaticResource MaterialDesignToolButton}" 
-                    ToolTip="导出文件"
-                    HorizontalAlignment="Right" Margin="0 0 15 0">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon  Kind="MicrosoftExcel" Foreground="White" 
-                                              Width="25" Height="25" VerticalAlignment="Center"/>
-                    <TextBlock Margin="10 0 0 0" Text="导出文件" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-
-            <Button Style="{StaticResource MaterialDesignToolButton}"  ToolTip="新增用户">
+            <Button Style="{StaticResource MaterialDesignToolButton}"  ToolTip="导入菜单">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon  Kind="Add" Foreground="White" 
                                               Width="25" Height="25" VerticalAlignment="Center"/>
-                    <TextBlock Margin="10 0 0 0" Text="新增用户" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+                    <TextBlock Margin="10 0 0 0" Text="导入菜单" FontSize="16" Foreground="White" VerticalAlignment="Center">
+                        <TextBlock.InputBindings>
+                            <KeyBinding Key="Return" Command="{Binding ImportCommand}"/>
+                        </TextBlock.InputBindings>
+                    </TextBlock>
                 </StackPanel>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="1"  Orientation="Horizontal" Panel.ZIndex="1" >
-            <Button VerticalAlignment="Center" Margin="10 0 0 0"
-                    Style="{StaticResource MaterialDesignToolButton}" Command="{Binding QueryCommand}">
-                <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" Width="25" Height="25"/>
-            </Button>
+            <materialDesign:PackIcon  Kind="Magnify" Margin="10 0 0 0" Opacity=".56" 
+                                      Width="25" Height="25" VerticalAlignment="Center" Foreground="White"/>
             <TextBox
-                     Text="{Binding SearchText}"
+                     Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      materialDesign:HintAssist.Hint="请输入检索条件"  
                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  
                      Foreground="White" 
-                     MinWidth="200" VerticalAlignment="Center" FontSize="18"/>
+                     MinWidth="200" VerticalAlignment="Center" FontSize="18">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Return" Command="{Binding QueryCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
         </StackPanel>
 
         <Border Grid.RowSpan="4"  Background="Black" Opacity="0.1"/>
@@ -79,27 +52,31 @@
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ScrollViewer.VerticalScrollBarVisibility="Hidden"
                   Foreground="White" >
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ContentControl Content="{Binding}">
-                        <ContentControl.Style>
-                            <Style TargetType="{x:Type ContentControl}">
-                                <Setter Property="ContentTemplate" Value="{StaticResource UserListTemplate}"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource 
-                                        AncestorType=ListView,Mode=FindAncestor},Path=DataContext.DisplayType,Mode=TwoWay}" Value="False">
-                                        <Setter Property="ContentTemplate" Value="{DynamicResource  UserFormTemplate}"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ContentControl.Style>
-                    </ContentControl>
+                    <materialDesign:TransitioningContent OpeningEffectsOffset="{materialDesign:IndexedItemOffsetMultiplier 0:0:0.03}">
+                        <materialDesign:TransitioningContent.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromRight" />
+                        </materialDesign:TransitioningContent.OpeningEffects>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="300"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding MenuCode}" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{Binding MenuName}" />
+                            <TextBlock Grid.Column="2" Text="{Binding MenuCaption}" />
+                            <TextBlock Grid.Column="3" Text="{Binding MenuNameSpace}" />
+                            <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button  Margin="5 0 0 0"  Content="编辑" Background="#28CBA3" BorderThickness="0" />
+                                <Button   Margin="10 0 0 0" Content="删除" Background="#FF5370" BorderThickness="0"/>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:TransitioningContent>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

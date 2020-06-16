@@ -106,7 +106,7 @@
                     <ListBox  ItemsSource="{Binding ModuleManager.Modules}" SelectionMode="Extended">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border Background="Transparent" Height="40" Width="250">
+                                <Border Background="Transparent" Height="40" Width="250" ToolTip="{Binding Name}">
                                     <Border.InputBindings>
                                         <MouseBinding MouseAction="LeftClick" Command="{Binding RelativeSource={RelativeSource  
                                                     AncestorType={x:Type local:MainWindow}},  Path=DataContext.OpenPageCommand}" 

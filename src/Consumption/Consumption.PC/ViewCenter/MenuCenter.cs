@@ -25,7 +25,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 用户菜单控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.DataManagement, "菜单管理", "MenuCenter", "", "AccountBox")]
+    [Module(Core.Enums.ModuleType.DataManagement, "菜单管理", "MenuCenter", "", "Menu")]
     public class MenuCenter : BaseCenter<MenuView, MenuViewModel>
     {
         public override async Task BindDefaultModel()
