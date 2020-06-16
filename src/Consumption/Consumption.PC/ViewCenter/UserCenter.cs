@@ -28,7 +28,7 @@ namespace Consumption.PC.ViewCenter
     [Module(Core.Enums.ModuleType.DataManagement, "用户管理", "UserCenter", "", "AccountBox")]
     public class UserCenter : BaseCenter<UserView, UserViewModel>
     {
-        public override async void BindDefaultModel()
+        public override async Task BindDefaultModel()
         {
             await ViewModel.GetPageData(0);
             View.DataContext = ViewModel;

@@ -46,7 +46,7 @@
                 </Border.Effect>
             </Border>
             <Border Name="bd_trans" Background="#0066CC" Opacity="{Binding StyleConfig.Trans,Mode=TwoWay}" Grid.RowSpan="2"/>
-  
+
             <Border  Background="Black" Opacity="0.7"/>
             <TextBlock Text="WPF项目实践应用 - 后台数据管理" VerticalAlignment="Center" 
                        Margin="20 0 0 0" FontSize="22" Foreground="White"/>
@@ -81,13 +81,14 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <!--左侧菜单列表-->
                 <Border Background="Black" Grid.ColumnSpan="2" Opacity="0.5" />
                 <Border Background="Black" Opacity="0.1"/>
                 <StackPanel>
                     <ToggleButton x:Name="toggle" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" 
                                     FlowDirection="RightToLeft"
                                   HorizontalAlignment="Left" Margin="18 18 0 0" Width="30" Height="30"  Foreground="White"/>
+
+                    <!--头像和用户信息-->
                     <StackPanel Orientation="Horizontal" Height="50" Margin="0 10 0 10">
                         <Image Margin="18 0 0 0" Source="pack://application:,,,/Consumption.PC;Component/Images/test_user.png" 
                                Width="30" Height="30">
@@ -100,19 +101,20 @@
                             <TextBlock Text="admin" Foreground="White" FontSize="16"/>
                         </StackPanel>
                     </StackPanel>
-                    <ListBox  ItemsSource="{Binding ModuleManager.Modules}">
+
+                    <!--菜单模块-->
+                    <ListBox  ItemsSource="{Binding ModuleManager.Modules}" SelectionMode="Extended">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border>
+                                <Border Background="Transparent" Height="40" Width="250">
                                     <Border.InputBindings>
-                                        <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding RelativeSource={RelativeSource  
-                                                    AncestorType={x:Type local:MainWindow}},
-                                                    Path=DataContext.OpenPageCommand}" CommandParameter="{Binding TypeName}"/>
+                                        <MouseBinding MouseAction="LeftClick" Command="{Binding RelativeSource={RelativeSource  
+                                                    AncestorType={x:Type local:MainWindow}},  Path=DataContext.OpenPageCommand}" 
+                                                      CommandParameter="{Binding TypeName}"/>
                                     </Border.InputBindings>
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="{Binding Code}"  Height="25" Width="25"
-                                                                            Margin="20 0 0 0"
-                                                                            Foreground="White"  VerticalAlignment="Center" />
+                                        <materialDesign:PackIcon Kind="{Binding Code}"  Height="25" Width="25" Margin="10 0 0 0"
+                                                             Foreground="White"  VerticalAlignment="Center" />
                                         <TextBlock Margin="20 0 0 0" Text="{Binding Name}"  FontSize="16"  Foreground="White" 
                                                                    VerticalAlignment="Center"/>
                                     </StackPanel>
@@ -123,7 +125,7 @@
                 </StackPanel>
 
                 <!--右侧内容区域-->
-                <ContentControl x:Name="page" Grid.Column="1" Margin="1 0 0 0"/>
+                <ContentControl x:Name="page" Grid.Column="1" Margin="2 0 0 0"/>
             </Grid>
         </Grid>
     </materialDesign:DialogHost>

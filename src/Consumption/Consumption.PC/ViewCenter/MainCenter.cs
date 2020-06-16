@@ -43,20 +43,15 @@ namespace Consumption.PC.ViewCenter
                 var module = AutofacProvider.Get<IModule>(arg);
                 if (module != null)
                 {
-                    ViewModel.DialogIsOpen = true; //打开等待窗口
-                    await Task.Run(() =>
-                    {
-                        App.Current.Dispatcher.Invoke(() =>
-                        {
-                            module.BindDefaultModel();
-                            View.page.Content = module.GetView();
-                        });
-                    });
+                    ViewModel.DialogIsOpen = true;
+                    await Task.Delay(30);
+                    await module.BindDefaultModel();
+                    View.page.Content = module.GetView();
                     ViewModel.DialogIsOpen = false; //关闭等待窗口
                 }
                 else
                 {
-                    //......
+
                 }
             });
             Messenger.Default.Register<string>(View, "UpdateBackground", arg =>

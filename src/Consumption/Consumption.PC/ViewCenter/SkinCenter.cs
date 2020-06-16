@@ -29,7 +29,7 @@ namespace Consumption.PC.ViewCenter
     [Module(Core.Enums.ModuleType.AppMain, "个性化", "SkinCenter", "", "Palette")]
     public class SkinCenter : BaseCenter<SkinView, SkinViewModel>
     {
-        public override async void BindDefaultModel()
+        public override async Task BindDefaultModel()
         {
             ViewModel = new SkinViewModel();
             ViewModel.StyleConfig = UserManager.GetStyleConfig();

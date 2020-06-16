@@ -28,7 +28,7 @@ namespace Consumption.PC.ViewCenter
     [Module(Core.Enums.ModuleType.DataManagement, "菜单管理", "MenuCenter", "", "AccountBox")]
     public class MenuCenter : BaseCenter<MenuView, MenuViewModel>
     {
-        public override async void BindDefaultModel()
+        public override async Task BindDefaultModel()
         {
             await ViewModel.GetPageData(0);
             View.DataContext = ViewModel;

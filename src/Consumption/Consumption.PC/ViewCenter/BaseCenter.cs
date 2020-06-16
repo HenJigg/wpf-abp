@@ -37,8 +37,9 @@ namespace Consumption.PC.ViewCenter
     {
         public TView View = new TView();
         public TViewModel ViewModel = new TViewModel();
-        public virtual void BindDefaultModel()
+        public virtual Task BindDefaultModel()
         {
+            return default;
         }
 
         public void BindViewModel<BViewModel>(BViewModel viewModel) where BViewModel : class, new()

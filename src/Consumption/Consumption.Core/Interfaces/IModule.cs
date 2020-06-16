@@ -31,7 +31,7 @@ namespace Consumption.Core.Interfaces
         /// <summary>
         /// 关联默认数据上下文
         /// </summary>
-        void BindDefaultModel();
+        Task BindDefaultModel();
 
         object GetView();
     }
