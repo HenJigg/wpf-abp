@@ -20,6 +20,7 @@ namespace Consumption.PC.ViewCenter
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 消费报表控制类
@@ -27,7 +28,10 @@ namespace Consumption.PC.ViewCenter
     [Module(Core.Enums.ModuleType.DataManagement, "消费报表", "ReportCenter", "", "ChartDonut")]
     public class ReportCenter : BaseCenter<ReportView, ReportViewModel>
     {
-
+        public override Task BindDefaultModel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

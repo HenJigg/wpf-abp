@@ -21,6 +21,7 @@ namespace Consumption.PC.ViewCenter
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 计划管理控制类
@@ -28,6 +29,9 @@ namespace Consumption.PC.ViewCenter
     [Module(Core.Enums.ModuleType.AppMain, "计划管理", "PlanCenter", "", "SettingsBox")]
     public class PlanCenter : BaseCenter<PlanView, PlanViewModel>
     {
-
+        public override Task BindDefaultModel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

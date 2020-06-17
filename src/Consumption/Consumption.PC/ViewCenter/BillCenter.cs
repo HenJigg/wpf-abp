@@ -20,6 +20,7 @@ namespace Consumption.PC.ViewCenter
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 账单管理控制类
@@ -27,7 +28,10 @@ namespace Consumption.PC.ViewCenter
     [Module(Core.Enums.ModuleType.AppMain, "我的账单", "BillCenter", "", "Counter")]
     public class BillCenter : BaseCenter<BillView, BillViewModel>
     {
-
+        public override Task BindDefaultModel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
