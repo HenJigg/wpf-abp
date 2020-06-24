@@ -23,7 +23,8 @@ namespace Consumption.PC.ViewCenter
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    public class BaseDialogCenter<TView, TViewModel> : Consumption.Core.Interfaces.IModuleDialog
+    public class BaseDialogCenter<TView, TViewModel> :
+        Consumption.Core.Interfaces.IModuleDialog
         where TView : Window, new()
         where TViewModel : ViewModelBase, new()
     {
@@ -39,35 +40,24 @@ namespace Consumption.PC.ViewCenter
             View.DataContext = ViewModel;
         }
 
-        /// <summary>
-        /// 注册默认事件
-        /// </summary>
-        public void RegisterDefaultEvent()
-        {
-            //View.MouseDown += (sender, e) =>
-            //{
-            //    if (e.LeftButton == MouseButtonState.Pressed)
-            //        View.DragMove();
-            //};
-        }
-
+       
         /// <summary>
         /// 打开窗口
         /// </summary>
         /// <returns></returns>
-        public virtual Task<bool> ShowDialog()
+        public virtual async Task<bool> ShowDialog()
         {
             if (View.DataContext == null)
             {
-                this.RegisterMessenger();
-                this.RegisterDefaultEvent();
+                this.SubscribeMessenger();
+                this.SubscribeEvent();
                 this.BindDefaultViewModel();
             }
             var result = View.ShowDialog();
-            return Task.FromResult(true);
+            return await Task.FromResult((bool)result);
         }
 
-        public void BindViewModel<BViewModel>(BViewModel viewModel)
+        public void BindViewModel(object viewModel)
         {
         }
 
@@ -75,11 +65,19 @@ namespace Consumption.PC.ViewCenter
         {
         }
 
-        public void Register()
+        /// <summary>
+        /// 注册默认事件
+        /// </summary>
+        public void SubscribeEvent()
         {
+            View.MouseDown += (sender, e) =>
+            {
+                if (e.LeftButton == MouseButtonState.Pressed)
+                    View.DragMove();
+            };
         }
 
-        public virtual void RegisterMessenger()
+        public virtual void SubscribeMessenger()
         {
         }
     }

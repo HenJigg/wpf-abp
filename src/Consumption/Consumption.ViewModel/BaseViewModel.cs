@@ -14,6 +14,7 @@
 
 namespace Consumption.ViewModel
 {
+    using Consumption.Core.Common;
     using Consumption.Core.Interfaces;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
@@ -43,7 +44,7 @@ namespace Consumption.ViewModel
         }
 
         private bool isOpen;
-        private object dialogContent;
+        private string dialogMsg;
 
         /// <summary>
         /// 窗口是否显示
@@ -57,11 +58,24 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 弹出窗口
         /// </summary>
-        public object DialogContent
+        public string DialogMsg
         {
-            get { return dialogContent; }
-            set { dialogContent = value; RaisePropertyChanged(); }
+            get { return dialogMsg; }
+            set { dialogMsg = value; RaisePropertyChanged(); }
         }
 
+        #region Loading
+
+        /// <summary>
+        /// 更新状态信息
+        /// </summary>
+        /// <param name="isOpen"></param>
+        /// <param name="msg"></param>
+        public void UpdateDialog(bool isOpen = true, string msg = "")
+        {
+            Messenger.Default.Send(new MsgInfo() { IsOpen = isOpen, Msg = msg }, "UpdateDialog");
+        }
+
+        #endregion
     }
 }

@@ -12,49 +12,62 @@
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="-1" />
     </WindowChrome.WindowChrome>
-    <Grid>
-        <Border Background="#0066CC" Opacity="0.9"/>
-        <Border Width="480" Height="430" Background="Transparent">
-            <Grid Margin="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
+    <materialDesign:DialogHost  IsOpen="{Binding DialogIsOpen}">
+        <materialDesign:DialogHost.DialogContent>
+            <Border Width="300" Height="150" Background="White">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}" 
+                                 Value="0" Width="50" IsIndeterminate="True"/>
+                    <TextBlock     Margin="0 50 0 0" 
+                           Text="{Binding DialogMsg}"  FontSize="20"
+                           Foreground="#737373" />
+                </StackPanel>
+            </Border>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid>
+            <Border Background="#0066CC" Opacity="0.9"/>
+            <Border Width="480" Height="430" Background="Transparent">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
 
-                <TextBlock Text="登录" Foreground="White" FontSize="35" FontWeight="Bold" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                    <TextBlock Text="登录" Foreground="White" FontSize="35" FontWeight="Bold" VerticalAlignment="Center" Margin="20 0 0 0"/>
 
-                <Button Background="Transparent" Height="60" 
+                    <Button Background="Transparent" Height="60" 
                         Command="{Binding CloseCommand}"
                         BorderBrush="Transparent" HorizontalAlignment="Right">
-                    <materialDesign:PackIcon Kind="Close"  Width="50" Height="50"/>
-                </Button>
+                        <materialDesign:PackIcon Kind="Close"  Width="50" Height="50"/>
+                    </Button>
 
-                <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="用户名" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="用户名" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          Text="{Binding UserName}"
                          Foreground="White" BorderBrush="White" FontSize="22" 
                          VerticalAlignment="Center" Margin="20 0 20 0"/>
 
-                <PasswordBox Grid.Row="2" materialDesign:HintAssist.Hint="密码"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                    <PasswordBox Grid.Row="2" materialDesign:HintAssist.Hint="密码"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
                          Foreground="White" BorderBrush="White" FontSize="22"
                          VerticalAlignment="Center" Margin="20 0 20 0"
                          local:PasswordBoxHelper.Password="{Binding PassWord,
                     Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-                    <i:Interaction.Behaviors>
-                        <local:PasswordBoxBehavior />
-                    </i:Interaction.Behaviors>
-                </PasswordBox>
+                        <i:Interaction.Behaviors>
+                            <local:PasswordBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </PasswordBox>
 
-                <Button Grid.Row="3" Margin="20 0 20 0" Height="55" Foreground="Black" FontSize="23" 
+                    <Button Grid.Row="3" Margin="20 0 20 0" Height="55" Foreground="Black" FontSize="23" 
                         Command="{Binding LoginCommand}"
                         Background="White" BorderThickness="0" Content="登录"/>
 
-                <TextBlock Grid.Row="4" Text="{Binding Report}" Foreground="White" 
+                    <TextBlock Grid.Row="4" Text="{Binding Report}" Foreground="White" 
                            FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
-        </Border>
+                </Grid>
+            </Border>
 
-    </Grid>
+        </Grid>
+    </materialDesign:DialogHost>
 </Window>

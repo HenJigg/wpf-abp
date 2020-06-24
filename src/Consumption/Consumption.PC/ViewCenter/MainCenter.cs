@@ -32,7 +32,7 @@ namespace Consumption.PC.ViewCenter
     /// </summary>
     public class MainCenter : BaseDialogCenter<MainWindow, MainViewModel>
     {
-        public override void RegisterMessenger()
+        public override void SubscribeMessenger()
         {
             Messenger.Default.Register<bool>(View, "DisplayView", arg =>
               {

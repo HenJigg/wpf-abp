@@ -29,24 +29,8 @@ namespace Consumption.Core.Interfaces
         /// <summary>
         /// 关联数据上下文
         /// </summary>
-        /// <typeparam name="TViewModel"></typeparam>
         /// <param name="viewModel"></param>
-        void BindViewModel<TViewModel>(TViewModel viewModel);
-
-        /// <summary>
-        /// 注册模块事件
-        /// </summary>
-        void RegisterDefaultEvent();
-
-        /// <summary>
-        /// 注册模块消息
-        /// </summary>
-        void RegisterMessenger();
-
-        /// <summary>
-        /// 注册窗口默认事件
-        /// </summary>
-        void Register();
+        void BindViewModel(object viewModel);
 
         /// <summary>
         /// 弹出窗口
@@ -57,6 +41,16 @@ namespace Consumption.Core.Interfaces
         /// 关闭窗口
         /// </summary>
         void Close();
+
+        /// <summary>
+        /// 注册模块事件
+        /// </summary>
+        void SubscribeEvent();
+
+        /// <summary>
+        /// 注册模块消息
+        /// </summary>
+        void SubscribeMessenger();
 
     }
 }

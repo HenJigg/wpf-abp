@@ -34,16 +34,21 @@ namespace Consumption.PC.ViewCenter
         {
             if (View.DataContext == null)
             {
-                this.RegisterMessenger();
-                this.RegisterDefaultEvent();
+                this.SubscribeMessenger();
+                this.SubscribeEvent();
                 this.BindDefaultViewModel();
             }
             var result = View.ShowDialog();
             return Task.FromResult((bool)result);
         }
 
-        public override void RegisterMessenger()
+        public override void SubscribeMessenger()
         {
+            Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", arg =>
+            {
+                ViewModel.DialogIsOpen = arg.IsOpen;
+                ViewModel.DialogMsg = arg.Msg;
+            });
             Messenger.Default.Register<bool>(View, "NavigationHome", arg =>
              {
                  View.Close(); //Close LoginView

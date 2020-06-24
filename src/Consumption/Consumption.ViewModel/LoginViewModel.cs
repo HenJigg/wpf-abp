@@ -84,13 +84,14 @@ namespace Consumption.ViewModel
                     this.Report = "请输入用户名密码!";
                     return;
                 }
-
-                //var br = await userService.LoginAsync(UserName, PassWord);
-                //if (!br.success)
-                //{
-                //    this.Report = br.message;
-                //    return;
-                //}
+                UpdateDialog(true, "验证登陆中...");
+                var br = await userService.LoginAsync(UserName, PassWord);
+                if (br == null || !br.success)
+                {
+                    this.Report = br == null ? "远程服务器无法连接！" : br.message;
+                    return;
+                }
+                UpdateDialog(true, "加载首页...");
                 Messenger.Default.Send(true, "NavigationHome");
             }
             catch (Exception ex)
@@ -99,7 +100,7 @@ namespace Consumption.ViewModel
             }
             finally
             {
-
+                UpdateDialog(false);
             }
         }
 
