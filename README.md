@@ -42,7 +42,7 @@
 ### 捐赠名单公示
 <a href="https://github.com/zuoyefeng" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars2.githubusercontent.com/u/13931455?s=400&v=4"></a>
 <a href="https://github.com/CamelKing1997" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/31693260?s=88&u=915a4cbef26b8a968ace960e96b4709ce54c3226&v=4"></a>
-<a href="https://github.com/Blazer1990" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars1.githubusercontent.com/u/42528522?s=60&v=4"></a>
+<a href="https://github.com/Blazer1990" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars1.githubusercontent.com/u/58721526?s=460&u=47f3eeb582649262e5a8790a6cb3c8744b6b53bd&v=4"></a>
 <a href="https://github.com/FelixFeng777" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/29698153?s=400&u=37b54a912751485b7197c0aaea7f78d86e8c5275&v=4"></a>
 <a href="https://github.com/Sadusky" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars3.githubusercontent.com/u/53511641?s=88&u=210acf2a8f329ad41647206b6e886e06af200e13&v=4"></a>
 <a href="https://github.com/Think3huanran" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/42923536?s=88&u=c76884ea0d99ed1e790ec49ccbd4580f71bee10d&v=4"></a>
