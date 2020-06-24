@@ -18,7 +18,7 @@ namespace Consumption.Api.Controllers
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Consumption.Core.ApiInterfaes;
+    using Consumption.EFCore;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 
@@ -30,20 +30,16 @@ namespace Consumption.Api.Controllers
     public class AuthItemController : Controller
     {
         private readonly ILogger<AuthItemController> logger;
-        private readonly IAuthItemRepository repository;
-        private readonly IUnitWork work;
+        private readonly IUnitOfWork work;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="logger"></param>
-        /// <param name="repository"></param>
         /// <param name="work"></param>
-        public AuthItemController(ILogger<AuthItemController> logger,
-            IAuthItemRepository repository, IUnitWork work)
+        public AuthItemController(ILogger<AuthItemController> logger, IUnitOfWork work)
         {
             this.logger = logger;
-            this.repository = repository;
             this.work = work;
         }
     }

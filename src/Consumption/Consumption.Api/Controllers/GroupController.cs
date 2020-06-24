@@ -18,10 +18,10 @@ namespace Consumption.Api.Controllers
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Consumption.Core.ApiInterfaes;
     using Consumption.Core.Common;
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
+    using Consumption.EFCore;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 
@@ -33,20 +33,16 @@ namespace Consumption.Api.Controllers
     public class GroupController : Controller
     {
         private readonly ILogger<GroupController> logger;
-        private readonly IGroupRepository repository;
-        private readonly IUnitWork work;
+        private readonly IUnitOfWork work;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="logger"></param>
-        /// <param name="repository"></param>
         /// <param name="work"></param>
-        public GroupController(ILogger<GroupController> logger,
-            IGroupRepository repository, IUnitWork work)
+        public GroupController(ILogger<GroupController> logger, IUnitOfWork work)
         {
             this.logger = logger;
-            this.repository = repository;
             this.work = work;
         }
 
@@ -60,16 +56,19 @@ namespace Consumption.Api.Controllers
         {
             try
             {
-                var models = await repository.GetModelList(parameters);
+                var models = await work.GetRepository<Group>().GetPagedListAsync(
+                    predicate: x =>
+                    string.IsNullOrWhiteSpace(parameters.Search) ? true : x.GroupCode.Contains(parameters.Search) ||
+                    string.IsNullOrWhiteSpace(parameters.Search) ? true : x.GroupName.Contains(parameters.Search),
+                    pageIndex: parameters.PageIndex,
+                    pageSize: parameters.PageSize);
 
-                if (models.Count > 0)
-                    return Ok(new ConsumptionResponse()
-                    {
-                        success = true,
-                        dynamicObj = models,
-                        TotalRecord = models.TotalCount
-                    });
-                return Ok();
+                return Ok(new ConsumptionResponse()
+                {
+                    success = true,
+                    dynamicObj = models,
+                    TotalRecord = models.TotalCount
+                });
             }
             catch (Exception ex)
             {
@@ -93,19 +92,12 @@ namespace Consumption.Api.Controllers
             try
             {
                 if (model == null)
-                {
                     return Ok(new ConsumptionResponse() { success = false, message = "Add data error" });
-                }
-                repository.AddModelAsync(model);
-                if (!await work.SaveChangedAsync())
-                {
-                    return Ok(new ConsumptionResponse()
-                    {
-                        success = false,
-                        message = "Error saving data"
-                    });
-                }
-                return Ok(new ConsumptionResponse() { success = true });
+
+                work.GetRepository<Group>().Insert(model);
+                if (await work.SaveChangesAsync() > 0)
+                    return Ok(new ConsumptionResponse() { success = true });
+                return Ok(new ConsumptionResponse() { success = false, message = "Error saving data" });
             }
             catch (Exception ex)
             {
@@ -124,17 +116,16 @@ namespace Consumption.Api.Controllers
         {
             try
             {
-                var user = await repository.GetGroupByIdAsync(id);
+                var repository = work.GetRepository<Group>();
+                var user = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == id);
                 if (user == null)
                 {
                     return Ok(new ConsumptionResponse() { success = false, message = "The group was not found!" });
                 }
-                repository.DeleteModelAsync(user);
-                if (!await work.SaveChangedAsync())
-                {
-                    return Ok(new ConsumptionResponse() { success = false, message = $"Deleting post {id} failed when saving." });
-                }
-                return Ok(new ConsumptionResponse() { success = true });
+                repository.Delete(user);
+                if (await work.SaveChangesAsync() > 0)
+                    return Ok(new ConsumptionResponse() { success = true });
+                return Ok(new ConsumptionResponse() { success = false, message = $"Deleting post {id} failed when saving." });
             }
             catch (Exception ex)
             {

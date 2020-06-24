@@ -17,11 +17,12 @@ namespace Consumption.Api.Controllers
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Cryptography.X509Certificates;
     using System.Threading.Tasks;
-    using Consumption.Core.ApiInterfaes;
     using Consumption.Core.Common;
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
+    using Consumption.EFCore;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 
@@ -33,20 +34,16 @@ namespace Consumption.Api.Controllers
     public class BasicController : Controller
     {
         private readonly ILogger<BasicController> logger;
-        private readonly IBasicRepository repository;
-        private readonly IUnitWork work;
+        private readonly IUnitOfWork work;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="logger"></param>
-        /// <param name="repository"></param>
         /// <param name="work"></param>
-        public BasicController(ILogger<BasicController> logger,
-            IBasicRepository repository, IUnitWork work)
+        public BasicController(ILogger<BasicController> logger, IUnitOfWork work)
         {
             this.logger = logger;
-            this.repository = repository;
             this.work = work;
         }
 
@@ -61,8 +58,11 @@ namespace Consumption.Api.Controllers
         {
             try
             {
-                var models = await repository.GetModelList(parameters);
-
+                var models = await work.GetRepository<Basic>().GetPagedListAsync(
+                    predicate: x =>
+                    string.IsNullOrWhiteSpace(parameters.Search) ? true : x.DataCode.Contains(parameters.Search),
+                    pageIndex: parameters.PageIndex,
+                    pageSize: parameters.PageSize);
                 return Ok(new ConsumptionResponse()
                 {
                     success = true,
@@ -92,19 +92,11 @@ namespace Consumption.Api.Controllers
             try
             {
                 if (model == null)
-                {
                     return Ok(new ConsumptionResponse() { success = false, message = "Add data error" });
-                }
-                repository.AddModelAsync(model);
-                if (!await work.SaveChangedAsync())
-                {
-                    return Ok(new ConsumptionResponse()
-                    {
-                        success = false,
-                        message = "Error saving data"
-                    });
-                }
-                return Ok(new ConsumptionResponse() { success = true });
+                await work.GetRepository<Basic>().InsertAsync(model);
+                if (await work.SaveChangesAsync() > 0)
+                    return Ok(new ConsumptionResponse() { success = true });
+                return Ok(new ConsumptionResponse() { success = false, message = "Error saving data" });
             }
             catch (Exception ex)
             {
@@ -123,24 +115,21 @@ namespace Consumption.Api.Controllers
         public async Task<IActionResult> UpdateBasic(int id, [FromBody] Basic model)
         {
             if (model == null)
-            {
                 return Ok(new ConsumptionResponse() { success = false, message = "Update data error" });
-            }
             try
             {
-                var dbmodel = await repository.GetBasicByIdAsync(id);
+                var repository = work.GetRepository<Basic>();
+                var dbmodel = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == id);
                 if (dbmodel == null) return Ok(new ConsumptionResponse() { success = false, message = "The basic was not found!" });
                 dbmodel.NativeName = model.NativeName;
                 dbmodel.EnglishName = model.EnglishName;
                 dbmodel.LastUpdate = model.LastUpdate;
                 dbmodel.DataCode = model.DataCode;
                 dbmodel.LastUpdateBy = model.LastUpdateBy;
-                repository.UpdateModelAsync(dbmodel);
-                if (!await work.SaveChangedAsync())
-                {
-                    return Ok(new ConsumptionResponse() { success = false, message = $"update post {id} failed when saving." });
-                }
-                return Ok(new ConsumptionResponse() { success = true });
+                repository.Update(dbmodel);
+                if (await work.SaveChangesAsync() > 0)
+                    return Ok(new ConsumptionResponse() { success = true });
+                return Ok(new ConsumptionResponse() { success = false, message = $"update post {id} failed when saving." });
             }
             catch (Exception ex)
             {
@@ -159,17 +148,14 @@ namespace Consumption.Api.Controllers
         {
             try
             {
-                var user = await repository.GetBasicByIdAsync(id);
+                var repository = work.GetRepository<Basic>();
+                var user = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == id);
                 if (user == null)
-                {
                     return Ok(new ConsumptionResponse() { success = false, message = "The basic was not found!" });
-                }
-                repository.DeleteModelAsync(user);
-                if (!await work.SaveChangedAsync())
-                {
-                    return Ok(new ConsumptionResponse() { success = false, message = $"Deleting post {id} failed when saving." });
-                }
-                return Ok(new ConsumptionResponse() { success = true });
+                repository.Delete(user);
+                if (await work.SaveChangesAsync() > 0)
+                    return Ok(new ConsumptionResponse() { success = true });
+                return Ok(new ConsumptionResponse() { success = false, message = $"Deleting post {id} failed when saving." });
             }
             catch (Exception ex)
             {

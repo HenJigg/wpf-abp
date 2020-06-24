@@ -9,12 +9,11 @@
             权限相关数据控制器
             </summary>
         </member>
-        <member name="M:Consumption.Api.Controllers.AuthItemController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.AuthItemController},Consumption.Core.ApiInterfaes.IAuthItemRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+        <member name="M:Consumption.Api.Controllers.AuthItemController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.AuthItemController},Consumption.EFCore.IUnitOfWork)">
             <summary>
             
             </summary>
             <param name="logger"></param>
-            <param name="repository"></param>
             <param name="work"></param>
         </member>
         <member name="T:Consumption.Api.Controllers.BasicController">
@@ -22,12 +21,11 @@
             基础数据控制器
             </summary>
         </member>
-        <member name="M:Consumption.Api.Controllers.BasicController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.BasicController},Consumption.Core.ApiInterfaes.IBasicRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+        <member name="M:Consumption.Api.Controllers.BasicController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.BasicController},Consumption.EFCore.IUnitOfWork)">
             <summary>
             
             </summary>
             <param name="logger"></param>
-            <param name="repository"></param>
             <param name="work"></param>
         </member>
         <member name="M:Consumption.Api.Controllers.BasicController.GetBasics(Consumption.Core.Query.QueryParameters)">
@@ -64,12 +62,11 @@
             
             </summary>
         </member>
-        <member name="M:Consumption.Api.Controllers.GroupController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.GroupController},Consumption.Core.ApiInterfaes.IGroupRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+        <member name="M:Consumption.Api.Controllers.GroupController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.GroupController},Consumption.EFCore.IUnitOfWork)">
             <summary>
             
             </summary>
             <param name="logger"></param>
-            <param name="repository"></param>
             <param name="work"></param>
         </member>
         <member name="M:Consumption.Api.Controllers.GroupController.GetGroups(Consumption.Core.Query.QueryParameters)">
@@ -98,12 +95,11 @@
             菜单数据控制器
             </summary>
         </member>
-        <member name="M:Consumption.Api.Controllers.MenuController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.MenuController},Consumption.Core.ApiInterfaes.IMenuRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+        <member name="M:Consumption.Api.Controllers.MenuController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.MenuController},Consumption.EFCore.IUnitOfWork)">
             <summary>
             
             </summary>
             <param name="logger"></param>
-            <param name="repository"></param>
             <param name="work"></param>
         </member>
         <member name="M:Consumption.Api.Controllers.MenuController.GetMenus(Consumption.Core.Query.QueryParameters)">
@@ -132,12 +128,11 @@
             用户数据控制器
             </summary>
         </member>
-        <member name="M:Consumption.Api.Controllers.UserController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.UserController},Consumption.Core.ApiInterfaes.IUserRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+        <member name="M:Consumption.Api.Controllers.UserController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.UserController},Consumption.EFCore.IUnitOfWork)">
             <summary>
             
             </summary>
             <param name="logger"></param>
-            <param name="repository"></param>
             <param name="work"></param>
         </member>
         <member name="M:Consumption.Api.Controllers.UserController.Login(System.String,System.String)">
@@ -182,7 +177,7 @@
             用户日志控制器
             </summary>
         </member>
-        <member name="M:Consumption.Api.Controllers.UserLogController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.UserLogController},Consumption.Core.ApiInterfaes.IUserLogRepository,Consumption.Core.ApiInterfaes.IUnitWork)">
+        <member name="M:Consumption.Api.Controllers.UserLogController.#ctor(Microsoft.Extensions.Logging.ILogger{Consumption.Api.Controllers.UserLogController},Consumption.EFCore.IUnitOfWork)">
             <summary>
             
             </summary>
@@ -222,11 +217,34 @@
             </summary>
             <param name="args"></param>
         </member>
+        <member name="T:Consumption.Api.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Consumption.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Consumption.Api.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:Consumption.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             配置服务
             </summary>
             <param name="services"></param>
+        </member>
+        <member name="M:Consumption.Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
     </members>
 </doc>

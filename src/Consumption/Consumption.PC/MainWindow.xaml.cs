@@ -28,11 +28,6 @@ namespace Consumption.PC
             InitializeComponent();
         }
 
-        private void btnMinus(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
         private void btnMax(object sender, RoutedEventArgs e)
         {
             this.SetWindowSize();
@@ -50,6 +45,11 @@ namespace Consumption.PC
         {
             //Question?
             App.Current.Shutdown();
+        }
+
+        private void btnMin(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

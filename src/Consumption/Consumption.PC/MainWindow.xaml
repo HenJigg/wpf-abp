@@ -16,6 +16,7 @@
         <ivc:IUrlToBitmapConverter x:Key="itc"/>
         <ivc:MenuWidthConverter x:Key="mwc"/>
     </Window.Resources>
+
     <materialDesign:DialogHost  IsOpen="{Binding DialogIsOpen}">
         <materialDesign:DialogHost.DialogContent>
             <Border Width="300" Height="150" Background="White">
@@ -30,11 +31,11 @@
         </materialDesign:DialogHost.DialogContent>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="80"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Border Grid.RowSpan="2">
+            <Border Grid.RowSpan="2" >
                 <!--<Border.Background>
                     <ImageBrush 
                         Stretch="UniformToFill"
@@ -52,7 +53,7 @@
                        Margin="20 0 0 0" FontSize="22" Foreground="White"/>
 
             <!--右上角功能区域-->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" >
                 <materialDesign:PopupBox Foreground="White" 
                                          PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                     <StackPanel>
@@ -62,16 +63,19 @@
                     </StackPanel>
                 </materialDesign:PopupBox>
 
-                <Button Background="Transparent" BorderThickness="0" Click="btnMinus">
+                <Button BorderThickness="0" Background="Transparent" Width="60" Height="60" Click="btnMin" ToolTip="最小化">
                     <materialDesign:PackIcon Kind="Minus" Width="25" Height="25" />
                 </Button>
-                <Button Background="Transparent" BorderThickness="0" Click="btnMax">
+
+                <Button BorderThickness="0" Background="Transparent"  Click="btnMax" Width="60" Height="60" Margin="5" ToolTip="最大化">
                     <materialDesign:PackIcon Kind="WindowMaximize" Width="25" Height="25" />
                 </Button>
-                <Button Background="Transparent" BorderThickness="0" Click="btnClose">
+
+                <Button BorderThickness="0" Background="Transparent" Click="btnClose" Width="60" Height="60" ToolTip="退出">
                     <materialDesign:PackIcon Kind="Close" Width="25" Height="25" />
                 </Button>
             </StackPanel>
+
 
             <!--菜单和主题内容-->
             <Grid Grid.Row="1">

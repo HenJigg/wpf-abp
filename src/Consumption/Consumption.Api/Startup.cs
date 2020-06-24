@@ -19,9 +19,9 @@ namespace Consumption.Api
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Consumption.Core.ApiInterfaes;
+    using Consumption.Core.Entity;
+    using Consumption.EFCore;
     using Consumption.EFCore.Orm;
-    using Consumption.EFCore.Repository;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,13 +32,23 @@ namespace Consumption.Api
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public IConfiguration Configuration { get; }
 
         /// <summary>
@@ -66,17 +76,14 @@ namespace Consumption.Api
             {
                 var connectionString = Configuration.GetConnectionString("NoteConnection");
                 options.UseSqlite(connectionString);
-            });
-
-            //添加接口映射关系
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserLogRepository, UserLogRepository>();
-            services.AddScoped<IMenuRepository, MenuRepository>();
-            services.AddScoped<IGroupRepository, GroupRepository>();
-            services.AddScoped<IBasicRepository, BasicRepository>();
-            services.AddScoped<IBasicTypeRepository, BasicTypeRepository>();
-            services.AddScoped<IAuthItemRepository, AuthItemRepository>();
-            services.AddScoped<IUnitWork, UnitWork>();
+            })
+            .AddUnitOfWork<ConsumptionContext>()
+            .AddCustomRepository<User, CustomUserRepository>()
+            .AddCustomRepository<UserLog,CustomUserLogRepository>()
+            .AddCustomRepository<Menu, CustomMenuRepository>()
+            .AddCustomRepository<Group, CustomGroupRepository>()
+            .AddCustomRepository<AuthItem, CustomAuthItemRepository>()
+            .AddCustomRepository<Basic, CustomBasicRepository>();
 
             services.AddSwaggerGen(options =>
             {
@@ -94,7 +101,11 @@ namespace Consumption.Api
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

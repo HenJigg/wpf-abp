@@ -44,11 +44,11 @@ namespace Consumption.PC.ViewCenter
         /// </summary>
         public void RegisterDefaultEvent()
         {
-            View.MouseDown += (sender, e) =>
-            {
-                if (e.LeftButton == MouseButtonState.Pressed)
-                    View.DragMove();
-            };
+            //View.MouseDown += (sender, e) =>
+            //{
+            //    if (e.LeftButton == MouseButtonState.Pressed)
+            //        View.DragMove();
+            //};
         }
 
         /// <summary>
