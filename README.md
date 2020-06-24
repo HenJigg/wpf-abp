@@ -20,10 +20,10 @@
   mvvm : [mvvmlight](https://github.com/lbugnion/mvvmlight)
 
 ### 项目说明
-  该项目为C#构建的Windows桌面客户端以及移动端和网页端的项目实践, 旨在为C#开发人员提供一种项目构建的编码参考, 在面对目前稀缺的网络资源来说, 希望贡献出本人的一些微小力量。
+  该项目为C#构建的Windows桌面客户端以及移动端和网页端的项目实践, 旨在为C#开发人员提供一种项目构建的编码参考, 在面对目前稀缺的网络资源环境, 贡献出本人的微小力量。
 
 ### 项目支持
-  开发进度将会在面向中国的视频网站: [bilibili](https://space.bilibili.com/32497462)、[今日头条](https://studio.ixigua.com/content)等平台同步公布进度。面向国外群体则统一在此项目地址发布代  码更新。
+  开发进度将会在面向中国的视频网站: [bilibili](https://space.bilibili.com/32497462)、[今日头条](https://studio.ixigua.com/content)等平台同步公布进度。面向国外群体则统一在此项目地址发布代码更新。
   视频支持(后期): 模块介绍、环境搭建、项目文档。
 
 ### 收入说明
@@ -36,10 +36,15 @@
 <a href="https://github.com/CamelKing1997" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/31693260?s=88&u=915a4cbef26b8a968ace960e96b4709ce54c3226&v=4"></a>
 <a href="https://github.com/Blazer1990" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars1.githubusercontent.com/u/42528522?s=60&v=4"></a>
 <a href="https://github.com/FelixFeng777" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/29698153?s=400&u=37b54a912751485b7197c0aaea7f78d86e8c5275&v=4"></a>
+<a href="https://github.com/Sadusky" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars1.githubusercontent.com/u/53511641?s=400&u=210acf2a8f329ad41647206b6e886e06af200e13&v=4"></a>
+<a href="https://github.com/Think3huanran" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars1.githubusercontent.com/u/42923536?s=400&u=c76884ea0d99ed1e790ec49ccbd4580f71bee10d&v=4"></a>
 
 ### 加入我们?
   面向中国的开发者,可以通过扫描一下二维码进行捐赠, 捐钱前请备注个人的联系方式,方便后期告知捐赠计划进展。
-  
+[AliPay](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/alipay.jpg)
+
 ### 联系我
 Email: zhouhaogg789@outlook.com
 
+### 结语
+  因为热爱、所以分享。
