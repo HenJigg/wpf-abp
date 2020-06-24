@@ -8,15 +8,23 @@
 3. Blazor 构建的 WebUI
 4. Asp.Net Core WebApi
 
-### UI框架
+#### 开发工具
+  IDE: Visual Studio 2019 
+  
+#### UI框架
   Xamarin UI(社区版): [Syncfusion Community Edition for Xamarin](https://www.syncfusion.com/forums/xamarin.forms)
+
   WPF UI:[MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+
   Blazor UI:[MatBlazor](https://github.com/SamProf/MatBlazor)
 
-### 插件
+#### 插件
   log : [Nlog](https://github.com/NLog/NLog)
+
   api : [RestSharp](https://github.com/restsharp/RestSharp)
+
   ioc : [Autofac](https://github.com/autofac/Autofac)
+
   mvvm : [mvvmlight](https://github.com/lbugnion/mvvmlight)
 
 ### 项目说明
@@ -36,12 +44,12 @@
 <a href="https://github.com/CamelKing1997" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/31693260?s=88&u=915a4cbef26b8a968ace960e96b4709ce54c3226&v=4"></a>
 <a href="https://github.com/Blazer1990" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars1.githubusercontent.com/u/42528522?s=60&v=4"></a>
 <a href="https://github.com/FelixFeng777" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/29698153?s=400&u=37b54a912751485b7197c0aaea7f78d86e8c5275&v=4"></a>
-<a href="https://github.com/Sadusky" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars1.githubusercontent.com/u/53511641?s=400&u=210acf2a8f329ad41647206b6e886e06af200e13&v=4"></a>
-<a href="https://github.com/Think3huanran" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars1.githubusercontent.com/u/42923536?s=400&u=c76884ea0d99ed1e790ec49ccbd4580f71bee10d&v=4"></a>
+<a href="https://github.com/Sadusky" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars3.githubusercontent.com/u/53511641?s=88&u=210acf2a8f329ad41647206b6e886e06af200e13&v=4"></a>
+<a href="https://github.com/Think3huanran" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/42923536?s=88&u=c76884ea0d99ed1e790ec49ccbd4580f71bee10d&v=4"></a>
 
 ### 加入我们?
   面向中国的开发者,可以通过扫描一下二维码进行捐赠, 捐钱前请备注个人的联系方式,方便后期告知捐赠计划进展。
-[AliPay](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/alipay.jpg)
+![AliPay](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/alipay.jpg)
 
 ### 联系我
 Email: zhouhaogg789@outlook.com
