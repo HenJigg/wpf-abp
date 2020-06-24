@@ -46,6 +46,7 @@
 <a href="https://github.com/FelixFeng777" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/29698153?s=400&u=37b54a912751485b7197c0aaea7f78d86e8c5275&v=4"></a>
 <a href="https://github.com/Sadusky" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars3.githubusercontent.com/u/53511641?s=88&u=210acf2a8f329ad41647206b6e886e06af200e13&v=4"></a>
 <a href="https://github.com/Think3huanran" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/42923536?s=88&u=c76884ea0d99ed1e790ec49ccbd4580f71bee10d&v=4"></a>
+<a href="https://github.com/q913777031" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/25888874?s=400&u=fa9ce3cca2aecdce4b646bebf31498db7344ea9c&v=4"></a>
 
 ### 加入我们?
   面向中国的开发者,可以通过扫描一下二维码进行捐赠, 捐钱前请备注个人的联系方式,方便后期告知捐赠计划进展。
