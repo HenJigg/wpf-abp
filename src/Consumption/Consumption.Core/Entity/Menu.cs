@@ -44,7 +44,6 @@ namespace Consumption.Core.Entity
         /// <summary>
         /// 所属权限值
         /// </summary>
-        [DefaultValue(0)]
         public int MenuAuth { get; set; }
     }
 }

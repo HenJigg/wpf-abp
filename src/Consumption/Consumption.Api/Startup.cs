@@ -74,12 +74,17 @@ namespace Consumption.Api
 
             services.AddDbContext<ConsumptionContext>(options =>
             {
-                var connectionString = Configuration.GetConnectionString("NoteConnection");
-                options.UseSqlite(connectionString);
+                //«®“∆÷¡Sqlite
+                //var connectionString = Configuration.GetConnectionString("NoteConnection");
+                //options.UseSqlite(connectionString);
+
+                //«®“∆÷¡MySqlite
+                var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
+                options.UseMySQL(connectionString);
             })
             .AddUnitOfWork<ConsumptionContext>()
             .AddCustomRepository<User, CustomUserRepository>()
-            .AddCustomRepository<UserLog,CustomUserLogRepository>()
+            .AddCustomRepository<UserLog, CustomUserLogRepository>()
             .AddCustomRepository<Menu, CustomMenuRepository>()
             .AddCustomRepository<Group, CustomGroupRepository>()
             .AddCustomRepository<AuthItem, CustomAuthItemRepository>()

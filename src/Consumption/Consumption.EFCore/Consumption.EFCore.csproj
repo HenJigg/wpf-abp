@@ -11,26 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200521073353_InitialCreate.cs" />
-    <Compile Remove="Migrations\20200521073353_InitialCreate.Designer.cs" />
-    <Compile Remove="Migrations\20200521082814_CreateDataBase.cs" />
-    <Compile Remove="Migrations\20200521082814_CreateDataBase.Designer.cs" />
-    <Compile Remove="Migrations\20200522083806_UpdateDataBase.cs" />
-    <Compile Remove="Migrations\20200522083806_UpdateDataBase.Designer.cs" />
+    <Compile Remove="Migrations\20200624141003_notedb.cs" />
+    <Compile Remove="Migrations\20200624141003_notedb.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-preview.4.20220.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.AutoHistory" Version="3.1.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-preview.4.20220.10">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0-preview.4.20220.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0-preview.4.20220.10">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.20" />
   </ItemGroup>
 
   <ItemGroup>

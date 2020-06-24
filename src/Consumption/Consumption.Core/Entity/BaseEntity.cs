@@ -12,6 +12,8 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
+using System.ComponentModel.DataAnnotations;
+
 namespace Consumption.Core.Entity
 {
     /// <summary>
@@ -19,6 +21,7 @@ namespace Consumption.Core.Entity
     /// </summary>
     public class BaseEntity
     {
+        [Key]
         public int Id { get; set; }
     }
 }

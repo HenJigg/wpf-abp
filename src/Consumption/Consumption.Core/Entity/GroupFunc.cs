@@ -34,7 +34,6 @@ namespace Consumption.Core.Entity
         /// <summary>
         /// 权限值
         /// </summary>
-        [DefaultValue(0)]
         public int Auth { get; set; }
     }
 }
