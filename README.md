@@ -37,7 +37,7 @@
 ### 收入说明
   包括该项目本身的捐赠,以及所有的C#、WPF免费视频收入(主要以观众打赏,平台补贴), 统一以C#开发者名义捐赠给[国际儿童紧急救援基金会](https://www.unicef.org/zh),所有的收入捐赠最终以视频的方式公布进展, 结算周期为每个季度末。
   历史记录：
-  [第一阶段捐赠公示](https://www.bilibili.com/video/BV1QZ4y1W7Zu)
+  - [2020-05-01: Part1](https://www.bilibili.com/video/BV1QZ4y1W7Zu) 
 
 ### 捐赠名单公示
 <a href="https://github.com/zuoyefeng" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars2.githubusercontent.com/u/13931455?s=400&v=4"></a>
@@ -48,8 +48,8 @@
 <a href="https://github.com/Think3huanran" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/42923536?s=88&u=c76884ea0d99ed1e790ec49ccbd4580f71bee10d&v=4"></a>
 <a href="https://github.com/q913777031" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/25888874?s=400&u=fa9ce3cca2aecdce4b646bebf31498db7344ea9c&v=4"></a>
 
-### 加入我们?
-  面向中国的开发者,可以通过扫描一下二维码进行捐赠, 捐钱前请备注个人的联系方式,方便后期告知捐赠计划进展。
+### 关于捐赠?
+  如果你觉得该项目对你有所帮助,那么可以通过支付宝的方式进行捐赠, 关于捐赠进度以上说明。
 ![AliPay](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/alipay.jpg)
 
 ### 联系我
