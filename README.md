@@ -47,7 +47,8 @@
 <a href="https://github.com/Sadusky" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars3.githubusercontent.com/u/53511641?s=88&u=210acf2a8f329ad41647206b6e886e06af200e13&v=4"></a>
 <a href="https://github.com/Think3huanran" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/42923536?s=88&u=c76884ea0d99ed1e790ec49ccbd4580f71bee10d&v=4"></a>
 <a href="https://github.com/q913777031" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/25888874?s=400&u=fa9ce3cca2aecdce4b646bebf31498db7344ea9c&v=4"></a>
-
+<a href="https://github.com/circlelee1981" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/60954759?s=400&v=4"></a>
+<a href="https://github.com/chenzhongtian2019" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/48708280?s=400&v=4"></a>
 ### 关于捐赠?
   如果你觉得该项目对你有所帮助,那么可以通过支付宝的方式进行捐赠, 关于捐赠进度以上说明。
 ![AliPay](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/alipay.jpg)
