@@ -3,11 +3,6 @@
 * 文件名    ：UserParameters                             
 * 程序说明  : 用户参数实体
 * 更新时间  : 2020-05-21 10:56
-* 
-* 备注      : 如果无需传递额外参数,
-* 可直接使用 QueryParameters, 
-* 此处创建 UserParameters 属于规范示例
-* 
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -19,6 +14,13 @@
 
 namespace Consumption.Core.Query
 {
+    /*
+     * 
+     * 备注: 如果无需传递额外参数,可直接使用 QueryParameters, 
+     * 此处创建 UserParameters 属于规范示例
+     * 
+     */
+
     public class UserParameters : QueryParameters
     {
     }

@@ -24,6 +24,6 @@ namespace Consumption.Core.Request
     {
         public override string route { get => ServerAddress + "api/Menu/GetBasic"; }
 
-        public BasicParameters parameters { get; set; }
+        public QueryParameters parameters { get; set; }
     }
 }

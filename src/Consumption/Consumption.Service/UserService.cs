@@ -27,7 +27,7 @@ namespace Consumption.Service
     /// <summary>
     /// 用户服务
     /// </summary>
-    public class UserService : IUserService
+    public partial class ConsumptionService 
     {
         /// <summary>
         /// 查询用户列表

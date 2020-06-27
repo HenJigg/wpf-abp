@@ -29,10 +29,10 @@ namespace Consumption.ViewModel
     /// </summary>
     public class UserViewModel : BaseDataViewModel<User>
     {
-        private readonly IUserService userService;
+        private readonly IConsumptionService userService;
         public UserViewModel()
         {
-            userService = AutofacProvider.Get<IUserService>();
+            userService = AutofacProvider.Get<IConsumptionService>();
         }
 
         public override async Task GetPageData(int pageIndex)

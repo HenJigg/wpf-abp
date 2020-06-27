@@ -28,9 +28,9 @@ namespace Consumption.Service
     /// <summary>
     /// 菜单服务
     /// </summary>
-    public class MenuService : IMenuService
+    public partial class ConsumptionService 
     {
-        public async Task<BaseResponse> GetMenuListAsync(MenuParameters parameters)
+        public async Task<BaseResponse> GetMenuListAsync(QueryParameters parameters)
         {
             BaseServiceRequest<BaseResponse> baseService = new BaseServiceRequest<BaseResponse>();
             var r = await baseService.GetRequest(new MenuQueryRequest()

@@ -27,9 +27,9 @@ namespace Consumption.Service
     /// <summary>
     /// 基础数据服务
     /// </summary>
-    public class BasicService : IBasicService
+    public partial class ConsumptionService
     {
-        public async Task<BaseResponse> GetBasicListAsync(BasicParameters parameters)
+        public async Task<BaseResponse> GetBasicListAsync(QueryParameters parameters)
         {
             BaseServiceRequest<BaseResponse> baseService = new BaseServiceRequest<BaseResponse>();
             var r = await baseService.GetRequest(new BasicQueryRequest()

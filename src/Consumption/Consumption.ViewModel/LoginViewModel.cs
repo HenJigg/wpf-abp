@@ -28,10 +28,10 @@ namespace Consumption.ViewModel
     /// </summary>
     public class LoginViewModel : BaseViewModel
     {
-        private readonly IUserService userService;
+        private readonly IConsumptionService userService;
         public LoginViewModel()
         {
-            userService = AutofacProvider.Get<IUserService>();
+            userService = AutofacProvider.Get<IConsumptionService>();
             LoginCommand = new RelayCommand(Login);
             LogoutCommand = new RelayCommand(LogOut);
         }

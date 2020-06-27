@@ -34,9 +34,7 @@ namespace Consumption.PC
         {
             AutofacLocator locator = new AutofacLocator();
             ContainerBuilder builder = new ContainerBuilder();
-            builder.RegisterType<UserService>().As<IUserService>();
-            builder.RegisterType<MenuService>().As<IMenuService>();
-            builder.RegisterType<BasicService>().As<IBasicService>();
+            builder.RegisterType<ConsumptionService>().As<IConsumptionService>();
             builder.RegisterType(typeof(LoginCenter)).Named("LoginCenter", typeof(IModuleDialog));
             builder.RegisterType(typeof(MainCenter)).Named("MainCenter", typeof(IModuleDialog));
             builder.RegisterType(typeof(SkinCenter)).Named("SkinCenter", typeof(IModule));

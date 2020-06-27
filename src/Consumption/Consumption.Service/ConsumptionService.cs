@@ -1,13 +1,8 @@
 ﻿/*
 *
-* 文件名    ：MenuParameters                             
-* 程序说明  : 菜单参数实体
-* 更新时间  : 2020-05-21 10:55
-*
-* 备注      : 如果无需传递额外参数,
-* 可直接使用 QueryParameters, 
-* 此处创建 MenuParameters 属于规范示例
-* 
+* 文件名    ：ConsumptionService                             
+* 程序说明  : Consumption服务分布类      
+* 更新时间  : 2020-06-27 13：05
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -17,9 +12,15 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-namespace Consumption.Core.Query
+namespace Consumption.Service
 {
-    public class MenuParameters : QueryParameters
+    using Consumption.Core.IService;
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    public partial class ConsumptionService : IConsumptionService
     {
+
     }
 }
