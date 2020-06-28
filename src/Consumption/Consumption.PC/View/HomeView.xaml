@@ -51,11 +51,11 @@
 
             <Border Grid.Column="2" Background="Black" Opacity="0.1" Margin="10 10 10 0" CornerRadius="5"/>
             <UniformGrid Columns="5" Grid.Column="2">
-                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="今天" Style="{StaticResource RadioButtonStyle}"/>
-                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本周" Style="{StaticResource RadioButtonStyle}"/>
-                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本月" Style="{StaticResource RadioButtonStyle}"/>
-                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本季度" Style="{StaticResource RadioButtonStyle}"/>
-                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本年度" Style="{StaticResource RadioButtonStyle}"/>
+                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="今天" />
+                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本周" />
+                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本月" />
+                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本季度" />
+                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本年度" />
             </UniformGrid>
 
         </Grid>
@@ -221,9 +221,7 @@
                         </Style>
                     </DataGrid.RowStyle>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Width="*" Header="内容" 
-                                                            CellStyle="{StaticResource  defaultDatagridCellStyle}"
-                                                            HeaderStyle="{StaticResource defaultDatagridColumnStyle}">
+                        <DataGridTemplateColumn Width="*" Header="内容"  >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -234,9 +232,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="*" Header="消费时间"
-                                                            CellStyle="{StaticResource  defaultDatagridCellStyle}"
-                                                            HeaderStyle="{StaticResource defaultDatagridColumnStyle}">
+                        <DataGridTemplateColumn Width="*" Header="消费时间" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -247,9 +243,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="*" Header="金额"
-                                                            CellStyle="{StaticResource  defaultDatagridCellStyle}"
-                                                            HeaderStyle="{StaticResource defaultDatagridColumnStyle}">
+                        <DataGridTemplateColumn Width="*" Header="金额" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -260,8 +254,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="50" Header="状态" CellStyle="{StaticResource  defaultDatagridCellStyle}"
-                                                            HeaderStyle="{StaticResource defaultDatagridColumnStyle}" 
+                        <DataGridTemplateColumn Width="50" Header="状态" 
                                                                             >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

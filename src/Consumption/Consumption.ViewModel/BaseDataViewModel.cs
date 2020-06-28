@@ -117,7 +117,7 @@ namespace Consumption.ViewModel
 
         private int totalCount = 0;
         private int pageSize = 30;
-        private int pageIndex = 1;
+        private int pageIndex = 0;
         private int pageCount = 0;
 
         /// <summary>

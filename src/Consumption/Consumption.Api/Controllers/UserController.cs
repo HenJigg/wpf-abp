@@ -107,8 +107,7 @@ namespace Consumption.Api.Controllers
                 return Ok(new ConsumptionResponse()
                 {
                     success = true,
-                    dynamicObj = models,
-                    TotalRecord = models.TotalCount
+                    dynamicObj = models
                 });
             }
             catch (Exception ex)

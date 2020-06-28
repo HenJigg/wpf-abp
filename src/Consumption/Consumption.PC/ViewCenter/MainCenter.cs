@@ -75,7 +75,7 @@ namespace Consumption.PC.ViewCenter
         {
             ViewModel = new MainViewModel();
             await ViewModel.InitDefaultView();
-            //View.page.Content = new HomeView();
+            View.page.Content = new HomeView();
             View.DataContext = ViewModel;
         }
     }

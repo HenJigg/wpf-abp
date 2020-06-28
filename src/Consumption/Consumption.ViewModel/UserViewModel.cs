@@ -18,9 +18,11 @@ namespace Consumption.ViewModel
     using Consumption.Core.Common;
     using Consumption.Core.Entity;
     using Consumption.Core.IService;
+    using Consumption.EFCore.Collections;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -41,16 +43,16 @@ namespace Consumption.ViewModel
             {
                 var r = await userService.GetUserListAsync(new Core.Query.UserParameters()
                 {
-                    PageIndex = pageIndex,
+                    PageIndex = PageIndex,
                     PageSize = PageSize,
                     Search = SearchText
                 });
                 if (r != null && r.success)
                 {
-                    this.TotalCount = r.TotalRecord;
                     GridModelList = new System.Collections.ObjectModel.ObservableCollection<User>();
-                    var usList = JsonConvert.DeserializeObject<List<User>>(r.dynamicObj?.ToString());
-                    usList.ForEach(arg =>
+                    var pagedList = JsonConvert.DeserializeObject<PagedList<User>>(r.dynamicObj?.ToString());
+                    this.TotalCount = pagedList.TotalCount;
+                    pagedList.Items?.ToList().ForEach(arg =>
                     {
                         GridModelList.Add(arg);
                     });

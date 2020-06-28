@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Consumption.Core\Consumption.Core.csproj" />
+    <ProjectReference Include="..\Consumption.EFCore\Consumption.EFCore.csproj" />
   </ItemGroup>
 
 </Project>
