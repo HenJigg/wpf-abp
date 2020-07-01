@@ -21,7 +21,7 @@ namespace Consumption.Core.Response
     /// <summary>
     /// 返回结果基类
     /// </summary>
-    public class BaseResponse
+    public class BaseResponse<T>
     {
         /// <summary>
         /// 后台消息
@@ -38,6 +38,6 @@ namespace Consumption.Core.Response
         /// </summary>
         public bool success { get; set; }
 
-        public object dynamicObj { get; set; }
+        public T dynamicObj { get; set; }
     }
 }

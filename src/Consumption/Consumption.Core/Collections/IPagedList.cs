@@ -1,5 +1,5 @@
 ﻿
-namespace Consumption.EFCore.Collections
+namespace Consumption.Core.Collections
 {
 
     using System.Collections.Generic;

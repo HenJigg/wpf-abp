@@ -14,21 +14,23 @@
 
 namespace Consumption.Core.IService
 {
+    using Consumption.Core.Collections;
+    using Consumption.Core.Entity;
     /*  《接口层命名规范》
-     * 1.模块接口统一定义至 IConsumptionService 中
-     * 2.接口请求命名规范:
-     *   2.1. Get<T>Async 
-     *   2.2. Update<T>Async
-     *   2.3. Delete<T>Async
-     *   2.4. Put<T>Async
-     * 3.接口带参数请求命名规范:
-     *   3.1. 根据ID请求, 对应的 Get<T>ByIdAsync...
-     * 4.接口带实体请求规范:
-     *   4.1. 添加与更新类型请求,在实体中根据ID来区分请求类型..
-     *   
-     * 注: 在单个程序集当中的接口, 不再区分多个接口。
-     *     所有模块按程序集来区分,程序集中按命名规范来区分。
-     */
+* 1.模块接口统一定义至 IConsumptionService 中
+* 2.接口请求命名规范:
+*   2.1. Get<T>Async 
+*   2.2. Update<T>Async
+*   2.3. Delete<T>Async
+*   2.4. Put<T>Async
+* 3.接口带参数请求命名规范:
+*   3.1. 根据ID请求, 对应的 Get<T>ByIdAsync...
+* 4.接口带实体请求规范:
+*   4.1. 添加与更新类型请求,在实体中根据ID来区分请求类型..
+*   
+* 注: 在单个程序集当中的接口, 不再区分多个接口。
+*     所有模块按程序集来区分,程序集中按命名规范来区分。
+*/
 
     using Consumption.Core.Query;
     using Consumption.Core.Response;
@@ -41,21 +43,21 @@ namespace Consumption.Core.IService
     {
         #region 基础数据接口
 
-        Task<BaseResponse> GetBasicListAsync(QueryParameters parameters);
+        Task<BaseResponse<PagedList<Basic>>> GetBasicListAsync(QueryParameters parameters);
 
         #endregion
 
         #region 菜单接口
 
-        Task<BaseResponse> GetMenuListAsync(QueryParameters parameters);
+        Task<BaseResponse<PagedList<Menu>>> GetMenuListAsync(QueryParameters parameters);
 
         #endregion
 
         #region 用户接口
 
-        Task<BaseResponse> LoginAsync(string account, string passWord);
+        Task<BaseResponse<User>> LoginAsync(string account, string passWord);
 
-        Task<BaseResponse> GetUserListAsync(UserParameters parameters);
+        Task<BaseResponse<PagedList<User>>> GetUserListAsync(UserParameters parameters);
 
         #endregion
     }

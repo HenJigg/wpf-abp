@@ -1,6 +1,6 @@
 ﻿
 
-namespace Consumption.EFCore.Collections
+namespace Consumption.Core.Collections
 {
     using System;
     using System.Collections.Generic;
@@ -71,7 +71,7 @@ namespace Consumption.EFCore.Collections
         /// <param name="pageIndex">The index of the page.</param>
         /// <param name="pageSize">The size of the page.</param>
         /// <param name="indexFrom">The index from.</param>
-        internal PagedList(IEnumerable<T> source, int pageIndex, int pageSize, int indexFrom)
+        public PagedList(IEnumerable<T> source, int pageIndex, int pageSize, int indexFrom)
         {
             if (indexFrom > pageIndex)
             {
@@ -103,7 +103,7 @@ namespace Consumption.EFCore.Collections
         /// <summary>
         /// Initializes a new instance of the <see cref="PagedList{T}" /> class.
         /// </summary>
-        internal PagedList() => Items = new T[0];
+        public PagedList() => Items = new T[0];
     }
 
 

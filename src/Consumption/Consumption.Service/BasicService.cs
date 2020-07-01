@@ -14,6 +14,8 @@
 
 namespace Consumption.Service
 {
+    using Consumption.Core.Collections;
+    using Consumption.Core.Entity;
     using Consumption.Core.IService;
     using Consumption.Core.Query;
     using Consumption.Core.Request;
@@ -29,9 +31,10 @@ namespace Consumption.Service
     /// </summary>
     public partial class ConsumptionService
     {
-        public async Task<BaseResponse> GetBasicListAsync(QueryParameters parameters)
+        public async Task<BaseResponse<PagedList<Basic>>> GetBasicListAsync(QueryParameters parameters)
         {
-            BaseServiceRequest<BaseResponse> baseService = new BaseServiceRequest<BaseResponse>();
+            BaseServiceRequest<BaseResponse<PagedList<Basic>>> baseService =
+            new BaseServiceRequest<BaseResponse<PagedList<Basic>>>();
             var r = await baseService.GetRequest(new BasicQueryRequest()
             {
                 parameters = parameters

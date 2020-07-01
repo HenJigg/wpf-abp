@@ -18,7 +18,6 @@ namespace Consumption.ViewModel
     using Consumption.Core.Common;
     using Consumption.Core.Entity;
     using Consumption.Core.IService;
-    using Consumption.EFCore.Collections;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
@@ -50,9 +49,8 @@ namespace Consumption.ViewModel
                 if (r != null && r.success)
                 {
                     GridModelList = new System.Collections.ObjectModel.ObservableCollection<User>();
-                    var pagedList = JsonConvert.DeserializeObject<PagedList<User>>(r.dynamicObj?.ToString());
-                    this.TotalCount = pagedList.TotalCount;
-                    pagedList.Items?.ToList().ForEach(arg =>
+                    this.TotalCount = r.dynamicObj.TotalCount;
+                    r.dynamicObj.Items?.ToList().ForEach(arg =>
                     {
                         GridModelList.Add(arg);
                     });

@@ -11,7 +11,7 @@ namespace Consumption.EFCore
     using Microsoft.EntityFrameworkCore.Query;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
     using Microsoft.EntityFrameworkCore;
-    using Consumption.EFCore.Collections;
+    using Consumption.Core.Collections;
 
     /// <summary>
     /// Defines the interfaces for generic repository.

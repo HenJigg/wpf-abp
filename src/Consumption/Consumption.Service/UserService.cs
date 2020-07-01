@@ -23,20 +23,23 @@ namespace Consumption.Service
     using System.Threading.Tasks;
     using RestSharp;
     using Consumption.Core.Query;
+    using Consumption.Core.Entity;
+    using Consumption.Core.Collections;
 
     /// <summary>
     /// 用户服务
     /// </summary>
-    public partial class ConsumptionService 
+    public partial class ConsumptionService
     {
         /// <summary>
         /// 查询用户列表
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public async Task<BaseResponse> GetUserListAsync(UserParameters parameters)
+        public async Task<BaseResponse<PagedList<User>>> GetUserListAsync(UserParameters parameters)
         {
-            BaseServiceRequest<BaseResponse> baseService = new BaseServiceRequest<BaseResponse>();
+            BaseServiceRequest<BaseResponse<PagedList<User>>> baseService =
+                new BaseServiceRequest<BaseResponse<PagedList<User>>>();
             var r = await baseService.GetRequest(new UserQueryRequest()
             {
                 parameters = parameters
@@ -50,9 +53,9 @@ namespace Consumption.Service
         /// <param name="account">用户名</param>
         /// <param name="passWord">密码</param>
         /// <returns></returns>
-        public async Task<BaseResponse> LoginAsync(string account, string passWord)
+        public async Task<BaseResponse<User>> LoginAsync(string account, string passWord)
         {
-            BaseServiceRequest<BaseResponse> baseService = new BaseServiceRequest<BaseResponse>();
+            BaseServiceRequest<BaseResponse<User>> baseService = new BaseServiceRequest<BaseResponse<User>>();
             var r = await baseService.GetRequest(new UserLoginRequest()
             {
                 account = account,
