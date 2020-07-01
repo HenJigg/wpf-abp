@@ -83,21 +83,21 @@
                     <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="30 0 0 0">
                         <TextBlock Text="日常支出" Foreground="White" FontSize="26" />
                         <TextBlock Text="DailyExpenses" VerticalAlignment="Bottom" FontSize="15" Foreground="White"/>
-                        <TextBlock  Text="$1,797.33" Foreground="White" FontSize="33"  />
+                        <TextBlock  Text="$1,797.33" Foreground="White"   />
                     </StackPanel>
 
                     <TextBlock Text="&#xe799;" FontSize="70" Foreground="White" VerticalAlignment="Bottom" Margin="30 0 0 0" FontFamily="/Fonts/#iconfont"/>
 
                 </Grid>
 
-                <materialDesign:Card Background="Transparent" Grid.Column="1" Padding="20">
+                <materialDesign:Card Background="Transparent" Grid.Column="1" Padding="10">
                     <lv:PieChart  Series="{Binding SeriesCollection}"
-                                  LegendLocation="Bottom" Foreground="White" InnerRadius="60" >
+                                  LegendLocation="Bottom" Foreground="White" InnerRadius="40" >
                         <lv:PieChart.ChartLegend>
-                            <lv:DefaultLegend BulletSize="20"></lv:DefaultLegend>
+                            <lv:DefaultLegend BulletSize="10"></lv:DefaultLegend>
                         </lv:PieChart.ChartLegend>
                         <lv:PieChart.DataTooltip>
-                            <lv:DefaultTooltip BulletSize="20"></lv:DefaultTooltip>
+                            <lv:DefaultTooltip BulletSize="10"></lv:DefaultTooltip>
                         </lv:PieChart.DataTooltip>
                     </lv:PieChart>
                 </materialDesign:Card>
@@ -118,20 +118,20 @@
                     <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="30 0 0 0">
                         <TextBlock Text="信用生活" Foreground="White" FontSize="26" />
                         <TextBlock Text="CreditLife" VerticalAlignment="Bottom" FontSize="15" Foreground="White"/>
-                        <TextBlock Grid.Row="1" Text="$3,797.33" Foreground="White" FontSize="33"  />
+                        <TextBlock Grid.Row="1" Text="$3,797.33" Foreground="White"   />
                     </StackPanel>
 
                     <TextBlock Text="&#xe62e;" FontSize="70" VerticalAlignment="Bottom" Margin="30 0 0 0" Foreground="White" FontFamily="/Fonts/#iconfont"/>
                 </Grid>
 
-                <materialDesign:Card Background="Transparent" Grid.Column="1" Padding="20">
+                <materialDesign:Card Background="Transparent" Grid.Column="1" Padding="10">
                     <lv:PieChart  Series="{Binding SeriesCollection1}"
-                                  LegendLocation="Bottom" Foreground="White" InnerRadius="60" >
+                                  LegendLocation="Bottom" Foreground="White" InnerRadius="40" >
                         <lv:PieChart.ChartLegend>
-                            <lv:DefaultLegend BulletSize="20"></lv:DefaultLegend>
+                            <lv:DefaultLegend BulletSize="10"></lv:DefaultLegend>
                         </lv:PieChart.ChartLegend>
                         <lv:PieChart.DataTooltip>
-                            <lv:DefaultTooltip BulletSize="20"></lv:DefaultTooltip>
+                            <lv:DefaultTooltip BulletSize="10"></lv:DefaultTooltip>
                         </lv:PieChart.DataTooltip>
                     </lv:PieChart>
                 </materialDesign:Card>
@@ -152,20 +152,20 @@
                     <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="30 0 0 0">
                         <TextBlock Text="其它支出" Foreground="White" FontSize="26" />
                         <TextBlock Text="OtherExpenses" VerticalAlignment="Bottom" FontSize="15" Foreground="White"/>
-                        <TextBlock Grid.Row="2" Text="$6,797.33" Foreground="White" FontSize="33"  />
+                        <TextBlock Grid.Row="2" Text="$6,797.33" Foreground="White"   />
                     </StackPanel>
 
                     <TextBlock Text="&#xe678;" FontSize="70" Margin="30 0 0 0" VerticalAlignment="Bottom" Foreground="White"  FontFamily="/Fonts/#iconfont"/>
                 </Grid>
 
-                <materialDesign:Card Background="Transparent" Grid.Column="1" Padding="20">
+                <materialDesign:Card Background="Transparent" Grid.Column="1" Padding="10">
                     <lv:PieChart  Series="{Binding SeriesCollection2}"
-                                  LegendLocation="Bottom" Foreground="White" InnerRadius="60" >
+                                  LegendLocation="Bottom" Foreground="White" InnerRadius="40" >
                         <lv:PieChart.ChartLegend>
-                            <lv:DefaultLegend BulletSize="20"></lv:DefaultLegend>
+                            <lv:DefaultLegend BulletSize="10"></lv:DefaultLegend>
                         </lv:PieChart.ChartLegend>
                         <lv:PieChart.DataTooltip>
-                            <lv:DefaultTooltip BulletSize="20"></lv:DefaultTooltip>
+                            <lv:DefaultTooltip BulletSize="10"></lv:DefaultTooltip>
                         </lv:PieChart.DataTooltip>
                     </lv:PieChart>
                 </materialDesign:Card>

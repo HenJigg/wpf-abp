@@ -28,10 +28,10 @@ namespace Consumption.ViewModel
     /// </summary>
     public class LoginViewModel : BaseViewModel
     {
-        private readonly IConsumptionService userService;
+        private readonly IConsumptionService service;
         public LoginViewModel()
         {
-            userService = AutofacProvider.Get<IConsumptionService>();
+            service = AutofacProvider.Get<IConsumptionService>();
             LoginCommand = new RelayCommand(Login);
             LogoutCommand = new RelayCommand(LogOut);
         }
@@ -85,7 +85,7 @@ namespace Consumption.ViewModel
                     return;
                 }
                 UpdateDialog(true, "验证登陆中...");
-                var br = await userService.LoginAsync(UserName, PassWord);
+                var br = await service.LoginAsync(UserName, PassWord);
                 if (br == null || !br.success)
                 {
                     this.Report = br == null ? "远程服务器无法连接！" : br.message;

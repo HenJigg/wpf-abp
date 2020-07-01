@@ -32,17 +32,17 @@ namespace Consumption.ViewModel
     /// </summary>
     public class BasicViewModel : BaseDataViewModel<Basic>
     {
-        private readonly IConsumptionService menuService;
+        private readonly IConsumptionService service;
         public BasicViewModel()
         {
-            menuService = AutofacProvider.Get<IConsumptionService>();
+            service = AutofacProvider.Get<IConsumptionService>();
         }
 
         public override async Task GetPageData(int pageIndex)
         {
             try
             {
-                var r = await menuService.GetBasicListAsync(new QueryParameters()
+                var r = await service.GetBasicListAsync(new QueryParameters()
                 {
                     PageIndex = pageIndex,
                     PageSize = PageSize,

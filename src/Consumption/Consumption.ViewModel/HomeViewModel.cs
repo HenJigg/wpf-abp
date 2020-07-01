@@ -33,8 +33,8 @@ namespace Consumption.ViewModel
             {
                 Bills.Add(new Bill()
                 {
-                    Remark = "借出",
-                    Name = "朋友借钱打胎",
+                    Remark = "公益活动",
+                    Name = "参与社区活动",
                     CreateDate = DateTime.Now.ToString("yyyy-MM-dd"),
                     Amount = 3000
                 });

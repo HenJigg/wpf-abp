@@ -135,7 +135,7 @@ namespace Consumption.PC.View
                 },
                 new PieSeries
                 {
-                    Title = "小三",
+                    Title = "公益",
                     Values = new ChartValues<ObservableValue> { new ObservableValue(10) },
                      LabelPoint = point =>
                     {
