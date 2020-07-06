@@ -16,7 +16,7 @@
 
   WPF UI:[MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
 
-  Blazor UI:[MatBlazor](https://github.com/SamProf/MatBlazor)
+  Blazor UI:[AntBlazor](https://github.com/ant-design-blazor/ant-design-blazor)
 
 #### 插件
   log : [Nlog](https://github.com/NLog/NLog)
@@ -35,9 +35,10 @@
   视频支持(后期): 模块介绍、环境搭建、项目文档。
 
 ### 收入说明
-  包括该项目本身的捐赠,以及所有的C#、WPF免费视频收入(主要以观众打赏,平台补贴), 统一以C#开发者名义捐赠给[国际儿童紧急救援基金会](https://www.unicef.org/zh),所有的收入捐赠最终以视频的方式公布进展, 结算周期为每个季度末。
-  历史记录：
-  - [2020-05-01: Part1](https://www.bilibili.com/video/BV1QZ4y1W7Zu) 
+  包括该项目本身的捐赠,以及所有的C#、WPF免费视频收入(主要以观众打赏,平台补贴), 统一以C#开发者名义捐赠给需要帮助得群体,所有的收入捐赠最终以视频的方式公布最终结果, 结算周期为每个季度末。
+  
+  历史捐赠(Video)：
+  - [2020-05-01: Part1](https://www.bilibili.com/video/BV1QZ4y1W7Zu) [国际儿童紧急救援基金会](https://www.unicef.org/zh)
 
 ### 捐赠名单公示
 <a href="https://github.com/zuoyefeng" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars2.githubusercontent.com/u/13931455?s=400&v=4"></a>
@@ -54,9 +55,11 @@
 <a href="https://github.com/CarlWhite2020" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars1.githubusercontent.com/u/62589030?s=400&v=4"></a>
 <a href="https://github.com/Leowhh" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/57591945?s=400&v=4"></a>
 
-### 关于捐赠?
-  如果你觉得该项目对你有所帮助,那么可以通过支付宝的方式进行捐赠, 关于捐赠进度以上说明。
-![AliPay](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/alipay.jpg)
+### 关于未来
+  早些日子,微软公布MAUI计划, 是一个激动人心得计划, 期待MAUI早上上线。而项目会提前在MAUI完成开发, 后期, 会做MAUI的中国首发视频教程与项目实践！
+
+### 关于捐赠？
+  不再提供捐赠通道, 所有捐赠皆来自国内的各大平台的视频收入、打赏、平台补贴。 
 
 ### 联系我
 Email: zhouhaogg789@outlook.com
