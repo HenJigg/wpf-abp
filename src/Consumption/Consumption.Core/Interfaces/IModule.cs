@@ -22,13 +22,6 @@ namespace Consumption.Core.Interfaces
     public interface IModule
     {
         /// <summary>
-        /// 关联数据上下文
-        /// </summary>
-        /// <typeparam name="TViewModel"></typeparam>
-        /// <param name="viewModel"></param>
-        void BindViewModel<TViewModel>(TViewModel viewModel) where TViewModel : class, new();
-
-        /// <summary>
         /// 关联默认数据上下文
         /// </summary>
         Task BindDefaultModel();

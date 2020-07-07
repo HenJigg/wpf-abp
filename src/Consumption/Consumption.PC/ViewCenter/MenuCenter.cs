@@ -28,10 +28,6 @@ namespace Consumption.PC.ViewCenter
     [Module(Core.Enums.ModuleType.DataManagement, "菜单管理", "MenuCenter", "", "Menu")]
     public class MenuCenter : BaseCenter<MenuView, MenuViewModel>
     {
-        public override async Task BindDefaultModel()
-        {
-            await ViewModel.GetPageData(0);
-            View.DataContext = ViewModel;
-        }
+
     }
 }

@@ -48,38 +48,60 @@
 
         <Border Grid.RowSpan="4"  Background="Black" Opacity="0.1"/>
 
-        <ListView x:Name="user" Grid.Row="2" ItemsSource="{Binding GridModelList}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                  Foreground="White" >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <materialDesign:TransitioningContent OpeningEffectsOffset="{materialDesign:IndexedItemOffsetMultiplier 0:0:0.03}">
-                        <materialDesign:TransitioningContent.OpeningEffects>
-                            <materialDesign:TransitionEffect Kind="SlideInFromRight" />
-                        </materialDesign:TransitioningContent.OpeningEffects>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="120"/>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="300"/>
-                            </Grid.ColumnDefinitions>
+        <DataGrid Grid.Row="2" ItemsSource="{Binding GridModelList}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="150" Header="菜单编码">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center"  Text="{Binding MenuCode}" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-                            <TextBlock Text="{Binding MenuCode}" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Text="{Binding MenuName}" />
-                            <TextBlock Grid.Column="2" Text="{Binding MenuCaption}" />
-                            <TextBlock Grid.Column="3" Text="{Binding MenuNameSpace}" />
-                            <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button  Margin="5 0 0 0"  Content="编辑" Background="#28CBA3" BorderThickness="0" />
-                                <Button   Margin="10 0 0 0" Content="删除" Background="#FF5370" BorderThickness="0"/>
+                <DataGridTemplateColumn Width="150" Header="菜单名称">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center"  Text="{Binding MenuName}" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Width="150" Header="标题">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center"  Text="{Binding MenuCaption}" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Width="200" Header="命名空间">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center"  Text="{Binding MenuNameSpace}" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="操作" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+
+                                <Button  Content="编辑" Background="#28CBA3" BorderThickness="0"
+                                     CommandParameter="{Binding Id}" Command="{Binding DataContext.EditCommand, 
+                                    RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
+
+                                <Button Margin="10 0 0 0" Content="删除" Background="#FF5370" BorderThickness="0"
+                                                    CommandParameter="{Binding Id}"  
+                                             Command="{Binding DataContext.DelCommand,
+                                    RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
                             </StackPanel>
-                        </Grid>
-                    </materialDesign:TransitioningContent>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
 
         <template:DataPager Grid.Row="3" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
     </Grid>

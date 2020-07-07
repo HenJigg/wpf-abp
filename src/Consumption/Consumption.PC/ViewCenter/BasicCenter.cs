@@ -25,13 +25,8 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 基础数据控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.DataManagement, "基础数据", "BasicCenter", "", "Database")]
+    //[Module(Core.Enums.ModuleType.DataManagement, "基础数据", "BasicCenter", "", "Database")]
     public class BasicCenter : BaseCenter<BasicView, BasicViewModel>
     {
-        public override async Task BindDefaultModel()
-        {
-            await ViewModel.GetPageData(0);
-            View.DataContext = ViewModel;
-        }
     }
 }

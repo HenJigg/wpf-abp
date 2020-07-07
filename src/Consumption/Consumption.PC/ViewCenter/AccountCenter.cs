@@ -25,13 +25,9 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 账户管理控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.AppMain, "账户管理", "AccountCenter", "", "CreditCard")]
+    //[Module(Core.Enums.ModuleType.AppMain, "账户管理", "AccountCenter", "", "CreditCard")]
     public class AccountCenter : BaseCenter<AccountView, AccountViewModel>
     {
-        public override Task BindDefaultModel()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 

@@ -33,13 +33,13 @@ namespace Consumption.EFCore.Orm
             if (!context.Users.Any())
             {
                 List<User> userList = new List<User>();
-                userList.Add(new User() { Account = "Test", UserName = "测试员", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
-                userList.Add(new User() { Account = "Abigail", UserName = "愛比蓋爾", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
-                userList.Add(new User() { Account = "Ada", UserName = "愛達", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
-                userList.Add(new User() { Account = "Agatha", UserName = "阿加莎", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
-                userList.Add(new User() { Account = "Diana", UserName = "黛安娜", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
-                userList.Add(new User() { Account = "Eliza", UserName = "伊萊扎", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
-                userList.Add(new User() { Account = "弗洛拉", UserName = "Flora", Address = "Guangzhou", Tel = "1870620584", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Test", UserName = "测试员", Address = "Guangzhou", Tel = "1870620584", Password = "123", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Abigail", UserName = "愛比蓋爾", Address = "Guangzhou", Tel = "1870620584", Password = "123", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Ada", UserName = "愛達", Address = "Guangzhou", Tel = "1870620584", Password = "123", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Agatha", UserName = "阿加莎", Address = "Guangzhou", Tel = "1870620584", Password = "123", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Diana", UserName = "黛安娜", Address = "Guangzhou", Tel = "1870620584", Password = "123", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Eliza", UserName = "伊萊扎", Address = "Guangzhou", Tel = "1870620584", Password = "123", CreateTime = DateTime.Now });
+                userList.Add(new User() { Account = "Flora", UserName = "弗洛拉", Address = "Guangzhou", Tel = "1870620584", Password = "123", CreateTime = DateTime.Now });
                 userList.ForEach(async arg => await context.Users.AddAsync(arg));
 
                 List<Menu> menuList = new List<Menu>();

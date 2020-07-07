@@ -28,19 +28,22 @@ namespace Consumption.PC.ViewCenter
         where TView : Window, new()
         where TViewModel : ViewModelBase, new()
     {
-        public TView View = new TView();
-        public TViewModel ViewModel = new TViewModel();
+        public BaseDialogCenter()
+        {
+            View = new TView();
+            ViewModel = new TViewModel();
+        }
+        public TView View = null;
+        public TViewModel ViewModel = null;
 
         /// <summary>
         /// 绑定默认ViewModel
         /// </summary>
         public virtual void BindDefaultViewModel()
         {
-            ViewModel = new TViewModel();
             View.DataContext = ViewModel;
         }
 
-       
         /// <summary>
         /// 打开窗口
         /// </summary>

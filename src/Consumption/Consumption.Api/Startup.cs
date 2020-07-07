@@ -17,6 +17,7 @@ namespace Consumption.Api
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
     using Consumption.Core.Entity;
@@ -78,7 +79,7 @@ namespace Consumption.Api
                 //var connectionString = Configuration.GetConnectionString("NoteConnection");
                 //options.UseSqlite(connectionString);
 
-                //Ç¨ÒÆÖÁMySqlite
+                //Ç¨ÒÆÖÁMySql
                 var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
                 options.UseMySQL(connectionString);
             })
@@ -92,7 +93,7 @@ namespace Consumption.Api
 
             services.AddSwaggerGen(options =>
             {
-                options.IncludeXmlComments("../docs/NoteApi.xml");
+                options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "NoteApi.xml"));
                 options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
                 {
                     Title = "Note Service API",

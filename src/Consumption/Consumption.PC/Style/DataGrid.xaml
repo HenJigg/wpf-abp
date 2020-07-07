@@ -10,6 +10,7 @@
         <Setter Property="CanUserSortColumns" Value="True"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="HorizontalGridLinesBrush" Value="Transparent"/>
         <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
         <Setter Property="IsReadOnly" Value="True"/>

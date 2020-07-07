@@ -22,6 +22,7 @@ namespace Consumption.PC.ViewCenter
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Runtime;
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
@@ -43,15 +44,20 @@ namespace Consumption.PC.ViewCenter
                 var module = AutofacProvider.Get<IModule>(arg);
                 if (module != null)
                 {
+                    if (arg == View.page.Tag?.ToString())
+                        return;
                     ViewModel.DialogIsOpen = true;
                     await Task.Delay(30);
                     await module.BindDefaultModel();
+                    View.page.Tag = arg;
                     View.page.Content = module.GetView();
                     ViewModel.DialogIsOpen = false; //关闭等待窗口
+                    GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
+                    GC.Collect();
                 }
                 else
                 {
-
+                    //404?
                 }
             });
             Messenger.Default.Register<string>(View, "UpdateBackground", arg =>

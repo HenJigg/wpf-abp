@@ -16,6 +16,7 @@ namespace Consumption.PC.ViewCenter
 {
     using Autofac.Core;
     using Consumption.Core.Entity;
+    using Consumption.Core.Interfaces;
     using GalaSoft.MvvmLight;
     using NLog.Filters;
     using System;
@@ -24,6 +25,7 @@ namespace Consumption.PC.ViewCenter
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
     using IModule = Core.Interfaces.IModule;
 
     /// <summary>
@@ -31,22 +33,24 @@ namespace Consumption.PC.ViewCenter
     /// </summary>
     /// <typeparam name="TView"></typeparam>
     /// <typeparam name="TViewModel"></typeparam>
-    public abstract class BaseCenter<TView, TViewModel> : IModule
+    public class BaseCenter<TView, TViewModel> : IModule
         where TView : UserControl, new()
         where TViewModel : ViewModelBase, new()
     {
-        public TView View = new TView();
-        public TViewModel ViewModel = new TViewModel();
-        public abstract Task BindDefaultModel();
-
-        public void BindViewModel<BViewModel>(BViewModel viewModel) where BViewModel : class, new()
+        public BaseCenter()
         {
-            this.View.DataContext = viewModel;
+            View = new TView();
+            ViewModel = new TViewModel();
         }
 
-        public UserControl GetView()
+        public TView View = null;
+        public TViewModel ViewModel = null;
+
+        public virtual async Task BindDefaultModel()
         {
-            return View;
+            var dataPager = ViewModel as IDataPager;
+            await dataPager?.GetPageData(0);
+            View.DataContext = ViewModel;
         }
 
         object IModule.GetView()

@@ -25,13 +25,9 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 消费控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.AppMain, "消费管理", "ConsumerCenter", "", "CurrencyUsd")]
+    //[Module(Core.Enums.ModuleType.AppMain, "消费管理", "ConsumerCenter", "", "CurrencyUsd")]
     public class ConsumerCenter : BaseCenter<ConsumerView, ConsumerViewModel>
     {
-        public override Task BindDefaultModel()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 

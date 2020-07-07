@@ -31,7 +31,6 @@ namespace Consumption.PC.ViewCenter
     {
         public override async Task BindDefaultModel()
         {
-            ViewModel = new SkinViewModel();
             ViewModel.StyleConfig = UserManager.GetStyleConfig();
             View.DataContext = ViewModel;
             View.Ic.DataContext = new
