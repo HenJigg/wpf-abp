@@ -32,6 +32,16 @@ namespace Consumption.Api
     /// </summary>
     public class Program
     {
+        /*
+        *  首次运行项目须知:
+        *  1.请检查 appsettings.json 中 MySqlNoteConnection 连接是否与当前的环境一致
+        *  2.请确保 数据库的迁移文件已经更新到你的mysql当中。
+        *    2.1. 打开程序包管理控制台, 确保API项目为启动项
+        *    2.2. 默认项目设定EfCore, 控制台输入 update-database 将当前存在的迁移文件生成到数据库当中
+        *  
+        *  视频说明: https://www.bilibili.com/video/BV1qf4y117c6
+        */
+
         /// <summary>
         /// 
         /// </summary>
@@ -42,7 +52,7 @@ namespace Consumption.Api
             try
             {
                 var host = CreateHostBuilder(args).Build();
-                //初次加载插入样本数据
+                //初次加载插入样本数据 -test
                 using (var scope = host.Services.CreateScope())
                 {
                     var serivces = scope.ServiceProvider;
@@ -62,6 +72,11 @@ namespace Consumption.Api
             }
         }
 
+        /// <summary>
+        /// 创建主机构建器
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

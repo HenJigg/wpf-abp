@@ -43,17 +43,26 @@ namespace Consumption.EFCore.Orm
                 userList.ForEach(async arg => await context.Users.AddAsync(arg));
 
                 List<Menu> menuList = new List<Menu>();
-                menuList.Add(new Menu() { MenuCode = "1001", MenuName = "基础数据", MenuCaption = "", MenuNameSpace = "", });
-                menuList.Add(new Menu() { MenuCode = "1002", MenuName = "用户管理", MenuCaption = "", MenuNameSpace = "", });
-                menuList.Add(new Menu() { MenuCode = "1003", MenuName = "菜单管理", MenuCaption = "", MenuNameSpace = "", });
-                menuList.Add(new Menu() { MenuCode = "1004", MenuName = "权限管理", MenuCaption = "", MenuNameSpace = "", });
-                menuList.Add(new Menu() { MenuCode = "1005", MenuName = "计划管理", MenuCaption = "", MenuNameSpace = "", });
-                menuList.Add(new Menu() { MenuCode = "1006", MenuName = "消费报表", MenuCaption = "", MenuNameSpace = "", });
-                menuList.Add(new Menu() { MenuCode = "1007", MenuName = "消费管理", MenuCaption = "", MenuNameSpace = "", });
-                menuList.Add(new Menu() { MenuCode = "1008", MenuName = "消费管理", MenuCaption = "", MenuNameSpace = "", });
-                menuList.Add(new Menu() { MenuCode = "1009", MenuName = "账户管理", MenuCaption = "", MenuNameSpace = "", });
-                menuList.Add(new Menu() { MenuCode = "1010", MenuName = "我的账单", MenuCaption = "", MenuNameSpace = "", });
+                menuList.Add(new Menu() { MenuCode = "1001", MenuName = "基础数据", MenuCaption = "", MenuNameSpace = "", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1002", MenuName = "用户管理", MenuCaption = "", MenuNameSpace = "", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1003", MenuName = "菜单管理", MenuCaption = "", MenuNameSpace = "", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1004", MenuName = "权限管理", MenuCaption = "", MenuNameSpace = "", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1005", MenuName = "计划管理", MenuCaption = "", MenuNameSpace = "", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1006", MenuName = "消费报表", MenuCaption = "", MenuNameSpace = "", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1007", MenuName = "消费管理", MenuCaption = "", MenuNameSpace = "", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1008", MenuName = "消费管理", MenuCaption = "", MenuNameSpace = "", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1009", MenuName = "账户管理", MenuCaption = "", MenuNameSpace = "", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1010", MenuName = "我的账单", MenuCaption = "", MenuNameSpace = "", MenuAuth = 7 });
                 menuList.ForEach(async arg => await context.Menus.AddAsync(arg));
+
+                List<AuthItem> authLis = new List<AuthItem>();
+                authLis.Add(new AuthItem() { AuthName = "新增", AuthValue = 1 });
+                authLis.Add(new AuthItem() { AuthName = "编辑", AuthValue = 2 });
+                authLis.Add(new AuthItem() { AuthName = "删除", AuthValue = 4 });
+                authLis.Add(new AuthItem() { AuthName = "导入", AuthValue = 8 });
+                authLis.Add(new AuthItem() { AuthName = "导出", AuthValue = 16 });
+                authLis.Add(new AuthItem() { AuthName = "禁用", AuthValue = 32 });
+                authLis.ForEach(async arg => await context.AuthItems.AddAsync(arg));
                 await context.SaveChangesAsync();
             }
         }

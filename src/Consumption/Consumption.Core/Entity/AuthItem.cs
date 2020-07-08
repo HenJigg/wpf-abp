@@ -28,6 +28,6 @@ namespace Consumption.Core.Entity
         /// 所属权限值
         /// </summary>
 
-        public string AuthValue { get; set; }
+        public int AuthValue { get; set; }
     }
 }

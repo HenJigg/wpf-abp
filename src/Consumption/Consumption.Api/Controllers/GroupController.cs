@@ -21,9 +21,12 @@ namespace Consumption.Api.Controllers
     using Consumption.Core.Common;
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
+    using Consumption.Core.RequestForm;
     using Consumption.EFCore;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
     using Microsoft.Extensions.Logging;
+    using NLog.Fluent;
 
     /// <summary>
     /// 
@@ -76,33 +79,98 @@ namespace Consumption.Api.Controllers
                 return Ok(new ConsumptionResponse()
                 {
                     success = false,
-                    message = "Can't get data"
+                    message = "获取组数据错误"
                 });
             }
         }
 
         /// <summary>
-        /// 新增组
+        /// 保存组数据(新增/更新)
         /// </summary>
-        /// <param name="model">用户信息</param>
+        /// <param name="model">组数据</param>
         /// <returns>结果</returns>
         [HttpPost]
-        public async Task<IActionResult> AddGroup([FromBody] Group model)
+        public async Task<IActionResult> SaveGroup([FromBody] GroupForm model)
         {
             try
             {
-                if (model == null)
-                    return Ok(new ConsumptionResponse() { success = false, message = "Add data error" });
+                if (model == null || model.group == null)
+                    return Ok(new ConsumptionResponse() { success = false, message = "请求参数有误" });
+                var newgroup = model.group;
+                if (newgroup.Id > 0)
+                {
+                    //ID存在为更新,需要处理是否真实存在？
+                    var group = await work.GetRepository<Group>()
+                    .GetFirstOrDefaultAsync(predicate: x => x.Id == newgroup.Id);
+                    if (group == null)
+                        return Ok(new ConsumptionResponse() { success = false, message = "该用户组已不存在。" });
 
-                work.GetRepository<Group>().Insert(model);
+                    group.GroupName = newgroup.GroupName;
+                    work.GetRepository<Group>().Update(group);
+                    #region 更新组用户
+
+                    //查询组下已存在的用户
+                    var groupUsers = await work.GetRepository<GroupUser>().GetAllAsync(predicate: x => x.GroupCode == group.GroupCode);
+                    for (int i = 0; i < groupUsers.Count; i++)
+                    {
+                        var arg = groupUsers[i];
+                        //如果数据库存在的用户在更新列表当中查不到,代表删除,否则新增
+                        var u = model.groupUser?.FirstOrDefault(t => t.Id == arg.Id);
+                        if (u == null)
+                            work.GetRepository<GroupUser>().Delete(arg);
+                    }
+
+                    #endregion
+
+                    #region 更新组模块
+
+                    //查询组下已存在的模块
+                    var groupFuncs = await work.GetRepository<GroupFunc>().GetAllAsync(predicate: x => x.GroupCode == group.GroupCode);
+                    for (int i = 0; i < groupFuncs.Count; i++)
+                    {
+                        var arg = groupFuncs[i];
+                        var u = model.groupFunc?.FirstOrDefault(t => t.Id == arg.Id);
+                        if (u == null)
+                            work.GetRepository<GroupFunc>().Delete(arg);
+                        else //如果存在,那么更新模块内容
+                        {
+                            arg.Auth = u.Auth;
+                            work.GetRepository<GroupFunc>().Update(arg);
+                            model.groupFunc.Remove(u);//移除
+                        }
+                    }
+
+                    #endregion
+                }
+                else
+                {
+                    var group = await work.GetRepository<Group>()
+                .GetFirstOrDefaultAsync(predicate: x => x.GroupCode == newgroup.GroupCode || x.GroupName == newgroup.GroupName);
+                    if (group != null)
+                        return Ok(new ConsumptionResponse() { success = false, message = "组编号/名称已重复,请勿重复添加!" });
+                    //添加组信息
+                    work.GetRepository<Group>().Insert(newgroup);
+                }
+                //添加新增组用户信息
+                model.groupUser?.ForEach(u =>
+                {
+                    u.GroupCode = newgroup.GroupCode;
+                    work.GetRepository<GroupUser>().Insert(u);
+                });
+                //添加新增组模块信息
+                model.groupFunc?.ForEach(f =>
+                {
+                    f.GroupCode = newgroup.GroupCode;
+                    work.GetRepository<GroupFunc>().Insert(f);
+                });
                 if (await work.SaveChangesAsync() > 0)
                     return Ok(new ConsumptionResponse() { success = true });
-                return Ok(new ConsumptionResponse() { success = false, message = "Error saving data" });
+                return Ok(new ConsumptionResponse() { success = false, message = "新增组数据错误" });
             }
             catch (Exception ex)
             {
                 logger.LogDebug(ex, "");
-                return Ok(new ConsumptionResponse() { success = false, message = "Add group error" });
+                return Ok(new ConsumptionResponse() { success = false, message = "新增组异常" });
             }
         }
 
@@ -116,20 +184,77 @@ namespace Consumption.Api.Controllers
         {
             try
             {
-                var repository = work.GetRepository<Group>();
-                var user = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == id);
-                if (user == null)
-                {
-                    return Ok(new ConsumptionResponse() { success = false, message = "The group was not found!" });
-                }
-                repository.Delete(user);
+                var gpWork = work.GetRepository<Group>();
+                var group = await gpWork.GetFirstOrDefaultAsync(predicate: x => x.Id == id);
+                if (group == null)
+                    return Ok(new ConsumptionResponse() { success = false, message = "该组已被删除" });
+                gpWork.Delete(group);
+                var guWork = work.GetRepository<GroupUser>();
+                var gfWork = work.GetRepository<GroupFunc>();
+                //移除所有的组用户
+                var groupUsers = await guWork.GetAllAsync(predicate: x => x.GroupCode == group.GroupCode);
+                for (int i = 0; i < groupUsers.Count; i++)
+                    guWork.Delete(groupUsers);
+                //移除所有的组模块
+                var groupFuncs = await gfWork.GetAllAsync(predicate: x => x.GroupCode == group.GroupCode);
+                for (int i = 0; i < groupFuncs.Count; i++)
+                    gfWork.Delete(groupFuncs);
+
                 if (await work.SaveChangesAsync() > 0)
                     return Ok(new ConsumptionResponse() { success = true });
-                return Ok(new ConsumptionResponse() { success = false, message = $"Deleting post {id} failed when saving." });
+                return Ok(new ConsumptionResponse() { success = false, message = "删除组数据失败" });
             }
             catch (Exception ex)
             {
-                return Ok(new ConsumptionResponse() { success = false, message = ex.Message });
+                Log.Error(ex.Message);
+                return Ok(new ConsumptionResponse() { success = false, message = "删除组数据失败" });
+            }
+        }
+
+        /// <summary>
+        /// 获取菜单模块列表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetMenuModules()
+        {
+
+            try
+            {
+                var menuItmes = await work.GetRepository<Menu>().GetAllAsync();
+                var authItems = await work.GetRepository<AuthItem>().GetAllAsync();
+
+                if (menuItmes.Count > 0)
+                {
+                    List<MenuModuleGroup> menuGroups = new List<MenuModuleGroup>();
+                    for (int i = 0; i < menuItmes.Count; i++)
+                    {
+                        var m = menuItmes[i];
+                        MenuModuleGroup group = new MenuModuleGroup();
+                        group.MenuCode = m.MenuCode;
+                        group.MenuName = m.MenuName;
+                        for (int j = 0; j < authItems.Count; j++)
+                        {
+                            var au = authItems[j];
+                            if ((m.MenuAuth & au.AuthValue) == au.AuthValue)
+                            {
+                                group.Modules.Add(new MenuModule() { Name = au.AuthName, Value = au.AuthValue });
+                            }
+                        }
+                        menuGroups.Add(group);
+                    }
+                    return Ok(new ConsumptionResponse() { success = true, dynamicObj = menuGroups });
+                }
+                return Ok(new ConsumptionResponse() { success = true, });
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "");
+                return Ok(new ConsumptionResponse()
+                {
+                    success = false,
+                    message = "获取菜单模块列表错误"
+                });
             }
         }
     }

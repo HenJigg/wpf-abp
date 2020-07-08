@@ -26,8 +26,8 @@ namespace Consumption.EFCore.Migrations
                     b.Property<string>("AuthName")
                         .HasColumnType("text");
 
-                    b.Property<string>("AuthValue")
-                        .HasColumnType("text");
+                    b.Property<int>("AuthValue")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
