@@ -7,6 +7,7 @@ using Consumption.PC.View;
 using Consumption.PC.ViewCenter;
 using Consumption.Service;
 using Consumption.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,12 +23,15 @@ namespace Consumption.PC
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        public IServiceProvider ServiceProvider { get; private set; }
+
+        protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
             this.ConfigureServices();
-            var view = AutofacProvider.Get<IModuleDialog>("LoginCenter");
-            view.ShowDialog();
+
+            LoginCenter viewCenter = new LoginCenter();
+            await viewCenter.ShowDialog();
         }
 
         protected void ConfigureServices()
@@ -35,7 +39,6 @@ namespace Consumption.PC
             AutofacLocator locator = new AutofacLocator();
             ContainerBuilder builder = new ContainerBuilder();
             builder.RegisterType<ConsumptionService>().As<IConsumptionService>();
-            builder.RegisterType(typeof(LoginCenter)).Named("LoginCenter", typeof(IModuleDialog));
             builder.RegisterType(typeof(MainCenter)).Named("MainCenter", typeof(IModuleDialog));
             builder.RegisterType(typeof(SkinCenter)).Named("SkinCenter", typeof(IModule));
             builder.RegisterType(typeof(UserCenter)).Named("UserCenter", typeof(IModule));

@@ -15,6 +15,7 @@
 namespace Consumption.ViewModel
 {
     using Consumption.Core.Common;
+    using Consumption.Core.Interfaces;
     using Consumption.Core.IService;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
@@ -85,18 +86,18 @@ namespace Consumption.ViewModel
                     return;
                 }
                 UpdateDialog(true, "验证登陆中...");
-                var br = await service.LoginAsync(UserName, PassWord);
-                if (br == null || !br.success)
+                var r = await service.LoginAsync(UserName, PassWord);
+                if (r == null || !r.success)
                 {
-                    this.Report = br == null ? "远程服务器无法连接！" : br.message;
+                    this.Report = r == null ? "远程服务器无法连接！" : r.message;
                     return;
                 }
                 UpdateDialog(true, "加载首页...");
-                Messenger.Default.Send(true, "NavigationHome");
+                Messenger.Default.Send(true, "NavigationPage");
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex.Message);
             }
             finally
             {

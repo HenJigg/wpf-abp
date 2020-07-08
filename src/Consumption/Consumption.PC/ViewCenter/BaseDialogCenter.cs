@@ -39,8 +39,9 @@ namespace Consumption.PC.ViewCenter
         /// <summary>
         /// 绑定默认ViewModel
         /// </summary>
-        public virtual void BindDefaultViewModel()
+        public virtual async Task BindDefaultViewModel()
         {
+            await Task.Delay(1);
             View.DataContext = ViewModel;
         }
 
@@ -54,7 +55,7 @@ namespace Consumption.PC.ViewCenter
             {
                 this.SubscribeMessenger();
                 this.SubscribeEvent();
-                this.BindDefaultViewModel();
+                await this.BindDefaultViewModel();
             }
             var result = View.ShowDialog();
             return await Task.FromResult((bool)result);

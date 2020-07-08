@@ -24,7 +24,7 @@ namespace Consumption.Core.Interfaces
         /// <summary>
         /// 关联默认上下文
         /// </summary>
-        void BindDefaultViewModel();
+        Task BindDefaultViewModel();
 
         /// <summary>
         /// 关联数据上下文

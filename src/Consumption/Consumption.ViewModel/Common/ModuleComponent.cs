@@ -36,7 +36,6 @@ namespace Consumption.ViewModel.Common
             try
             {
                 List<ModuleAttribute> list = new List<ModuleAttribute>();
-
                 await Task.Run(() =>
                 {
                     Assembly asm = Assembly.GetEntryAssembly();
@@ -47,6 +46,7 @@ namespace Consumption.ViewModel.Common
                         if (attr != null)
                             list.Add(attr);
                     }
+                    GC.Collect();
                 });
                 return list;
             }

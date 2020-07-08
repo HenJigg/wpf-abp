@@ -19,6 +19,7 @@ namespace Consumption.Api.Controllers
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
     using Consumption.EFCore;
+    using Consumption.EFCore.Orm;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using System;
@@ -210,6 +211,42 @@ namespace Consumption.Api.Controllers
                 if (await work.SaveChangesAsync() > 0)
                     return Ok(new ConsumptionResponse() { success = true });
                 return Ok(new ConsumptionResponse() { success = false, message = $"Deleting post {id} failed when saving." });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new ConsumptionResponse() { success = false, message = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// 获取用户的权限
+        /// </summary>
+        /// <param name="account">账号名</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> Perm(string account)
+        {
+            try
+            {
+                var user = await work.GetRepository<User>().GetFirstOrDefaultAsync(predicate: x => x.Account.Equals(account));
+                if (user != null)
+                {
+                    var context = work.GetDbContext<ConsumptionContext>();
+                    var data = from a in context.GroupFuncs
+                               join b in context.GroupUsers on a.GroupCode equals b.GroupCode
+                               join c in context.Groups on a.GroupCode equals c.GroupCode
+                               join d in context.Menus on a.MenuCode equals d.MenuCode
+                               where b.Account.Equals(account)
+                               select new
+                               {
+                                   Name = d.MenuName,
+                                   Code = d.MenuCaption,
+                                   TypeName = d.MenuNameSpace,
+                                   Auth = a.Auth
+                               };
+                    return Ok(new ConsumptionResponse() { success = true, dynamicObj = data.ToList() });
+                }
+                return Ok(new ConsumptionResponse() { success = true });
             }
             catch (Exception ex)
             {

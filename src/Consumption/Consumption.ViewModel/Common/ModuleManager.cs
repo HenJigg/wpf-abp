@@ -26,37 +26,6 @@ namespace Consumption.ViewModel.Common
     /// </summary>
     public class ModuleManager : ViewModelBase
     {
-        public ModuleManager()
-        {
-            //ModuleGroups = new ObservableCollection<ModuleGroup>();
-            //moduleGroups.Add(new ModuleGroup()
-            //{
-            //    GroupName = "我的应用",
-            //    Modules = new ObservableCollection<Module>()
-            //     {
-            //         new Module(){ Name="仪表板   ",Code="Atom" },
-            //         new Module(){ Name="消费数据",Code="CurrencyUsd" },
-            //         new Module(){ Name="我的账单",Code="Counter" },
-            //         new Module(){ Name="我的账户" ,Code="CreditCard"},
-            //         new Module(){ Name="个性化   ",Code="Palette" },
-            //     }
-            //});
-            //moduleGroups.Add(new ModuleGroup()
-            //{
-            //    GroupName = "数据管理",
-            //    Modules = new ObservableCollection<Module>()
-            //     {
-            //         new Module(){ Name="账户资料",Code="Certificate" },
-            //         new Module(){ Name="基础数据" ,Code="SettingsBox"},
-            //         new Module(){ Name="消费报表" ,Code="ChartDonut"},
-            //         new Module(){ Name="消费提醒" ,Code="BellRingOutline"},
-            //         new Module(){ Name="计划管理" ,Code="SettingsBox"},
-            //         new Module(){ Name="系统设置" ,Code="Settings"},
-            //     }
-            //});
-
-        }
-
         private ObservableCollection<Module> modules;
         /// <summary>
         /// 已加载模块

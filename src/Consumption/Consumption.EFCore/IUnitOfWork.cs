@@ -5,6 +5,7 @@ namespace Consumption.EFCore
     using System;
     using System.Linq;
     using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
 
     /// <summary>
@@ -12,6 +13,7 @@ namespace Consumption.EFCore
     /// </summary>
     public interface IUnitOfWork : IDisposable
     {
+
         /// <summary>
         /// Changes the database name. This require the databases in the same machine. NOTE: This only work for MySQL right now.
         /// </summary>
@@ -28,6 +30,12 @@ namespace Consumption.EFCore
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <returns>An instance of type inherited from <see cref="IRepository{TEntity}"/> interface.</returns>
         IRepository<TEntity> GetRepository<TEntity>(bool hasCustomRepository = false) where TEntity : class;
+
+        /// <summary>
+        /// Gets the db context.
+        /// </summary>
+        /// <returns></returns>
+        TContext GetDbContext<TContext>() where TContext : DbContext;
 
         /// <summary>
         /// Saves all changes made in this context to the database.

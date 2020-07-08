@@ -46,4 +46,14 @@ namespace Consumption.Core.Request
 
         public UserParameters parameters { get; set; }
     }
+
+    /// <summary>
+    /// 用户权限请求
+    /// </summary>
+    public class UserPermRequest : BaseRequest
+    {
+        public override string route { get => ServerAddress + "api/User/Perm"; }
+
+        public string account { get; set; }
+    }
 }

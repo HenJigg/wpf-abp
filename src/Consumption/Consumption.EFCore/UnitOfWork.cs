@@ -70,6 +70,17 @@ namespace Consumption.EFCore
         }
 
         /// <summary>
+        /// Gets the db context.
+        /// </summary>
+        /// <returns></returns>
+        public TDbContext GetDbContext<TDbContext>() where TDbContext : DbContext
+        {
+            if (_context == null)
+                return null;
+            return _context as TDbContext;
+        }
+
+        /// <summary>
         /// Gets the specified repository for the <typeparamref name="TEntity"/>.
         /// </summary>
         /// <param name="hasCustomRepository"><c>True</c> if providing custom repositry</param>

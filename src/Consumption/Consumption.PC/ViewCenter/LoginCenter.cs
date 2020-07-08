@@ -30,16 +30,16 @@ namespace Consumption.PC.ViewCenter
     /// </summary>
     public class LoginCenter : BaseDialogCenter<LoginView, LoginViewModel>
     {
-        public override Task<bool> ShowDialog()
+        public override async Task<bool> ShowDialog()
         {
             if (View.DataContext == null)
             {
                 this.SubscribeMessenger();
                 this.SubscribeEvent();
-                this.BindDefaultViewModel();
+                await this.BindDefaultViewModel();
             }
             var result = View.ShowDialog();
-            return Task.FromResult((bool)result);
+            return await Task.FromResult((bool)result);
         }
 
         public override void SubscribeMessenger()
@@ -49,12 +49,13 @@ namespace Consumption.PC.ViewCenter
                 ViewModel.DialogIsOpen = arg.IsOpen;
                 ViewModel.DialogMsg = arg.Msg;
             });
-            Messenger.Default.Register<bool>(View, "NavigationHome", arg =>
-             {
-                 View.Close(); //Close LoginView
-                 var mainView = AutofacProvider.Get<IModuleDialog>("MainCenter"); //Get MainView Examples
-                 mainView.ShowDialog(); //Show MainView
-             });
+            Messenger.Default.Register<bool>(View, "NavigationPage", async arg =>
+              {
+                  View.Close();
+                  //Get MainView
+                  var mainView = AutofacProvider.Get<IModuleDialog>("MainCenter");
+                  await mainView.ShowDialog();
+              });
             Messenger.Default.Register<bool>(View, "Exit", arg =>
             {
                 View.Close();

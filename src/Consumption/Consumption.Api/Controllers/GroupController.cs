@@ -206,7 +206,7 @@ namespace Consumption.Api.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error(ex.Message);
+                Core.Common.Log.Error(ex.Message);
                 return Ok(new ConsumptionResponse() { success = false, message = "删除组数据失败" });
             }
         }

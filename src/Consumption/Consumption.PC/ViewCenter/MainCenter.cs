@@ -77,9 +77,8 @@ namespace Consumption.PC.ViewCenter
             });
         }
 
-        public override async void BindDefaultViewModel()
+        public override async Task BindDefaultViewModel()
         {
-            ViewModel = new MainViewModel();
             await ViewModel.InitDefaultView();
             View.page.Content = new HomeView();
             View.DataContext = ViewModel;
