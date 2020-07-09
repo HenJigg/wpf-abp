@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Consumption.Web.Data;
+using Consumption.Core.IService;
+using Consumption.Service;
+using Consumption.Core.Common;
 
 namespace Consumption.Web
 {
@@ -28,6 +31,9 @@ namespace Consumption.Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddAntDesign();
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

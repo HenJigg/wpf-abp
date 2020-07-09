@@ -62,8 +62,11 @@ namespace Consumption.ViewModel
         public async Task InitDefaultView()
         {
             //StyleConfig = UserManager.GetStyleConfig();
+           
+
             ModuleManager = new ModuleManager();
             await ModuleManager.LoadAssemblyModule();
+        
         }
     }
 }

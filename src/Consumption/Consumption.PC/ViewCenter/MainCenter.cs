@@ -84,6 +84,10 @@ namespace Consumption.PC.ViewCenter
             //});
         }
 
+        /// <summary>
+        /// 首页重写弹窗-
+        /// </summary>
+        /// <returns></returns>
         public override async Task<bool> ShowDialog()
         {
             await ViewModel.InitDefaultView();

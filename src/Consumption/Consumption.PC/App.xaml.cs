@@ -21,7 +21,6 @@ namespace Consumption.PC
     /// </summary>
     public partial class App : Application
     {
-        public IServiceProvider ServiceProvider { get; private set; }
         protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
