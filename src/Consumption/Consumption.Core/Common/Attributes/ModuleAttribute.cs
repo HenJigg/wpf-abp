@@ -14,7 +14,6 @@
 
 namespace Consumption.Core.Attributes
 {
-    using Autofac;
     using Consumption.Core.Enums;
     using System;
     using System.Collections.Generic;

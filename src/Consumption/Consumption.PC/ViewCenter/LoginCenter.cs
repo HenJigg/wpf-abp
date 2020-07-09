@@ -21,6 +21,7 @@ namespace Consumption.PC.ViewCenter
     using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
@@ -30,18 +31,6 @@ namespace Consumption.PC.ViewCenter
     /// </summary>
     public class LoginCenter : BaseDialogCenter<LoginView, LoginViewModel>
     {
-        public override async Task<bool> ShowDialog()
-        {
-            if (View.DataContext == null)
-            {
-                this.SubscribeMessenger();
-                this.SubscribeEvent();
-                await this.BindDefaultViewModel();
-            }
-            var result = View.ShowDialog();
-            return await Task.FromResult((bool)result);
-        }
-
         public override void SubscribeMessenger()
         {
             Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", arg =>
@@ -51,9 +40,8 @@ namespace Consumption.PC.ViewCenter
             });
             Messenger.Default.Register<bool>(View, "NavigationPage", async arg =>
               {
+                  MainCenter mainView = new MainCenter();
                   View.Close();
-                  //Get MainView
-                  var mainView = AutofacProvider.Get<IModuleDialog>("MainCenter");
                   await mainView.ShowDialog();
               });
             Messenger.Default.Register<bool>(View, "Exit", arg =>

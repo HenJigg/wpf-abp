@@ -46,7 +46,6 @@ namespace Consumption.ViewModel.Common
                         if (attr != null)
                             list.Add(attr);
                     }
-                    GC.Collect();
                 });
                 return list;
             }

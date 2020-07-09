@@ -19,9 +19,11 @@ namespace Consumption.PC.ViewCenter
     using Consumption.PC.View;
     using Consumption.ViewModel;
     using GalaSoft.MvvmLight.Messaging;
+    using Org.BouncyCastle.Asn1.X509.Qualified;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Reflection;
     using System.Runtime;
     using System.Text;
     using System.Threading.Tasks;
@@ -39,49 +41,54 @@ namespace Consumption.PC.ViewCenter
               {
                   ViewModel.DialogIsOpen = arg;
               });
-            Messenger.Default.Register<string>(View, "NavigationNewPage", async arg =>
+            Messenger.Default.Register<string>(View, "NavigationNewPage", async nameSpace =>
             {
-                var module = AutofacProvider.Get<IModule>(arg);
-                if (module != null)
+                try
                 {
-                    if (arg == View.page.Tag?.ToString())
-                        return;
                     ViewModel.DialogIsOpen = true;
-                    await Task.Delay(30);
-                    await module.BindDefaultModel();
-                    View.page.Tag = arg;
-                    View.page.Content = module.GetView();
+                    //临时方案,反射创建实例,缺陷:每次都需要进行反射...
+                    var ass = System.Reflection.Assembly.GetEntryAssembly();
+                    if (ass.CreateInstance(nameSpace) is IModule dialog)
+                    {
+                        if (nameSpace == View.page.Tag?.ToString()) return;
+                        await dialog.BindDefaultModel();
+                        View.page.Tag = nameSpace;
+                        View.page.Content = dialog.GetView();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex.Message);
+                }
+                finally
+                {
                     ViewModel.DialogIsOpen = false; //关闭等待窗口
                     GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
                     GC.Collect();
                 }
-                else
-                {
-                    //404?
-                }
             });
-            Messenger.Default.Register<string>(View, "UpdateBackground", arg =>
-            {
-                ViewModel.StyleConfig.Url = arg;
-                //保存用户配置...
-            });
-            Messenger.Default.Register<double>(View, "UpdateTrans", arg =>
-            {
-                ViewModel.StyleConfig.Trans = arg / 100;
-                //保存用户配置...
-            });
-            Messenger.Default.Register<double>(View, "UpdateGaussian", arg =>
-            {
-                ViewModel.StyleConfig.Radius = arg;
-                //保存用户配置...
-            });
+            //Messenger.Default.Register<string>(View, "UpdateBackground", arg =>
+            //{
+            //    ViewModel.StyleConfig.Url = arg;
+            //    //保存用户配置...
+            //});
+            //Messenger.Default.Register<double>(View, "UpdateTrans", arg =>
+            //{
+            //    ViewModel.StyleConfig.Trans = arg / 100;
+            //    //保存用户配置...
+            //});
+            //Messenger.Default.Register<double>(View, "UpdateGaussian", arg =>
+            //{
+            //    ViewModel.StyleConfig.Radius = arg;
+            //    //保存用户配置...
+            //});
         }
 
-        public override async Task BindDefaultViewModel()
+        public override async Task<bool> ShowDialog()
         {
             await ViewModel.InitDefaultView();
-            View.page.Content = new HomeView();
-            View.DataContext = ViewModel;
+            //View.page.Content = new HomeView();
+            return await base.ShowDialog();
         }
     }
 }

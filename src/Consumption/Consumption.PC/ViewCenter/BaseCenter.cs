@@ -14,7 +14,6 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Autofac.Core;
     using Consumption.Core.Entity;
     using Consumption.Core.Interfaces;
     using GalaSoft.MvvmLight;

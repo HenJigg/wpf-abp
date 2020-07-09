@@ -13,7 +13,7 @@
 
 namespace Consumption.Core.Common
 {
-    using Consumption.Core.Interfaces;
+    using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -21,11 +21,11 @@ namespace Consumption.Core.Common
     /// <summary>
     /// Autofac 服务提供者
     /// </summary>
-    public class AutofacProvider
+    public class NetCoreProvider
     {
-        public static IAutoFacLocator Instance { get; private set; }
+        public static ServiceProvider Instance { get; private set; }
 
-        public static void RegisterServiceLocator(IAutoFacLocator locator)
+        public static void RegisterServiceLocator(ServiceProvider locator)
         {
             if (Instance == null)
             {
@@ -36,13 +36,12 @@ namespace Consumption.Core.Common
         public static T Get<T>()
         {
             if (Instance == null) return default(T);
-            return Instance.Get<T>();
+            return Instance.GetRequiredService<T>();
         }
 
         public static T Get<T>(string typeName)
         {
-            if (Instance == null) return default(T);
-            return Instance.Get<T>(typeName);
+            return Instance.GetRequiredService<T>();
         }
     }
 }

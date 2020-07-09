@@ -35,7 +35,7 @@ namespace Consumption.ViewModel
         private readonly IConsumptionService service;
         public BasicViewModel()
         {
-            service = AutofacProvider.Get<IConsumptionService>();
+            service = NetCoreProvider.Get<IConsumptionService>();
         }
 
         public override async Task GetPageData(int pageIndex)

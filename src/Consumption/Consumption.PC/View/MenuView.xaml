@@ -23,9 +23,9 @@
                     <materialDesign:PackIcon  Kind="Add" Foreground="White" 
                                               Width="25" Height="25" VerticalAlignment="Center"/>
                     <TextBlock Margin="10 0 0 0" Text="导入菜单" FontSize="16" Foreground="White" VerticalAlignment="Center">
-                        <TextBlock.InputBindings>
+                        <!--<TextBlock.InputBindings>
                             <KeyBinding Key="Return" Command="{Binding ImportCommand}"/>
-                        </TextBlock.InputBindings>
+                        </TextBlock.InputBindings>-->
                     </TextBlock>
                 </StackPanel>
             </Button>

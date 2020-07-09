@@ -26,7 +26,12 @@ namespace Consumption.ViewModel
     using System.Threading.Tasks;
 
     /// <summary>
-    /// 数据视图基类-GUID
+    /// 基础数据基类
+    /// 
+    /// 用于:
+    ///   1. 实现基础的数据列表展示功能
+    ///   2. 实现基础的增删改查单页功能
+    ///   3. 实现基础页面的单页数据分页功能
     /// </summary>
     public class BaseDataViewModel<T> : ViewModelBase, IDataPager where T : class, new()
     {

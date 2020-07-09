@@ -10,81 +10,6 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
              xmlns:s="clr-namespace:System;assembly=System.Runtime"
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <DataTemplate x:Key="UserListTemplate">
-            <materialDesign:TransitioningContent OpeningEffectsOffset="{materialDesign:IndexedItemOffsetMultiplier 0:0:0.03}">
-                <materialDesign:TransitioningContent.OpeningEffects>
-                    <materialDesign:TransitionEffect Kind="SlideInFromRight" />
-                </materialDesign:TransitioningContent.OpeningEffects>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120"/>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="300"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Text="{Binding Account}" HorizontalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="{Binding UserName}" />
-                    <TextBlock Grid.Column="2" Text="{Binding Address}" />
-                    <TextBlock Grid.Column="3" Text="{Binding Tel}" />
-                    <TextBlock Grid.Column="4" Text="{Binding CreateTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}" />
-                    <TextBlock Grid.Column="5" Text="{Binding LastTime,StringFormat={}{0:yyyy-MM-dd hh:mm}}" />
-                    <StackPanel Grid.Column="6" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button  Margin="5 0 0 0"  Content="编辑"
-                                        Background="#28CBA3" BorderThickness="0" />
-                        <Button   Margin="10 0 0 0" Content="删除"
-                                        Background="#FF5370" BorderThickness="0"/>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:TransitioningContent>
-        </DataTemplate>
-
-        <DataTemplate x:Key="UserFormTemplate">
-            <materialDesign:TransitioningContent OpeningEffectsOffset="{materialDesign:IndexedItemOffsetMultiplier 0:0:0.01}">
-                <materialDesign:TransitioningContent.OpeningEffects>
-                    <materialDesign:TransitionEffect Kind="ExpandIn" />
-                </materialDesign:TransitioningContent.OpeningEffects>
-                <Border Background="#0A2540" Width="180" Height="150">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="1.5*"/>
-                        </Grid.RowDefinitions>
-
-                        <!--Test Image-->
-                        <Image  HorizontalAlignment="Left" Margin="10 10 0 0"
-                            Source="pack://application:,,,/Consumption.PC;Component/Images/test_user.png" 
-                            Width="50" Height="50">
-                            <Image.Clip>
-                                <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
-                            </Image.Clip>
-                        </Image>
-
-                        <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="10 0 0 0">
-                            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" >
-                                <TextBlock Text="账   套："/>
-                                <TextBlock Text="{Binding Account}" Margin="10 0 0 0"/>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
-                                <TextBlock Text="用户名："/>
-                                <TextBlock Text="{Binding UserName}" Margin="10 0 0 0"/>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
-                                <TextBlock Text="地   址："/>
-                                <TextBlock Text="{Binding Address}" Margin="10 0 0 0"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-            </materialDesign:TransitioningContent>
-          
-        </DataTemplate>
-    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -134,36 +59,54 @@
         </StackPanel>
 
         <Border Grid.RowSpan="4"  Background="Black" Opacity="0.1"/>
+        
+        <DataGrid Grid.Row="2" ItemsSource="{Binding GridModelList}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="150" Header="用户名">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center"  Text="{Binding UserName}" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-        <ListView x:Name="user" Grid.Row="2" ItemsSource="{Binding GridModelList}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                  Foreground="White" >
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+                <DataGridTemplateColumn Width="150" Header="地址">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center"  Text="{Binding Address}" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ContentControl Content="{Binding}">
-                        <ContentControl.Style>
-                            <Style TargetType="{x:Type ContentControl}">
-                                <Setter Property="ContentTemplate" Value="{StaticResource UserListTemplate}"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource 
-                                        AncestorType=ListView,Mode=FindAncestor},Path=DataContext.DisplayType,Mode=TwoWay}" Value="False">
-                                        <Setter Property="ContentTemplate" Value="{DynamicResource  UserFormTemplate}"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ContentControl.Style>
-                    </ContentControl>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <DataGridTemplateColumn Width="150" Header="电话">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center"  Text="{Binding Tel}" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
+                <DataGridTemplateColumn Header="操作" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+
+                                <Button  Content="编辑" Background="#28CBA3" BorderThickness="0"
+                                     CommandParameter="{Binding Id}" Command="{Binding DataContext.EditCommand, 
+                                    RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
+
+                                <Button Margin="10 0 0 0" Content="删除" Background="#FF5370" BorderThickness="0"
+                                                    CommandParameter="{Binding Id}"  
+                                             Command="{Binding DataContext.DelCommand,
+                                    RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        
         <template:DataPager Grid.Row="3" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

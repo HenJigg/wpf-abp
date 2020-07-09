@@ -32,7 +32,7 @@ namespace Consumption.ViewModel
         private readonly IConsumptionService service;
         public LoginViewModel()
         {
-            service = AutofacProvider.Get<IConsumptionService>();
+            service = NetCoreProvider.Get<IConsumptionService>();
             LoginCommand = new RelayCommand(Login);
             LogoutCommand = new RelayCommand(LogOut);
         }

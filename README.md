@@ -1,8 +1,7 @@
 # WPF 、Xamarin 、Balzor 、Asp.net Core WebApi
 
 ### 介绍
-本项目主要以C#为核心, 搭建一个多平台的应用示例, 该示例为日常使用的记账为基础而开发, 包含3个主要的项目
-
+本项目主要以C#为核心, 搭建一个多平台的应用示例, 该项目主要包含以下平台:
 1. WPF Core 构建的 DeskTop
 2. Xamarin 构建的 IOS 和 Adnroid 
 3. Blazor 构建的 WebUI
@@ -14,7 +13,7 @@
 #### UI框架
   Xamarin UI(社区版): [Syncfusion Community Edition for Xamarin](https://www.syncfusion.com/forums/xamarin.forms)
 
-  WPF UI:[MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+  WPF UI (.NET Core):[MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
 
   Blazor UI:[AntBlazor](https://github.com/ant-design-blazor/ant-design-blazor)
 
@@ -22,8 +21,6 @@
   log : [Nlog](https://github.com/NLog/NLog)
 
   api : [RestSharp](https://github.com/restsharp/RestSharp)
-
-  ioc : [Autofac](https://github.com/autofac/Autofac)
 
   mvvm : [mvvmlight](https://github.com/lbugnion/mvvmlight)
 

@@ -25,8 +25,9 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 用户管理控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.DataManagement, "用户管理", "UserCenter", "", "AccountBox")]
+    [Module(Core.Enums.ModuleType.DataManagement, "用户管理", "Consumption.PC.ViewCenter.UserCenter", "", "AccountBox")]
     public class UserCenter : BaseCenter<UserView, UserViewModel>
     {
+
     }
 }

@@ -28,20 +28,14 @@ namespace Consumption.PC.ViewCenter
         where TView : Window, new()
         where TViewModel : ViewModelBase, new()
     {
-        public BaseDialogCenter()
-        {
-            View = new TView();
-            ViewModel = new TViewModel();
-        }
-        public TView View = null;
-        public TViewModel ViewModel = null;
+        protected TView View = new TView();
+        protected TViewModel ViewModel = new TViewModel();
 
         /// <summary>
         /// 绑定默认ViewModel
         /// </summary>
-        public virtual async Task BindDefaultViewModel()
+        protected void BindDefaultViewModel()
         {
-            await Task.Delay(1);
             View.DataContext = ViewModel;
         }
 
@@ -51,12 +45,9 @@ namespace Consumption.PC.ViewCenter
         /// <returns></returns>
         public virtual async Task<bool> ShowDialog()
         {
-            if (View.DataContext == null)
-            {
-                this.SubscribeMessenger();
-                this.SubscribeEvent();
-                await this.BindDefaultViewModel();
-            }
+            this.SubscribeMessenger();
+            this.SubscribeEvent();
+            this.BindDefaultViewModel();
             var result = View.ShowDialog();
             return await Task.FromResult((bool)result);
         }

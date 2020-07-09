@@ -61,9 +61,7 @@ namespace Consumption.ViewModel
 
         public async Task InitDefaultView()
         {
-            //个性化配置
-            StyleConfig = UserManager.GetStyleConfig();
-            //加载模块
+            //StyleConfig = UserManager.GetStyleConfig();
             ModuleManager = new ModuleManager();
             await ModuleManager.LoadAssemblyModule();
         }

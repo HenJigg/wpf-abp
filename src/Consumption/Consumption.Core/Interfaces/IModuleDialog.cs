@@ -22,11 +22,6 @@ namespace Consumption.Core.Interfaces
     public interface IModuleDialog
     {
         /// <summary>
-        /// 关联默认上下文
-        /// </summary>
-        Task BindDefaultViewModel();
-
-        /// <summary>
         /// 关联数据上下文
         /// </summary>
         /// <param name="viewModel"></param>
