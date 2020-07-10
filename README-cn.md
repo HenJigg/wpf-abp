@@ -1,5 +1,7 @@
 # WPF 、Xamarin 、Balzor 、Asp.net Core WebApi
 
+中文 | [English](README-en.md)
+
 ### 介绍
 本项目主要以C#为核心, 搭建一个多平台的应用示例, 该项目主要包含以下平台:
 1. WPF Core 构建的 DeskTop
