@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style TargetType="{x:Type DataGrid}">
-        <Setter Property="Foreground" Value="White"/>
         <Setter Property="CanUserAddRows" Value="False"/>
         <Setter Property="SelectionUnit" Value="FullRow"/>
         <Setter Property="HeadersVisibility" Value="Column"/>
@@ -31,7 +30,6 @@
     </Style>
 
     <Style TargetType="{x:Type DataGridColumnHeader}">
-        <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Opacity" Value="0.5"/>
         <Setter Property="Height" Value="40"/>

@@ -27,28 +27,11 @@ namespace Consumption.ViewModel
     {
         public MainViewModel()
         {
-            OpenPageCommand = new RelayCommand<string>(arg => { Messenger.Default.Send(arg, "NavigationNewPage"); });
+            OpenPageCommand = new RelayCommand<Module>(arg => { Messenger.Default.Send(arg, "NavigationNewPage"); });
         }
 
-        public RelayCommand<string> OpenPageCommand { get; private set; }
+        public RelayCommand<Module> OpenPageCommand { get; private set; }
         private ModuleManager moduleManager;
-        private StyleConfig styleConfig;
-        private Module currentModule;
-
-        /// <summary>
-        /// 个性化设置
-        /// </summary>
-        public StyleConfig StyleConfig
-        {
-            get { return styleConfig; }
-            set { styleConfig = value; RaisePropertyChanged(); }
-        }
-
-        public Module CurrentModule
-        {
-            get { return currentModule; }
-            set { currentModule = value; RaisePropertyChanged(); }
-        }
 
         /// <summary>
         /// 模块管理器
@@ -61,12 +44,8 @@ namespace Consumption.ViewModel
 
         public async Task InitDefaultView()
         {
-            //StyleConfig = UserManager.GetStyleConfig();
-           
-
             ModuleManager = new ModuleManager();
             await ModuleManager.LoadAssemblyModule();
-        
         }
     }
 }

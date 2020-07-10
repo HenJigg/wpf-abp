@@ -29,11 +29,13 @@ namespace Consumption.PC.ViewCenter
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media.Imaging;
+    using Consumption.ViewModel.Common;
+    using Module = ViewModel.Common.Module;
 
     /// <summary>
     /// 首页控制类
     /// </summary>
-    public class MainCenter : BaseDialogCenter<MainWindow, MainViewModel>
+    public class MainCenter : BaseDialogCenter<MaterialDesignMainWindow, MainViewModel>
     {
         public override void SubscribeMessenger()
         {
@@ -41,18 +43,20 @@ namespace Consumption.PC.ViewCenter
               {
                   ViewModel.DialogIsOpen = arg;
               });
-            Messenger.Default.Register<string>(View, "NavigationNewPage", async nameSpace =>
+            Messenger.Default.Register<Module>(View, "NavigationNewPage", async m =>
             {
                 try
                 {
                     ViewModel.DialogIsOpen = true;
                     //临时方案,反射创建实例,缺陷:每次都需要进行反射...
                     var ass = System.Reflection.Assembly.GetEntryAssembly();
-                    if (ass.CreateInstance(nameSpace) is IModule dialog)
+                    if (ass.CreateInstance(m.TypeName) is IModule dialog)
                     {
-                        if (nameSpace == View.page.Tag?.ToString()) return;
+                        if (m.TypeName == View.page.Tag?.ToString()) return;
                         await dialog.BindDefaultModel();
-                        View.page.Tag = nameSpace;
+                        //这里展示直接绑定
+                        View.m_title.Text = m.Name;
+                        View.page.Tag = m.TypeName;
                         View.page.Content = dialog.GetView();
                     }
                 }

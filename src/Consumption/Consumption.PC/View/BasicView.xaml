@@ -8,30 +8,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="基础数据" FontSize="22" Foreground="White" Padding="20"/>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0" Panel.ZIndex="1">
-
-            <Button Style="{StaticResource MaterialDesignToolButton}"  ToolTip="添加数据">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon  Kind="Add" Foreground="White" 
-                                              Width="25" Height="25" VerticalAlignment="Center"/>
-                    <TextBlock Margin="10 0 0 0" Text="添加数据" FontSize="16" Foreground="White" VerticalAlignment="Center">
-                        <TextBlock.InputBindings>
-                            <KeyBinding Key="Return" Command="{Binding AddCommand}"/>
-                        </TextBlock.InputBindings>
-                    </TextBlock>
-                </StackPanel>
-            </Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1"  Orientation="Horizontal" Panel.ZIndex="1" >
+        <StackPanel Orientation="Horizontal" Panel.ZIndex="1" >
             <materialDesign:PackIcon  Kind="Magnify" Margin="10 0 0 0" Opacity=".56" 
                                       Width="25" Height="25" VerticalAlignment="Center" Foreground="White"/>
             <TextBox
@@ -45,10 +28,8 @@
                 </TextBox.InputBindings>
             </TextBox>
         </StackPanel>
-
-        <Border Grid.RowSpan="4"  Background="Black" Opacity="0.1"/>
-
-        <ListView x:Name="user" Grid.Row="2" ItemsSource="{Binding GridModelList}"
+        
+        <ListView x:Name="user" Grid.Row="1" ItemsSource="{Binding GridModelList}"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ScrollViewer.VerticalScrollBarVisibility="Hidden"
                   Foreground="White" >
@@ -81,6 +62,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <template:DataPager Grid.Row="3" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

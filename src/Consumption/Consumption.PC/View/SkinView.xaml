@@ -7,67 +7,33 @@
              mc:Ignorable="d" >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
             <RowDefinition Height="130"/>
             <RowDefinition Height="130"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Background="Black" Opacity="0.1" Grid.RowSpan="4" />
-        <StackPanel Orientation="Horizontal" Margin="30">
-            <TextBlock Text="个性化设置" FontSize="32" Foreground="White" VerticalAlignment="Center"/>
-            <Button Width="80" Background="Transparent" BorderThickness="0" 
-                Command="{Binding SaveCommand}"
+        <StackPanel Orientation="Horizontal" Margin="30 0 0 0">
+            <TextBlock Text="个性化设置" FontSize="32"  VerticalAlignment="Center"/>
+            <!--<Button Width="80" Background="Transparent" BorderThickness="0" 
+                Command="{Binding SaveCommand}" 
                 Height="60" HorizontalAlignment="Left">
                 <materialDesign:PackIcon Kind="ContentSave" Width="50" Height="50" />
-            </Button>
+            </Button>-->
         </StackPanel>
-        
-        <StackPanel Grid.Row="1" Margin="30 0 0 0">
-            <TextBlock Text="透明度" Foreground="White" FontSize="22"/>
+
+        <StackPanel  Grid.Row="1" Margin="30 0 0 0">
+            <TextBlock Text="透明度" FontSize="22"/>
             <Slider Name="sld_trans" Minimum="0" Maximum="100" HorizontalAlignment="Left" Height="60"
                   Value="{Binding StyleConfig.Trans}" ValueChanged="sld_trans_ValueChanged"
             Style="{StaticResource MaterialDesignDiscreteSlider}" 
             ToolTip="MaterialDesignDiscreteSlider"   Width="300" />
         </StackPanel>
+        
         <StackPanel Grid.Row="2"  Margin="30 0 0 0">
-            <TextBlock Text="高斯效果" Foreground="White" FontSize="22"/>
+            <TextBlock Text="高斯效果"  FontSize="22"/>
             <Slider Name="sld_gaussian"  Minimum="0" Maximum="100" HorizontalAlignment="Left" Height="60"
             Style="{StaticResource MaterialDesignDiscreteSlider}"  ValueChanged="sld_gaussian_ValueChanged"
             ToolTip="MaterialDesignDiscreteSlider"  Value="{Binding StyleConfig.Radius}"  Width="300" />
         </StackPanel>
-
-        <Grid Grid.Row="3" Margin="30 0 0 0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Text="选择图片" Foreground="White" FontSize="22"/>
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
-                <ItemsControl Name="Ic" ItemsSource="{Binding Skins}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Button Margin="10" Width="100" Height="75" BorderThickness="0"
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=Grid,Mode=FindAncestor},Path=
-                               DataContext.ApplyCommand}" CommandParameter="{Binding Name}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="{Binding Image}"  Stretch="Fill"/>
-                                </Button.Background>
-                            </Button>
-                            <!--<materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn,Duration=0:0:1.5}">
-                              
-                            </materialDesign:TransitioningContent>-->
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </ScrollViewer>
-
-        </Grid>
 
     </Grid>
 

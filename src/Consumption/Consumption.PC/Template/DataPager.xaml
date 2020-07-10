@@ -11,15 +11,15 @@
                                  Margin="{TemplateBinding Margin}"
                                  Width="{TemplateBinding Width}"
                             Orientation="Horizontal" >
-                        <TextBlock Text="共 " Margin="10 0 0 0"  Foreground="White"  FontSize="18" VerticalAlignment="Center" />
+                        <TextBlock Text="共 " Margin="10 0 0 0"   FontSize="18" VerticalAlignment="Center" />
                         <TextBlock Text="{Binding TotalCount}" Foreground="#5CACEE" FontSize="18" Margin="4,0" VerticalAlignment="Center"  />
-                        <TextBlock  Text=" 条，每页 "  Foreground="White"  FontSize="18" VerticalAlignment="Center"  />
+                        <TextBlock  Text=" 条，每页 "    FontSize="18" VerticalAlignment="Center"  />
                         <TextBlock Text="{Binding PageSize}" Foreground="#5CACEE" FontSize="18" Margin="4,0" VerticalAlignment="Center"  />
-                        <TextBlock Text=" 条，当前 " Foreground="White"   FontSize="18" VerticalAlignment="Center"  />
+                        <TextBlock Text=" 条，当前 "   FontSize="18" VerticalAlignment="Center"  />
                         <TextBlock Text="{Binding PageIndex}" Foreground="#5CACEE"  FontSize="18"  Margin="4,0,2,0" VerticalAlignment="Center"  />
-                        <TextBlock Text=" / "   Foreground="White"  FontSize="18" VerticalAlignment="Center"  />
+                        <TextBlock Text=" / "     FontSize="18" VerticalAlignment="Center"  />
                         <TextBlock Text="{Binding PageCount}" Foreground="#5CACEE"  FontSize="18"  Margin="4,0,2,0" VerticalAlignment="Center"  />
-                        <TextBlock Text="页 "  Foreground="White"   FontSize="18" VerticalAlignment="Center" Margin="2,0,0,0"  />
+                        <TextBlock Text="页 "    FontSize="18" VerticalAlignment="Center" Margin="2,0,0,0"  />
 
                         <Button Command="{Binding GoHomePageCommand}" Width="60" Height="40" Background="Transparent" BorderThickness="0">
                             <materialDesign:PackIcon Kind="ArrowCollapseLeft" Width="20" Height="20"   Foreground="#5CACEE"  ToolTip="首页"/>

@@ -38,13 +38,11 @@ namespace Consumption.ViewModel
         public BaseDataViewModel()
         {
             AddCommand = new RelayCommand(Add);
-            EditCommand = new RelayCommand<T>(t => Edit(t));
-            DelCommand = new RelayCommand<T>(t => Del(t));
+            EditCommand = new RelayCommand(Edit);
+            DelCommand = new RelayCommand(Del);
             QueryCommand = new RelayCommand(Query);
-            SwitchModeCommand = new RelayCommand<bool>(arg =>
-              {
-                  DisplayType = arg;
-              });
+            SwitchModeCommand = new RelayCommand<bool>(arg => { DisplayType = arg; });
+            InitToolBarCommandList();
         }
 
         private bool displayType = true;
@@ -81,8 +79,8 @@ namespace Consumption.ViewModel
         }
 
         public RelayCommand AddCommand { get; private set; }
-        public RelayCommand<T> EditCommand { get; private set; }
-        public RelayCommand<T> DelCommand { get; private set; }
+        public RelayCommand EditCommand { get; private set; }
+        public RelayCommand DelCommand { get; private set; }
         public RelayCommand QueryCommand { get; private set; }
 
         #region IDataOperation
@@ -95,12 +93,12 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 编辑
         /// </summary>
-        public virtual void Edit<TModel>(TModel model) { }
+        public virtual void Edit() { }
 
         /// <summary>
         /// 删除
         /// </summary>
-        public virtual void Del<TModel>(TModel model) { }
+        public virtual void Del() { }
 
         /// <summary>
         /// 查询
@@ -188,9 +186,9 @@ namespace Consumption.ViewModel
         /// 获取数据
         /// </summary>
         /// <param name="pageIndex"></param>
-        public virtual Task GetPageData(int pageIndex)
+        public virtual async Task GetPageData(int pageIndex)
         {
-            return default;
+            await Task.FromResult(true);
         }
 
         /// <summary>
@@ -200,6 +198,27 @@ namespace Consumption.ViewModel
         {
             PageCount = Convert.ToInt32(Math.Ceiling((double)TotalCount / (double)PageSize));
         }
+        #endregion
+
+        #region ToolBar
+        private ObservableCollection<ButtonCommand> toolBarCommandList;
+        public ObservableCollection<ButtonCommand> ToolBarCommandList
+        {
+            get { return toolBarCommandList; }
+            set { toolBarCommandList = value; RaisePropertyChanged(); }
+        }
+
+        /// <summary>
+        /// 初始化界面默认按钮
+        /// </summary>
+        public virtual void InitToolBarCommandList()
+        {
+            ToolBarCommandList = new ObservableCollection<ButtonCommand>();
+            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "新增", Command = AddCommand });
+            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "编辑", Command = EditCommand });
+            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "删除", Command = DelCommand });
+        }
+
         #endregion
     }
 }

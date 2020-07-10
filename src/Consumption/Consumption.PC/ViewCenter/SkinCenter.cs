@@ -33,10 +33,6 @@ namespace Consumption.PC.ViewCenter
         {
             ViewModel.StyleConfig = UserManager.GetStyleConfig();
             View.DataContext = ViewModel;
-            View.Ic.DataContext = new
-            {
-                Skins = await Common.ImageHelper.GetPrewView()
-            };
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿/*
 *
-* 文件名    ：GroupViewModel                             
-* 程序说明  : 用户组
-* 更新时间  : 2020-06-03 20：17
+* 文件名    ：ButtonCommand                             
+* 程序说明  : 动态按钮命令
+* 更新时间  : 2020-07-10 15：03
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -13,18 +13,20 @@
 */
 
 
-namespace Consumption.ViewModel
+namespace Consumption.ViewModel.Common
 {
-    using Consumption.Core.Entity;
+    using GalaSoft.MvvmLight.Command;
     using System;
     using System.Collections.Generic;
     using System.Text;
 
     /// <summary>
-    /// 用户组
+    /// 按钮命令
     /// </summary>
-    public class GroupViewModel : BaseDataViewModel<Group>
+    public class ButtonCommand
     {
+        public string CommandName { get; set; }
 
+        public RelayCommand Command { get; set; }
     }
 }

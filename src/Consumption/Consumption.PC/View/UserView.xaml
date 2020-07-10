@@ -12,45 +12,18 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="用户管理" FontSize="22" Foreground="White" Padding="20"/>
-
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0" Panel.ZIndex="1">
-
-            <template:SwitchModeBar/>
-
-            <Button Style="{StaticResource MaterialDesignToolButton}" 
-                    ToolTip="导出文件"
-                    HorizontalAlignment="Right" Margin="0 0 15 0">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon  Kind="MicrosoftExcel" Foreground="White" 
-                                              Width="25" Height="25" VerticalAlignment="Center"/>
-                    <TextBlock Margin="10 0 0 0" Text="导出文件" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-
-            <Button Style="{StaticResource MaterialDesignToolButton}"  ToolTip="新增用户">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon  Kind="Add" Foreground="White" 
-                                              Width="25" Height="25" VerticalAlignment="Center"/>
-                    <TextBlock Margin="10 0 0 0" Text="新增用户" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1"  Orientation="Horizontal" Panel.ZIndex="1" >
-            <materialDesign:PackIcon  Kind="Magnify" Margin="10 0 0 0" Opacity=".56" 
-                                      Width="25" Height="25" VerticalAlignment="Center" Foreground="White"/>
-            <TextBox
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <materialDesign:PackIcon  Kind="Magnify" Margin="15 0 0 0" Opacity=".56" 
+                                      Width="25" Height="25" VerticalAlignment="Center" />
+            <TextBox Margin="5 0 0 0"
                      Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      materialDesign:HintAssist.Hint="请输入检索条件"  
-                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  
-                     Foreground="White" 
+                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
                      MinWidth="200" VerticalAlignment="Center" FontSize="18">
                 <TextBox.InputBindings>
                     <KeyBinding Key="Return" Command="{Binding QueryCommand}"/>
@@ -58,9 +31,7 @@
             </TextBox>
         </StackPanel>
 
-        <Border Grid.RowSpan="4"  Background="Black" Opacity="0.1"/>
-        
-        <DataGrid Grid.Row="2" ItemsSource="{Binding GridModelList}">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding GridModelList}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="150" Header="用户名">
                     <DataGridTemplateColumn.CellTemplate>
@@ -107,6 +78,6 @@
             </DataGrid.Columns>
         </DataGrid>
         
-        <template:DataPager Grid.Row="3" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
     </Grid>
 </UserControl>
