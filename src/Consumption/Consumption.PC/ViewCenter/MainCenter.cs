@@ -31,6 +31,7 @@ namespace Consumption.PC.ViewCenter
     using System.Windows.Media.Imaging;
     using Consumption.ViewModel.Common;
     using Module = ViewModel.Common.Module;
+    using Consumption.PC.Common;
 
     /// <summary>
     /// 首页控制类
@@ -39,6 +40,21 @@ namespace Consumption.PC.ViewCenter
     {
         public override void SubscribeMessenger()
         {
+            //执行菜单模块动画
+            Messenger.Default.Register<string>(View, "ExpandMenu", arg =>
+            {
+                if (View.grdLeftMenu.Width < 200)
+                    AnimationHelper
+                    .CreateWidthChangedAnimation(View.grdLeftMenu, 60, 200, new TimeSpan(0, 0, 0, 0, 250));
+                else
+                    AnimationHelper
+                    .CreateWidthChangedAnimation(View.grdLeftMenu, 200, 60, new TimeSpan(0, 0, 0, 0, 250));
+            });
+            //执行返回首页
+            Messenger.Default.Register<string>(View, "GoHomePage", arg =>
+            {
+                GoHomeView();
+            });
             Messenger.Default.Register<bool>(View, "DisplayView", arg =>
               {
                   ViewModel.DialogIsOpen = arg;
@@ -95,8 +111,17 @@ namespace Consumption.PC.ViewCenter
         public override async Task<bool> ShowDialog()
         {
             await ViewModel.InitDefaultView();
-            //View.page.Content = new HomeView();
+            GoHomeView();
             return await base.ShowDialog();
+        }
+
+        /// <summary>
+        /// 临时固定,后期修改动态绑定 2020-07-10
+        /// </summary>
+        private void GoHomeView()
+        {
+            View.m_title.Text = "首页";
+            View.page.Content = new HomeView();
         }
     }
 }

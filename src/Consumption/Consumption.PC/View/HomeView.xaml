@@ -7,307 +7,235 @@
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:lv="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" >
-    <Grid>
+    <Grid Margin="10 0 10 0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
             <RowDefinition />
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2.5*"/>
         </Grid.RowDefinitions>
 
-        <!--标题及统计栏目-->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.6*"/>
-                <ColumnDefinition />
-                <ColumnDefinition Width="1.5*"/>
-            </Grid.ColumnDefinitions>
-
-            <Border  Background="Black" Opacity="0.1" Margin="10 10 10 0" CornerRadius="5"/>
-            <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" >
-                <TextBlock Text="消费管理后台" FontSize="26" Foreground="White"/>
-                <TextBlock Text="C#多平台项目应用" Foreground="White" FontSize="22"/>
-            </StackPanel>
-
-            <Border Grid.Column="1" Background="Black" Opacity="0.1" Margin="10 10 10 0" CornerRadius="5"/>
-            <UniformGrid Columns="2" Grid.Column="1" VerticalAlignment="Center">
-
-                <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text="本月累计消费" Foreground="White" FontSize="26"/>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="$23,799.9" Foreground="White" FontSize="24"/>
-                        <TextBlock Text="&#xe63e;" Foreground="#00FF00" FontSize="22" VerticalAlignment="Center" FontFamily="/Fonts/#iconfont"/>
-                    </StackPanel>
-                </StackPanel>
-
-                <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text="上月累计消费" Foreground="White" FontSize="26"/>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="$12,267.3" Foreground="White" FontSize="24"/>
-                        <TextBlock Text="&#xe632;" Foreground="OrangeRed" FontSize="22" VerticalAlignment="Center" FontFamily="/Fonts/#iconfont"/>
-                    </StackPanel>
-                </StackPanel>
-
-            </UniformGrid>
-
-            <Border Grid.Column="2" Background="Black" Opacity="0.1" Margin="10 10 10 0" CornerRadius="5"/>
-            <UniformGrid Columns="5" Grid.Column="2">
-                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="今天" />
-                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本周" />
-                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本月" />
-                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本季度" />
-                <RadioButton Width="100" Height="40" HorizontalContentAlignment="Center"  HorizontalAlignment="Center"  Foreground="White"  FontSize="15" Content="本年度" />
-            </UniformGrid>
-
-        </Grid>
-
         <!--图表区域-->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <Border Background="Black" Opacity="0.1" Margin="10" CornerRadius="5"/>
-            <Grid Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="1.2*"/>
-                </Grid.ColumnDefinitions>
-
+        <UniformGrid Columns="4">
+            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="30 0 0 0">
-                        <TextBlock Text="日常支出" Foreground="White" FontSize="26" />
-                        <TextBlock Text="DailyExpenses" VerticalAlignment="Bottom" FontSize="15" Foreground="White"/>
-                        <TextBlock  Text="$1,797.33" Foreground="White"   />
+
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20 10 0 0">
+                        <materialDesign:Card Background="#00BEA9">
+                            <materialDesign:PackIcon Kind="Database" Foreground="White" Width="45" Height="45" Margin="5" />
+                        </materialDesign:Card>
+                        <StackPanel Margin="20 0 0 0">
+                            <TextBlock Text="当月支出" FontSize="14" Foreground="#98A6AD"/>
+                            <TextBlock Text="￥1799" FontSize="30" Foreground="#34395E" FontWeight="Bold"/>
+                        </StackPanel>
                     </StackPanel>
 
-                    <TextBlock Text="&#xe799;" FontSize="70" Foreground="White" VerticalAlignment="Bottom" Margin="30 0 0 0" FontFamily="/Fonts/#iconfont"/>
-
+                    <Border Grid.Row="1" Background="#F9F9F9" Margin="20" CornerRadius="3">
+                        <TextBlock Margin="5 0 0 0" Text="2020/07/10:￥1799 当月消费已超出预算!" Foreground="#6C757D" FontSize="14" FontFamily="黑体"/>
+                    </Border>
                 </Grid>
+            </materialDesign:Card>
 
-                <materialDesign:Card Background="Transparent" Grid.Column="1" Padding="10">
-                    <lv:PieChart  Series="{Binding SeriesCollection}"
-                                  LegendLocation="Bottom" Foreground="White" InnerRadius="40" >
-                        <lv:PieChart.ChartLegend>
-                            <lv:DefaultLegend BulletSize="10"></lv:DefaultLegend>
-                        </lv:PieChart.ChartLegend>
-                        <lv:PieChart.DataTooltip>
-                            <lv:DefaultTooltip BulletSize="10"></lv:DefaultTooltip>
-                        </lv:PieChart.DataTooltip>
-                    </lv:PieChart>
-                </materialDesign:Card>
-            </Grid>
-
-            <Border Grid.Column="1" Background="Black" Opacity="0.1" Margin="10" CornerRadius="5"/>
-            <Grid Grid.Column="1" Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="1.2*"/>
-                </Grid.ColumnDefinitions>
-
+            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="30 0 0 0">
-                        <TextBlock Text="信用生活" Foreground="White" FontSize="26" />
-                        <TextBlock Text="CreditLife" VerticalAlignment="Bottom" FontSize="15" Foreground="White"/>
-                        <TextBlock Grid.Row="1" Text="$3,797.33" Foreground="White"   />
+
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20 10 0 0">
+                        <materialDesign:Card Background="#FF9100">
+                            <materialDesign:PackIcon Kind="CashUsd" Foreground="White" Width="45" Height="45" Margin="5" />
+                        </materialDesign:Card>
+                        <StackPanel Margin="20 0 0 0">
+                            <TextBlock Text="我的钱包" FontSize="14" Foreground="#98A6AD"/>
+                            <TextBlock Text="$176725" FontSize="30" Foreground="#34395E" FontWeight="Bold"/>
+                        </StackPanel>
                     </StackPanel>
 
-                    <TextBlock Text="&#xe62e;" FontSize="70" VerticalAlignment="Bottom" Margin="30 0 0 0" Foreground="White" FontFamily="/Fonts/#iconfont"/>
+                    <Border Grid.Row="1" Background="#F9F9F9" Margin="20" CornerRadius="3">
+                        <TextBlock Margin="5 0 0 0" Text="当年累计金额 ￥8729" Foreground="#6C757D" FontSize="14" FontFamily="黑体"/>
+                    </Border>
                 </Grid>
+            </materialDesign:Card>
 
-                <materialDesign:Card Background="Transparent" Grid.Column="1" Padding="10">
-                    <lv:PieChart  Series="{Binding SeriesCollection1}"
-                                  LegendLocation="Bottom" Foreground="White" InnerRadius="40" >
-                        <lv:PieChart.ChartLegend>
-                            <lv:DefaultLegend BulletSize="10"></lv:DefaultLegend>
-                        </lv:PieChart.ChartLegend>
-                        <lv:PieChart.DataTooltip>
-                            <lv:DefaultTooltip BulletSize="10"></lv:DefaultTooltip>
-                        </lv:PieChart.DataTooltip>
-                    </lv:PieChart>
-                </materialDesign:Card>
-            </Grid>
-
-            <Border Grid.Column="2" Background="Black" Opacity="0.1" Margin="10" CornerRadius="5"/>
-            <Grid Grid.Column="2" Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="1.2*"/>
-                </Grid.ColumnDefinitions>
-
+            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="30 0 0 0">
-                        <TextBlock Text="其它支出" Foreground="White" FontSize="26" />
-                        <TextBlock Text="OtherExpenses" VerticalAlignment="Bottom" FontSize="15" Foreground="White"/>
-                        <TextBlock Grid.Row="2" Text="$6,797.33" Foreground="White"   />
+
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20 10 0 0">
+                        <materialDesign:Card Background="#673AB7">
+                            <materialDesign:PackIcon Kind="VectorSquare" Foreground="White" Width="45" Height="45" Margin="5" />
+                        </materialDesign:Card>
+                        <StackPanel Margin="20 0 0 0">
+                            <TextBlock Text="待处理账单" FontSize="14" Foreground="#98A6AD"/>
+                            <TextBlock Text="2/5" FontSize="30" Foreground="#34395E" FontWeight="Bold"/>
+                        </StackPanel>
                     </StackPanel>
 
-                    <TextBlock Text="&#xe678;" FontSize="70" Margin="30 0 0 0" VerticalAlignment="Bottom" Foreground="White"  FontFamily="/Fonts/#iconfont"/>
+                    <Border Grid.Row="1" Background="#F9F9F9" Margin="20" CornerRadius="3">
+                        <TextBlock Margin="5 0 0 0" Text="3个待处理信用消费" Foreground="#6C757D" FontSize="14" FontFamily="黑体"/>
+                    </Border>
                 </Grid>
+            </materialDesign:Card>
 
-                <materialDesign:Card Background="Transparent" Grid.Column="1" Padding="10">
-                    <lv:PieChart  Series="{Binding SeriesCollection2}"
-                                  LegendLocation="Bottom" Foreground="White" InnerRadius="40" >
-                        <lv:PieChart.ChartLegend>
-                            <lv:DefaultLegend BulletSize="10"></lv:DefaultLegend>
-                        </lv:PieChart.ChartLegend>
-                        <lv:PieChart.DataTooltip>
-                            <lv:DefaultTooltip BulletSize="10"></lv:DefaultTooltip>
-                        </lv:PieChart.DataTooltip>
-                    </lv:PieChart>
-                </materialDesign:Card>
-            </Grid>
+            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-        </Grid>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20 10 0 0">
+                        <materialDesign:Card Background="#2196F3">
+                            <materialDesign:PackIcon Kind="Emoticon" Foreground="White" Width="45" Height="45" Margin="5" />
+                        </materialDesign:Card>
+                        <StackPanel Margin="20 0 0 0">
+                            <TextBlock Text="愿望清单" FontSize="14" Foreground="#98A6AD"/>
+                            <TextBlock Text="0/5" FontSize="30" Foreground="#34395E" FontWeight="Bold"/>
+                        </StackPanel>
+                    </StackPanel>
 
+                    <Border Grid.Row="1" Background="#F9F9F9" Margin="20" CornerRadius="3">
+                        <TextBlock Margin="5 0 0 0" Text="5个愿望清单等待处理" Foreground="#6C757D" FontSize="14" FontFamily="黑体"/>
+                    </Border>
+                </Grid>
+            </materialDesign:Card>
+        </UniformGrid>
 
-        <Grid Grid.Row="2" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
+        <UniformGrid Grid.Row="1" Columns="2">
+            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-            <Border  Background="Black" Opacity="0.1" Margin="10" CornerRadius="5"/>
-            <Grid Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                    <TextBlock Text="消费记录" Foreground="#3F51B5"  FontSize="22" Margin="20 20 0 0"/>
+                    <TextBlock Text="&#xe6a2;" HorizontalAlignment="Right"  FontSize="22" Margin="0 0 20 0"
+                           VerticalAlignment="Center" Foreground="#3F51B5" FontFamily="/Fonts/#iconfont"/>
 
-                <TextBlock Text="消费记录" Foreground="White" FontSize="26" Margin="20 20 0 0"/>
-                <TextBlock Text="&#xe6a2;" HorizontalAlignment="Right" Foreground="White" FontSize="26" Margin="0 0 20 0"
-                           VerticalAlignment="Center" FontFamily="/Fonts/#iconfont"/>
-                
-                <DataGrid Margin="10" Grid.Row="1" x:Name="gridBill" ItemsSource="{Binding Bills}"
+                    <DataGrid Margin="10" Grid.Row="1" x:Name="gridBill" ItemsSource="{Binding Bills}"
                           AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent"
                           VerticalScrollBarVisibility="Hidden"
-                                      HorizontalGridLinesBrush="Transparent" Foreground="White"
+                                      HorizontalGridLinesBrush="Transparent" 
                                       EnableRowVirtualization="false" EnableColumnVirtualization="false">
-                    <DataGrid.ColumnHeaderStyle>
-                        <Style TargetType="{x:Type DataGridColumnHeader}">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="FontSize" Value="15"/>
-                            <Setter Property="Height" Value="30"/>
-                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        </Style>
-                    </DataGrid.ColumnHeaderStyle>
-                    <DataGrid.RowStyle>
-                        <Style TargetType="{x:Type DataGridRow}">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#19222B" />
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="False">
-                                    <Setter Property="Background" Value="Transparent" />
-                                </Trigger>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="#19222B" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.RowStyle>
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn Width="*" Header="内容"  >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"   
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="FontSize" Value="15"/>
+                                <Setter Property="Height" Value="30"/>
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#19222B" />
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter Property="Background" Value="Transparent" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#19222B" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="*" Header="内容"  >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"   
                                                    Text="{Binding Name}" TextWrapping="Wrap"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="*" Header="消费时间" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"   
+                            <DataGridTemplateColumn Width="*" Header="消费时间" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"   
                                                    Text="{Binding CreateDate}" TextWrapping="Wrap"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="*" Header="金额" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"   
+                            <DataGridTemplateColumn Width="*" Header="金额" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"   
                                                    Text="{Binding Amount}" TextWrapping="Wrap"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="50" Header="状态" 
+                            <DataGridTemplateColumn Width="50" Header="状态" 
                                                                             >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="&#xe632;" Foreground="OrangeRed" HorizontalAlignment="Center" FontSize="22" VerticalAlignment="Center" FontFamily="/Fonts/#iconfont"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="&#xe632;" Foreground="OrangeRed" HorizontalAlignment="Center" FontSize="22" VerticalAlignment="Center" FontFamily="/Fonts/#iconfont"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Column="1" Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-            <Border Grid.Column="1" Background="Black" Opacity="0.1" Margin="10" CornerRadius="5"/>
-            <Grid Grid.Column="1" Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                    <TextBlock Text="收入支出统计" Foreground="#3F51B5" FontSize="22" Margin="20 20 0 0"/>
 
-                <TextBlock Text="收入支出统计" Foreground="White" FontSize="26" Margin="20 20 0 0"/>
-
-                <lv:CartesianChart Series="{Binding SeriesCollection3}" Grid.Row="1" Margin="20"
-                               Foreground="White"  LegendLocation="Bottom" >
-                    <lv:CartesianChart.ChartLegend>
-                        <lv:DefaultLegend BulletSize="20"></lv:DefaultLegend>
-                    </lv:CartesianChart.ChartLegend>
-                    <lv:CartesianChart.VisualElements>
-                        <lv:VisualElement X="100" Y="80" >
-                            <lv:VisualElement.UIElement>
-                                <TextBlock Foreground="Green" FontSize="20">
+                    <lv:CartesianChart Series="{Binding SeriesCollection3}" Grid.Row="1" Margin="20"
+                                 LegendLocation="Bottom" >
+                        <lv:CartesianChart.ChartLegend>
+                            <lv:DefaultLegend BulletSize="20"></lv:DefaultLegend>
+                        </lv:CartesianChart.ChartLegend>
+                        <lv:CartesianChart.VisualElements>
+                            <lv:VisualElement X="100" Y="80" >
+                                <lv:VisualElement.UIElement>
+                                    <TextBlock Foreground="Green" FontSize="20">
                             Hello!, this is a note merged in the chart.
-                                </TextBlock>
-                            </lv:VisualElement.UIElement>
-                        </lv:VisualElement>
-                    </lv:CartesianChart.VisualElements>
-                    <lv:CartesianChart.AxisY>
-                        <lv:Axis Title="金额" Foreground="White" LabelFormatter="{Binding YFormatter}">
-                            <lv:Axis.Separator>
-                                <lv:Separator StrokeThickness="0.1" Stroke="White"  StrokeDashArray="30" />
-                            </lv:Axis.Separator>
-                        </lv:Axis>
-                    </lv:CartesianChart.AxisY>
-                    <lv:CartesianChart.AxisX>
-                        <lv:Axis Title="日期" Labels="{Binding Labels}" Foreground="White" ShowLabels="True" >
-                            <lv:Axis.Separator>
-                                <lv:Separator StrokeThickness="0.1" Stroke="White" StrokeDashArray="30" />
-                            </lv:Axis.Separator>
-                        </lv:Axis>
-                    </lv:CartesianChart.AxisX>
-                </lv:CartesianChart>
-            </Grid>
-
-
-        </Grid>
+                                    </TextBlock>
+                                </lv:VisualElement.UIElement>
+                            </lv:VisualElement>
+                        </lv:CartesianChart.VisualElements>
+                        <lv:CartesianChart.AxisY>
+                            <lv:Axis Title="金额"  LabelFormatter="{Binding YFormatter}">
+                                <lv:Axis.Separator>
+                                    <lv:Separator StrokeThickness="0.1" Stroke="White"  StrokeDashArray="30" />
+                                </lv:Axis.Separator>
+                            </lv:Axis>
+                        </lv:CartesianChart.AxisY>
+                        <lv:CartesianChart.AxisX>
+                            <lv:Axis Title="日期" Labels="{Binding Labels}"  ShowLabels="True" >
+                                <lv:Axis.Separator>
+                                    <lv:Separator StrokeThickness="0.1" Stroke="White" StrokeDashArray="30" />
+                                </lv:Axis.Separator>
+                            </lv:Axis>
+                        </lv:CartesianChart.AxisX>
+                    </lv:CartesianChart>
+                </Grid>
+            </materialDesign:Card>
+        </UniformGrid>
     </Grid>
 </UserControl>

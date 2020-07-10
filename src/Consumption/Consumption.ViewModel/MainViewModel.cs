@@ -28,8 +28,19 @@ namespace Consumption.ViewModel
         public MainViewModel()
         {
             OpenPageCommand = new RelayCommand<Module>(arg => { Messenger.Default.Send(arg, "NavigationNewPage"); });
+            GoHomeCommand = new RelayCommand(() =>
+            {
+                Messenger.Default.Send("", "GoHomePage");
+            });
+            ExpandMenuCommand = new RelayCommand(() =>
+            {
+                Messenger.Default.Send("", "ExpandMenu");
+            });
         }
 
+
+        public RelayCommand ExpandMenuCommand { get; private set; }
+        public RelayCommand GoHomeCommand { get; private set; }
         public RelayCommand<Module> OpenPageCommand { get; private set; }
         private ModuleManager moduleManager;
 
