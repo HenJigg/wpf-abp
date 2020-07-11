@@ -148,8 +148,8 @@ namespace Consumption.ViewModel
         /// </summary>
         public virtual async void GoHomePage()
         {
-            if (this.PageIndex == 1) return;
-            PageIndex = 1;
+            if (this.PageIndex == 0) return;
+            PageIndex = 0;
             await GetPageData(PageIndex);
         }
 
@@ -158,7 +158,7 @@ namespace Consumption.ViewModel
         /// </summary>
         public virtual async void GoOnPage()
         {
-            if (this.PageIndex == 1) return;
+            if (this.PageIndex == 0) return;
             PageIndex--;
             await this.GetPageData(PageIndex);
         }
