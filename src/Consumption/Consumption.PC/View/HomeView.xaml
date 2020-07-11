@@ -121,34 +121,8 @@
                            VerticalAlignment="Center" Foreground="#3F51B5" FontFamily="/Fonts/#iconfont"/>
 
                     <DataGrid Margin="10" Grid.Row="1" x:Name="gridBill" ItemsSource="{Binding Bills}"
-                          AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent"
-                          VerticalScrollBarVisibility="Hidden"
-                                      HorizontalGridLinesBrush="Transparent" 
-                                      EnableRowVirtualization="false" EnableColumnVirtualization="false">
-                        <DataGrid.ColumnHeaderStyle>
-                            <Style TargetType="{x:Type DataGridColumnHeader}">
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="FontSize" Value="15"/>
-                                <Setter Property="Height" Value="30"/>
-                                <Setter Property="HorizontalAlignment" Value="Center"/>
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            </Style>
-                        </DataGrid.ColumnHeaderStyle>
-                        <DataGrid.RowStyle>
-                            <Style TargetType="{x:Type DataGridRow}">
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#19222B" />
-                                    </Trigger>
-                                    <Trigger Property="IsMouseOver" Value="False">
-                                        <Setter Property="Background" Value="Transparent" />
-                                    </Trigger>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Background" Value="#19222B" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </DataGrid.RowStyle>
+                              VerticalScrollBarVisibility="Hidden"
+                              >
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Width="*" Header="内容"  >
                                 <DataGridTemplateColumn.CellTemplate>

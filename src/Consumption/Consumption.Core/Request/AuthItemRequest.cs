@@ -1,8 +1,8 @@
 ﻿/*
 *
-* 文件名    ：IAuthority                             
-* 程序说明  : 程序功能权限接口
-* 更新时间  : 2020-07-11 18:00
+* 文件名    ：AuthItemRequest                             
+* 程序说明  : 获取功能按钮请求
+* 更新时间  : 2020-07-11 18：13
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -12,18 +12,13 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-namespace Consumption.Core.Interfaces
+namespace Consumption.Core.Request
 {
     /// <summary>
-    /// 权限接口
+    /// 获取功能按钮请求
     /// </summary>
-    public interface IAuthority
+    public class AuthItemRequest : BaseRequest
     {
-        /// <summary>
-        /// 初始化权限
-        /// </summary>
-        /// <param name="authValue"></param>
-        /// <returns></returns>
-        void InitPermissions(int AuthValue);
+        public override string route { get => ServerAddress + "api/AuthItem/GetAuthItems"; }
     }
 }

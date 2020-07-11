@@ -25,7 +25,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 账户管理控制类
     /// </summary>
-    //[Module(Core.Enums.ModuleType.AppMain, "账户管理", "Consumption.PC.ViewCenter.AccountCenter", "", "CreditCard")]
+    //[Module("账户管理")]
     public class AccountCenter : BaseCenter<AccountView, AccountViewModel>
     {
     }

@@ -25,59 +25,19 @@ namespace Consumption.Core.Attributes
     [AttributeUsage(AttributeTargets.Class)]
     public class ModuleAttribute : Attribute
     {
-        public ModuleAttribute(ModuleType moduleType, string desc, string typeName, string nameSpace, string icon)
+        public ModuleAttribute(string name)
         {
-            this.desc = desc;
-            this.icon = icon;
-            this.typeName = typeName;
-            this.moduleType = moduleType;
-            this.nameSpace = nameSpace;
+            this.name = name;
         }
 
-        private ModuleType moduleType;
-        private string desc;
-        private string nameSpace;
-        private string icon;
-        private string typeName;
-
-        /// <summary>
-        /// 模块类型
-        /// </summary>
-        public ModuleType ModuleType
-        {
-            get { return moduleType; }
-        }
+        private string name;
 
         /// <summary>
         /// 描述
         /// </summary>
-        public string Desc
+        public string Name
         {
-            get { return desc; }
-        }
-
-        /// <summary>
-        /// 命名空间
-        /// </summary>
-        public string NameSpace
-        {
-            get { return nameSpace; }
-        }
-
-        /// <summary>
-        /// 图标
-        /// </summary>
-        public string Icon
-        {
-            get { return icon; }
-        }
-
-        /// <summary>
-        /// 类型
-        /// </summary>
-        public string TypeName
-        {
-            get { return typeName; }
+            get { return name; }
         }
     }
 }

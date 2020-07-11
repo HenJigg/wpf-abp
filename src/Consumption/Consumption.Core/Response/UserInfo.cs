@@ -1,8 +1,8 @@
 ﻿/*
 *
-* 文件名    ：PreventAttribute                             
-* 程序说明  : 禁止序列化特性
-* 更新时间  : 2020-05-25 16：36
+* 文件名    ：UserInfo                             
+* 程序说明  : 登录用户信息
+* 更新时间  : 2020-07-11 20：13
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -12,17 +12,20 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-namespace Consumption.Core.Common
+namespace Consumption.Core.Response
 {
+    using Consumption.Core.Entity;
     using System;
     using System.Collections.Generic;
     using System.Text;
 
     /// <summary>
-    /// 禁止序列化特性
+    /// 登录用户信息 - 包含用户的个人信息以及权限信息
     /// </summary>
-    [AttributeUsage(AttributeTargets.Property)]
-    public class PreventAttribute : Attribute
+    public class UserInfo
     {
+        public User User { get; set; }
+
+        public List<Menu> Menus { get; set; }
     }
 }

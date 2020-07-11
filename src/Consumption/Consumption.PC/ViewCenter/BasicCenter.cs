@@ -25,7 +25,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 基础数据控制类
     /// </summary>
-    //[Module(Core.Enums.ModuleType.DataManagement, "基础数据", "Consumption.PC.ViewCenter.BasicCenter", "", "Database")]
+    //[Module("基础数据")]
     public class BasicCenter : BaseCenter<BasicView, BasicViewModel>
     {
     }

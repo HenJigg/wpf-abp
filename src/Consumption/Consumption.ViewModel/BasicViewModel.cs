@@ -61,7 +61,7 @@ namespace Consumption.ViewModel
             }
             catch (Exception ex)
             {
-                //..
+                Log.Error(ex.Message);
             }
         }
     }

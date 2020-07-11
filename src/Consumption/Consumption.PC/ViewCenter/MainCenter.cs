@@ -69,8 +69,8 @@ namespace Consumption.PC.ViewCenter
                     if (ass.CreateInstance(m.TypeName) is IModule dialog)
                     {
                         if (m.TypeName == View.page.Tag?.ToString()) return;
-                        await dialog.BindDefaultModel();
-                        //这里展示直接绑定
+                        await dialog.BindDefaultModel(m.Auth);
+                        //这里展示直接绑定-测试
                         View.m_title.Text = m.Name;
                         View.page.Tag = m.TypeName;
                         View.page.Content = dialog.GetView();
@@ -120,6 +120,7 @@ namespace Consumption.PC.ViewCenter
         /// </summary>
         private void GoHomeView()
         {
+            View.page.Tag = "首页";
             View.m_title.Text = "首页";
             View.page.Content = new HomeView();
         }

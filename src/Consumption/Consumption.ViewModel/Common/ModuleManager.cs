@@ -49,13 +49,24 @@ namespace Consumption.ViewModel.Common
                 var ms = await mc.GetAssemblyModules();
                 foreach (var i in ms)
                 {
-                    var desc = EnumHelper.GetEnumDescription(i.ModuleType);
-                    Modules.Add(new Module() { Name = i.Desc, Code = i.Icon, TypeName = i.TypeName, });
+                    //如果当前程序集的模快在服务器上可以匹配到就添加模块列表
+                    var m = Loginer.Current.Menus.FirstOrDefault(t => t.MenuName.Equals(i.Name));
+                    if (m != null)
+                    {
+                        Modules.Add(new Module()
+                        {
+                            Name = i.Name,
+                            Code = m.MenuCaption,
+                            TypeName = m.MenuNameSpace,
+                            Auth = m.MenuAuth
+                        });
+                    }
                 }
                 GC.Collect();
             }
             catch (Exception ex)
             {
+                Log.Error(ex.Message);
                 throw ex;
             }
         }

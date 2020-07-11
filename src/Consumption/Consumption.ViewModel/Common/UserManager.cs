@@ -43,7 +43,7 @@ namespace Consumption.ViewModel.Common
                 }
                 return new StyleConfig() { Radius = 0, Trans = 0 };
             }
-            catch (Exception ex)
+            catch
             {
                 return new StyleConfig() { Radius = 0, Trans = 0 };
             }

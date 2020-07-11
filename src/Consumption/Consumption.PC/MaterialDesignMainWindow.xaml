@@ -107,14 +107,13 @@
                                 </StackPanel>
                             </materialDesign:PopupBox>
                         </StackPanel>
-
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <materialDesign:ColorZone  Background="White" Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="1"
-                         Margin="20 0 20 20" CornerRadius="4"     
+                         Margin="20 0 20 20" CornerRadius="3"     
                         materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         materialDesign:ShadowAssist.ShadowEdges="Bottom,Left,Right"
-                         Height="70"  VerticalAlignment="Bottom">
+                         Height="60"  VerticalAlignment="Bottom">
                     <DockPanel>
                         <TextBlock x:Name="m_title" FontWeight="Bold" FontSize="26" Padding="20" />
                         <template:ToolbarContainer DataContext="{Binding ElementName=page,Path=Content.DataContext}" 

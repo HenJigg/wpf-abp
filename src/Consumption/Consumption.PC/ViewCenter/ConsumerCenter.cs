@@ -25,7 +25,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 消费控制类
     /// </summary>
-    //[Module(Core.Enums.ModuleType.AppMain, "消费管理", "Consumption.PC.ViewCenter.ConsumerCenter", "", "CurrencyUsd")]
+    //[Module("消费管理")]
     public class ConsumerCenter : BaseCenter<ConsumerView, ConsumerViewModel>
     {
     }

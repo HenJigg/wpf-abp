@@ -37,7 +37,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Width="150" Header="菜单名称">
+                <DataGridTemplateColumn Width="auto" Header="菜单名称">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock HorizontalAlignment="Center"  Text="{Binding MenuName}" TextWrapping="Wrap"/>
@@ -45,36 +45,10 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Width="150" Header="标题">
+                <DataGridTemplateColumn Width="auto" Header="标题">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock HorizontalAlignment="Center"  Text="{Binding MenuCaption}" TextWrapping="Wrap"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Width="200" Header="命名空间">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock HorizontalAlignment="Center"  Text="{Binding MenuNameSpace}" TextWrapping="Wrap"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Header="操作" >
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-
-                                <Button  Content="编辑" Background="#28CBA3" BorderThickness="0"
-                                     CommandParameter="{Binding Id}" Command="{Binding DataContext.EditCommand, 
-                                    RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
-
-                                <Button Margin="10 0 0 0" Content="删除" Background="#FF5370" BorderThickness="0"
-                                                    CommandParameter="{Binding Id}"  
-                                             Command="{Binding DataContext.DelCommand,
-                                    RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
-                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

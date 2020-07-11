@@ -26,13 +26,9 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 样式控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.AppMain, "个性化", "Consumption.PC.ViewCenter.SkinCenter", "", "Palette")]
+    [Module("个性化")]
     public class SkinCenter : BaseCenter<SkinView, SkinViewModel>
     {
-        public override async Task BindDefaultModel()
-        {
-            ViewModel.StyleConfig = UserManager.GetStyleConfig();
-            View.DataContext = ViewModel;
-        }
+
     }
 }

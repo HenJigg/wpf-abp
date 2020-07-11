@@ -65,26 +65,63 @@ namespace Consumption.Api.Controllers
                 var model = await work.GetRepository<User>()
                     .GetFirstOrDefaultAsync(predicate: x => x.Account == account && x.Password == passWord);
                 if (model != null)
-                    return Ok(new ConsumptionResponse()
+                {
+                    #region 获取所属权限
+                    var context = work.GetDbContext<ConsumptionContext>();
+                    if (model.FlagAdmin == 1)
                     {
-                        success = true,
-                        dynamicObj = model
-                    });
+                        var data = from a in context.Menus
+                                   select new
+                                   {
+                                       MenuName = a.MenuName,
+                                       MenuCaption = a.MenuCaption,
+                                       MenuNameSpace = a.MenuNameSpace,
+                                       MenuAuth = a.MenuAuth
+                                   } ;
+
+                        return Ok(new ConsumptionResponse()
+                        {
+                            success = true,
+                            dynamicObj = new
+                            {
+                                User = model,
+                                Menus = data.ToList()
+                            }
+                        });
+                    }
+                    else
+                    {
+                        var data = from a in context.GroupFuncs
+                                   join b in context.GroupUsers on a.GroupCode equals b.GroupCode
+                                   join c in context.Groups on a.GroupCode equals c.GroupCode
+                                   join d in context.Menus on a.MenuCode equals d.MenuCode
+                                   where b.Account.Equals(account)
+                                   select new
+                                   {
+                                       MenuName = d.MenuName,
+                                       MenuCaption = d.MenuCaption,
+                                       MenuNameSpace = d.MenuNameSpace,
+                                       MenuAuth = a.Auth
+                                   };
+                        return Ok(new ConsumptionResponse()
+                        {
+                            success = true,
+                            dynamicObj = new
+                            {
+                                User = model,
+                                Menus = data.ToList()
+                            }
+                        });
+                    }
+                    #endregion
+                }
                 else
-                    return Ok(new ConsumptionResponse()
-                    {
-                        success = false,
-                        message = "用户名或密码错误！"
-                    });
+                    return Ok(new ConsumptionResponse() { success = false, message = "用户名或密码错误！" });
             }
             catch (Exception ex)
             {
                 logger.LogError(ex, "");
-                return Ok(new ConsumptionResponse()
-                {
-                    success = false,
-                    message = "Login failed"
-                });
+                return Ok(new ConsumptionResponse() { success = false, message = "Login failed" });
             }
         }
 
@@ -218,40 +255,5 @@ namespace Consumption.Api.Controllers
             }
         }
 
-        /// <summary>
-        /// 获取用户的权限
-        /// </summary>
-        /// <param name="account">账号名</param>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IActionResult> Perm(string account)
-        {
-            try
-            {
-                var user = await work.GetRepository<User>().GetFirstOrDefaultAsync(predicate: x => x.Account.Equals(account));
-                if (user != null)
-                {
-                    var context = work.GetDbContext<ConsumptionContext>();
-                    var data = from a in context.GroupFuncs
-                               join b in context.GroupUsers on a.GroupCode equals b.GroupCode
-                               join c in context.Groups on a.GroupCode equals c.GroupCode
-                               join d in context.Menus on a.MenuCode equals d.MenuCode
-                               where b.Account.Equals(account)
-                               select new
-                               {
-                                   Name = d.MenuName,
-                                   Code = d.MenuCaption,
-                                   TypeName = d.MenuNameSpace,
-                                   Auth = a.Auth
-                               };
-                    return Ok(new ConsumptionResponse() { success = true, dynamicObj = data.ToList() });
-                }
-                return Ok(new ConsumptionResponse() { success = true });
-            }
-            catch (Exception ex)
-            {
-                return Ok(new ConsumptionResponse() { success = false, message = ex.Message });
-            }
-        }
     }
 }

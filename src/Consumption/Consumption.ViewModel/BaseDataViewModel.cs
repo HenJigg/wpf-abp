@@ -2,7 +2,7 @@
 *
 * 文件名    ：BaseDataViewModel                             
 * 程序说明  : 数据视图基类-GUID
-* 更新时间  : 2020-06-08 22：29
+* 更新时间  : 2020-07-11 17：53
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -15,6 +15,7 @@
 
 namespace Consumption.ViewModel
 {
+    using Consumption.Core.Common;
     using Consumption.Core.Interfaces;
     using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight;
@@ -33,27 +34,14 @@ namespace Consumption.ViewModel
     ///   2. 实现基础的增删改查单页功能
     ///   3. 实现基础页面的单页数据分页功能
     /// </summary>
-    public class BaseDataViewModel<T> : ViewModelBase, IDataPager where T : class, new()
+    public class BaseDataViewModel<T> : ViewModelBase, IAuthority, IDataPager where T : class, new()
     {
         public BaseDataViewModel()
         {
-            AddCommand = new RelayCommand(Add);
-            EditCommand = new RelayCommand(Edit);
-            DelCommand = new RelayCommand(Del);
+            ExecuteCommand = new RelayCommand<string>(arg => Excute(arg));
             QueryCommand = new RelayCommand(Query);
-            SwitchModeCommand = new RelayCommand<bool>(arg => { DisplayType = arg; });
-            InitToolBarCommandList();
+            ToolBarCommandList = new ObservableCollection<ButtonCommand>();
         }
-
-        private bool displayType = true;
-
-        public bool DisplayType
-        {
-            get { return displayType; }
-            set { displayType = value; RaisePropertyChanged(); }
-        }
-
-        public RelayCommand<bool> SwitchModeCommand { get; private set; }
 
         #region GUID
 
@@ -78,9 +66,7 @@ namespace Consumption.ViewModel
             set { gridModelList = value; RaisePropertyChanged(); }
         }
 
-        public RelayCommand AddCommand { get; private set; }
-        public RelayCommand EditCommand { get; private set; }
-        public RelayCommand DelCommand { get; private set; }
+        public RelayCommand<string> ExecuteCommand { get; private set; }
         public RelayCommand QueryCommand { get; private set; }
 
         #region IDataOperation
@@ -103,11 +89,25 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 查询
         /// </summary>
-        public virtual void Query()
-        {
-            this.GetPageData(this.PageIndex);
-        }
+        public virtual void Query() { }
 
+        /// <summary>
+        /// 执行方法
+        /// </summary>
+        /// <param name="arg"></param>
+        public virtual void Excute(string arg)
+        {
+            /*
+             * 这里使用string来做弱类型处理,防止使用枚举,
+             * 其他页面需要重新该方法
+             */
+            switch (arg)
+            {
+                case "新增": Add(); break;
+                case "编辑": Edit(); break;
+                case "删除": Del(); break;
+            }
+        }
         #endregion
 
         #endregion
@@ -201,6 +201,7 @@ namespace Consumption.ViewModel
         #endregion
 
         #region ToolBar
+
         private ObservableCollection<ButtonCommand> toolBarCommandList;
         public ObservableCollection<ButtonCommand> ToolBarCommandList
         {
@@ -208,17 +209,28 @@ namespace Consumption.ViewModel
             set { toolBarCommandList = value; RaisePropertyChanged(); }
         }
 
-        /// <summary>
-        /// 初始化界面默认按钮
-        /// </summary>
-        public virtual void InitToolBarCommandList()
-        {
-            ToolBarCommandList = new ObservableCollection<ButtonCommand>();
-            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "新增", Command = AddCommand });
-            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "编辑", Command = EditCommand });
-            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "删除", Command = DelCommand });
-        }
 
+        #endregion
+
+        #region IAuthority
+
+        /// <summary>
+        /// 初始化权限
+        /// </summary>
+        public void InitPermissions(int AuthValue)
+        {
+            for (int i = 0; i < Loginer.Current.AuthItems.Count; i++)
+            {
+                var arg = Loginer.Current.AuthItems[i];
+                if ((AuthValue & arg.AuthValue) == arg.AuthValue)
+                    ToolBarCommandList.Add(new ButtonCommand()
+                    {
+                        CommandName = arg.AuthName,
+                        CommandKind = arg.AuthKind,
+                        CommandColor = arg.AuthColor
+                    });
+            }
+        }
         #endregion
     }
 }

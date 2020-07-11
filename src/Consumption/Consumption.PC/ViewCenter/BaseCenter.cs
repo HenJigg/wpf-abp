@@ -45,10 +45,13 @@ namespace Consumption.PC.ViewCenter
         public TView View = null;
         public TViewModel ViewModel = null;
 
-        public virtual async Task BindDefaultModel()
+        public virtual async Task BindDefaultModel(int AuthValue)
         {
-            var dataPager = ViewModel as IDataPager;
-            await dataPager?.GetPageData(0);
+            if (ViewModel is IAuthority authority)
+                authority.InitPermissions(AuthValue);
+
+            if (ViewModel is IDataPager dataPager)
+                await dataPager.GetPageData(0);
             View.DataContext = ViewModel;
         }
 

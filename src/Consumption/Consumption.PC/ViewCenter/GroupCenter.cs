@@ -15,7 +15,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 用户组
     /// </summary>
-    [Module(Core.Enums.ModuleType.DataManagement, "权限管理", "Consumption.PC.ViewCenter.GroupCenter", "", "Group")]
+    [Module("权限管理")]
     public class GroupCenter : BaseCenter<GroupView, GroupViewModel>
     {
     }

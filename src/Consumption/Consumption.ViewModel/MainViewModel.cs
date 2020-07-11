@@ -38,10 +38,6 @@ namespace Consumption.ViewModel
             });
         }
 
-
-        public RelayCommand ExpandMenuCommand { get; private set; }
-        public RelayCommand GoHomeCommand { get; private set; }
-        public RelayCommand<Module> OpenPageCommand { get; private set; }
         private ModuleManager moduleManager;
 
         /// <summary>
@@ -53,9 +49,36 @@ namespace Consumption.ViewModel
             set { moduleManager = value; RaisePropertyChanged(); }
         }
 
+        /// <summary>
+        /// 菜单栏收缩
+        /// </summary>
+        public RelayCommand ExpandMenuCommand { get; private set; }
+
+        /// <summary>
+        /// 返回首页
+        /// </summary>
+        public RelayCommand GoHomeCommand { get; private set; }
+
+        /// <summary>
+        /// 打开新页面
+        /// </summary>
+        public RelayCommand<Module> OpenPageCommand { get; private set; }
+
         public async Task InitDefaultView()
         {
+            /*
+             *  加载首页的程序集模块
+             *  1.首先获取本机的所有可用模块
+             *  2.利用服务器验证,过滤掉不可用模块
+             *
+             *  注:理论上管理员应该可用本机的所有模块, 
+             *  当检测本机用户属于管理员,则不向服务器验证
+             */ 
+
+            //创建模块管理器
             ModuleManager = new ModuleManager();
+
+            //加载自身的程序集模块
             await ModuleManager.LoadAssemblyModule();
         }
     }

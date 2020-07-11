@@ -14,7 +14,7 @@
 
 namespace Consumption.Core.Request
 {
-    using Consumption.Core.Common;
+    using Consumption.Core.Attributes;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;

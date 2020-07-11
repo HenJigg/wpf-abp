@@ -25,7 +25,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 消费报表控制类
     /// </summary>
-    //[Module(Core.Enums.ModuleType.DataManagement, "消费报表", "Consumption.PC.ViewCenter.ReportCenter", "", "ChartDonut")]
+    //[Module("消费报表")]
     public class ReportCenter : BaseCenter<ReportView, ReportViewModel>
     {
     }

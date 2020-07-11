@@ -25,12 +25,9 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 仪表板控制类
     /// </summary>
-    [Module(Core.Enums.ModuleType.AppMain, "仪表板", "DashboardCenter", "", "Atom")]
+    [Module("仪表板")]
     public class DashboardCenter : BaseCenter<DashboardView, DashboardViewModel>
     {
-        public override Task BindDefaultModel()
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

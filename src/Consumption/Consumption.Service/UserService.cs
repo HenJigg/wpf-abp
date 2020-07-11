@@ -53,13 +53,25 @@ namespace Consumption.Service
         /// <param name="account">用户名</param>
         /// <param name="passWord">密码</param>
         /// <returns></returns>
-        public async Task<BaseResponse<User>> LoginAsync(string account, string passWord)
+        public async Task<BaseResponse<UserInfo>> LoginAsync(string account, string passWord)
         {
-            BaseServiceRequest<BaseResponse<User>> baseService = new BaseServiceRequest<BaseResponse<User>>();
+            BaseServiceRequest<BaseResponse<UserInfo>> baseService =
+                new BaseServiceRequest<BaseResponse<UserInfo>>();
             var r = await baseService.GetRequest(new UserLoginRequest()
             {
                 account = account,
                 passWord = passWord
+            }, Method.GET);
+            return r;
+        }
+
+        public async Task<BaseResponse<List<Menu>>> GetUserPermByAccountAsync(string account)
+        {
+            BaseServiceRequest<BaseResponse<List<Menu>>> baseService =
+                new BaseServiceRequest<BaseResponse<List<Menu>>>();
+            var r = await baseService.GetRequest(new UserPermRequest()
+            {
+                account = account
             }, Method.GET);
             return r;
         }

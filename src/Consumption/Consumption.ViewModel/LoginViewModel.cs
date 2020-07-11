@@ -85,6 +85,7 @@ namespace Consumption.ViewModel
                     this.Report = "请输入用户名密码!";
                     return;
                 }
+
                 UpdateDialog(true, "验证登陆中...");
                 var r = await service.LoginAsync(UserName, PassWord);
                 if (r == null || !r.success)
@@ -92,6 +93,25 @@ namespace Consumption.ViewModel
                     this.Report = r == null ? "远程服务器无法连接！" : r.message;
                     return;
                 }
+
+                UpdateDialog(true, "获取模块清单...");
+                var authResult = await service.GetAuthListAsync();
+                if (authResult == null || !authResult.success)
+                {
+                    this.Report = r == null ? "获取模块清单异常！" : r.message;
+                    return;
+                }
+
+                #region 关联用户信息/缓存
+
+                Loginer.Current.Account = r.dynamicObj.User.Account;
+                Loginer.Current.UserName = r.dynamicObj.User.UserName;
+                Loginer.Current.IsAdmin = r.dynamicObj.User.FlagAdmin == 1;
+                Loginer.Current.Menus = r.dynamicObj.Menus; //用户包含的权限信息
+                Loginer.Current.AuthItems = authResult.dynamicObj;
+
+                #endregion
+
                 UpdateDialog(true, "加载首页...");
                 Messenger.Default.Send(true, "NavigationPage");
             }

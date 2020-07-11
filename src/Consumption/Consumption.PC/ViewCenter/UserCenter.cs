@@ -23,9 +23,9 @@ namespace Consumption.PC.ViewCenter
     using System.Threading.Tasks;
 
     /// <summary>
-    /// 用户管理控制类
+    /// 用户管理类
     /// </summary>
-    [Module(Core.Enums.ModuleType.DataManagement, "用户管理", "Consumption.PC.ViewCenter.UserCenter", "", "AccountBox")]
+    [Module("用户管理")]
     public class UserCenter : BaseCenter<UserView, UserViewModel>
     {
 

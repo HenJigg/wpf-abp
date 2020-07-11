@@ -15,9 +15,11 @@
 namespace Consumption.ViewModel.Common
 {
     using Consumption.Core.Attributes;
+    using Consumption.Core.Common;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
     using System.Reflection;
     using System.Text;
     using System.Threading.Tasks;
@@ -53,6 +55,24 @@ namespace Consumption.ViewModel.Common
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// 模块验证
+        /// </summary>
+        /// <param name="module"></param>
+        /// <returns></returns>
+        public bool ModuleVerify(ModuleAttribute module)
+        {
+            if (Loginer.Current.IsAdmin)
+                return true;
+            else
+            {
+                if (Loginer.Current.Menus
+                    .FirstOrDefault(t => t.MenuName.Equals(module.Name)) != null)
+                    return true;
+            }
+            return false;
         }
     }
 }

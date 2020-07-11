@@ -18,6 +18,8 @@ namespace Consumption.Api.Controllers
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Consumption.Core.Common;
+    using Consumption.Core.Entity;
     using Consumption.EFCore;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
@@ -41,6 +43,29 @@ namespace Consumption.Api.Controllers
         {
             this.logger = logger;
             this.work = work;
+        }
+
+        /// <summary>
+        /// 获取所有功能按钮列表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetAuthItems()
+        {
+            try
+            {
+                var models = await work.GetRepository<AuthItem>().GetAllAsync();
+                if (models.Count > 0)
+                {
+                    return Ok(new ConsumptionResponse() { success = true, dynamicObj = models.OrderBy(t => t.AuthValue).ToList() });
+                }
+                return Ok(new ConsumptionResponse() { success = false, message="系统模块为空" });
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "");
+                return Ok(new ConsumptionResponse() { success = false, message = "获取功能清单异常" });
+            }
         }
     }
 }

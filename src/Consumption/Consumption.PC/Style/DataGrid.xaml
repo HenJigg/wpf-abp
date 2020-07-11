@@ -14,20 +14,6 @@
         <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
         <Setter Property="IsReadOnly" Value="True"/>
     </Style>
-    
-    <Style  TargetType="{x:Type DataGridRow}">
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Transparent" />
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="False">
-                <Setter Property="Background" Value="Transparent" />
-            </Trigger>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="#0A2540" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
 
     <Style TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Background" Value="Transparent"/>

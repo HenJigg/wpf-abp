@@ -23,7 +23,7 @@ namespace Consumption.ViewModel.Common
     {
         private string code;
         private string name;
-        private int? auth;
+        private int auth;
         private string typeName;
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Consumption.ViewModel.Common
         /// <summary>
         /// 权限值
         /// </summary>
-        public int? Auth
+        public int Auth
         {
             get { return auth; }
             set { auth = value; RaisePropertyChanged(); }
