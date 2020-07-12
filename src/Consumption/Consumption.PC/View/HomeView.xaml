@@ -120,52 +120,17 @@
                     <TextBlock Text="&#xe6a2;" HorizontalAlignment="Right"  FontSize="22" Margin="0 0 20 0"
                            VerticalAlignment="Center" Foreground="#3F51B5" FontFamily="/Fonts/#iconfont"/>
 
-                    <DataGrid Margin="10" Grid.Row="1" x:Name="gridBill" ItemsSource="{Binding Bills}"
+                    <DataGrid Margin="10" Grid.Row="1" x:Name="gridBill" 
+                              Background="Transparent"
+                              IsReadOnly="True" SelectionMode="Extended"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding Bills}"
                               VerticalScrollBarVisibility="Hidden"
                               >
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Width="*" Header="内容"  >
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"   
-                                                   Text="{Binding Name}" TextWrapping="Wrap"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTemplateColumn Width="*" Header="消费时间" >
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"   
-                                                   Text="{Binding CreateDate}" TextWrapping="Wrap"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTemplateColumn Width="*" Header="金额" >
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"   
-                                                   Text="{Binding Amount}" TextWrapping="Wrap"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTemplateColumn Width="50" Header="状态" 
-                                                                            >
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="&#xe632;" Foreground="OrangeRed" HorizontalAlignment="Center" FontSize="22" VerticalAlignment="Center" FontFamily="/Fonts/#iconfont"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
+                            <DataGridTextColumn Width="*" Header="内容" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Width="*" Header="消费时间" Binding="{Binding CreateDate}"/>
+                            <DataGridTextColumn Width="*" Header="金额" Binding="{Binding Amount}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

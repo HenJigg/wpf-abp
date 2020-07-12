@@ -6,15 +6,15 @@
              xmlns:local="clr-namespace:Consumption.PC.View" xmlns:template="clr-namespace:Consumption.PC.Template" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:s="clr-namespace:System;assembly=System.Runtime"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Margin="20 0 0 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Margin="5">
-            <materialDesign:PackIcon  Kind="Magnify" Margin="20 0 0 0" Opacity=".56" 
+        <StackPanel Orientation="Horizontal" >
+            <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" 
                                       Width="25" Height="25" VerticalAlignment="Center"/>
             <TextBox Margin="5 0 0 0"
                      Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
@@ -27,32 +27,15 @@
             </TextBox>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" ItemsSource="{Binding GridModelList}">
+        <DataGrid Grid.Row="1" Background="Transparent"
+                              IsReadOnly="True" SelectionMode="Extended"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding GridModelList}" 
+                              SelectedItem="{Binding GridModel}">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Width="150" Header="菜单编码">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock HorizontalAlignment="Center"  Text="{Binding MenuCode}" TextWrapping="Wrap"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Width="auto" Header="菜单名称">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock HorizontalAlignment="Center"  Text="{Binding MenuName}" TextWrapping="Wrap"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTemplateColumn Width="auto" Header="标题">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock HorizontalAlignment="Center"  Text="{Binding MenuCaption}" TextWrapping="Wrap"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
+                <DataGridTextColumn Header="菜单编码" Width="200" Binding="{Binding MenuCode}"/>
+                <DataGridTextColumn Header="菜单名称" Width="200" Binding="{Binding MenuName}"/>
+                <DataGridTextColumn Header="标题" Width="200" Binding="{Binding MenuCaption}"/>
             </DataGrid.Columns>
         </DataGrid>
 

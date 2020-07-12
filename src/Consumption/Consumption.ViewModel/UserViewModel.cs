@@ -40,6 +40,7 @@ namespace Consumption.ViewModel
         {
             try
             {
+                SelectPageTitle = "用户管理";
                 var r = await userService.GetUserListAsync(new Core.Query.UserParameters()
                 {
                     PageIndex = PageIndex,
@@ -61,6 +62,34 @@ namespace Consumption.ViewModel
             {
                 Log.Error(ex.Message);
             }
+        }
+
+        public override void Add()
+        {
+            GridModel = new User();
+            SelectPageTitle = "编辑用户信息";
+            SelectPageIndex = 1;
+            base.Add();
+        }
+
+        public override void Edit()
+        {
+            if (GridModel == null) return;
+            SelectPageTitle = "编辑用户信息";
+            SelectPageIndex = 1;
+            base.Edit();
+        }
+
+        public override void Save()
+        {
+            SelectPageTitle = "用户管理";
+            base.Save();
+        }
+
+        public override void Cancel()
+        {
+            SelectPageTitle = "用户管理";
+            base.Save();
         }
     }
 }

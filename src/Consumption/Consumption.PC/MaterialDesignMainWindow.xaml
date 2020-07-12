@@ -39,7 +39,6 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-
                 <TextBlock Text="Z" FontWeight="Bold" Padding="35" VerticalAlignment="Center"
                                HorizontalAlignment="Center" FontSize="18" >
                     <i:Interaction.Triggers>
@@ -77,6 +76,7 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <!--系统标题头-->
                 <materialDesign:ColorZone VerticalAlignment="Top" Mode="PrimaryMid"
                     Padding="20 30 20 60" materialDesign:ShadowAssist.ShadowDepth="Depth0">
                     <DockPanel>
@@ -109,19 +109,20 @@
                         </StackPanel>
                     </DockPanel>
                 </materialDesign:ColorZone>
+                <!--工具栏(显示标签和功能清单)-->
                 <materialDesign:ColorZone  Background="White" Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="1"
                          Margin="20 0 20 20" CornerRadius="3"     
                         materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         materialDesign:ShadowAssist.ShadowEdges="Bottom,Left,Right"
                          Height="60"  VerticalAlignment="Bottom">
                     <DockPanel>
-                        <TextBlock x:Name="m_title" FontWeight="Bold" FontSize="26" Padding="20" />
+                        <TextBlock Text="{Binding ElementName=page,Path=Content.DataContext.SelectPageTitle}"  
+                                   FontWeight="Bold" FontSize="26" Padding="20" />
                         <template:ToolbarContainer DataContext="{Binding ElementName=page,Path=Content.DataContext}" 
                                                    HorizontalAlignment="Right"/>
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <Border Background="#F4F6F9" Grid.Row="1" Grid.RowSpan="2"/>
-
                 <!--右侧内容区域-->
                 <ContentControl x:Name="page"  Grid.Row="3" Margin="2 0 0 0"/>
             </Grid>

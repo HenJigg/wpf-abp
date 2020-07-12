@@ -16,6 +16,7 @@
 namespace Consumption.ViewModel
 {
     using Consumption.Core.Common;
+    using Consumption.Core.Enums;
     using Consumption.Core.Interfaces;
     using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight;
@@ -34,19 +35,35 @@ namespace Consumption.ViewModel
     ///   2. 实现基础的增删改查单页功能
     ///   3. 实现基础页面的单页数据分页功能
     /// </summary>
-    public class BaseDataViewModel<T> : ViewModelBase, IAuthority, IDataPager where T : class, new()
+    public class BaseDataViewModel<T> :
+        ViewModelBase,
+        IAuthority,
+        IDataPager
+        where T : class, new()
     {
         public BaseDataViewModel()
         {
-            ExecuteCommand = new RelayCommand<string>(arg => Excute(arg));
             QueryCommand = new RelayCommand(Query);
-            ToolBarCommandList = new ObservableCollection<ButtonCommand>();
+            ExecuteCommand = new RelayCommand<string>(arg => Excute(arg));
         }
 
-        #region GUID
+        #region CURD
 
+        private T gridModel = null;
+        private string selectPageTitle;
+        private int selectPageIndex = 0;
+        private ActionMode Mode { get; set; }
         private string searchText = string.Empty;
-        private ObservableCollection<T> gridModelList;
+        private ObservableCollection<T> gridModelList = null;
+
+        /// <summary>
+        /// 当前选择页的标题
+        /// </summary>
+        public string SelectPageTitle
+        {
+            get { return selectPageTitle; }
+            set { selectPageTitle = value; RaisePropertyChanged(); }
+        }
 
         /// <summary>
         /// 搜索内容
@@ -58,7 +75,25 @@ namespace Consumption.ViewModel
         }
 
         /// <summary>
-        /// 抽象表单数据
+        /// 当前选中页
+        /// </summary>
+        public int SelectPageIndex
+        {
+            get { return selectPageIndex; }
+            set { selectPageIndex = value; RaisePropertyChanged(); }
+        }
+
+        /// <summary>
+        /// T表单
+        /// </summary>
+        public T GridModel
+        {
+            get { return gridModel; }
+            set { gridModel = value; RaisePropertyChanged(); }
+        }
+
+        /// <summary>
+        /// T表单数据列表
         /// </summary>
         public ObservableCollection<T> GridModelList
         {
@@ -74,12 +109,30 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 新增
         /// </summary>
-        public virtual void Add() { }
+        public virtual void Add()
+        {
+            this.CreateDeaultCommand();
+        }
 
         /// <summary>
         /// 编辑
         /// </summary>
-        public virtual void Edit() { }
+        public virtual void Edit()
+        {
+            this.CreateDeaultCommand();
+        }
+
+        public virtual void Save()
+        {
+            InitPermissions(this.AuthValue);
+            SelectPageIndex = 0;
+        }
+
+        public virtual void Cancel()
+        {
+            InitPermissions(this.AuthValue);
+            SelectPageIndex = 0;
+        }
 
         /// <summary>
         /// 删除
@@ -89,7 +142,10 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 查询
         /// </summary>
-        public virtual void Query() { }
+        public virtual async void Query()
+        {
+            await GetPageData(this.PageIndex);
+        }
 
         /// <summary>
         /// 执行方法
@@ -106,7 +162,19 @@ namespace Consumption.ViewModel
                 case "新增": Add(); break;
                 case "编辑": Edit(); break;
                 case "删除": Del(); break;
+                case "保存": Save(); break;
+                case "取消": Cancel(); break;
             }
+        }
+
+        /// <summary>
+        /// 创建页面默认命令
+        /// </summary>
+        private void CreateDeaultCommand()
+        {
+            ToolBarCommandList.Clear();
+            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "保存", CommandColor = "#0066FF", CommandKind = "ContentSave" });
+            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "取消", CommandColor = "#FF6633", CommandKind = "Cancel" });
         }
         #endregion
 
@@ -200,7 +268,7 @@ namespace Consumption.ViewModel
         }
         #endregion
 
-        #region ToolBar
+        #region IAuthority
 
         private ObservableCollection<ButtonCommand> toolBarCommandList;
         public ObservableCollection<ButtonCommand> ToolBarCommandList
@@ -209,19 +277,20 @@ namespace Consumption.ViewModel
             set { toolBarCommandList = value; RaisePropertyChanged(); }
         }
 
-
-        #endregion
-
-        #region IAuthority
+        /// <summary>
+        /// 页面权限值
+        /// </summary>
+        public int AuthValue { get; private set; }
 
         /// <summary>
         /// 初始化权限
         /// </summary>
         public void InitPermissions(int AuthValue)
         {
-            for (int i = 0; i < Loginer.Current.AuthItems.Count; i++)
+            this.AuthValue = AuthValue;
+            ToolBarCommandList = new ObservableCollection<ButtonCommand>();
+            Loginer.Current.AuthItems.ForEach(arg =>
             {
-                var arg = Loginer.Current.AuthItems[i];
                 if ((AuthValue & arg.AuthValue) == arg.AuthValue)
                     ToolBarCommandList.Add(new ButtonCommand()
                     {
@@ -229,7 +298,7 @@ namespace Consumption.ViewModel
                         CommandKind = arg.AuthKind,
                         CommandColor = arg.AuthColor
                     });
-            }
+            });
         }
         #endregion
     }

@@ -3,7 +3,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Consumption.PC;component/Style/TextBlock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Consumption.PC;component/Style/Button.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Consumption.PC;component/Style/DataGrid.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Consumption.PC;component/Template/DataPager.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

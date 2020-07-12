@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ItemsControl  ItemsSource="{Binding Path=ToolBarCommandList}">
+        <ItemsControl ItemsSource="{Binding ToolBarCommandList}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>
