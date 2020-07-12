@@ -24,6 +24,11 @@ This project mainly focuses on C, build a multi-platform application example, th
 
   mvvm : [mvvmlight](https://github.com/lbugnion/mvvmlight)
 
+### Preview
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/MainPage.png)
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/UserPage.png)
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/MainServicePage.png)
+
 ### Description of the project
   The project, which is a project practice for Csharp's Windows desktop clients and mobile and web-side, is designed to provide Csharp developers with a project-building coding reference that contributes to the small power of their own in the face of the current scarce network resource environment.
 
