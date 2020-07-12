@@ -13,7 +13,7 @@
   IDE: Visual Studio 2019 
   
 #### UI框架
-  Xamarin UI(社区版): [Syncfusion Community Edition for Xamarin](https://www.syncfusion.com/forums/xamarin.forms)
+  Xamarin UI: [XF.Material](https://github.com/Baseflow/XF-Material-Library)
 
   WPF UI (.NET Core):[MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
 
