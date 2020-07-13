@@ -27,5 +27,15 @@ namespace Consumption.Core.Interfaces
         Task BindDefaultModel(int AuthValue);
 
         object GetView();
+
+        /// <summary>
+        /// 注册模块事件
+        /// </summary>
+        void SubscribeEvent();
+
+        /// <summary>
+        /// 注册模块消息
+        /// </summary>
+        void SubscribeMessenger();
     }
 }

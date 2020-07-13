@@ -23,6 +23,7 @@ namespace Consumption.ViewModel
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 登录模块
@@ -87,6 +88,7 @@ namespace Consumption.ViewModel
                 }
 
                 UpdateDialog(true, "验证登陆中...");
+                await Task.Delay(10000);
                 var r = await service.LoginAsync(UserName, PassWord);
                 if (r == null || !r.success)
                 {

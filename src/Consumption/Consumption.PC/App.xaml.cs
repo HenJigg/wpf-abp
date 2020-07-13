@@ -24,7 +24,6 @@ namespace Consumption.PC
         protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            this.ConfigureServices();
 
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
@@ -41,18 +40,5 @@ namespace Consumption.PC
             services.AddScoped<IConsumptionService, ConsumptionService>();
         }
 
-        protected void ConfigureServices()
-        {
-            //AutofacLocator locator = new AutofacLocator();
-            //ContainerBuilder builder = new ContainerBuilder();
-            //builder.RegisterType<ConsumptionService>().As<IConsumptionService>();
-            //builder.RegisterType(typeof(MainCenter)).Named("MainCenter", typeof(IModuleDialog));
-            //builder.RegisterType(typeof(SkinCenter)).Named("SkinCenter", typeof(IModule));
-            //builder.RegisterType(typeof(UserCenter)).Named("UserCenter", typeof(IModule));
-            //builder.RegisterType(typeof(MenuCenter)).Named("MenuCenter", typeof(IModule));
-            //builder.RegisterType(typeof(BasicCenter)).Named("BasicCenter", typeof(IModule));
-            //locator.Register(builder);
-            //NetCoreProvider.RegisterServiceLocator(locator);
-        }
     }
 }

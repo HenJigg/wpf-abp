@@ -37,8 +37,8 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Margin="20 0 0 0" VerticalAlignment="Center">
-                        <TextBlock Text="欢迎使用" Foreground="White" FontSize="35" FontWeight="Bold" VerticalAlignment="Center"/>
-                        <TextBlock Text="Wpf!" Foreground="White" FontSize="35"  VerticalAlignment="Center" Margin="10 0 0 0"/>
+                        <TextBlock Text="Welcome" Foreground="White" FontSize="35" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <TextBlock Text="WPF!" Foreground="White" FontSize="35"  VerticalAlignment="Center" Margin="10 0 0 0"/>
                     </StackPanel>
 
                     <Button Background="Transparent" Height="60" 
@@ -47,12 +47,12 @@
                         <materialDesign:PackIcon Kind="Close"  Width="50" Height="50"/>
                     </Button>
 
-                    <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="用户名" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Account" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          Text="{Binding UserName}"
                          Foreground="White" BorderBrush="White" FontSize="22" 
                          VerticalAlignment="Center" Margin="20 0 20 0"/>
 
-                    <PasswordBox Grid.Row="2" materialDesign:HintAssist.Hint="密码"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                    <PasswordBox Grid.Row="2" materialDesign:HintAssist.Hint="PassWord"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
                          Foreground="White" BorderBrush="White" FontSize="22"
                          VerticalAlignment="Center" Margin="20 0 20 0"
                          local:PasswordBoxHelper.Password="{Binding PassWord,
@@ -64,7 +64,7 @@
 
                     <Button Grid.Row="3" Margin="20 0 20 0" Height="55" Foreground="Black" FontSize="23" 
                         Command="{Binding LoginCommand}"
-                        Background="White" BorderThickness="0" Content="登录"/>
+                        Background="White" BorderThickness="0" Content="Login"/>
 
                     <TextBlock Grid.Row="4" Text="{Binding Report}" Foreground="White" 
                            FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>

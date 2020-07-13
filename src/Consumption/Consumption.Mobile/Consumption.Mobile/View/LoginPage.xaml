@@ -14,33 +14,27 @@
         <StackLayout Margin="40,0,0,0"  
                      Orientation="Horizontal"
                      VerticalOptions="Center">
-            <Label Text="欢迎使用" TextColor="White"
-               FontAttributes="Bold"
-               FontSize="30" 
-               />
-            <Label Text="Xamarin!" TextColor="White"
-               FontSize="30" 
-               />
+            <Label Text="Welcome" TextColor="White"  FontAttributes="Bold" FontSize="35"  />
+            <Label Text="Xamarin!" TextColor="White"  FontSize="35"  />
         </StackLayout>
 
         <StackLayout Orientation="Horizontal" VerticalOptions="End" Margin="40,0,0,5">
-            <Label Text="登录" FontSize="35" FontAttributes="Bold" TextColor="White"/>
+            <Label Text="Login" FontSize="35" FontAttributes="Bold" TextColor="White"/>
         </StackLayout>
-       
         <StackLayout Grid.Row="1" Margin="40,0,40,0"
                      VerticalOptions="Start">
-        <Entry BackgroundColor="Transparent" Placeholder="用户名"
+            <Entry BackgroundColor="Transparent" Placeholder="Account"
                Text="{Binding UserName}"
                Margin="0,10,0,10" FontSize="22"/>
-        <Entry IsPassword="True" Placeholder="密码" 
+            <Entry IsPassword="True" Placeholder="PassWord" 
                Text="{Binding PassWord}"
                BackgroundColor="Transparent"  Margin="0,0,0,10" FontSize="22"/>
-            <material:MaterialButton Text="登录" BackgroundColor="#0066CC"
+            <Button Text="Login" BackgroundColor="#0066CC" 
                                  Command="{Binding LoginCommand}"
                                  TextColor="White" FontSize="20"/>
-            <Label Text="忘记密码?" Margin="0,5,0,0" TextColor="#0066CC" BackgroundColor="Transparent"
+            <Label Text="Forgot your password?" Margin="0,5,0,0" TextColor="#0066CC" BackgroundColor="Transparent"
                HorizontalOptions="Center"/>
-    </StackLayout>
-        
+        </StackLayout>
+
     </Grid>
 </ContentPage>
