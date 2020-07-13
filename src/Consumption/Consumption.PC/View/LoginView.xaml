@@ -36,7 +36,10 @@
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="登录" Foreground="White" FontSize="35" FontWeight="Bold" VerticalAlignment="Center" Margin="20 0 0 0"/>
+                    <StackPanel Orientation="Horizontal" Margin="20 0 0 0" VerticalAlignment="Center">
+                        <TextBlock Text="欢迎使用" Foreground="White" FontSize="35" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <TextBlock Text="Wpf!" Foreground="White" FontSize="35"  VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    </StackPanel>
 
                     <Button Background="Transparent" Height="60" 
                         Command="{Binding CloseCommand}"

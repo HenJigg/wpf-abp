@@ -1,8 +1,5 @@
-﻿using Android;
-using Android.OS;
-using Foundation;
+﻿using Consumption.Mobile.View;
 using System;
-using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +11,7 @@ namespace Consumption.Mobile
         {
             InitializeComponent();
             XF.Material.Forms.Material.Init(this);
-            MainPage = new MainPage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

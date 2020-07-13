@@ -24,9 +24,20 @@ This project mainly focuses on C, build a multi-platform application example, th
 
   mvvm : [mvvmlight](https://github.com/lbugnion/mvvmlight)
 
-### Preview
+### Screenshot
+
+#### WPF Preview(Part)
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/WPFLoginPage.png)
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/MainPage.png)
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/UserPage.png)
+
+#### Xamarin Preview(Part)
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/XamarinLoginPage.png)
+
+#### Blazor Preview
+Look forward to it....
+
+#### OpenApi Preview(Part)
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/MainServicePage.png)
 
 ### Description of the project

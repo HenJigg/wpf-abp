@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             mc:Ignorable="d" 
+             x:Class="Consumption.Mobile.View.LoginPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="2.5*"/>
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="#0066CC" />
+        <StackLayout Margin="40,0,0,0"  
+                     Orientation="Horizontal"
+                     VerticalOptions="Center">
+            <Label Text="欢迎使用" TextColor="White"
+               FontAttributes="Bold"
+               FontSize="30" 
+               />
+            <Label Text="Xamarin!" TextColor="White"
+               FontSize="30" 
+               />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" VerticalOptions="End" Margin="40,0,0,5">
+            <Label Text="登录" FontSize="35" FontAttributes="Bold" TextColor="White"/>
+        </StackLayout>
+       
+        <StackLayout Grid.Row="1" Margin="40,0,40,0"
+                     VerticalOptions="Start">
+        <Entry BackgroundColor="Transparent" Placeholder="用户名"
+               Text="{Binding UserName}"
+               Margin="0,10,0,10" FontSize="22"/>
+        <Entry IsPassword="True" Placeholder="密码" 
+               Text="{Binding PassWord}"
+               BackgroundColor="Transparent"  Margin="0,0,0,10" FontSize="22"/>
+            <material:MaterialButton Text="登录" BackgroundColor="#0066CC"
+                                 Command="{Binding LoginCommand}"
+                                 TextColor="White" FontSize="20"/>
+            <Label Text="忘记密码?" Margin="0,5,0,0" TextColor="#0066CC" BackgroundColor="Transparent"
+               HorizontalOptions="Center"/>
+    </StackLayout>
+        
+    </Grid>
+</ContentPage>
