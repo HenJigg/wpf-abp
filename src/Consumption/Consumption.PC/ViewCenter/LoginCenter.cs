@@ -33,6 +33,11 @@ namespace Consumption.PC.ViewCenter
     {
         public override void SubscribeMessenger()
         {
+            Messenger.Default.Register<string>(View, "Snackbar", arg =>
+            {
+                var messageQueue = View.SnackbarThree.MessageQueue;
+                messageQueue.Enqueue(arg);
+            });
             Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", arg =>
             {
                 ViewModel.DialogIsOpen = arg.IsOpen;

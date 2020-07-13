@@ -50,6 +50,14 @@ namespace Consumption.PC.ViewCenter
             View.DataContext = ViewModel;
         }
 
+        public void SubscribeEvent()
+        {
+        }
+
+        public void SubscribeMessenger()
+        {
+        }
+
         object IModule.GetView()
         {
             return View;

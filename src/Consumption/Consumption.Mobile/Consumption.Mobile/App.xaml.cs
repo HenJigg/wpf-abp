@@ -18,12 +18,6 @@ namespace Consumption.Mobile
             XF.Material.Forms.Material.Init(this);
         }
 
-        private void ConfigureServices(IServiceCollection services)
-        {
-            //services.AddTransient(typeof(MainCenter));
-            services.AddScoped<IConsumptionService, ConsumptionService>();
-        }
-
         protected override void OnStart()
         {
             var serviceCollection = new ServiceCollection();
@@ -39,6 +33,12 @@ namespace Consumption.Mobile
 
         protected override void OnResume()
         {
+        }
+
+        private void ConfigureServices(IServiceCollection services)
+        {
+            //services.AddTransient(typeof(MainCenter));
+            services.AddScoped<IConsumptionService, ConsumptionService>();
         }
     }
 }

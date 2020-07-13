@@ -15,6 +15,7 @@
 namespace Consumption.Core.Request
 {
     using Consumption.Core.Attributes;
+    using Consumption.Core.Common;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace Consumption.Core.Request
     /// </summary>
     public class BaseRequest
     {
-        private readonly string _basePath = ConfigurationManager.AppSettings["serverAddress"];
+        private readonly string _basePath = "https://localhost:44399/";
 
         [Prevent]
         public virtual string ServerAddress
@@ -80,7 +81,7 @@ namespace Consumption.Core.Request
                                 if (Qpvalue != null && Qpvalue.ToString() != "")
                                 {
                                     if (getBuilder.ToString() == string.Empty) getBuilder.Append("?");
-                                    getBuilder.Append(Qproperty.Name + "=" + 
+                                    getBuilder.Append(Qproperty.Name + "=" +
                                         HttpUtility.UrlEncode(Convert.ToString(Qpvalue)) + "&");
                                 }
                             }

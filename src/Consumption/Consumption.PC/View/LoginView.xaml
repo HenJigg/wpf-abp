@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Consumption.PC.View"
+         xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
@@ -24,8 +25,7 @@
                 </StackPanel>
             </Border>
         </materialDesign:DialogHost.DialogContent>
-        <Grid>
-            <Border Background="#0066CC" Opacity="0.9"/>
+        <Grid Background="#0066CC">
             <Border Width="480" Height="430" Background="Transparent">
                 <Grid Margin="20">
                     <Grid.RowDefinitions>
@@ -33,7 +33,6 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
-                        <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Margin="20 0 0 0" VerticalAlignment="Center">
@@ -66,11 +65,14 @@
                         Command="{Binding LoginCommand}"
                         Background="White" BorderThickness="0" Content="Login"/>
 
-                    <TextBlock Grid.Row="4" Text="{Binding Report}" Foreground="White" 
-                           FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
-
+            <smtx:XamlDisplay Key="snackbar" VerticalContentAlignment="Top">
+                <materialDesign:Snackbar 
+                    Background="#FF3300"   
+                    MessageQueue="{materialDesign:MessageQueue}" 
+                    x:Name="SnackbarThree" />
+            </smtx:XamlDisplay>
         </Grid>
     </materialDesign:DialogHost>
 </Window>

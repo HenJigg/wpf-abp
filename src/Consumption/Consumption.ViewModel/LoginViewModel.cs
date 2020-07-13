@@ -83,27 +83,23 @@ namespace Consumption.ViewModel
             {
                 if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(PassWord))
                 {
-                    this.Report = "请输入用户名密码!";
+                    SnackBar("请输入用户名密码!");
                     return;
                 }
-
                 UpdateDialog(true, "验证登陆中...");
-                await Task.Delay(10000);
                 var r = await service.LoginAsync(UserName, PassWord);
                 if (r == null || !r.success)
                 {
-                    this.Report = r == null ? "远程服务器无法连接！" : r.message;
+                    SnackBar("远程服务器无法连接!");
                     return;
                 }
-
                 UpdateDialog(true, "获取模块清单...");
                 var authResult = await service.GetAuthListAsync();
                 if (authResult == null || !authResult.success)
                 {
-                    this.Report = r == null ? "获取模块清单异常！" : r.message;
+                    SnackBar("获取模块清单异常!");
                     return;
                 }
-
                 #region 关联用户信息/缓存
 
                 Loginer.Current.Account = r.dynamicObj.User.Account;
@@ -119,11 +115,8 @@ namespace Consumption.ViewModel
             }
             catch (Exception ex)
             {
+                SnackBar(ex.Message);
                 Log.Error(ex.Message);
-            }
-            finally
-            {
-                UpdateDialog(false);
             }
         }
 

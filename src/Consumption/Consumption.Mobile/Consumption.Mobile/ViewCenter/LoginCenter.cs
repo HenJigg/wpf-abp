@@ -1,7 +1,9 @@
 ﻿using Consumption.Core.Common;
+using Consumption.Mobile.Template;
 using Consumption.Mobile.View;
 using Consumption.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +11,7 @@ using Xamarin.Forms;
 using XF.Material.Forms.Resources;
 using XF.Material.Forms.UI.Dialogs;
 using XF.Material.Forms.UI.Dialogs.Configurations;
+using Xamarin.Forms.Core;
 
 namespace Consumption.Mobile.ViewCenter
 {
@@ -19,19 +22,20 @@ namespace Consumption.Mobile.ViewCenter
     {
         public override void SubscribeMessenger()
         {
-            Messenger.Default.Register<MsgInfo>(View, "UpdateDialog",
-                async arg =>
+            Messenger.Default.Register<string>(View, "Snackbar", async arg =>
             {
-                await MaterialDialog.Instance.LoadingDialogAsync(message: arg.Msg,
-                    lottieAnimation: "test");
+                await PopupNavigation.Instance.PopAllAsync();
+                await MaterialDialog.Instance.SnackbarAsync(message: arg);
             });
-            Messenger.Default.Register<bool>(View, "NavigationPage", arg =>
-           {
 
-           });
-            Messenger.Default.Register<bool>(View, "Exit", arg =>
-            {
-            });
+            Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", arg =>
+             {
+                 PopupNavigation.Instance.PushAsync(new SplashScreenView(arg.Msg));
+             });
+            Messenger.Default.Register<bool>(View, "NavigationPage", arg =>
+             {
+
+             });
         }
     }
 }

@@ -76,6 +76,15 @@ namespace Consumption.ViewModel
             Messenger.Default.Send(new MsgInfo() { IsOpen = isOpen, Msg = msg }, "UpdateDialog");
         }
 
+        /// <summary>
+        /// 通知异常
+        /// </summary>
+        /// <param name="msg"></param>
+        public void SnackBar(string msg)
+        {
+            Messenger.Default.Send(msg, "Snackbar");
+        }
+
         #endregion
     }
 }
