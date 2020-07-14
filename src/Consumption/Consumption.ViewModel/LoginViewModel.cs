@@ -90,7 +90,7 @@ namespace Consumption.ViewModel
                 var r = await service.LoginAsync(UserName, PassWord);
                 if (r == null || !r.success)
                 {
-                    SnackBar(r.message == null ? "远程服务器无法连接!" : r.message);
+                    SnackBar(r == null ? "远程服务器无法连接!" : r.message);
                     return;
                 }
                 UpdateDialog(true, "获取模块清单...");

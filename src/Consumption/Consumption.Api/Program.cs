@@ -86,7 +86,8 @@ namespace Consumption.Api
                      {
                          logging.ClearProviders();
                          logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-                     }).UseNLog();
+                     }).UseNLog()
+                     .UseUrls("http://*:5001");
                 });
     }
 }

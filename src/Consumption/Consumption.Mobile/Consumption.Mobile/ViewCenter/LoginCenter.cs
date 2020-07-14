@@ -28,10 +28,12 @@ namespace Consumption.Mobile.ViewCenter
                 await MaterialDialog.Instance.SnackbarAsync(message: arg);
             });
 
-            Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", arg =>
+            Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", async arg =>
              {
                  if (arg.IsOpen)
                      PopupNavigation.Instance.PushAsync(new SplashScreenView(arg.Msg));
+                 else
+                     await PopupNavigation.Instance.PopAllAsync();
              });
             Messenger.Default.Register<bool>(View, "NavigationPage", arg =>
              {
