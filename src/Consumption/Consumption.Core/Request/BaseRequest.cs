@@ -29,7 +29,7 @@ namespace Consumption.Core.Request
     /// </summary>
     public class BaseRequest
     {
-        private readonly string _basePath = "https://localhost:44399/";
+        private readonly string _basePath = Contract.serverUrl;
 
         [Prevent]
         public virtual string ServerAddress

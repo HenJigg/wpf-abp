@@ -1,7 +1,7 @@
 ﻿/*
 *
-* 文件名    ：Loginer                             
-* 程序说明  : 登录用户信息
+* 文件名    ：Contract                             
+* 程序说明  : 缓存信息
 * 更新时间  : 2020-07-11 18：03
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
@@ -19,45 +19,46 @@ namespace Consumption.Core.Common
     using System.Collections.Generic;
     using System.Text;
 
-    /// <summary>
-    /// 登录用户信息
-    /// </summary>
-    public class Loginer
+    public static class Contract
     {
-        private Loginer() { }
-        private static Loginer _Loginer = new Loginer(); //饿汉式单例
-
-        /// <summary>
-        /// 当前用户
-        /// </summary>
-        public static Loginer Current
-        {
-            get { return _Loginer; }
-        }
+        
+        #region 用户信息
 
         /// <summary>
         /// 登录名
         /// </summary>
-        public string Account { get; set; }
+        public static string Account = string.Empty;
 
         /// <summary>
         /// 用户名
         /// </summary>
-        public string UserName { get; set; }
+        public static string UserName = string.Empty;
 
         /// <summary>
         /// 是否属于管理员
         /// </summary>
-        public bool IsAdmin { get; set; }
+        public static bool IsAdmin;
+
+        #endregion
+
+        #region 权限验证信息
 
         /// <summary>
         /// 系统中已定义的功能清单-缓存用于页面验证
         /// </summary>
-        public List<AuthItem> AuthItems { get; set; }
+        public static List<AuthItem> AuthItems;
 
         /// <summary>
         /// 获取用户的所有模块
         /// </summary>
-        public List<Menu> Menus { get; set; }
+        public static List<Menu> Menus;
+
+        #endregion
+
+        #region 接口地址
+
+        public static string serverUrl = string.Empty;
+
+        #endregion
     }
 }

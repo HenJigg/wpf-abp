@@ -24,7 +24,7 @@ namespace Consumption.PC
         protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
+            Contract.serverUrl = ConfigurationManager.AppSettings["serverAddress"];
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();

@@ -102,11 +102,11 @@ namespace Consumption.ViewModel
                 }
                 #region 关联用户信息/缓存
 
-                Loginer.Current.Account = r.dynamicObj.User.Account;
-                Loginer.Current.UserName = r.dynamicObj.User.UserName;
-                Loginer.Current.IsAdmin = r.dynamicObj.User.FlagAdmin == 1;
-                Loginer.Current.Menus = r.dynamicObj.Menus; //用户包含的权限信息
-                Loginer.Current.AuthItems = authResult.dynamicObj;
+                Contract.Account = r.dynamicObj.User.Account;
+                Contract.UserName = r.dynamicObj.User.UserName;
+                Contract.IsAdmin = r.dynamicObj.User.FlagAdmin == 1;
+                Contract.Menus = r.dynamicObj.Menus; //用户包含的权限信息
+                Contract.AuthItems = authResult.dynamicObj;
 
                 #endregion
 

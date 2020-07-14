@@ -20,6 +20,7 @@ namespace Consumption.Mobile
 
         protected override void OnStart()
         {
+            
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();

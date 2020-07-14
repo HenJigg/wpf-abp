@@ -50,7 +50,7 @@ namespace Consumption.ViewModel.Common
                 foreach (var i in ms)
                 {
                     //如果当前程序集的模快在服务器上可以匹配到就添加模块列表
-                    var m = Loginer.Current.Menus.FirstOrDefault(t => t.MenuName.Equals(i.Name));
+                    var m = Contract.Menus.FirstOrDefault(t => t.MenuName.Equals(i.Name));
                     if (m != null)
                     {
                         Modules.Add(new Module()

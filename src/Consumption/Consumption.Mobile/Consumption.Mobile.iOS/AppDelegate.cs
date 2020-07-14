@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using PCLAppConfig;
 using UIKit;
 
 namespace Consumption.Mobile.iOS
@@ -23,6 +24,7 @@ namespace Consumption.Mobile.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            ConfigurationManager.Initialise(PCLAppConfig.FileSystemStream.PortableStream.Current);
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

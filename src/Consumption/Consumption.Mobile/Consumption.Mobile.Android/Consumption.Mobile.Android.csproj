@@ -54,6 +54,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="PCLAppConfig">
+      <Version>1.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.1080" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="XF.Material">
@@ -66,7 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <AndroidAsset Include="App.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -93,6 +96,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Consumption.Core\Consumption.Core.csproj">
+      <Project>{63D4C10A-DA54-4095-A124-7DCE9947EB9A}</Project>
+      <Name>Consumption.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Consumption.Mobile\Consumption.Mobile.csproj">
       <Project>{FD16068C-1B65-4957-A485-55EB4DE36369}</Project>
       <Name>Consumption.Mobile</Name>

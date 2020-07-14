@@ -289,7 +289,7 @@ namespace Consumption.ViewModel
         {
             this.AuthValue = AuthValue;
             ToolBarCommandList = new ObservableCollection<ButtonCommand>();
-            Loginer.Current.AuthItems.ForEach(arg =>
+            Contract.AuthItems.ForEach(arg =>
             {
                 if ((AuthValue & arg.AuthValue) == arg.AuthValue)
                     ToolBarCommandList.Add(new ButtonCommand()

@@ -24,6 +24,5 @@ namespace Consumption.Service
 
     public partial class ConsumptionService : IConsumptionService
     {
-     
     }
 }

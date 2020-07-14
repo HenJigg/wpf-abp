@@ -64,11 +64,11 @@ namespace Consumption.ViewModel.Common
         /// <returns></returns>
         public bool ModuleVerify(ModuleAttribute module)
         {
-            if (Loginer.Current.IsAdmin)
+            if (Contract.IsAdmin)
                 return true;
             else
             {
-                if (Loginer.Current.Menus
+                if (Contract.Menus
                     .FirstOrDefault(t => t.MenuName.Equals(module.Name)) != null)
                     return true;
             }
