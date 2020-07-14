@@ -121,7 +121,7 @@ namespace Consumption.Api.Controllers
             catch (Exception ex)
             {
                 logger.LogError(ex, "");
-                return Ok(new ConsumptionResponse() { success = false, message = "Login failed" });
+                return Ok(new ConsumptionResponse() { success = false, message = "验证用户失败" });
             }
         }
 
@@ -154,7 +154,7 @@ namespace Consumption.Api.Controllers
                 return Ok(new ConsumptionResponse()
                 {
                     success = false,
-                    message = "Can't get data"
+                    message = "获取用户数据异常!"
                 });
             }
         }
@@ -170,9 +170,7 @@ namespace Consumption.Api.Controllers
             try
             {
                 if (user == null)
-                {
-                    return Ok(new ConsumptionResponse() { success = false, message = "Add data error" });
-                }
+                    return Ok(new ConsumptionResponse() { success = false, message = "数据非法" });
                 user.CreateTime = DateTime.Now;
                 user.LoginCounter = 0;
                 user.IsLocked = 0;
@@ -181,12 +179,12 @@ namespace Consumption.Api.Controllers
                 if (await work.SaveChangesAsync() > 0)
                     return Ok(new ConsumptionResponse() { success = true });
 
-                return Ok(new ConsumptionResponse() { success = false, message = "Error saving data" });
+                return Ok(new ConsumptionResponse() { success = false, message = "添加用户错误" });
             }
             catch (Exception ex)
             {
                 logger.LogDebug(ex, "");
-                return Ok(new ConsumptionResponse() { success = false, message = "Add user error" });
+                return Ok(new ConsumptionResponse() { success = false, message = "添加用户错误" });
             }
         }
 
@@ -200,14 +198,12 @@ namespace Consumption.Api.Controllers
         public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
         {
             if (user == null)
-            {
-                return Ok(new ConsumptionResponse() { success = false, message = "Update data error" });
-            }
+                return Ok(new ConsumptionResponse() { success = false, message = "数据非法" });
             try
             {
                 var repository = work.GetRepository<User>();
                 var dbUser = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == id);
-                if (dbUser == null) return Ok(new ConsumptionResponse() { success = false, message = "The user was not found!" });
+                if (dbUser == null) return Ok(new ConsumptionResponse() { success = false, message = "提交数据错误" });
                 dbUser.UserName = user.UserName;
                 dbUser.Tel = user.Tel;
                 dbUser.Password = user.Password;
@@ -218,12 +214,12 @@ namespace Consumption.Api.Controllers
                 repository.Update(dbUser);
                 if (await work.SaveChangesAsync() > 0)
                     return Ok(new ConsumptionResponse() { success = true });
-                return Ok(new ConsumptionResponse() { success = false, message = $"update post {user.Id} failed when saving." });
+                return Ok(new ConsumptionResponse() { success = false, message = $"修改用户信息错误" });
             }
             catch (Exception ex)
             {
                 logger.LogDebug(ex, "");
-                return Ok(new ConsumptionResponse() { success = false, message = "Update user error" });
+                return Ok(new ConsumptionResponse() { success = false, message = "修改用户信息错误" });
             }
         }
 
@@ -241,13 +237,11 @@ namespace Consumption.Api.Controllers
 
                 var user = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == id);
                 if (user == null)
-                {
-                    return Ok(new ConsumptionResponse() { success = false, message = "The user was not found!" });
-                }
+                    return Ok(new ConsumptionResponse() { success = false, message = "删除用户异常" });
                 repository.Delete(user);
                 if (await work.SaveChangesAsync() > 0)
                     return Ok(new ConsumptionResponse() { success = true });
-                return Ok(new ConsumptionResponse() { success = false, message = $"Deleting post {id} failed when saving." });
+                return Ok(new ConsumptionResponse() { success = false, message = $"删除数据异常" });
             }
             catch (Exception ex)
             {

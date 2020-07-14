@@ -68,8 +68,7 @@
                 </Grid>
             </Border>
             <smtx:XamlDisplay Key="snackbar" VerticalContentAlignment="Top">
-                <materialDesign:Snackbar 
-                    Background="#FF3300"   
+                <materialDesign:Snackbar   
                     MessageQueue="{materialDesign:MessageQueue}" 
                     x:Name="SnackbarThree" />
             </smtx:XamlDisplay>

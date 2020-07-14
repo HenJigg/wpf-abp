@@ -30,7 +30,8 @@ namespace Consumption.Mobile.ViewCenter
 
             Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", arg =>
              {
-                 PopupNavigation.Instance.PushAsync(new SplashScreenView(arg.Msg));
+                 if (arg.IsOpen)
+                     PopupNavigation.Instance.PushAsync(new SplashScreenView(arg.Msg));
              });
             Messenger.Default.Register<bool>(View, "NavigationPage", arg =>
              {

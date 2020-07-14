@@ -41,7 +41,10 @@ namespace Consumption.PC.ViewCenter
             Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", arg =>
             {
                 ViewModel.DialogIsOpen = arg.IsOpen;
-                ViewModel.DialogMsg = arg.Msg;
+                if (arg.IsOpen)
+                    ViewModel.DialogMsg = arg.Msg;
+                else
+                    ViewModel.DialogMsg = string.Empty;
             });
             Messenger.Default.Register<bool>(View, "NavigationPage", async arg =>
               {
