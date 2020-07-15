@@ -10,6 +10,9 @@ This project mainly focuses on C, build a multi-platform application example, th
 #### Development tools
   IDE: Visual Studio 2019 
   
+### How do I run it?
+[Click here](https://www.bilibili.com/video/BV1954y1i7wM)
+  
 #### UI Framework
   Xamarin UI: [XF.Material](https://github.com/Baseflow/XF-Material-Library)
 

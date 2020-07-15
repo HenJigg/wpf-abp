@@ -12,6 +12,9 @@
 #### 开发工具
   IDE: Visual Studio 2019 
   
+### 如何运行它?
+[点击观看视频介绍](https://www.bilibili.com/video/BV1954y1i7wM)
+  
 #### UI框架
   Xamarin UI: [XF.Material](https://github.com/Baseflow/XF-Material-Library)
 
