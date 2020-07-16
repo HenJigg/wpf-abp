@@ -14,8 +14,9 @@
 
 namespace Consumption.ViewModel.Common
 {
+    using Consumption.Common.Contract;
     using Consumption.Core.Attributes;
-    using Consumption.Core.Common;
+    using Consumption.Core.Response;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;

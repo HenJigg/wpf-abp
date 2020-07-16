@@ -14,24 +14,17 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Consumption.Core.Common;
+    using Consumption.Core.Response;
     using Consumption.Core.Interfaces;
     using Consumption.PC.View;
     using Consumption.ViewModel;
     using GalaSoft.MvvmLight.Messaging;
-    using Org.BouncyCastle.Asn1.X509.Qualified;
     using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Reflection;
     using System.Runtime;
-    using System.Text;
     using System.Threading.Tasks;
-    using System.Windows;
-    using System.Windows.Media.Imaging;
-    using Consumption.ViewModel.Common;
     using Module = ViewModel.Common.Module;
     using Consumption.PC.Common;
+    using Consumption.Core.Common;
 
     /// <summary>
     /// 首页控制类

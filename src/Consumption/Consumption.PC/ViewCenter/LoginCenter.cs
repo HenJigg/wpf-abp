@@ -14,17 +14,10 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Consumption.Core.Common;
-    using Consumption.Core.Interfaces;
     using Consumption.PC.View;
     using Consumption.ViewModel;
     using GalaSoft.MvvmLight.Messaging;
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Windows;
+    using Consumption.Core.Common;
 
     /// <summary>
     /// 登录控制类

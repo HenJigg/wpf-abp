@@ -15,15 +15,17 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Core.Common;
+    using Consumption.Core.Response;
     using Consumption.Core.Entity;
-    using Consumption.Core.IService;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Consumption.Core.Interfaces;
+    using Consumption.Common.Contract;
+    using Consumption.Core.Common;
 
     /// <summary>
     /// 用户信息

@@ -18,7 +18,7 @@ namespace Consumption.Api.Controllers
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Consumption.Core.Common;
+    using Consumption.Core.Response;
     using Consumption.Core.Entity;
     using Consumption.EFCore;
     using Microsoft.AspNetCore.Mvc;

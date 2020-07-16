@@ -9,7 +9,7 @@
 */
 
 
-namespace Consumption.EFCore.Orm
+namespace Consumption.EFCore.Context
 {
     using Consumption.Core.Entity;
     using Newtonsoft.Json.Linq;

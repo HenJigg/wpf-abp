@@ -18,7 +18,7 @@ namespace Consumption.Api.Controllers
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Consumption.Core.Common;
+    using Consumption.Core.Response;
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
     using Consumption.Core.RequestForm;
@@ -206,7 +206,7 @@ namespace Consumption.Api.Controllers
             }
             catch (Exception ex)
             {
-                Core.Common.Log.Error(ex.Message);
+                Log.Error(ex.Message);
                 return Ok(new ConsumptionResponse() { success = false, message = "删除组数据失败" });
             }
         }

@@ -1,17 +1,10 @@
-﻿using Consumption.Core.Common;
-using Consumption.Mobile.Template;
+﻿using Consumption.Mobile.Template;
 using Consumption.Mobile.View;
 using Consumption.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
 using Rg.Plugins.Popup.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
-using XF.Material.Forms.Resources;
 using XF.Material.Forms.UI.Dialogs;
-using XF.Material.Forms.UI.Dialogs.Configurations;
-using Xamarin.Forms.Core;
+using Consumption.Core.Common;
 
 namespace Consumption.Mobile.ViewCenter
 {

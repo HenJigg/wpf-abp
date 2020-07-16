@@ -15,7 +15,7 @@
 namespace Consumption.Service
 {
     using Consumption.Core.Entity;
-    using Consumption.Core.IService;
+    using Consumption.Core.Interfaces;
     using Consumption.Core.Response;
     using System;
     using System.Collections.Generic;

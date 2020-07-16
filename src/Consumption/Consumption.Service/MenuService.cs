@@ -17,7 +17,6 @@ namespace Consumption.Service
 {
     using Consumption.Core.Collections;
     using Consumption.Core.Entity;
-    using Consumption.Core.IService;
     using Consumption.Core.Query;
     using Consumption.Core.Request;
     using Consumption.Core.Response;

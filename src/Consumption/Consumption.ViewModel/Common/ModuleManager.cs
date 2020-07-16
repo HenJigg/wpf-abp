@@ -14,6 +14,7 @@
 
 namespace Consumption.ViewModel.Common
 {
+    using Consumption.Common.Contract;
     using Consumption.Core.Common;
     using GalaSoft.MvvmLight;
     using System;

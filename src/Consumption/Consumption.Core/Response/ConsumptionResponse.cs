@@ -13,7 +13,7 @@
 */
 
 
-namespace Consumption.Core.Common
+namespace Consumption.Core.Response
 {
     /// <summary>
     /// 请求返回定义类

@@ -14,12 +14,10 @@
 
 namespace Consumption.Core.Request
 {
+    using Consumption.Common.Contract;
     using Consumption.Core.Attributes;
-    using Consumption.Core.Common;
     using Newtonsoft.Json;
     using System;
-    using System.Collections.Generic;
-    using System.Configuration;
     using System.Reflection;
     using System.Text;
     using System.Web;

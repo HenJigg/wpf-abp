@@ -18,7 +18,7 @@ namespace Consumption.Api
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Consumption.EFCore.Orm;
+    using Consumption.EFCore.Context;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;

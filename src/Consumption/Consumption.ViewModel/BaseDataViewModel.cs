@@ -15,7 +15,7 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Core.Common;
+    using Consumption.Core.Response;
     using Consumption.Core.Enums;
     using Consumption.Core.Interfaces;
     using Consumption.ViewModel.Common;
@@ -26,6 +26,7 @@ namespace Consumption.ViewModel
     using System.Collections.ObjectModel;
     using System.Text;
     using System.Threading.Tasks;
+    using Consumption.Common.Contract;
 
     /// <summary>
     /// 基础数据基类

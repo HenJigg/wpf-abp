@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 
 namespace Consumption.Core.Common
 {
+    /// <summary>
+    /// 消息提示结构
+    /// </summary>
     public class MsgInfo
     {
         public bool IsOpen { get; set; }

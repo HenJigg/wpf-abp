@@ -14,18 +14,16 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Core.Collections;
-    using Consumption.Core.Common;
     using Consumption.Core.Entity;
-    using Consumption.Core.IService;
     using Consumption.Core.Query;
     using Newtonsoft.Json;
     using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
+    using Consumption.Core.Interfaces;
+    using Consumption.Common.Contract;
+    using Consumption.Core.Common;
 
     /// <summary>
     /// 基础数据

@@ -1,7 +1,7 @@
 ﻿/*
-* 文件名    ：AutofacProvider                             
-* 程序说明  : 获取Autofac注册的依赖关系实现
-* 更新时间  : 2020-05-30 13：49
+* 文件名    ：NetCoreProvider                             
+* 程序说明  : 获取注册的依赖关系实现
+* 更新时间  : 2020-07-16 13：49
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -11,7 +11,7 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-namespace Consumption.Core.Common
+namespace Consumption.Common.Contract
 {
     using Microsoft.Extensions.DependencyInjection;
     using System;
@@ -19,7 +19,7 @@ namespace Consumption.Core.Common
     using System.Text;
 
     /// <summary>
-    /// Autofac 服务提供者
+    /// 服务提供者
     /// </summary>
     public class NetCoreProvider
     {

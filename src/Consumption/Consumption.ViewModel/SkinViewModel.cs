@@ -29,39 +29,5 @@ namespace Consumption.ViewModel
     /// </summary>
     public class SkinViewModel : BaseViewModel
     {
-        public SkinViewModel()
-        {
-            ApplyCommand = new RelayCommand<string>(arg =>
-              {
-                  StyleConfig.Url = arg;
-                  Messenger.Default.Send(arg, "UpdateBackground");
-              });
-
-            SaveCommand = new RelayCommand(() =>
-              {
-                  UserManager.SaveStyleConfig(StyleConfig);
-              });
-        }
-
-        /// <summary>
-        /// 设置首页背景颜色
-        /// </summary>
-        public RelayCommand<string> ApplyCommand { get; private set; }
-
-        /// <summary>
-        /// 保存样式配置
-        /// </summary>
-        public RelayCommand SaveCommand { get; private set; }
-
-        private StyleConfig styleConfig;
-
-        /// <summary>
-        /// 个性化设置
-        /// </summary>
-        public StyleConfig StyleConfig
-        {
-            get { return styleConfig; }
-            set { styleConfig = value; RaisePropertyChanged(); }
-        }
     }
 }

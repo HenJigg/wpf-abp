@@ -12,7 +12,7 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-namespace Consumption.Core.Common
+namespace Consumption.Common.Contract
 {
     using Consumption.Core.Entity;
     using System;
@@ -60,5 +60,10 @@ namespace Consumption.Core.Common
         public static string serverUrl = string.Empty;
 
         #endregion
+    }
+
+    public class ConsumptionContract
+    {
+        public static string url { get; set; }
     }
 }

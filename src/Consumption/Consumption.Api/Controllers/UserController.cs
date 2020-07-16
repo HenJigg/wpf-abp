@@ -15,17 +15,17 @@
 
 namespace Consumption.Api.Controllers
 {
-    using Consumption.Core.Common;
+    using Consumption.Core.Response;
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
     using Consumption.EFCore;
-    using Consumption.EFCore.Orm;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Consumption.EFCore.Context;
 
     /// <summary>
     /// 用户数据控制器

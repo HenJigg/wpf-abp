@@ -1,6 +1,5 @@
-﻿using Consumption.Core.Common;
+﻿using Consumption.Core.Response;
 using Consumption.Core.Interfaces;
-using Consumption.Core.IService;
 using Consumption.PC.View;
 using Consumption.PC.ViewCenter;
 using Consumption.Service;
@@ -13,6 +12,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Consumption.Common.Contract;
 
 namespace Consumption.PC
 {

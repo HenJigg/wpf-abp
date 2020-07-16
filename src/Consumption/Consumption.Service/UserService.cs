@@ -14,7 +14,6 @@
 
 namespace Consumption.Service
 {
-    using Consumption.Core.IService;
     using Consumption.Core.Request;
     using Consumption.Core.Response;
     using System;

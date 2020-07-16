@@ -34,13 +34,13 @@ namespace Consumption.PC.Common
         /// <param name="span">间隔</param>
         public static void CreateWidthChangedAnimation(UIElement element, double Form, double To, TimeSpan span)
         {
-            Storyboard storyboard = new Storyboard();
             DoubleAnimation doubleAnimation = new DoubleAnimation();
             doubleAnimation.From = Form;
             doubleAnimation.To = To;
             doubleAnimation.Duration = span;
             Storyboard.SetTarget(doubleAnimation, element);
             Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath("Width"));
+            Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(doubleAnimation);
             storyboard.Begin();
         }

@@ -1,5 +1,6 @@
-﻿using Consumption.Core.Common;
-using Consumption.Core.IService;
+﻿using Consumption.Common.Contract;
+using Consumption.Core.Interfaces;
+using Consumption.Core.Response;
 using Consumption.Mobile.View;
 using Consumption.Mobile.ViewCenter;
 using Consumption.Service;

@@ -22,7 +22,7 @@ namespace Consumption.Api
     using System.Threading.Tasks;
     using Consumption.Core.Entity;
     using Consumption.EFCore;
-    using Consumption.EFCore.Orm;
+    using Consumption.EFCore.Context;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpsPolicy;

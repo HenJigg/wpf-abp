@@ -9,9 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Consumption.Web.Data;
-using Consumption.Core.IService;
 using Consumption.Service;
-using Consumption.Core.Common;
+using Consumption.Core.Response;
 
 namespace Consumption.Web
 {
@@ -30,7 +29,6 @@ namespace Consumption.Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddAntDesign();
         }
 

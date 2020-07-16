@@ -15,9 +15,8 @@
 namespace Consumption.ViewModel
 {
     using Consumption.Core.Collections;
-    using Consumption.Core.Common;
+    using Consumption.Core.Response;
     using Consumption.Core.Entity;
-    using Consumption.Core.IService;
     using Consumption.Core.Query;
     using GalaSoft.MvvmLight;
     using Newtonsoft.Json;
@@ -27,6 +26,9 @@ namespace Consumption.ViewModel
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Consumption.Core.Interfaces;
+    using Consumption.Common.Contract;
+    using Consumption.Core.Common;
 
     /// <summary>
     /// 菜单
@@ -62,7 +64,7 @@ namespace Consumption.ViewModel
             }
             catch (Exception ex)
             {
-                //..
+                Log.Error(ex.Message);
             }
         }
     }

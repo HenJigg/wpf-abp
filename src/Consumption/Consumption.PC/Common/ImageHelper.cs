@@ -28,34 +28,6 @@ namespace Consumption.PC.Common
     /// </summary>
     public class ImageHelper
     {
-        /// <summary>
-        /// 获取背景预览图
-        /// </summary>
-        /// <returns></returns>
-        public static async Task<ObservableCollection<SkinNode>> GetPrewView()
-        {
-            return await Task.Run(() =>
-              {
-                  string path = $"{AppDomain.CurrentDomain.BaseDirectory}Skin\\Preview";
-                  if (Directory.Exists(path))
-                  {
-                      DirectoryInfo info = new DirectoryInfo(path);
-                      var ifs = info.GetFiles()?.ToList();
-                      ObservableCollection<SkinNode> skins = new ObservableCollection<SkinNode>();
-                      ifs.ForEach(arg =>
-                      {
-                          skins.Add(new SkinNode()
-                          {
-                              Name = arg.Name,
-                              Image = ImageHelper.ConvertToImage(arg.FullName)
-                          });
-                      });
-                      return skins;
-                  }
-                  return null;
-              });
-        }
-
         public static BitmapImage ConvertToImage(string fileName)
         {
             BitmapImage bmp = new BitmapImage();

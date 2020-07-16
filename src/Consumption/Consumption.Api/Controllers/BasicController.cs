@@ -19,7 +19,7 @@ namespace Consumption.Api.Controllers
     using System.Linq;
     using System.Security.Cryptography.X509Certificates;
     using System.Threading.Tasks;
-    using Consumption.Core.Common;
+    using Consumption.Core.Response;
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
     using Consumption.EFCore;

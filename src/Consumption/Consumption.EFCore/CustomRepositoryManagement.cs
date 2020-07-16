@@ -2,7 +2,7 @@
 
 namespace Consumption.EFCore
 {
-    using Consumption.EFCore.Orm;
+    using Consumption.EFCore.Context;
     using System;
     using System.Collections.Generic;
     using System.Text;
