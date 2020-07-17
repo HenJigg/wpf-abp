@@ -18,6 +18,7 @@ namespace Consumption.PC.ViewCenter
     using Consumption.ViewModel;
     using GalaSoft.MvvmLight.Messaging;
     using Consumption.Core.Common;
+    using System;
 
     /// <summary>
     /// 登录控制类
@@ -47,7 +48,7 @@ namespace Consumption.PC.ViewCenter
               });
             Messenger.Default.Register<bool>(View, "Exit", arg =>
             {
-                View.Close();
+                Environment.Exit(0);
             });
         }
     }
