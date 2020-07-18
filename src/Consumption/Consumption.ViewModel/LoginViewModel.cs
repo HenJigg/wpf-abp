@@ -82,25 +82,26 @@ namespace Consumption.ViewModel
         {
             try
             {
+                if (DialogIsOpen) return;
                 if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(PassWord))
                 {
                     SnackBar("请输入用户名密码!");
                     return;
                 }
-                UpdateDialog(true, "验证登陆中...");
+                DialogIsOpen = true;
                 var r = await service.LoginAsync(UserName, PassWord);
                 if (r == null || !r.success)
                 {
                     SnackBar(r == null ? "远程服务器无法连接!" : r.message);
                     return;
                 }
-                UpdateDialog(true, "获取模块清单...");
                 var authResult = await service.GetAuthListAsync();
                 if (authResult == null || !authResult.success)
                 {
                     SnackBar("获取模块清单异常!");
                     return;
                 }
+
                 #region 关联用户信息/缓存
 
                 Contract.Account = r.dynamicObj.User.Account;
@@ -111,7 +112,6 @@ namespace Consumption.ViewModel
 
                 #endregion
 
-                UpdateDialog(true, "加载首页...");
                 Messenger.Default.Send(true, "NavigationPage");
             }
             catch (Exception ex)
@@ -121,7 +121,7 @@ namespace Consumption.ViewModel
             }
             finally
             {
-                UpdateDialog(false);
+                DialogIsOpen = false;
             }
         }
 

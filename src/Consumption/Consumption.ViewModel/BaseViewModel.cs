@@ -24,6 +24,7 @@ namespace Consumption.ViewModel
     using System.Text;
     using System.Threading.Tasks;
     using Consumption.Core.Common;
+    using Consumption.ViewModel.Common;
 
     /// <summary>
     /// MVVM基类
@@ -45,7 +46,6 @@ namespace Consumption.ViewModel
         }
 
         private bool isOpen;
-        private string dialogMsg;
 
         /// <summary>
         /// 窗口是否显示
@@ -56,26 +56,8 @@ namespace Consumption.ViewModel
             set { isOpen = value; RaisePropertyChanged(); }
         }
 
-        /// <summary>
-        /// 弹出窗口
-        /// </summary>
-        public string DialogMsg
-        {
-            get { return dialogMsg; }
-            set { dialogMsg = value; RaisePropertyChanged(); }
-        }
-
         #region Loading
 
-        /// <summary>
-        /// 更新状态信息
-        /// </summary>
-        /// <param name="isOpen"></param>
-        /// <param name="msg"></param>
-        public void UpdateDialog(bool isOpen = true, string msg = "")
-        {
-            Messenger.Default.Send(new MsgInfo() { IsOpen = isOpen, Msg = msg }, "UpdateDialog");
-        }
 
         /// <summary>
         /// 通知异常

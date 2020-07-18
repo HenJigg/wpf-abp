@@ -35,25 +35,8 @@ namespace Consumption.Mobile.ViewCenter
         /// <returns></returns>
         public virtual ContentPage GetContentPage()
         {
-            this.SubscribeMessenger();
-            this.SubscribeEvent();
             this.BindDefaultViewModel();
             return View;
-        }
-
-        public void BindViewModel(object viewModel)
-        {
-        }
-
-        public virtual void Close()
-        {
-        }
-
-        /// <summary>
-        /// 注册默认事件
-        /// </summary>
-        public void SubscribeEvent()
-        {
         }
 
         public virtual void SubscribeMessenger()

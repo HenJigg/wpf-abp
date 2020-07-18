@@ -5,17 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Consumption.PC.Template"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Effect>
-        <DropShadowEffect BlurRadius="13" Color="#D9D9D9" Direction="0" ShadowDepth="1"/>
-    </UserControl.Effect>
-    <Border Width="220" Height="120" BorderThickness="1"  Background="#FFfafafa">
+             Width="220" Height="120">
+    <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" Width="40" IsIndeterminate="True"/>
             <TextBlock     Margin="0 35 0 0" 
-                           Text="正在处理,请稍候..." 
-                           FontSize="12" 
+                           Text="{Binding Msg}" 
+                           FontSize="15" 
                            Foreground="#737373" />
         </StackPanel>
-    </Border>
+    </Grid>
 </UserControl>

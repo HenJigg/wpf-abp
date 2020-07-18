@@ -17,6 +17,7 @@ namespace Consumption.PC.ViewCenter
     using Consumption.Core.Entity;
     using Consumption.Core.Interfaces;
     using GalaSoft.MvvmLight;
+    using MaterialDesignThemes.Wpf;
     using NLog.Filters;
     using System;
     using System.Collections.Generic;
@@ -48,14 +49,6 @@ namespace Consumption.PC.ViewCenter
             if (ViewModel is IDataPager dataPager)
                 await dataPager.GetPageData(0);
             View.DataContext = ViewModel;
-        }
-
-        public void SubscribeEvent()
-        {
-        }
-
-        public void SubscribeMessenger()
-        {
         }
 
         object IModule.GetView()

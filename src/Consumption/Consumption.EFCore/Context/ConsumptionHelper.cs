@@ -46,11 +46,11 @@ namespace Consumption.EFCore.Context
                 userList.ForEach(async arg => await context.Users.AddAsync(arg));
 
                 List<Menu> menuList = new List<Menu>();
-                menuList.Add(new Menu() { MenuCode = "1001", MenuName = "用户管理", MenuCaption = "AccountBox", MenuNameSpace = "Consumption.PC.ViewCenter.UserCenter", MenuAuth = 7 });
-                menuList.Add(new Menu() { MenuCode = "1002", MenuName = "权限管理", MenuCaption = "Group", MenuNameSpace = "Consumption.PC.ViewCenter.GroupCenter", MenuAuth = 7 });
-                menuList.Add(new Menu() { MenuCode = "1003", MenuName = "个性化", MenuCaption = "Palette", MenuNameSpace = "Consumption.PC.ViewCenter.SkinCenter", MenuAuth = 0 });
-                menuList.Add(new Menu() { MenuCode = "1004", MenuName = "仪表板", MenuCaption = "TelevisionGuide", MenuNameSpace = "Consumption.PC.ViewCenter.DashboardCenter", MenuAuth = 0 });
-                menuList.Add(new Menu() { MenuCode = "1005", MenuName = "菜单管理", MenuCaption = "Menu", MenuNameSpace = "Consumption.PC.ViewCenter.MenuCenter", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1001", MenuName = "用户管理", MenuCaption = "AccountBox", MenuNameSpace = "UserCenter", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1002", MenuName = "权限管理", MenuCaption = "Group", MenuNameSpace = "GroupCenter", MenuAuth = 7 });
+                menuList.Add(new Menu() { MenuCode = "1003", MenuName = "个性化", MenuCaption = "Palette", MenuNameSpace = "SkinCenter", MenuAuth = 0 });
+                menuList.Add(new Menu() { MenuCode = "1004", MenuName = "仪表板", MenuCaption = "TelevisionGuide", MenuNameSpace = "DashboardCenter", MenuAuth = 0 });
+                menuList.Add(new Menu() { MenuCode = "1005", MenuName = "菜单管理", MenuCaption = "Menu", MenuNameSpace = "MenuCenter", MenuAuth = 7 });
                 menuList.Add(new Menu() { MenuCode = "1006", MenuName = "基础数据", });
                 menuList.Add(new Menu() { MenuCode = "1007", MenuName = "计划管理", });
                 menuList.Add(new Menu() { MenuCode = "1008", MenuName = "消费报表", });

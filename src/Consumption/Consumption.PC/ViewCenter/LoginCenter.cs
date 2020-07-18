@@ -19,6 +19,8 @@ namespace Consumption.PC.ViewCenter
     using GalaSoft.MvvmLight.Messaging;
     using Consumption.Core.Common;
     using System;
+    using Consumption.PC.Template;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// 登录控制类
@@ -31,14 +33,6 @@ namespace Consumption.PC.ViewCenter
             {
                 var messageQueue = View.SnackbarThree.MessageQueue;
                 messageQueue.Enqueue(arg);
-            });
-            Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", arg =>
-            {
-                ViewModel.DialogIsOpen = arg.IsOpen;
-                if (arg.IsOpen)
-                    ViewModel.DialogMsg = arg.Msg;
-                else
-                    ViewModel.DialogMsg = string.Empty;
             });
             Messenger.Default.Register<bool>(View, "NavigationPage", async arg =>
               {

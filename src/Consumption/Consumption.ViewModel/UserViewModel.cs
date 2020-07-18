@@ -26,6 +26,7 @@ namespace Consumption.ViewModel
     using Consumption.Core.Interfaces;
     using Consumption.Common.Contract;
     using Consumption.Core.Common;
+    using Consumption.ViewModel.Common;
 
     /// <summary>
     /// 用户信息

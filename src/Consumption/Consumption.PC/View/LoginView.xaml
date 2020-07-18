@@ -8,65 +8,56 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        WindowStyle="None" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen"
+        WindowStyle="None"  WindowStartupLocation="CenterScreen"
         Title="欢迎使用" Width="480" Height="430">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="-1" />
     </WindowChrome.WindowChrome>
-    <materialDesign:DialogHost  IsOpen="{Binding DialogIsOpen}">
-        <materialDesign:DialogHost.DialogContent>
-            <Border Width="300" Height="150" Background="White">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}" 
-                                 Value="0" Width="50" IsIndeterminate="True"/>
-                    <TextBlock     Margin="0 50 0 0" 
-                           Text="{Binding DialogMsg}"  FontSize="20"
-                           Foreground="#737373" />
+    <materialDesign:DialogHost Identifier="Root">
+        <Grid Background="{StaticResource MaterialDesignDarkBackground}">
+            <Grid Margin="20" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Margin="20 0 0 0" VerticalAlignment="Center">
+                    <TextBlock Text="Welcome" Foreground="White" FontSize="35" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock Text="WPF!" Foreground="White" FontSize="35"  VerticalAlignment="Center" Margin="10 0 0 0"/>
                 </StackPanel>
-            </Border>
-        </materialDesign:DialogHost.DialogContent>
-        <Grid Background="#0066CC">
-            <Border Width="480" Height="430" Background="Transparent">
-                <Grid Margin="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
 
-                    <StackPanel Orientation="Horizontal" Margin="20 0 0 0" VerticalAlignment="Center">
-                        <TextBlock Text="Welcome" Foreground="White" FontSize="35" FontWeight="Bold" VerticalAlignment="Center"/>
-                        <TextBlock Text="WPF!" Foreground="White" FontSize="35"  VerticalAlignment="Center" Margin="10 0 0 0"/>
-                    </StackPanel>
-
-                    <Button Background="Transparent" Height="60" 
+                <Button Background="Transparent" Height="60" 
                         Command="{Binding CloseCommand}"
                         BorderBrush="Transparent" HorizontalAlignment="Right">
-                        <materialDesign:PackIcon Kind="Close"  Width="50" Height="50"/>
-                    </Button>
+                    <materialDesign:PackIcon Kind="Close"  Width="50" Height="50"/>
+                </Button>
 
-                    <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Account" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Account" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          Text="{Binding UserName}"
                          Foreground="White" BorderBrush="White" FontSize="22" 
                          VerticalAlignment="Center" Margin="20 0 20 0"/>
 
-                    <PasswordBox Grid.Row="2" materialDesign:HintAssist.Hint="PassWord"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                <PasswordBox Grid.Row="2" materialDesign:HintAssist.Hint="PassWord"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
                          Foreground="White" BorderBrush="White" FontSize="22"
                          VerticalAlignment="Center" Margin="20 0 20 0"
                          local:PasswordBoxHelper.Password="{Binding PassWord,
                     Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-                        <i:Interaction.Behaviors>
-                            <local:PasswordBoxBehavior />
-                        </i:Interaction.Behaviors>
-                    </PasswordBox>
+                    <i:Interaction.Behaviors>
+                        <local:PasswordBoxBehavior />
+                    </i:Interaction.Behaviors>
+                </PasswordBox>
 
-                    <Button Grid.Row="3" Margin="20 0 20 0" Height="55" Foreground="Black" FontSize="23" 
-                        Command="{Binding LoginCommand}"
-                        Background="White" BorderThickness="0" Content="Login"/>
+                <Button Grid.Row="3" Margin="20 0 20 0" Height="55" FontSize="23" 
+                        Command="{Binding LoginCommand}" Foreground="White" 
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        materialDesign:ButtonProgressAssist.Value="-1"
+                        materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding DialogIsOpen}"
+                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                        Content="Login"/>
 
-                </Grid>
-            </Border>
+            </Grid>
             <smtx:XamlDisplay Key="snackbar" VerticalContentAlignment="Top">
                 <materialDesign:Snackbar   
                     MessageQueue="{materialDesign:MessageQueue}" 

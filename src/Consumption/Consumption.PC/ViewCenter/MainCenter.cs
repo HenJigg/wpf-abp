@@ -25,6 +25,9 @@ namespace Consumption.PC.ViewCenter
     using Module = ViewModel.Common.Module;
     using Consumption.PC.Common;
     using Consumption.Core.Common;
+    using Consumption.Common.Contract;
+    using Consumption.PC.Template;
+    using MaterialDesignThemes.Wpf;
 
     /// <summary>
     /// 首页控制类
@@ -48,24 +51,22 @@ namespace Consumption.PC.ViewCenter
             {
                 GoHomeView();
             });
-            Messenger.Default.Register<bool>(View, "DisplayView", arg =>
-              {
-                  ViewModel.DialogIsOpen = arg;
-              });
             Messenger.Default.Register<Module>(View, "NavigationNewPage", async m =>
             {
                 try
                 {
-                    ViewModel.DialogIsOpen = true;
-                    //临时方案,反射创建实例,缺陷:每次都需要进行反射...
-                    var ass = System.Reflection.Assembly.GetEntryAssembly();
-                    if (ass.CreateInstance(m.TypeName) is IModule dialog)
+                    if (m.TypeName == View.page.Tag?.ToString()) return;
+                    _ = DialogHost.Show(new SplashScreenView()
                     {
-                        if (m.TypeName == View.page.Tag?.ToString()) return;
-                        await dialog.BindDefaultModel(m.Auth);
-                        View.page.Tag = m.TypeName;
-                        View.page.Content = dialog.GetView();
-                    }
+                        DataContext = new { Msg = "正在打开页面..." }
+                    }, "Root");
+                    ViewModel.DialogIsOpen = true;
+                    await Task.Delay(100);
+                    //将数据库中获取的菜单Namespace在容器当中查找依赖关系的实例
+                    var dialog = NetCoreProvider.Get<IModule>(m.TypeName);
+                    await dialog.BindDefaultModel(m.Auth);
+                    View.page.Tag = m.TypeName;
+                    View.page.Content = dialog.GetView();
                 }
                 catch (Exception ex)
                 {
@@ -78,21 +79,6 @@ namespace Consumption.PC.ViewCenter
                     GC.Collect();
                 }
             });
-            //Messenger.Default.Register<string>(View, "UpdateBackground", arg =>
-            //{
-            //    ViewModel.StyleConfig.Url = arg;
-            //    //保存用户配置...
-            //});
-            //Messenger.Default.Register<double>(View, "UpdateTrans", arg =>
-            //{
-            //    ViewModel.StyleConfig.Trans = arg / 100;
-            //    //保存用户配置...
-            //});
-            //Messenger.Default.Register<double>(View, "UpdateGaussian", arg =>
-            //{
-            //    ViewModel.StyleConfig.Radius = arg;
-            //    //保存用户配置...
-            //});
         }
 
         /// <summary>

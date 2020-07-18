@@ -13,6 +13,7 @@
 
 namespace Consumption.Common.Contract
 {
+    using Autofac;
     using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Collections.Generic;
@@ -23,25 +24,23 @@ namespace Consumption.Common.Contract
     /// </summary>
     public class NetCoreProvider
     {
-        public static ServiceProvider Instance { get; private set; }
+        public static IContainer Instance { get; private set; }
 
-        public static void RegisterServiceLocator(ServiceProvider locator)
+        public static void RegisterServiceLocator(IContainer locator)
         {
             if (Instance == null)
-            {
                 Instance = locator;
-            }
         }
 
         public static T Get<T>()
         {
             if (Instance == null) return default(T);
-            return Instance.GetRequiredService<T>();
+            return Instance.Resolve<T>();
         }
 
         public static T Get<T>(string typeName)
         {
-            return Instance.GetRequiredService<T>();
+            return Instance.ResolveNamed<T>(typeName);
         }
     }
 }

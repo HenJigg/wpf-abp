@@ -37,9 +37,10 @@ namespace Consumption.Mobile.ViewCenter
             View.BindingContext = ViewModel;
         }
 
-        public virtual void SubscribeEvent() { }
-
-        public virtual void SubscribeMessenger() { }
+        public Task<bool> ShowView()
+        {
+            throw new NotImplementedException();
+        }
 
         object IModule.GetView()
         {

@@ -12,6 +12,8 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
+using System.Threading.Tasks;
+
 namespace Consumption.Core.Interfaces
 {
     /// <summary>
@@ -20,32 +22,9 @@ namespace Consumption.Core.Interfaces
     public interface IMsg
     {
         /// <summary>
-        /// 错误消息
-        /// </summary>
-        /// <param name="msg">内容</param>
-        void Error(string msg);
-
-        /// <summary>
-        /// 消息提示
-        /// </summary>
-        /// <param name="msg">内容</param>
-        void Info(string msg);
-
-        /// <summary>
-        /// 警告
-        /// </summary>
-        /// <param name="msg">内容</param>
-        void Warning(string msg);
-
-        /// <summary>
         /// 询问
         /// </summary>
         /// <param name="msg">内容</param>
-        void Question(string msg);
-
-        /// <summary>
-        /// 弹出
-        /// </summary>
-        void Show();
+        Task<bool> Show(object obj);
     }
 }

@@ -52,9 +52,6 @@ namespace Consumption.PC.ViewCenter
             return await Task.FromResult((bool)result);
         }
 
-        public void BindViewModel(object viewModel)
-        {
-        }
 
         public virtual void Close()
         {

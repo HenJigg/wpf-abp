@@ -11,12 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\iconfont.ttf" />
-    <None Remove="Images\background.png" />
     <None Remove="Images\test_user.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.2.0" />
     <PackageReference Include="AvalonEdit" Version="6.0.0" />
     <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
     <PackageReference Include="MaterialDesignColors" Version="1.2.4" />
@@ -34,15 +37,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Consumption.Service\Consumption.Service.csproj" />
     <ProjectReference Include="..\Consumption.ViewModel\Consumption.ViewModel.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Fonts\iconfont.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\background.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

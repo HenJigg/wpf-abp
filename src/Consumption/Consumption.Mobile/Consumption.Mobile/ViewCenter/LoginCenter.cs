@@ -24,7 +24,7 @@ namespace Consumption.Mobile.ViewCenter
             Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", async arg =>
              {
                  if (arg.IsOpen)
-                     PopupNavigation.Instance.PushAsync(new SplashScreenView(arg.Msg));
+                     _ = PopupNavigation.Instance.PushAsync(new SplashScreenView(arg.Msg));
                  else
                      await PopupNavigation.Instance.PopAllAsync();
              });
