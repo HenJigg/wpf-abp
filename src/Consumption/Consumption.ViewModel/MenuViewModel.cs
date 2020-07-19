@@ -38,6 +38,7 @@ namespace Consumption.ViewModel
         private readonly IConsumptionService menuService;
         public MenuViewModel()
         {
+            SelectPageTitle = "菜单管理";
             menuService = NetCoreProvider.Get<IConsumptionService>();
         }
 

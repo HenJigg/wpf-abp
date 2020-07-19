@@ -27,7 +27,10 @@ namespace Consumption.ViewModel
     {
         public MainViewModel()
         {
-            OpenPageCommand = new RelayCommand<Module>(arg => { Messenger.Default.Send(arg, "NavigationNewPage"); });
+            OpenPageCommand = new RelayCommand<Module>(arg =>
+            {
+                Messenger.Default.Send(arg, "NavigationNewPage");
+            });
             GoHomeCommand = new RelayCommand(() =>
             {
                 Messenger.Default.Send("", "GoHomePage");
@@ -64,6 +67,11 @@ namespace Consumption.ViewModel
         /// </summary>
         public RelayCommand<Module> OpenPageCommand { get; private set; }
 
+        public RelayCommand MinCommand { get; private set; } = new RelayCommand(() =>
+          {
+              Messenger.Default.Send("", "WindowMinimized");
+          });
+
         public async Task InitDefaultView()
         {
             /*
@@ -73,7 +81,7 @@ namespace Consumption.ViewModel
              *
              *  注:理论上管理员应该可用本机的所有模块, 
              *  当检测本机用户属于管理员,则不向服务器验证
-             */ 
+             */
 
             //创建模块管理器
             ModuleManager = new ModuleManager();

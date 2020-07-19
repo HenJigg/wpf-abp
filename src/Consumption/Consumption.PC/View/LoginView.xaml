@@ -29,7 +29,7 @@
                 </StackPanel>
 
                 <Button Background="Transparent" Height="60" 
-                        Command="{Binding CloseCommand}"
+                        Command="{Binding ExitCommand}"
                         BorderBrush="Transparent" HorizontalAlignment="Right">
                     <materialDesign:PackIcon Kind="Close"  Width="50" Height="50"/>
                 </Button>

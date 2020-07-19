@@ -21,6 +21,7 @@ namespace Consumption.PC.ViewCenter
     using System;
     using Consumption.PC.Template;
     using MaterialDesignThemes.Wpf;
+    using Consumption.ViewModel.Common;
 
     /// <summary>
     /// 登录控制类
@@ -40,10 +41,12 @@ namespace Consumption.PC.ViewCenter
                   View.Close();
                   await mainView.ShowDialog();
               });
-            Messenger.Default.Register<bool>(View, "Exit", arg =>
-            {
-                Environment.Exit(0);
-            });
+            Messenger.Default.Register<bool>(View, "Exit", async r =>
+             {
+                 if (r)
+                     if (!await Msg.Question("确认退出系统?")) return;
+                 Environment.Exit(0);
+             });
         }
     }
 }

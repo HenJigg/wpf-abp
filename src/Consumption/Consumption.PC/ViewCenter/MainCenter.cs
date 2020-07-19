@@ -37,6 +37,10 @@ namespace Consumption.PC.ViewCenter
         public override void SubscribeMessenger()
         {
             //执行菜单模块动画
+            Messenger.Default.Register<string>(View, "WindowMinimized", arg =>
+            {
+                View.WindowState = System.Windows.WindowState.Minimized;
+            });
             Messenger.Default.Register<string>(View, "ExpandMenu", arg =>
             {
                 if (View.grdLeftMenu.Width < 200)

@@ -29,21 +29,22 @@ namespace Consumption.ViewModel
     /// <summary>
     /// MVVM基类
     /// </summary>
-    public class BaseViewModel : ViewModelBase, IDataInitialize
+    public class BaseViewModel : ViewModelBase
     {
         public BaseViewModel()
         {
-            CloseCommand = new RelayCommand(() =>
-              {
-                  Messenger.Default.Send(true, "Exit");
-              });
+            ExitCommand = new RelayCommand(Exit);
         }
-        public RelayCommand CloseCommand { get; private set; }
+        public RelayCommand ExitCommand { get; private set; }
 
-        public virtual Task InitDefaultViewData()
+        /// <summary>
+        /// 传递True代表需要确认用户是否关闭,你可以选择传递false强制关闭
+        /// </summary>
+        public virtual void Exit()
         {
-            return Task.FromResult(true);
+            Messenger.Default.Send(true, "Exit");
         }
+
 
         private bool isOpen;
 
@@ -56,9 +57,6 @@ namespace Consumption.ViewModel
             set { isOpen = value; RaisePropertyChanged(); }
         }
 
-        #region Loading
-
-
         /// <summary>
         /// 通知异常
         /// </summary>
@@ -67,7 +65,5 @@ namespace Consumption.ViewModel
         {
             Messenger.Default.Send(msg, "Snackbar");
         }
-
-        #endregion
     }
 }

@@ -36,7 +36,6 @@ namespace Consumption.ViewModel
         {
             service = NetCoreProvider.Get<IConsumptionService>();
             LoginCommand = new RelayCommand(Login);
-            LogoutCommand = new RelayCommand(LogOut);
         }
 
         #region Property
@@ -73,8 +72,7 @@ namespace Consumption.ViewModel
         #region Command
 
         public RelayCommand LoginCommand { get; private set; }
-        public RelayCommand LogoutCommand { get; private set; }
-
+      
         /// <summary>
         /// 登录系统
         /// </summary>
@@ -126,14 +124,11 @@ namespace Consumption.ViewModel
             }
         }
 
-        /// <summary>
-        /// 登出系统
-        /// </summary>
-        private void LogOut()
-        {
-            Messenger.Default.Send(true, "LogOut");
-        }
-
         #endregion
+
+        public override void Exit()
+        {
+            Messenger.Default.Send(false, "Exit");
+        }
     }
 }

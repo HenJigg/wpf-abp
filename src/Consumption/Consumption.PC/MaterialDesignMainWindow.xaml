@@ -94,17 +94,16 @@
                                                  PlacementMode="BottomAndAlignRightEdges"
                                                  StaysOpen="False">
                                 <StackPanel>
-                                    <Button Content="Hello World"/>
-                                    <Button Content="Nice Popup"/>
+                                    <Button Content="最小化" Command="{Binding MinCommand}"/>
                                     <Separator/>
-                                    <Button Content="Goodbye"/>
+                                    <Button Content="退出系统" Command="{Binding ExitCommand}"/>
                                 </StackPanel>
                             </materialDesign:PopupBox>
                         </StackPanel>
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <!--工具栏(显示标签和功能清单)-->
-                <materialDesign:ColorZone   Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="1"
+                <materialDesign:ColorZone   Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="1" 
                          Margin="20 0 20 20" CornerRadius="3"     
                         materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         materialDesign:ShadowAssist.ShadowEdges="Bottom,Left,Right"
