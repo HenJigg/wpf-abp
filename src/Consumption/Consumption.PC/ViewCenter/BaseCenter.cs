@@ -41,13 +41,18 @@ namespace Consumption.PC.ViewCenter
         public TView View = new TView();
         public TViewModel ViewModel = new TViewModel();
 
-        public virtual async Task BindDefaultModel(int AuthValue)
+        public async Task BindDefaultModel(int AuthValue)
         {
             if (ViewModel is IAuthority authority)
                 authority.InitPermissions(AuthValue);
 
             if (ViewModel is IDataPager dataPager)
                 await dataPager.GetPageData(0);
+            View.DataContext = ViewModel;
+        }
+
+        public void BindDefaultModel()
+        {
             View.DataContext = ViewModel;
         }
 

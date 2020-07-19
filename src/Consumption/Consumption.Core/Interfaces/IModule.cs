@@ -24,9 +24,14 @@ namespace Consumption.Core.Interfaces
         object GetView();
 
         /// <summary>
-        /// 关联默认数据上下文
+        /// 关联默认数据上下文(包含权限相关)
         /// </summary>
         Task BindDefaultModel(int AuthValue = 0);
+
+        /// <summary>
+        /// 关联默认数据上下文
+        /// </summary>
+        void BindDefaultModel();
 
     }
 }

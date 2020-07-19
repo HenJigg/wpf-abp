@@ -26,9 +26,9 @@
                         <materialDesign:Card Background="#00BEA9">
                             <materialDesign:PackIcon Kind="Database" Foreground="White" Width="45" Height="45" Margin="5" />
                         </materialDesign:Card>
-                        <StackPanel Margin="20 0 0 0">
-                            <TextBlock Text="当月支出" FontSize="14" Foreground="#98A6AD"/>
-                            <TextBlock Text="￥1799" FontSize="30" Foreground="#34395E" FontWeight="Bold"/>
+                        <StackPanel Margin="10 0 0 0">
+                            <TextBlock Text="当月支出" FontSize="14" />
+                            <TextBlock Text="￥1799" FontSize="28"  FontWeight="Bold"/>
                         </StackPanel>
                     </StackPanel>
 
@@ -49,9 +49,9 @@
                         <materialDesign:Card Background="#FF9100">
                             <materialDesign:PackIcon Kind="CashUsd" Foreground="White" Width="45" Height="45" Margin="5" />
                         </materialDesign:Card>
-                        <StackPanel Margin="20 0 0 0">
-                            <TextBlock Text="我的钱包" FontSize="14" Foreground="#98A6AD"/>
-                            <TextBlock Text="$176725" FontSize="30" Foreground="#34395E" FontWeight="Bold"/>
+                        <StackPanel Margin="10 0 0 0">
+                            <TextBlock Text="我的钱包" FontSize="14" />
+                            <TextBlock Text="$176725" FontSize="28" FontWeight="Bold"/>
                         </StackPanel>
                     </StackPanel>
 
@@ -72,9 +72,9 @@
                         <materialDesign:Card Background="#673AB7">
                             <materialDesign:PackIcon Kind="VectorSquare" Foreground="White" Width="45" Height="45" Margin="5" />
                         </materialDesign:Card>
-                        <StackPanel Margin="20 0 0 0">
-                            <TextBlock Text="待处理账单" FontSize="14" Foreground="#98A6AD"/>
-                            <TextBlock Text="2/5" FontSize="30" Foreground="#34395E" FontWeight="Bold"/>
+                        <StackPanel Margin="10 0 0 0">
+                            <TextBlock Text="待处理账单" FontSize="14" />
+                            <TextBlock Text="2/5" FontSize="28" FontWeight="Bold"/>
                         </StackPanel>
                     </StackPanel>
 
@@ -95,9 +95,9 @@
                         <materialDesign:Card Background="#2196F3">
                             <materialDesign:PackIcon Kind="Emoticon" Foreground="White" Width="45" Height="45" Margin="5" />
                         </materialDesign:Card>
-                        <StackPanel Margin="20 0 0 0">
-                            <TextBlock Text="愿望清单" FontSize="14" Foreground="#98A6AD"/>
-                            <TextBlock Text="0/5" FontSize="30" Foreground="#34395E" FontWeight="Bold"/>
+                        <StackPanel Margin="10 0 0 0">
+                            <TextBlock Text="愿望清单" FontSize="14"/>
+                            <TextBlock Text="0/5" FontSize="28"  FontWeight="Bold"/>
                         </StackPanel>
                     </StackPanel>
 
@@ -116,11 +116,9 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="消费记录" Foreground="#3F51B5"  FontSize="22" Margin="20 20 0 0"/>
-                    <TextBlock Text="&#xe6a2;" HorizontalAlignment="Right"  FontSize="22" Margin="0 0 20 0"
-                           VerticalAlignment="Center" Foreground="#3F51B5" FontFamily="/Fonts/#iconfont"/>
+                    <TextBlock Text="消费记录"  FontSize="22" Margin="20 20 0 0"/>
 
-                    <DataGrid Margin="10" Grid.Row="1" x:Name="gridBill" 
+                    <DataGrid Margin="10" Grid.Row="1"  
                               Background="Transparent"
                               IsReadOnly="True" SelectionMode="Extended"
                               AutoGenerateColumns="False"
@@ -142,9 +140,9 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="收入支出统计" Foreground="#3F51B5" FontSize="22" Margin="20 20 0 0"/>
+                    <TextBlock Text="收入支出统计"  FontSize="22" Margin="20 20 0 0"/>
 
-                    <lv:CartesianChart Series="{Binding SeriesCollection3}" Grid.Row="1" Margin="20"
+                    <lv:CartesianChart Series="{Binding SeriesCollection}" Grid.Row="1" Margin="20"
                                  LegendLocation="Bottom" >
                         <lv:CartesianChart.ChartLegend>
                             <lv:DefaultLegend BulletSize="20"></lv:DefaultLegend>

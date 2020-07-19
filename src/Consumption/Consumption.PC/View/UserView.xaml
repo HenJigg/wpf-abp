@@ -8,10 +8,9 @@
              xmlns:template="clr-namespace:Consumption.PC.Template"
              mc:Ignorable="d" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
-             xmlns:s="clr-namespace:System;assembly=System.Runtime"
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:s="clr-namespace:System;assembly=System.Runtime" >
     <Grid>
-        <TabControl Background="Transparent" BorderThickness="0" 
+        <TabControl Background="Transparent" BorderThickness="0"
                     SelectedIndex="{Binding SelectPageIndex}">
             <TabControl.ItemContainerStyle>
                 <Style TargetType="{x:Type TabItem}">

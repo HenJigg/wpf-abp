@@ -89,6 +89,7 @@ namespace Consumption.ViewModel
                     return;
                 }
                 DialogIsOpen = true;
+                await Task.Delay(200);
                 var r = await service.LoginAsync(UserName, PassWord);
                 if (r == null || !r.success)
                 {
@@ -101,7 +102,6 @@ namespace Consumption.ViewModel
                     SnackBar("获取模块清单异常!");
                     return;
                 }
-
                 #region 关联用户信息/缓存
 
                 Contract.Account = r.dynamicObj.User.Account;
@@ -112,6 +112,7 @@ namespace Consumption.ViewModel
 
                 #endregion
 
+                //这行代码会发射到首页,Center中会定义所有的Messenger
                 Messenger.Default.Send(true, "NavigationPage");
             }
             catch (Exception ex)

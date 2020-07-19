@@ -9,6 +9,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:template="clr-namespace:Consumption.PC.Template"
         WindowStartupLocation="CenterScreen"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              WindowStyle="None" ResizeMode="CanResizeWithGrip"  MinWidth="1020" MinHeight="700" >
     <WindowChrome.WindowChrome>
@@ -52,8 +54,8 @@
                                 </Border.InputBindings>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="{Binding Code}"  Height="25" Width="25" Margin="10 0 0 0"
-                                                             Foreground="#78828A"  VerticalAlignment="Center" />
-                                    <TextBlock Margin="20 0 0 0" Text="{Binding Name}" FontSize="14"  Foreground="#78828A" 
+                                                               VerticalAlignment="Center" />
+                                    <TextBlock Margin="20 0 0 0" Text="{Binding Name}" FontSize="14"   
                                                                    VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Border>
@@ -87,7 +89,7 @@
                                     <EllipseGeometry RadiusX="18" RadiusY="18" Center="18,18"/>
                                 </Image.Clip>
                             </Image>
-                            <TextBlock Text="Hi,henjigg" Margin="5 0 0 0" Foreground="White" FontSize="20"/>
+                            <TextBlock Text="Hi,henjigg" Margin="5 0 0 0"  FontSize="20"/>
                             <materialDesign:PopupBox FocusVisualStyle="{x:Null}"
                                                  PlacementMode="BottomAndAlignRightEdges"
                                                  StaysOpen="False">
@@ -102,11 +104,11 @@
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <!--工具栏(显示标签和功能清单)-->
-                <materialDesign:ColorZone  Background="White" Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="1"
+                <materialDesign:ColorZone   Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="1"
                          Margin="20 0 20 20" CornerRadius="3"     
                         materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         materialDesign:ShadowAssist.ShadowEdges="Bottom,Left,Right"
-                         Height="60"  VerticalAlignment="Bottom">
+                        Height="60"  VerticalAlignment="Bottom">
                     <DockPanel>
                         <TextBlock Text="{Binding ElementName=page,Path=Content.DataContext.SelectPageTitle}"  
                                    FontWeight="Bold" FontSize="26" Padding="20" />
@@ -114,9 +116,8 @@
                                                    HorizontalAlignment="Right"/>
                     </DockPanel>
                 </materialDesign:ColorZone>
-                <Border Background="#F4F6F9" Grid.Row="1" Grid.RowSpan="2"/>
                 <!--右侧内容区域-->
-                <ContentControl x:Name="page"  Grid.Row="3" Margin="2 0 0 0"/>
+                <ContentControl x:Name="page" Grid.Row="3"/>
             </Grid>
         </Grid>
     </materialDesign:DialogHost>

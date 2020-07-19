@@ -1,8 +1,8 @@
 ﻿/*
 *
-* 文件名    ：HomeViewModel                             
-* 程序说明  : 首页模块
-* 更新时间  : 2020-05-28 13:27
+* 文件名    ：HomeCenter                             
+* 程序说明  : 系统首页 
+* 更新时间  : 2020-07-19 14:17
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -12,14 +12,23 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-namespace Consumption.ViewModel
+namespace Consumption.PC.ViewCenter
 {
+    using Consumption.PC.View;
+    using System;
     using Consumption.Core.Entity;
     using GalaSoft.MvvmLight;
-    using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Text;
+    using LiveCharts;
+    using LiveCharts.Wpf;
+
+    /// <summary>
+    /// 系统首页
+    /// </summary>
+    public class HomeCenter : BaseCenter<HomeView, HomeViewModel>
+    {
+
+    }
 
     /// <summary>
     /// 首页模块
@@ -39,7 +48,25 @@ namespace Consumption.ViewModel
                     Amount = 3000
                 });
             }
+
+            SeriesCollection = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "收入",
+                    Values = new ChartValues<double> { 5674, 7842, 4648, 8574 ,7973 },
+                },
+                new LineSeries
+                {
+                    Title = "支出",
+                    Values = new ChartValues<double> { 7346, 5757, 9213, 11435 ,16708 },
+                }
+            };
+            Labels = new[] { "2020-01", "2020-02", "2020-03", "2020-04", "2020-05" };
+            YFormatter = value => value.ToString("C");
         }
+
+        public string SelectPageTitle { get; } = "首页";
 
         private ObservableCollection<Bill> bills;
 
@@ -49,5 +76,8 @@ namespace Consumption.ViewModel
             set { bills = value; RaisePropertyChanged(); }
         }
 
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> YFormatter { get; set; }
     }
 }

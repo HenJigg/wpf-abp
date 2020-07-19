@@ -93,12 +93,14 @@ namespace Consumption.PC.ViewCenter
         }
 
         /// <summary>
-        /// 临时固定,后期修改动态绑定 2020-07-10
+        /// 临时固定,后期修改动态绑定 2020-07-19
         /// </summary>
         private void GoHomeView()
         {
-            View.page.Tag = "首页";
-            View.page.Content = new HomeView();
+            HomeCenter center = new HomeCenter();
+            center.BindDefaultModel();
+            View.page.Tag = center.ViewModel.SelectPageTitle;
+            View.page.Content = center.View;
         }
     }
 }
