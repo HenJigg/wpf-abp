@@ -94,9 +94,37 @@
                                                  PlacementMode="BottomAndAlignRightEdges"
                                                  StaysOpen="False">
                                 <StackPanel>
-                                    <Button Content="最小化" Command="{Binding MinCommand}"/>
+                                    <Button  Command="{Binding MinCommand}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="WindowMinimize" VerticalAlignment="Center"/>
+                                            <TextBlock Text="  最小化"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button Command="{Binding ExitCommand}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="ProgressClose" VerticalAlignment="Center" />
+                                            <TextBlock Text="  退出系统"/>
+                                        </StackPanel>
+                                    </Button>
                                     <Separator/>
-                                    <Button Content="退出系统" Command="{Binding ExitCommand}"/>
+                                    <Button Click="btnGithub">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="Github"  VerticalAlignment="Center" />
+                                            <TextBlock Text="  Github"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button Click="btnBilibili">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="AlphaBBox"  VerticalAlignment="Center" />
+                                            <TextBlock Text="  视频教程"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button Click="btnQQ">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="Qqchat"  VerticalAlignment="Center" />
+                                            <TextBlock Text="  加入QQ"/>
+                                        </StackPanel>
+                                    </Button>
                                 </StackPanel>
                             </materialDesign:PopupBox>
                         </StackPanel>

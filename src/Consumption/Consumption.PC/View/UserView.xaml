@@ -9,117 +9,102 @@
              mc:Ignorable="d" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
              xmlns:s="clr-namespace:System;assembly=System.Runtime" >
-    <Grid>
-        <TabControl Background="Transparent" BorderThickness="0"
-                    SelectedIndex="{Binding SelectPageIndex}">
-            <TabControl.ItemContainerStyle>
-                <Style TargetType="{x:Type TabItem}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                </Style>
-            </TabControl.ItemContainerStyle>
-
-            <TabItem>
-                <Grid Margin="20 0 20 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal" >
-                        <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" 
+    <materialDesign:Transitioner SelectedIndex="{Binding SelectPageIndex}" 
+                                 AutoApplyTransitionOrigins="True">
+        <Grid Margin="20 0 20 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" >
+                <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" 
                                       Width="25" Height="25" VerticalAlignment="Center" />
-                        <TextBox Margin="5 0 0 0"
+                <TextBox Margin="5 0 0 0"
                      Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      materialDesign:HintAssist.Hint="请输入检索条件"  
                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
                      MinWidth="200" VerticalAlignment="Center" FontSize="18">
-                            <TextBox.InputBindings>
-                                <KeyBinding Key="Return" Command="{Binding QueryCommand}"/>
-                            </TextBox.InputBindings>
-                        </TextBox>
-                    </StackPanel>
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Return" Command="{Binding QueryCommand}"/>
+                    </TextBox.InputBindings>
+                </TextBox>
+            </StackPanel>
 
-                    <DataGrid Grid.Row="1"  Background="Transparent"
+            <DataGrid Grid.Row="1"  Background="Transparent"
                               IsReadOnly="True" SelectionMode="Extended"
                               AutoGenerateColumns="False"
                               ItemsSource="{Binding GridModelList}" 
                               SelectedItem="{Binding GridModel}">
-                        <DataGrid.InputBindings>
-                            <MouseBinding MouseAction="LeftDoubleClick" 
+                <DataGrid.InputBindings>
+                    <MouseBinding MouseAction="LeftDoubleClick" 
                                           Command="{Binding 
                                 RelativeSource={RelativeSource 
                                 Mode=FindAncestor,AncestorType=DataGrid},
                                 Path=DataContext.ExecuteCommand}"
                                           CommandParameter="编辑" />
-                        </DataGrid.InputBindings>
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="用户名" Width="200" Binding="{Binding UserName}"/>
-                            <DataGridTextColumn Header="地址" Width="200" Binding="{Binding Address}"/>
-                            <DataGridTextColumn Header="电话" Width="200" Binding="{Binding Tel}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                </DataGrid.InputBindings>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="用户名" Width="200" Binding="{Binding UserName}"/>
+                    <DataGridTextColumn Header="地址" Width="200" Binding="{Binding Address}"/>
+                    <DataGridTextColumn Header="电话" Width="200" Binding="{Binding Tel}"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
-                    <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
-                </Grid>
-            </TabItem>
+            <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        </Grid>
 
-            <TabItem>
-                <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
-                    <StackPanel VerticalAlignment="Top">
-                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                            <Image  Width="150" Height="150" 
+        <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+            <StackPanel VerticalAlignment="Top">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Image  Width="150" Height="150" 
                         Source="pack://application:,,,/Consumption.PC;Component/Images/test_user.png" />
-                            <Button Content="上传头像"  Width="150" Background="#00CC99"
+                    <Button Content="上传头像"  Width="150" Background="#00CC99"
                                 BorderBrush="#00CC99" Margin="5 0 0 0"
                                 VerticalAlignment="Bottom" />
-                        </StackPanel>
+                </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" Margin="5 20 0 0">
-                            <TextBlock Text="管理员:"/>
-                            <ToggleButton Margin="10 0 0 0"
+                <StackPanel Orientation="Horizontal" Margin="5 20 0 0">
+                    <TextBlock Text="管理员:"/>
+                    <ToggleButton Margin="10 0 0 0"
                                 Style="{StaticResource MaterialDesignSwitchToggleButton}"
                             ToolTip="管理员"/>
 
-                            <TextBlock Text="锁定该账号:" Margin="20 0 0 0"/>
-                            <ToggleButton Margin="10 0 0 0"
+                    <TextBlock Text="锁定该账号:" Margin="20 0 0 0"/>
+                    <ToggleButton Margin="10 0 0 0"
                                 Style="{StaticResource MaterialDesignSwitchToggleButton}"
                             ToolTip="锁定该账号"/>
-                        </StackPanel>
+                </StackPanel>
 
 
-                        <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="账号" 
+                <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="账号" 
                               Margin="5" Text="{Binding GridModel.Account}"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
-                        <PasswordBox  Grid.Row="1" Grid.Column="1"  
+                <PasswordBox  Grid.Row="1" Grid.Column="1"  
                               materialDesign:HintAssist.Hint="密码" Margin="5"
                               Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                              />
 
-                        <TextBox Grid.Row="2"  materialDesign:HintAssist.Hint="真实姓名" 
+                <TextBox Grid.Row="2"  materialDesign:HintAssist.Hint="真实姓名" 
                                 Margin="5" Text="{Binding GridModel.UserName}"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
-                        <TextBox Grid.Row="2" Grid.Column="1" 
+                <TextBox Grid.Row="2" Grid.Column="1" 
                                  Text="{Binding GridModel.Address}"
                              materialDesign:HintAssist.Hint="家庭住址"  Margin="5"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                              />
 
-                        <TextBox  Grid.Row="3"  materialDesign:HintAssist.Hint="联系电话"  
+                <TextBox  Grid.Row="3"  materialDesign:HintAssist.Hint="联系电话"  
                                  Margin="5"  Text="{Binding GridModel.Tel}"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
-                        <TextBox  Grid.Row="3" Grid.Column="1" Margin="5"
+                <TextBox  Grid.Row="3" Grid.Column="1" Margin="5"
                               materialDesign:HintAssist.Hint="邮箱地址" 
                                    Text="{Binding GridModel.Email}"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    </StackPanel>
-
-
-
-                </StackPanel>
-            </TabItem>
-        </TabControl>
-    </Grid>
+            </StackPanel>
+        </StackPanel>
+    </materialDesign:Transitioner>
 </UserControl>

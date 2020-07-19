@@ -11,7 +11,7 @@
                                  Margin="{TemplateBinding Margin}"
                                  Width="{TemplateBinding Width}"
                             Orientation="Horizontal" >
-                        <TextBlock Text="共 " Margin="10 0 0 0"   FontSize="18" VerticalAlignment="Center" />
+                        <TextBlock Text="共 " Margin="10 0 0 0"  FontSize="18" VerticalAlignment="Center" />
                         <TextBlock Text="{Binding TotalCount}" Foreground="#5CACEE" FontSize="18" Margin="4,0" VerticalAlignment="Center"  />
                         <TextBlock  Text=" 条，每页 "    FontSize="18" VerticalAlignment="Center"  />
                         <TextBlock Text="{Binding PageSize}" Foreground="#5CACEE" FontSize="18" Margin="4,0" VerticalAlignment="Center"  />
