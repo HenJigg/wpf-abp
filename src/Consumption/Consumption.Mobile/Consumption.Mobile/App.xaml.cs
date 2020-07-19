@@ -1,4 +1,5 @@
-﻿using Consumption.Common.Contract;
+﻿using Autofac;
+using Consumption.Common.Contract;
 using Consumption.Core.Interfaces;
 using Consumption.Core.Response;
 using Consumption.Mobile.View;
@@ -6,6 +7,8 @@ using Consumption.Mobile.ViewCenter;
 using Consumption.Service;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
+using System.Reflection;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,9 +26,8 @@ namespace Consumption.Mobile
         {
             
             var serviceCollection = new ServiceCollection();
-            ConfigureServices(serviceCollection);
-            var serviceProvider = serviceCollection.BuildServiceProvider();
-            NetCoreProvider.RegisterServiceLocator(serviceProvider);
+            var container = ConfigureServices();
+            NetCoreProvider.RegisterServiceLocator(container);
             MainPage = new LoginCenter().GetContentPage();
         }
 
@@ -37,10 +39,24 @@ namespace Consumption.Mobile
         {
         }
 
-        private void ConfigureServices(IServiceCollection services)
+        private IContainer ConfigureServices()
         {
-            //services.AddTransient(typeof(MainCenter));
-            services.AddScoped<IConsumptionService, ConsumptionService>();
+            var builder = new ContainerBuilder();
+            builder.RegisterType<ConsumptionService>().As<IConsumptionService>();
+
+            var assembly = Assembly.GetCallingAssembly();
+            var types = assembly.GetTypes();
+            foreach (var t in types)
+            {
+                if (t.Name.EndsWith("Center")) //简陋判断一下,一般而言,该定义仅仅注册Center结尾的类依赖关系。
+                {
+                    var firstInterface = t.GetInterfaces().FirstOrDefault();
+                    if (firstInterface != null)
+                        builder.RegisterType(t).Named(t.Name, firstInterface).SingleInstance();
+                }
+            }
+            return builder.Build();
         }
+
     }
 }

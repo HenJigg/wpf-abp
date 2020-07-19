@@ -37,6 +37,10 @@ namespace Consumption.Mobile.ViewCenter
             View.BindingContext = ViewModel;
         }
 
+        public void BindDefaultModel()
+        {
+        }
+
         public Task<bool> ShowView()
         {
             throw new NotImplementedException();
