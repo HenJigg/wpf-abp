@@ -87,7 +87,7 @@ namespace Consumption.ViewModel
                     return;
                 }
                 DialogIsOpen = true;
-                await Task.Delay(200);
+                await Task.Delay(300);
                 var r = await service.LoginAsync(UserName, PassWord);
                 if (r == null || !r.success)
                 {
