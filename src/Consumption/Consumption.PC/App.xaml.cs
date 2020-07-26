@@ -46,7 +46,7 @@ namespace Consumption.PC
                 {
                     var firstInterface = t.GetInterfaces().FirstOrDefault();
                     if (firstInterface != null)
-                        builder.RegisterType(t).Named(t.Name, firstInterface).SingleInstance();
+                        builder.RegisterType(t).Named(t.Name, firstInterface);
                 }
             }
             return builder.Build();

@@ -6,9 +6,13 @@
              xmlns:local="clr-namespace:Consumption.PC.View" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:template="clr-namespace:Consumption.PC.Template"
+             xmlns:v="clr-namespace:Consumption.PC.Common.Converters"
              mc:Ignorable="d" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
              xmlns:s="clr-namespace:System;assembly=System.Runtime" >
+    <UserControl.Resources>
+        <v:IBoolConverter x:Key="vbool"/>
+    </UserControl.Resources>
     <materialDesign:Transitioner SelectedIndex="{Binding SelectPageIndex}" 
                                  AutoApplyTransitionOrigins="True">
         <Grid Margin="20 0 20 0">
@@ -50,7 +54,6 @@
                     <DataGridTextColumn Header="电话" Width="200" Binding="{Binding Tel}"/>
                 </DataGrid.Columns>
             </DataGrid>
-
             <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
         </Grid>
 
@@ -66,12 +69,13 @@
 
                 <StackPanel Orientation="Horizontal" Margin="5 20 0 0">
                     <TextBlock Text="管理员:"/>
-                    <ToggleButton Margin="10 0 0 0"
+
+                    <ToggleButton Margin="10 0 0 0" IsChecked="{Binding GridModel.FlagAdmin,Converter={StaticResource vbool}}"
                                 Style="{StaticResource MaterialDesignSwitchToggleButton}"
                             ToolTip="管理员"/>
 
                     <TextBlock Text="锁定该账号:" Margin="20 0 0 0"/>
-                    <ToggleButton Margin="10 0 0 0"
+                    <ToggleButton Margin="10 0 0 0" IsChecked="{Binding GridModel.IsLocked,Converter={StaticResource vbool}}"
                                 Style="{StaticResource MaterialDesignSwitchToggleButton}"
                             ToolTip="锁定该账号"/>
                 </StackPanel>
@@ -81,9 +85,10 @@
                               Margin="5" Text="{Binding GridModel.Account}"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
-                <PasswordBox  Grid.Row="1" Grid.Column="1"  
+                <TextBox  Grid.Row="1" Grid.Column="1"  
+                              Text="{Binding GridModel.Password}"
                               materialDesign:HintAssist.Hint="密码" Margin="5"
-                              Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              />
 
                 <TextBox Grid.Row="2"  materialDesign:HintAssist.Hint="真实姓名" 

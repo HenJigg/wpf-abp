@@ -36,6 +36,16 @@ namespace Consumption.PC.ViewCenter
     {
         public override void SubscribeMessenger()
         {
+            Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", m =>
+              {
+                  if (m.IsOpen)
+                      _ = DialogHost.Show(new SplashScreenView()
+                      {
+                          DataContext = new { Msg = m.Msg }
+                      }, "Root");
+                  else
+                      ViewModel.DialogIsOpen = false;
+              });
             //执行菜单模块动画
             Messenger.Default.Register<string>(View, "WindowMinimized", arg =>
             {

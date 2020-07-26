@@ -26,6 +26,7 @@ namespace Consumption.Api.Controllers
     using System.Linq;
     using System.Threading.Tasks;
     using Consumption.EFCore.Context;
+    using Microsoft.AspNetCore.Server.HttpSys;
 
     /// <summary>
     /// 用户数据控制器
@@ -77,7 +78,7 @@ namespace Consumption.Api.Controllers
                                        MenuCaption = a.MenuCaption,
                                        MenuNameSpace = a.MenuNameSpace,
                                        MenuAuth = a.MenuAuth
-                                   } ;
+                                   };
 
                         return Ok(new ConsumptionResponse()
                         {
@@ -127,6 +128,34 @@ namespace Consumption.Api.Controllers
 
         /// <summary>
         /// 获取用户数据信息
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetUser(int id)
+        {
+            try
+            {
+                var model = await work.GetRepository<User>().GetFirstOrDefaultAsync(predicate: x => x.Id == id);
+                return Ok(new ConsumptionResponse()
+                {
+                    success = true,
+                    dynamicObj = model
+                });
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "");
+                return Ok(new ConsumptionResponse()
+                {
+                    success = false,
+                    message = "获取用户数据异常!"
+                });
+            }
+        }
+
+        /// <summary>
+        /// 获取用户数据列表信息
         /// </summary>
         /// <param name="parameters">请求参数</param>
         /// <returns>结果</returns>
@@ -189,32 +218,47 @@ namespace Consumption.Api.Controllers
         }
 
         /// <summary>
-        /// 更新用户
+        /// 保存用户信息
         /// </summary>
-        /// <param name="id">ID</param>
-        /// <param name="user">用户信息</param>
+        /// <param name="user"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
+        public async Task<IActionResult> SaveUser([FromBody] User user)
         {
             if (user == null)
                 return Ok(new ConsumptionResponse() { success = false, message = "数据非法" });
             try
             {
+                //check?
                 var repository = work.GetRepository<User>();
-                var dbUser = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == id);
-                if (dbUser == null) return Ok(new ConsumptionResponse() { success = false, message = "提交数据错误" });
-                dbUser.UserName = user.UserName;
-                dbUser.Tel = user.Tel;
-                dbUser.Password = user.Password;
-                dbUser.IsLocked = user.IsLocked;
-                dbUser.Address = user.Address;
-                dbUser.Email = user.Email;
-                dbUser.FlagAdmin = user.FlagAdmin;
-                repository.Update(dbUser);
-                if (await work.SaveChangesAsync() > 0)
-                    return Ok(new ConsumptionResponse() { success = true });
-                return Ok(new ConsumptionResponse() { success = false, message = $"修改用户信息错误" });
+                if (user.Id == 0)
+                {
+                    user.CreateTime = DateTime.Now;
+                    user.FlagOnline = string.Empty;
+                    repository.Insert(user);
+                    if (await work.SaveChangesAsync() > 0)
+                        return Ok(new ConsumptionResponse() { success = true });
+                }
+                else
+                {
+                    var dbUser = await repository.GetFirstOrDefaultAsync(predicate: x => x.Id == user.Id);
+                    if (dbUser == null) return Ok(new ConsumptionResponse()
+                    {
+                        success = false,
+                        message = "该用户已不存在"
+                    });
+                    dbUser.UserName = user.UserName;
+                    dbUser.Tel = user.Tel;
+                    dbUser.Password = user.Password;
+                    dbUser.IsLocked = user.IsLocked;
+                    dbUser.Address = user.Address;
+                    dbUser.Email = user.Email;
+                    dbUser.FlagAdmin = user.FlagAdmin;
+                    repository.Update(dbUser);
+                    if (await work.SaveChangesAsync() > 0)
+                        return Ok(new ConsumptionResponse() { success = true });
+                }
+                return Ok(new ConsumptionResponse() { success = false, message = $"保存用户信息错误" });
             }
             catch (Exception ex)
             {
