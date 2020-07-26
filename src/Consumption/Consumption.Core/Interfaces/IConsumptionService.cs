@@ -59,6 +59,12 @@ namespace Consumption.Core.Interfaces
 
         Task<BaseResponse<PagedList<User>>> GetUserListAsync(UserParameters parameters);
 
+        Task<BaseResponse<User>> GetUserAsync(int id);
+
+        Task<BaseResponse> SaveUserAsync(User user);
+
+        Task<BaseResponse> DeleteUserAsync(int id);
+
         /// <summary>
         /// 获取用户的所属权限信息
         /// </summary>
