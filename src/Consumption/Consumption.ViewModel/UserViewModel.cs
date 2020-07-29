@@ -33,10 +33,10 @@ namespace Consumption.ViewModel
     /// </summary>
     public class UserViewModel : BaseDataViewModel<User>
     {
-        private readonly IConsumptionService userService;
+        private readonly IConsumptionService service;
         public UserViewModel()
         {
-            userService = NetCoreProvider.Get<IConsumptionService>();
+            NetCoreProvider.Get(out service);
         }
 
         public override async Task GetPageData(int pageIndex)
@@ -44,7 +44,7 @@ namespace Consumption.ViewModel
             try
             {
                 SelectPageTitle = "用户管理";
-                var r = await userService.GetUserListAsync(new Core.Query.UserParameters()
+                var r = await service.GetUserListAsync(new Core.Query.UserParameters()
                 {
                     PageIndex = PageIndex,
                     PageSize = PageSize,
