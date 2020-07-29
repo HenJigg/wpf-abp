@@ -27,8 +27,6 @@ namespace Consumption.ViewModel
     using System.Text;
     using System.Threading.Tasks;
     using Consumption.Common.Contract;
-    using GalaSoft.MvvmLight.Messaging;
-    using Consumption.Core.Common;
 
     /// <summary>
     /// 基础数据基类
@@ -303,20 +301,6 @@ namespace Consumption.ViewModel
                     });
             });
         }
-        #endregion
-
-        #region Load event.
-
-
-        public void UpdateLoading(bool isOpen, string msg = "")
-        {
-            Messenger.Default.Send(new MsgInfo()
-            {
-                IsOpen = isOpen,
-                Msg = msg
-            }, "UpdateDialog");
-        }
-
         #endregion
     }
 }
