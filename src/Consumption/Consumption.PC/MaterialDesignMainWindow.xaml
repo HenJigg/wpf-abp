@@ -43,25 +43,33 @@
                 </TextBlock>
 
                 <!--菜单模块-->
-                <ListBox Grid.Row="1" ItemsSource="{Binding ModuleManager.Modules}" SelectionMode="Extended">
-                    <ListBox.ItemTemplate>
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding ModuleManager.Modules}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Background="Transparent" Height="40" Width="250" ToolTip="{Binding Name}">
-                                <Border.InputBindings>
-                                    <MouseBinding MouseAction="LeftClick" Command="{Binding RelativeSource={RelativeSource  
-                                                    AncestorType=ListBox},  Path=DataContext.OpenPageCommand}" 
-                                                      CommandParameter="{Binding}"/>
-                                </Border.InputBindings>
+                            <Button Height="60" Width="250" ToolTip="{Binding Name}" 
+                                    HorizontalContentAlignment="Left"
+                                    Style="{StaticResource   MaterialDesignFlatButton}"
+                                    Command="{Binding RelativeSource={RelativeSource 
+                                AncestorType=ItemsControl},Path=DataContext.OpenPageCommand}" 
+                                                      CommandParameter="{Binding}">
                                 <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="{Binding Code}"  Height="25" Width="25" Margin="10 0 0 0"
-                                                               VerticalAlignment="Center" />
+                                    <materialDesign:PackIcon Kind="{Binding Code}"  
+                                                             Height="25" Width="25" 
+                                                             VerticalAlignment="Center" />
                                     <TextBlock Margin="20 0 0 0" Text="{Binding Name}" FontSize="14"   
-                                                                   VerticalAlignment="Center"/>
+                                                             VerticalAlignment="Center"/>
                                 </StackPanel>
-                            </Border>
+                            </Button>
                         </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+               
             </Grid>
 
             <Grid Grid.Column="1">
@@ -78,7 +86,7 @@
                                       Command="{Binding ExpandMenuCommand}"
                                       IsChecked="False"
                                       Width="30" Height="30" FocusVisualStyle="{x:Null}"
-                                      x:Name="toggle"/>
+                                      Name="toggle"/>
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" 
                                    Margin="10 0 0 0">WPF MVVM SAMPLE</TextBlock>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -144,7 +152,7 @@
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <!--右侧内容区域-->
-                <ContentControl x:Name="page" Grid.Row="3"/>
+                <ContentControl Name="page" Grid.Row="3"/>
             </Grid>
         </Grid>
     </materialDesign:DialogHost>

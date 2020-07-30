@@ -30,6 +30,7 @@ namespace Consumption.PC
 
         private void btnMax(object sender, RoutedEventArgs e)
         {
+            this.UnregisterName("");
             this.SetWindowSize();
         }
 
