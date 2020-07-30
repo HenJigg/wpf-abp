@@ -38,7 +38,7 @@ namespace Consumption.ViewModel
         private readonly IConsumptionService service;
         public UserViewModel()
         {
-            service = NetCoreProvider.Get<IConsumptionService>();
+            NetCoreProvider.Get(out service);
         }
 
         public override async Task GetPageData(int pageIndex)
@@ -143,6 +143,7 @@ namespace Consumption.ViewModel
         {
             try
             {
+                if (GridModel == null) return;
                 if (await Msg.Question($"确认删除用户:{GridModel.UserName}?"))
                 {
                     UpdateLoading(true, "正在删除用户...");

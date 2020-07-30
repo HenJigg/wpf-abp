@@ -34,7 +34,7 @@ namespace Consumption.ViewModel
         private readonly IConsumptionService service;
         public LoginViewModel()
         {
-            service = NetCoreProvider.Get<IConsumptionService>();
+            NetCoreProvider.Get(out service);
             LoginCommand = new RelayCommand(Login);
         }
 
@@ -72,7 +72,7 @@ namespace Consumption.ViewModel
         #region Command
 
         public RelayCommand LoginCommand { get; private set; }
-      
+
         /// <summary>
         /// 登录系统
         /// </summary>

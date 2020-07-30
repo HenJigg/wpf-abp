@@ -77,7 +77,8 @@ namespace Consumption.PC.ViewCenter
                     ViewModel.DialogIsOpen = true;
                     await Task.Delay(100);
                     //将数据库中获取的菜单Namespace在容器当中查找依赖关系的实例
-                    var dialog = NetCoreProvider.Get<IModule>(m.TypeName);
+                    NetCoreProvider.Get<IModule>(m.TypeName,out IModule dialog);
+                    if (dialog == null) return;
                     await dialog.BindDefaultModel(m.Auth);
                     View.page.Tag = m.TypeName;
                     View.page.Content = dialog.GetView();

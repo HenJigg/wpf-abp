@@ -35,18 +35,18 @@ namespace Consumption.ViewModel
     /// </summary>
     public class MenuViewModel : BaseDataViewModel<Menu>
     {
-        private readonly IConsumptionService menuService;
+        private readonly IConsumptionService service;
         public MenuViewModel()
         {
             SelectPageTitle = "菜单管理";
-            menuService = NetCoreProvider.Get<IConsumptionService>();
+            NetCoreProvider.Get(out service);
         }
 
         public override async Task GetPageData(int pageIndex)
         {
             try
             {
-                var r = await menuService.GetMenuListAsync(new QueryParameters()
+                var r = await service.GetMenuListAsync(new QueryParameters()
                 {
                     PageIndex = pageIndex,
                     PageSize = PageSize,

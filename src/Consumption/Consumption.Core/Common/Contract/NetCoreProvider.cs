@@ -32,15 +32,15 @@ namespace Consumption.Common.Contract
                 Instance = locator;
         }
 
-        public static T Get<T>()
+        public static void Get<T>(out T result)
         {
-            if (Instance == null) return default(T);
-            return Instance.Resolve<T>();
+            if (Instance == null) _ = default(T);
+            result = Instance.Resolve<T>();
         }
 
-        public static T Get<T>(string typeName)
+        public static void Get<T>(string typeName, out T result)
         {
-            return Instance.ResolveNamed<T>(typeName);
+            result = Instance.ResolveNamed<T>(typeName);
         }
     }
 }

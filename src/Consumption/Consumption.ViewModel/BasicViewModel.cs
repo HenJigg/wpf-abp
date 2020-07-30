@@ -24,6 +24,7 @@ namespace Consumption.ViewModel
     using Consumption.Core.Interfaces;
     using Consumption.Common.Contract;
     using Consumption.Core.Common;
+    using System.Net.Security;
 
     /// <summary>
     /// 基础数据
@@ -33,7 +34,7 @@ namespace Consumption.ViewModel
         private readonly IConsumptionService service;
         public BasicViewModel()
         {
-            service = NetCoreProvider.Get<IConsumptionService>();
+            NetCoreProvider.Get(out service);
         }
 
         public override async Task GetPageData(int pageIndex)
