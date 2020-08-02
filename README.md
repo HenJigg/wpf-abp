@@ -65,7 +65,9 @@
   
   历史捐赠(Video)：
   - [2020-05-01: Part1](https://www.bilibili.com/video/BV1QZ4y1W7Zu) [国际儿童紧急救援基金会](https://www.unicef.org/zh)
-
+ 
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/20200802.jpg)
+	
 ### 捐赠名单公示
 <a href="https://github.com/zuoyefeng" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars2.githubusercontent.com/u/13931455?s=400&v=4"></a>
 <a href="https://github.com/CamelKing1997" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars0.githubusercontent.com/u/31693260?s=88&u=915a4cbef26b8a968ace960e96b4709ce54c3226&v=4"></a>
