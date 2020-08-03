@@ -65,6 +65,7 @@
   
   历史捐赠(Video)：
   - [2020-05-01: Part1](https://www.bilibili.com/video/BV1QZ4y1W7Zu) [国际儿童紧急救援基金会](https://www.unicef.org/zh)
+  - [2020-08-01: Part2](https://www.bilibili.com/video/BV1Gk4y1m7u2) [韩红爱心慈善基金会](http://www.hhax.org/)
  
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/20200802.jpg)
 	
