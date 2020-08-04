@@ -33,7 +33,7 @@
                             <materialDesign:PackIcon Kind="ArrowRight"   Width="20" Height="20" Foreground="#5CACEE" ToolTip="下一页"/>
                         </Button>
 
-                        <Button Command="{Binding GoNextPageCommand}" Width="60" Height="40" Background="Transparent" BorderThickness="0">
+                        <Button Command="{Binding GoEndPageCommand}" Width="60" Height="40" Background="Transparent" BorderThickness="0">
                             <materialDesign:PackIcon Kind="ArrowCollapseRight"  Width="20" Height="20" Foreground="#5CACEE"  ToolTip="尾页"/>
                         </Button>
                     </StackPanel>
