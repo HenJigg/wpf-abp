@@ -3,10 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Consumption.PC.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             xmlns:local="clr-namespace:Consumption.PC.View" 
+             xmlns:template="clr-namespace:Consumption.PC.Template" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" >
+    <materialDesign:Transitioner SelectedIndex="{Binding SelectPageIndex}" 
+                                 AutoApplyTransitionOrigins="True">
+        <Grid Margin="20 0 20 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" >
+                <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" 
+                                      Width="25" Height="25" VerticalAlignment="Center" />
+                <TextBox Margin="5 0 0 0"
+                     Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     materialDesign:HintAssist.Hint="请输入检索条件"  
+                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
+                     MinWidth="200" VerticalAlignment="Center" FontSize="18">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Return" Command="{Binding QueryCommand}"/>
+                    </TextBox.InputBindings>
+                </TextBox>
+            </StackPanel>
+
+            <DataGrid Grid.Row="1"  Background="Transparent"
+                              IsReadOnly="True" SelectionMode="Extended"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding GridModelList}" 
+                              SelectedItem="{Binding GridModel}">
+                <DataGrid.InputBindings>
+                    <MouseBinding MouseAction="LeftDoubleClick" 
+                                          Command="{Binding 
+                                RelativeSource={RelativeSource 
+                                Mode=FindAncestor,AncestorType=DataGrid},
+                                Path=DataContext.ExecuteCommand}"
+                                          CommandParameter="编辑" />
+                </DataGrid.InputBindings>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="用户名" Width="200" Binding="{Binding UserName}"/>
+                    <DataGridTextColumn Header="地址" Width="200" Binding="{Binding Address}"/>
+                    <DataGridTextColumn Header="电话" Width="200" Binding="{Binding Tel}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        </Grid>
+
+    </materialDesign:Transitioner>
 </UserControl>

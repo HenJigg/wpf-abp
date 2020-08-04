@@ -77,5 +77,14 @@ namespace Consumption.Core.Interfaces
         Task<BaseResponse<List<AuthItem>>> GetAuthListAsync();
 
         #endregion
+
+        #region 用户组/权限接口
+
+        /// <summary>
+        /// 获取用户组数据
+        /// </summary>
+        Task<BaseResponse<PagedList<Group>>> GetGroupListAsync(QueryParameters parameters);
+
+        #endregion
     }
 }
