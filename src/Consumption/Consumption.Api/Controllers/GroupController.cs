@@ -271,6 +271,8 @@ namespace Consumption.Api.Controllers
                 var exist = await work.GetRepository<Group>().GetFirstOrDefaultAsync(predicate: x => x.Id == id);
                 if (exist != null)
                 {
+                    exist.GroupUsers = new System.Collections.ObjectModel.ObservableCollection<GroupUser>();
+                    exist.GroupFuncs = new List<GroupFunc>();
                     work.GetRepository<GroupUser>()
                         .GetAll(predicate: x => x.GroupCode == exist.GroupCode).ToList()?.ForEach(arg =>
                         {

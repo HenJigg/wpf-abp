@@ -28,5 +28,6 @@ namespace Consumption.Core.Entity
         /// 账号
         /// </summary>
         public string Account { get; set; }
+
     }
 }

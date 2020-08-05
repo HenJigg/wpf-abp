@@ -47,7 +47,7 @@ namespace Consumption.ViewModel
         public BaseDataViewModel()
         {
             QueryCommand = new RelayCommand(Query);
-            ExecuteCommand = new RelayCommand<string>(arg => Excute(arg));
+            ExecuteCommand = new RelayCommand<string>(arg => Execute(arg));
         }
 
         #region CURD
@@ -154,7 +154,7 @@ namespace Consumption.ViewModel
         /// 执行方法
         /// </summary>
         /// <param name="arg"></param>
-        public virtual void Excute(string arg)
+        public virtual void Execute(string arg)
         {
             /*
              * 这里使用string来做弱类型处理,防止使用枚举,

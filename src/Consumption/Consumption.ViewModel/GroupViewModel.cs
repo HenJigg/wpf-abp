@@ -27,6 +27,7 @@ namespace Consumption.ViewModel
     using Consumption.Core.Common;
     using System.Linq;
     using Consumption.ViewModel.Common;
+    using GalaSoft.MvvmLight.Command;
 
     /// <summary>
     /// 部门管理
@@ -38,7 +39,52 @@ namespace Consumption.ViewModel
         {
             SelectPageTitle = "部门管理";
             NetCoreProvider.Get(out service);
+            AddUserCommand = new RelayCommand<User>(arg =>
+              {
+                  if (arg == null) return;
+                  var u = GridModel.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
+                  if (u == null) GridModel.GroupUsers?.Add(new GroupUser() { Account = arg.Account });
+              });
         }
+
+        #region Property
+
+
+        private int selectCardIndex = 0;
+
+        /// <summary>
+        /// 切换检索用户列表的页索引
+        /// </summary>
+        public int SelectCardIndex
+        {
+            get { return selectCardIndex; }
+            set { selectCardIndex = value; RaisePropertyChanged(); }
+        }
+
+
+        private string userSearch = string.Empty;
+
+        /// <summary>
+        /// 检索用户条件
+        /// </summary>
+        public string UserSearch
+        {
+            get { return userSearch; }
+            set { userSearch = value; }
+        }
+
+
+        private ObservableCollection<User> gridUserModelList;
+
+        /// <summary>
+        /// 所有的用户列表
+        /// </summary>
+        public ObservableCollection<User> GridUserModelList
+        {
+            get { return gridUserModelList; }
+            set { gridUserModelList = value; RaisePropertyChanged(); }
+        }
+
 
         private ObservableCollection<MenuModuleGroup> menuModules;
 
@@ -51,14 +97,24 @@ namespace Consumption.ViewModel
             set { menuModules = value; RaisePropertyChanged(); }
         }
 
-        public override void Excute(string arg)
+        #endregion
+
+        #region Command
+
+        public RelayCommand<User> AddUserCommand { get; private set; }
+
+        #endregion
+
+        public override void Execute(string arg)
         {
             switch (arg)
             {
-                case "添加用户": break;
+                case "添加用户": GetUserData(); break;
                 case "选中所有功能": break;
+                case "返回上一页": SelectCardIndex = 0; break;
+                case "添加所有选中项": AddAllUser(); break;
             }
-            base.Excute(arg);
+            base.Execute(arg);
         }
 
         public override async Task GetPageData(int pageIndex)
@@ -161,6 +217,56 @@ namespace Consumption.ViewModel
         {
             SelectPageTitle = "部门管理";
             base.Cancel();
+        }
+
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        async void GetUserData()
+        {
+            try
+            {
+                UpdateLoading(true, "获取用户列表...");
+                var r = await service.GetUserListAsync(new UserParameters()
+                {
+                    PageIndex = 0,
+                    PageSize = 30,
+                    Search = UserSearch
+                });
+                GridUserModelList = new ObservableCollection<User>();
+                if (r.success)
+                {
+                    r.dynamicObj.Items?.ToList().ForEach(arg =>
+                    {
+                        GridUserModelList.Add(arg);
+                    });
+                }
+                SelectCardIndex = 1;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.Message);
+            }
+            finally
+            {
+                UpdateLoading(false);
+            }
+        }
+
+        /// <summary>
+        /// 添加所有选中用户
+        /// </summary>
+        void AddAllUser()
+        {
+            for (int i = 0; i < GridUserModelList.Count; i++)
+            {
+                var arg = GridUserModelList[i];
+                if (arg.IsChecked)
+                {
+                    var u = GridModel.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
+                    if (u == null) GridModel.GroupUsers?.Add(new GroupUser() { Account = arg.Account });
+                }
+            }
         }
     }
 }

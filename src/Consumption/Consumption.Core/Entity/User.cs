@@ -15,11 +15,12 @@
 namespace Consumption.Core.Entity
 {
     using System;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
     /// 用户
     /// </summary>
-    public class User : BaseEntity
+    public partial class User : BaseEntity
     {
         /// <summary>
         /// 账户名称
@@ -85,5 +86,20 @@ namespace Consumption.Core.Entity
         /// 登录次数
         /// </summary>
         public int LoginCounter { get; set; }
+    }
+
+    public partial class User
+    {
+        private bool isChecked;
+
+        /// <summary>
+        /// 是否选中
+        /// </summary>
+        [NotMapped]
+        public bool IsChecked
+        {
+            get { return isChecked; }
+            set { isChecked = value; RaisePropertyChanged(); }
+        }
     }
 }

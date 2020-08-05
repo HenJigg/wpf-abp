@@ -72,54 +72,95 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <GroupBox  
+                <GroupBox  Header="组(包含用户)"
                        Style="{DynamicResource MaterialDesignGroupBox}">
-                    <GroupBox.HeaderTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="选择用户"/>
-                                <Button  HorizontalAlignment="Right" 
-                                           Command="{Binding ExcuteCommand}"
+
+                    <materialDesign:Transitioner SelectedIndex="{Binding SelectCardIndex}" 
+                                 AutoApplyTransitionOrigins="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Button  HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                          Command="{Binding ExecuteCommand}"
                                           CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=ToolTip}"
-                                          ToolTip="添加用户"
-                                         Style="{StaticResource MaterialDesignToolForegroundButton}"
-                                       materialDesign:RippleAssist.IsCentered="True">
-                                    <materialDesign:PackIcon Kind="Add" />
-                                </Button>
-                            </Grid>
-                        </DataTemplate>
-                    </GroupBox.HeaderTemplate>
-                    <ListBox Grid.Row="1" ItemsSource="{Binding GridModel.GroupUser}" >
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <CheckBox  Margin="16 5 0 0" 
-                                                           Foreground="White"
-                                                           IsChecked="{Binding IsChecked}"
-                                                           Content="{Binding UserName}"
-                                                           Style="{StaticResource MaterialDesignUserForegroundCheckBox}"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                                          ToolTip="添加用户">
+                                <materialDesign:PackIcon Kind="Add" />
+                            </Button>
+
+                            <ListBox Grid.Row="1" ItemsSource="{Binding GridModel.GroupUsers}" >
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Margin="5" Text="{Binding Account}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <materialDesign:ColorZone Padding="0 0 0 5">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                            Command="{Binding ExecuteCommand}" 
+                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=ToolTip}"
+                                          ToolTip="返回上一页"
+                                                HorizontalAlignment="Left">
+                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                    </Button>
+                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="添加账套"/>
+                                </StackPanel>
+                            </materialDesign:ColorZone>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" >
+                                <materialDesign:PackIcon  Kind="Magnify"  Opacity=".56" 
+                                      Width="20" Height="20" VerticalAlignment="Center" />
+                                <TextBox Margin="5 0 0 0"
+                     Text="{Binding UserSearch,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     materialDesign:HintAssist.Hint="请输入用户名检索" 
+                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
+                     MinWidth="200" VerticalAlignment="Center" >
+                                    <TextBox.InputBindings>
+                                        <KeyBinding Key="Return" Command="{Binding ExecuteCommand}" CommandParameter="添加用户"/>
+                                    </TextBox.InputBindings>
+                                </TextBox>
+                            </StackPanel>
+
+                            <DataGrid Grid.Row="2" 
+                              AutoGenerateColumns="False"
+                                        CanUserAddRows="False"
+                              ItemsSource="{Binding GridUserModelList}">
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="添加当前选中项" Command="{Binding AddUserCommand}"
+                                                  CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ContextMenu},
+                                            Path=PlacementTarget.SelectedItem}"/>
+                                        <MenuItem Header="添加所有选中项" Command="{Binding ExecuteCommand}"
+                                                  CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=Header}"/>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                                <DataGrid.Columns>
+                                    <DataGridCheckBoxColumn Header="选择" Binding="{Binding IsChecked,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="账套" IsReadOnly="True" Width="auto" Binding="{Binding Account}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </materialDesign:Transitioner>
+
                 </GroupBox>
 
-                <GroupBox  Grid.Column="1" Margin="10 0 0 0"
+                <GroupBox Grid.Column="1"  Margin="10 0 0 0" Header="功能菜单"
                        Style="{DynamicResource MaterialDesignGroupBox}">
-                    <GroupBox.HeaderTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="功能菜单"/>
-                                <Button  HorizontalAlignment="Right" 
-                                          Command="{Binding ExcuteCommand}"
-                                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=ToolTip}"
-                                         ToolTip="选中所有功能"
-                                         Style="{StaticResource MaterialDesignToolForegroundButton}"
-                                       materialDesign:RippleAssist.IsCentered="True">
-                                    <materialDesign:PackIcon Kind="CheckAll" />
-                                </Button>
-                            </Grid>
-                        </DataTemplate>
-                    </GroupBox.HeaderTemplate>
                     <DataGrid Grid.Row="1" ItemsSource="{Binding MenuModules}"
+                              CanUserAddRows="False"
                               AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="菜单编号" Width="200" Binding="{Binding MenuCode}"/>
@@ -138,7 +179,7 @@
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <CheckBox  Content="{Binding Name}"  IsChecked="{Binding IsChecked}" Margin="5 0 0 0"
-                                                     Style="{StaticResource MaterialDesignUserForegroundCheckBox}" />
+                                                     Style="{StaticResource MaterialDesignDarkCheckBox}" />
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>

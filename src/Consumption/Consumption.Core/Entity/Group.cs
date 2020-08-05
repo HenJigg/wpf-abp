@@ -45,7 +45,6 @@ namespace Consumption.Core.Entity
             get { return groupUsers; }
             set
             {
-                if (groupUsers == null) groupUsers = new ObservableCollection<GroupUser>();
                 groupUsers = value; RaisePropertyChanged();
             }
         }
@@ -59,7 +58,6 @@ namespace Consumption.Core.Entity
             get { return groupFuncs; }
             set
             {
-                if (groupFuncs == null) groupFuncs = new List<GroupFunc>();
                 groupFuncs = value; RaisePropertyChanged();
             }
         }
