@@ -12,6 +12,7 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
+using GalaSoft.MvvmLight;
 using System.ComponentModel.DataAnnotations;
 
 namespace Consumption.Core.Entity
@@ -19,7 +20,7 @@ namespace Consumption.Core.Entity
     /// <summary>
     /// 实体基类
     /// </summary>
-    public class BaseEntity
+    public class BaseEntity : ViewModelBase
     {
         [Key]
         public int Id { get; set; }

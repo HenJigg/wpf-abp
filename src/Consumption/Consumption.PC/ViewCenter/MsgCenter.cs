@@ -32,6 +32,7 @@ namespace Consumption.PC.ViewCenter
     {
         public async Task<bool> Show(object obj)
         {
+            DialogHost.CloseDialogCommand.Execute(false, null);
             return (bool)await DialogHost.Show(new MsgView()
             {
                 DataContext = new { obj }

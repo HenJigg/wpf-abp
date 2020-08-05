@@ -38,5 +38,21 @@ namespace Consumption.Service
             }, Method.GET);
             return r;
         }
+
+        public async Task<BaseResponse<List<MenuModuleGroup>>> GetMenuModuleListAsync()
+        {
+            BaseServiceRequest<BaseResponse<List<MenuModuleGroup>>> baseService =
+              new BaseServiceRequest<BaseResponse<List<MenuModuleGroup>>>();
+            var r = await baseService.GetRequest(new GroupModuleRequest(), Method.GET);
+            return r;
+        }
+
+        public async Task<BaseResponse<Group>> GetGroupAsync(int id)
+        {
+            BaseServiceRequest<BaseResponse<Group>> baseService =
+              new BaseServiceRequest<BaseResponse<Group>>();
+            var r = await baseService.GetRequest(new GroupInfoRequest() { id = id }, Method.GET);
+            return r;
+        }
     }
 }

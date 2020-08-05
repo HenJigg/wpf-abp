@@ -85,6 +85,19 @@ namespace Consumption.Core.Interfaces
         /// </summary>
         Task<BaseResponse<PagedList<Group>>> GetGroupListAsync(QueryParameters parameters);
 
+        /// <summary>
+        /// 获取菜单模块列表(包含每个菜单拥有的一些功能)
+        /// </summary>
+        /// <returns></returns>
+        Task<BaseResponse<List<MenuModuleGroup>>> GetMenuModuleListAsync();
+
+        /// <summary>
+        /// 根据ID获取用户组信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<BaseResponse<Group>> GetGroupAsync(int id);
+
         #endregion
     }
 }

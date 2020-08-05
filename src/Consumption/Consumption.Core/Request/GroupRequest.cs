@@ -28,4 +28,23 @@ namespace Consumption.Core.Request
 
         public QueryParameters parameters { get; set; }
     }
+
+    /// <summary>
+    /// 用户组模板信息请求
+    /// </summary>
+    public class GroupModuleRequest : BaseRequest
+    {
+        public override string route { get => ServerAddress + "api/Group/GetMenuModules"; }
+    }
+
+    /// <summary>
+    /// 组明细数据请求
+    /// </summary>
+    public class GroupInfoRequest : BaseRequest
+    {
+        public override string route { get => ServerAddress + "api/Group/GetGroupInfo"; }
+
+        public int id { get; set; }
+    }
+
 }

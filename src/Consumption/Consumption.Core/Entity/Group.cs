@@ -2,7 +2,7 @@
 *
 * 文件名    ：Group                             
 * 程序说明  : 用户组实体
-* 更新时间  : 2020-05-16 15:03
+* 更新时间  : 2020-08-05 10:26
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -11,6 +11,10 @@
 * 项目地址  : https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
+
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Consumption.Core.Entity
 {
@@ -28,5 +32,36 @@ namespace Consumption.Core.Entity
         /// 组名称
         /// </summary>
         public string GroupName { get; set; }
+
+        private ObservableCollection<GroupUser> groupUsers;
+        private List<GroupFunc> groupFuncs;
+
+        /// <summary>
+        /// 组所包含用户
+        /// </summary>
+        [NotMapped]
+        public ObservableCollection<GroupUser> GroupUsers
+        {
+            get { return groupUsers; }
+            set
+            {
+                if (groupUsers == null) groupUsers = new ObservableCollection<GroupUser>();
+                groupUsers = value; RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// 组所包含的模块清单
+        /// </summary>
+        [NotMapped]
+        public List<GroupFunc> GroupFuncs
+        {
+            get { return groupFuncs; }
+            set
+            {
+                if (groupFuncs == null) groupFuncs = new List<GroupFunc>();
+                groupFuncs = value; RaisePropertyChanged();
+            }
+        }
     }
 }

@@ -212,7 +212,7 @@ namespace Consumption.Api.Controllers
         }
 
         /// <summary>
-        /// 获取菜单模块列表
+        /// 获取菜单模块列表(包含每个菜单拥有的一些功能)
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -255,6 +255,43 @@ namespace Consumption.Api.Controllers
                     success = false,
                     message = "获取菜单模块列表错误"
                 });
+            }
+        }
+
+        /// <summary>
+        /// 查询组信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> GetGroupInfo(int id)
+        {
+            try
+            {
+                var exist = await work.GetRepository<Group>().GetFirstOrDefaultAsync(predicate: x => x.Id == id);
+                if (exist != null)
+                {
+                    work.GetRepository<GroupUser>()
+                        .GetAll(predicate: x => x.GroupCode == exist.GroupCode).ToList()?.ForEach(arg =>
+                        {
+                            exist.GroupUsers.Add(arg);
+                        });
+                    work.GetRepository<GroupFunc>()
+                        .GetAll(predicate: x => x.GroupCode == exist.GroupCode).ToList().ForEach(arg =>
+                    {
+                        exist.GroupFuncs.Add(arg);
+                    });
+                    return Ok(new ConsumptionResponse() { success = true, dynamicObj = exist, });
+                }
+                else
+                {
+                    return Ok(new ConsumptionResponse() { success = false, message = "未包含组信息" });
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "");
+                return Ok(new ConsumptionResponse() { success = false });
             }
         }
     }
