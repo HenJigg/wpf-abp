@@ -156,9 +156,9 @@ namespace Consumption.ViewModel
                 if (GridModel == null) return;
                 UpdateLoading(true, "正在查询...");
                 var tm = await service.GetMenuModuleListAsync();
-                if (!tm.success)
+                if (tm == null || !tm.success)
                 {
-                    Msg.Warning(tm.message);
+                    Msg.Warning("获取数据异常!");
                     return;
                 }
                 if (tm.success)

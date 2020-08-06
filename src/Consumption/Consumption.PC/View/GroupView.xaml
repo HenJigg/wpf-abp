@@ -43,8 +43,8 @@
                                           CommandParameter="编辑" />
                 </DataGrid.InputBindings>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="角色编号" Width="200" Binding="{Binding GroupCode}"/>
-                    <DataGridTextColumn Header="角色名称" Width="200" Binding="{Binding GroupName}"/>
+                    <DataGridTextColumn Header="部门编号" Width="200" Binding="{Binding GroupCode}"/>
+                    <DataGridTextColumn Header="部门名称" Width="200" Binding="{Binding GroupName}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>

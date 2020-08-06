@@ -27,6 +27,7 @@ namespace Consumption.Api.Controllers
     using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
     using Microsoft.Extensions.Logging;
     using NLog.Fluent;
+    using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
     /// <summary>
     /// 
@@ -90,22 +91,21 @@ namespace Consumption.Api.Controllers
         /// <param name="model">组数据</param>
         /// <returns>结果</returns>
         [HttpPost]
-        public async Task<IActionResult> SaveGroup([FromBody] GroupForm model)
+        public async Task<IActionResult> SaveGroup([FromBody] Group model)
         {
             try
             {
-                if (model == null || model.group == null)
+                if (model == null)
                     return Ok(new ConsumptionResponse() { success = false, message = "请求参数有误" });
-                var newgroup = model.group;
-                if (newgroup.Id > 0)
+                if (model.Id > 0)
                 {
                     //ID存在为更新,需要处理是否真实存在？
                     var group = await work.GetRepository<Group>()
-                    .GetFirstOrDefaultAsync(predicate: x => x.Id == newgroup.Id);
+                    .GetFirstOrDefaultAsync(predicate: x => x.Id == model.Id);
                     if (group == null)
                         return Ok(new ConsumptionResponse() { success = false, message = "该用户组已不存在。" });
 
-                    group.GroupName = newgroup.GroupName;
+                    group.GroupName = model.GroupName;
                     work.GetRepository<Group>().Update(group);
                     #region 更新组用户
 
@@ -115,7 +115,7 @@ namespace Consumption.Api.Controllers
                     {
                         var arg = groupUsers[i];
                         //如果数据库存在的用户在更新列表当中查不到,代表删除,否则新增
-                        var u = model.groupUser?.FirstOrDefault(t => t.Id == arg.Id);
+                        var u = model.GroupUsers?.FirstOrDefault(t => t.Id == arg.Id);
                         if (u == null)
                             work.GetRepository<GroupUser>().Delete(arg);
                     }
@@ -129,14 +129,14 @@ namespace Consumption.Api.Controllers
                     for (int i = 0; i < groupFuncs.Count; i++)
                     {
                         var arg = groupFuncs[i];
-                        var u = model.groupFunc?.FirstOrDefault(t => t.Id == arg.Id);
+                        var u = model.GroupFuncs?.FirstOrDefault(t => t.Id == arg.Id);
                         if (u == null)
                             work.GetRepository<GroupFunc>().Delete(arg);
                         else //如果存在,那么更新模块内容
                         {
                             arg.Auth = u.Auth;
                             work.GetRepository<GroupFunc>().Update(arg);
-                            model.groupFunc.Remove(u);//移除
+                            model.GroupFuncs.Remove(u);//移除
                         }
                     }
 
@@ -145,22 +145,22 @@ namespace Consumption.Api.Controllers
                 else
                 {
                     var group = await work.GetRepository<Group>()
-                .GetFirstOrDefaultAsync(predicate: x => x.GroupCode == newgroup.GroupCode || x.GroupName == newgroup.GroupName);
+                .GetFirstOrDefaultAsync(predicate: x => x.GroupCode == model.GroupCode || x.GroupName == model.GroupName);
                     if (group != null)
                         return Ok(new ConsumptionResponse() { success = false, message = "组编号/名称已重复,请勿重复添加!" });
                     //添加组信息
-                    work.GetRepository<Group>().Insert(newgroup);
+                    work.GetRepository<Group>().Insert(model);
                 }
                 //添加新增组用户信息
-                model.groupUser?.ForEach(u =>
+                model.GroupUsers?.ToList().ForEach(u =>
                 {
-                    u.GroupCode = newgroup.GroupCode;
+                    u.GroupCode = model.GroupCode;
                     work.GetRepository<GroupUser>().Insert(u);
                 });
                 //添加新增组模块信息
-                model.groupFunc?.ForEach(f =>
+                model.GroupFuncs?.ForEach(f =>
                 {
-                    f.GroupCode = newgroup.GroupCode;
+                    f.GroupCode = model.GroupCode;
                     work.GetRepository<GroupFunc>().Insert(f);
                 });
                 if (await work.SaveChangesAsync() > 0)
