@@ -14,7 +14,9 @@
 
 namespace Consumption.Core.Request
 {
+    using Consumption.Core.Entity;
     using Consumption.Core.Query;
+    using Consumption.Core.RequestForm;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -45,6 +47,16 @@ namespace Consumption.Core.Request
         public override string route { get => ServerAddress + "api/Group/GetGroupInfo"; }
 
         public int id { get; set; }
+    }
+
+    /// <summary>
+    /// 保存组数据请求
+    /// </summary>
+    public class GroupSaveRequest : BaseRequest
+    {
+        public override string route { get => ServerAddress + "api/Group/SaveGroup"; }
+
+        public GroupHeader parameter { get; set; }
     }
 
 }

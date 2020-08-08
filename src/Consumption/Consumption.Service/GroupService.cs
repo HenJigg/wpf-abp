@@ -18,6 +18,7 @@ namespace Consumption.Service
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
     using Consumption.Core.Request;
+    using Consumption.Core.RequestForm;
     using Consumption.Core.Response;
     using RestSharp;
     using System.Collections.Generic;
@@ -47,11 +48,20 @@ namespace Consumption.Service
             return r;
         }
 
-        public async Task<BaseResponse<Group>> GetGroupAsync(int id)
+        public async Task<BaseResponse<GroupHeader>> GetGroupAsync(int id)
         {
-            BaseServiceRequest<BaseResponse<Group>> baseService =
-              new BaseServiceRequest<BaseResponse<Group>>();
+            BaseServiceRequest<BaseResponse<GroupHeader>> baseService =
+              new BaseServiceRequest<BaseResponse<GroupHeader>>();
             var r = await baseService.GetRequest(new GroupInfoRequest() { id = id }, Method.GET);
+            return r;
+        }
+
+        public async Task<BaseResponse> SaveGroupAsync(GroupHeader group)
+        {
+            BaseServiceRequest<BaseResponse> baseService =
+              new BaseServiceRequest<BaseResponse>();
+            var r = await baseService.GetRequest(new GroupSaveRequest()
+            { parameter = group }, Method.POST);
             return r;
         }
     }

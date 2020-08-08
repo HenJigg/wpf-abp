@@ -45,7 +45,17 @@ namespace Consumption.Core.Entity
     public class MenuModule : ViewModelBase
     {
         public string Name { get; set; }
-        public int Value { get; set; }
+
+        private int _value;
+
+        /// <summary>
+        /// 权限值
+        /// </summary>
+        public int Value
+        {
+            get { return _value; }
+            set { _value = value; RaisePropertyChanged(); }
+        }
 
         private bool isChecked;
 

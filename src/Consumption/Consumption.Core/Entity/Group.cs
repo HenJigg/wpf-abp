@@ -33,33 +33,5 @@ namespace Consumption.Core.Entity
         /// </summary>
         public string GroupName { get; set; }
 
-        private ObservableCollection<GroupUser> groupUsers;
-        private List<GroupFunc> groupFuncs;
-
-        /// <summary>
-        /// 组所包含用户
-        /// </summary>
-        [NotMapped]
-        public ObservableCollection<GroupUser> GroupUsers
-        {
-            get { return groupUsers; }
-            set
-            {
-                groupUsers = value; RaisePropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// 组所包含的模块清单
-        /// </summary>
-        [NotMapped]
-        public List<GroupFunc> GroupFuncs
-        {
-            get { return groupFuncs; }
-            set
-            {
-                groupFuncs = value; RaisePropertyChanged();
-            }
-        }
     }
 }

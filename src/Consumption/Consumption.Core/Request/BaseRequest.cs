@@ -86,7 +86,9 @@ namespace Consumption.Core.Request
                         }
                         getBuilder.Append(pbuilder.ToString());
                     }
-                    else if (pvalue != null && pvalue.GetType().Namespace == "Consumption.Core.Entity")
+                    else if (pvalue != null &&
+                        (pvalue.GetType().Namespace == "Consumption.Core.Entity" ||
+                        pvalue.GetType().Namespace == "Consumption.Core.RequestForm"))
                     {
                         //当属性为对象得情况下, 进行序列化
                         pvalue = JsonConvert.SerializeObject(pvalue);

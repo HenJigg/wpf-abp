@@ -162,8 +162,8 @@ namespace Consumption.ViewModel
              */
             switch (arg)
             {
-                case "新增": Add(); break;
-                case "编辑": Edit(); break;
+                case "添加": Add(); break;
+                case "修改": Edit(); break;
                 case "删除": Del(); break;
                 case "保存": Save(); break;
                 case "取消": Cancel(); break;

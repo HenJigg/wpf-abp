@@ -40,11 +40,11 @@
                                 RelativeSource={RelativeSource 
                                 Mode=FindAncestor,AncestorType=DataGrid},
                                 Path=DataContext.ExecuteCommand}"
-                                          CommandParameter="编辑" />
+                                          CommandParameter="修改" />
                 </DataGrid.InputBindings>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="部门编号" Width="200" Binding="{Binding GroupCode}"/>
-                    <DataGridTextColumn Header="部门名称" Width="200" Binding="{Binding GroupName}"/>
+                    <DataGridTextColumn Header="部门编号" Width="200" Binding="{Binding GroupCode,UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="部门名称" Width="200" Binding="{Binding GroupName,UpdateSourceTrigger=PropertyChanged}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
@@ -58,10 +58,10 @@
 
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock Text="角色编号:"  FontSize="16" Margin="10 0 0 0"/>
-                <TextBox Text="{Binding GridModel.GroupCode}" MaxLength="10"
+                <TextBox Text="{Binding GroupHeader.group.GroupCode}" MaxLength="10"
                                  Width="120" Margin="10 0 10 0" FontSize="16"/>
                 <TextBlock Text="角色名称:"  FontSize="16" Margin="20 0 0 0"/>
-                <TextBox Text="{Binding GridModel.GroupName}" 
+                <TextBox Text="{Binding GroupHeader.group.GroupName}" 
                                  MaxLength="20"
                                  Width="120" Margin="10 0 10 0" FontSize="16"/>
             </StackPanel>
@@ -90,13 +90,25 @@
                                 <materialDesign:PackIcon Kind="Add" />
                             </Button>
 
-                            <ListBox Grid.Row="1" ItemsSource="{Binding GridModel.GroupUsers}" >
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Margin="5" Text="{Binding Account}"/>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+                            <DataGrid Grid.Row="1" 
+                              AutoGenerateColumns="False"
+                                        CanUserAddRows="False"
+                              ItemsSource="{Binding GroupHeader.GroupUsers}">
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="删除当前用户" Command="{Binding DelUserCommand}"
+                                                  CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ContextMenu},
+                                            Path=PlacementTarget.SelectedItem}"/>
+                                        <MenuItem Header="删除所有选中用户" Command="{Binding ExecuteCommand}"
+                                                  CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=Header}"/>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
+                                <DataGrid.Columns>
+                                    <DataGridCheckBoxColumn Header="操作" Binding="{Binding IsChecked,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="账套" IsReadOnly="True" Width="auto" Binding="{Binding Account}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            
                         </Grid>
 
 
@@ -148,7 +160,7 @@
                                     </ContextMenu>
                                 </DataGrid.ContextMenu>
                                 <DataGrid.Columns>
-                                    <DataGridCheckBoxColumn Header="选择" Binding="{Binding IsChecked,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridCheckBoxColumn Header="操作" Binding="{Binding IsChecked,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                                     <DataGridTextColumn Header="账套" IsReadOnly="True" Width="auto" Binding="{Binding Account}"/>
                                 </DataGrid.Columns>
                             </DataGrid>

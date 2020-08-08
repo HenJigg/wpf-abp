@@ -28,6 +28,8 @@ namespace Consumption.ViewModel
     using System.Linq;
     using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight.Command;
+    using Org.BouncyCastle.Crypto.Engines;
+    using Consumption.Core.RequestForm;
 
     /// <summary>
     /// 部门管理
@@ -42,8 +44,14 @@ namespace Consumption.ViewModel
             AddUserCommand = new RelayCommand<User>(arg =>
               {
                   if (arg == null) return;
-                  var u = GridModel.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
-                  if (u == null) GridModel.GroupUsers?.Add(new GroupUser() { Account = arg.Account });
+                  var u = GroupHeader.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
+                  if (u == null) GroupHeader.GroupUsers?.Add(new GroupUser() { Account = arg.Account });
+              });
+            DelUserCommand = new RelayCommand<GroupUser>(arg =>
+              {
+                  if (arg == null) return;
+                  var u = GroupHeader.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
+                  if (u != null) GroupHeader.GroupUsers?.Remove(u);
               });
         }
 
@@ -70,9 +78,19 @@ namespace Consumption.ViewModel
         public string UserSearch
         {
             get { return userSearch; }
-            set { userSearch = value; }
+            set { userSearch = value; RaisePropertyChanged(); }
         }
 
+        private GroupHeader groupHeader;
+
+        /// <summary>
+        /// 操作实体
+        /// </summary>
+        public GroupHeader GroupHeader
+        {
+            get { return groupHeader; }
+            set { groupHeader = value; RaisePropertyChanged(); }
+        }
 
         private ObservableCollection<User> gridUserModelList;
 
@@ -102,6 +120,7 @@ namespace Consumption.ViewModel
         #region Command
 
         public RelayCommand<User> AddUserCommand { get; private set; }
+        public RelayCommand<GroupUser> DelUserCommand { get; private set; }
 
         #endregion
 
@@ -113,9 +132,11 @@ namespace Consumption.ViewModel
                 case "选中所有功能": break;
                 case "返回上一页": SelectCardIndex = 0; break;
                 case "添加所有选中项": AddAllUser(); break;
+                case "删除所有选中用户": DeleteAllUser(); break;
             }
             base.Execute(arg);
         }
+
 
         public override async Task GetPageData(int pageIndex)
         {
@@ -144,9 +165,26 @@ namespace Consumption.ViewModel
             }
         }
 
-        public override void Add()
+        public override async void Add()
         {
-            base.Add();
+            try
+            {
+                UpdateLoading(true, "正在加载...");
+                GroupHeader = new GroupHeader();
+                await UpdateMenuModules();
+                SelectPageTitle = "编辑组信息";
+                SelectPageIndex = 1;
+                base.Add();
+            }
+            catch (Exception ex)
+            {
+                await Msg.Error(ex.Message);
+                Log.Error(ex.Message);
+            }
+            finally
+            {
+                UpdateLoading(false);
+            }
         }
 
         public override async void Edit()
@@ -155,27 +193,15 @@ namespace Consumption.ViewModel
             {
                 if (GridModel == null) return;
                 UpdateLoading(true, "正在查询...");
-                var tm = await service.GetMenuModuleListAsync();
-                if (tm == null || !tm.success)
-                {
-                    Msg.Warning("获取数据异常!");
-                    return;
-                }
-                if (tm.success)
-                {
-                    MenuModules = new ObservableCollection<MenuModuleGroup>();
-                    tm.dynamicObj?.ForEach(arg =>
-                    {
-                        MenuModules.Add(arg);
-                    });
-                }
+                await UpdateMenuModules();
                 var g = await service.GetGroupAsync(GridModel.Id);
                 if (!g.success)
                 {
-                    Msg.Warning(tm.message);
+                    await Msg.Warning("获取数据异常!");
                     return;
                 }
-                //其实这一步操作就是把当前用户组包含的权限,绑定到所有菜单的列表当中,设定选中
+                //其实这一步操作就是把当前用户组包含的权限,
+                //绑定到所有菜单的列表当中,设定选中
                 g.dynamicObj.GroupFuncs?.ForEach(f =>
                 {
                     for (int i = 0; i < MenuModules.Count; i++)
@@ -191,8 +217,7 @@ namespace Consumption.ViewModel
                         }
                     }
                 });
-                //绑定编辑项
-                GridModel = g.dynamicObj;
+                GroupHeader = g.dynamicObj;//绑定编辑项GroupHeader
                 SelectPageTitle = "编辑组信息";
                 SelectPageIndex = 1;
                 base.Edit();
@@ -207,10 +232,52 @@ namespace Consumption.ViewModel
             }
         }
 
-        public override void Save()
+        public override async void Save()
         {
-            SelectPageTitle = "部门管理";
-            base.Save();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(GroupHeader.group.GroupCode) ||
+                    string.IsNullOrWhiteSpace(GroupHeader.group.GroupName))
+                {
+                    await Msg.Warning("组代码和名称为必填项！");
+                    return;
+                };
+
+                //把选择的功能对应的权限保存到提交的参数当中
+                GroupHeader.GroupFuncs = new List<GroupFunc>();
+                for (int i = 0; i < MenuModules.Count; i++)
+                {
+                    var m = MenuModules[i];
+                    int value = m.Modules.Where(t => t.IsChecked).Sum(t => t.Value);
+                    if (value > 0)
+                    {
+                        GroupHeader.GroupFuncs.Add(new GroupFunc()
+                        {
+                            MenuCode = m.MenuCode,
+                            Auth = value
+                        });
+                    }
+                }
+                UpdateLoading(true, "正在保存...");
+                var r = await service.SaveGroupAsync(GroupHeader);
+                if (r == null || !r.success)
+                {
+                    await Msg.Error("保存数据异常！");
+                    return;
+                }
+                await this.GetPageData(0);
+                SelectPageTitle = "部门管理";
+                base.Save();
+            }
+            catch (Exception ex)
+            {
+                await Msg.Error(ex.Message);
+                Log.Error(ex.Message);
+            }
+            finally
+            {
+                UpdateLoading(false);
+            }
         }
 
         public override void Cancel()
@@ -263,9 +330,49 @@ namespace Consumption.ViewModel
                 var arg = GridUserModelList[i];
                 if (arg.IsChecked)
                 {
-                    var u = GridModel.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
-                    if (u == null) GridModel.GroupUsers?.Add(new GroupUser() { Account = arg.Account });
+                    var u = GroupHeader.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
+                    if (u == null) GroupHeader.GroupUsers?.Add(new GroupUser() { Account = arg.Account });
                 }
+            }
+        }
+
+        /// <summary>
+        /// 删除所有用户
+        /// </summary>
+        void DeleteAllUser()
+        {
+            for (int i = GroupHeader.GroupUsers.Count - 1; i >= 0; i--)
+            {
+                var arg = GroupHeader.GroupUsers[i];
+                if (arg.IsChecked)
+                    GroupHeader.GroupUsers.Remove(arg);
+            }
+        }
+
+        /// <summary>
+        /// 刷新菜单列表
+        /// </summary>
+        /// <returns></returns>
+        async Task UpdateMenuModules()
+        {
+            if (MenuModules != null && MenuModules.Count > 0)
+            {
+                for (int i = 0; i < MenuModules.Count; i++)
+                {
+                    var m = MenuModules[i].Modules;
+                    for (int j = 0; j < m.Count; j++)
+                        m[j].IsChecked = false;
+                }
+                return;
+            }
+            var tm = await service.GetMenuModuleListAsync();
+            if (tm != null && tm.success)
+            {
+                MenuModules = new ObservableCollection<MenuModuleGroup>();
+                tm.dynamicObj?.ForEach(arg =>
+                {
+                    MenuModules.Add(arg);
+                });
             }
         }
     }

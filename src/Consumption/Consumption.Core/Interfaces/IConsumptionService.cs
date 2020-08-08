@@ -17,6 +17,7 @@ namespace Consumption.Core.Interfaces
     using Consumption.Core.Collections;
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
+    using Consumption.Core.RequestForm;
     using Consumption.Core.Response;
     using System;
     using System.Collections.Generic;
@@ -96,7 +97,14 @@ namespace Consumption.Core.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<BaseResponse<Group>> GetGroupAsync(int id);
+        Task<BaseResponse<GroupHeader>> GetGroupAsync(int id);
+
+        /// <summary>
+        /// 保存组数据
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
+        Task<BaseResponse> SaveGroupAsync(GroupHeader group);
 
         #endregion
     }

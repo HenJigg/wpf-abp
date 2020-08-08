@@ -48,25 +48,20 @@ namespace Consumption.EFCore.Context
                 List<Menu> menuList = new List<Menu>();
                 menuList.Add(new Menu() { MenuCode = "1001", MenuName = "用户管理", MenuCaption = "AccountBox", MenuNameSpace = "UserCenter", MenuAuth = 7 });
                 menuList.Add(new Menu() { MenuCode = "1002", MenuName = "权限管理", MenuCaption = "Group", MenuNameSpace = "GroupCenter", MenuAuth = 7 });
-                menuList.Add(new Menu() { MenuCode = "1003", MenuName = "个性化", MenuCaption = "Palette", MenuNameSpace = "SkinCenter", MenuAuth = 0 });
-                menuList.Add(new Menu() { MenuCode = "1004", MenuName = "仪表板", MenuCaption = "TelevisionGuide", MenuNameSpace = "DashboardCenter", MenuAuth = 0 });
+                menuList.Add(new Menu() { MenuCode = "1003", MenuName = "个性化", MenuCaption = "Palette", MenuNameSpace = "SkinCenter", MenuAuth = 8 });
+                menuList.Add(new Menu() { MenuCode = "1004", MenuName = "仪表板", MenuCaption = "TelevisionGuide", MenuNameSpace = "DashboardCenter", MenuAuth = 8 });
                 menuList.Add(new Menu() { MenuCode = "1005", MenuName = "菜单管理", MenuCaption = "Menu", MenuNameSpace = "MenuCenter", MenuAuth = 7 });
-                menuList.Add(new Menu() { MenuCode = "1006", MenuName = "基础数据", });
-                menuList.Add(new Menu() { MenuCode = "1007", MenuName = "计划管理", });
-                menuList.Add(new Menu() { MenuCode = "1008", MenuName = "消费报表", });
-                menuList.Add(new Menu() { MenuCode = "1009", MenuName = "消费管理", });
-                menuList.Add(new Menu() { MenuCode = "1010", MenuName = "账户管理", });
-                menuList.Add(new Menu() { MenuCode = "1011", MenuName = "我的账单", });
                 for (int i = 0; i < menuList.Count; i++)
                     await context.Menus.AddAsync(menuList[i]);
 
                 List<AuthItem> authLis = new List<AuthItem>();
-                authLis.Add(new AuthItem() { AuthName = "新增", AuthValue = 1, AuthColor = "#0080FF", AuthKind = "PlaylistPlus" });
-                authLis.Add(new AuthItem() { AuthName = "编辑", AuthValue = 2, AuthColor = "#28CBA3", AuthKind = "PlaylistPlay" });
+                authLis.Add(new AuthItem() { AuthName = "添加", AuthValue = 1, AuthColor = "#0080FF", AuthKind = "PlaylistPlus" });
+                authLis.Add(new AuthItem() { AuthName = "修改", AuthValue = 2, AuthColor = "#28CBA3", AuthKind = "PlaylistPlay" });
                 authLis.Add(new AuthItem() { AuthName = "删除", AuthValue = 4, AuthColor = "#FF5370", AuthKind = "PlaylistRemove" });
-                authLis.Add(new AuthItem() { AuthName = "导入", AuthValue = 8 });
-                authLis.Add(new AuthItem() { AuthName = "导出", AuthValue = 16 });
-                authLis.Add(new AuthItem() { AuthName = "禁用", AuthValue = 32 });
+                authLis.Add(new AuthItem() { AuthName = "查看", AuthValue = 8, AuthColor = "#FF5370", AuthKind = "FileDocumentBoxSearchOutline" });
+                authLis.Add(new AuthItem() { AuthName = "打印", AuthValue = 16, AuthColor = "#FF5370", AuthKind = "LocalPrintShop" });
+                authLis.Add(new AuthItem() { AuthName = "导入", AuthValue = 32, AuthColor = "#FF5370", AuthKind = "UploadOutline" });
+                authLis.Add(new AuthItem() { AuthName = "导出", AuthValue = 64, AuthColor = "#FF5370", AuthKind = "DownloadOutline" });
 
                 for (int i = 0; i < authLis.Count; i++)
                     await context.AuthItems.AddAsync(authLis[i]);

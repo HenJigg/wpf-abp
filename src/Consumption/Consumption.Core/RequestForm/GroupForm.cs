@@ -15,19 +15,42 @@
 namespace Consumption.Core.RequestForm
 {
     using Consumption.Core.Entity;
+    using GalaSoft.MvvmLight;
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Text;
 
     /// <summary>
     /// 组及成员和模块信息
     /// </summary>
-    public class GroupForm
+    public class GroupHeader : ViewModelBase
     {
-        public Group group { get; set; }
+        public Group group { get; set; } = new Group();
 
-        public List<GroupFunc> groupFunc { get; set; }
+        private ObservableCollection<GroupUser> groupUsers =
+            new ObservableCollection<GroupUser>();
+        private List<GroupFunc> groupFuncs = new List<GroupFunc>();
 
-        public List<GroupUser> groupUser { get; set; }
+        /// <summary>
+        /// 组所包含用户
+        /// </summary>
+        public ObservableCollection<GroupUser> GroupUsers
+        {
+            get { return groupUsers; }
+            set
+            {
+                groupUsers = value; RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// 组所包含的模块清单
+        /// </summary>
+        public List<GroupFunc> GroupFuncs
+        {
+            get { return groupFuncs; }
+            set { groupFuncs = value; }
+        }
     }
 }

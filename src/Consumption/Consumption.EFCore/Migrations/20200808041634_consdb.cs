@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace Consumption.EFCore.Migrations
 {
-    public partial class consumptionDefault : Migration
+    public partial class consdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,8 @@ namespace Consumption.EFCore.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     AuthName = table.Column<string>(nullable: true),
+                    AuthKind = table.Column<string>(nullable: true),
+                    AuthColor = table.Column<string>(nullable: true),
                     AuthValue = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

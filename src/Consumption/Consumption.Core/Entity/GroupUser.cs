@@ -12,12 +12,15 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
+using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Consumption.Core.Entity
 {
     /// <summary>
     /// 组用户
     /// </summary>
-    public class GroupUser : BaseEntity
+    public partial class GroupUser : BaseEntity
     {
         /// <summary>
         /// 组代码
@@ -28,6 +31,20 @@ namespace Consumption.Core.Entity
         /// 账号
         /// </summary>
         public string Account { get; set; }
+
+    }
+
+    public partial class GroupUser
+    {
+        private bool isChecked;
+
+        [JsonIgnore]
+        [NotMapped]
+        public bool IsChecked
+        {
+            get { return isChecked; }
+            set { isChecked = value; }
+        }
 
     }
 }

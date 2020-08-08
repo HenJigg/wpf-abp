@@ -56,7 +56,7 @@ namespace Consumption.ViewModel.Common
         /// 信息提示
         /// </summary>
         /// <param name="msg"></param>
-        public static async void Info(string msg)
+        public static async Task Info(string msg)
         {
             await Show(Notify.Info, msg);
         }
@@ -65,7 +65,7 @@ namespace Consumption.ViewModel.Common
         /// 错误提示
         /// </summary>
         /// <param name="msg"></param>
-        public async static void Error(string msg)
+        public async static Task Error(string msg)
         {
             await Show(Notify.Error, msg);
         }
@@ -74,7 +74,7 @@ namespace Consumption.ViewModel.Common
         /// 真香警告
         /// </summary>
         /// <param name="msg"></param>
-        public async static void Warning(string msg)
+        public async static Task Warning(string msg)
         {
             await Show(Notify.Warning, msg);
         }
@@ -102,7 +102,7 @@ namespace Consumption.ViewModel.Common
             switch (notify)
             {
                 case Notify.Error:
-                    Icon = "CommentRemoveOutline";
+                    Icon = "CommentWarning";
                     Color = "#FF4500";
                     break;
                 case Notify.Warning:

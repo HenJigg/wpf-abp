@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Consumption.EFCore.Migrations
 {
     [DbContext(typeof(ConsumptionContext))]
-    [Migration("20200708035253_consumptionDefault")]
-    partial class consumptionDefault
+    [Migration("20200808041634_consdb")]
+    partial class consdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,12 @@ namespace Consumption.EFCore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("AuthColor")
+                        .HasColumnType("text");
+
+                    b.Property<string>("AuthKind")
+                        .HasColumnType("text");
 
                     b.Property<string>("AuthName")
                         .HasColumnType("text");

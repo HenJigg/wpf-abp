@@ -15,10 +15,12 @@
 namespace Consumption.PC.ViewCenter
 {
     using Consumption.Core.Attributes;
+    using Consumption.Core.Common;
     using Consumption.Core.Interfaces;
     using Consumption.PC.Template;
     using Consumption.PC.View;
     using Consumption.ViewModel;
+    using GalaSoft.MvvmLight.Messaging;
     using MaterialDesignThemes.Wpf;
     using System;
     using System.Collections.Generic;
@@ -32,11 +34,14 @@ namespace Consumption.PC.ViewCenter
     {
         public async Task<bool> Show(object obj)
         {
-            DialogHost.CloseDialogCommand.Execute(false, null);
-            return (bool)await DialogHost.Show(new MsgView()
+            //如果你调用这个Show但是因为你在此之前已经有了弹窗,
+            //所以在Show之前,会默认把之前打开的窗口关闭,然后Show
+            Messenger.Default.Send(new MsgInfo() { IsOpen = false, }, "UpdateDialog");
+            var result = await DialogHost.Show(new MsgView()
             {
                 DataContext = new { obj }
             }, "Root");
+            return (bool)result;
         }
     }
 }
