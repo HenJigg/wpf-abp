@@ -18,6 +18,7 @@ namespace Consumption.ViewModel
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using GalaSoft.MvvmLight.Messaging;
+    using System.Collections.ObjectModel;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -29,8 +30,12 @@ namespace Consumption.ViewModel
         {
             OpenPageCommand = new RelayCommand<Module>(arg =>
             {
-                Messenger.Default.Send(arg, "NavigationNewPage");
+                Messenger.Default.Send(arg, "OpenPage");
             });
+            ClosePageCommand = new RelayCommand<Module>(arg =>
+              {
+                  Messenger.Default.Send(arg, "ClosePage");
+              });
             GoHomeCommand = new RelayCommand(() =>
             {
                 Messenger.Default.Send("", "GoHomePage");
@@ -39,6 +44,31 @@ namespace Consumption.ViewModel
             {
                 Messenger.Default.Send("", "ExpandMenu");
             });
+        }
+
+        #region Property
+
+        private ModuleUIComponent currentModule;
+
+        /// <summary>
+        /// 当前选中模块
+        /// </summary>
+        public ModuleUIComponent CurrentModule
+        {
+            get { return currentModule; }
+            set { currentModule = value; RaisePropertyChanged(); }
+        }
+
+
+        private ObservableCollection<ModuleUIComponent> moduleList;
+
+        /// <summary>
+        /// 所有展开的模块
+        /// </summary>
+        public ObservableCollection<ModuleUIComponent> ModuleList
+        {
+            get { return moduleList; }
+            set { moduleList = value; RaisePropertyChanged(); }
         }
 
         private ModuleManager moduleManager;
@@ -51,6 +81,10 @@ namespace Consumption.ViewModel
             get { return moduleManager; }
             set { moduleManager = value; RaisePropertyChanged(); }
         }
+
+        #endregion
+
+        #region Command
 
         /// <summary>
         /// 菜单栏收缩
@@ -67,11 +101,27 @@ namespace Consumption.ViewModel
         /// </summary>
         public RelayCommand<Module> OpenPageCommand { get; private set; }
 
-        public RelayCommand MinCommand { get; private set; } = new RelayCommand(() =>
-          {
-              Messenger.Default.Send("", "WindowMinimized");
-          });
+        /// <summary>
+        /// 关闭选择页
+        /// </summary>
+        public RelayCommand<Module> ClosePageCommand { get; private set; }
 
+        public RelayCommand MinCommand { get; private set; } = new RelayCommand(() =>
+        {
+            Messenger.Default.Send("", "WindowMinimize");
+        });
+
+        public RelayCommand MaxCommand { get; private set; } = new RelayCommand(() =>
+        {
+            Messenger.Default.Send("", "WindowMaximize");
+        });
+
+        #endregion
+
+        /// <summary>
+        /// 初始化页面上下文内容
+        /// </summary>
+        /// <returns></returns>
         public async Task InitDefaultView()
         {
             /*
@@ -85,7 +135,7 @@ namespace Consumption.ViewModel
 
             //创建模块管理器
             ModuleManager = new ModuleManager();
-
+            ModuleList = new ObservableCollection<ModuleUIComponent>();
             //加载自身的程序集模块
             await ModuleManager.LoadAssemblyModule();
         }

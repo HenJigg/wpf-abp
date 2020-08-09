@@ -28,6 +28,8 @@ namespace Consumption.PC.ViewCenter
     using Consumption.Common.Contract;
     using Consumption.PC.Template;
     using MaterialDesignThemes.Wpf;
+    using System.Linq;
+    using Consumption.ViewModel.Common;
 
     /// <summary>
     /// 首页控制类
@@ -36,6 +38,7 @@ namespace Consumption.PC.ViewCenter
     {
         public override void SubscribeMessenger()
         {
+            //更新消息
             Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", m =>
               {
                   if (m.IsOpen)
@@ -47,10 +50,18 @@ namespace Consumption.PC.ViewCenter
                       ViewModel.DialogIsOpen = false;
               });
             //执行菜单模块动画
-            Messenger.Default.Register<string>(View, "WindowMinimized", arg =>
+            Messenger.Default.Register<string>(View, "WindowMinimize", arg =>
             {
                 View.WindowState = System.Windows.WindowState.Minimized;
             });
+            Messenger.Default.Register<string>(View, "WindowMaximize", arg =>
+            {
+                if (View.WindowState == System.Windows.WindowState.Maximized)
+                    View.WindowState = System.Windows.WindowState.Normal;
+                else
+                    View.WindowState = System.Windows.WindowState.Maximized;
+            });
+            //展开惨淡
             Messenger.Default.Register<string>(View, "ExpandMenu", arg =>
             {
                 if (View.grdLeftMenu.Width < 200)
@@ -63,25 +74,39 @@ namespace Consumption.PC.ViewCenter
             //执行返回首页
             Messenger.Default.Register<string>(View, "GoHomePage", arg =>
             {
-                GoHomeView();
+                InitHomeView();
             });
-            Messenger.Default.Register<Module>(View, "NavigationNewPage", async m =>
+            //打开页面
+            Messenger.Default.Register<Module>(View, "OpenPage", async m =>
             {
                 try
                 {
-                    if (m.TypeName == View.page.Tag?.ToString()) return;
-                    _ = DialogHost.Show(new SplashScreenView()
+                    var module = ViewModel.ModuleList.FirstOrDefault(t => t.Name == m.Name);
+                    if (module == null)
                     {
-                        DataContext = new { Msg = "正在打开页面..." }
-                    }, "Root");
-                    ViewModel.DialogIsOpen = true;
-                    await Task.Delay(100);
-                    //将数据库中获取的菜单Namespace在容器当中查找依赖关系的实例
-                    NetCoreProvider.Get<IModule>(m.TypeName,out IModule dialog);
-                    if (dialog == null) return;
-                    await dialog.BindDefaultModel(m.Auth);
-                    View.page.Tag = m.TypeName;
-                    View.page.Content = dialog.GetView();
+                        NetCoreProvider.Get<IModule>(m.TypeName, out IModule dialog);
+                        if (dialog == null)
+                        {
+                            //404
+                            return;
+                        }
+                        _ = DialogHost.Show(new SplashScreenView() { DataContext = new { Msg = "正在打开页面..." } }, "Root");
+                        ViewModel.DialogIsOpen = true;
+                        await Task.Delay(100);
+                        //将数据库中获取的菜单Namespace在容器当中查找依赖关系的实例
+                        await dialog.BindDefaultModel(m.Auth);
+                        ViewModel.ModuleList.Add(new ModuleUIComponent()
+                        {
+                            Code = m.Code,
+                            Auth = m.Auth,
+                            Name = m.Name,
+                            TypeName = m.TypeName,
+                            Body = dialog.GetView()
+                        });
+                        ViewModel.CurrentModule = ViewModel.ModuleList[ViewModel.ModuleList.Count - 1];
+                    }
+                    else
+                        ViewModel.CurrentModule = module;
                 }
                 catch (Exception ex)
                 {
@@ -94,6 +119,32 @@ namespace Consumption.PC.ViewCenter
                     GC.Collect();
                 }
             });
+            //关闭页面
+            Messenger.Default.Register<Module>(View, "ClosePage", m =>
+           {
+               try
+               {
+                   var module = ViewModel.ModuleList.FirstOrDefault(t => t.Name == m.Name);
+                   if (module != null)
+                   {
+                       ViewModel.ModuleList.Remove(module);
+                       if (ViewModel.ModuleList.Count > 0)
+                           ViewModel.CurrentModule = ViewModel
+                           .ModuleList[ViewModel.ModuleList.Count - 1];
+                       else
+                           ViewModel.CurrentModule = null;
+                   }
+               }
+               catch (Exception ex)
+               {
+                   Log.Error(ex.Message);
+               }
+               finally
+               {
+                   GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
+                   GC.Collect();
+               }
+           });
         }
 
         /// <summary>
@@ -103,19 +154,23 @@ namespace Consumption.PC.ViewCenter
         public override async Task<bool> ShowDialog()
         {
             await ViewModel.InitDefaultView();
-            GoHomeView();
+            InitHomeView();
             return await base.ShowDialog();
         }
 
         /// <summary>
         /// 临时固定,后期修改动态绑定 2020-07-19
         /// </summary>
-        private void GoHomeView()
+        void InitHomeView()
         {
-            HomeCenter center = new HomeCenter();
-            center.BindDefaultModel();
-            View.page.Tag = center.ViewModel.SelectPageTitle;
-            View.page.Content = center.View;
+            NetCoreProvider.Get("HomeCenter", out IModule dialog);
+            dialog.BindDefaultModel();
+            ViewModel.ModuleList.Add(new ModuleUIComponent()
+            {
+                Name = "首页",
+                Body = dialog.GetView()
+            });
+            ViewModel.CurrentModule = ViewModel.ModuleList[ViewModel.ModuleList.Count - 1];
         }
     }
 }

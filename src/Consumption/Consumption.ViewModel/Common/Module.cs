@@ -62,4 +62,21 @@ namespace Consumption.ViewModel.Common
             set { auth = value; RaisePropertyChanged(); }
         }
     }
+
+    /// <summary>
+    /// 模块UI组件
+    /// </summary>
+    public class ModuleUIComponent : Module
+    {
+        private object body;
+
+        /// <summary>
+        /// 页面内容
+        /// </summary>
+        public object Body
+        {
+            get { return body; }
+            set { body = value; RaisePropertyChanged(); }
+        }
+    }
 }
