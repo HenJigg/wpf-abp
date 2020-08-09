@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dragablz;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,17 @@ namespace Consumption.PC
         public MaterialDesignMainWindow()
         {
             InitializeComponent();
+            //AddHandler(DragablzItem.DragStarted, new DragablzDragStartedEventHandler(ItemDragStarted), true);
+            //AddHandler(DragablzItem.DragCompleted, new DragablzDragCompletedEventHandler(ItemDragCompleted), true);
+        }
+
+        private void ItemDragStarted(object sender, DragablzDragStartedEventArgs e)
+        {
+
+        }
+
+        private void ItemDragCompleted(object sender, DragablzDragCompletedEventArgs e)
+        {
         }
 
         private void btnGithub(object sender, RoutedEventArgs e)
@@ -36,5 +48,6 @@ namespace Consumption.PC
         {
             Link.OpenInBrowser(" http://qm.qq.com/cgi-bin/qm/qr?k=KpcFszjNfY2g-o0q1eEMIoYWbzjSMO2-&authKey=lg1kMENlcHkLO2gejRLvXmGq9Xy6GGb0X1h%2B9QDMhbNxvLLLugAsDQUIuzPJZhDy&group_code=874752819");
         }
+
     }
 }

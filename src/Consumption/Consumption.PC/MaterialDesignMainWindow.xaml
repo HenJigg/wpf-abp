@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Consumption.PC"
         mc:Ignorable="d"   
+          xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
         xmlns:ivc="clr-namespace:Consumption.PC.Common.Converters"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:template="clr-namespace:Consumption.PC.Template"
@@ -144,15 +145,64 @@
                             </Button>
                         </StackPanel>
 
-                        <ItemsControl Grid.Row="1"  ItemsSource="{Binding ModuleList}"
+                        <dragablz:DragablzItemsControl Grid.Row="1" 
+                                                       ItemsSource="{Binding ModuleList}"
                                HorizontalAlignment="Left" Margin="0 20 0 0"
                                       VerticalAlignment="Bottom">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
+                            <dragablz:DragablzItemsControl.ItemsOrganiser>
+                                <dragablz:HorizontalOrganiser />
+                            </dragablz:DragablzItemsControl.ItemsOrganiser>
+                            <dragablz:DragablzItemsControl.ItemContainerStyle>
+                                <Style TargetType="dragablz:DragablzItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type dragablz:DragablzItem}">
+                                                <ControlTemplate.Resources>
+                                                    <SineEase x:Key="Ease" EasingMode="EaseInOut" />
+                                                </ControlTemplate.Resources>
+                                                <Grid RenderTransformOrigin=".5, .5">
+                                                    <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                         HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                                                                      SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
+                                                         Margin="{TemplateBinding Padding}"  />
+                                                    <Grid.RenderTransform>
+                                                        <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                                                    </Grid.RenderTransform>
+                                                </Grid>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsDragging" Value="True">
+                                                        <Trigger.EnterActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleX">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.12" EasingFunction="{StaticResource Ease}" />
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleY">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.12" EasingFunction="{StaticResource Ease}" />
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </Trigger.EnterActions>
+                                                        <Trigger.ExitActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleX">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1" EasingFunction="{StaticResource Ease}" />
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleY">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1" EasingFunction="{StaticResource Ease}" />
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </Trigger.ExitActions>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </dragablz:DragablzItemsControl.ItemContainerStyle>
+                            <dragablz:DragablzItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <materialDesign:Chip Margin="0 0 5 0" IsDeletable="True" 
                                                      Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl},Path=DataContext.OpenPageCommand}"
@@ -160,15 +210,27 @@
                                                      DeleteCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl},Path=DataContext.ClosePageCommand}"
                                                      DeleteCommandParameter="{Binding}"
                                                      DeleteToolTip="关闭当前页">
-                                        <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="{Binding Code}"  Height="25" Width="25"
-                                                               VerticalAlignment="Center" />
-                                            <TextBlock Margin="5 0 0 0" Text="{Binding Name}" FontSize="14" VerticalAlignment="Center"/>
-                                        </StackPanel>
+                                        <Thumb dragablz:DragablzItem.IsCustomThumb="True" >
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                                                    <i:InvokeCommandAction 
+                                                    Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type materialDesign:Chip}},Path=Command}"
+                                                    CommandParameter="{Binding}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                            <Thumb.Template>
+                                                <ControlTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <materialDesign:PackIcon Kind="{Binding Code}" Height="25" Width="25" VerticalAlignment="Center" />
+                                                        <TextBlock Margin="5 0 0 0" Text="{Binding Name}" FontSize="14" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </ControlTemplate>
+                                            </Thumb.Template>
+                                        </Thumb>
                                     </materialDesign:Chip>
                                 </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                            </dragablz:DragablzItemsControl.ItemTemplate>
+                        </dragablz:DragablzItemsControl>
                     </Grid>
                 </materialDesign:ColorZone>
                 <!--工具栏(显示标签和功能清单)-->

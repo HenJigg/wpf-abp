@@ -32,6 +32,8 @@ This project mainly focuses on C, build a multi-platform application example, th
 #### WPF Preview(Part)
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/preview.gif)
 
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Drag.gif)
+
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/MainWindow.png)
 
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/DarkMainWindow.png)
