@@ -15,7 +15,7 @@
     </UserControl.Resources>
     <materialDesign:Transitioner SelectedIndex="{Binding SelectPageIndex}" 
                                  AutoApplyTransitionOrigins="True">
-        <Grid Margin="20 0 20 0">
+        <Grid Margin="10 0 10 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
@@ -54,7 +54,7 @@
                     <DataGridTextColumn Header="电话" Width="200" Binding="{Binding Tel}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+            <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="0,5"/>
         </Grid>
 
         <StackPanel Orientation="Horizontal" Margin="20 0 0 0">

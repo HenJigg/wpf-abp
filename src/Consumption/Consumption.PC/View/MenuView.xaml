@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Consumption.PC.View" xmlns:template="clr-namespace:Consumption.PC.Template" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:s="clr-namespace:System;assembly=System.Runtime"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="20 0 0 0">
+    <Grid Margin="10 0 10 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
@@ -39,6 +39,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top"/>
+        <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="0,5"/>
     </Grid>
 </UserControl>
