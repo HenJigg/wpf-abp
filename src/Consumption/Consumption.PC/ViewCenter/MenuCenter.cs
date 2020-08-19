@@ -25,7 +25,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 用户菜单控制类
     /// </summary>
-    [Module("菜单管理")]
+    [Module("菜单管理", Core.Enums.ModuleType.系统配置)]
     public class MenuCenter : BaseCenter<MenuView, MenuViewModel>
     {
 

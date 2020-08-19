@@ -28,11 +28,11 @@ namespace Consumption.ViewModel
     {
         public MainViewModel()
         {
-            OpenPageCommand = new RelayCommand<Module>(arg =>
+            OpenPageCommand = new RelayCommand<string>(arg =>
             {
                 Messenger.Default.Send(arg, "OpenPage");
             });
-            ClosePageCommand = new RelayCommand<Module>(arg =>
+            ClosePageCommand = new RelayCommand<string>(arg =>
               {
                   Messenger.Default.Send(arg, "ClosePage");
               });
@@ -97,14 +97,14 @@ namespace Consumption.ViewModel
         public RelayCommand GoHomeCommand { get; private set; }
 
         /// <summary>
-        /// 打开新页面
+        /// 打开新页面，string: 模块名称
         /// </summary>
-        public RelayCommand<Module> OpenPageCommand { get; private set; }
+        public RelayCommand<string> OpenPageCommand { get; private set; }
 
         /// <summary>
-        /// 关闭选择页
+        /// 关闭选择页, string: 模块名称
         /// </summary>
-        public RelayCommand<Module> ClosePageCommand { get; private set; }
+        public RelayCommand<string> ClosePageCommand { get; private set; }
 
         public RelayCommand MinCommand { get; private set; } = new RelayCommand(() =>
         {

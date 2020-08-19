@@ -25,9 +25,10 @@ namespace Consumption.Core.Attributes
     [AttributeUsage(AttributeTargets.Class)]
     public class ModuleAttribute : Attribute
     {
-        public ModuleAttribute(string name)
+        public ModuleAttribute(string name, ModuleType moduleType)
         {
             this.name = name;
+            this.moduleType = moduleType;
         }
 
         private string name;
@@ -38,6 +39,16 @@ namespace Consumption.Core.Attributes
         public string Name
         {
             get { return name; }
+        }
+
+        private ModuleType moduleType;
+
+        /// <summary>
+        /// 模块类型
+        /// </summary>
+        public ModuleType ModuleType
+        {
+            get { return moduleType; }
         }
     }
 }

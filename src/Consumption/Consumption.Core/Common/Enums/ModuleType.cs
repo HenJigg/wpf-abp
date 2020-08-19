@@ -20,14 +20,11 @@ namespace Consumption.Core.Enums
     using System.Text;
 
     /// <summary>
-    /// 模块类型
+    /// 模块类型  ？这里不建议用中文,但是我用中文给大家演示
     /// </summary>
     public enum ModuleType
     {
-        [Description("我的应用")]
-        AppMain,
-
-        [Description("数据管理")]
-        DataManagement,
+        应用中心,
+        系统配置,
     }
 }

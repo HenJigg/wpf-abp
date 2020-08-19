@@ -21,11 +21,12 @@ namespace Consumption.PC.ViewCenter
     using System.Collections.Generic;
     using System.Text;
     using System.Threading.Tasks;
+    using Core.Enums;
 
     /// <summary>
     /// 用户管理类
     /// </summary>
-    [Module("用户管理")]
+    [Module("用户管理", ModuleType.系统配置)]
     public class UserCenter : BaseCenter<UserView, UserViewModel>
     {
 

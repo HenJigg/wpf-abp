@@ -24,6 +24,7 @@ namespace Consumption.ViewModel.Common
     public class ModuleGroup : ViewModelBase
     {
         private string groupName;
+        private bool contractionTemplate;
         private ObservableCollection<Module> modules;
 
         /// <summary>
@@ -33,6 +34,15 @@ namespace Consumption.ViewModel.Common
         {
             get { return groupName; }
             set { groupName = value; RaisePropertyChanged(); }
+        }
+
+        /// <summary>
+        /// 收缩面板-模板
+        /// </summary>
+        public bool ContractionTemplate
+        {
+            get { return contractionTemplate; }
+            set { contractionTemplate = value; RaisePropertyChanged(); }
         }
 
         /// <summary>

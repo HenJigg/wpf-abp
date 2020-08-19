@@ -20,6 +20,93 @@
     <Window.Resources>
         <ivc:IUrlToBitmapConverter x:Key="itc"/>
         <ivc:MenuWidthConverter x:Key="mwc"/>
+
+        <DataTemplate x:Key="groupTemplate">
+            <Grid>
+                <!--动画拉满, 效果好看-->
+                <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.5}">
+                    <Button ToolTip="{Binding GroupName}" Background="Red" Height="60" Width="60" Foreground="{DynamicResource  PrimaryHueMidBrush}"
+                        HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="StorefrontOutline" Width="30" Height="30" 
+                                             HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Grid x:Name="gridtemp">
+                                                <ContentPresenter x:Name="contentPresenter" 
+                                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                              Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" 
+                                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                <materialDesign:PopupBox  Grid.Row="1" Foreground="Transparent"
+                                                                      PlacementMode="BottomAndAlignCentres"
+                                                                      StaysOpen="False">
+                                                    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.5}">
+                                                        <ListBox ItemsSource="{Binding Modules}">
+                                                            <ListBox.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Button  
+                                                                  Style="{StaticResource   MaterialDesignFlatButton}"
+                                                                Command="{Binding Path=DataContext.OpenPageCommand,
+                                                RelativeSource={RelativeSource AncestorType={x:Type local:MaterialDesignMainWindow}}}" 
+                                                CommandParameter="{Binding Name}" >
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <materialDesign:PackIcon Kind="{Binding Code}"  Height="20" Width="20" 
+                                                               VerticalAlignment="Center" />
+                                                                            <TextBlock Margin="10 0 30 0" Text="{Binding Name}" FontSize="14"   
+                                                                   VerticalAlignment="Center"/>
+                                                                        </StackPanel>
+                                                                    </Button>
+                                                                </DataTemplate>
+                                                            </ListBox.ItemTemplate>
+                                                        </ListBox>
+                                                    </materialDesign:TransitioningContent>
+                                                </materialDesign:PopupBox>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </materialDesign:TransitioningContent>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="expanderTemplate">
+            <!--动画拉满, 效果好看-->
+            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.5}">
+                <Expander Foreground="{DynamicResource  PrimaryHueDarkBrush}">
+                    <Expander.Header>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <materialDesign:PackIcon Kind="StorefrontOutline"  Height="30" Width="30" 
+                                                               VerticalAlignment="Center" />
+                            <TextBlock Margin="10 0 0 0" Text="{Binding GroupName}"    FontSize="16"
+                                                                   VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Expander.Header>
+                    <Expander.Content>
+                        <ItemsControl ItemsSource="{Binding Modules}" HorizontalContentAlignment="Center">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Height="35"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                         Command="{Binding Path=DataContext.OpenPageCommand,
+                                         RelativeSource={RelativeSource AncestorType={x:Type local:MaterialDesignMainWindow}}}" 
+                                                CommandParameter="{Binding Name}" >
+                                        <TextBlock Margin="10 0 30 0" Text="{Binding Name}" FontSize="14"   
+                                                                   VerticalAlignment="Center"/>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Expander.Content>
+                </Expander>
+            </materialDesign:TransitioningContent>
+        </DataTemplate>
+
     </Window.Resources>
     <materialDesign:DialogHost Identifier="Root"
         IsOpen="{Binding DialogIsOpen}">
@@ -29,7 +116,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="grdLeftMenu" Width="60">
+            <Grid x:Name="MENU" Width="200">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="125"/>
                     <RowDefinition/>
@@ -42,32 +129,19 @@
                         <EllipseGeometry RadiusX="18" RadiusY="18" Center="18,18"/>
                     </Image.Clip>
                 </Image>
-                <!--菜单模块-->
-                <ItemsControl Grid.Row="1" ItemsSource="{Binding ModuleManager.Modules}">
+
+                <ItemsControl Name="IC" Grid.Row="1" ItemsSource="{Binding ModuleManager.ModuleGroups}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <VirtualizingStackPanel/>
+                            <StackPanel/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
 
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Button Height="60" Width="250" ToolTip="{Binding Name}" 
-                                    HorizontalContentAlignment="Left"
-                                    Style="{StaticResource   MaterialDesignFlatButton}"
-                                    Command="{Binding RelativeSource={RelativeSource 
-                                AncestorType=ItemsControl},Path=DataContext.OpenPageCommand}" 
-                                                      CommandParameter="{Binding}">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="{Binding Code}"  
-                                                             Height="25" Width="25" 
-                                                             VerticalAlignment="Center" />
-                                    <TextBlock Margin="20 0 0 0" Text="{Binding Name}" FontSize="14"   
-                                                             VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemTemplateSelector>
+                        <template:ModuleTemplateSelector  
+                            ExpanderTemplate="{StaticResource expanderTemplate}"
+                            GroupTemplate="{StaticResource groupTemplate}"/>
+                    </ItemsControl.ItemTemplateSelector>
                 </ItemsControl>
             </Grid>
 
@@ -206,16 +280,16 @@
                                 <DataTemplate>
                                     <materialDesign:Chip Margin="0 0 5 0" IsDeletable="True" 
                                                      Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl},Path=DataContext.OpenPageCommand}"
-                                                     CommandParameter="{Binding}"
+                                                     CommandParameter="{Binding Name}"
                                                      DeleteCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl},Path=DataContext.ClosePageCommand}"
-                                                     DeleteCommandParameter="{Binding}"
+                                                     DeleteCommandParameter="{Binding Name}"
                                                      DeleteToolTip="关闭当前页">
                                         <Thumb dragablz:DragablzItem.IsCustomThumb="True" >
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                                                     <i:InvokeCommandAction 
                                                     Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type materialDesign:Chip}},Path=Command}"
-                                                    CommandParameter="{Binding}" />
+                                                    CommandParameter="{Binding Name}" />
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
                                             <Thumb.Template>

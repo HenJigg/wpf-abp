@@ -61,15 +61,21 @@ namespace Consumption.PC.ViewCenter
                 else
                     View.WindowState = System.Windows.WindowState.Maximized;
             });
-            //展开惨淡
+            
+            //菜单执行相关动画及模板切换
             Messenger.Default.Register<string>(View, "ExpandMenu", arg =>
             {
-                if (View.grdLeftMenu.Width < 200)
-                    AnimationHelper
-                    .CreateWidthChangedAnimation(View.grdLeftMenu, 60, 200, new TimeSpan(0, 0, 0, 0, 250));
+                if (View.MENU.Width < 200)
+                    AnimationHelper.CreateWidthChangedAnimation(View.MENU, 60, 200, new TimeSpan(0, 0, 0, 0, 300));
                 else
-                    AnimationHelper
-                    .CreateWidthChangedAnimation(View.grdLeftMenu, 200, 60, new TimeSpan(0, 0, 0, 0, 250));
+                    AnimationHelper.CreateWidthChangedAnimation(View.MENU, 200, 60, new TimeSpan(0, 0, 0, 0, 300));
+                for (int i = 0; i < ViewModel.ModuleManager.ModuleGroups.Count; i++)
+                    ViewModel.ModuleManager.ModuleGroups[i].ContractionTemplate = View.MENU.Width < 200 ? false : true;
+
+                //由于...
+                var template = View.IC.ItemTemplateSelector;
+                View.IC.ItemTemplateSelector = null;
+                View.IC.ItemTemplateSelector = template;
             });
             //执行返回首页
             Messenger.Default.Register<string>(View, "GoHomePage", arg =>
@@ -77,10 +83,13 @@ namespace Consumption.PC.ViewCenter
                 InitHomeView();
             });
             //打开页面
-            Messenger.Default.Register<Module>(View, "OpenPage", async m =>
+            Messenger.Default.Register<string>(View, "OpenPage", async name =>
             {
                 try
                 {
+                    if (string.IsNullOrWhiteSpace(name)) return;
+                    var m = ViewModel.ModuleManager.Modules.FirstOrDefault(t => t.Name.Equals(name));
+                    if (m == null) return;
                     var module = ViewModel.ModuleList.FirstOrDefault(t => t.Name == m.Name);
                     if (module == null)
                     {
@@ -120,11 +129,11 @@ namespace Consumption.PC.ViewCenter
                 }
             });
             //关闭页面
-            Messenger.Default.Register<Module>(View, "ClosePage", m =>
+            Messenger.Default.Register<string>(View, "ClosePage", m =>
            {
                try
                {
-                   var module = ViewModel.ModuleList.FirstOrDefault(t => t.Name == m.Name);
+                   var module = ViewModel.ModuleList.FirstOrDefault(t => t.Name.Equals(m));
                    if (module != null)
                    {
                        ViewModel.ModuleList.Remove(module);

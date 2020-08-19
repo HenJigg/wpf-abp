@@ -32,7 +32,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 样式控制类
     /// </summary>
-    [Module("个性化")]
+    [Module("个性化", Core.Enums.ModuleType.系统配置)]
     public class SkinCenter : BaseCenter<SkinView, SkinViewModel>
     {
 
@@ -51,7 +51,7 @@ namespace Consumption.PC.ViewCenter
         public IEnumerable<ISwatch> Swatches { get; } = SwatchHelper.Swatches;
 
         //改变颜色
-        public RelayCommand<object> ChangeHueCommand { get; } = new RelayCommand<object>((t)=> ChangeHue(t));
+        public RelayCommand<object> ChangeHueCommand { get; } = new RelayCommand<object>((t) => ChangeHue(t));
 
         //改变主题
         public RelayCommand<object> ToggleBaseCommand { get; } = new RelayCommand<object>(o => ApplyBase((bool)o));
@@ -60,7 +60,7 @@ namespace Consumption.PC.ViewCenter
         {
             ModifyTheme(theme => theme.SetBaseTheme(isDark ? Theme.Dark : Theme.Light));
         }
-        
+
         private static void ModifyTheme(Action<ITheme> modificationAction)
         {
             PaletteHelper paletteHelper = new PaletteHelper();
