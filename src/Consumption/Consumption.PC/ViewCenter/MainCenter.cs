@@ -174,11 +174,11 @@ namespace Consumption.PC.ViewCenter
         {
             NetCoreProvider.Get("HomeCenter", out IModule dialog);
             dialog.BindDefaultModel();
-            ViewModel.ModuleList.Add(new ModuleUIComponent()
-            {
-                Name = "首页",
-                Body = dialog.GetView()
-            });
+            ModuleUIComponent component = new ModuleUIComponent();
+            component.Name = "首页";
+            component.Body = dialog.GetView();
+            ViewModel.ModuleList.Add(component);
+            ViewModel.ModuleManager.Modules.Add(component);
             ViewModel.CurrentModule = ViewModel.ModuleList[ViewModel.ModuleList.Count - 1];
         }
     }
