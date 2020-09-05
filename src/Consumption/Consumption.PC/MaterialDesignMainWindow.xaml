@@ -1,63 +1,86 @@
-﻿<Window x:Class="Consumption.PC.MaterialDesignMainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Consumption.PC"
-        mc:Ignorable="d"   
-          xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
-        xmlns:ivc="clr-namespace:Consumption.PC.Common.Converters"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        xmlns:template="clr-namespace:Consumption.PC.Template"
-        WindowStartupLocation="CenterScreen"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Background="{DynamicResource MaterialDesignPaper}"
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             WindowStyle="None" ResizeMode="CanResizeWithGrip"  MinWidth="1020" MinHeight="700" >
+﻿<Window
+    x:Class="Consumption.PC.MaterialDesignMainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:ivc="clr-namespace:Consumption.PC.Common.Converters"
+    xmlns:local="clr-namespace:Consumption.PC"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:template="clr-namespace:Consumption.PC.Template"
+    Width="1280"
+    Height="768"
+    MinWidth="1020"
+    MinHeight="700"
+    Background="{DynamicResource MaterialDesignPaper}"
+    ResizeMode="CanResizeWithGrip"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="-1" />
     </WindowChrome.WindowChrome>
     <Window.Resources>
-        <ivc:IUrlToBitmapConverter x:Key="itc"/>
-        <ivc:MenuWidthConverter x:Key="mwc"/>
+        <ivc:IUrlToBitmapConverter x:Key="itc" />
+        <ivc:MenuWidthConverter x:Key="mwc" />
 
         <DataTemplate x:Key="groupTemplate">
             <Grid>
-                <!--动画拉满, 效果好看-->
+                <!--  动画拉满, 效果好看  -->
                 <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.5}">
-                    <Button ToolTip="{Binding GroupName}" Background="Red" Height="60" Width="60" Foreground="{DynamicResource  PrimaryHueMidBrush}"
-                        HorizontalAlignment="Center">
-                        <materialDesign:PackIcon Kind="StorefrontOutline" Width="30" Height="30" 
-                                             HorizontalAlignment="Center"
-                    VerticalAlignment="Center" />
+                    <Button
+                        Width="60"
+                        Height="60"
+                        HorizontalAlignment="Center"
+                        Background="Red"
+                        Foreground="{DynamicResource PrimaryHueMidBrush}"
+                        ToolTip="{Binding GroupName}">
+                        <materialDesign:PackIcon
+                            Width="30"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Kind="StorefrontOutline" />
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type Button}">
                                             <Grid x:Name="gridtemp">
-                                                <ContentPresenter x:Name="contentPresenter" 
-                                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                                              Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" 
-                                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                                <materialDesign:PopupBox  Grid.Row="1" Foreground="Transparent"
-                                                                      PlacementMode="BottomAndAlignCentres"
-                                                                      StaysOpen="False">
+                                                <ContentPresenter
+                                                    x:Name="contentPresenter"
+                                                    Margin="{TemplateBinding Padding}"
+                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                    RecognizesAccessKey="True"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                <materialDesign:PopupBox
+                                                    Grid.Row="1"
+                                                    Foreground="Transparent"
+                                                    PlacementMode="BottomAndAlignCentres"
+                                                    StaysOpen="False">
                                                     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.5}">
                                                         <ListBox ItemsSource="{Binding Modules}">
                                                             <ListBox.ItemTemplate>
                                                                 <DataTemplate>
-                                                                    <Button  
-                                                                  Style="{StaticResource   MaterialDesignFlatButton}"
-                                                                Command="{Binding Path=DataContext.OpenPageCommand,
-                                                RelativeSource={RelativeSource AncestorType={x:Type local:MaterialDesignMainWindow}}}" 
-                                                CommandParameter="{Binding Name}" >
+                                                                    <Button
+                                                                        Command="{Binding Path=DataContext.OpenPageCommand, RelativeSource={RelativeSource AncestorType={x:Type local:MaterialDesignMainWindow}}}"
+                                                                        CommandParameter="{Binding Name}"
+                                                                        Style="{StaticResource MaterialDesignFlatButton}">
                                                                         <StackPanel Orientation="Horizontal">
-                                                                            <materialDesign:PackIcon Kind="{Binding Code}"  Height="20" Width="20" 
-                                                               VerticalAlignment="Center" />
-                                                                            <TextBlock Margin="10 0 30 0" Text="{Binding Name}" FontSize="14"   
-                                                                   VerticalAlignment="Center"/>
+                                                                            <materialDesign:PackIcon
+                                                                                Width="20"
+                                                                                Height="20"
+                                                                                VerticalAlignment="Center"
+                                                                                Kind="{Binding Code}" />
+                                                                            <TextBlock
+                                                                                Margin="10,0,30,0"
+                                                                                VerticalAlignment="Center"
+                                                                                FontSize="14"
+                                                                                Text="{Binding Name}" />
                                                                         </StackPanel>
                                                                     </Button>
                                                                 </DataTemplate>
@@ -76,28 +99,37 @@
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="expanderTemplate">
-            <!--动画拉满, 效果好看-->
+            <!--  动画拉满, 效果好看  -->
             <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.5}">
-                <Expander Foreground="{DynamicResource  PrimaryHueDarkBrush}">
+                <Expander Foreground="{DynamicResource PrimaryHueDarkBrush}">
                     <Expander.Header>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <materialDesign:PackIcon Kind="StorefrontOutline"  Height="30" Width="30" 
-                                                               VerticalAlignment="Center" />
-                            <TextBlock Margin="10 0 0 0" Text="{Binding GroupName}"    FontSize="16"
-                                                                   VerticalAlignment="Center"/>
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="30"
+                                Height="30"
+                                VerticalAlignment="Center"
+                                Kind="StorefrontOutline" />
+                            <TextBlock
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{Binding GroupName}" />
                         </StackPanel>
                     </Expander.Header>
                     <Expander.Content>
-                        <ItemsControl ItemsSource="{Binding Modules}" HorizontalContentAlignment="Center">
+                        <ItemsControl HorizontalContentAlignment="Center" ItemsSource="{Binding Modules}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Height="35"
-                                    Style="{StaticResource MaterialDesignFlatButton}"
-                                         Command="{Binding Path=DataContext.OpenPageCommand,
-                                         RelativeSource={RelativeSource AncestorType={x:Type local:MaterialDesignMainWindow}}}" 
-                                                CommandParameter="{Binding Name}" >
-                                        <TextBlock Margin="10 0 30 0" Text="{Binding Name}" FontSize="14"   
-                                                                   VerticalAlignment="Center"/>
+                                    <Button
+                                        Height="35"
+                                        Command="{Binding Path=DataContext.OpenPageCommand, RelativeSource={RelativeSource AncestorType={x:Type local:MaterialDesignMainWindow}}}"
+                                        CommandParameter="{Binding Name}"
+                                        Style="{StaticResource MaterialDesignFlatButton}">
+                                        <TextBlock
+                                            Margin="10,0,30,0"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Text="{Binding Name}" />
                                     </Button>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -108,121 +140,153 @@
         </DataTemplate>
 
     </Window.Resources>
-    <materialDesign:DialogHost Identifier="Root"
-        IsOpen="{Binding DialogIsOpen}">
+    <materialDesign:DialogHost Identifier="Root" IsOpen="{Binding DialogIsOpen}">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
             <Grid x:Name="MENU" Width="200">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="125"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="125" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
-                <Image 
-                       HorizontalAlignment="Center" VerticalAlignment="Center"
-                Source="pack://application:,,,/Consumption.PC;Component/Images/test_user.png" 
-                                       Width="36" Height="36">
+                <Image
+                    Width="36"
+                    Height="36"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="pack://application:,,,/Consumption.PC;Component/Images/test_user.png">
                     <Image.Clip>
-                        <EllipseGeometry RadiusX="18" RadiusY="18" Center="18,18"/>
+                        <EllipseGeometry
+                            Center="18,18"
+                            RadiusX="18"
+                            RadiusY="18" />
                     </Image.Clip>
                 </Image>
 
-                <ItemsControl Name="IC" Grid.Row="1" ItemsSource="{Binding ModuleManager.ModuleGroups}">
+                <ItemsControl
+                    Name="IC"
+                    Grid.Row="1"
+                    ItemsSource="{Binding ModuleManager.ModuleGroups}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel/>
+                            <StackPanel />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
 
                     <ItemsControl.ItemTemplateSelector>
-                        <template:ModuleTemplateSelector  
-                            ExpanderTemplate="{StaticResource expanderTemplate}"
-                            GroupTemplate="{StaticResource groupTemplate}"/>
+                        <template:ModuleTemplateSelector ExpanderTemplate="{StaticResource expanderTemplate}" GroupTemplate="{StaticResource groupTemplate}" />
                     </ItemsControl.ItemTemplateSelector>
                 </ItemsControl>
             </Grid>
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
-                <!--系统标题头-->
-                <materialDesign:ColorZone VerticalAlignment="Top" Mode="PrimaryMid"
-                   Padding="10 30 20 10"  materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <!--  系统标题头  -->
+                <materialDesign:ColorZone
+                    Padding="10,30,20,10"
+                    VerticalAlignment="Top"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Mode="PrimaryMid">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition/>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal">
-                            <ToggleButton  HorizontalAlignment="Left" Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
-                                      Command="{Binding ExpandMenuCommand}" Margin="10 0 0 0"
-                                      Width="30" Height="30" FocusVisualStyle="{x:Null}" Name="toggle"/>
-                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"
-                                       FontSize="22" 
-                                       Margin="10 0 0 0"
-                                   >WPF MVVM SAMPLE</TextBlock>
+                            <ToggleButton
+                                Name="toggle"
+                                Width="30"
+                                Height="30"
+                                Margin="10,0,0,0"
+                                HorizontalAlignment="Left"
+                                Command="{Binding ExpandMenuCommand}"
+                                FocusVisualStyle="{x:Null}"
+                                Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+                            <TextBlock
+                                Margin="10,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontSize="22">
+                                WPF MVVM SAMPLE
+                            </TextBlock>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <materialDesign:PopupBox FocusVisualStyle="{x:Null}"
-                                                 PlacementMode="BottomAndAlignRightEdges"
-                                                 StaysOpen="False">
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <materialDesign:PopupBox
+                                FocusVisualStyle="{x:Null}"
+                                PlacementMode="BottomAndAlignRightEdges"
+                                StaysOpen="False">
                                 <StackPanel>
                                     <Button Click="btnGithub">
                                         <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="Github"  VerticalAlignment="Center" />
-                                            <TextBlock Text="  Github"/>
+                                            <materialDesign:PackIcon VerticalAlignment="Center" Kind="Github" />
+                                            <TextBlock Text="  Github" />
                                         </StackPanel>
                                     </Button>
                                     <Button Click="btnBilibili">
                                         <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="AlphaBBox"  VerticalAlignment="Center" />
-                                            <TextBlock Text="  视频教程"/>
+                                            <materialDesign:PackIcon VerticalAlignment="Center" Kind="AlphaBBox" />
+                                            <TextBlock Text="  视频教程" />
                                         </StackPanel>
                                     </Button>
                                     <Button Click="btnQQ">
                                         <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="Qqchat"  VerticalAlignment="Center" />
-                                            <TextBlock Text="  加入QQ"/>
+                                            <materialDesign:PackIcon VerticalAlignment="Center" Kind="Qqchat" />
+                                            <TextBlock Text="  加入QQ" />
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>
                             </materialDesign:PopupBox>
-                            <Button  Command="{Binding MinCommand}" 
-                                     ToolTip="最小化"
-                                     Style="{StaticResource MaterialDesignFlatMidBgButton}">
+                            <Button
+                                Command="{Binding MinCommand}"
+                                Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                ToolTip="最小化">
                                 <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="WindowMinimize" 
-                                    VerticalAlignment="Center" Width="20" Height="20"/>
+                                    <materialDesign:PackIcon
+                                        Width="20"
+                                        Height="20"
+                                        VerticalAlignment="Center"
+                                        Kind="WindowMinimize" />
                                 </StackPanel>
                             </Button>
-                            <Button Command="{Binding MaxCommand}" 
-                                    ToolTip="最大化"
-                                    Style="{StaticResource MaterialDesignFlatMidBgButton}">
+                            <Button
+                                Command="{Binding MaxCommand}"
+                                Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                ToolTip="最大化">
                                 <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="WindowMaximize"                        
-                                     VerticalAlignment="Center" Width="20" Height="20"/>
+                                    <materialDesign:PackIcon
+                                        Width="20"
+                                        Height="20"
+                                        VerticalAlignment="Center"
+                                        Kind="WindowMaximize" />
                                 </StackPanel>
                             </Button>
-                            <Button Command="{Binding ExitCommand}" 
-                                     ToolTip="退出系统"
-                                    Style="{StaticResource MaterialDesignFlatMidBgButton}">
+                            <Button
+                                Command="{Binding ExitCommand}"
+                                Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                ToolTip="退出系统">
                                 <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="WindowClose"                        
-                                     VerticalAlignment="Center" Width="20" Height="20"/>
+                                    <materialDesign:PackIcon
+                                        Width="20"
+                                        Height="20"
+                                        VerticalAlignment="Center"
+                                        Kind="WindowClose" />
                                 </StackPanel>
                             </Button>
                         </StackPanel>
 
-                        <dragablz:DragablzItemsControl Grid.Row="1" 
-                                                       ItemsSource="{Binding ModuleList}"
-                               HorizontalAlignment="Left" Margin="0 20 0 0"
-                                      VerticalAlignment="Bottom">
+                        <dragablz:DragablzItemsControl
+                            Grid.Row="1"
+                            Margin="0,20,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            ItemsSource="{Binding ModuleList}">
                             <dragablz:DragablzItemsControl.ItemsOrganiser>
                                 <dragablz:HorizontalOrganiser />
                             </dragablz:DragablzItemsControl.ItemsOrganiser>
@@ -235,10 +299,13 @@
                                                     <SineEase x:Key="Ease" EasingMode="EaseInOut" />
                                                 </ControlTemplate.Resources>
                                                 <Grid RenderTransformOrigin=".5, .5">
-                                                    <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" 
-                                                         HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
-                                                                      SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
-                                                         Margin="{TemplateBinding Padding}"  />
+                                                    <ContentPresenter
+                                                        Margin="{TemplateBinding Padding}"
+                                                        HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                                                        VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                                        Content="{TemplateBinding Content}"
+                                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                        SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
                                                     <Grid.RenderTransform>
                                                         <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
                                                     </Grid.RenderTransform>
@@ -249,10 +316,16 @@
                                                             <BeginStoryboard>
                                                                 <Storyboard>
                                                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleX">
-                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.12" EasingFunction="{StaticResource Ease}" />
+                                                                        <EasingDoubleKeyFrame
+                                                                            EasingFunction="{StaticResource Ease}"
+                                                                            KeyTime="0:0:0.3"
+                                                                            Value="1.12" />
                                                                     </DoubleAnimationUsingKeyFrames>
                                                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleY">
-                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.12" EasingFunction="{StaticResource Ease}" />
+                                                                        <EasingDoubleKeyFrame
+                                                                            EasingFunction="{StaticResource Ease}"
+                                                                            KeyTime="0:0:0.3"
+                                                                            Value="1.12" />
                                                                     </DoubleAnimationUsingKeyFrames>
                                                                 </Storyboard>
                                                             </BeginStoryboard>
@@ -261,10 +334,16 @@
                                                             <BeginStoryboard>
                                                                 <Storyboard>
                                                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleX">
-                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1" EasingFunction="{StaticResource Ease}" />
+                                                                        <EasingDoubleKeyFrame
+                                                                            EasingFunction="{StaticResource Ease}"
+                                                                            KeyTime="0:0:0.3"
+                                                                            Value="1" />
                                                                     </DoubleAnimationUsingKeyFrames>
                                                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleY">
-                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1" EasingFunction="{StaticResource Ease}" />
+                                                                        <EasingDoubleKeyFrame
+                                                                            EasingFunction="{StaticResource Ease}"
+                                                                            KeyTime="0:0:0.3"
+                                                                            Value="1" />
                                                                     </DoubleAnimationUsingKeyFrames>
                                                                 </Storyboard>
                                                             </BeginStoryboard>
@@ -278,25 +357,33 @@
                             </dragablz:DragablzItemsControl.ItemContainerStyle>
                             <dragablz:DragablzItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <materialDesign:Chip Margin="0 0 5 0" IsDeletable="True" 
-                                                     Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl},Path=DataContext.OpenPageCommand}"
-                                                     CommandParameter="{Binding Name}"
-                                                     DeleteCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl},Path=DataContext.ClosePageCommand}"
-                                                     DeleteCommandParameter="{Binding Name}"
-                                                     DeleteToolTip="关闭当前页">
-                                        <Thumb dragablz:DragablzItem.IsCustomThumb="True" >
+                                    <materialDesign:Chip
+                                        Margin="0,0,5,0"
+                                        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}, Path=DataContext.OpenPageCommand}"
+                                        CommandParameter="{Binding Name}"
+                                        DeleteCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}, Path=DataContext.ClosePageCommand}"
+                                        DeleteCommandParameter="{Binding Name}"
+                                        DeleteToolTip="关闭当前页"
+                                        IsDeletable="True">
+                                        <Thumb dragablz:DragablzItem.IsCustomThumb="True">
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
-                                                    <i:InvokeCommandAction 
-                                                    Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type materialDesign:Chip}},Path=Command}"
-                                                    CommandParameter="{Binding Name}" />
+                                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type materialDesign:Chip}}, Path=Command}" CommandParameter="{Binding Name}" />
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
                                             <Thumb.Template>
                                                 <ControlTemplate>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <materialDesign:PackIcon Kind="{Binding Code}" Height="25" Width="25" VerticalAlignment="Center" />
-                                                        <TextBlock Margin="5 0 0 0" Text="{Binding Name}" FontSize="14" VerticalAlignment="Center"/>
+                                                        <materialDesign:PackIcon
+                                                            Width="25"
+                                                            Height="25"
+                                                            VerticalAlignment="Center"
+                                                            Kind="{Binding Code}" />
+                                                        <TextBlock
+                                                            Margin="5,0,0,0"
+                                                            VerticalAlignment="Center"
+                                                            FontSize="14"
+                                                            Text="{Binding Name}" />
                                                     </StackPanel>
                                                 </ControlTemplate>
                                             </Thumb.Template>
@@ -307,18 +394,22 @@
                         </dragablz:DragablzItemsControl>
                     </Grid>
                 </materialDesign:ColorZone>
-                <!--工具栏(显示标签和功能清单)-->
+                <!--  工具栏(显示标签和功能清单)  -->
                 <materialDesign:ColorZone Grid.Row="1" CornerRadius="3">
                     <DockPanel>
-                        <TextBlock Text="{Binding ElementName=page,Path=Content.DataContext.SelectPageTitle}"  
-                                   FontWeight="Bold" FontSize="26" Padding="15" />
-                        <template:ToolbarContainer DataContext="{Binding ElementName=page,Path=Content.DataContext}" 
-                                                   HorizontalAlignment="Right"/>
+                        <TextBlock
+                            Padding="15"
+                            FontSize="26"
+                            FontWeight="Bold"
+                            Text="{Binding ElementName=page, Path=Content.DataContext.SelectPageTitle}" />
+                        <template:ToolbarContainer HorizontalAlignment="Right" DataContext="{Binding ElementName=page, Path=Content.DataContext}" />
                     </DockPanel>
                 </materialDesign:ColorZone>
-                <!--右侧内容区域-->
-                <ContentControl Name="page" Content="{Binding CurrentModule.Body}" 
-                                Grid.Row="3"/>
+                <!--  右侧内容区域  -->
+                <ContentControl
+                    Name="page"
+                    Grid.Row="3"
+                    Content="{Binding CurrentModule.Body}" />
             </Grid>
         </Grid>
     </materialDesign:DialogHost>
