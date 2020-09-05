@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace Consumption.EFCore.Migrations
 {
@@ -13,7 +12,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     AuthName = table.Column<string>(nullable: true),
                     AuthKind = table.Column<string>(nullable: true),
                     AuthColor = table.Column<string>(nullable: true),
@@ -29,7 +28,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     TypeCode = table.Column<string>(nullable: true),
                     DataCode = table.Column<string>(nullable: true),
                     NativeName = table.Column<string>(nullable: true),
@@ -49,7 +48,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     TypeCode = table.Column<string>(nullable: true),
                     TypeName = table.Column<string>(nullable: true)
                 },
@@ -63,7 +62,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Remark = table.Column<string>(nullable: true),
                     Amount = table.Column<decimal>(nullable: false),
@@ -81,7 +80,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GroupCode = table.Column<string>(nullable: true),
                     MenuCode = table.Column<string>(nullable: true),
                     Auth = table.Column<int>(nullable: false)
@@ -96,7 +95,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GroupCode = table.Column<string>(nullable: true),
                     GroupName = table.Column<string>(nullable: true)
                 },
@@ -110,7 +109,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GroupCode = table.Column<string>(nullable: true),
                     Account = table.Column<string>(nullable: true)
                 },
@@ -124,7 +123,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     MenuCode = table.Column<string>(nullable: true),
                     MenuName = table.Column<string>(nullable: true),
                     MenuCaption = table.Column<string>(nullable: true),
@@ -141,7 +140,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     No = table.Column<string>(nullable: true),
                     ConsumptionType = table.Column<int>(nullable: false),
                     Amount = table.Column<decimal>(nullable: false)
@@ -156,7 +155,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     No = table.Column<string>(nullable: true),
                     CreateDate = table.Column<DateTime>(nullable: false),
                     Amount = table.Column<decimal>(nullable: false)
@@ -171,7 +170,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     Amount = table.Column<decimal>(nullable: false),
@@ -188,7 +187,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -201,7 +200,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Account = table.Column<string>(nullable: true),
                     ExpectedOut = table.Column<decimal>(nullable: false),
                     ExpectedIn = table.Column<decimal>(nullable: false)
@@ -216,7 +215,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     CreateTime = table.Column<DateTime>(nullable: false)
@@ -231,7 +230,7 @@ namespace Consumption.EFCore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Account = table.Column<string>(nullable: true),
                     UserName = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),

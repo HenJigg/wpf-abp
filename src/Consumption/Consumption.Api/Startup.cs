@@ -33,6 +33,7 @@ namespace Consumption.Api
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
 
+
     /// <summary>
     /// 
     /// </summary>
@@ -82,6 +83,10 @@ namespace Consumption.Api
                 //«®“∆÷¡MySql
                 var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
                 options.UseMySQL(connectionString);
+
+                //«®“∆÷¡MsSql
+                //var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
+                //options.UseSqlServer(connectionString);
             })
             .AddUnitOfWork<ConsumptionContext>()
             .AddCustomRepository<User, CustomUserRepository>()

@@ -14,6 +14,7 @@
 
 using GalaSoft.MvvmLight;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Consumption.Core.Entity
 {
@@ -23,6 +24,8 @@ namespace Consumption.Core.Entity
     public class BaseEntity : ViewModelBase
     {
         [Key]
+        [ScaffoldColumn(false)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
     }
 }

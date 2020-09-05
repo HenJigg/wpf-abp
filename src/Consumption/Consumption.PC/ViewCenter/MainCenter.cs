@@ -65,6 +65,7 @@ namespace Consumption.PC.ViewCenter
             //菜单执行相关动画及模板切换
             Messenger.Default.Register<string>(View, "ExpandMenu", arg =>
             {
+
                 if (View.MENU.Width < 200)
                     AnimationHelper.CreateWidthChangedAnimation(View.MENU, 60, 200, new TimeSpan(0, 0, 0, 0, 300));
                 else
