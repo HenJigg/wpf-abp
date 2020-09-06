@@ -9,7 +9,9 @@
     xmlns:local="clr-namespace:Consumption.PC"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
     xmlns:template="clr-namespace:Consumption.PC.Template"
+    Title="WPF MVVM SAMPLE"
     Width="1280"
     Height="768"
     MinWidth="1020"
@@ -147,7 +149,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="MENU" Width="200">
+            <Grid x:Name="MENU" Width="60">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="125" />
                     <RowDefinition />
@@ -181,6 +183,12 @@
                     </ItemsControl.ItemTemplateSelector>
                 </ItemsControl>
             </Grid>
+
+            <materialDesign:Snackbar
+                x:Name="SnackbarThree"
+                Grid.ColumnSpan="2"
+                VerticalAlignment="Center"
+                MessageQueue="{materialDesign:MessageQueue}" />
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>

@@ -38,7 +38,13 @@ namespace Consumption.PC.ViewCenter
     {
         public override void SubscribeMessenger()
         {
-            //更新消息
+            //非阻塞式窗口提示消息
+            Messenger.Default.Register<string>(View, "Snackbar", arg =>
+            {
+                var messageQueue = View.SnackbarThree.MessageQueue;
+                messageQueue.Enqueue(arg);
+            });
+            //阻塞式窗口提示消息
             Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", m =>
               {
                   if (m.IsOpen)
@@ -61,7 +67,6 @@ namespace Consumption.PC.ViewCenter
                 else
                     View.WindowState = System.Windows.WindowState.Maximized;
             });
-            
             //菜单执行相关动画及模板切换
             Messenger.Default.Register<string>(View, "ExpandMenu", arg =>
             {
@@ -155,6 +160,7 @@ namespace Consumption.PC.ViewCenter
                    GC.Collect();
                }
            });
+            base.SubscribeMessenger();
         }
 
         /// <summary>

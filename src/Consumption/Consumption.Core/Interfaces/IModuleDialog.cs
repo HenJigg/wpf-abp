@@ -37,9 +37,14 @@ namespace Consumption.Core.Interfaces
         void SubscribeEvent();
 
         /// <summary>
-        /// 注册模块消息
+        /// 訂閱消息
         /// </summary>
         void SubscribeMessenger();
+
+        /// <summary>
+        /// 取消订阅消息
+        /// </summary>
+        void UnsubscribeMessenger();
 
     }
 }

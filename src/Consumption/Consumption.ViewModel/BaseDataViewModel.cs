@@ -307,7 +307,6 @@ namespace Consumption.ViewModel
 
         #region Load event.
 
-
         public void UpdateLoading(bool isOpen, string msg = "")
         {
             Messenger.Default.Send(new MsgInfo()

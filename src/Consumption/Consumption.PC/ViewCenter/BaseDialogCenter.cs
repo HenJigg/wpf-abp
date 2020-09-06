@@ -14,7 +14,9 @@
 
 namespace Consumption.PC.ViewCenter
 {
+    using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -71,6 +73,17 @@ namespace Consumption.PC.ViewCenter
 
         public virtual void SubscribeMessenger()
         {
+            Messenger.Default.Register<bool>(View, "Exit", async r =>
+            {
+                if (r)
+                    if (!await Msg.Question("确认退出系统?")) return;
+                Environment.Exit(0);
+            });
+        }
+
+        public void UnsubscribeMessenger()
+        {
+            Messenger.Default.Unregister(View);
         }
     }
 }

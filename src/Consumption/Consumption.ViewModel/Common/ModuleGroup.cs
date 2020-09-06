@@ -24,7 +24,7 @@ namespace Consumption.ViewModel.Common
     public class ModuleGroup : ViewModelBase
     {
         private string groupName;
-        private bool contractionTemplate;
+        private bool contractionTemplate = true;
         private ObservableCollection<Module> modules;
 
         /// <summary>

@@ -56,27 +56,27 @@ namespace Consumption.ViewModel.Common
         /// 信息提示
         /// </summary>
         /// <param name="msg"></param>
-        public static async Task Info(string msg)
+        public static void Info(string msg)
         {
-            await Show(Notify.Info, msg);
+            Messenger.Default.Send(msg, "Snackbar");
         }
 
         /// <summary>
         /// 错误提示
         /// </summary>
         /// <param name="msg"></param>
-        public async static Task Error(string msg)
+        public static void Error(string msg)
         {
-            await Show(Notify.Error, msg);
+            Messenger.Default.Send(msg, "Snackbar");
         }
 
         /// <summary>
         /// 真香警告
         /// </summary>
         /// <param name="msg"></param>
-        public async static Task Warning(string msg)
+        public static void Warning(string msg)
         {
-            await Show(Notify.Warning, msg);
+            Messenger.Default.Send(msg, "Snackbar");
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Consumption.ViewModel.Common
         /// <param name="notify">类型</param>
         /// <param name="msg">文本信息</param>
         /// <returns></returns>
-        private static async Task<bool> Show(Notify notify, string msg)
+        private async static Task<bool> Show(Notify notify, string msg)
         {
             string Icon = string.Empty;
             string Color = string.Empty;
@@ -119,7 +119,8 @@ namespace Consumption.ViewModel.Common
                     break;
             }
             NetCoreProvider.Get("MsgCenter", out IMsg dialog);
-            return await dialog.Show(new { Msg = msg, Color, Icon });
+            var result = await dialog.Show(new { Msg = msg, Color, Icon });
+            return result;
         }
     }
 }

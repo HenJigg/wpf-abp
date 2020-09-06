@@ -39,14 +39,10 @@ namespace Consumption.PC.ViewCenter
               {
                   MainCenter mainView = new MainCenter();
                   View.Close();
+                  this.UnsubscribeMessenger();
                   await mainView.ShowDialog();
               });
-            Messenger.Default.Register<bool>(View, "Exit", async r =>
-             {
-                 if (r)
-                     if (!await Msg.Question("确认退出系统?")) return;
-                 Environment.Exit(0);
-             });
+            base.SubscribeMessenger();
         }
     }
 }

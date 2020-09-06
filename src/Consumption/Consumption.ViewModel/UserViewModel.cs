@@ -107,7 +107,7 @@ namespace Consumption.ViewModel
         {
             try
             {
-                //Check?
+                if (GridModel == null) return;
                 if (string.IsNullOrWhiteSpace(GridModel.UserName) ||
                     string.IsNullOrWhiteSpace(GridModel.Account) ||
                     string.IsNullOrWhiteSpace(GridModel.Password))
@@ -136,7 +136,6 @@ namespace Consumption.ViewModel
             {
                 UpdateLoading(false);
             }
-
         }
 
         public override async void Del()
