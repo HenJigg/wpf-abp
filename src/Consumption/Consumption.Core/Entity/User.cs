@@ -15,6 +15,7 @@
 namespace Consumption.Core.Entity
 {
     using System;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
@@ -25,26 +26,31 @@ namespace Consumption.Core.Entity
         /// <summary>
         /// 账户名称
         /// </summary>
+        [Description("账户名称")]
         public string Account { get; set; }
 
         /// <summary>
         /// 用户名
         /// </summary>
+        [Description("用户名")]
         public string UserName { get; set; }
 
         /// <summary>
         /// 地址
         /// </summary>
+        [Description("地址")]
         public string Address { get; set; }
 
         /// <summary>
         /// 电话
         /// </summary>
+        [Description("电话")]
         public string Tel { get; set; }
 
         /// <summary>
         /// 邮箱
         /// </summary>
+        [Description("邮箱")]
         public string Email { get; set; }
 
         /// <summary>

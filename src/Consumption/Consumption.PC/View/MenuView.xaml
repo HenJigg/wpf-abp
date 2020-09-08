@@ -27,16 +27,16 @@
             </TextBox>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" Background="Transparent"
+        <DataGrid x:Name="Grid" Grid.Row="1" Background="Transparent"
                               IsReadOnly="True" SelectionMode="Extended"
                               AutoGenerateColumns="False"
                               ItemsSource="{Binding GridModelList}" 
                               SelectedItem="{Binding GridModel}">
-            <DataGrid.Columns>
+            <!--<DataGrid.Columns>
                 <DataGridTextColumn Header="菜单编码" Width="200" Binding="{Binding MenuCode}"/>
                 <DataGridTextColumn Header="菜单名称" Width="200" Binding="{Binding MenuName}"/>
                 <DataGridTextColumn Header="标题" Width="200" Binding="{Binding MenuCaption}"/>
-            </DataGrid.Columns>
+            </DataGrid.Columns>-->
         </DataGrid>
 
         <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="0,5"/>

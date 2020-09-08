@@ -5,6 +5,8 @@ using System.Text;
 namespace Consumption.PC.ViewCenter
 {
     using Consumption.Core.Attributes;
+    using Consumption.Core.Entity;
+    using Consumption.PC.Common;
     using Consumption.PC.View;
     using Consumption.ViewModel;
     using System;
@@ -18,5 +20,9 @@ namespace Consumption.PC.ViewCenter
     [Module("权限管理", Core.Enums.ModuleType.系统配置)]
     public class GroupCenter : BaseCenter<GroupView, GroupViewModel>
     {
+        public override void BindDataGridColumns()
+        {
+            VisualHelper.SetDataGridColumns(View, "Grid", typeof(Group));
+        }
     }
 }

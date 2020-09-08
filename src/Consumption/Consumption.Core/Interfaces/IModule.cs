@@ -12,6 +12,7 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
+using System;
 using System.Threading.Tasks;
 
 namespace Consumption.Core.Interfaces
@@ -33,5 +34,11 @@ namespace Consumption.Core.Interfaces
         /// </summary>
         void BindDefaultModel();
 
+        /// <summary>
+        /// 关联表格列
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        void BindDataGridColumns();
     }
 }

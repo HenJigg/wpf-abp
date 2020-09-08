@@ -15,6 +15,8 @@
 namespace Consumption.PC.ViewCenter
 {
     using Consumption.Core.Attributes;
+    using Consumption.Core.Entity;
+    using Consumption.PC.Common;
     using Consumption.PC.View;
     using Consumption.ViewModel;
     using System;
@@ -28,6 +30,9 @@ namespace Consumption.PC.ViewCenter
     [Module("菜单管理", Core.Enums.ModuleType.系统配置)]
     public class MenuCenter : BaseCenter<MenuView, MenuViewModel>
     {
-
+        public override void BindDataGridColumns()
+        {
+            VisualHelper.SetDataGridColumns(View, "Grid", typeof(Menu));
+        }
     }
 }

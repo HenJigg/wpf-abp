@@ -24,16 +24,19 @@ namespace Consumption.Core.Entity
         /// <summary>
         /// 菜单代码
         /// </summary>
+        [Description("菜单代码")]
         public string MenuCode { get; set; }
 
         /// <summary>
         /// 菜单名称
         /// </summary>
+        [Description("菜单名称")]
         public string MenuName { get; set; }
 
         /// <summary>
         /// 菜单标题
         /// </summary>
+        [Description("菜单标题")]
         public string MenuCaption { get; set; }
 
         /// <summary>

@@ -43,7 +43,7 @@
                 </TextBox>
             </StackPanel>
 
-            <DataGrid
+            <DataGrid x:Name="Grid"
                 Grid.Row="1"
                 AutoGenerateColumns="False"
                 Background="Transparent"
@@ -57,20 +57,6 @@
                         CommandParameter="修改"
                         MouseAction="LeftDoubleClick" />
                 </DataGrid.InputBindings>
-                <DataGrid.Columns>
-                    <DataGridTextColumn
-                        Width="200"
-                        Binding="{Binding UserName}"
-                        Header="用户名" />
-                    <DataGridTextColumn
-                        Width="200"
-                        Binding="{Binding Address}"
-                        Header="地址" />
-                    <DataGridTextColumn
-                        Width="200"
-                        Binding="{Binding Tel}"
-                        Header="电话" />
-                </DataGrid.Columns>
             </DataGrid>
             <template:DataPager
                 Grid.Row="2"

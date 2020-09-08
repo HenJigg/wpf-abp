@@ -22,6 +22,9 @@ namespace Consumption.PC.ViewCenter
     using System.Text;
     using System.Threading.Tasks;
     using Core.Enums;
+    using Consumption.PC.Common;
+    using System.Windows.Controls;
+    using Consumption.Core.Entity;
 
     /// <summary>
     /// 用户管理类
@@ -29,6 +32,9 @@ namespace Consumption.PC.ViewCenter
     [Module("用户管理", ModuleType.系统配置)]
     public class UserCenter : BaseCenter<UserView, UserViewModel>
     {
-
+        public override void BindDataGridColumns()
+        {
+            VisualHelper.SetDataGridColumns<UserControl>(View, "Grid", typeof(User));
+        }
     }
 }

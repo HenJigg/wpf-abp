@@ -16,6 +16,7 @@ namespace Consumption.PC.ViewCenter
 {
     using Consumption.Core.Entity;
     using Consumption.Core.Interfaces;
+    using Consumption.PC.Common;
     using GalaSoft.MvvmLight;
     using MaterialDesignThemes.Wpf;
     using NLog.Filters;
@@ -45,9 +46,9 @@ namespace Consumption.PC.ViewCenter
         {
             if (ViewModel is IAuthority authority)
                 authority.InitPermissions(AuthValue);
-
             if (ViewModel is IDataPager dataPager)
                 await dataPager.GetPageData(0);
+            this.BindDataGridColumns();
             View.DataContext = ViewModel;
         }
 
@@ -59,6 +60,11 @@ namespace Consumption.PC.ViewCenter
         object IModule.GetView()
         {
             return View;
+        }
+
+        public virtual void BindDataGridColumns()
+        {
+
         }
     }
 }

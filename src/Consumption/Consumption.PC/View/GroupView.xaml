@@ -29,7 +29,7 @@
                 </TextBox>
             </StackPanel>
 
-            <DataGrid Grid.Row="1"  Background="Transparent"
+            <DataGrid x:Name="Grid" Grid.Row="1"  Background="Transparent"
                               IsReadOnly="True" SelectionMode="Extended"
                               AutoGenerateColumns="False"
                               ItemsSource="{Binding GridModelList}" 
@@ -42,10 +42,10 @@
                                 Path=DataContext.ExecuteCommand}"
                                           CommandParameter="修改" />
                 </DataGrid.InputBindings>
-                <DataGrid.Columns>
+                <!--<DataGrid.Columns>
                     <DataGridTextColumn Header="部门编号" Width="200" Binding="{Binding GroupCode,UpdateSourceTrigger=PropertyChanged}"/>
                     <DataGridTextColumn Header="部门名称" Width="200" Binding="{Binding GroupName,UpdateSourceTrigger=PropertyChanged}"/>
-                </DataGrid.Columns>
+                </DataGrid.Columns>-->
             </DataGrid>
             <template:DataPager Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="0,5"/>
         </Grid>
