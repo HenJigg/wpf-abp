@@ -1,4 +1,7 @@
-﻿/*
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+/*
 *
 * 文件名    ：ButtonCommand                             
 * 程序说明  : 动态按钮命令
@@ -12,8 +15,7 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-
-namespace Consumption.ViewModel.Common
+namespace Consumption.Core.Common
 {
     using GalaSoft.MvvmLight.Command;
     using System;

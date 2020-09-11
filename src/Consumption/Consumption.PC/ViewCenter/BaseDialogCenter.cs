@@ -14,6 +14,9 @@
 
 namespace Consumption.PC.ViewCenter
 {
+    using Autofac.Extras.DynamicProxy;
+    using Consumption.Core.Aop;
+    using Consumption.ViewModel;
     using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Messaging;
@@ -24,21 +27,21 @@ namespace Consumption.PC.ViewCenter
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using Consumption.Core.Interfaces;
 
-    public class BaseDialogCenter<TView, TViewModel> :
-        Consumption.Core.Interfaces.IModuleDialog
+    public class BaseDialogCenter<TView, TViewModel> : IModuleDialog
         where TView : Window, new()
-        where TViewModel : ViewModelBase, new()
+        where TViewModel : class, new()
     {
-        protected TView View = new TView();
-        protected TViewModel ViewModel = new TViewModel();
+        public readonly TView view = new TView();
+        public readonly TViewModel viewModel = new TViewModel();
 
         /// <summary>
         /// 绑定默认ViewModel
         /// </summary>
         protected void BindDefaultViewModel()
         {
-            View.DataContext = ViewModel;
+            view.DataContext = viewModel;
         }
 
         /// <summary>
@@ -50,13 +53,8 @@ namespace Consumption.PC.ViewCenter
             this.SubscribeMessenger();
             this.SubscribeEvent();
             this.BindDefaultViewModel();
-            var result = View.ShowDialog();
+            var result = view.ShowDialog();
             return await Task.FromResult((bool)result);
-        }
-
-
-        public virtual void Close()
-        {
         }
 
         /// <summary>
@@ -64,16 +62,16 @@ namespace Consumption.PC.ViewCenter
         /// </summary>
         public void SubscribeEvent()
         {
-            View.MouseDown += (sender, e) =>
+            view.MouseDown += (sender, e) =>
             {
                 if (e.LeftButton == MouseButtonState.Pressed)
-                    View.DragMove();
+                    view.DragMove();
             };
         }
 
         public virtual void SubscribeMessenger()
         {
-            Messenger.Default.Register<bool>(View, "Exit", async r =>
+            Messenger.Default.Register<bool>(view, "Exit", async r =>
             {
                 if (r)
                     if (!await Msg.Question("确认退出系统?")) return;
@@ -83,7 +81,7 @@ namespace Consumption.PC.ViewCenter
 
         public void UnsubscribeMessenger()
         {
-            Messenger.Default.Unregister(View);
+            Messenger.Default.Unregister(view);
         }
     }
 }

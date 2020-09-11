@@ -1,42 +1,5 @@
 ﻿@page "/UserView"
 @using Consumption.ViewModel
 
-@if (vm.GridModelList == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>用户名</th>
-                <th>账套</th>
-                <th>电话</th>
-                <th>日期</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in vm.GridModelList)
-            {
-                <tr>
-                    <td>@item.UserName</td>
-                    <td>@item.Account</td>
-                    <td>@item.Tel</td>
-                    <td>@item.CreateTime.ToShortDateString()</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
 
-@code{
-    public UserViewModel vm;
-
-    protected override async Task OnInitializedAsync()
-    {
-        vm = new UserViewModel();
-        await vm.GetPageData(0);
-    }
-}
 

@@ -14,7 +14,7 @@
     <UserControl.Resources>
         <v:IBoolConverter x:Key="vbool" />
     </UserControl.Resources>
-    <materialDesign:Transitioner AutoApplyTransitionOrigins="True" SelectedIndex="{Binding SelectPageIndex}">
+    <materialDesign:Transitioner  SelectedIndex="{Binding SelectPageIndex}">
         <Grid Margin="10,0,10,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -36,7 +36,7 @@
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
                     FontSize="18"
-                    Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Return" Command="{Binding QueryCommand}" />
                     </TextBox.InputBindings>

@@ -25,43 +25,16 @@ namespace Consumption.ViewModel
     using Consumption.Common.Contract;
     using Consumption.Core.Common;
     using System.Net.Security;
+    using Consumption.ViewModel.Interfaces;
 
     /// <summary>
     /// 基础数据
     /// </summary>
-    public class BasicViewModel : BaseDataViewModel<Basic>
+    public class BasicViewModel : BaseRepository<Basic>, IBasicViewModel
     {
-        private readonly IConsumptionService service;
-        public BasicViewModel()
+        public BasicViewModel() : base(NetCoreProvider.Get<IBasicRepository>())
         {
-            NetCoreProvider.Get(out service);
-        }
 
-        public override async Task GetPageData(int pageIndex)
-        {
-            try
-            {
-                var r = await service.GetBasicListAsync(new QueryParameters()
-                {
-                    PageIndex = pageIndex,
-                    PageSize = PageSize,
-                    Search = SearchText
-                });
-                if (r != null && r.success)
-                {
-                    GridModelList = new ObservableCollection<Basic>();
-                    this.TotalCount = r.dynamicObj.TotalCount;
-                    r.dynamicObj.Items?.ToList().ForEach(arg =>
-                     {
-                         GridModelList.Add(arg);
-                     });
-                    base.SetPageCount();
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex.Message);
-            }
         }
     }
 }

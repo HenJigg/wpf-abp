@@ -107,7 +107,7 @@ namespace Consumption.ViewModel.Common
             }
             catch (Exception ex)
             {
-                Log.Error(ex.Message);
+                //Log.Error(ex.Message);
                 throw ex;
             }
         }

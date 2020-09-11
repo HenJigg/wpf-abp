@@ -14,9 +14,13 @@
 
 namespace Consumption.PC.ViewCenter
 {
+    using Consumption.Common.Contract;
     using Consumption.Core.Entity;
     using Consumption.Core.Interfaces;
     using Consumption.PC.Common;
+    using Consumption.Service;
+    using Consumption.ViewModel;
+    using Consumption.ViewModel.Interfaces;
     using GalaSoft.MvvmLight;
     using MaterialDesignThemes.Wpf;
     using NLog.Filters;
@@ -27,44 +31,67 @@ namespace Consumption.PC.ViewCenter
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
-    using IModule = Core.Interfaces.IModule;
 
     /// <summary>
-    /// View/ViewModel 控制基类
+    /// View/ViewModel 控制基类(带业务)
     /// </summary>
     /// <typeparam name="TView"></typeparam>
     /// <typeparam name="TViewModel"></typeparam>
-    public class BaseCenter<TView, TViewModel> : IModule
+    public class BusinessCenter<TView, TEntity> : IBusinessModule
         where TView : UserControl, new()
-        where TViewModel : ViewModelBase, new()
+        where TEntity : BaseEntity
     {
+        public BusinessCenter() { }
 
-        public TView View = new TView();
-        public TViewModel ViewModel = new TViewModel();
+        public BusinessCenter(IBaseViewModel<TEntity> viewModel)
+        {
+            this.viewModel = viewModel;
+        }
+
+        public TView view = new TView();
+        public IBaseViewModel<TEntity> viewModel;
 
         public async Task BindDefaultModel(int AuthValue)
         {
-            if (ViewModel is IAuthority authority)
-                authority.InitPermissions(AuthValue);
-            if (ViewModel is IDataPager dataPager)
-                await dataPager.GetPageData(0);
-            this.BindDataGridColumns();
-            View.DataContext = ViewModel;
+            viewModel.InitPermissions(AuthValue);
+            await viewModel.GetPageData(0);
+            BindDataGridColumns();
+            view.DataContext = viewModel;
         }
 
         public void BindDefaultModel()
         {
-            View.DataContext = ViewModel;
+            view.DataContext = viewModel;
         }
 
-        object IModule.GetView()
+        public virtual void BindDataGridColumns() { }
+
+        public object GetView()
         {
-            return View;
+            return view;
+        }
+    }
+
+    /// <summary>
+    ///  View/ViewModel 控制基类(无业务)
+    /// </summary>
+    /// <typeparam name="TView"></typeparam>
+    /// <typeparam name="TViewModel"></typeparam>
+    public class NoBusinessCenter<TView, TViewModel> : IBaseModule
+        where TView : UserControl, new()
+        where TViewModel : class, new()
+    {
+        public readonly TView view = new TView();
+        public readonly TViewModel viewModel = new TViewModel();
+
+        public void BindDefaultModel()
+        {
+            view.DataContext = viewModel;
         }
 
-        public virtual void BindDataGridColumns()
+        public object GetView()
         {
-
+            return view;
         }
     }
 }

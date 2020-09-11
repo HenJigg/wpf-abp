@@ -22,6 +22,9 @@ namespace Consumption.PC.ViewCenter
     using Consumption.PC.Template;
     using MaterialDesignThemes.Wpf;
     using Consumption.ViewModel.Common;
+    using Consumption.Common.Contract;
+    using Consumption.Core.Interfaces;
+    using GalaSoft.MvvmLight;
 
     /// <summary>
     /// 登录控制类
@@ -30,17 +33,17 @@ namespace Consumption.PC.ViewCenter
     {
         public override void SubscribeMessenger()
         {
-            Messenger.Default.Register<string>(View, "Snackbar", arg =>
+            Messenger.Default.Register<string>(view, "Snackbar", arg =>
             {
-                var messageQueue = View.SnackbarThree.MessageQueue;
+                var messageQueue = view.SnackbarThree.MessageQueue;
                 messageQueue.Enqueue(arg);
             });
-            Messenger.Default.Register<bool>(View, "NavigationPage", async arg =>
+            Messenger.Default.Register<bool>(view, "NavigationPage", async arg =>
               {
-                  MainCenter mainView = new MainCenter();
-                  View.Close();
+                  var dialog = NetCoreProvider.Get<IModuleDialog>("MainCenter");
+                  view.Close();
                   this.UnsubscribeMessenger();
-                  await mainView.ShowDialog();
+                  await dialog.ShowDialog();
               });
             base.SubscribeMessenger();
         }

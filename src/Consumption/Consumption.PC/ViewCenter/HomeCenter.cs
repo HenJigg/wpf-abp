@@ -25,9 +25,8 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 系统首页
     /// </summary>
-    public class HomeCenter : BaseCenter<HomeView, HomeViewModel>
+    public class HomeCenter : NoBusinessCenter<HomeView, HomeViewModel>
     {
-
     }
 
     /// <summary>

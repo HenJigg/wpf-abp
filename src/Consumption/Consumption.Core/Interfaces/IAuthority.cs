@@ -14,6 +14,9 @@
 
 namespace Consumption.Core.Interfaces
 {
+    using Consumption.Core.Common;
+    using System.Collections.ObjectModel;
+
     /// <summary>
     /// 权限接口
     /// </summary>
@@ -25,5 +28,7 @@ namespace Consumption.Core.Interfaces
         /// <param name="authValue"></param>
         /// <returns></returns>
         void InitPermissions(int AuthValue);
+
+        ObservableCollection<ButtonCommand> ToolBarCommandList { get; set; }
     }
 }

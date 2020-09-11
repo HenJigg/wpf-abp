@@ -16,27 +16,18 @@ namespace Consumption.Core.Request
 {
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
-    using Consumption.Core.RequestForm;
+    using GalaSoft.MvvmLight;
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Text;
-
-    /// <summary>
-    /// 用户组列表请求
-    /// </summary>
-    public class GroupRequest : BaseRequest
-    {
-        public override string route { get => ServerAddress + "api/Group/GetGroups"; }
-
-        public QueryParameters parameters { get; set; }
-    }
 
     /// <summary>
     /// 用户组模板信息请求
     /// </summary>
     public class GroupModuleRequest : BaseRequest
     {
-        public override string route { get => ServerAddress + "api/Group/GetMenuModules"; }
+        public override string route { get => "api/Group/GetMenuModules"; }
     }
 
     /// <summary>
@@ -44,7 +35,7 @@ namespace Consumption.Core.Request
     /// </summary>
     public class GroupInfoRequest : BaseRequest
     {
-        public override string route { get => ServerAddress + "api/Group/GetGroupInfo"; }
+        public override string route { get => "api/Group/GetGroupInfo"; }
 
         public int id { get; set; }
     }
@@ -54,9 +45,42 @@ namespace Consumption.Core.Request
     /// </summary>
     public class GroupSaveRequest : BaseRequest
     {
-        public override string route { get => ServerAddress + "api/Group/SaveGroup"; }
+        public override string route { get => "api/Group/Save"; }
 
         public GroupHeader parameter { get; set; }
     }
 
+
+    /// <summary>
+    /// 组及成员和模块信息
+    /// </summary>
+    public class GroupHeader : ViewModelBase
+    {
+        public Group group { get; set; } = new Group();
+
+        private ObservableCollection<GroupUser> groupUsers =
+            new ObservableCollection<GroupUser>();
+        private List<GroupFunc> groupFuncs = new List<GroupFunc>();
+
+        /// <summary>
+        /// 组所包含用户
+        /// </summary>
+        public ObservableCollection<GroupUser> GroupUsers
+        {
+            get { return groupUsers; }
+            set
+            {
+                groupUsers = value; RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// 组所包含的模块清单
+        /// </summary>
+        public List<GroupFunc> GroupFuncs
+        {
+            get { return groupFuncs; }
+            set { groupFuncs = value; }
+        }
+    }
 }

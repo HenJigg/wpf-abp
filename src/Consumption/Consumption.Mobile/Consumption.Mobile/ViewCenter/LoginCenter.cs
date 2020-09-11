@@ -11,27 +11,27 @@ namespace Consumption.Mobile.ViewCenter
     /// <summary>
     /// 登录控制类
     /// </summary>
-    public class LoginCenter : BaseDialogCenter<LoginPage, LoginViewModel>
+    public class LoginCenter
     {
-        public override void SubscribeMessenger()
-        {
-            Messenger.Default.Register<string>(View, "Snackbar", async arg =>
-            {
-                await PopupNavigation.Instance.PopAllAsync();
-                await MaterialDialog.Instance.SnackbarAsync(message: arg);
-            });
+        //public override void SubscribeMessenger()
+        //{
+        //    Messenger.Default.Register<string>(View, "Snackbar", async arg =>
+        //    {
+        //        await PopupNavigation.Instance.PopAllAsync();
+        //        await MaterialDialog.Instance.SnackbarAsync(message: arg);
+        //    });
 
-            Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", async arg =>
-             {
-                 if (arg.IsOpen)
-                     _ = PopupNavigation.Instance.PushAsync(new SplashScreenView(arg.Msg));
-                 else
-                     await PopupNavigation.Instance.PopAllAsync();
-             });
-            Messenger.Default.Register<bool>(View, "NavigationPage", arg =>
-             {
+        //    Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", async arg =>
+        //     {
+        //         if (arg.IsOpen)
+        //             _ = PopupNavigation.Instance.PushAsync(new SplashScreenView(arg.Msg));
+        //         else
+        //             await PopupNavigation.Instance.PopAllAsync();
+        //     });
+        //    Messenger.Default.Register<bool>(View, "NavigationPage", arg =>
+        //     {
 
-             });
-        }
+        //     });
+        //}
     }
 }

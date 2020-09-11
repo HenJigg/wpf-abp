@@ -2,7 +2,7 @@
 *
 * 文件名    ：BasicService                             
 * 程序说明  : 基础数据服务
-* 更新时间  : 2020-06-16 16：41
+* 更新时间  : 2020-09-11 09：46
 * 联系作者  : QQ:779149549 
 * 开发者群  : QQ群:874752819
 * 邮件联系  : zhouhaogg789@outlook.com
@@ -16,6 +16,7 @@ namespace Consumption.Service
 {
     using Consumption.Core.Collections;
     using Consumption.Core.Entity;
+    using Consumption.Core.Interfaces;
     using Consumption.Core.Query;
     using Consumption.Core.Request;
     using Consumption.Core.Response;
@@ -28,17 +29,8 @@ namespace Consumption.Service
     /// <summary>
     /// 基础数据服务
     /// </summary>
-    public partial class ConsumptionService
+    public partial class BasicService : BaseService<Basic>, IBasicRepository
     {
-        public async Task<BaseResponse<PagedList<Basic>>> GetBasicListAsync(QueryParameters parameters)
-        {
-            BaseServiceRequest<BaseResponse<PagedList<Basic>>> baseService =
-            new BaseServiceRequest<BaseResponse<PagedList<Basic>>>();
-            var r = await baseService.GetRequest(new BasicQueryRequest()
-            {
-                parameters = parameters
-            }, Method.GET);
-            return r;
-        }
+
     }
 }

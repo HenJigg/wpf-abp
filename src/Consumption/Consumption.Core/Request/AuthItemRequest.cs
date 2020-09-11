@@ -19,6 +19,6 @@ namespace Consumption.Core.Request
     /// </summary>
     public class AuthItemRequest : BaseRequest
     {
-        public override string route { get => ServerAddress + "api/AuthItem/GetAuthItems"; }
+        public override string route { get => "api/AuthItem/GetAuthItems"; }
     }
 }

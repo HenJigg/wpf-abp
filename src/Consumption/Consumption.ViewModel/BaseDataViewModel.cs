@@ -10,6 +10,9 @@
 * 博客地址  : https://www.cnblogs.com/zh7791/
 * 项目地址  : https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
+* 
+* 更新日期: 2020-09-11
+* 更新内容: 重构基类的实现
 */
 
 
@@ -29,122 +32,64 @@ namespace Consumption.ViewModel
     using Consumption.Common.Contract;
     using GalaSoft.MvvmLight.Messaging;
     using Consumption.Core.Common;
+    using Consumption.Core.Collections;
+    using Consumption.Core.Query;
+    using Consumption.ViewModel.Interfaces;
+    using Consumption.Core.Entity;
+    using System.Linq;
+    using Consumption.Core.Aop;
+    using Autofac.Extras.DynamicProxy;
 
     /// <summary>
-    /// 基础数据基类
-    /// 
-    /// 用于:
-    ///   1. 实现基础的数据列表展示功能
-    ///   2. 实现基础的增删改查单页功能
-    ///   3. 实现基础页面的单页数据分页功能
+    /// 通用基类(实现CRUD/数据分页..)
     /// </summary>
-    public class BaseDataViewModel<T> :
-        ViewModelBase,
-        IAuthority,
-        IDataPager
-        where T : class, new()
+    /// <typeparam name="TEntity"></typeparam>
+    public class BaseRepository<TEntity> : ViewModelBase where TEntity : BaseEntity
     {
-        public BaseDataViewModel()
+        public readonly IConsumptionRepository<TEntity> repository;
+
+        public BaseRepository() { }
+
+        public BaseRepository(IConsumptionRepository<TEntity> repository)
         {
+            this.repository = repository;
             QueryCommand = new RelayCommand(Query);
             ExecuteCommand = new RelayCommand<string>(arg => Execute(arg));
         }
 
-        #region CURD
+        #region ICrud (增删改查接口~喵)
 
-        private T gridModel = null;
-        private string selectPageTitle;
-        private int selectPageIndex = 0;
-        private ActionMode Mode { get; set; }
-        private string searchText = string.Empty;
-        private ObservableCollection<T> gridModelList = null;
-
-        /// <summary>
-        /// 当前选择页的标题
-        /// </summary>
-        public string SelectPageTitle
+        private int selectPageIndex;
+        private string search;
+        private TEntity gridModel;
+        private ObservableCollection<TEntity> gridModelList;
+        public TEntity GridModel
         {
-            get { return selectPageTitle; }
-            set { selectPageTitle = value; RaisePropertyChanged(); }
+            get { return gridModel; }
+            set { gridModel = value; RaisePropertyChanged(); }
         }
-
-        /// <summary>
-        /// 搜索内容
-        /// </summary>
-        public string SearchText
-        {
-            get { return searchText; }
-            set { searchText = value; RaisePropertyChanged(); }
-        }
-
-        /// <summary>
-        /// 当前选中页
-        /// </summary>
         public int SelectPageIndex
         {
             get { return selectPageIndex; }
             set { selectPageIndex = value; RaisePropertyChanged(); }
         }
-
-        /// <summary>
-        /// T表单
-        /// </summary>
-        public T GridModel
+        public string Search
         {
-            get { return gridModel; }
-            set { gridModel = value; RaisePropertyChanged(); }
+            get { return search; }
+            set { search = value; RaisePropertyChanged(); }
         }
-
-        /// <summary>
-        /// T表单数据列表
-        /// </summary>
-        public ObservableCollection<T> GridModelList
+        public ObservableCollection<TEntity> GridModelList
         {
             get { return gridModelList; }
             set { gridModelList = value; RaisePropertyChanged(); }
         }
-
-        public RelayCommand<string> ExecuteCommand { get; private set; }
-        public RelayCommand QueryCommand { get; private set; }
-
-        #region IDataOperation
-
-        /// <summary>
-        /// 新增
-        /// </summary>
-        public virtual void Add()
-        {
-            this.CreateDeaultCommand();
-        }
-
-        /// <summary>
-        /// 编辑
-        /// </summary>
-        public virtual void Edit()
-        {
-            this.CreateDeaultCommand();
-        }
-
-        public virtual void Save()
-        {
-            InitPermissions(this.AuthValue);
-            SelectPageIndex = 0;
-        }
-
-        public virtual void Cancel()
-        {
-            InitPermissions(this.AuthValue);
-            SelectPageIndex = 0;
-        }
-
-        /// <summary>
-        /// 删除
-        /// </summary>
-        public virtual void Del() { }
+        public RelayCommand QueryCommand { get; }
+        public RelayCommand<string> ExecuteCommand { get; }
 
         /// <summary>
         /// 查询
         /// </summary>
+        [GlabalProgress("正在查询...")]
         public virtual async void Query()
         {
             await GetPageData(this.PageIndex);
@@ -154,6 +99,7 @@ namespace Consumption.ViewModel
         /// 执行方法
         /// </summary>
         /// <param name="arg"></param>
+        [GlabalLoger]
         public virtual void Execute(string arg)
         {
             /*
@@ -162,28 +108,53 @@ namespace Consumption.ViewModel
              */
             switch (arg)
             {
-                case "添加": Add(); break;
-                case "修改": Edit(); break;
-                case "删除": Del(); break;
-                case "保存": Save(); break;
+                case "添加": AddAsync(); break;
+                case "修改": UpdateAsync(); break;
+                case "删除": DeleteAsync(); break;
+                case "保存": SaveAsync(); break;
                 case "取消": Cancel(); break;
             }
         }
 
-        /// <summary>
-        /// 创建页面默认命令
-        /// </summary>
-        private void CreateDeaultCommand()
+        public virtual void AddAsync()
         {
-            ToolBarCommandList.Clear();
-            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "保存", CommandColor = "#0066FF", CommandKind = "ContentSave" });
-            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "取消", CommandColor = "#FF6633", CommandKind = "Cancel" });
+            this.CreateDeaultCommand();
+            SelectPageIndex = 1;
         }
-        #endregion
+
+        public virtual void Cancel()
+        {
+            InitPermissions(this.AuthValue);
+            SelectPageIndex = 0;
+        }
+
+        [GlabalProgress("删除中...")]
+        public virtual void DeleteAsync()
+        {
+            if (GridModel != null)
+                repository.DeleteAsync(GridModel.Id);
+        }
+
+        [GlabalProgress("保存中...")]
+        public virtual void SaveAsync()
+        {
+            if (GridModel != null)
+            {
+                repository.SaveAsync(GridModel);
+                InitPermissions(this.AuthValue);
+                SelectPageIndex = 0;
+            }
+        }
+
+        public virtual void UpdateAsync()
+        {
+            this.CreateDeaultCommand();
+            SelectPageIndex = 1;
+        }
 
         #endregion
 
-        #region IDataPager (数据分页)
+        #region IDataPager (数据分页~喵)
         public RelayCommand GoHomePageCommand { get { return new RelayCommand(() => GoHomePage()); } }
         public RelayCommand GoOnPageCommand { get { return new RelayCommand(() => GoOnPage()); } }
         public RelayCommand GoNextPageCommand { get { return new RelayCommand(() => GoNextPage()); } }
@@ -259,7 +230,22 @@ namespace Consumption.ViewModel
         /// <param name="pageIndex"></param>
         public virtual async Task GetPageData(int pageIndex)
         {
-            await Task.FromResult(true);
+            var r = await repository.GetAllListAsync(new QueryParameters()
+            {
+                PageIndex = this.PageIndex,
+                PageSize = this.PageSize,
+                Search = this.Search
+            });
+            if (r != null && r.success)
+            {
+                GridModelList = new ObservableCollection<TEntity>();
+                r.dynamicObj.Items?.ToList().ForEach(arg =>
+                {
+                    GridModelList.Add(arg);
+                });
+                TotalCount = r.dynamicObj.Items.Count;
+                SetPageCount();
+            }
         }
 
         /// <summary>
@@ -271,7 +257,17 @@ namespace Consumption.ViewModel
         }
         #endregion
 
-        #region IAuthority
+        #region IAuthority (权限内容~)
+
+        /// <summary>
+        /// 创建页面默认命令
+        /// </summary>
+        private void CreateDeaultCommand()
+        {
+            ToolBarCommandList.Clear();
+            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "保存", CommandColor = "#0066FF", CommandKind = "ContentSave" });
+            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "取消", CommandColor = "#FF6633", CommandKind = "Cancel" });
+        }
 
         private ObservableCollection<ButtonCommand> toolBarCommandList;
         public ObservableCollection<ButtonCommand> ToolBarCommandList
@@ -303,19 +299,6 @@ namespace Consumption.ViewModel
                     });
             });
         }
-        #endregion
-
-        #region Load event.
-
-        public void UpdateLoading(bool isOpen, string msg = "")
-        {
-            Messenger.Default.Send(new MsgInfo()
-            {
-                IsOpen = isOpen,
-                Msg = msg
-            }, "UpdateDialog");
-        }
-
         #endregion
     }
 }

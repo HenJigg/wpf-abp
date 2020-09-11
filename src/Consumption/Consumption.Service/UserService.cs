@@ -24,108 +24,30 @@ namespace Consumption.Service
     using Consumption.Core.Query;
     using Consumption.Core.Entity;
     using Consumption.Core.Collections;
+    using Consumption.Core.Interfaces;
 
-    /// <summary>
-    /// 用户服务
-    /// </summary>
-    public partial class ConsumptionService
+    public class UserService : BaseService<User>, IUserRepository
     {
-        /// <summary>
-        /// 根据ID查找用户信息
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public async Task<BaseResponse<User>> GetUserAsync(int id)
+        public async Task<BaseResponse<List<AuthItem>>> GetAuthListAsync()
         {
-            BaseServiceRequest<BaseResponse<User>> baseService =
-               new BaseServiceRequest<BaseResponse<User>>();
-            var r = await baseService.GetRequest(new UserQueryByIdRequest()
-            {
-                id = id
-            }, Method.GET);
-            return r;
+            return await new BaseServiceRequest().GetRequest<BaseResponse<List<AuthItem>>>(new AuthItemRequest(), Method.GET);
         }
 
-        /// <summary>
-        /// 查询用户列表
-        /// </summary>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
-        public async Task<BaseResponse<PagedList<User>>> GetUserListAsync(UserParameters parameters)
+        public async Task<BaseResponse<List<Menu>>> GetUserPermByAccountAsync(string account)
         {
-            BaseServiceRequest<BaseResponse<PagedList<User>>> baseService =
-                new BaseServiceRequest<BaseResponse<PagedList<User>>>();
-            var r = await baseService.GetRequest(new UserQueryRequest()
+            return await new BaseServiceRequest().GetRequest<BaseResponse<List<Menu>>>(new UserPermRequest()
             {
-                parameters = parameters
+                account = account
             }, Method.GET);
-            return r;
         }
 
-        /// <summary>
-        /// 登录
-        /// </summary>
-        /// <param name="account">用户名</param>
-        /// <param name="passWord">密码</param>
-        /// <returns></returns>
         public async Task<BaseResponse<UserInfo>> LoginAsync(string account, string passWord)
         {
-            BaseServiceRequest<BaseResponse<UserInfo>> baseService =
-                new BaseServiceRequest<BaseResponse<UserInfo>>();
-            var r = await baseService.GetRequest(new UserLoginRequest()
+            return await new BaseServiceRequest().GetRequest<BaseResponse<UserInfo>>(new UserLoginRequest()
             {
                 account = account,
                 passWord = passWord
             }, Method.GET);
-            return r;
-        }
-
-        /// <summary>
-        /// 获取用户权限
-        /// </summary>
-        /// <param name="account"></param>
-        /// <returns></returns>
-        public async Task<BaseResponse<List<Menu>>> GetUserPermByAccountAsync(string account)
-        {
-            BaseServiceRequest<BaseResponse<List<Menu>>> baseService =
-                new BaseServiceRequest<BaseResponse<List<Menu>>>();
-            var r = await baseService.GetRequest(new UserPermRequest()
-            {
-                account = account
-            }, Method.GET);
-            return r;
-        }
-
-        /// <summary>
-        /// 保存用户信息
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        public async Task<BaseResponse> SaveUserAsync(User user)
-        {
-            BaseServiceRequest<BaseResponse> baseService =
-                new BaseServiceRequest<BaseResponse>();
-            var r = await baseService.GetRequest(new UserSaveRequest()
-            {
-                user = user
-            }, Method.POST);
-            return r;
-        }
-
-        /// <summary>
-        /// 删除用户
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public async Task<BaseResponse> DeleteUserAsync(int id)
-        {
-            BaseServiceRequest<BaseResponse> baseService =
-               new BaseServiceRequest<BaseResponse>();
-            var r = await baseService.GetRequest(new UserDeleteRequest()
-            {
-                id = id,
-            }, Method.DELETE);
-            return r;
         }
     }
 }

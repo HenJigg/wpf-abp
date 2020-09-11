@@ -18,7 +18,7 @@
             <materialDesign:PackIcon  Kind="Magnify" Margin="10 0 0 0" Opacity=".56" 
                                       Width="25" Height="25" VerticalAlignment="Center" Foreground="White"/>
             <TextBox
-                     Text="{Binding SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding Search,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      materialDesign:HintAssist.Hint="请输入检索条件"  
                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"  
                      Foreground="White" 

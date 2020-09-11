@@ -13,6 +13,7 @@
 
 namespace Consumption.Service
 {
+    using Consumption.Common.Contract;
     using Consumption.Core.Request;
     using Newtonsoft.Json;
     using RestSharp;
@@ -24,28 +25,51 @@ namespace Consumption.Service
     /// <summary>
     /// 请求服务基类
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class BaseServiceRequest<T>
+    public class BaseServiceRequest
     {
+        private readonly string _requestUrl = Contract.serverUrl;
+
+        public string requestUrl
+        {
+            get { return _requestUrl; }
+        }
+
         /// <summary>
         /// restSharp实例
         /// </summary>
         public RestSharpCertificateMethod restSharp = new RestSharpCertificateMethod();
 
         /// <summary>
-        /// 获取T请求
+        /// T请求
         /// </summary>
-        /// <param name="request"></param>
-        /// <param name="method"></param>
+        /// <param name="request">请求参数</param>
+        /// <param name="method">方法类型</param>
         /// <returns></returns>
-        public async Task<T> GetRequest(BaseRequest request, Method method)
+        public async Task<Response> GetRequest<Response>(BaseRequest request, Method method)
         {
             string pms = request.GetPropertiesObject();
-            string url = request.route;
+            string url = requestUrl + request.route;
             if (!string.IsNullOrWhiteSpace(request.getParameter))
-                url = request.route + request.getParameter;
+                url += request.getParameter;
             string resultString = await restSharp.RequestBehavior(url, method, pms);
-            T result = JsonConvert.DeserializeObject<T>(resultString);
+            Response result = JsonConvert.DeserializeObject<Response>(resultString);
+            return result;
+        }
+
+        /// <summary>
+        /// 请求
+        /// </summary>
+        /// <typeparam name="Response"></typeparam>
+        /// <param name="url">地址</param>
+        /// <param name="pms">参数</param>
+        /// <param name="method">方法类型</param>
+        /// <returns></returns>
+        public async Task<Response> GetRequest<Response>(string route, object obj, Method method)
+        {
+            string pms = string.Empty;
+            if (!string.IsNullOrWhiteSpace(obj?.ToString())) pms = JsonConvert.SerializeObject(obj);
+            string resultString = await restSharp.RequestBehavior(requestUrl + route, method, pms);
+            Response result = JsonConvert.DeserializeObject<Response>(resultString);
             return result;
         }
     }

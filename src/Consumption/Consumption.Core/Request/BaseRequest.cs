@@ -27,14 +27,6 @@ namespace Consumption.Core.Request
     /// </summary>
     public class BaseRequest
     {
-        private readonly string _basePath = Contract.serverUrl;
-
-        [Prevent]
-        public virtual string ServerAddress
-        {
-            get { return _basePath; }
-        }
-
         /// <summary>
         /// 路由地址
         /// </summary>
@@ -45,7 +37,7 @@ namespace Consumption.Core.Request
         public string getParameter { get; set; }
 
         /// <summary>
-        /// 获取请求对象得属性转换值
+        /// 解析对象参数
         /// </summary>
         /// <returns></returns>
         public string GetPropertiesObject()
@@ -59,9 +51,9 @@ namespace Consumption.Core.Request
                 foreach (PropertyInfo property in propertyArray)
                 {
                     var prevent = property.GetCustomAttribute<PreventAttribute>();
-                    if (prevent != null)
-                        continue;
+                    if (prevent != null) continue;
                     var pvalue = property.GetValue(this);
+                    if (pvalue == null) continue;
                     var str = pvalue.GetType().Namespace;
                     if (pvalue != null && pvalue.GetType().Namespace == "Consumption.Core.Query")
                     {
@@ -107,6 +99,16 @@ namespace Consumption.Core.Request
             if (!string.IsNullOrWhiteSpace(getStr))
                 getParameter = getStr;
             return builder.ToString().Trim('&');
+        }
+
+        /// <summary>
+        /// 获取请求API地址
+        /// </summary>
+        /// <param name="addr"></param>
+        /// <returns></returns>
+        public string GetRouteUrl(string addr)
+        {
+            return route += addr;
         }
     }
 }

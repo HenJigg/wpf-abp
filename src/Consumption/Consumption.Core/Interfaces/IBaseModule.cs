@@ -17,22 +17,25 @@ using System.Threading.Tasks;
 
 namespace Consumption.Core.Interfaces
 {
-    /// <summary>
-    /// 模块
-    /// </summary>
-    public interface IModule
+    public interface IBaseModule
     {
-        object GetView();
-
-        /// <summary>
-        /// 关联默认数据上下文(包含权限相关)
-        /// </summary>
-        Task BindDefaultModel(int AuthValue = 0);
-
         /// <summary>
         /// 关联默认数据上下文
         /// </summary>
         void BindDefaultModel();
+
+        object GetView();
+    }
+
+    /// <summary>
+    /// 业务模块
+    /// </summary>
+    public interface IBusinessModule : IBaseModule
+    {
+        /// <summary>
+        /// 关联默认数据上下文(包含权限相关)
+        /// </summary>
+        Task BindDefaultModel(int AuthValue = 0);
 
         /// <summary>
         /// 关联表格列
@@ -41,4 +44,5 @@ namespace Consumption.Core.Interfaces
         /// <param name="type"></param>
         void BindDataGridColumns();
     }
+
 }

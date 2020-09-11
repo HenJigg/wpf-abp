@@ -17,6 +17,7 @@ namespace Consumption.Service
 {
     using Consumption.Core.Collections;
     using Consumption.Core.Entity;
+    using Consumption.Core.Interfaces;
     using Consumption.Core.Query;
     using Consumption.Core.Request;
     using Consumption.Core.Response;
@@ -29,17 +30,9 @@ namespace Consumption.Service
     /// <summary>
     /// 菜单服务
     /// </summary>
-    public partial class ConsumptionService
+    public partial class MenuService : BaseService<Menu>, IMenuRepository
     {
-        public async Task<BaseResponse<PagedList<Menu>>> GetMenuListAsync(QueryParameters parameters)
-        {
-            BaseServiceRequest<BaseResponse<PagedList<Menu>>> baseService =
-                new BaseServiceRequest<BaseResponse<PagedList<Menu>>>();
-            var r = await baseService.GetRequest(new MenuQueryRequest()
-            {
-                parameters = parameters
-            }, Method.GET);
-            return r;
-        }
+
     }
+
 }

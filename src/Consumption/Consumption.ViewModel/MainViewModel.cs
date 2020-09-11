@@ -14,11 +14,19 @@
 
 namespace Consumption.ViewModel
 {
+    using Autofac.Extras.DynamicProxy;
+    using Consumption.Common.Contract;
+    using Consumption.Core.Aop;
+    using Consumption.Core.Interfaces;
     using Consumption.ViewModel.Common;
+    using Consumption.ViewModel.Interfaces;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using GalaSoft.MvvmLight.Messaging;
+    using System;
     using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Runtime;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -28,21 +36,16 @@ namespace Consumption.ViewModel
     {
         public MainViewModel()
         {
-            OpenPageCommand = new RelayCommand<string>(arg =>
-            {
-                Messenger.Default.Send(arg, "OpenPage");
-            });
-            ClosePageCommand = new RelayCommand<string>(arg =>
-              {
-                  Messenger.Default.Send(arg, "ClosePage");
-              });
-            GoHomeCommand = new RelayCommand(() =>
-            {
-                Messenger.Default.Send("", "GoHomePage");
-            });
+            OpenPageCommand = new RelayCommand<string>(arg => OpenPage(arg));
+            ClosePageCommand = new RelayCommand<string>(arg => ClosePage(arg));
+            GoHomeCommand = new RelayCommand(InitHomeView);
             ExpandMenuCommand = new RelayCommand(() =>
             {
-                Messenger.Default.Send("", "ExpandMenu");
+                for (int i = 0; i < ModuleManager.ModuleGroups.Count; i++)
+                {
+                    var arg = ModuleManager.ModuleGroups[i];
+                    arg.ContractionTemplate = !arg.ContractionTemplate;
+                }
             });
         }
 
@@ -138,6 +141,80 @@ namespace Consumption.ViewModel
             ModuleList = new ObservableCollection<ModuleUIComponent>();
             //加载自身的程序集模块
             await ModuleManager.LoadAssemblyModule();
+
+            InitHomeView();
+        }
+
+        public async virtual void OpenPage(string pageName)
+        {
+            if (string.IsNullOrWhiteSpace(pageName)) return;
+            var m = ModuleManager.Modules.FirstOrDefault(t => t.Name.Equals(pageName));
+            if (m == null) return;
+            var module = ModuleList.FirstOrDefault(t => t.Name == m.Name);
+            if (module == null)
+            {
+                var dialog = NetCoreProvider.Get<IBusinessModule>(m.TypeName);
+                if (dialog != null)
+                {
+                    await dialog.BindDefaultModel(m.Auth);
+                    ModuleList.Add(new ModuleUIComponent()
+                    {
+                        Code = m.Code,
+                        Auth = m.Auth,
+                        Name = m.Name,
+                        TypeName = m.TypeName,
+                        Body = dialog.GetView()
+                    });
+                }
+                else
+                {
+                    var dialogbase = NetCoreProvider.Get<IBaseModule>(m.TypeName);
+                    dialogbase.BindDefaultModel();
+                    ModuleList.Add(new ModuleUIComponent()
+                    {
+                        Code = m.Code,
+                        Name = m.Name,
+                        TypeName = m.TypeName,
+                        Body = dialogbase.GetView()
+                    });
+                }
+                //将数据库中获取的菜单Namespace在容器当中查找依赖关系的实例
+                CurrentModule = ModuleList[ModuleList.Count - 1];
+                GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
+                GC.Collect();
+            }
+            else
+                CurrentModule = module;
+        }
+
+        public void ClosePage(string pageName)
+        {
+            var module = ModuleList.FirstOrDefault(t => t.Name.Equals(pageName));
+            if (module != null)
+            {
+                ModuleList.Remove(module);
+                if (ModuleList.Count > 0)
+                    CurrentModule = ModuleList[ModuleList.Count - 1];
+                else
+                    CurrentModule = null;
+                GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
+                GC.Collect();
+            }
+        }
+
+        /// <summary>
+        /// 初始化首页
+        /// </summary>
+        void InitHomeView()
+        {
+            var dialog = NetCoreProvider.Get<IBaseModule>("HomeCenter");
+            dialog.BindDefaultModel();
+            ModuleUIComponent component = new ModuleUIComponent();
+            component.Name = "首页";
+            component.Body = dialog.GetView();
+            ModuleList.Add(component);
+            ModuleManager.Modules.Add(component);
+            CurrentModule = ModuleList[ModuleList.Count - 1];
         }
     }
 }

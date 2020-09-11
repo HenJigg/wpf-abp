@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AccountViewModel.cs" />
+    <Compile Remove="BillViewModel.cs" />
+    <Compile Remove="ConsumerViewModel.cs" />
+    <Compile Remove="PlanViewModel.cs" />
+    <Compile Remove="ReportViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
   </ItemGroup>

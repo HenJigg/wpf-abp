@@ -33,7 +33,7 @@ namespace Consumption.PC.ViewCenter
     /// 样式控制类
     /// </summary>
     [Module("个性化", Core.Enums.ModuleType.系统配置)]
-    public class SkinCenter : BaseCenter<SkinView, SkinViewModel>
+    public class SkinCenter : NoBusinessCenter<SkinView, SkinViewModel>
     {
 
     }

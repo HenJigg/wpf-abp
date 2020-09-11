@@ -118,7 +118,7 @@ namespace Consumption.ViewModel.Common
                     Color = "#20B2AA";
                     break;
             }
-            NetCoreProvider.Get("MsgCenter", out IMsg dialog);
+            var dialog = NetCoreProvider.Get<IMsg>("MsgCenter");
             var result = await dialog.Show(new { Msg = msg, Color, Icon });
             return result;
         }

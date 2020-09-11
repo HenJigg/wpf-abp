@@ -21,12 +21,12 @@ namespace Consumption.Api.Controllers
     using Consumption.Core.Response;
     using Consumption.Core.Entity;
     using Consumption.Core.Query;
-    using Consumption.Core.RequestForm;
     using Consumption.EFCore;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using NLog.Fluent;
     using System.Collections.ObjectModel;
+    using Consumption.Core.Request;
 
     /// <summary>
     /// 
@@ -55,7 +55,7 @@ namespace Consumption.Api.Controllers
         /// <param name="parameters">请求参数</param>
         /// <returns>结果</returns>
         [HttpGet]
-        public async Task<IActionResult> GetGroups([FromQuery] QueryParameters parameters)
+        public async Task<IActionResult> GetAll([FromQuery] QueryParameters parameters)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace Consumption.Api.Controllers
         /// <param name="model">组数据</param>
         /// <returns>结果</returns>
         [HttpPost]
-        public async Task<IActionResult> SaveGroup([FromBody] GroupHeader model)
+        public async Task<IActionResult> Save([FromBody] GroupHeader model)
         {
             try
             {
@@ -170,7 +170,7 @@ namespace Consumption.Api.Controllers
         /// <param name="id">用户ID</param>
         /// <returns>结果</returns>
         [HttpDelete]
-        public async Task<IActionResult> DeleteGroup(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {

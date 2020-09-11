@@ -32,7 +32,7 @@ namespace Consumption.Web
         private static IContainer ConfigureServices()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<ConsumptionService>().As<IConsumptionService>();
+            //builder.RegisterType<ConsumptionService>().As<IConsumptionService>();
 
             var assembly = Assembly.GetCallingAssembly();
             var types = assembly.GetTypes();

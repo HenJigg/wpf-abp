@@ -16,6 +16,13 @@ using Consumption.Common.Contract;
 using Consumption.ViewModel.Common;
 using Autofac;
 using System.Reflection;
+using Consumption.Core.Common;
+using Autofac.Extras.DynamicProxy;
+using Consumption.Core.Aop;
+using Consumption.ViewModel.Core;
+using Consumption.Core.Entity;
+using Consumption.ViewModel.Interfaces;
+using GalaSoft.MvvmLight;
 
 namespace Consumption.PC
 {
@@ -29,20 +36,36 @@ namespace Consumption.PC
             Contract.serverUrl = ConfigurationManager.AppSettings["serverAddress"];
             var container = ConfigureServices();
             NetCoreProvider.RegisterServiceLocator(container);
-            LoginCenter viewCenter = new LoginCenter();
-            await viewCenter.ShowDialog();
+            var login = NetCoreProvider.Get<IModuleDialog>("LoginCenter");
+            await login.ShowDialog();
         }
 
         private IContainer ConfigureServices()
         {
-            var builder = new ContainerBuilder();
-            builder.RegisterType<ConsumptionService>().As<IConsumptionService>();
+            //创建依赖容器
+            ContainerBuilder builder = new ContainerBuilder();
+            //注册日志服务
+            builder.RegisterType<ConsumptionNLog>().As<ILog>().SingleInstance();
+            builder.Register(_ => new GlobalLoger(_.Resolve<ILog>()));
+            builder.Register(_ => new GlobalProgress());
+            //注册HTTP服务依赖关系
+            builder.AddCustomRepository<UserService, IUserRepository>()
+                .AddCustomRepository<GroupService, IGroupRepository>()
+                .AddCustomRepository<MenuService, IMenuRepository>()
+                .AddCustomRepository<BasicService, IBasicRepository>();
+            //注册ViewModel依赖关系
+            builder.AddCustomViewModel<UserViewModel, IUserViewModel>()
+                .AddCustomViewModel<GroupViewModel, IGroupViewModel>()
+                .AddCustomViewModel<MenuViewModel, IMenuViewModel>()
+                .AddCustomViewModel<BasicViewModel, IBasicViewModel>();
 
+            //注册程序集
             var assembly = Assembly.GetCallingAssembly();
             var types = assembly.GetTypes();
             foreach (var t in types)
             {
-                if (t.Name.EndsWith("Center")) //简陋判断一下,一般而言,该定义仅仅注册Center结尾的类依赖关系。
+                //简陋判断一下,一般而言,该定义仅仅注册Center结尾的类依赖关系。
+                if (t.Name.EndsWith("Center"))
                 {
                     var firstInterface = t.GetInterfaces().FirstOrDefault();
                     if (firstInterface != null)

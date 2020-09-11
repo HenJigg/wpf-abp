@@ -112,7 +112,6 @@ namespace Consumption.EFCore
             where TRepository : class, IRepository<TEntity>
         {
             services.AddScoped<IRepository<TEntity>, TRepository>();
-
             return services;
         }
     }

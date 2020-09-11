@@ -29,44 +29,16 @@ namespace Consumption.ViewModel
     using Consumption.Core.Interfaces;
     using Consumption.Common.Contract;
     using Consumption.Core.Common;
+    using Consumption.ViewModel.Interfaces;
 
     /// <summary>
-    /// 菜单
+    /// 菜单业务
     /// </summary>
-    public class MenuViewModel : BaseDataViewModel<Menu>
+    public class MenuViewModel : BaseRepository<Menu>, IMenuViewModel
     {
-        private readonly IConsumptionService service;
-        public MenuViewModel()
+        public MenuViewModel() : base(NetCoreProvider.Get<IMenuRepository>())
         {
-            SelectPageTitle = "菜单管理";
-            NetCoreProvider.Get(out service);
-        }
 
-        public override async Task GetPageData(int pageIndex)
-        {
-            try
-            {
-                var r = await service.GetMenuListAsync(new QueryParameters()
-                {
-                    PageIndex = pageIndex,
-                    PageSize = PageSize,
-                    Search = SearchText
-                });
-                if (r != null && r.success)
-                {
-                    GridModelList = new ObservableCollection<Menu>();
-                    this.TotalCount = r.dynamicObj.TotalCount;
-                    r.dynamicObj.Items?.ToList().ForEach(arg =>
-                    {
-                        GridModelList.Add(arg);
-                    });
-                    base.SetPageCount();
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex.Message);
-            }
         }
     }
 }

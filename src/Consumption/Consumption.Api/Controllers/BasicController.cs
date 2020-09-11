@@ -54,7 +54,7 @@ namespace Consumption.Api.Controllers
         /// <param name="parameters">请求参数</param>
         /// <returns>结果</returns>
         [HttpGet]
-        public async Task<IActionResult> GetBasics([FromQuery] QueryParameters parameters)
+        public async Task<IActionResult> GetAll([FromQuery] QueryParameters parameters)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace Consumption.Api.Controllers
         /// <param name="model"></param>
         /// <returns>结果</returns>
         [HttpPost]
-        public async Task<IActionResult> AddBasic([FromBody] Basic model)
+        public async Task<IActionResult> Add([FromBody] Basic model)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace Consumption.Api.Controllers
         /// <param name="model">用户信息</param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> UpdateBasic(int id, [FromBody] Basic model)
+        public async Task<IActionResult> Update(int id, [FromBody] Basic model)
         {
             if (model == null)
                 return Ok(new ConsumptionResponse() { success = false, message = "Update data error" });
@@ -144,7 +144,7 @@ namespace Consumption.Api.Controllers
         /// <param name="id">用户ID</param>
         /// <returns>结果</returns>
         [HttpDelete]
-        public async Task<IActionResult> DeleteBasic(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {

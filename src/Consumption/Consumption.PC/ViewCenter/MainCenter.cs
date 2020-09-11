@@ -30,6 +30,9 @@ namespace Consumption.PC.ViewCenter
     using MaterialDesignThemes.Wpf;
     using System.Linq;
     using Consumption.ViewModel.Common;
+    using Consumption.ViewModel.Interfaces;
+    using Autofac.Extras.DynamicProxy;
+    using Consumption.Core.Aop;
 
     /// <summary>
     /// 首页控制类
@@ -39,13 +42,13 @@ namespace Consumption.PC.ViewCenter
         public override void SubscribeMessenger()
         {
             //非阻塞式窗口提示消息
-            Messenger.Default.Register<string>(View, "Snackbar", arg =>
+            Messenger.Default.Register<string>(view, "Snackbar", arg =>
             {
-                var messageQueue = View.SnackbarThree.MessageQueue;
+                var messageQueue = view.SnackbarThree.MessageQueue;
                 messageQueue.Enqueue(arg);
             });
             //阻塞式窗口提示消息
-            Messenger.Default.Register<MsgInfo>(View, "UpdateDialog", m =>
+            Messenger.Default.Register<MsgInfo>(view, "UpdateDialog", m =>
               {
                   if (m.IsOpen)
                       _ = DialogHost.Show(new SplashScreenView()
@@ -53,113 +56,37 @@ namespace Consumption.PC.ViewCenter
                           DataContext = new { Msg = m.Msg }
                       }, "Root");
                   else
-                      ViewModel.DialogIsOpen = false;
+                  {
+                      if (viewModel.DialogIsOpen)
+                          viewModel.DialogIsOpen = false;
+                  }
               });
-            //执行菜单模块动画
-            Messenger.Default.Register<string>(View, "WindowMinimize", arg =>
+            //最小化
+            Messenger.Default.Register<string>(view, "WindowMinimize", arg =>
             {
-                View.WindowState = System.Windows.WindowState.Minimized;
+                view.WindowState = System.Windows.WindowState.Minimized;
             });
-            Messenger.Default.Register<string>(View, "WindowMaximize", arg =>
+            //最大化
+            Messenger.Default.Register<string>(view, "WindowMaximize", arg =>
             {
-                if (View.WindowState == System.Windows.WindowState.Maximized)
-                    View.WindowState = System.Windows.WindowState.Normal;
+                if (view.WindowState == System.Windows.WindowState.Maximized)
+                    view.WindowState = System.Windows.WindowState.Normal;
                 else
-                    View.WindowState = System.Windows.WindowState.Maximized;
+                    view.WindowState = System.Windows.WindowState.Maximized;
             });
             //菜单执行相关动画及模板切换
-            Messenger.Default.Register<string>(View, "ExpandMenu", arg =>
+            Messenger.Default.Register<string>(view, "ExpandMenu", arg =>
             {
-
-                if (View.MENU.Width < 200)
-                    AnimationHelper.CreateWidthChangedAnimation(View.MENU, 60, 200, new TimeSpan(0, 0, 0, 0, 300));
+                if (view.MENU.Width < 200)
+                    AnimationHelper.CreateWidthChangedAnimation(view.MENU, 60, 200, new TimeSpan(0, 0, 0, 0, 300));
                 else
-                    AnimationHelper.CreateWidthChangedAnimation(View.MENU, 200, 60, new TimeSpan(0, 0, 0, 0, 300));
-                for (int i = 0; i < ViewModel.ModuleManager.ModuleGroups.Count; i++)
-                    ViewModel.ModuleManager.ModuleGroups[i].ContractionTemplate = View.MENU.Width < 200 ? false : true;
+                    AnimationHelper.CreateWidthChangedAnimation(view.MENU, 200, 60, new TimeSpan(0, 0, 0, 0, 300));
 
                 //由于...
-                var template = View.IC.ItemTemplateSelector;
-                View.IC.ItemTemplateSelector = null;
-                View.IC.ItemTemplateSelector = template;
+                var template = view.IC.ItemTemplateSelector;
+                view.IC.ItemTemplateSelector = null;
+                view.IC.ItemTemplateSelector = template;
             });
-            //执行返回首页
-            Messenger.Default.Register<string>(View, "GoHomePage", arg =>
-            {
-                InitHomeView();
-            });
-            //打开页面
-            Messenger.Default.Register<string>(View, "OpenPage", async name =>
-            {
-                try
-                {
-                    if (string.IsNullOrWhiteSpace(name)) return;
-                    var m = ViewModel.ModuleManager.Modules.FirstOrDefault(t => t.Name.Equals(name));
-                    if (m == null) return;
-                    var module = ViewModel.ModuleList.FirstOrDefault(t => t.Name == m.Name);
-                    if (module == null)
-                    {
-                        NetCoreProvider.Get<IModule>(m.TypeName, out IModule dialog);
-                        if (dialog == null)
-                        {
-                            //404
-                            return;
-                        }
-                        _ = DialogHost.Show(new SplashScreenView() { DataContext = new { Msg = "正在打开页面..." } }, "Root");
-                        ViewModel.DialogIsOpen = true;
-                        await Task.Delay(100);
-                        //将数据库中获取的菜单Namespace在容器当中查找依赖关系的实例
-                        await dialog.BindDefaultModel(m.Auth);
-                        ViewModel.ModuleList.Add(new ModuleUIComponent()
-                        {
-                            Code = m.Code,
-                            Auth = m.Auth,
-                            Name = m.Name,
-                            TypeName = m.TypeName,
-                            Body = dialog.GetView()
-                        });
-                        ViewModel.CurrentModule = ViewModel.ModuleList[ViewModel.ModuleList.Count - 1];
-                    }
-                    else
-                        ViewModel.CurrentModule = module;
-                }
-                catch (Exception ex)
-                {
-                    Log.Error(ex.Message);
-                }
-                finally
-                {
-                    ViewModel.DialogIsOpen = false; //关闭等待窗口
-                    GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
-                    GC.Collect();
-                }
-            });
-            //关闭页面
-            Messenger.Default.Register<string>(View, "ClosePage", m =>
-           {
-               try
-               {
-                   var module = ViewModel.ModuleList.FirstOrDefault(t => t.Name.Equals(m));
-                   if (module != null)
-                   {
-                       ViewModel.ModuleList.Remove(module);
-                       if (ViewModel.ModuleList.Count > 0)
-                           ViewModel.CurrentModule = ViewModel
-                           .ModuleList[ViewModel.ModuleList.Count - 1];
-                       else
-                           ViewModel.CurrentModule = null;
-                   }
-               }
-               catch (Exception ex)
-               {
-                   Log.Error(ex.Message);
-               }
-               finally
-               {
-                   GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
-                   GC.Collect();
-               }
-           });
             base.SubscribeMessenger();
         }
 
@@ -169,24 +96,9 @@ namespace Consumption.PC.ViewCenter
         /// <returns></returns>
         public override async Task<bool> ShowDialog()
         {
-            await ViewModel.InitDefaultView();
-            InitHomeView();
+            var vm = viewModel as MainViewModel;
+            await vm?.InitDefaultView();
             return await base.ShowDialog();
-        }
-
-        /// <summary>
-        /// 临时固定,后期修改动态绑定 2020-07-19
-        /// </summary>
-        void InitHomeView()
-        {
-            NetCoreProvider.Get("HomeCenter", out IModule dialog);
-            dialog.BindDefaultModel();
-            ModuleUIComponent component = new ModuleUIComponent();
-            component.Name = "首页";
-            component.Body = dialog.GetView();
-            ViewModel.ModuleList.Add(component);
-            ViewModel.ModuleManager.Modules.Add(component);
-            ViewModel.CurrentModule = ViewModel.ModuleList[ViewModel.ModuleList.Count - 1];
         }
     }
 }

@@ -25,16 +25,21 @@ namespace Consumption.PC.ViewCenter
     using Consumption.PC.Common;
     using System.Windows.Controls;
     using Consumption.Core.Entity;
+    using Consumption.Core.Interfaces;
+    using Consumption.Common.Contract;
+    using Consumption.ViewModel.Interfaces;
 
     /// <summary>
     /// 用户管理类
     /// </summary>
     [Module("用户管理", ModuleType.系统配置)]
-    public class UserCenter : BaseCenter<UserView, UserViewModel>
+    public class UserCenter : BusinessCenter<UserView, User>
     {
+        public UserCenter() : base(NetCoreProvider.Get<IUserViewModel>())
+        { }
         public override void BindDataGridColumns()
         {
-            VisualHelper.SetDataGridColumns<UserControl>(View, "Grid", typeof(User));
+            VisualHelper.SetDataGridColumns<UserControl>(view, "Grid", typeof(User));
         }
     }
 }

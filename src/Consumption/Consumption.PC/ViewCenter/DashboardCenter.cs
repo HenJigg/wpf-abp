@@ -26,7 +26,7 @@ namespace Consumption.PC.ViewCenter
     /// 仪表板控制类
     /// </summary>
     [Module("仪表板", Core.Enums.ModuleType.应用中心)]
-    public class DashboardCenter : BaseCenter<DashboardView, DashboardViewModel>
+    public class DashboardCenter : NoBusinessCenter<DashboardView, DashboardViewModel>
     {
 
     }

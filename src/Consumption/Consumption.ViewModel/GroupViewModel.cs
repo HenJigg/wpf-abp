@@ -23,37 +23,136 @@ namespace Consumption.ViewModel
     using System.Text;
     using System.Threading.Tasks;
     using System.Collections.ObjectModel;
-    using Core.Query;
     using Consumption.Core.Common;
     using System.Linq;
     using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight.Command;
     using Org.BouncyCastle.Crypto.Engines;
-    using Consumption.Core.RequestForm;
+    using Consumption.Core.Query;
+    using Consumption.ViewModel.Interfaces;
+    using Consumption.Core.Request;
+
 
     /// <summary>
     /// 部门管理
     /// </summary>
-    public class GroupViewModel : BaseDataViewModel<Group>
+    public class GroupViewModel : BaseRepository<Group>, IGroupViewModel
     {
-        private readonly IConsumptionService service;
-        public GroupViewModel()
+        private readonly IUserRepository userRepository;
+        public readonly IGroupRepository groupRepository;
+        public GroupViewModel() : base(NetCoreProvider.Get<IGroupRepository>())
         {
-            SelectPageTitle = "部门管理";
-            NetCoreProvider.Get(out service);
+            userRepository = NetCoreProvider.Get<IUserRepository>();
+            groupRepository = repository as IGroupRepository;
             AddUserCommand = new RelayCommand<User>(arg =>
-              {
-                  if (arg == null) return;
-                  var u = GroupHeader.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
-                  if (u == null) GroupHeader.GroupUsers?.Add(new GroupUser() { Account = arg.Account });
-              });
+            {
+                if (arg == null) return;
+                var u = GroupHeader.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
+                if (u == null) GroupHeader.GroupUsers?.Add(new GroupUser() { Account = arg.Account });
+            });
             DelUserCommand = new RelayCommand<GroupUser>(arg =>
-              {
-                  if (arg == null) return;
-                  var u = GroupHeader.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
-                  if (u != null) GroupHeader.GroupUsers?.Remove(u);
-              });
+            {
+                if (arg == null) return;
+                var u = GroupHeader.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
+                if (u != null) GroupHeader.GroupUsers?.Remove(u);
+            });
         }
+
+        #region Override
+
+        public override void Execute(string arg)
+        {
+            switch (arg)
+            {
+                case "添加用户": GetUserData(); break;
+                case "选中所有功能": break;
+                case "返回上一页": SelectCardIndex = 0; break;
+                case "添加所有选中项": AddAllUser(); break;
+                case "删除所有选中用户": DeleteAllUser(); break;
+            }
+            base.Execute(arg);
+        }
+
+        public override async void AddAsync()
+        {
+            GroupHeader = new GroupHeader();
+            await UpdateMenuModules();
+            base.AddAsync();
+        }
+
+        public override async void UpdateAsync()
+        {
+            await UpdateMenuModules();
+            var g = await groupRepository.GetGroupAsync(GridModel.Id);
+            if (!g.success)
+            {
+                Msg.Warning("获取数据异常!");
+                return;
+            }
+            //其实这一步操作就是把当前用户组包含的权限,
+            //绑定到所有菜单的列表当中,设定选中
+            g.dynamicObj.GroupFuncs?.ForEach(f =>
+            {
+                for (int i = 0; i < MenuModules.Count; i++)
+                {
+                    var m = MenuModules[i];
+                    if (m.MenuCode == f.MenuCode)
+                    {
+                        for (int j = 0; j < m.Modules.Count; j++)
+                        {
+                            if ((f.Auth & m.Modules[j].Value) == m.Modules[j].Value)
+                                m.Modules[j].IsChecked = true;
+                        }
+                    }
+                }
+            });
+            GroupHeader = g.dynamicObj;//绑定编辑项GroupHeader
+            base.UpdateAsync();
+        }
+
+        public override async void SaveAsync()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(GroupHeader.group.GroupCode) ||
+                    string.IsNullOrWhiteSpace(GroupHeader.group.GroupName))
+                {
+                    Msg.Warning("组代码和名称为必填项！");
+                    return;
+                };
+
+                //把选择的功能对应的权限保存到提交的参数当中
+                GroupHeader.GroupFuncs = new List<GroupFunc>();
+                for (int i = 0; i < MenuModules.Count; i++)
+                {
+                    var m = MenuModules[i];
+                    int value = m.Modules.Where(t => t.IsChecked).Sum(t => t.Value);
+                    if (value > 0)
+                    {
+                        GroupHeader.GroupFuncs.Add(new GroupFunc()
+                        {
+                            MenuCode = m.MenuCode,
+                            Auth = value
+                        });
+                    }
+                }
+                var r = await groupRepository.SaveGroupAsync(GroupHeader);
+                if (r == null || !r.success)
+                {
+                    Msg.Error("保存数据异常！");
+                    return;
+                }
+                await GetPageData(0);
+                InitPermissions(this.AuthValue);
+                SelectPageIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                Msg.Error(ex.Message);
+            }
+        }
+
+        #endregion
 
         #region Property
 
@@ -124,167 +223,7 @@ namespace Consumption.ViewModel
 
         #endregion
 
-        public override void Execute(string arg)
-        {
-            switch (arg)
-            {
-                case "添加用户": GetUserData(); break;
-                case "选中所有功能": break;
-                case "返回上一页": SelectCardIndex = 0; break;
-                case "添加所有选中项": AddAllUser(); break;
-                case "删除所有选中用户": DeleteAllUser(); break;
-            }
-            base.Execute(arg);
-        }
-
-
-        public override async Task GetPageData(int pageIndex)
-        {
-            try
-            {
-                var r = await service.GetGroupListAsync(new QueryParameters()
-                {
-                    PageIndex = PageIndex,
-                    PageSize = PageSize,
-                    Search = SearchText
-                });
-                if (r != null && r.success)
-                {
-                    GridModelList = new ObservableCollection<Group>();
-                    this.TotalCount = r.dynamicObj.TotalCount;
-                    r.dynamicObj.Items?.ToList().ForEach(arg =>
-                    {
-                        GridModelList.Add(arg);
-                    });
-                    base.SetPageCount();
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex.Message);
-            }
-        }
-
-        public override async void Add()
-        {
-            try
-            {
-                UpdateLoading(true, "正在加载...");
-                GroupHeader = new GroupHeader();
-                await UpdateMenuModules();
-                SelectPageTitle = "编辑组信息";
-                SelectPageIndex = 1;
-                base.Add();
-            }
-            catch (Exception ex)
-            {
-                 Msg.Error(ex.Message);
-                Log.Error(ex.Message);
-            }
-            finally
-            {
-                UpdateLoading(false);
-            }
-        }
-
-        public override async void Edit()
-        {
-            try
-            {
-                if (GridModel == null) return;
-                UpdateLoading(true, "正在查询...");
-                await UpdateMenuModules();
-                var g = await service.GetGroupAsync(GridModel.Id);
-                if (!g.success)
-                {
-                    Msg.Warning("获取数据异常!");
-                    return;
-                }
-                //其实这一步操作就是把当前用户组包含的权限,
-                //绑定到所有菜单的列表当中,设定选中
-                g.dynamicObj.GroupFuncs?.ForEach(f =>
-                {
-                    for (int i = 0; i < MenuModules.Count; i++)
-                    {
-                        var m = MenuModules[i];
-                        if (m.MenuCode == f.MenuCode)
-                        {
-                            for (int j = 0; j < m.Modules.Count; j++)
-                            {
-                                if ((f.Auth & m.Modules[j].Value) == m.Modules[j].Value)
-                                    m.Modules[j].IsChecked = true;
-                            }
-                        }
-                    }
-                });
-                GroupHeader = g.dynamicObj;//绑定编辑项GroupHeader
-                SelectPageTitle = "编辑组信息";
-                SelectPageIndex = 1;
-                base.Edit();
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex.Message);
-            }
-            finally
-            {
-                UpdateLoading(false);
-            }
-        }
-
-        public override async void Save()
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(GroupHeader.group.GroupCode) ||
-                    string.IsNullOrWhiteSpace(GroupHeader.group.GroupName))
-                {
-                    Msg.Warning("组代码和名称为必填项！");
-                    return;
-                };
-
-                //把选择的功能对应的权限保存到提交的参数当中
-                GroupHeader.GroupFuncs = new List<GroupFunc>();
-                for (int i = 0; i < MenuModules.Count; i++)
-                {
-                    var m = MenuModules[i];
-                    int value = m.Modules.Where(t => t.IsChecked).Sum(t => t.Value);
-                    if (value > 0)
-                    {
-                        GroupHeader.GroupFuncs.Add(new GroupFunc()
-                        {
-                            MenuCode = m.MenuCode,
-                            Auth = value
-                        });
-                    }
-                }
-                UpdateLoading(true, "正在保存...");
-                var r = await service.SaveGroupAsync(GroupHeader);
-                if (r == null || !r.success)
-                {
-                     Msg.Error("保存数据异常！");
-                    return;
-                }
-                await this.GetPageData(0);
-                SelectPageTitle = "部门管理";
-                base.Save();
-            }
-            catch (Exception ex)
-            {
-                 Msg.Error(ex.Message);
-                Log.Error(ex.Message);
-            }
-            finally
-            {
-                UpdateLoading(false);
-            }
-        }
-
-        public override void Cancel()
-        {
-            SelectPageTitle = "部门管理";
-            base.Cancel();
-        }
+        #region Method
 
         /// <summary>
         /// 获取用户列表
@@ -293,8 +232,7 @@ namespace Consumption.ViewModel
         {
             try
             {
-                UpdateLoading(true, "获取用户列表...");
-                var r = await service.GetUserListAsync(new UserParameters()
+                var r = await userRepository.GetAllListAsync(new QueryParameters()
                 {
                     PageIndex = 0,
                     PageSize = 30,
@@ -310,13 +248,9 @@ namespace Consumption.ViewModel
                 }
                 SelectCardIndex = 1;
             }
-            catch (Exception ex)
+            catch
             {
-                Log.Error(ex.Message);
-            }
-            finally
-            {
-                UpdateLoading(false);
+
             }
         }
 
@@ -365,7 +299,7 @@ namespace Consumption.ViewModel
                 }
                 return;
             }
-            var tm = await service.GetMenuModuleListAsync();
+            var tm = await groupRepository.GetMenuModuleListAsync();
             if (tm != null && tm.success)
             {
                 MenuModules = new ObservableCollection<MenuModuleGroup>();
@@ -375,5 +309,8 @@ namespace Consumption.ViewModel
                 });
             }
         }
+
+        #endregion
     }
+
 }

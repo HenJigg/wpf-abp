@@ -11,6 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewCenter\AccountCenter.cs" />
+    <Compile Remove="ViewCenter\BillCenter.cs" />
+    <Compile Remove="ViewCenter\ConsumerCenter.cs" />
+    <Compile Remove="ViewCenter\PlanCenter.cs" />
+    <Compile Remove="ViewCenter\ReportCenter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Images\test_user.png" />
   </ItemGroup>
 
@@ -23,8 +31,8 @@
     <PackageReference Include="AvalonEdit" Version="6.0.1" />
     <PackageReference Include="Dragablz.NetCore" Version="0.3.3" />
     <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
-    <PackageReference Include="MaterialDesignColors" Version="1.2.6" />
-    <PackageReference Include="MaterialDesignThemes" Version="3.1.0" />
+    <PackageReference Include="MaterialDesignColors" Version="1.2.7-ci1951" />
+    <PackageReference Include="MaterialDesignThemes" Version="3.2.0-ci1951" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
     <PackageReference Include="NLog" Version="4.7.2" />

@@ -24,11 +24,9 @@ namespace Consumption.Mobile
 
         protected override void OnStart()
         {
-            
             var serviceCollection = new ServiceCollection();
             var container = ConfigureServices();
             NetCoreProvider.RegisterServiceLocator(container);
-            MainPage = new LoginCenter().GetContentPage();
         }
 
         protected override void OnSleep()
@@ -42,7 +40,7 @@ namespace Consumption.Mobile
         private IContainer ConfigureServices()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<ConsumptionService>().As<IConsumptionService>();
+            //builder.RegisterType<ConsumptionService>().As<IConsumptionService>();
 
             var assembly = Assembly.GetCallingAssembly();
             var types = assembly.GetTypes();

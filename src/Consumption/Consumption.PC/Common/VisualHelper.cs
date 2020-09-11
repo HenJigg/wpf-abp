@@ -25,6 +25,7 @@ namespace Consumption.PC.Common
         /// <param name="type">表格绑定的类型</param>
         public static void SetDataGridColumns<T>(T frameworkElement, string name, Type type) where T : FrameworkElement
         {
+            if (frameworkElement == null) throw new ArgumentNullException(nameof(frameworkElement));
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name));
             if (type == null) throw new ArgumentNullException(nameof(type));
             var dataGrid = frameworkElement.FindName(name) as DataGrid;

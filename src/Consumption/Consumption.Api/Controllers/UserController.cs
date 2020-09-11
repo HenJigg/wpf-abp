@@ -132,7 +132,7 @@ namespace Consumption.Api.Controllers
         /// <param name="id">用户ID</param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetUser(int id)
+        public async Task<IActionResult> Get(int id)
         {
             try
             {
@@ -160,7 +160,7 @@ namespace Consumption.Api.Controllers
         /// <param name="parameters">请求参数</param>
         /// <returns>结果</returns>
         [HttpGet]
-        public async Task<IActionResult> GetUsers([FromQuery] UserParameters parameters)
+        public async Task<IActionResult> GetAll([FromQuery] UserParameters parameters)
         {
             try
             {
@@ -194,7 +194,7 @@ namespace Consumption.Api.Controllers
         /// <param name="user">用户信息</param>
         /// <returns>结果</returns>
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] User user)
+        public async Task<IActionResult> Add([FromBody] User user)
         {
             try
             {
@@ -223,7 +223,7 @@ namespace Consumption.Api.Controllers
         /// <param name="user"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> SaveUser([FromBody] User user)
+        public async Task<IActionResult> Save([FromBody] User user)
         {
             if (user == null)
                 return Ok(new ConsumptionResponse() { success = false, message = "数据非法" });
@@ -273,7 +273,7 @@ namespace Consumption.Api.Controllers
         /// <param name="id">用户ID</param>
         /// <returns>结果</returns>
         [HttpDelete]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {

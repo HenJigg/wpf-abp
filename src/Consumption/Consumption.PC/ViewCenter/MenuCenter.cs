@@ -14,11 +14,13 @@
 
 namespace Consumption.PC.ViewCenter
 {
+    using Consumption.Common.Contract;
     using Consumption.Core.Attributes;
     using Consumption.Core.Entity;
     using Consumption.PC.Common;
     using Consumption.PC.View;
     using Consumption.ViewModel;
+    using Consumption.ViewModel.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -28,11 +30,14 @@ namespace Consumption.PC.ViewCenter
     /// 用户菜单控制类
     /// </summary>
     [Module("菜单管理", Core.Enums.ModuleType.系统配置)]
-    public class MenuCenter : BaseCenter<MenuView, MenuViewModel>
+    public class MenuCenter : BusinessCenter<MenuView, Menu>
     {
+        public MenuCenter() : base(NetCoreProvider.Get<IMenuViewModel>())
+        { }
+
         public override void BindDataGridColumns()
         {
-            VisualHelper.SetDataGridColumns(View, "Grid", typeof(Menu));
+            VisualHelper.SetDataGridColumns(view, "Grid", typeof(Menu));
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Consumption.Api.Controllers
         /// <param name="parameters">请求参数</param>
         /// <returns>结果</returns>
         [HttpGet]
-        public async Task<IActionResult> GetMenus([FromQuery] QueryParameters parameters)
+        public async Task<IActionResult> GetAll([FromQuery] QueryParameters parameters)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace Consumption.Api.Controllers
         /// <param name="model">用户信息</param>
         /// <returns>结果</returns>
         [HttpPost]
-        public async Task<IActionResult> AddMenu([FromBody] Menu model)
+        public async Task<IActionResult> Add([FromBody] Menu model)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace Consumption.Api.Controllers
         /// <param name="id">用户ID</param>
         /// <returns>结果</returns>
         [HttpDelete]
-        public async Task<IActionResult> DeleteMenu(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
