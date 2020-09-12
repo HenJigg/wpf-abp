@@ -14,7 +14,9 @@
 
 namespace Consumption.Core.Aop
 {
+    using AspectInjector.Broker;
     using Castle.DynamicProxy;
+    using Consumption.Common.Contract;
     using Consumption.Core.Interfaces;
     using System;
     using System.Collections.Generic;
@@ -23,30 +25,29 @@ namespace Consumption.Core.Aop
 
 
     /// <summary>
-    /// 日志记录器
+    /// 全局日志
     /// </summary>
-    public class GlobalLoger : IInterceptor
+    [Aspect(Scope.Global)]
+    [Injection(typeof(GlobalLoger))]
+    public class GlobalLoger : Attribute
     {
         private readonly ILog log;
 
-        public GlobalLoger(ILog log)
+        public GlobalLoger()
         {
-            this.log = log;
+            this.log = NetCoreProvider.Get<ILog>();
         }
 
-        public void Intercept(IInvocation invocation)
+        [Advice(Kind.Before, Targets = Target.Method)]
+        public void Start([Argument(Source.Name)] string methodName, [Argument(Source.Arguments)] object[] arg)
         {
-            bool isEnable = false;
-            var attr = invocation.Method.GetCustomAttributes(typeof(GlabalLogerAttribute), false);
-            if (attr != null && attr.Length > 0)
-            {
-                isEnable = true;
-            }
-            if (isEnable)
-                log.Debug($"我轻轻的来:{invocation.Method.Name},参数:{string.Join(", ", invocation.Arguments.Select(a => (a ?? "").ToString()).ToArray())}");
-            invocation.Proceed();
-            if (isEnable)
-                log.Debug($"正如我轻轻的走:{invocation.Method.Name},返回结果:{invocation.ReturnValue}");
+            log.Debug($"开始调用方法:{methodName},参数:{string.Join(",", arg)}");
+        }
+
+        [Advice(Kind.After, Targets = Target.Method)]
+        public void End([Argument(Source.Name)] string methodName, [Argument(Source.ReturnValue)] object arg)
+        {
+            log.Debug($"结束调用方法:{methodName},返回值:{arg}");
         }
     }
 }

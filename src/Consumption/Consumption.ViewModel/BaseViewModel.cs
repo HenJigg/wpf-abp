@@ -25,16 +25,19 @@ namespace Consumption.ViewModel
     using System.Threading.Tasks;
     using Consumption.Core.Common;
     using Consumption.ViewModel.Common;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
 
     /// <summary>
     /// MVVM基类
     /// </summary>
-    public class BaseViewModel : ViewModelBase
+    public class BaseDialogViewModel : ViewModelBase
     {
-        public BaseViewModel()
+        public BaseDialogViewModel()
         {
             ExitCommand = new RelayCommand(Exit);
         }
+
         public RelayCommand ExitCommand { get; private set; }
 
         /// <summary>
@@ -44,7 +47,6 @@ namespace Consumption.ViewModel
         {
             Messenger.Default.Send(true, "Exit");
         }
-
 
         private bool isOpen;
 

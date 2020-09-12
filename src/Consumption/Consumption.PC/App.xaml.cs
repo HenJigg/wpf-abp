@@ -46,8 +46,6 @@ namespace Consumption.PC
             ContainerBuilder builder = new ContainerBuilder();
             //注册日志服务
             builder.RegisterType<ConsumptionNLog>().As<ILog>().SingleInstance();
-            builder.Register(_ => new GlobalLoger(_.Resolve<ILog>()));
-            builder.Register(_ => new GlobalProgress());
             //注册HTTP服务依赖关系
             builder.AddCustomRepository<UserService, IUserRepository>()
                 .AddCustomRepository<GroupService, IGroupRepository>()

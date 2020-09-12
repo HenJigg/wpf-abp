@@ -34,6 +34,7 @@ namespace Consumption.Common.Contract
 
         public static T Get<T>()
         {
+            var tt = typeof(T).Name;
             if (Instance == null || !Instance.IsRegistered<T>()) return default(T);
             return Instance.Resolve<T>();
         }

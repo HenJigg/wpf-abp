@@ -25,6 +25,7 @@ namespace Consumption.PC.ViewCenter
     using Consumption.Common.Contract;
     using Consumption.Core.Interfaces;
     using GalaSoft.MvvmLight;
+    using Consumption.ViewModel.Interfaces;
 
     /// <summary>
     /// 登录控制类

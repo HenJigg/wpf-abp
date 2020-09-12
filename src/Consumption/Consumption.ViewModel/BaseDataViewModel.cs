@@ -89,7 +89,6 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 查询
         /// </summary>
-        [GlabalProgress("正在查询...")]
         public virtual async void Query()
         {
             await GetPageData(this.PageIndex);
@@ -99,7 +98,7 @@ namespace Consumption.ViewModel
         /// 执行方法
         /// </summary>
         /// <param name="arg"></param>
-        [GlabalLoger]
+        [GlobalLoger]
         public virtual void Execute(string arg)
         {
             /*
@@ -128,14 +127,13 @@ namespace Consumption.ViewModel
             SelectPageIndex = 0;
         }
 
-        [GlabalProgress("删除中...")]
         public virtual void DeleteAsync()
         {
             if (GridModel != null)
                 repository.DeleteAsync(GridModel.Id);
         }
 
-        [GlabalProgress("保存中...")]
+        [GlobalProgress]
         public virtual void SaveAsync()
         {
             if (GridModel != null)

@@ -37,7 +37,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 首页控制类
     /// </summary>
-    public class MainCenter : BaseDialogCenter<MaterialDesignMainWindow, MainViewModel>
+    public class MainCenter : BaseDialogCenter<MaterialDesignMainWindow,MainViewModel>
     {
         public override void SubscribeMessenger()
         {
@@ -57,8 +57,7 @@ namespace Consumption.PC.ViewCenter
                       }, "Root");
                   else
                   {
-                      if (viewModel.DialogIsOpen)
-                          viewModel.DialogIsOpen = false;
+                      DialogHost.Close("Root");
                   }
               });
             //最小化
@@ -96,8 +95,7 @@ namespace Consumption.PC.ViewCenter
         /// <returns></returns>
         public override async Task<bool> ShowDialog()
         {
-            var vm = viewModel as MainViewModel;
-            await vm?.InitDefaultView();
+            await viewModel.InitDefaultView();
             return await base.ShowDialog();
         }
     }

@@ -14,6 +14,7 @@
 
 namespace Consumption.Core.Aop
 {
+    using AspectInjector.Broker;
     using Castle.DynamicProxy;
     using Consumption.Core.Common;
     using GalaSoft.MvvmLight.Messaging;
@@ -25,28 +26,21 @@ namespace Consumption.Core.Aop
     /// <summary>
     /// 全局进度
     /// </summary>
-    public class GlobalProgress : IInterceptor
+    [Aspect(Scope.Global)]
+    [Injection(typeof(GlobalProgress))]
+    public class GlobalProgress : Attribute
     {
-        public async void Intercept(IInvocation invocation)
+        [Advice(Kind.Before, Targets = Target.Method)]
+        public async void Start([Argument(Source.Name)] string name)
         {
-            string Msg = string.Empty;
-            try
-            {
-                var attr = invocation.Method.GetCustomAttributes(typeof(GlabalProgressAttribute), false);
-                if (attr != null && attr.Length > 0)
-                    Msg = (attr[0] as GlabalProgressAttribute).Message;
-                else return;
-                if (!string.IsNullOrWhiteSpace(Msg))
-                    UpdateLoading(true, Msg);
-                await Task.Delay(200);
-                invocation.Proceed();
-                if (!string.IsNullOrWhiteSpace(Msg))
-                    UpdateLoading(false);
-            }
-            catch (Exception ex)
-            {
-                Messenger.Default.Send(ex.Message, "Snackbar");
-            }
+            UpdateLoading(true);
+            await Task.Delay(300);
+        }
+
+        [Advice(Kind.After, Targets = Target.Method)]
+        public void End([Argument(Source.Name)] string name)
+        {
+            UpdateLoading(false);
         }
 
         void UpdateLoading(bool isOpen, string msg = "正在处理...")

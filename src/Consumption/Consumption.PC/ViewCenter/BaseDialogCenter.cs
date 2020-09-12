@@ -28,6 +28,7 @@ namespace Consumption.PC.ViewCenter
     using System.Windows.Controls;
     using System.Windows.Input;
     using Consumption.Core.Interfaces;
+    using Consumption.ViewModel.Interfaces;
 
     public class BaseDialogCenter<TView, TViewModel> : IModuleDialog
         where TView : Window, new()

@@ -25,11 +25,12 @@ namespace Consumption.ViewModel
     using System.Threading.Tasks;
     using Consumption.Common.Contract;
     using Consumption.Core.Common;
+    using Consumption.ViewModel.Interfaces;
 
     /// <summary>
     /// 登录模块
     /// </summary>
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModel : BaseDialogViewModel, IBaseDialog
     {
         public LoginViewModel()
         {

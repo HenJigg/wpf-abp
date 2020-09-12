@@ -32,7 +32,7 @@ namespace Consumption.ViewModel
     /// <summary>
     /// 应用首页
     /// </summary>
-    public class MainViewModel : BaseViewModel
+    public class MainViewModel : BaseDialogViewModel, IBaseDialog
     {
         public MainViewModel()
         {
@@ -141,10 +141,10 @@ namespace Consumption.ViewModel
             ModuleList = new ObservableCollection<ModuleUIComponent>();
             //加载自身的程序集模块
             await ModuleManager.LoadAssemblyModule();
-
             InitHomeView();
         }
 
+        [GlobalProgress]
         public async virtual void OpenPage(string pageName)
         {
             if (string.IsNullOrWhiteSpace(pageName)) return;

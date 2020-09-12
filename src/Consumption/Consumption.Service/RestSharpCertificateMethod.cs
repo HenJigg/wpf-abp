@@ -13,6 +13,7 @@
 
 namespace Consumption.Service
 {
+    using Consumption.Core.Aop;
     using RestSharp;
     using System.Threading.Tasks;
 
@@ -30,6 +31,7 @@ namespace Consumption.Service
         /// <param name="isToken">是否Token</param>
         /// <param name="isJson">是否Json</param>
         /// <returns></returns>
+        [GlobalLoger]
         public async Task<string> RequestBehavior(string url, Method method, string pms,
             bool isToken = true, bool isJson = true)
         {
