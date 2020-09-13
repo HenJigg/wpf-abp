@@ -14,22 +14,34 @@
   
 ### 如何运行它?
 [点击观看视频介绍](https://www.bilibili.com/video/BV1954y1i7wM)
-  
-#### UI框架
-  Xamarin UI: [XF.Material](https://github.com/Baseflow/XF-Material-Library)
 
-  WPF UI (.NET Core):[MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+### WPF模块介绍
+1.UI框架: [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+2.MVVM框架:[mvvmlight](https://github.com/lbugnion/mvvmlight)
+3.AOP框架:[aspect-injector](https://github.com/pamidur/aspect-injector)
+4.IOC组件:[Autofac](https://github.com/autofac/Autofac)
+5.API组件:[RestSharp](https://github.com/restsharp/RestSharp)
+6.Log组件:[Nlog](https://github.com/NLog/NLog)
+7.Chart组件:[LiveChart](https://github.com/Live-Charts/Live-Charts)
+8.拖拽组件:[Dragablz](https://github.com/ButchersBoy/Dragablz)
 
-  Blazor UI:[AntBlazor](https://github.com/ant-design-blazor/ant-design-blazor)
+### Xamarin模块介绍
+1.UI框架:[XF.Material](https://github.com/Baseflow/XF-Material-Library)
+2.IOC组件:[Autofac](https://github.com/autofac/Autofac)
+3.API组件:[RestSharp](https://github.com/restsharp/RestSharp)
+4.Log组件:[Nlog](https://github.com/NLog/NLog)
 
-#### 插件
-  log : [Nlog](https://github.com/NLog/NLog)
+说明: 该项目在结构处理阶段, 以上为公共的组件模块。
 
-  api : [RestSharp](https://github.com/restsharp/RestSharp)
+### Blazor模块介绍
+1.UI框架:[AntBlazor](https://github.com/ant-design-blazor/ant-design-blazor)
+2.IOC组件:[Autofac](https://github.com/autofac/Autofac)
+3.API组件:[RestSharp](https://github.com/restsharp/RestSharp)
+4.Log组件:[Nlog](https://github.com/NLog/NLog)
 
-  mvvm : [mvvmlight](https://github.com/lbugnion/mvvmlight)
+说明:该项目在结构处理阶段, 以上为公共的组件模块。
 
-### 项目截图
+### 效果预览
 
 #### WPF预览(部分)
 

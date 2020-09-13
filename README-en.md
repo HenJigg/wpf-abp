@@ -13,21 +13,33 @@ This project mainly focuses on C, build a multi-platform application example, th
 ### How do I run it?
 [Click here](https://www.bilibili.com/video/BV1954y1i7wM)
   
-#### UI Framework
-  Xamarin UI: [XF.Material](https://github.com/Baseflow/XF-Material-Library)
+### WPF Introduced.
+1.UI: [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+2.MVVM:[mvvmlight](https://github.com/lbugnion/mvvmlight)
+3.AOP:[aspect-injector](https://github.com/pamidur/aspect-injector)
+4.IOC:[Autofac](https://github.com/autofac/Autofac)
+5.API:[RestSharp](https://github.com/restsharp/RestSharp)
+6.Log:[Nlog](https://github.com/NLog/NLog)
+7.Chart:[LiveChart](https://github.com/Live-Charts/Live-Charts)
+8.Drag:[Dragablz](https://github.com/ButchersBoy/Dragablz)
 
-  WPF UI (.NET Core):[MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+### Xamarin Introduced.
+1.UI:[XF.Material](https://github.com/Baseflow/XF-Material-Library)
+2.IOC:[Autofac](https://github.com/autofac/Autofac)
+3.API:[RestSharp](https://github.com/restsharp/RestSharp)
+4.Log:[Nlog](https://github.com/NLog/NLog)
 
-  Blazor UI:[AntBlazor](https://github.com/ant-design-blazor/ant-design-blazor)
+Description: The project is in the structural processing phase, the above is a common component module.
 
-#### Plug
-  log : [Nlog](https://github.com/NLog/NLog)
+### Blazor Introduced.
+1.UI:[AntBlazor](https://github.com/ant-design-blazor/ant-design-blazor)
+2.IOC:[Autofac](https://github.com/autofac/Autofac)
+3.API:[RestSharp](https://github.com/restsharp/RestSharp)
+4.Log:[Nlog](https://github.com/NLog/NLog)
 
-  api : [RestSharp](https://github.com/restsharp/RestSharp)
+Description: The project is in the structural processing phase, the above is a common component module.
 
-  mvvm : [mvvmlight](https://github.com/lbugnion/mvvmlight)
-
-### Screenshot
+### Screenshots.
 
 #### WPF Preview(Part)
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Main.png)
