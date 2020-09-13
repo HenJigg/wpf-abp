@@ -15,7 +15,6 @@
 namespace Consumption.Core.Aop
 {
     using AspectInjector.Broker;
-    using Castle.DynamicProxy;
     using Consumption.Common.Contract;
     using Consumption.Core.Interfaces;
     using System;

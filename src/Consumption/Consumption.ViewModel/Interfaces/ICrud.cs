@@ -15,7 +15,6 @@
 
 namespace Consumption.ViewModel.Interfaces
 {
-    using Autofac.Extras.DynamicProxy;
     using Consumption.Core.Aop;
     using Consumption.Core.Query;
     using GalaSoft.MvvmLight.Command;

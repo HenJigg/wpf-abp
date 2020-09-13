@@ -14,7 +14,6 @@
 
 namespace Consumption.Core.Interfaces
 {
-    using Autofac.Extras.DynamicProxy;
     using Consumption.Core.Aop;
     using System.Threading.Tasks;
 

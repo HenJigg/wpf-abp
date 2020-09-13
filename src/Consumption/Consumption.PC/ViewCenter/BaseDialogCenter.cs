@@ -14,7 +14,6 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Autofac.Extras.DynamicProxy;
     using Consumption.Core.Aop;
     using Consumption.ViewModel;
     using Consumption.ViewModel.Common;

@@ -14,7 +14,6 @@
 
 namespace Consumption.ViewModel
 {
-    using Autofac.Extras.DynamicProxy;
     using Consumption.Common.Contract;
     using Consumption.Core.Aop;
     using Consumption.Core.Interfaces;

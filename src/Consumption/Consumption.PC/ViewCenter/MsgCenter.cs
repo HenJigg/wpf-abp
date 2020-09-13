@@ -34,9 +34,6 @@ namespace Consumption.PC.ViewCenter
     {
         public async Task<bool> Show(object obj)
         {
-            //如果你调用这个Show但是因为你在此之前已经有了弹窗,
-            //所以在Show之前,会默认把之前打开的窗口关闭,然后Show
-            Messenger.Default.Send(new MsgInfo() { IsOpen = false, }, "UpdateDialog");
             object result = await DialogHost.Show(new MsgView()
             {
                 DataContext = new { obj }

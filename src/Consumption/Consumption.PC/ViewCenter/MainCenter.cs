@@ -31,7 +31,6 @@ namespace Consumption.PC.ViewCenter
     using System.Linq;
     using Consumption.ViewModel.Common;
     using Consumption.ViewModel.Interfaces;
-    using Autofac.Extras.DynamicProxy;
     using Consumption.Core.Aop;
 
     /// <summary>

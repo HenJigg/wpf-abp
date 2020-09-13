@@ -32,7 +32,7 @@ namespace Consumption.Service
         public async Task<BaseResponse> DeleteAsync(int id)
         {
             var r = await new BaseServiceRequest().
-              GetRequest<BaseResponse>(@$"api/{typeof(T).Name}/Delete/id={id}", string.Empty, Method.DELETE);
+              GetRequest<BaseResponse>(@$"api/{typeof(T).Name}/Delete?id={id}", string.Empty, Method.DELETE);
             return r;
         }
 
@@ -46,7 +46,7 @@ namespace Consumption.Service
         public async Task<BaseResponse<T>> GetAsync(int id)
         {
             var r = await new BaseServiceRequest().
-               GetRequest<BaseResponse<T>>(@$"api/{typeof(T).Name}/Get/id={id}", string.Empty, Method.GET);
+               GetRequest<BaseResponse<T>>(@$"api/{typeof(T).Name}/Get?id={id}", string.Empty, Method.GET);
             return r;
         }
 

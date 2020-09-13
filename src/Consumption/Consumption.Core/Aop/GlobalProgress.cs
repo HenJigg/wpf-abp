@@ -15,7 +15,6 @@
 namespace Consumption.Core.Aop
 {
     using AspectInjector.Broker;
-    using Castle.DynamicProxy;
     using Consumption.Core.Common;
     using GalaSoft.MvvmLight.Messaging;
     using System;
@@ -31,19 +30,19 @@ namespace Consumption.Core.Aop
     public class GlobalProgress : Attribute
     {
         [Advice(Kind.Before, Targets = Target.Method)]
-        public async void Start([Argument(Source.Name)] string name)
+        public void Start([Argument(Source.Name)] string name)
         {
             UpdateLoading(true);
-            await Task.Delay(300);
         }
 
         [Advice(Kind.After, Targets = Target.Method)]
-        public void End([Argument(Source.Name)] string name)
+        public async void End([Argument(Source.Name)] string name)
         {
+            await Task.Delay(300);
             UpdateLoading(false);
         }
 
-        void UpdateLoading(bool isOpen, string msg = "正在处理...")
+        void UpdateLoading(bool isOpen, string msg = "Loading...")
         {
             Messenger.Default.Send(new MsgInfo()
             {

@@ -38,7 +38,6 @@ namespace Consumption.ViewModel
     using Consumption.Core.Entity;
     using System.Linq;
     using Consumption.Core.Aop;
-    using Autofac.Extras.DynamicProxy;
 
     /// <summary>
     /// 通用基类(实现CRUD/数据分页..)
@@ -127,15 +126,25 @@ namespace Consumption.ViewModel
             SelectPageIndex = 0;
         }
 
-        public virtual void DeleteAsync()
+        public virtual async void DeleteAsync()
         {
             if (GridModel != null)
-                repository.DeleteAsync(GridModel.Id);
+            {
+                if (await Msg.Question("Confirm that the current selection is deleted??"))
+                {
+                    var r = await repository.DeleteAsync(GridModel.Id);
+                    if (r != null && r.success)
+                        await GetPageData(0);
+                    else
+                        Messenger.Default.Send("Delete data exception.!", "Snackbar");
+                }
+            }
         }
 
         [GlobalProgress]
         public virtual void SaveAsync()
         {
+            //Before you save, you need to verify the validity of the data.
             if (GridModel != null)
             {
                 repository.SaveAsync(GridModel);
@@ -144,10 +153,21 @@ namespace Consumption.ViewModel
             }
         }
 
-        public virtual void UpdateAsync()
+        [GlobalProgress]
+        public virtual async void UpdateAsync()
         {
-            this.CreateDeaultCommand();
-            SelectPageIndex = 1;
+            if (GridModel != null)
+            {
+                var baseResponse = await repository.GetAsync(GridModel.Id);
+                if (baseResponse != null && baseResponse.success)
+                {
+                    GridModel = baseResponse.dynamicObj;
+                    this.CreateDeaultCommand();
+                    SelectPageIndex = 1;
+                }
+                else
+                    Messenger.Default.Send("Get data exception!", "Snackbar");
+            }
         }
 
         #endregion

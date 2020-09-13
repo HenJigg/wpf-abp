@@ -186,8 +186,8 @@
 
             <materialDesign:Snackbar
                 x:Name="SnackbarThree"
-                Grid.ColumnSpan="2"
-                VerticalAlignment="Center"
+                Grid.ColumnSpan="2" Panel.ZIndex="1"
+                VerticalAlignment="Top"
                 MessageQueue="{materialDesign:MessageQueue}" />
 
             <Grid Grid.Column="1">

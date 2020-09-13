@@ -5,7 +5,6 @@ namespace Consumption.ViewModel.Core
     using System.Collections.Generic;
     using System.Text;
     using Autofac;
-    using Autofac.Extras.DynamicProxy;
     using Consumption.Core.Interfaces;
     public static class ServiceExtensions
     {
@@ -19,7 +18,7 @@ namespace Consumption.ViewModel.Core
         public static ContainerBuilder AddCustomViewModel<TRepository, IRepository>(this ContainerBuilder services)
           where TRepository : class
         {
-            services.RegisterType<TRepository>().As<IRepository>().EnableClassInterceptors();
+            services.RegisterType<TRepository>().As<IRepository>();
             return services;
         }
     }

@@ -17,7 +17,6 @@ using Consumption.ViewModel.Common;
 using Autofac;
 using System.Reflection;
 using Consumption.Core.Common;
-using Autofac.Extras.DynamicProxy;
 using Consumption.Core.Aop;
 using Consumption.ViewModel.Core;
 using Consumption.Core.Entity;

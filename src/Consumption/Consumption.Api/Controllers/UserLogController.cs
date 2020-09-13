@@ -41,7 +41,6 @@ namespace Consumption.Api.Controllers
         /// 
         /// </summary>
         /// <param name="logger"></param>
-        /// <param name="repository"></param>
         /// <param name="work"></param>
         public UserLogController(ILogger<UserLogController> logger, IUnitOfWork work)
         {
