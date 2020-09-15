@@ -45,6 +45,7 @@ namespace Consumption.ViewModel
                     var arg = ModuleManager.ModuleGroups[i];
                     arg.ContractionTemplate = !arg.ContractionTemplate;
                 }
+                Messenger.Default.Send("", "ExpandMenu");
             });
         }
 
