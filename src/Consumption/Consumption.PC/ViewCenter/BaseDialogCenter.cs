@@ -71,6 +71,20 @@ namespace Consumption.PC.ViewCenter
 
         public virtual void SubscribeMessenger()
         {
+            //最小化
+            Messenger.Default.Register<string>(view, "WindowMinimize", arg =>
+            {
+                view.WindowState = System.Windows.WindowState.Minimized;
+            });
+            //最大化
+            Messenger.Default.Register<string>(view, "WindowMaximize", arg =>
+            {
+                if (view.WindowState == System.Windows.WindowState.Maximized)
+                    view.WindowState = System.Windows.WindowState.Normal;
+                else
+                    view.WindowState = System.Windows.WindowState.Maximized;
+            });
+            //关闭系统
             Messenger.Default.Register<bool>(view, "Exit", async r =>
             {
                 if (r)

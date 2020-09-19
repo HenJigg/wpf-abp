@@ -25,13 +25,7 @@ namespace Consumption.Core.Interfaces
         void BindDefaultModel();
 
         object GetView();
-    }
 
-    /// <summary>
-    /// 业务模块
-    /// </summary>
-    public interface IBusinessModule : IBaseModule
-    {
         /// <summary>
         /// 关联默认数据上下文(包含权限相关)
         /// </summary>
@@ -44,5 +38,4 @@ namespace Consumption.Core.Interfaces
         /// <param name="type"></param>
         void BindDataGridColumns();
     }
-
 }

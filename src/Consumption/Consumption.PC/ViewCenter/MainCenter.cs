@@ -32,11 +32,12 @@ namespace Consumption.PC.ViewCenter
     using Consumption.ViewModel.Common;
     using Consumption.ViewModel.Interfaces;
     using Consumption.Core.Aop;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// 首页控制类
     /// </summary>
-    public class MainCenter : BaseDialogCenter<MaterialDesignMainWindow,MainViewModel>
+    public class MainCenter : BaseDialogCenter<MaterialDesignMainWindow, MainViewModel>
     {
         public override void SubscribeMessenger()
         {
@@ -59,19 +60,6 @@ namespace Consumption.PC.ViewCenter
                       DialogHost.Close("Root");
                   }
               });
-            //最小化
-            Messenger.Default.Register<string>(view, "WindowMinimize", arg =>
-            {
-                view.WindowState = System.Windows.WindowState.Minimized;
-            });
-            //最大化
-            Messenger.Default.Register<string>(view, "WindowMaximize", arg =>
-            {
-                if (view.WindowState == System.Windows.WindowState.Maximized)
-                    view.WindowState = System.Windows.WindowState.Normal;
-                else
-                    view.WindowState = System.Windows.WindowState.Maximized;
-            });
             //菜单执行相关动画及模板切换
             Messenger.Default.Register<string>(view, "ExpandMenu", arg =>
             {
@@ -85,7 +73,60 @@ namespace Consumption.PC.ViewCenter
                 view.IC.ItemTemplateSelector = null;
                 view.IC.ItemTemplateSelector = template;
             });
+            Messenger.Default.Register<string>(view, "OpenPage", OpenPage);
+            Messenger.Default.Register<string>(view, "ClosePage", ClosePage);
             base.SubscribeMessenger();
+        }
+
+        /// <summary>
+        /// 打开新页面
+        /// </summary>
+        /// <param name="pageName"></param>
+        [GlobalProgress]
+        public async virtual void OpenPage(string pageName)
+        {
+            if (string.IsNullOrWhiteSpace(pageName)) return;
+            var pageModule = viewModel.ModuleManager.Modules.FirstOrDefault(t => t.Name.Equals(pageName));
+            if (pageModule == null) return;
+
+            var module = viewModel.ModuleList.FirstOrDefault(t => t.Name == pageModule.Name);
+            if (module == null)
+            {
+                IBaseModule dialog = NetCoreProvider.Get<IBaseModule>(pageModule.TypeName);
+                await dialog.BindDefaultModel(pageModule.Auth);
+                viewModel.ModuleList.Add(new ModuleUIComponent()
+                {
+                    Code = pageModule.Code,
+                    Auth = pageModule.Auth,
+                    Name = pageModule.Name,
+                    TypeName = pageModule.TypeName,
+                    Body = dialog.GetView()
+                });
+                viewModel.CurrentModule = viewModel.ModuleList.Last();
+                GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
+                GC.Collect();
+            }
+            else
+                viewModel.CurrentModule = module;
+        }
+
+        /// <summary>
+        /// 关闭页面
+        /// </summary>
+        /// <param name="pageName"></param>
+        public void ClosePage(string pageName)
+        {
+            var module = viewModel.ModuleList.FirstOrDefault(t => t.Name.Equals(pageName));
+            if (module != null)
+            {
+                viewModel.ModuleList.Remove(module);
+                if (viewModel.ModuleList.Count > 0)
+                    viewModel.CurrentModule = viewModel.ModuleList.Last();
+                else
+                    viewModel.CurrentModule = null;
+                GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
+                GC.Collect();
+            }
         }
 
         /// <summary>

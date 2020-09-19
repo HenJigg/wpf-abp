@@ -37,7 +37,7 @@ namespace Consumption.PC.ViewCenter
     /// </summary>
     /// <typeparam name="TView"></typeparam>
     /// <typeparam name="TViewModel"></typeparam>
-    public class BusinessCenter<TView, TEntity> : IBusinessModule
+    public class BusinessCenter<TView, TEntity> : IBaseModule
         where TView : UserControl, new()
         where TEntity : BaseEntity
     {
@@ -84,9 +84,19 @@ namespace Consumption.PC.ViewCenter
         public readonly TView view = new TView();
         public readonly TViewModel viewModel = new TViewModel();
 
+        public void BindDataGridColumns()
+        {
+        }
+
         public void BindDefaultModel()
         {
             view.DataContext = viewModel;
+        }
+
+        public Task BindDefaultModel(int AuthValue = 0)
+        {
+            this.BindDefaultModel();
+            return Task.FromResult(true);
         }
 
         public object GetView()

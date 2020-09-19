@@ -13,12 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AntDesign" Version="0.1.0" />
+    <PackageReference Include="AntDesign" Version="0.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Consumption.Service\Consumption.Service.csproj" />
     <ProjectReference Include="..\Consumption.ViewModel\Consumption.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="LayoutPages\" />
   </ItemGroup>
 
 </Project>

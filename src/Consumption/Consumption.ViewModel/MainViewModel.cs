@@ -27,6 +27,7 @@ namespace Consumption.ViewModel
     using System.Linq;
     using System.Runtime;
     using System.Threading.Tasks;
+    using Ubiety.Dns.Core.Records.NotUsed;
 
     /// <summary>
     /// 应用首页
@@ -35,8 +36,8 @@ namespace Consumption.ViewModel
     {
         public MainViewModel()
         {
-            OpenPageCommand = new RelayCommand<string>(arg => OpenPage(arg));
-            ClosePageCommand = new RelayCommand<string>(arg => ClosePage(arg));
+            OpenPageCommand = new RelayCommand<string>(pageName => Messenger.Default.Send(pageName, "OpenPage"));
+            ClosePageCommand = new RelayCommand<string>(pageName => Messenger.Default.Send(pageName, "ClosePage"));
             GoHomeCommand = new RelayCommand(InitHomeView);
             ExpandMenuCommand = new RelayCommand(() =>
             {
@@ -144,64 +145,7 @@ namespace Consumption.ViewModel
             InitHomeView();
         }
 
-        [GlobalProgress]
-        public async virtual void OpenPage(string pageName)
-        {
-            if (string.IsNullOrWhiteSpace(pageName)) return;
-            var m = ModuleManager.Modules.FirstOrDefault(t => t.Name.Equals(pageName));
-            if (m == null) return;
-            var module = ModuleList.FirstOrDefault(t => t.Name == m.Name);
-            if (module == null)
-            {
-                var dialog = NetCoreProvider.Get<IBusinessModule>(m.TypeName);
-                if (dialog != null)
-                {
-                    await dialog.BindDefaultModel(m.Auth);
-                    ModuleList.Add(new ModuleUIComponent()
-                    {
-                        Code = m.Code,
-                        Auth = m.Auth,
-                        Name = m.Name,
-                        TypeName = m.TypeName,
-                        Body = dialog.GetView()
-                    });
-                }
-                else
-                {
-                    var dialogbase = NetCoreProvider.Get<IBaseModule>(m.TypeName);
-                    dialogbase.BindDefaultModel();
-                    ModuleList.Add(new ModuleUIComponent()
-                    {
-                        Code = m.Code,
-                        Name = m.Name,
-                        TypeName = m.TypeName,
-                        Body = dialogbase.GetView()
-                    });
-                }
-                //将数据库中获取的菜单Namespace在容器当中查找依赖关系的实例
-                CurrentModule = ModuleList[ModuleList.Count - 1];
-                GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
-                GC.Collect();
-            }
-            else
-                CurrentModule = module;
-        }
-
-        public void ClosePage(string pageName)
-        {
-            var module = ModuleList.FirstOrDefault(t => t.Name.Equals(pageName));
-            if (module != null)
-            {
-                ModuleList.Remove(module);
-                if (ModuleList.Count > 0)
-                    CurrentModule = ModuleList[ModuleList.Count - 1];
-                else
-                    CurrentModule = null;
-                GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
-                GC.Collect();
-            }
-        }
-
+      
         /// <summary>
         /// 初始化首页
         /// </summary>
