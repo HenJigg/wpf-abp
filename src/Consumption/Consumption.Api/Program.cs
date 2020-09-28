@@ -52,13 +52,6 @@ namespace Consumption.Api
             try
             {
                 var host = CreateHostBuilder(args).Build();
-                //初次加载插入样本数据 -test
-                using (var scope = host.Services.CreateScope())
-                {
-                    var serivces = scope.ServiceProvider;
-                    var context = serivces.GetRequiredService<ConsumptionContext>();
-                    ConsumptionHelper.InitSampleDataAsync(context).Wait();
-                }
                 host.Run();
             }
             catch (Exception ex)

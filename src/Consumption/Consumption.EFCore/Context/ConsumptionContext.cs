@@ -18,6 +18,7 @@ namespace Consumption.EFCore.Context
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
+    using System.Reflection.Emit;
     using System.Text;
 
 
@@ -43,6 +44,5 @@ namespace Consumption.EFCore.Context
         public DbSet<Quotes> Quotes { get; set; }
         public DbSet<MonthlyBill> MonthlyBills { get; set; }
         public DbSet<MonthlyBillDetail> MonthlyBillDetails { get; set; }
-
     }
 }

@@ -19,8 +19,10 @@ namespace Consumption.Api
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
     using System.Threading.Tasks;
     using Consumption.Core.Entity;
+    using Consumption.Core.Interfaces;
     using Consumption.EFCore;
     using Consumption.EFCore.Context;
     using Microsoft.AspNetCore.Builder;
@@ -74,19 +76,22 @@ namespace Consumption.Api
                 options.MaxAge = TimeSpan.FromDays(60);
             });
 
+            var migrationsAssembly = typeof(ConsumptionContext).GetTypeInfo().Assembly.GetName();
+            var migrationsAssemblyName = migrationsAssembly.Name;
+
             services.AddDbContext<ConsumptionContext>(options =>
             {
                 //迁移至Sqlite
                 //var connectionString = Configuration.GetConnectionString("NoteConnection");
-                //options.UseSqlite(connectionString);
+                //options.UseSqlite(connectionString,sql => sql.MigrationsAssembly(migrationsAssemblyName));
 
                 //迁移至MySql
-                var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
-                options.UseMySQL(connectionString);
+                //var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
+                //options.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
 
                 //迁移至MsSql
-                //var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
-                //options.UseSqlServer(connectionString);
+                var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
+                options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
             })
             .AddUnitOfWork<ConsumptionContext>()
             .AddCustomRepository<User, CustomUserRepository>()
@@ -95,6 +100,8 @@ namespace Consumption.Api
             .AddCustomRepository<Group, CustomGroupRepository>()
             .AddCustomRepository<AuthItem, CustomAuthItemRepository>()
             .AddCustomRepository<Basic, CustomBasicRepository>();
+
+            services.AddTransient<IDataInitializer, DataInitializer>();
 
             services.AddSwaggerGen(options =>
             {
@@ -119,6 +126,13 @@ namespace Consumption.Api
         /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var databaseInitializer = serviceScope.ServiceProvider.GetService<IDataInitializer>();
+                //初始化数据库
+                databaseInitializer.InitSampleDataAsync().Wait();
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
