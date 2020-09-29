@@ -108,71 +108,45 @@
             </materialDesign:Card>
         </UniformGrid>
 
-        <UniformGrid Grid.Row="1" Columns="2">
-            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+        <materialDesign:Card Grid.Row="1" Grid.Column="1" Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-                    <TextBlock Text="消费记录"  FontSize="22" Margin="20 20 0 0"/>
+                <TextBlock Text="收入支出统计"  FontSize="22" Margin="20 20 0 0"/>
 
-                    <DataGrid Margin="10" Grid.Row="1"  
-                              Background="Transparent"
-                              IsReadOnly="True" SelectionMode="Extended"
-                              AutoGenerateColumns="False"
-                              ItemsSource="{Binding Bills}"
-                              VerticalScrollBarVisibility="Hidden"
-                              >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Width="*" Header="内容" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Width="*" Header="消费时间" Binding="{Binding CreateDate}"/>
-                            <DataGridTextColumn Width="*" Header="金额" Binding="{Binding Amount}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </materialDesign:Card>
-            <materialDesign:Card Grid.Column="1" Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <TextBlock Text="收入支出统计"  FontSize="22" Margin="20 20 0 0"/>
-
-                    <lv:CartesianChart Series="{Binding SeriesCollection}" Grid.Row="1" Margin="20"
+                <lv:CartesianChart Series="{Binding SeriesCollection}" Grid.Row="1" Margin="20"
                                  LegendLocation="Bottom" >
-                        <lv:CartesianChart.ChartLegend>
-                            <lv:DefaultLegend BulletSize="20"></lv:DefaultLegend>
-                        </lv:CartesianChart.ChartLegend>
-                        <lv:CartesianChart.VisualElements>
-                            <lv:VisualElement X="100" Y="80" >
-                                <lv:VisualElement.UIElement>
-                                    <TextBlock Foreground="Green" FontSize="20">
+                    <lv:CartesianChart.ChartLegend>
+                        <lv:DefaultLegend BulletSize="20"></lv:DefaultLegend>
+                    </lv:CartesianChart.ChartLegend>
+                    <lv:CartesianChart.VisualElements>
+                        <lv:VisualElement X="100" Y="80" >
+                            <lv:VisualElement.UIElement>
+                                <TextBlock Foreground="Green" FontSize="20">
                             Hello!, this is a note merged in the chart.
-                                    </TextBlock>
-                                </lv:VisualElement.UIElement>
-                            </lv:VisualElement>
-                        </lv:CartesianChart.VisualElements>
-                        <lv:CartesianChart.AxisY>
-                            <lv:Axis Title="金额"  LabelFormatter="{Binding YFormatter}">
-                                <lv:Axis.Separator>
-                                    <lv:Separator StrokeThickness="0.1" Stroke="White"  StrokeDashArray="30" />
-                                </lv:Axis.Separator>
-                            </lv:Axis>
-                        </lv:CartesianChart.AxisY>
-                        <lv:CartesianChart.AxisX>
-                            <lv:Axis Title="日期" Labels="{Binding Labels}"  ShowLabels="True" >
-                                <lv:Axis.Separator>
-                                    <lv:Separator StrokeThickness="0.1" Stroke="White" StrokeDashArray="30" />
-                                </lv:Axis.Separator>
-                            </lv:Axis>
-                        </lv:CartesianChart.AxisX>
-                    </lv:CartesianChart>
-                </Grid>
-            </materialDesign:Card>
-        </UniformGrid>
+                                </TextBlock>
+                            </lv:VisualElement.UIElement>
+                        </lv:VisualElement>
+                    </lv:CartesianChart.VisualElements>
+                    <lv:CartesianChart.AxisY>
+                        <lv:Axis Title="金额"  LabelFormatter="{Binding YFormatter}">
+                            <lv:Axis.Separator>
+                                <lv:Separator StrokeThickness="0.1" Stroke="White"  StrokeDashArray="30" />
+                            </lv:Axis.Separator>
+                        </lv:Axis>
+                    </lv:CartesianChart.AxisY>
+                    <lv:CartesianChart.AxisX>
+                        <lv:Axis Title="日期" Labels="{Binding Labels}"  ShowLabels="True" >
+                            <lv:Axis.Separator>
+                                <lv:Separator StrokeThickness="0.1" Stroke="White" StrokeDashArray="30" />
+                            </lv:Axis.Separator>
+                        </lv:Axis>
+                    </lv:CartesianChart.AxisX>
+                </lv:CartesianChart>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>
