@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspectInjector" Version="2.4.1" />
     <PackageReference Include="Autofac" Version="5.2.0" />
     <PackageReference Include="AvalonEdit" Version="6.0.1" />
     <PackageReference Include="Dragablz.NetCore" Version="0.3.3" />
@@ -51,6 +52,10 @@
     <Content Include="Images\test_user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
 </Project>

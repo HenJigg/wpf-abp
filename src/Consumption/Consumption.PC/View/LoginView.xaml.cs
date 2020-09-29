@@ -15,7 +15,6 @@
 
 namespace Consumption.PC.View
 {
-    using Consumption.Core.Interfaces;
     using GalaSoft.MvvmLight.Messaging;
     using Microsoft.Xaml.Behaviors;
     using System;

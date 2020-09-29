@@ -14,12 +14,11 @@
 
 namespace Consumption.Service
 {
-    using Consumption.Core.Collections;
-    using Consumption.Core.Entity;
-    using Consumption.Core.Interfaces;
-    using Consumption.Core.Query;
     using Consumption.Core.Request;
-    using Consumption.Core.Response;
+    using Consumption.Shared.DataModel;
+    using Consumption.Shared.Dto;
+    using Consumption.Shared.HttpContact;
+    using Consumption.ViewModel.Interfaces;
     using RestSharp;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -27,22 +26,22 @@ namespace Consumption.Service
     /// <summary>
     /// 用户组服务
     /// </summary>
-    public partial class GroupService: BaseService<Group>, IGroupRepository
+    public partial class GroupService: BaseService<GroupDto>, IGroupRepository
     {
-        public async Task<BaseResponse<List<MenuModuleGroup>>> GetMenuModuleListAsync()
+        public async Task<BaseResponse> GetMenuModuleListAsync()
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse<List<MenuModuleGroup>>>(new GroupModuleRequest(), Method.GET);
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new GroupModuleRequest(), Method.GET);
         }
 
-        public async Task<BaseResponse<GroupHeader>> GetGroupAsync(int id)
+        public async Task<BaseResponse> GetGroupAsync(int id)
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse<GroupHeader>>(new GroupInfoRequest() { id = id }, Method.GET);
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new GroupInfoRequest() { id = id }, Method.GET);
         }
 
-        public async Task<BaseResponse> SaveGroupAsync(GroupHeader group)
+        public async Task<BaseResponse> SaveGroupAsync(GroupDataDto group)
         {
             var r = await new BaseServiceRequest().GetRequest<BaseResponse>(new GroupSaveRequest()
-            { parameter = group }, Method.POST);
+            {   groupDto = group }, Method.POST);
             return r;
         }
     }

@@ -17,24 +17,15 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Core.Response;
-    using Consumption.Core.Entity;
-    using Newtonsoft.Json;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Consumption.Core.Interfaces;
-    using Consumption.Common.Contract;
-    using Consumption.Core.Common;
-    using Consumption.ViewModel.Common;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.DataModel;
+    using Consumption.Shared.Dto;
     using Consumption.ViewModel.Interfaces;
 
     /// <summary>
     /// 用户信息
     /// </summary>
-    public class UserViewModel : BaseRepository<User>, IUserViewModel
+    public class UserViewModel : BaseRepository<UserDto>, IUserViewModel
     {
         public UserViewModel() : base(NetCoreProvider.Get<IUserRepository>())
         {

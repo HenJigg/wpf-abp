@@ -16,9 +16,7 @@ namespace Consumption.PC.ViewCenter
 {
     using Consumption.PC.View;
     using System;
-    using Consumption.Core.Entity;
     using GalaSoft.MvvmLight;
-    using System.Collections.ObjectModel;
     using LiveCharts;
     using LiveCharts.Wpf;
 
@@ -36,17 +34,17 @@ namespace Consumption.PC.ViewCenter
     {
         public HomeViewModel()
         {
-            Bills = new ObservableCollection<Bill>();
-            for (int i = 0; i < 13; i++)
-            {
-                Bills.Add(new Bill()
-                {
-                    Remark = "公益活动",
-                    Name = "参与社区活动",
-                    CreateDate = DateTime.Now.ToString("yyyy-MM-dd"),
-                    Amount = 3000
-                });
-            }
+            //Bills = new ObservableCollection<Bill>();
+            //for (int i = 0; i < 13; i++)
+            //{
+            //    Bills.Add(new Bill()
+            //    {
+            //        Remark = "公益活动",
+            //        Name = "参与社区活动",
+            //        CreateDate = DateTime.Now.ToString("yyyy-MM-dd"),
+            //        Amount = 3000
+            //    });
+            //}
 
             SeriesCollection = new SeriesCollection
             {
@@ -67,13 +65,13 @@ namespace Consumption.PC.ViewCenter
 
         public string SelectPageTitle { get; } = "首页";
 
-        private ObservableCollection<Bill> bills;
+        //private ObservableCollection<Bill> bills;
 
-        public ObservableCollection<Bill> Bills
-        {
-            get { return bills; }
-            set { bills = value; RaisePropertyChanged(); }
-        }
+        //public ObservableCollection<Bill> Bills
+        //{
+        //    get { return bills; }
+        //    set { bills = value; RaisePropertyChanged(); }
+        //}
 
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }

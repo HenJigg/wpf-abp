@@ -11,9 +11,17 @@
 
 #### 开发工具
   IDE: Visual Studio 2019 
-  
+
 ### 如何运行它?
 [点击观看视频介绍](https://www.bilibili.com/video/BV1954y1i7wM)
+
+### 测试登录?
+
+测试账号:  **Admin** / **123**
+
+项目默认下载后,已连接至测试服务器, 如果需要本地部署,  只需要配置数据库参数即可.
+
+运行**Consumption.Api** 项目,即可生成对应数据库, 如旧版本已生成, 请手动删除后启动API项目。
 
 ### WPF模块介绍
 1.UI框架: [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)  
@@ -80,11 +88,11 @@
 
 ### 收入说明
   包括该项目本身的捐赠,以及所有的C#、WPF免费视频收入(主要以观众打赏,平台补贴), 统一以C#开发者名义捐赠给需要帮助得群体,所有的收入捐赠最终以视频的方式公布最终结果, 结算周期为每个季度末。
-  
+
   历史捐赠(Video)：
   - [2020-05-01: Part1](https://www.bilibili.com/video/BV1QZ4y1W7Zu) [国际儿童紧急救援基金会](https://www.unicef.org/zh)
   - [2020-08-01: Part2](https://www.bilibili.com/video/BV1Gk4y1m7u2) [韩红爱心慈善基金会](http://www.hhax.org/)
- 
+
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/20200802.jpg)
 	
 ### 捐赠名单公示

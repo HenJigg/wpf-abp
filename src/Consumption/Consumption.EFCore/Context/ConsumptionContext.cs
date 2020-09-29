@@ -14,12 +14,8 @@
 
 namespace Consumption.EFCore.Context
 {
-    using Consumption.Core.Entity;
+    using Consumption.Shared.DataModel;
     using Microsoft.EntityFrameworkCore;
-    using System;
-    using System.Collections.Generic;
-    using System.Reflection.Emit;
-    using System.Text;
 
 
     public class ConsumptionContext : DbContext
@@ -38,11 +34,6 @@ namespace Consumption.EFCore.Context
         public DbSet<Basic> Basics { get; set; }
         public DbSet<BasicType> BasicTypes { get; set; }
         public DbSet<AuthItem> AuthItems { get; set; }
-        public DbSet<Bill> Bills { get; set; }
         public DbSet<UserConfig> UserConfigs { get; set; }
-        public DbSet<Plan> Plans { get; set; }
-        public DbSet<Quotes> Quotes { get; set; }
-        public DbSet<MonthlyBill> MonthlyBills { get; set; }
-        public DbSet<MonthlyBillDetail> MonthlyBillDetails { get; set; }
     }
 }

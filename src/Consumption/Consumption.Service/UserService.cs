@@ -14,40 +14,36 @@
 
 namespace Consumption.Service
 {
-    using Consumption.Core.Request;
-    using Consumption.Core.Response;
-    using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
+    using Consumption.Core.Request;
+    using Consumption.Shared.DataModel;
+    using Consumption.Shared.Dto;
+    using Consumption.Shared.HttpContact;
+    using Consumption.ViewModel.Interfaces;
     using RestSharp;
-    using Consumption.Core.Query;
-    using Consumption.Core.Entity;
-    using Consumption.Core.Collections;
-    using Consumption.Core.Interfaces;
 
-    public class UserService : BaseService<User>, IUserRepository
+    public class UserService : BaseService<UserDto>, IUserRepository
     {
-        public async Task<BaseResponse<List<AuthItem>>> GetAuthListAsync()
+        public async Task<BaseResponse> GetAuthListAsync()
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse<List<AuthItem>>>(new AuthItemRequest(), Method.GET);
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new AuthItemRequest(), Method.GET);
         }
 
-        public async Task<BaseResponse<List<Menu>>> GetUserPermByAccountAsync(string account)
+        public async Task<BaseResponse> GetUserPermByAccountAsync(string account)
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse<List<Menu>>>(new UserPermRequest()
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new UserPermRequest()
             {
                 account = account
             }, Method.GET);
         }
 
-        public async Task<BaseResponse<UserInfo>> LoginAsync(string account, string passWord)
+        public async Task<BaseResponse> LoginAsync(string account, string passWord)
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse<UserInfo>>(new UserLoginRequest()
+            return await new BaseServiceRequest().GetRequest<BaseResponse>(new UserLoginRequest()
             {
-                account = account,
-                passWord = passWord
-            }, Method.GET);
+                Parameter = new LoginDto() { Account = account, PassWord = passWord }
+            }, Method.POST);
         }
     }
 }

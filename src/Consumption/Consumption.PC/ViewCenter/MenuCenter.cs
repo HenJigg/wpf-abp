@@ -14,30 +14,26 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Consumption.Common.Contract;
-    using Consumption.Core.Attributes;
-    using Consumption.Core.Entity;
     using Consumption.PC.Common;
     using Consumption.PC.View;
-    using Consumption.ViewModel;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.Common.Attributes;
+    using Consumption.Shared.Common.Enums;
+    using Consumption.Shared.Dto;
     using Consumption.ViewModel.Interfaces;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// 用户菜单控制类
     /// </summary>
-    [Module("菜单管理", Core.Enums.ModuleType.系统配置)]
-    public class MenuCenter : BusinessCenter<MenuView, Menu>
+    [Module("菜单管理", ModuleType.系统配置)]
+    public class MenuCenter : BusinessCenter<MenuView, MenuDto>
     {
         public MenuCenter() : base(NetCoreProvider.Get<IMenuViewModel>())
         { }
 
         public override void BindDataGridColumns()
         {
-            VisualHelper.SetDataGridColumns(view, "Grid", typeof(Menu));
+            VisualHelper.SetDataGridColumns(view, "Grid", typeof(MenuDto));
         }
     }
 }

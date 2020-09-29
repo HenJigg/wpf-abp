@@ -15,22 +15,14 @@
 
 namespace Consumption.Service
 {
-    using Consumption.Core.Collections;
-    using Consumption.Core.Entity;
-    using Consumption.Core.Interfaces;
-    using Consumption.Core.Query;
-    using Consumption.Core.Request;
-    using Consumption.Core.Response;
-    using RestSharp;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
+    using Consumption.Shared.DataModel;
+    using Consumption.Shared.Dto;
+    using Consumption.ViewModel.Interfaces;
 
     /// <summary>
     /// 菜单服务
     /// </summary>
-    public partial class MenuService : BaseService<Menu>, IMenuRepository
+    public partial class MenuService : BaseService<MenuDto>, IMenuRepository
     {
 
     }

@@ -7,8 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using PCLAppConfig;
-using Consumption.Core.Response;
-using Consumption.Common.Contract;
+using Consumption.Shared.Common;
 
 namespace Consumption.Mobile.Droid
 {

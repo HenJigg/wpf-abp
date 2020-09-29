@@ -15,31 +15,28 @@
 
 namespace Consumption.ViewModel.Interfaces
 {
-    using Consumption.Core.Aop;
-    using Consumption.Core.Entity;
-    using Consumption.Core.Interfaces;
+    using Consumption.Shared.DataInterfaces;
+    using Consumption.Shared.DataModel;
+    using Consumption.Shared.Dto;
     using GalaSoft.MvvmLight.Command;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     /// <summary>
     /// 实现基础的增删改查、分页、权限接口
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public interface IBaseViewModel<TEntity> : ICrud<TEntity>, IDataPager, IAuthority where TEntity : BaseEntity
+    public interface IBaseViewModel<TEntity> : ICrud<TEntity>, IDataPager, IAuthority where TEntity : class
     { }
 
-    public interface IUserViewModel : IBaseViewModel<User>
+    public interface IUserViewModel : IBaseViewModel<UserDto>
     { }
 
-    public interface IGroupViewModel : IBaseViewModel<Group>
+    public interface IGroupViewModel : IBaseViewModel<GroupDto>
     { }
 
-    public interface IMenuViewModel : IBaseViewModel<Menu>
+    public interface IMenuViewModel : IBaseViewModel<MenuDto>
     { }
 
-    public interface IBasicViewModel : IBaseViewModel<Basic>
+    public interface IBasicViewModel : IBaseViewModel<BasicDto>
     { }
 
     /// <summary>

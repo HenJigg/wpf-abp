@@ -1,10 +1,5 @@
 ﻿using Autofac;
-using Consumption.Common.Contract;
-using Consumption.Core.Interfaces;
-using Consumption.Core.Response;
-using Consumption.Mobile.View;
-using Consumption.Mobile.ViewCenter;
-using Consumption.Service;
+using Consumption.Shared.Common;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;

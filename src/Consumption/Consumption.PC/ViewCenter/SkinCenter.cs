@@ -14,10 +14,10 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Consumption.Core.Attributes;
     using Consumption.PC.Common;
     using Consumption.PC.View;
-    using Consumption.ViewModel;
+    using Consumption.Shared.Common.Attributes;
+    using Consumption.Shared.Common.Enums;
     using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
@@ -25,14 +25,12 @@ namespace Consumption.PC.ViewCenter
     using MaterialDesignThemes.Wpf;
     using System;
     using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Media;
 
     /// <summary>
     /// 样式控制类
     /// </summary>
-    [Module("个性化", Core.Enums.ModuleType.系统配置)]
+    [Module("个性化", ModuleType.系统配置)]
     public class SkinCenter : NoBusinessCenter<SkinView, SkinViewModel>
     {
 

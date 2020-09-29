@@ -13,7 +13,7 @@ namespace Consumption.EFCore
     using Microsoft.EntityFrameworkCore.Metadata;
     using Microsoft.EntityFrameworkCore.Query;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
-    using Consumption.Core.Collections;
+    using Consumption.Shared.Common.Collections;
 
     /// <summary>
     /// Represents a default generic repository implements the <see cref="IRepository{TEntity}"/> interface.

@@ -96,9 +96,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Consumption.Core\Consumption.Core.csproj">
-      <Project>{63D4C10A-DA54-4095-A124-7DCE9947EB9A}</Project>
-      <Name>Consumption.Core</Name>
+    <ProjectReference Include="..\..\Consumption.Shared\Consumption.Shared.csproj">
+      <Project>{203CF00E-7F99-468B-B4FD-02F8FBDE78C7}</Project>
+      <Name>Consumption.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\Consumption.Mobile\Consumption.Mobile.csproj">
       <Project>{FD16068C-1B65-4957-A485-55EB4DE36369}</Project>

@@ -15,13 +15,8 @@
 
 namespace Consumption.ViewModel.Interfaces
 {
-    using Consumption.Core.Aop;
-    using Consumption.Core.Query;
     using GalaSoft.MvvmLight.Command;
-    using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Text;
 
     public interface ICrud<TEntity> where TEntity : class
     {

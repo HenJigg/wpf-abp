@@ -14,32 +14,26 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Consumption.Core.Attributes;
     using Consumption.PC.View;
-    using Consumption.ViewModel;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Core.Enums;
     using Consumption.PC.Common;
     using System.Windows.Controls;
-    using Consumption.Core.Entity;
-    using Consumption.Core.Interfaces;
-    using Consumption.Common.Contract;
     using Consumption.ViewModel.Interfaces;
+    using Consumption.Shared.Common.Enums;
+    using Consumption.Shared.Common.Attributes;
+    using Consumption.Shared.Dto;
+    using Consumption.Shared.Common;
 
     /// <summary>
     /// 用户管理类
     /// </summary>
     [Module("用户管理", ModuleType.系统配置)]
-    public class UserCenter : BusinessCenter<UserView, User>
+    public class UserCenter : BusinessCenter<UserView, UserDto>
     {
         public UserCenter() : base(NetCoreProvider.Get<IUserViewModel>())
         { }
         public override void BindDataGridColumns()
         {
-            VisualHelper.SetDataGridColumns<UserControl>(view, "Grid", typeof(User));
+            VisualHelper.SetDataGridColumns<UserControl>(view, "Grid", typeof(UserDto));
         }
     }
 }

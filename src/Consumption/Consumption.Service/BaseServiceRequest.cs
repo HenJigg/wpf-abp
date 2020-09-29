@@ -13,13 +13,10 @@
 
 namespace Consumption.Service
 {
-    using Consumption.Common.Contract;
-    using Consumption.Core.Request;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.HttpContact;
     using Newtonsoft.Json;
     using RestSharp;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -45,14 +42,13 @@ namespace Consumption.Service
         /// <param name="request">请求参数</param>
         /// <param name="method">方法类型</param>
         /// <returns></returns>
-        public async Task<Response> GetRequest<Response>(BaseRequest request, Method method)
+        public async Task<Response> GetRequest<Response>(BaseRequest request, Method method) where Response : class
         {
             string pms = request.GetPropertiesObject();
             string url = requestUrl + request.route;
             if (!string.IsNullOrWhiteSpace(request.getParameter))
                 url += request.getParameter;
-            string resultString = await restSharp.RequestBehavior(url, method, pms);
-            Response result = JsonConvert.DeserializeObject<Response>(resultString);
+            Response result = await restSharp.RequestBehavior<Response>(url, method, pms);
             return result;
         }
 
@@ -64,12 +60,11 @@ namespace Consumption.Service
         /// <param name="pms">参数</param>
         /// <param name="method">方法类型</param>
         /// <returns></returns>
-        public async Task<Response> GetRequest<Response>(string route, object obj, Method method)
+        public async Task<Response> GetRequest<Response>(string route, object obj, Method method) where Response : class
         {
             string pms = string.Empty;
             if (!string.IsNullOrWhiteSpace(obj?.ToString())) pms = JsonConvert.SerializeObject(obj);
-            string resultString = await restSharp.RequestBehavior(requestUrl + route, method, pms);
-            Response result = JsonConvert.DeserializeObject<Response>(resultString);
+            Response result = await restSharp.RequestBehavior<Response>(requestUrl + route, method, pms);
             return result;
         }
     }

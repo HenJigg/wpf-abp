@@ -11,14 +11,10 @@
 
 namespace Consumption.EFCore.Context
 {
-    using Consumption.Core.Entity;
-    using Consumption.Core.Interfaces;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Storage;
+    using Consumption.Shared.DataInterfaces;
+    using Consumption.Shared.DataModel;
     using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json.Linq;
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -62,7 +58,8 @@ namespace Consumption.EFCore.Context
                         Address = "Guangzhou",
                         Tel = "1870620584",
                         Password = "123",
-                        CreateTime = DateTime.Now
+                        CreateTime = DateTime.Now,
+                        FlagAdmin = 1,
                     },
                     new User()
                     {
@@ -71,16 +68,18 @@ namespace Consumption.EFCore.Context
                         Address = "Guangzhou",
                         Tel = "1870620584",
                         Password = "123",
-                        CreateTime = DateTime.Now
+                        CreateTime = DateTime.Now,
+                        FlagAdmin=1,
                     },
                     new User()
                     {
-                        Account = "Flora",
+                        Account = "Admin",
                         UserName = "弗洛拉",
                         Address = "Guangzhou",
                         Tel = "1870620584",
                         Password = "123",
-                        CreateTime = DateTime.Now
+                        CreateTime = DateTime.Now,
+                        FlagAdmin = 1,
                     });
 
                 context.Menus.AddRange(
@@ -91,12 +90,14 @@ namespace Consumption.EFCore.Context
                     new Menu() { MenuCode = "1005", MenuName = "菜单管理", MenuCaption = "Menu", MenuNameSpace = "MenuCenter", MenuAuth = 7 }
                     );
 
-                context.Menus.AddRange(
-                    new Menu() { MenuCode = "1001", MenuName = "用户管理", MenuCaption = "AccountBox", MenuNameSpace = "UserCenter", MenuAuth = 7 },
-                    new Menu() { MenuCode = "1002", MenuName = "权限管理", MenuCaption = "Group", MenuNameSpace = "GroupCenter", MenuAuth = 7 },
-                    new Menu() { MenuCode = "1003", MenuName = "个性化", MenuCaption = "Palette", MenuNameSpace = "SkinCenter", MenuAuth = 8 },
-                    new Menu() { MenuCode = "1004", MenuName = "仪表板", MenuCaption = "TelevisionGuide", MenuNameSpace = "DashboardCenter", MenuAuth = 8 },
-                    new Menu() { MenuCode = "1005", MenuName = "菜单管理", MenuCaption = "Menu", MenuNameSpace = "MenuCenter", MenuAuth = 7 }
+                context.AuthItems.AddRange(
+                    new AuthItem() { AuthColor = "#0080FF", AuthKind = "PlaylistPlus", AuthName = "添加", AuthValue = 1 },
+                    new AuthItem() { AuthColor = "#28CBA3", AuthKind = "PlaylistPlay", AuthName = "修改", AuthValue = 2 },
+                    new AuthItem() { AuthColor = "#FF5370", AuthKind = "PlaylistRemove", AuthName = "删除", AuthValue = 4 },
+                    new AuthItem() { AuthColor = "#FF5370", AuthKind = "FileDocumentBoxSearchOutline", AuthName = "查看", AuthValue = 8 },
+                    new AuthItem() { AuthColor = "#FF5370", AuthKind = "LocalPrintShop", AuthName = "打印", AuthValue = 16 },
+                    new AuthItem() { AuthColor = "#FF5370", AuthKind = "UploadOutline", AuthName = "导入", AuthValue = 32 },
+                    new AuthItem() { AuthColor = "#FF5370", AuthKind = "DownloadOutline", AuthName = "导出", AuthValue = 64 }
                     );
 
                 await context.SaveChangesAsync();

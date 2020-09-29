@@ -16,24 +16,25 @@
 namespace Consumption.Api
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Reflection;
-    using System.Threading.Tasks;
-    using Consumption.Core.Entity;
-    using Consumption.Core.Interfaces;
+    using AutoMapper;
+    using Consumption.Api.ApiManager;
+    using Consumption.Api.Extensions;
     using Consumption.EFCore;
     using Consumption.EFCore.Context;
+    using Consumption.Shared.DataInterfaces;
+    using Consumption.Shared.DataModel;
+    using IGeekFan.AspNetCore.Knife4jUI;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.HttpsPolicy;
-    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Controllers;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Microsoft.Extensions.Logging;
+    using Microsoft.OpenApi.Models;
 
 
     /// <summary>
@@ -86,12 +87,12 @@ namespace Consumption.Api
                 //options.UseSqlite(connectionString,sql => sql.MigrationsAssembly(migrationsAssemblyName));
 
                 //迁移至MySql
-                //var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
-                //options.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
+                var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
+                options.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
 
                 //迁移至MsSql
-                var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
-                options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
+                //var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
+                //options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
             })
             .AddUnitOfWork<ConsumptionContext>()
             .AddCustomRepository<User, CustomUserRepository>()
@@ -102,19 +103,31 @@ namespace Consumption.Api
             .AddCustomRepository<Basic, CustomBasicRepository>();
 
             services.AddTransient<IDataInitializer, DataInitializer>();
+            services.AddTransient<IUserManager, UserManager>();
+            services.AddTransient<IMenuManager, MenuManager>();
+            services.AddTransient<IGroupManager, GroupManager>();
+            services.AddTransient<IBasicManager, BasicManager>();
+            services.AddTransient<IAuthItemManager, AuthManager>();
+
+            var automapperConfig = new MapperConfiguration(configuration =>
+            {
+                configuration.AddProfile(new AutoMappingFile());
+            });
+            var autoMapper = automapperConfig.CreateMapper();
+            services.AddSingleton(autoMapper);
 
             services.AddSwaggerGen(options =>
             {
-                options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "NoteApi.xml"));
-                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
+                options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "NoteApi.xml"),true);
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = ".NET Core 多平台项目-接口文档 v1", Version = "v1" });
+                options.AddServer(new OpenApiServer()
                 {
-                    Title = "Note Service API",
-                    Version = "v1",
-                    Contact = new Microsoft.OpenApi.Models.OpenApiContact()
-                    {
-                        Name = "WPF-Xamarin-Blazor-Examples",
-                        Url = new Uri("https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples")
-                    }
+                    Url = "https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples",
+                });
+                options.CustomOperationIds(apiDesc =>
+                {
+                    var controllerAction = apiDesc.ActionDescriptor as ControllerActionDescriptor;
+                    return controllerAction.ControllerName + "-" + controllerAction.ActionName;
                 });
             });
         }
@@ -126,30 +139,35 @@ namespace Consumption.Api
         /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //初始化数据库
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var databaseInitializer = serviceScope.ServiceProvider.GetService<IDataInitializer>();
-                //初始化数据库
                 databaseInitializer.InitSampleDataAsync().Wait();
             }
 
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
+            
             app.UseHttpsRedirection();
             app.UseCors("any");
             app.UseRouting();
             app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
                 options.ShowExtensions();
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "NoteApi");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", ".NET Core 多平台项目-接口文档 v1");
+            });
+            //app.UseKnife4UI(c =>
+            //{
+            //    c.DocumentTitle = ".NET Core 多平台项目-接口文档 v1";
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            //});
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapSwagger("{documentName}/api-docs");
             });
         }
     }

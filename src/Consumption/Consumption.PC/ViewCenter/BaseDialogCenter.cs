@@ -14,20 +14,13 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Consumption.Core.Aop;
-    using Consumption.ViewModel;
+    using Consumption.Shared.DataInterfaces;
     using Consumption.ViewModel.Common;
-    using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Messaging;
     using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Input;
-    using Consumption.Core.Interfaces;
-    using Consumption.ViewModel.Interfaces;
 
     public class BaseDialogCenter<TView, TViewModel> : IModuleDialog
         where TView : Window, new()

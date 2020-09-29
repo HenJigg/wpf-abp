@@ -14,27 +14,14 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Core.Collections;
-    using Consumption.Core.Response;
-    using Consumption.Core.Entity;
-    using Consumption.Core.Query;
-    using GalaSoft.MvvmLight;
-    using Newtonsoft.Json;
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Consumption.Core.Interfaces;
-    using Consumption.Common.Contract;
-    using Consumption.Core.Common;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.Dto;
     using Consumption.ViewModel.Interfaces;
 
     /// <summary>
     /// 菜单业务
     /// </summary>
-    public class MenuViewModel : BaseRepository<Menu>, IMenuViewModel
+    public class MenuViewModel : BaseRepository<MenuDto>, IMenuViewModel
     {
         public MenuViewModel() : base(NetCoreProvider.Get<IMenuRepository>())
         {

@@ -14,8 +14,6 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Core.Response;
-    using Consumption.Core.Interfaces;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using GalaSoft.MvvmLight.Messaging;
@@ -23,9 +21,11 @@ namespace Consumption.ViewModel
     using System.Collections.Generic;
     using System.Text;
     using System.Threading.Tasks;
-    using Consumption.Common.Contract;
-    using Consumption.Core.Common;
     using Consumption.ViewModel.Interfaces;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.DataModel;
+    using Consumption.Shared.Dto;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// 登录模块
@@ -89,35 +89,37 @@ namespace Consumption.ViewModel
                 }
                 DialogIsOpen = true;
                 await Task.Delay(300);
-                var r = await repository.LoginAsync(UserName, PassWord);
-                if (r == null || !r.success)
+                var loginResult = await repository.LoginAsync(UserName, PassWord);
+
+                if (loginResult.StatusCode != 200)
                 {
-                    SnackBar(r == null ? "远程服务器无法连接!" : r.message);
+                    SnackBar(loginResult.Message);
                     return;
                 }
                 var authResult = await repository.GetAuthListAsync();
-                if (authResult == null || !authResult.success)
+                if (authResult.StatusCode != 200)
                 {
-                    SnackBar("获取模块清单异常!");
+                    SnackBar(authResult.Message);
                     return;
                 }
+
+                var userDto = JsonConvert.DeserializeObject<UserInfoDto>(loginResult.Result.ToString());
+
                 #region 关联用户信息/缓存
 
-                Contract.Account = r.dynamicObj.User.Account;
-                Contract.UserName = r.dynamicObj.User.UserName;
-                Contract.IsAdmin = r.dynamicObj.User.FlagAdmin == 1;
-                Contract.Menus = r.dynamicObj.Menus; //用户包含的权限信息
-                Contract.AuthItems = authResult.dynamicObj;
+                Contract.Account = userDto.User.Account;
+                Contract.UserName = userDto.User.UserName;
+                Contract.IsAdmin = userDto.User.FlagAdmin == 1;
+                Contract.Menus = userDto.Menus; //用户包含的权限信息
+                Contract.AuthItems = JsonConvert.DeserializeObject<List<AuthItem>>(authResult.Result.ToString());
 
                 #endregion
-
                 //这行代码会发射到首页,Center中会定义所有的Messenger
                 Messenger.Default.Send(true, "NavigationPage");
             }
             catch (Exception ex)
             {
                 SnackBar(ex.Message);
-                //Log.Error(ex.Message);
             }
             finally
             {

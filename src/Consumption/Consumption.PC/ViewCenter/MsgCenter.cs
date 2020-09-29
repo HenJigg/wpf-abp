@@ -14,17 +14,9 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Consumption.Core.Attributes;
-    using Consumption.Core.Common;
-    using Consumption.Core.Interfaces;
     using Consumption.PC.Template;
-    using Consumption.PC.View;
-    using Consumption.ViewModel;
-    using GalaSoft.MvvmLight.Messaging;
+    using Consumption.ViewModel.Interfaces;
     using MaterialDesignThemes.Wpf;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
 
     /// <summary>

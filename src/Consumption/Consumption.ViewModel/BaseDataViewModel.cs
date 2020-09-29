@@ -18,32 +18,30 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Core.Response;
-    using Consumption.Core.Enums;
-    using Consumption.Core.Interfaces;
     using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Text;
     using System.Threading.Tasks;
-    using Consumption.Common.Contract;
     using GalaSoft.MvvmLight.Messaging;
-    using Consumption.Core.Common;
-    using Consumption.Core.Collections;
-    using Consumption.Core.Query;
-    using Consumption.ViewModel.Interfaces;
-    using Consumption.Core.Entity;
     using System.Linq;
-    using Consumption.Core.Aop;
+    using Consumption.Shared.Common;
+    using Consumption.ViewModel.Interfaces;
+    using Consumption.Shared.DataModel;
+    using Consumption.ViewModel.Common.Aop;
+    using Consumption.Shared.Common.Query;
+    using Consumption.Shared.Common.Aop;
+    using Consumption.Shared.Dto;
+    using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
+    using Consumption.Shared.Common.Collections;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// 通用基类(实现CRUD/数据分页..)
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class BaseRepository<TEntity> : ViewModelBase where TEntity : BaseEntity
+    public class BaseRepository<TEntity> : ViewModelBase where TEntity : BaseDto
     {
         public readonly IConsumptionRepository<TEntity> repository;
 
@@ -133,7 +131,7 @@ namespace Consumption.ViewModel
                 if (await Msg.Question("Confirm that the current selection is deleted??"))
                 {
                     var r = await repository.DeleteAsync(GridModel.Id);
-                    if (r != null && r.success)
+                    if (r.StatusCode == 200)
                         await GetPageData(0);
                     else
                         Messenger.Default.Send("Delete data exception.!", "Snackbar");
@@ -142,13 +140,14 @@ namespace Consumption.ViewModel
         }
 
         [GlobalProgress]
-        public virtual void SaveAsync()
+        public virtual async void SaveAsync()
         {
             //Before you save, you need to verify the validity of the data.
             if (GridModel != null)
             {
-                repository.SaveAsync(GridModel);
+                await repository.SaveAsync(GridModel);
                 InitPermissions(this.AuthValue);
+                await GetPageData(0);
                 SelectPageIndex = 0;
             }
         }
@@ -159,9 +158,9 @@ namespace Consumption.ViewModel
             if (GridModel != null)
             {
                 var baseResponse = await repository.GetAsync(GridModel.Id);
-                if (baseResponse != null && baseResponse.success)
+                if (baseResponse.StatusCode == 200)
                 {
-                    GridModel = baseResponse.dynamicObj;
+                    GridModel = JsonConvert.DeserializeObject<TEntity>(baseResponse.Result.ToString());
                     this.CreateDeaultCommand();
                     SelectPageIndex = 1;
                 }
@@ -254,14 +253,11 @@ namespace Consumption.ViewModel
                 PageSize = this.PageSize,
                 Search = this.Search
             });
-            if (r != null && r.success)
+            if (r.StatusCode == 200)
             {
-                GridModelList = new ObservableCollection<TEntity>();
-                r.dynamicObj.Items?.ToList().ForEach(arg =>
-                {
-                    GridModelList.Add(arg);
-                });
-                TotalCount = r.dynamicObj.Items.Count;
+                var pagedList = JsonConvert.DeserializeObject<PagedList<TEntity>>(r.Result.ToString());
+                GridModelList = new ObservableCollection<TEntity>(pagedList?.Items.ToList());
+                TotalCount = GridModelList.Count;
                 SetPageCount();
             }
         }
@@ -280,15 +276,15 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 创建页面默认命令
         /// </summary>
-        private void CreateDeaultCommand()
+        public void CreateDeaultCommand()
         {
             ToolBarCommandList.Clear();
-            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "保存", CommandColor = "#0066FF", CommandKind = "ContentSave" });
-            ToolBarCommandList.Add(new ButtonCommand() { CommandName = "取消", CommandColor = "#FF6633", CommandKind = "Cancel" });
+            ToolBarCommandList.Add(new CommandStruct() { CommandName = "保存", CommandColor = "#0066FF", CommandKind = "ContentSave" });
+            ToolBarCommandList.Add(new CommandStruct() { CommandName = "取消", CommandColor = "#FF6633", CommandKind = "Cancel" });
         }
 
-        private ObservableCollection<ButtonCommand> toolBarCommandList;
-        public ObservableCollection<ButtonCommand> ToolBarCommandList
+        private ObservableCollection<CommandStruct> toolBarCommandList;
+        public ObservableCollection<CommandStruct> ToolBarCommandList
         {
             get { return toolBarCommandList; }
             set { toolBarCommandList = value; RaisePropertyChanged(); }
@@ -305,11 +301,11 @@ namespace Consumption.ViewModel
         public void InitPermissions(int AuthValue)
         {
             this.AuthValue = AuthValue;
-            ToolBarCommandList = new ObservableCollection<ButtonCommand>();
+            ToolBarCommandList = new ObservableCollection<CommandStruct>();
             Contract.AuthItems.ForEach(arg =>
             {
                 if ((AuthValue & arg.AuthValue) == arg.AuthValue)
-                    ToolBarCommandList.Add(new ButtonCommand()
+                    ToolBarCommandList.Add(new CommandStruct()
                     {
                         CommandName = arg.AuthName,
                         CommandKind = arg.AuthKind,

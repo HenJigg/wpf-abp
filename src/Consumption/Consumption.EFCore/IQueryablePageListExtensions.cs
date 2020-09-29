@@ -1,11 +1,12 @@
 ﻿
 
-namespace Consumption.Core.Collections
+namespace Consumption.EFCore
 {
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Consumption.Shared.Common.Collections;
     using Microsoft.EntityFrameworkCore;
 
     public static class IQueryablePageListExtensions

@@ -14,18 +14,15 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Consumption.Core.Attributes;
     using Consumption.PC.View;
+    using Consumption.Shared.Common.Attributes;
+    using Consumption.Shared.Common.Enums;
     using Consumption.ViewModel;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// 仪表板控制类
     /// </summary>
-    [Module("仪表板", Core.Enums.ModuleType.应用中心)]
+    [Module("仪表板", ModuleType.应用中心)]
     public class DashboardCenter : NoBusinessCenter<DashboardView, DashboardViewModel>
     {
 

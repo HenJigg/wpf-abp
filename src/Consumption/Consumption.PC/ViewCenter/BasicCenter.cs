@@ -14,22 +14,18 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Consumption.Common.Contract;
-    using Consumption.Core.Attributes;
-    using Consumption.Core.Entity;
     using Consumption.PC.View;
-    using Consumption.ViewModel;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.Common.Attributes;
+    using Consumption.Shared.Common.Enums;
+    using Consumption.Shared.Dto;
     using Consumption.ViewModel.Interfaces;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// 基础数据控制类
     /// </summary>
-    [Module("基础数据", Core.Enums.ModuleType.系统配置)]
-    public class BasicCenter : BusinessCenter<BasicView, Basic>
+    [Module("基础数据", ModuleType.系统配置)]
+    public class BasicCenter : BusinessCenter<BasicView, BasicDto>
     {
         public BasicCenter() : base(NetCoreProvider.Get<IBasicViewModel>())
         { }

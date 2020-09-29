@@ -4,7 +4,6 @@ using Consumption.ViewModel;
 using GalaSoft.MvvmLight.Messaging;
 using Rg.Plugins.Popup.Services;
 using XF.Material.Forms.UI.Dialogs;
-using Consumption.Core.Common;
 
 namespace Consumption.Mobile.ViewCenter
 {

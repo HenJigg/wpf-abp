@@ -9,10 +9,18 @@ This project mainly focuses on C, build a multi-platform application example, th
 
 #### Development tools
   IDE: Visual Studio 2019 
-  
+
 ### How do I run it?
 [Click here](https://www.bilibili.com/video/BV1954y1i7wM)
-  
+
+### Test sign-in?
+
+Test account number: Admin / 123.
+
+After the project is downloaded by default, it is connected to the test server, if local deployment is required, only the database parameters need to be configured.
+
+You can build the corresponding database by running the .Publish.API project, and if an older version has been built, manually delete it and start the API project.
+
 ### WPF Introduced.
 1.UI: [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)  
 2.MVVM:[mvvmlight](https://github.com/lbugnion/mvvmlight)  
@@ -73,11 +81,11 @@ Look forward to it....
 
 ### About income
   Including the project's own donation, as well as all C, WPF free video revenue (primarily in the audience, platform subsidies), unified in the name of the C-developer to the needy groups, all revenue donations will eventually be announced by video, the closing cycle at the end of each quarter.
-  
+
   Recording(Video)：
     - [2020-05-01: Part1](https://www.bilibili.com/video/BV1QZ4y1W7Zu) [International Fund for Children's Emergency Relief](https://www.unicef.org/zh)
     - [2020-08-01: Part2](https://www.bilibili.com/video/BV1Gk4y1m7u2) [Han Hong Love Charitable Foundation](http://www.hhax.org/)
- 
+
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/20200802.jpg)
 
 ### Donation list
@@ -106,5 +114,5 @@ Email: zhouhaogg789@outlook.com
 
 ### Conclusion
   Because of love, so share.
-  
+
   (Translated from-bing translator)

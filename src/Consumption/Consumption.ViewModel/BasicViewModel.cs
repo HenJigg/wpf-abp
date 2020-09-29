@@ -14,23 +14,15 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Core.Entity;
-    using Consumption.Core.Query;
-    using Newtonsoft.Json;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Consumption.Core.Interfaces;
-    using Consumption.Common.Contract;
-    using Consumption.Core.Common;
-    using System.Net.Security;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.DataModel;
+    using Consumption.Shared.Dto;
     using Consumption.ViewModel.Interfaces;
 
     /// <summary>
     /// 基础数据
     /// </summary>
-    public class BasicViewModel : BaseRepository<Basic>, IBasicViewModel
+    public class BasicViewModel : BaseRepository<BasicDto>, IBasicViewModel
     {
         public BasicViewModel() : base(NetCoreProvider.Get<IBasicRepository>())
         {

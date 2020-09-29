@@ -14,23 +14,10 @@
 
 namespace Consumption.PC.ViewCenter
 {
-    using Consumption.Common.Contract;
-    using Consumption.Core.Entity;
-    using Consumption.Core.Interfaces;
-    using Consumption.PC.Common;
-    using Consumption.Service;
-    using Consumption.ViewModel;
+    using Consumption.Shared.Dto;
     using Consumption.ViewModel.Interfaces;
-    using GalaSoft.MvvmLight;
-    using MaterialDesignThemes.Wpf;
-    using NLog.Filters;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
-    using System.Windows;
     using System.Windows.Controls;
-    using System.Windows.Media;
 
     /// <summary>
     /// View/ViewModel 控制基类(带业务)
@@ -39,7 +26,7 @@ namespace Consumption.PC.ViewCenter
     /// <typeparam name="TViewModel"></typeparam>
     public class BusinessCenter<TView, TEntity> : IBaseModule
         where TView : UserControl, new()
-        where TEntity : BaseEntity
+        where TEntity : BaseDto
     {
         public BusinessCenter() { }
 

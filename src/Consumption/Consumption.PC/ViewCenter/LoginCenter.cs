@@ -15,17 +15,12 @@
 namespace Consumption.PC.ViewCenter
 {
     using Consumption.PC.View;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.DataInterfaces;
     using Consumption.ViewModel;
     using GalaSoft.MvvmLight.Messaging;
-    using Consumption.Core.Common;
-    using System;
-    using Consumption.PC.Template;
     using MaterialDesignThemes.Wpf;
-    using Consumption.ViewModel.Common;
-    using Consumption.Common.Contract;
-    using Consumption.Core.Interfaces;
-    using GalaSoft.MvvmLight;
-    using Consumption.ViewModel.Interfaces;
+    using System;
 
     /// <summary>
     /// 登录控制类
@@ -36,8 +31,11 @@ namespace Consumption.PC.ViewCenter
         {
             Messenger.Default.Register<string>(view, "Snackbar", arg =>
             {
-                var messageQueue = view.SnackbarThree.MessageQueue;
-                messageQueue.Enqueue(arg);
+                App.Current.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    var messageQueue = view.SnackbarThree.MessageQueue;
+                    messageQueue.Enqueue(arg);
+                }));
             });
             Messenger.Default.Register<bool>(view, "NavigationPage", async arg =>
               {

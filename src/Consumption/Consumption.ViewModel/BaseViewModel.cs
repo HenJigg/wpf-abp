@@ -14,19 +14,9 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Core.Response;
-    using Consumption.Core.Interfaces;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using GalaSoft.MvvmLight.Messaging;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Consumption.Core.Common;
-    using Consumption.ViewModel.Common;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
 
     /// <summary>
     /// MVVM基类

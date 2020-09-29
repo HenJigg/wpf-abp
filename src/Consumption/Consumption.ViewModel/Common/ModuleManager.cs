@@ -14,9 +14,8 @@
 
 namespace Consumption.ViewModel.Common
 {
-    using Consumption.Common.Contract;
-    using Consumption.Core.Common;
-    using Consumption.Core.Enums;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.Common.Enums;
     using GalaSoft.MvvmLight;
     using System;
     using System.Collections.ObjectModel;

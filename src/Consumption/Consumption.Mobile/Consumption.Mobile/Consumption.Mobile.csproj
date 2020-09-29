@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Consumption.Core\Consumption.Core.csproj" />
     <ProjectReference Include="..\..\Consumption.Service\Consumption.Service.csproj" />
     <ProjectReference Include="..\..\Consumption.ViewModel\Consumption.ViewModel.csproj" />
   </ItemGroup>
@@ -31,12 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ItemPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="MenuPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Template\SplashScreenView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

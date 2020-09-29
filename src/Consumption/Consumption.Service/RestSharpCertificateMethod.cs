@@ -13,7 +13,10 @@
 
 namespace Consumption.Service
 {
-    using Consumption.Core.Aop;
+    using Consumption.Shared.Common.Aop;
+    using Consumption.Shared.HttpContact;
+    using Consumption.ViewModel.Common.Aop;
+    using Newtonsoft.Json;
     using RestSharp;
     using System.Threading.Tasks;
 
@@ -32,8 +35,8 @@ namespace Consumption.Service
         /// <param name="isJson">是否Json</param>
         /// <returns></returns>
         [GlobalLoger]
-        public async Task<string> RequestBehavior(string url, Method method, string pms,
-            bool isToken = true, bool isJson = true)
+        public async Task<Response> RequestBehavior<Response>(string url, Method method, string pms,
+            bool isToken = true, bool isJson = true) where Response : class
         {
             RestClient client = new RestClient(url);
             RestRequest request = new RestRequest(method);
@@ -70,7 +73,15 @@ namespace Consumption.Service
                     break;
             }
             var response = await client.ExecuteAsync(request);
-            return response.Content;
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                return JsonConvert.DeserializeObject<Response>(response.Content);
+            else
+                return new BaseResponse()
+                {
+                    StatusCode = (int)response.StatusCode,
+                    Message = string.IsNullOrWhiteSpace(response.StatusDescription) ? $"Error:{response.ErrorMessage}"
+                    : response.StatusDescription
+                } as Response;
         }
     }
 }

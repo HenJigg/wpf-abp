@@ -15,28 +15,26 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Common.Contract;
-    using Consumption.Core.Entity;
-    using Consumption.Core.Interfaces;
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
     using System.Collections.ObjectModel;
-    using Consumption.Core.Common;
     using System.Linq;
     using Consumption.ViewModel.Common;
     using GalaSoft.MvvmLight.Command;
-    using Org.BouncyCastle.Crypto.Engines;
-    using Consumption.Core.Query;
     using Consumption.ViewModel.Interfaces;
-    using Consumption.Core.Request;
+    using Consumption.Shared.DataModel;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.Dto;
+    using Consumption.Shared.Common.Query;
+    using Newtonsoft.Json;
+    using Consumption.Shared.Common.Collections;
 
 
     /// <summary>
     /// 部门管理
     /// </summary>
-    public class GroupViewModel : BaseRepository<Group>, IGroupViewModel
+    public class GroupViewModel : BaseRepository<GroupDto>, IGroupViewModel
     {
         private readonly IUserRepository userRepository;
         public readonly IGroupRepository groupRepository;
@@ -44,17 +42,17 @@ namespace Consumption.ViewModel
         {
             userRepository = NetCoreProvider.Get<IUserRepository>();
             groupRepository = repository as IGroupRepository;
-            AddUserCommand = new RelayCommand<User>(arg =>
+            AddUserCommand = new RelayCommand<UserDto>(arg =>
             {
                 if (arg == null) return;
-                var u = GroupHeader.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
-                if (u == null) GroupHeader.GroupUsers?.Add(new GroupUser() { Account = arg.Account });
+                var u = GroupDto.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
+                if (u == null) GroupDto.GroupUsers?.Add(new GroupUserDto() { Account = arg.Account });
             });
-            DelUserCommand = new RelayCommand<GroupUser>(arg =>
+            DelUserCommand = new RelayCommand<GroupUserDto>(arg =>
             {
                 if (arg == null) return;
-                var u = GroupHeader.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
-                if (u != null) GroupHeader.GroupUsers?.Remove(u);
+                var u = GroupDto.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
+                if (u != null) GroupDto.GroupUsers?.Remove(u);
             });
         }
 
@@ -75,7 +73,7 @@ namespace Consumption.ViewModel
 
         public override async void AddAsync()
         {
-            GroupHeader = new GroupHeader();
+            GroupDto = new GroupDataDto();
             await UpdateMenuModules();
             base.AddAsync();
         }
@@ -84,14 +82,15 @@ namespace Consumption.ViewModel
         {
             await UpdateMenuModules();
             var g = await groupRepository.GetGroupAsync(GridModel.Id);
-            if (!g.success)
+            if (g.StatusCode != 200)
             {
-                Msg.Warning("获取数据异常!");
+                Msg.Warning(g.Message);
                 return;
             }
+            var dto = JsonConvert.DeserializeObject<GroupDataDto>(g.Result.ToString());
             //其实这一步操作就是把当前用户组包含的权限,
             //绑定到所有菜单的列表当中,设定选中
-            g.dynamicObj.GroupFuncs?.ForEach(f =>
+            dto?.GroupFuncs?.ForEach(f =>
             {
                 for (int i = 0; i < MenuModules.Count; i++)
                 {
@@ -106,40 +105,41 @@ namespace Consumption.ViewModel
                     }
                 }
             });
-            GroupHeader = g.dynamicObj;//绑定编辑项GroupHeader
-            base.UpdateAsync();
+            GroupDto = dto;//绑定编辑项GroupHeader
+            this.CreateDeaultCommand();
+            SelectPageIndex = 1;
         }
 
         public override async void SaveAsync()
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(GroupHeader.group.GroupCode) ||
-                    string.IsNullOrWhiteSpace(GroupHeader.group.GroupName))
+                if (string.IsNullOrWhiteSpace(GroupDto.group.GroupCode) ||
+                    string.IsNullOrWhiteSpace(GroupDto.group.GroupName))
                 {
                     Msg.Warning("组代码和名称为必填项！");
                     return;
                 };
 
                 //把选择的功能对应的权限保存到提交的参数当中
-                GroupHeader.GroupFuncs = new List<GroupFunc>();
+                GroupDto.GroupFuncs = new List<GroupFunc>();
                 for (int i = 0; i < MenuModules.Count; i++)
                 {
                     var m = MenuModules[i];
                     int value = m.Modules.Where(t => t.IsChecked).Sum(t => t.Value);
                     if (value > 0)
                     {
-                        GroupHeader.GroupFuncs.Add(new GroupFunc()
+                        GroupDto.GroupFuncs.Add(new GroupFunc()
                         {
                             MenuCode = m.MenuCode,
                             Auth = value
                         });
                     }
                 }
-                var r = await groupRepository.SaveGroupAsync(GroupHeader);
-                if (r == null || !r.success)
+                var r = await groupRepository.SaveGroupAsync(GroupDto);
+                if (r.StatusCode != 200)
                 {
-                    Msg.Error("保存数据异常！");
+                    Msg.Error(r.Message);
                     return;
                 }
                 await GetPageData(0);
@@ -180,35 +180,35 @@ namespace Consumption.ViewModel
             set { userSearch = value; RaisePropertyChanged(); }
         }
 
-        private GroupHeader groupHeader;
+        private GroupDataDto groupDto;
 
         /// <summary>
         /// 操作实体
         /// </summary>
-        public GroupHeader GroupHeader
+        public GroupDataDto GroupDto
         {
-            get { return groupHeader; }
-            set { groupHeader = value; RaisePropertyChanged(); }
+            get { return groupDto; }
+            set { groupDto = value; RaisePropertyChanged(); }
         }
 
-        private ObservableCollection<User> gridUserModelList;
+        private ObservableCollection<UserDto> gridUserModelList;
 
         /// <summary>
         /// 所有的用户列表
         /// </summary>
-        public ObservableCollection<User> GridUserModelList
+        public ObservableCollection<UserDto> GridUserModelList
         {
             get { return gridUserModelList; }
             set { gridUserModelList = value; RaisePropertyChanged(); }
         }
 
 
-        private ObservableCollection<MenuModuleGroup> menuModules;
+        private ObservableCollection<MenuModuleGroupDto> menuModules;
 
         /// <summary>
         /// 所有的菜单模块及对应的功能
         /// </summary>
-        public ObservableCollection<MenuModuleGroup> MenuModules
+        public ObservableCollection<MenuModuleGroupDto> MenuModules
         {
             get { return menuModules; }
             set { menuModules = value; RaisePropertyChanged(); }
@@ -218,8 +218,8 @@ namespace Consumption.ViewModel
 
         #region Command
 
-        public RelayCommand<User> AddUserCommand { get; private set; }
-        public RelayCommand<GroupUser> DelUserCommand { get; private set; }
+        public RelayCommand<UserDto> AddUserCommand { get; private set; }
+        public RelayCommand<GroupUserDto> DelUserCommand { get; private set; }
 
         #endregion
 
@@ -230,28 +230,19 @@ namespace Consumption.ViewModel
         /// </summary>
         async void GetUserData()
         {
-            try
+            var r = await userRepository.GetAllListAsync(new QueryParameters()
             {
-                var r = await userRepository.GetAllListAsync(new QueryParameters()
-                {
-                    PageIndex = 0,
-                    PageSize = 30,
-                    Search = UserSearch
-                });
-                GridUserModelList = new ObservableCollection<User>();
-                if (r.success)
-                {
-                    r.dynamicObj.Items?.ToList().ForEach(arg =>
-                    {
-                        GridUserModelList.Add(arg);
-                    });
-                }
-                SelectCardIndex = 1;
-            }
-            catch
+                PageIndex = 0,
+                PageSize = 30,
+                Search = UserSearch
+            });
+            GridUserModelList = new ObservableCollection<UserDto>();
+            if (r.StatusCode == 200)
             {
-
+                var pagedList = JsonConvert.DeserializeObject<PagedList<UserDto>>(r.Result.ToString());
+                GridUserModelList = new ObservableCollection<UserDto>(pagedList.Items?.ToList());
             }
+            SelectCardIndex = 1;
         }
 
         /// <summary>
@@ -264,8 +255,8 @@ namespace Consumption.ViewModel
                 var arg = GridUserModelList[i];
                 if (arg.IsChecked)
                 {
-                    var u = GroupHeader.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
-                    if (u == null) GroupHeader.GroupUsers?.Add(new GroupUser() { Account = arg.Account });
+                    var u = GroupDto.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
+                    if (u == null) GroupDto.GroupUsers?.Add(new GroupUserDto() { Account = arg.Account });
                 }
             }
         }
@@ -275,11 +266,11 @@ namespace Consumption.ViewModel
         /// </summary>
         void DeleteAllUser()
         {
-            for (int i = GroupHeader.GroupUsers.Count - 1; i >= 0; i--)
+            for (int i = GroupDto.GroupUsers.Count - 1; i >= 0; i--)
             {
-                var arg = GroupHeader.GroupUsers[i];
+                var arg = GroupDto.GroupUsers[i];
                 if (arg.IsChecked)
-                    GroupHeader.GroupUsers.Remove(arg);
+                    GroupDto.GroupUsers.Remove(arg);
             }
         }
 
@@ -300,13 +291,9 @@ namespace Consumption.ViewModel
                 return;
             }
             var tm = await groupRepository.GetMenuModuleListAsync();
-            if (tm != null && tm.success)
+            if (tm.StatusCode == 200)
             {
-                MenuModules = new ObservableCollection<MenuModuleGroup>();
-                tm.dynamicObj?.ForEach(arg =>
-                {
-                    MenuModules.Add(arg);
-                });
+                MenuModules = JsonConvert.DeserializeObject<ObservableCollection<MenuModuleGroupDto>>(tm.Result.ToString());
             }
         }
 

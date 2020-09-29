@@ -21,17 +21,6 @@ namespace Consumption.PC
         public MaterialDesignMainWindow()
         {
             InitializeComponent();
-            //AddHandler(DragablzItem.DragStarted, new DragablzDragStartedEventHandler(ItemDragStarted), true);
-            //AddHandler(DragablzItem.DragCompleted, new DragablzDragCompletedEventHandler(ItemDragCompleted), true);
-        }
-
-        private void ItemDragStarted(object sender, DragablzDragStartedEventArgs e)
-        {
-
-        }
-
-        private void ItemDragCompleted(object sender, DragablzDragCompletedEventArgs e)
-        {
         }
 
         private void btnGithub(object sender, RoutedEventArgs e)

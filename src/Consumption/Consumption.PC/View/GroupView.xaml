@@ -58,10 +58,10 @@
 
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock Text="角色编号:"  FontSize="16" Margin="10 0 0 0"/>
-                <TextBox Text="{Binding GroupHeader.group.GroupCode}" MaxLength="10"
+                <TextBox Text="{Binding GroupDto.group.GroupCode}" MaxLength="10"
                                  Width="120" Margin="10 0 10 0" FontSize="16"/>
                 <TextBlock Text="角色名称:"  FontSize="16" Margin="20 0 0 0"/>
-                <TextBox Text="{Binding GroupHeader.group.GroupName}" 
+                <TextBox Text="{Binding GroupDto.group.GroupName}" 
                                  MaxLength="20"
                                  Width="120" Margin="10 0 10 0" FontSize="16"/>
             </StackPanel>
@@ -93,7 +93,7 @@
                             <DataGrid Grid.Row="1" 
                               AutoGenerateColumns="False"
                                         CanUserAddRows="False"
-                              ItemsSource="{Binding GroupHeader.GroupUsers}">
+                              ItemsSource="{Binding GroupDto.GroupUsers}">
                                 <DataGrid.ContextMenu>
                                     <ContextMenu>
                                         <MenuItem Header="删除当前用户" Command="{Binding DelUserCommand}"

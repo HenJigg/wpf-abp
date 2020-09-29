@@ -14,15 +14,12 @@
 
 namespace Consumption.ViewModel.Common
 {
-    using Consumption.Common.Contract;
-    using Consumption.Core.Attributes;
-    using Consumption.Core.Response;
+    using Consumption.Shared.Common;
+    using Consumption.Shared.Common.Attributes;
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Linq;
     using System.Reflection;
-    using System.Text;
     using System.Threading.Tasks;
 
     /// <summary>

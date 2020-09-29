@@ -14,13 +14,10 @@
 
 namespace Consumption.ViewModel.Common
 {
-    using Consumption.Common.Contract;
-    using Consumption.Core.Interfaces;
+    using Consumption.Shared.Common;
+    using Consumption.ViewModel.Interfaces;
     using GalaSoft.MvvmLight.Messaging;
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
-    using System.Text;
     using System.Threading.Tasks;
 
     public enum Notify

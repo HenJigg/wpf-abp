@@ -14,20 +14,14 @@
 
 namespace Consumption.ViewModel
 {
-    using Consumption.Common.Contract;
-    using Consumption.Core.Aop;
-    using Consumption.Core.Interfaces;
+    using Consumption.Shared.Common;
     using Consumption.ViewModel.Common;
     using Consumption.ViewModel.Interfaces;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using GalaSoft.MvvmLight.Messaging;
-    using System;
     using System.Collections.ObjectModel;
-    using System.Linq;
-    using System.Runtime;
     using System.Threading.Tasks;
-    using Ubiety.Dns.Core.Records.NotUsed;
 
     /// <summary>
     /// 应用首页

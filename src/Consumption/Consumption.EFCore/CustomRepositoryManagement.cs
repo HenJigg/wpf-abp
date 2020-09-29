@@ -1,11 +1,9 @@
-﻿using Consumption.Core.Entity;
+﻿
 
 namespace Consumption.EFCore
 {
     using Consumption.EFCore.Context;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using Consumption.Shared.DataModel;
 
     public class CustomUserRepository : Repository<User>, IRepository<User>
     {

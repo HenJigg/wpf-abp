@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Consumption.Web.Data;
 using Consumption.Service;
-using Consumption.Core.Response;
 
 namespace Consumption.Web
 {

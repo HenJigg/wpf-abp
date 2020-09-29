@@ -13,13 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.2.0" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Consumption.Core\Consumption.Core.csproj" />
     <ProjectReference Include="..\Consumption.EFCore\Consumption.EFCore.csproj" />
+    <ProjectReference Include="..\Consumption.Shared\Consumption.Shared.csproj" />
   </ItemGroup>
 
 </Project>
