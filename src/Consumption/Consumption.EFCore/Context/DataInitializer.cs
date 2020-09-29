@@ -37,13 +37,8 @@ namespace Consumption.EFCore.Context
         /// <returns></returns>
         public async Task InitSampleDataAsync()
         {
-            await this.EnsureCreateAsync();
+            context.Database.EnsureCreated();
             await this.CreateSampleDataAsync();
-        }
-
-        async Task EnsureCreateAsync()
-        {
-            await context.Database.EnsureCreatedAsync();
         }
 
         async Task CreateSampleDataAsync()
@@ -69,7 +64,7 @@ namespace Consumption.EFCore.Context
                         Tel = "1870620584",
                         Password = "123",
                         CreateTime = DateTime.Now,
-                        FlagAdmin=1,
+                        FlagAdmin = 1,
                     },
                     new User()
                     {

@@ -118,7 +118,7 @@ namespace Consumption.Api
 
             services.AddSwaggerGen(options =>
             {
-                options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "NoteApi.xml"),true);
+                options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "NoteApi.xml"), true);
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = ".NET Core 多平台项目-接口文档 v1", Version = "v1" });
                 options.AddServer(new OpenApiServer()
                 {
@@ -137,18 +137,18 @@ namespace Consumption.Api
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             //初始化数据库
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var databaseInitializer = serviceScope.ServiceProvider.GetService<IDataInitializer>();
-                databaseInitializer.InitSampleDataAsync().Wait();
+                await databaseInitializer.InitSampleDataAsync();
             }
 
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
-            
+
             app.UseHttpsRedirection();
             app.UseCors("any");
             app.UseRouting();
