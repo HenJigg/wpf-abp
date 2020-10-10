@@ -29,7 +29,7 @@ namespace Consumption.PC.ViewCenter
     [Module("用户管理", ModuleType.系统配置)]
     public class UserCenter : BusinessCenter<UserView, UserDto>
     {
-        public UserCenter() : base(NetCoreProvider.Get<IUserViewModel>())
+        public UserCenter(IUserViewModel viewModel) : base(viewModel)
         { }
         public override void BindDataGridColumns()
         {

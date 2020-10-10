@@ -12,6 +12,10 @@ using Consumption.ViewModel.Interfaces;
 using GalaSoft.MvvmLight;
 using Consumption.Shared.DataInterfaces;
 using Consumption.Shared.Common;
+using System;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Consumption.PC.ViewCenter;
 
 namespace Consumption.PC
 {
@@ -24,6 +28,9 @@ namespace Consumption.PC
         {
             App.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
         }
+
+        public IServiceProvider ServiceProvider { get; private set; }
+        public IConfiguration Configuration { get; private set; }
 
         private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
@@ -39,6 +46,27 @@ namespace Consumption.PC
             NetCoreProvider.RegisterServiceLocator(container);
             var login = NetCoreProvider.Get<IModuleDialog>("LoginCenter");
             await login.ShowDialog();
+
+            #region 2020-10-10 未启用部分的待更新ASP.NETCore 依赖注入
+
+            //var service = new ServiceCollection();
+            ////注册日志服务
+            //service.AddSingleton<ILog, ConsumptionNLog>();
+            ////注册HTTP服务依赖关系
+            //service.AddCustomRepository<UserService, IUserRepository>()
+            //    .AddCustomRepository<GroupService, IGroupRepository>()
+            //    .AddCustomRepository<MenuService, IMenuRepository>()
+            //    .AddCustomRepository<BasicService, IBasicRepository>();
+            ////注册ViewModel依赖关系
+            //service.AddCustomViewModel<UserViewModel, IUserViewModel>()
+            // .AddCustomViewModel<GroupViewModel, IGroupViewModel>()
+            // .AddCustomViewModel<MenuViewModel, IMenuViewModel>()
+            // .AddCustomViewModel<BasicViewModel, IBasicViewModel>();
+            ////注册ViewCenter依赖关系
+            //service.AddCustomViewCenter<LoginCenter>();
+            //ServiceProvider = service.BuildServiceProvider();
+
+            #endregion
         }
 
         private IContainer ConfigureServices()

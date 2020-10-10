@@ -87,12 +87,12 @@ namespace Consumption.Api
                 //options.UseSqlite(connectionString,sql => sql.MigrationsAssembly(migrationsAssemblyName));
 
                 //迁移至MySql
-                var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
-                options.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
+                //var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
+                //options.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
 
                 //迁移至MsSql
-                //var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
-                //options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
+                var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
+                options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
             })
             .AddUnitOfWork<ConsumptionContext>()
             .AddCustomRepository<User, CustomUserRepository>()
@@ -118,8 +118,7 @@ namespace Consumption.Api
 
             services.AddSwaggerGen(options =>
             {
-                options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "NoteApi.xml"), true);
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = ".NET Core 多平台项目-接口文档 v1", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = ".NET Core WebApi v1", Version = "v1" });
                 options.AddServer(new OpenApiServer()
                 {
                     Url = "https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples",
@@ -157,17 +156,11 @@ namespace Consumption.Api
             app.UseSwaggerUI(options =>
             {
                 options.ShowExtensions();
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", ".NET Core 多平台项目-接口文档 v1");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", ".NET Core WebApi v1");
             });
-            //app.UseKnife4UI(c =>
-            //{
-            //    c.DocumentTitle = ".NET Core 多平台项目-接口文档 v1";
-            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-            //});
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapSwagger("{documentName}/api-docs");
             });
         }
     }
