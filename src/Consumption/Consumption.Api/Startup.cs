@@ -147,7 +147,7 @@ namespace Consumption.Api
 
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
-
+            app.UseFileServer();
             app.UseHttpsRedirection();
             app.UseCors("any");
             app.UseRouting();
