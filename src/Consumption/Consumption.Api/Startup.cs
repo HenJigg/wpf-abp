@@ -87,12 +87,12 @@ namespace Consumption.Api
                 //options.UseSqlite(connectionString,sql => sql.MigrationsAssembly(migrationsAssemblyName));
 
                 //Ç¨ÒÆÖÁMySql
-                //var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
-                //options.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
+                var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
+                options.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
 
                 //Ç¨ÒÆÖÁMsSql
-                var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
-                options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
+                //var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
+                //options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
             })
             .AddUnitOfWork<ConsumptionContext>()
             .AddCustomRepository<User, CustomUserRepository>()
@@ -119,15 +119,6 @@ namespace Consumption.Api
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = ".NET Core WebApi v1", Version = "v1" });
-                options.AddServer(new OpenApiServer()
-                {
-                    Url = "https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples",
-                });
-                options.CustomOperationIds(apiDesc =>
-                {
-                    var controllerAction = apiDesc.ActionDescriptor as ControllerActionDescriptor;
-                    return controllerAction.ControllerName + "-" + controllerAction.ActionName;
-                });
             });
         }
 
@@ -161,6 +152,7 @@ namespace Consumption.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapSwagger();
             });
         }
     }
