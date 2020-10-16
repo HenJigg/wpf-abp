@@ -18,7 +18,7 @@ namespace Consumption.ViewModel.Interfaces
     using Consumption.Shared.DataInterfaces;
     using Consumption.Shared.DataModel;
     using Consumption.Shared.Dto;
-    using GalaSoft.MvvmLight.Command;
+    using Microsoft.Toolkit.Mvvm.Input;
 
     /// <summary>
     /// 实现基础的增删改查、分页、权限接口

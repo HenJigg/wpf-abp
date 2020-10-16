@@ -18,8 +18,8 @@ namespace Consumption.PC.ViewCenter
     using Consumption.Shared.Common;
     using Consumption.Shared.DataInterfaces;
     using Consumption.ViewModel;
-    using GalaSoft.MvvmLight.Messaging;
     using MaterialDesignThemes.Wpf;
+    using Microsoft.Toolkit.Mvvm.Messaging;
     using System;
 
     /// <summary>
@@ -29,22 +29,27 @@ namespace Consumption.PC.ViewCenter
     {
         public override void SubscribeMessenger()
         {
-            Messenger.Default.Register<string>(view, "Snackbar", arg =>
-            {
-                App.Current.Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    var messageQueue = view.SnackbarThree.MessageQueue;
-                    messageQueue.Enqueue(arg);
-                }));
-            });
-            Messenger.Default.Register<bool>(view, "NavigationPage", async arg =>
-              {
-                  var dialog = NetCoreProvider.Get<IModuleDialog>("MainCenter");
-                  view.Close();
-                  this.UnsubscribeMessenger();
-                  await dialog.ShowDialog();
-              });
+            WeakReferenceMessenger.Default.Register<string, string>(view, "Snackbar", (sender, arg) =>
+             {
+                 App.Current.Dispatcher.BeginInvoke(new Action(() =>
+                 {
+                     var messageQueue = view.SnackbarThree.MessageQueue;
+                     messageQueue.Enqueue(arg);
+                 }));
+             });
+            WeakReferenceMessenger.Default.Register<string, string>(view, "NavigationPage", async (sender, arg) =>
+               {
+                   var dialog = NetCoreProvider.Get<IModuleDialog>("MainCenter");
+                   this.UnsubscribeMessenger();
+                   view.Close();
+                   await dialog.ShowDialog();
+               });
             base.SubscribeMessenger();
+        }
+
+        public override void UnsubscribeMessenger()
+        {
+            base.UnsubscribeMessenger();
         }
     }
 }

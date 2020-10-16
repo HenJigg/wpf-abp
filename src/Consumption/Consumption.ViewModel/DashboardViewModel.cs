@@ -14,7 +14,7 @@
 
 namespace Consumption.ViewModel
 {
-    using GalaSoft.MvvmLight;
+    using Microsoft.Toolkit.Mvvm.ComponentModel;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -22,7 +22,7 @@ namespace Consumption.ViewModel
     /// <summary>
     /// 仪表板
     /// </summary>
-    public class DashboardViewModel : ViewModelBase
+    public class DashboardViewModel : ObservableObject
     {
 
     }

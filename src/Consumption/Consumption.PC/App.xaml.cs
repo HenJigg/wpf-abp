@@ -9,7 +9,6 @@ using System.Reflection;
 using Consumption.Core.Common;
 using Consumption.ViewModel.Core;
 using Consumption.ViewModel.Interfaces;
-using GalaSoft.MvvmLight;
 using Consumption.Shared.DataInterfaces;
 using Consumption.Shared.Common;
 using System;

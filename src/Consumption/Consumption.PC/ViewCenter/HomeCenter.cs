@@ -16,9 +16,9 @@ namespace Consumption.PC.ViewCenter
 {
     using Consumption.PC.View;
     using System;
-    using GalaSoft.MvvmLight;
     using LiveCharts;
     using LiveCharts.Wpf;
+    using Microsoft.Toolkit.Mvvm.ComponentModel;
 
     /// <summary>
     /// 系统首页
@@ -30,7 +30,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 首页模块
     /// </summary>
-    public class HomeViewModel : ViewModelBase
+    public class HomeViewModel : ObservableObject
     {
         public HomeViewModel()
         {

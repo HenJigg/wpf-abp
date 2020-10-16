@@ -14,7 +14,6 @@
 
 namespace Consumption.ViewModel
 {
-    using GalaSoft.MvvmLight;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -22,7 +21,7 @@ namespace Consumption.ViewModel
     /// <summary>
     /// 消息提示
     /// </summary>
-    public class MsgViewModel : ViewModelBase
+    public class MsgViewModel
     {
         public string Icon { get; set; }
         public string Message { get; set; }

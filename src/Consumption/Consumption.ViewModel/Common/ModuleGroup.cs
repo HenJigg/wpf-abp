@@ -15,13 +15,13 @@
 
 namespace Consumption.ViewModel.Common
 {
-    using GalaSoft.MvvmLight;
+    using Microsoft.Toolkit.Mvvm.ComponentModel;
     using System.Collections.ObjectModel;
 
     /// <summary>
     /// 模块分组
     /// </summary>
-    public class ModuleGroup : ViewModelBase
+    public class ModuleGroup : ObservableObject
     {
         private string groupName;
         private bool contractionTemplate = true;
@@ -33,7 +33,7 @@ namespace Consumption.ViewModel.Common
         public string GroupName
         {
             get { return groupName; }
-            set { groupName = value; RaisePropertyChanged(); }
+            set { groupName = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Consumption.ViewModel.Common
         public bool ContractionTemplate
         {
             get { return contractionTemplate; }
-            set { contractionTemplate = value; RaisePropertyChanged(); }
+            set { contractionTemplate = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Consumption.ViewModel.Common
         public ObservableCollection<Module> Modules
         {
             get { return modules; }
-            set { modules = value; RaisePropertyChanged(); }
+            set { modules = value; OnPropertyChanged(); }
         }
     }
 }

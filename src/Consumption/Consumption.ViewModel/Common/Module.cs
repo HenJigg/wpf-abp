@@ -12,14 +12,15 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
-using GalaSoft.MvvmLight;
+
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace Consumption.ViewModel.Common
 {
     /// <summary>
     /// 模块
     /// </summary>
-    public class Module : ViewModelBase
+    public class Module : ObservableObject
     {
         private string code;
         private string name;
@@ -32,7 +33,7 @@ namespace Consumption.ViewModel.Common
         public string Code
         {
             get { return code; }
-            set { code = value; RaisePropertyChanged(); }
+            set { code = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Consumption.ViewModel.Common
         public string Name
         {
             get { return name; }
-            set { name = value; RaisePropertyChanged(); }
+            set { name = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace Consumption.ViewModel.Common
         public string TypeName
         {
             get { return typeName; }
-            set { typeName = value; RaisePropertyChanged(); }
+            set { typeName = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace Consumption.ViewModel.Common
         public int Auth
         {
             get { return auth; }
-            set { auth = value; RaisePropertyChanged(); }
+            set { auth = value; OnPropertyChanged(); }
         }
     }
 
@@ -76,7 +77,7 @@ namespace Consumption.ViewModel.Common
         public object Body
         {
             get { return body; }
-            set { body = value; RaisePropertyChanged(); }
+            set { body = value; OnPropertyChanged(); }
         }
     }
 }

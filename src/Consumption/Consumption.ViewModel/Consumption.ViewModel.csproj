@@ -14,8 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="5.2.0" />
-    <PackageReference Include="MvvmLight" Version="5.4.1.1" />
-    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-preview3" />
   </ItemGroup>
 
   <ItemGroup>

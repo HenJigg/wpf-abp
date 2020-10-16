@@ -16,7 +16,7 @@ namespace Consumption.PC.ViewCenter
 {
     using Consumption.Shared.DataInterfaces;
     using Consumption.ViewModel.Common;
-    using GalaSoft.MvvmLight.Messaging;
+    using Microsoft.Toolkit.Mvvm.Messaging;
     using System;
     using System.Threading.Tasks;
     using System.Windows;
@@ -65,30 +65,29 @@ namespace Consumption.PC.ViewCenter
         public virtual void SubscribeMessenger()
         {
             //最小化
-            Messenger.Default.Register<string>(view, "WindowMinimize", arg =>
-            {
-                view.WindowState = System.Windows.WindowState.Minimized;
-            });
+            WeakReferenceMessenger.Default.Register<string, string>(this, "WindowMinimize", (sender, arg) =>
+             {
+                 view.WindowState = System.Windows.WindowState.Minimized;
+             });
             //最大化
-            Messenger.Default.Register<string>(view, "WindowMaximize", arg =>
-            {
-                if (view.WindowState == System.Windows.WindowState.Maximized)
-                    view.WindowState = System.Windows.WindowState.Normal;
-                else
-                    view.WindowState = System.Windows.WindowState.Maximized;
-            });
+            WeakReferenceMessenger.Default.Register<string, string>(this, "WindowMaximize", (sender, arg) =>
+             {
+                 if (view.WindowState == System.Windows.WindowState.Maximized)
+                     view.WindowState = System.Windows.WindowState.Normal;
+                 else
+                     view.WindowState = System.Windows.WindowState.Maximized;
+             });
             //关闭系统
-            Messenger.Default.Register<bool>(view, "Exit", async r =>
-            {
-                if (r)
-                    if (!await Msg.Question("确认退出系统?")) return;
-                Environment.Exit(0);
-            });
+            WeakReferenceMessenger.Default.Register<string, string>(this, "Exit", async (sender, arg) =>
+             {
+                 if (!await Msg.Question("确认退出系统?")) return;
+                 Environment.Exit(0);
+             });
         }
 
-        public void UnsubscribeMessenger()
+        public virtual void UnsubscribeMessenger()
         {
-            Messenger.Default.Unregister(view);
+            WeakReferenceMessenger.Default.UnregisterAll(this);
         }
     }
 }

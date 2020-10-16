@@ -19,10 +19,10 @@ namespace Consumption.PC.ViewCenter
     using Consumption.Shared.Common.Attributes;
     using Consumption.Shared.Common.Enums;
     using Consumption.ViewModel.Common;
-    using GalaSoft.MvvmLight;
-    using GalaSoft.MvvmLight.Command;
     using MaterialDesignColors;
     using MaterialDesignThemes.Wpf;
+    using Microsoft.Toolkit.Mvvm.ComponentModel;
+    using Microsoft.Toolkit.Mvvm.Input;
     using System;
     using System.Collections.Generic;
     using System.Windows.Media;
@@ -39,7 +39,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 系统样式设置
     /// </summary>
-    public class SkinViewModel : ViewModelBase
+    public class SkinViewModel : ObservableObject
     {
         private readonly static PaletteHelper _paletteHelper = new PaletteHelper();
 

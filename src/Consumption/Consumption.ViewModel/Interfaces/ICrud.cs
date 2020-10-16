@@ -15,8 +15,9 @@
 
 namespace Consumption.ViewModel.Interfaces
 {
-    using GalaSoft.MvvmLight.Command;
+    using Microsoft.Toolkit.Mvvm.Input;
     using System.Collections.ObjectModel;
+    using System.Threading.Tasks;
 
     public interface ICrud<TEntity> where TEntity : class
     {
@@ -42,12 +43,12 @@ namespace Consumption.ViewModel.Interfaces
         /// <summary>
         /// 搜索命令
         /// </summary>
-        RelayCommand QueryCommand { get; }
+        AsyncRelayCommand QueryCommand { get; }
 
         /// <summary>
         /// 其它命令
         /// </summary>
-        RelayCommand<string> ExecuteCommand { get; }
+        AsyncRelayCommand<string> ExecuteCommand { get; }
 
         /// <summary>
         /// 添加
@@ -62,12 +63,12 @@ namespace Consumption.ViewModel.Interfaces
         /// <summary>
         /// 编辑
         /// </summary>
-        void DeleteAsync();
+        Task DeleteAsync();
 
         /// <summary>
         /// 保存
         /// </summary>
-        void SaveAsync();
+        Task SaveAsync();
 
         /// <summary>
         /// 取消

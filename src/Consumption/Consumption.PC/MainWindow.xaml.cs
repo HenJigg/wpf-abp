@@ -1,6 +1,5 @@
 ﻿using Consumption.PC.View;
 using Consumption.ViewModel;
-using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;

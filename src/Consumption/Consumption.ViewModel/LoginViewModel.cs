@@ -14,9 +14,6 @@
 
 namespace Consumption.ViewModel
 {
-    using GalaSoft.MvvmLight;
-    using GalaSoft.MvvmLight.Command;
-    using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -26,6 +23,9 @@ namespace Consumption.ViewModel
     using Consumption.Shared.DataModel;
     using Consumption.Shared.Dto;
     using Newtonsoft.Json;
+    using Microsoft.Toolkit.Mvvm.Input;
+    using Microsoft.Toolkit.Mvvm.Messaging;
+    using Org.BouncyCastle.Crypto.Engines;
 
     /// <summary>
     /// 登录模块
@@ -48,25 +48,25 @@ namespace Consumption.ViewModel
         public string UserName
         {
             get { return userName; }
-            set { userName = value; RaisePropertyChanged(); }
+            set { userName = value; OnPropertyChanged(); }
         }
 
         public string PassWord
         {
             get { return passWord; }
-            set { passWord = value; RaisePropertyChanged(); }
+            set { passWord = value; OnPropertyChanged(); }
         }
 
         public string Report
         {
             get { return report; }
-            set { report = value; RaisePropertyChanged(); }
+            set { report = value; OnPropertyChanged(); }
         }
 
         public string IsCancel
         {
             get { return isCancel; }
-            set { isCancel = value; RaisePropertyChanged(); }
+            set { isCancel = value; OnPropertyChanged(); }
         }
         #endregion
 
@@ -115,7 +115,7 @@ namespace Consumption.ViewModel
 
                 #endregion
                 //这行代码会发射到首页,Center中会定义所有的Messenger
-                Messenger.Default.Send(true, "NavigationPage");
+                WeakReferenceMessenger.Default.Send(string.Empty, "NavigationPage");
             }
             catch (Exception ex)
             {
@@ -131,7 +131,7 @@ namespace Consumption.ViewModel
 
         public override void Exit()
         {
-            Messenger.Default.Send(false, "Exit");
+            WeakReferenceMessenger.Default.Send(string.Empty, "Exit");
         }
     }
 }

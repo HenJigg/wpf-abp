@@ -15,7 +15,6 @@
 namespace Consumption.PC.ViewCenter
 {
     using Consumption.ViewModel;
-    using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Runtime;
     using System.Threading.Tasks;
@@ -27,6 +26,7 @@ namespace Consumption.PC.ViewCenter
     using Consumption.ViewModel.Interfaces;
     using Consumption.Shared.Common;
     using Consumption.ViewModel.Common.Aop;
+    using Microsoft.Toolkit.Mvvm.Messaging;
 
     /// <summary>
     /// 首页控制类
@@ -36,39 +36,39 @@ namespace Consumption.PC.ViewCenter
         public override void SubscribeMessenger()
         {
             //非阻塞式窗口提示消息
-            Messenger.Default.Register<string>(view, "Snackbar", arg =>
-            {
-                var messageQueue = view.SnackbarThree.MessageQueue;
-                messageQueue.Enqueue(arg);
-            });
+            WeakReferenceMessenger.Default.Register<string, string>(view, "Snackbar", (sender, arg) =>
+             {
+                 var messageQueue = view.SnackbarThree.MessageQueue;
+                 messageQueue.Enqueue(arg);
+             });
             //阻塞式窗口提示消息
-            Messenger.Default.Register<MsgInfo>(view, "UpdateDialog", m =>
-              {
-                  if (m.IsOpen)
-                      _ = DialogHost.Show(new SplashScreenView()
-                      {
-                          DataContext = new { Msg = m.Msg }
-                      }, "Root");
-                  else
-                  {
-                      DialogHost.Close("Root");
-                  }
-              });
+            WeakReferenceMessenger.Default.Register<MsgInfo, string>(view, "UpdateDialog", (sender, m) =>
+                {
+                    if (m.IsOpen)
+                        _ = DialogHost.Show(new SplashScreenView()
+                        {
+                            DataContext = new { Msg = m.Msg }
+                        }, "Root");
+                    else
+                    {
+                        DialogHost.Close("Root");
+                    }
+                });
             //菜单执行相关动画及模板切换
-            Messenger.Default.Register<string>(view, "ExpandMenu", arg =>
-            {
-                if (view.MENU.Width < 200)
-                    AnimationHelper.CreateWidthChangedAnimation(view.MENU, 60, 200, new TimeSpan(0, 0, 0, 0, 300));
-                else
-                    AnimationHelper.CreateWidthChangedAnimation(view.MENU, 200, 60, new TimeSpan(0, 0, 0, 0, 300));
+            WeakReferenceMessenger.Default.Register<string, string>(view, "ExpandMenu", (sender, arg) =>
+              {
+                  if (view.MENU.Width < 200)
+                      AnimationHelper.CreateWidthChangedAnimation(view.MENU, 60, 200, new TimeSpan(0, 0, 0, 0, 300));
+                  else
+                      AnimationHelper.CreateWidthChangedAnimation(view.MENU, 200, 60, new TimeSpan(0, 0, 0, 0, 300));
 
-                //由于...
-                var template = view.IC.ItemTemplateSelector;
-                view.IC.ItemTemplateSelector = null;
-                view.IC.ItemTemplateSelector = template;
-            });
-            Messenger.Default.Register<string>(view, "OpenPage", OpenPage);
-            Messenger.Default.Register<string>(view, "ClosePage", ClosePage);
+                  //由于...
+                  var template = view.IC.ItemTemplateSelector;
+                  view.IC.ItemTemplateSelector = null;
+                  view.IC.ItemTemplateSelector = template;
+              });
+            WeakReferenceMessenger.Default.Register<string, string>(view, "OpenPage", (sender, arg) => { OpenPage(arg); });
+            WeakReferenceMessenger.Default.Register<string, string>(view, "ClosePage", (sender, arg) => { ClosePage(arg); });
             base.SubscribeMessenger();
         }
 

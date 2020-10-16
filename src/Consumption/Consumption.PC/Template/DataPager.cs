@@ -14,7 +14,7 @@
 
 namespace Consumption.PC.Template
 {
-    using GalaSoft.MvvmLight.Command;
+    using Microsoft.Toolkit.Mvvm.Input;
     using System;
     using System.Collections.Generic;
     using System.Text;

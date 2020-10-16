@@ -12,16 +12,18 @@
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
 
+
+
 namespace Consumption.ViewModel
 {
-    using GalaSoft.MvvmLight;
-    using GalaSoft.MvvmLight.Command;
-    using GalaSoft.MvvmLight.Messaging;
+    using Microsoft.Toolkit.Mvvm.ComponentModel;
+    using Microsoft.Toolkit.Mvvm.Input;
+    using Microsoft.Toolkit.Mvvm.Messaging;
 
     /// <summary>
     /// MVVM基类
     /// </summary>
-    public class BaseDialogViewModel : ViewModelBase
+    public class BaseDialogViewModel : ObservableObject
     {
         public BaseDialogViewModel()
         {
@@ -35,7 +37,7 @@ namespace Consumption.ViewModel
         /// </summary>
         public virtual void Exit()
         {
-            Messenger.Default.Send(true, "Exit");
+            WeakReferenceMessenger.Default.Send("", "Exit");
         }
 
         private bool isOpen;
@@ -46,7 +48,7 @@ namespace Consumption.ViewModel
         public bool DialogIsOpen
         {
             get { return isOpen; }
-            set { isOpen = value; RaisePropertyChanged(); }
+            set { isOpen = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -55,7 +57,7 @@ namespace Consumption.ViewModel
         /// <param name="msg"></param>
         public void SnackBar(string msg)
         {
-            Messenger.Default.Send(msg, "Snackbar");
+            WeakReferenceMessenger.Default.Send(msg, "Snackbar");
         }
     }
 }

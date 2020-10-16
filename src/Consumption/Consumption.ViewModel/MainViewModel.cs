@@ -17,9 +17,8 @@ namespace Consumption.ViewModel
     using Consumption.Shared.Common;
     using Consumption.ViewModel.Common;
     using Consumption.ViewModel.Interfaces;
-    using GalaSoft.MvvmLight;
-    using GalaSoft.MvvmLight.Command;
-    using GalaSoft.MvvmLight.Messaging;
+    using Microsoft.Toolkit.Mvvm.Input;
+    using Microsoft.Toolkit.Mvvm.Messaging;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
 
@@ -30,8 +29,8 @@ namespace Consumption.ViewModel
     {
         public MainViewModel()
         {
-            OpenPageCommand = new RelayCommand<string>(pageName => Messenger.Default.Send(pageName, "OpenPage"));
-            ClosePageCommand = new RelayCommand<string>(pageName => Messenger.Default.Send(pageName, "ClosePage"));
+            OpenPageCommand = new RelayCommand<string>(pageName => WeakReferenceMessenger.Default.Send(pageName, "OpenPage"));
+            ClosePageCommand = new RelayCommand<string>(pageName => WeakReferenceMessenger.Default.Send(pageName, "ClosePage"));
             GoHomeCommand = new RelayCommand(InitHomeView);
             ExpandMenuCommand = new RelayCommand(() =>
             {
@@ -40,7 +39,7 @@ namespace Consumption.ViewModel
                     var arg = ModuleManager.ModuleGroups[i];
                     arg.ContractionTemplate = !arg.ContractionTemplate;
                 }
-                Messenger.Default.Send("", "ExpandMenu");
+                WeakReferenceMessenger.Default.Send("", "ExpandMenu");
             });
         }
 
@@ -54,7 +53,7 @@ namespace Consumption.ViewModel
         public ModuleUIComponent CurrentModule
         {
             get { return currentModule; }
-            set { currentModule = value; RaisePropertyChanged(); }
+            set { currentModule = value; OnPropertyChanged(); }
         }
 
 
@@ -66,7 +65,7 @@ namespace Consumption.ViewModel
         public ObservableCollection<ModuleUIComponent> ModuleList
         {
             get { return moduleList; }
-            set { moduleList = value; RaisePropertyChanged(); }
+            set { moduleList = value; OnPropertyChanged(); }
         }
 
         private ModuleManager moduleManager;
@@ -77,7 +76,7 @@ namespace Consumption.ViewModel
         public ModuleManager ModuleManager
         {
             get { return moduleManager; }
-            set { moduleManager = value; RaisePropertyChanged(); }
+            set { moduleManager = value; OnPropertyChanged(); }
         }
 
         #endregion
@@ -106,12 +105,12 @@ namespace Consumption.ViewModel
 
         public RelayCommand MinCommand { get; private set; } = new RelayCommand(() =>
         {
-            Messenger.Default.Send("", "WindowMinimize");
+            WeakReferenceMessenger.Default.Send("", "WindowMinimize");
         });
 
         public RelayCommand MaxCommand { get; private set; } = new RelayCommand(() =>
         {
-            Messenger.Default.Send("", "WindowMaximize");
+            WeakReferenceMessenger.Default.Send("", "WindowMaximize");
         });
 
         #endregion

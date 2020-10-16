@@ -19,12 +19,9 @@
 namespace Consumption.ViewModel
 {
     using Consumption.ViewModel.Common;
-    using GalaSoft.MvvmLight;
-    using GalaSoft.MvvmLight.Command;
     using System;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
-    using GalaSoft.MvvmLight.Messaging;
     using System.Linq;
     using Consumption.Shared.Common;
     using Consumption.ViewModel.Interfaces;
@@ -36,12 +33,15 @@ namespace Consumption.ViewModel
     using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
     using Consumption.Shared.Common.Collections;
     using Newtonsoft.Json;
+    using Microsoft.Toolkit.Mvvm.ComponentModel;
+    using Microsoft.Toolkit.Mvvm.Input;
+    using Microsoft.Toolkit.Mvvm.Messaging;
 
     /// <summary>
     /// 通用基类(实现CRUD/数据分页..)
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class BaseRepository<TEntity> : ViewModelBase where TEntity : BaseDto, new()
+    public class BaseRepository<TEntity> : ObservableObject where TEntity : BaseDto, new()
     {
         public readonly IConsumptionRepository<TEntity> repository;
 
@@ -50,8 +50,6 @@ namespace Consumption.ViewModel
         public BaseRepository(IConsumptionRepository<TEntity> repository)
         {
             this.repository = repository;
-            QueryCommand = new RelayCommand(Query);
-            ExecuteCommand = new RelayCommand<string>(arg => Execute(arg));
         }
 
         #region ICrud (增删改查接口~喵)
@@ -63,30 +61,30 @@ namespace Consumption.ViewModel
         public TEntity GridModel
         {
             get { return gridModel; }
-            set { gridModel = value; RaisePropertyChanged(); }
+            set { gridModel = value; OnPropertyChanged(); }
         }
         public int SelectPageIndex
         {
             get { return selectPageIndex; }
-            set { selectPageIndex = value; RaisePropertyChanged(); }
+            set { selectPageIndex = value; OnPropertyChanged(); }
         }
         public string Search
         {
             get { return search; }
-            set { search = value; RaisePropertyChanged(); }
+            set { search = value; OnPropertyChanged(); }
         }
         public ObservableCollection<TEntity> GridModelList
         {
             get { return gridModelList; }
-            set { gridModelList = value; RaisePropertyChanged(); }
+            set { gridModelList = value; OnPropertyChanged(); }
         }
-        public RelayCommand QueryCommand { get; }
-        public RelayCommand<string> ExecuteCommand { get; }
+        public AsyncRelayCommand QueryCommand { get { return new AsyncRelayCommand(Query); } }
+        public AsyncRelayCommand<string> ExecuteCommand { get { return new AsyncRelayCommand<string>(arg => Execute(arg)); } }
 
         /// <summary>
         /// 查询
         /// </summary>
-        public virtual async void Query()
+        public virtual async Task Query()
         {
             await GetPageData(this.PageIndex);
         }
@@ -96,7 +94,7 @@ namespace Consumption.ViewModel
         /// </summary>
         /// <param name="arg"></param>
         [GlobalLoger]
-        public virtual void Execute(string arg)
+        public virtual async Task Execute(string arg)
         {
             /*
              * 这里使用string来做弱类型处理,防止使用枚举,
@@ -106,8 +104,8 @@ namespace Consumption.ViewModel
             {
                 case "添加": AddAsync(); break;
                 case "修改": UpdateAsync(); break;
-                case "删除": DeleteAsync(); break;
-                case "保存": SaveAsync(); break;
+                case "删除": await DeleteAsync(); break;
+                case "保存": await SaveAsync(); break;
                 case "取消": Cancel(); break;
             }
         }
@@ -125,7 +123,7 @@ namespace Consumption.ViewModel
             SelectPageIndex = 0;
         }
 
-        public virtual async void DeleteAsync()
+        public virtual async Task DeleteAsync()
         {
             if (GridModel != null)
             {
@@ -135,13 +133,13 @@ namespace Consumption.ViewModel
                     if (r.StatusCode == 200)
                         await GetPageData(0);
                     else
-                        Messenger.Default.Send(r.Message, "Snackbar");
+                        WeakReferenceMessenger.Default.Send(r.Message, "Snackbar");
                 }
             }
         }
 
         [GlobalProgress]
-        public virtual async void SaveAsync()
+        public virtual async Task SaveAsync()
         {
             //Before you save, you need to verify the validity of the data.
             if (GridModel != null)
@@ -166,17 +164,17 @@ namespace Consumption.ViewModel
                     SelectPageIndex = 1;
                 }
                 else
-                    Messenger.Default.Send("Get data exception!", "Snackbar");
+                    WeakReferenceMessenger.Default.Send("Get data exception!", "Snackbar");
             }
         }
 
         #endregion
 
         #region IDataPager (数据分页~喵)
-        public RelayCommand GoHomePageCommand { get { return new RelayCommand(() => GoHomePage()); } }
-        public RelayCommand GoOnPageCommand { get { return new RelayCommand(() => GoOnPage()); } }
-        public RelayCommand GoNextPageCommand { get { return new RelayCommand(() => GoNextPage()); } }
-        public RelayCommand GoEndPageCommand { get { return new RelayCommand(() => GoEndPage()); } }
+        public AsyncRelayCommand GoHomePageCommand { get { return new AsyncRelayCommand(GoHomePage); } }
+        public AsyncRelayCommand GoOnPageCommand { get { return new AsyncRelayCommand(GoOnPage); } }
+        public AsyncRelayCommand GoNextPageCommand { get { return new AsyncRelayCommand(GoNextPage); } }
+        public AsyncRelayCommand GoEndPageCommand { get { return new AsyncRelayCommand(GoEndPage); } }
 
         private int totalCount = 0;
         private int pageSize = 30;
@@ -186,27 +184,27 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 总数
         /// </summary>
-        public int TotalCount { get { return totalCount; } set { totalCount = value; RaisePropertyChanged(); } }
+        public int TotalCount { get { return totalCount; } set { totalCount = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// 当前页大小
         /// </summary>
-        public int PageSize { get { return pageSize; } set { pageSize = value; RaisePropertyChanged(); } }
+        public int PageSize { get { return pageSize; } set { pageSize = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// 当前页
         /// </summary>
-        public int PageIndex { get { return pageIndex; } set { pageIndex = value; RaisePropertyChanged(); } }
+        public int PageIndex { get { return pageIndex; } set { pageIndex = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// 分页总数
         /// </summary>
-        public int PageCount { get { return pageCount; } set { pageCount = value; RaisePropertyChanged(); } }
+        public int PageCount { get { return pageCount; } set { pageCount = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// 首页
         /// </summary>
-        public virtual async void GoHomePage()
+        public virtual async Task GoHomePage()
         {
             if (this.PageIndex == 0) return;
             PageIndex = 0;
@@ -216,7 +214,7 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 上一页
         /// </summary>
-        public virtual async void GoOnPage()
+        public virtual async Task GoOnPage()
         {
             if (this.PageIndex == 0) return;
             PageIndex--;
@@ -226,7 +224,7 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 下一页
         /// </summary>
-        public virtual async void GoNextPage()
+        public virtual async Task GoNextPage()
         {
             if (this.PageIndex == PageCount) return;
             PageIndex++;
@@ -236,7 +234,7 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 尾页
         /// </summary>
-        public virtual async void GoEndPage()
+        public virtual async Task GoEndPage()
         {
             this.PageIndex = PageCount;
             await GetPageData(PageCount);
@@ -288,7 +286,7 @@ namespace Consumption.ViewModel
         public ObservableCollection<CommandStruct> ToolBarCommandList
         {
             get { return toolBarCommandList; }
-            set { toolBarCommandList = value; RaisePropertyChanged(); }
+            set { toolBarCommandList = value; OnPropertyChanged(); }
         }
 
         /// <summary>

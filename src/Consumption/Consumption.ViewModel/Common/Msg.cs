@@ -16,7 +16,7 @@ namespace Consumption.ViewModel.Common
 {
     using Consumption.Shared.Common;
     using Consumption.ViewModel.Interfaces;
-    using GalaSoft.MvvmLight.Messaging;
+    using Microsoft.Toolkit.Mvvm.Messaging;
     using System.ComponentModel;
     using System.Threading.Tasks;
 
@@ -55,7 +55,7 @@ namespace Consumption.ViewModel.Common
         /// <param name="msg"></param>
         public static void Info(string msg)
         {
-            Messenger.Default.Send(msg, "Snackbar");
+            WeakReferenceMessenger.Default.Send(msg, "Snackbar");
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Consumption.ViewModel.Common
         /// <param name="msg"></param>
         public static void Error(string msg)
         {
-            Messenger.Default.Send(msg, "Snackbar");
+            WeakReferenceMessenger.Default.Send(msg, "Snackbar");
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Consumption.ViewModel.Common
         /// <param name="msg"></param>
         public static void Warning(string msg)
         {
-            Messenger.Default.Send(msg, "Snackbar");
+            WeakReferenceMessenger.Default.Send(msg, "Snackbar");
         }
 
         /// <summary>

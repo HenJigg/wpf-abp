@@ -45,22 +45,22 @@ namespace Consumption.Shared.DataInterfaces
         /// <summary>
         /// 首页
         /// </summary>
-        void GoHomePage();
+        Task GoHomePage();
 
         /// <summary>
         /// 上一页
         /// </summary>
-        void GoOnPage();
+        Task GoOnPage();
 
         /// <summary>
         /// 下一页
         /// </summary>
-        void GoNextPage();
+        Task GoNextPage();
 
         /// <summary>
         /// 尾页
         /// </summary>
-        void GoEndPage();
+        Task GoEndPage();
 
         /// <summary>
         /// 获取分页数据

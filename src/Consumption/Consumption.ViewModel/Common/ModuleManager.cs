@@ -16,7 +16,7 @@ namespace Consumption.ViewModel.Common
 {
     using Consumption.Shared.Common;
     using Consumption.Shared.Common.Enums;
-    using GalaSoft.MvvmLight;
+    using Microsoft.Toolkit.Mvvm.ComponentModel;
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -25,7 +25,7 @@ namespace Consumption.ViewModel.Common
     /// <summary>
     /// 模块管理器
     /// </summary>
-    public class ModuleManager : ViewModelBase
+    public class ModuleManager : ObservableObject
     {
         private ObservableCollection<Module> modules;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Consumption.ViewModel.Common
         public ObservableCollection<Module> Modules
         {
             get { return modules; }
-            set { modules = value; RaisePropertyChanged(); }
+            set { modules = value; OnPropertyChanged(); }
         }
 
         private ObservableCollection<ModuleGroup> moduleGroups;
@@ -45,7 +45,7 @@ namespace Consumption.ViewModel.Common
         public ObservableCollection<ModuleGroup> ModuleGroups
         {
             get { return moduleGroups; }
-            set { moduleGroups = value; RaisePropertyChanged(); }
+            set { moduleGroups = value; OnPropertyChanged(); }
         }
 
         /// <summary>

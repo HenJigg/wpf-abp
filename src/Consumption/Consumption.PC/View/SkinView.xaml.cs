@@ -15,7 +15,6 @@
 namespace Consumption.PC.View
 {
     using Consumption.PC.Common;
-    using GalaSoft.MvvmLight.Messaging;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -41,18 +40,6 @@ namespace Consumption.PC.View
         public SkinView()
         {
             InitializeComponent();
-        }
-
-        private void sld_gaussian_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            //更新首页高斯值
-            Messenger.Default.Send(e.NewValue, "UpdateGaussian");
-        }
-
-        private void sld_trans_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            //更新首页背景透明度
-            Messenger.Default.Send(e.NewValue, "UpdateTrans");
         }
     }
 }
