@@ -142,30 +142,26 @@ namespace Consumption.ViewModel
         public virtual async Task SaveAsync()
         {
             //Before you save, you need to verify the validity of the data.
-            if (GridModel != null)
-            {
-                await repository.SaveAsync(GridModel);
-                InitPermissions(this.AuthValue);
-                await GetPageData(0);
-                SelectPageIndex = 0;
-            }
+            if (GridModel == null) return;
+            await repository.SaveAsync(GridModel);
+            InitPermissions(this.AuthValue);
+            await GetPageData(0);
+            SelectPageIndex = 0;
         }
 
         [GlobalProgress]
         public virtual async void UpdateAsync()
         {
-            if (GridModel != null)
+            if (GridModel == null) return;
+            var baseResponse = await repository.GetAsync(GridModel.Id);
+            if (baseResponse.StatusCode == 200)
             {
-                var baseResponse = await repository.GetAsync(GridModel.Id);
-                if (baseResponse.StatusCode == 200)
-                {
-                    GridModel = JsonConvert.DeserializeObject<TEntity>(baseResponse.Result.ToString());
-                    this.CreateDeaultCommand();
-                    SelectPageIndex = 1;
-                }
-                else
-                    WeakReferenceMessenger.Default.Send("Get data exception!", "Snackbar");
+                GridModel = JsonConvert.DeserializeObject<TEntity>(baseResponse.Result.ToString());
+                this.CreateDeaultCommand();
+                SelectPageIndex = 1;
             }
+            else
+                WeakReferenceMessenger.Default.Send("Get data exception!", "Snackbar");
         }
 
         #endregion

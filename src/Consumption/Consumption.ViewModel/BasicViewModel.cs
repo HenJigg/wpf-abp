@@ -24,9 +24,7 @@ namespace Consumption.ViewModel
     /// </summary>
     public class BasicViewModel : BaseRepository<BasicDto>, IBasicViewModel
     {
-        public BasicViewModel() : base(NetCoreProvider.Get<IBasicRepository>())
-        {
-
-        }
+        public BasicViewModel(IBasicRepository repository) : base(repository)
+        { }
     }
 }

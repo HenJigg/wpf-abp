@@ -27,7 +27,7 @@ namespace Consumption.PC.ViewCenter
     [Module("基础数据", ModuleType.系统配置)]
     public class BasicCenter : BusinessCenter<BasicView, BasicDto>
     {
-        public BasicCenter() : base(NetCoreProvider.Get<IBasicViewModel>())
+        public BasicCenter(IBasicViewModel viewModel) : base(viewModel)
         { }
     }
 }

@@ -37,11 +37,11 @@ namespace Consumption.ViewModel
     public class GroupViewModel : BaseRepository<GroupDto>, IGroupViewModel
     {
         private readonly IUserRepository userRepository;
-        public readonly IGroupRepository groupRepository;
-        public GroupViewModel() : base(NetCoreProvider.Get<IGroupRepository>())
+        private readonly IGroupRepository groupRepository;
+
+        public GroupViewModel(IGroupRepository repository) : base(repository)
         {
             userRepository = NetCoreProvider.Get<IUserRepository>();
-            groupRepository = repository as IGroupRepository;
             AddUserCommand = new RelayCommand<UserDto>(arg =>
             {
                 if (arg == null) return;
@@ -54,6 +54,7 @@ namespace Consumption.ViewModel
                 var u = GroupDto.GroupUsers?.FirstOrDefault(t => t.Account == arg.Account);
                 if (u != null) GroupDto.GroupUsers?.Remove(u);
             });
+            groupRepository = repository;
         }
 
         #region Override
@@ -80,6 +81,7 @@ namespace Consumption.ViewModel
 
         public override async void UpdateAsync()
         {
+            if (GridModel == null) return;
             await UpdateMenuModules();
             var g = await groupRepository.GetGroupAsync(GridModel.Id);
             if (g.StatusCode != 200)

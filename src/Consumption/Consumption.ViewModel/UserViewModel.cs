@@ -27,7 +27,7 @@ namespace Consumption.ViewModel
     /// </summary>
     public class UserViewModel : BaseRepository<UserDto>, IUserViewModel
     {
-        public UserViewModel() : base(NetCoreProvider.Get<IUserRepository>())
+        public UserViewModel(IUserRepository repository) : base(repository)
         {
 
         }

@@ -19,7 +19,7 @@ namespace Consumption.PC.ViewCenter
     [Module("权限管理", ModuleType.系统配置)]
     public class GroupCenter : BusinessCenter<GroupView, GroupDto>
     {
-        public GroupCenter() : base(NetCoreProvider.Get<IGroupViewModel>())
+        public GroupCenter(IGroupViewModel viewModel) : base(viewModel)
         { }
 
         public override void BindDataGridColumns()

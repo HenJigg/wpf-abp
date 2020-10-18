@@ -28,7 +28,7 @@ namespace Consumption.PC.ViewCenter
     [Module("菜单管理", ModuleType.系统配置)]
     public class MenuCenter : BusinessCenter<MenuView, MenuDto>
     {
-        public MenuCenter() : base(NetCoreProvider.Get<IMenuViewModel>())
+        public MenuCenter(IMenuViewModel viewModel) : base(viewModel)
         { }
 
         public override void BindDataGridColumns()

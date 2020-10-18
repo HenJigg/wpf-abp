@@ -23,7 +23,7 @@ namespace Consumption.ViewModel
     /// </summary>
     public class MenuViewModel : BaseRepository<MenuDto>, IMenuViewModel
     {
-        public MenuViewModel() : base(NetCoreProvider.Get<IMenuRepository>())
+        public MenuViewModel(IMenuRepository repository) : base(repository)
         {
 
         }
