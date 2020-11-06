@@ -26,22 +26,22 @@ namespace Consumption.Service
     /// <summary>
     /// 用户组服务
     /// </summary>
-    public partial class GroupService: BaseService<GroupDto>, IGroupRepository
+    public partial class GroupService : BaseService<GroupDto>, IGroupRepository
     {
-        public async Task<BaseResponse> GetMenuModuleListAsync()
+        public async Task<BaseResponse<List<MenuModuleGroupDto>>> GetMenuModuleListAsync()
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse>(new GroupModuleRequest(), Method.GET);
+            return await new BaseServiceRequest().GetRequest<BaseResponse<List<MenuModuleGroupDto>>>(new GroupModuleRequest(), Method.GET);
         }
 
-        public async Task<BaseResponse> GetGroupAsync(int id)
+        public async Task<BaseResponse<GroupDataDto>> GetGroupAsync(int id)
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse>(new GroupInfoRequest() { id = id }, Method.GET);
+            return await new BaseServiceRequest().GetRequest<BaseResponse<GroupDataDto>>(new GroupInfoRequest() { id = id }, Method.GET);
         }
 
         public async Task<BaseResponse> SaveGroupAsync(GroupDataDto group)
         {
             var r = await new BaseServiceRequest().GetRequest<BaseResponse>(new GroupSaveRequest()
-            {   groupDto = group }, Method.POST);
+            { groupDto = group }, Method.POST);
             return r;
         }
     }

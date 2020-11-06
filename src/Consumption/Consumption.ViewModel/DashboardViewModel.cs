@@ -14,6 +14,7 @@
 
 namespace Consumption.ViewModel
 {
+    using Consumption.ViewModel.Interfaces;
     using Microsoft.Toolkit.Mvvm.ComponentModel;
     using System;
     using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace Consumption.ViewModel
     /// <summary>
     /// 仪表板
     /// </summary>
-    public class DashboardViewModel : ObservableObject
+    public class DashboardViewModel : ObservableObject, IDashboardViewModel
     {
 
     }

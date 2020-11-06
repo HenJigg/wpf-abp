@@ -27,7 +27,7 @@ namespace Consumption.PC.ViewCenter
     /// 用户管理类
     /// </summary>
     [Module("用户管理", ModuleType.系统配置)]
-    public class UserCenter : BusinessCenter<UserView, UserDto>
+    public class UserCenter : ModuleCenter<UserView, UserDto>, IUserCenter
     {
         public UserCenter(IUserViewModel viewModel) : base(viewModel)
         { }

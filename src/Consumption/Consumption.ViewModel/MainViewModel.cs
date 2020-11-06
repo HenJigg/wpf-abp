@@ -19,15 +19,18 @@ namespace Consumption.ViewModel
     using Consumption.ViewModel.Interfaces;
     using Microsoft.Toolkit.Mvvm.Input;
     using Microsoft.Toolkit.Mvvm.Messaging;
+    using Org.BouncyCastle.Asn1.X509.Qualified;
+    using System;
     using System.Collections.ObjectModel;
     using System.Diagnostics;
     using System.Linq;
+    using System.Reflection;
     using System.Threading.Tasks;
 
     /// <summary>
     /// 应用首页
     /// </summary>
-    public class MainViewModel : BaseDialogViewModel, IBaseDialog
+    public class MainViewModel : BaseDialogViewModel, IMainViewModel
     {
         public MainViewModel()
         {
@@ -124,27 +127,34 @@ namespace Consumption.ViewModel
         /// <returns></returns>
         public async virtual Task OpenPage(string pageName)
         {
-            if (string.IsNullOrWhiteSpace(pageName)) return;
-            var pageModule = this.ModuleManager.Modules.FirstOrDefault(t => t.Name.Equals(pageName));
-            if (pageModule == null) return;
-
-            var module = this.ModuleList.FirstOrDefault(t => t.Name == pageModule.Name);
-            if (module == null)
+            try
             {
-                IBaseModule dialog = NetCoreProvider.Get<IBaseModule>(pageModule.TypeName);
-                await dialog.BindDefaultModel(pageModule.Auth);
-                this.ModuleList.Add(new ModuleUIComponent()
+                if (string.IsNullOrWhiteSpace(pageName)) return;
+                var pageModule = this.ModuleManager.Modules.FirstOrDefault(t => t.Name.Equals(pageName));
+                if (pageModule == null) return;
+
+                var module = this.ModuleList.FirstOrDefault(t => t.Name == pageModule.Name);
+                if (module == null)
                 {
-                    Code = pageModule.Code,
-                    Auth = pageModule.Auth,
-                    Name = pageModule.Name,
-                    TypeName = pageModule.TypeName,
-                    Body = dialog.GetView()
-                });
-                this.CurrentModule = this.ModuleList.Last();
+                    var dialog = NetCoreProvider.ResolveNamed<IBaseCenter>(pageModule.TypeName);
+                    await dialog.BindDefaultModel(pageModule.Auth);
+                    ModuleList.Add(new ModuleUIComponent()
+                    {
+                        Code = pageModule.Code,
+                        Auth = pageModule.Auth,
+                        Name = pageModule.Name,
+                        TypeName = pageModule.TypeName,
+                        Body = dialog.GetView()
+                    });
+                    CurrentModule = ModuleList.Last();
+                }
+                else
+                    CurrentModule = module;
             }
-            else
-                this.CurrentModule = module;
+            catch (Exception ex)
+            {
+                Msg.Error(ex.Message);
+            }
         }
 
         /// <summary>
@@ -187,13 +197,13 @@ namespace Consumption.ViewModel
             InitHomeView();
         }
 
-      
+
         /// <summary>
         /// 初始化首页
         /// </summary>
         void InitHomeView()
         {
-            var dialog = NetCoreProvider.Get<IBaseModule>("HomeCenter");
+            var dialog = NetCoreProvider.ResolveNamed<IHomeCenter>("HomeCenter");
             dialog.BindDefaultModel();
             ModuleUIComponent component = new ModuleUIComponent();
             component.Name = "首页";

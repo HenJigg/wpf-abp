@@ -19,7 +19,7 @@ namespace Consumption.ViewModel.Interfaces
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
 
-    public interface ICrud<TEntity> where TEntity : class
+    public interface IOrdinary<TEntity> where TEntity : class
     {
         /// <summary>
         /// 选中表单

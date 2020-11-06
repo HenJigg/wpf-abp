@@ -25,7 +25,7 @@ namespace Consumption.PC.ViewCenter
     /// 基础数据控制类
     /// </summary>
     [Module("基础数据", ModuleType.系统配置)]
-    public class BasicCenter : BusinessCenter<BasicView, BasicDto>
+    public class BasicCenter : ModuleCenter<BasicView, BasicDto>, IBasicCenter
     {
         public BasicCenter(IBasicViewModel viewModel) : base(viewModel)
         { }

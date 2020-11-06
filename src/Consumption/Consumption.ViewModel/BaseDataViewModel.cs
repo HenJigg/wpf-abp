@@ -156,7 +156,7 @@ namespace Consumption.ViewModel
             var baseResponse = await repository.GetAsync(GridModel.Id);
             if (baseResponse.StatusCode == 200)
             {
-                GridModel = JsonConvert.DeserializeObject<TEntity>(baseResponse.Result.ToString());
+                GridModel = baseResponse.Result;
                 this.CreateDeaultCommand();
                 SelectPageIndex = 1;
             }
@@ -250,9 +250,8 @@ namespace Consumption.ViewModel
             });
             if (r.StatusCode == 200)
             {
-                var pagedList = JsonConvert.DeserializeObject<PagedList<TEntity>>(r.Result.ToString());
-                GridModelList = new ObservableCollection<TEntity>(pagedList?.Items.ToList());
-                TotalCount = GridModelList.Count;
+                GridModelList = new ObservableCollection<TEntity>(r.Result.Items.ToList());
+                TotalCount = r.Result.TotalCount;
                 SetPageCount();
             }
         }

@@ -17,7 +17,7 @@ namespace Consumption.PC.ViewCenter
     /// 用户组
     /// </summary>
     [Module("权限管理", ModuleType.系统配置)]
-    public class GroupCenter : BusinessCenter<GroupView, GroupDto>
+    public class GroupCenter : ModuleCenter<GroupView, GroupDto>,IGroupCenter
     {
         public GroupCenter(IGroupViewModel viewModel) : base(viewModel)
         { }

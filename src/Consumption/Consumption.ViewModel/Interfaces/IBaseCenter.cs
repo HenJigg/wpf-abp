@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace Consumption.ViewModel.Interfaces
 {
-    public interface IBaseModule
+    public interface IBaseCenter
     {
         /// <summary>
         /// 关联默认数据上下文

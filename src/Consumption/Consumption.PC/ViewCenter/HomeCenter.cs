@@ -19,18 +19,20 @@ namespace Consumption.PC.ViewCenter
     using LiveCharts;
     using LiveCharts.Wpf;
     using Microsoft.Toolkit.Mvvm.ComponentModel;
+    using Consumption.ViewModel.Interfaces;
 
     /// <summary>
     /// 系统首页
     /// </summary>
-    public class HomeCenter : NoBusinessCenter<HomeView, HomeViewModel>
+    public class HomeCenter : ComponentCenter<HomeView>,IHomeCenter
     {
+        public HomeCenter(IHomeViewModel viewModel) : base(viewModel) { }
     }
 
     /// <summary>
     /// 首页模块
     /// </summary>
-    public class HomeViewModel : ObservableObject
+    public class HomeViewModel : ObservableObject, IHomeViewModel
     {
         public HomeViewModel()
         {

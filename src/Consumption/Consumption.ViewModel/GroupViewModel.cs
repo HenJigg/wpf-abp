@@ -41,7 +41,7 @@ namespace Consumption.ViewModel
 
         public GroupViewModel(IGroupRepository repository) : base(repository)
         {
-            userRepository = NetCoreProvider.Get<IUserRepository>();
+            userRepository = NetCoreProvider.Resolve<IUserRepository>();
             AddUserCommand = new RelayCommand<UserDto>(arg =>
             {
                 if (arg == null) return;
@@ -89,10 +89,9 @@ namespace Consumption.ViewModel
                 Msg.Warning(g.Message);
                 return;
             }
-            var dto = JsonConvert.DeserializeObject<GroupDataDto>(g.Result.ToString());
             //其实这一步操作就是把当前用户组包含的权限,
             //绑定到所有菜单的列表当中,设定选中
-            dto?.GroupFuncs?.ForEach(f =>
+            g.Result?.GroupFuncs?.ForEach(f =>
             {
                 for (int i = 0; i < MenuModules.Count; i++)
                 {
@@ -107,7 +106,7 @@ namespace Consumption.ViewModel
                     }
                 }
             });
-            GroupDto = dto;//绑定编辑项GroupHeader
+            GroupDto = g.Result;//绑定编辑项GroupHeader
             this.CreateDeaultCommand();
             SelectPageIndex = 1;
         }
@@ -240,10 +239,7 @@ namespace Consumption.ViewModel
             });
             GridUserModelList = new ObservableCollection<UserDto>();
             if (r.StatusCode == 200)
-            {
-                var pagedList = JsonConvert.DeserializeObject<PagedList<UserDto>>(r.Result.ToString());
-                GridUserModelList = new ObservableCollection<UserDto>(pagedList.Items?.ToList());
-            }
+                GridUserModelList = new ObservableCollection<UserDto>(r.Result.Items?.ToList());
             SelectCardIndex = 1;
         }
 
@@ -294,9 +290,7 @@ namespace Consumption.ViewModel
             }
             var tm = await groupRepository.GetMenuModuleListAsync();
             if (tm.StatusCode == 200)
-            {
-                MenuModules = JsonConvert.DeserializeObject<ObservableCollection<MenuModuleGroupDto>>(tm.Result.ToString());
-            }
+                MenuModules = new ObservableCollection<MenuModuleGroupDto>(tm.Result);
         }
 
         #endregion

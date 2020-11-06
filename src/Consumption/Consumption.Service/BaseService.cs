@@ -40,17 +40,17 @@ namespace Consumption.Service
             return r;
         }
 
-        public async Task<BaseResponse> GetAllListAsync(QueryParameters pms)
+        public async Task<BaseResponse<PagedList<T>>> GetAllListAsync(QueryParameters pms)
         {
             var r = await new BaseServiceRequest().
-               GetRequest<BaseResponse>(@$"api/{servicesName}/GetAll?PageIndex={pms.PageIndex}&PageSize={pms.PageSize}&Search={pms.Search}", string.Empty, Method.GET);
+               GetRequest<BaseResponse<PagedList<T>>>(@$"api/{servicesName}/GetAll?PageIndex={pms.PageIndex}&PageSize={pms.PageSize}&Search={pms.Search}", string.Empty, Method.GET);
             return r;
         }
 
-        public async Task<BaseResponse> GetAsync(int id)
+        public async Task<BaseResponse<T>> GetAsync(int id)
         {
             var r = await new BaseServiceRequest().
-               GetRequest<BaseResponse>(@$"api/{servicesName}/Get?id={id}", string.Empty, Method.GET);
+               GetRequest<BaseResponse<T>>(@$"api/{servicesName}/Get?id={id}", string.Empty, Method.GET);
             return r;
         }
 

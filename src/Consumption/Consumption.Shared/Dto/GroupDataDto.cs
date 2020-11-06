@@ -9,10 +9,15 @@ namespace Consumption.Shared.Dto
 {
     public class GroupDataDto : ViewModelBase
     {
-        public Group group { get; set; } = new Group();
+        public GroupDataDto()
+        {
+            group = new Group();
+            GroupFuncs = new List<GroupFunc>();
+            GroupUsers = new ObservableCollection<GroupUserDto>();
+        }
+        public Group group { get; set; }
 
-        private ObservableCollection<GroupUserDto> groupUsers = new ObservableCollection<GroupUserDto>();
-        private List<GroupFunc> groupFuncs = new List<GroupFunc>();
+        private ObservableCollection<GroupUserDto> groupUsers;
 
         /// <summary>
         /// 组所包含用户
@@ -21,18 +26,12 @@ namespace Consumption.Shared.Dto
         {
             get { return groupUsers; }
             set
-            {
-                groupUsers = value; RaisePropertyChanged();
-            }
+            { groupUsers = value; RaisePropertyChanged(); }
         }
 
         /// <summary>
         /// 组所包含的模块清单
         /// </summary>
-        public List<GroupFunc> GroupFuncs
-        {
-            get { return groupFuncs; }
-            set { groupFuncs = value; }
-        }
+        public List<GroupFunc> GroupFuncs { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 消息提示
     /// </summary>
-    public class MsgCenter : IMsg
+    public class MsgCenter : IMsgCenter
     {
         public async Task<bool> Show(object obj)
         {

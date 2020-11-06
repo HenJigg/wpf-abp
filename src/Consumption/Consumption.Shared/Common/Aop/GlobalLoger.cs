@@ -17,6 +17,7 @@ namespace Consumption.Shared.Common.Aop
     using AspectInjector.Broker;
     using Consumption.Shared.Common;
     using Consumption.Shared.DataInterfaces;
+    using Microsoft.Extensions.DependencyInjection;
     using System;
 
 
@@ -31,7 +32,7 @@ namespace Consumption.Shared.Common.Aop
 
         public GlobalLoger()
         {
-            this.log = NetCoreProvider.Get<ILog>();
+            this.log = NetCoreProvider.Resolve<ILog>();
         }
 
         [Advice(Kind.Before, Targets = Target.Method)]

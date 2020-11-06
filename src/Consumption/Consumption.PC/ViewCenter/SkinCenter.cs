@@ -19,6 +19,7 @@ namespace Consumption.PC.ViewCenter
     using Consumption.Shared.Common.Attributes;
     using Consumption.Shared.Common.Enums;
     using Consumption.ViewModel.Common;
+    using Consumption.ViewModel.Interfaces;
     using MaterialDesignColors;
     using MaterialDesignThemes.Wpf;
     using Microsoft.Toolkit.Mvvm.ComponentModel;
@@ -31,15 +32,15 @@ namespace Consumption.PC.ViewCenter
     /// 样式控制类
     /// </summary>
     [Module("个性化", ModuleType.系统配置)]
-    public class SkinCenter : NoBusinessCenter<SkinView, SkinViewModel>
+    public class SkinCenter : ComponentCenter<SkinView>, ISkinCenter
     {
-
+        public SkinCenter(ISkinViewModel viewModel) : base(viewModel) { }
     }
 
     /// <summary>
     /// 系统样式设置
     /// </summary>
-    public class SkinViewModel : ObservableObject
+    public class SkinViewModel : ObservableObject, ISkinViewModel
     {
         private readonly static PaletteHelper _paletteHelper = new PaletteHelper();
 

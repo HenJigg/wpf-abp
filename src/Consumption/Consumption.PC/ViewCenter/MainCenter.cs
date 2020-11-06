@@ -31,8 +31,15 @@ namespace Consumption.PC.ViewCenter
     /// <summary>
     /// 首页控制类
     /// </summary>
-    public class MainCenter : BaseDialogCenter<MaterialDesignMainWindow, MainViewModel>
+    public class MainCenter : BaseDialogCenter<MaterialDesignMainWindow>,IMainCenter
     {
+        private readonly new IMainViewModel viewModel;
+
+        public MainCenter(IMainViewModel viewModel) : base(viewModel)
+        {
+            this.viewModel = viewModel;
+        }
+
         public override void SubscribeMessenger()
         {
             //非阻塞式窗口提示消息

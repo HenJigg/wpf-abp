@@ -16,18 +16,26 @@ namespace Consumption.PC.ViewCenter
 {
     using Consumption.Shared.DataInterfaces;
     using Consumption.ViewModel.Common;
+    using Consumption.ViewModel.Interfaces;
+    using Microsoft.Toolkit.Mvvm.Input;
     using Microsoft.Toolkit.Mvvm.Messaging;
     using System;
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Input;
 
-    public class BaseDialogCenter<TView, TViewModel> : IModuleDialog
+    public class BaseDialogCenter<TView>
         where TView : Window, new()
-        where TViewModel : class, new()
     {
-        public readonly TView view = new TView();
-        public readonly TViewModel viewModel = new TViewModel();
+        public BaseDialogCenter() { }
+
+        public BaseDialogCenter(ViewModel.Interfaces.IBaseDialog viewModel)
+        {
+            this.viewModel = viewModel;
+        }
+
+        public TView view = new TView();
+        public ViewModel.Interfaces.IBaseDialog viewModel;
 
         /// <summary>
         /// 绑定默认ViewModel

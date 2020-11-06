@@ -18,6 +18,7 @@ namespace Consumption.Service
     using Consumption.ViewModel.Common.Aop;
     using Newtonsoft.Json;
     using RestSharp;
+    using System.Text;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -79,8 +80,7 @@ namespace Consumption.Service
                 return new BaseResponse()
                 {
                     StatusCode = (int)response.StatusCode,
-                    Message = string.IsNullOrWhiteSpace(response.StatusDescription) ? $"Error:{response.ErrorMessage}"
-                    : response.StatusDescription
+                    Message = response.StatusDescription ?? response.ErrorMessage
                 } as Response;
         }
     }

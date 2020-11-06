@@ -18,15 +18,20 @@ namespace Consumption.PC.ViewCenter
     using Consumption.Shared.Common;
     using Consumption.Shared.DataInterfaces;
     using Consumption.ViewModel;
+    using Consumption.ViewModel.Interfaces;
     using MaterialDesignThemes.Wpf;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Toolkit.Mvvm.Input;
     using Microsoft.Toolkit.Mvvm.Messaging;
     using System;
 
     /// <summary>
     /// 登录控制类
     /// </summary>
-    public class LoginCenter : BaseDialogCenter<LoginView, LoginViewModel>
+    public class LoginCenter : BaseDialogCenter<LoginView>, ILoginCenter
     {
+        public LoginCenter(ILoginViewModel viewModel) : base(viewModel) { }
+
         public override void SubscribeMessenger()
         {
             WeakReferenceMessenger.Default.Register<string, string>(view, "Snackbar", (sender, arg) =>
@@ -39,7 +44,7 @@ namespace Consumption.PC.ViewCenter
              });
             WeakReferenceMessenger.Default.Register<string, string>(view, "NavigationPage", async (sender, arg) =>
                {
-                   var dialog = NetCoreProvider.Get<IModuleDialog>("MainCenter");
+                   var dialog = NetCoreProvider.ResolveNamed<IMainCenter>("MainCenter");
                    this.UnsubscribeMessenger();
                    view.Close();
                    await dialog.ShowDialog();

@@ -20,17 +20,17 @@ namespace Consumption.PC.ViewCenter
     using System.Windows.Controls;
 
     /// <summary>
-    /// View/ViewModel 控制基类(带业务)
+    /// View/ViewModel 控制基类(模块)
     /// </summary>
     /// <typeparam name="TView"></typeparam>
     /// <typeparam name="TViewModel"></typeparam>
-    public class BusinessCenter<TView, TEntity> : IBaseModule
+    public class ModuleCenter<TView, TEntity>
         where TView : UserControl, new()
         where TEntity : BaseDto
     {
-        public BusinessCenter() { }
+        public ModuleCenter() { }
 
-        public BusinessCenter(IBaseViewModel<TEntity> viewModel)
+        public ModuleCenter(IBaseViewModel<TEntity> viewModel)
         {
             this.viewModel = viewModel;
         }
@@ -60,16 +60,22 @@ namespace Consumption.PC.ViewCenter
     }
 
     /// <summary>
-    ///  View/ViewModel 控制基类(无业务)
+    ///  View/ViewModel 控制基类(组件)
     /// </summary>
     /// <typeparam name="TView"></typeparam>
     /// <typeparam name="TViewModel"></typeparam>
-    public class NoBusinessCenter<TView, TViewModel> : IBaseModule
+    public class ComponentCenter<TView>
         where TView : UserControl, new()
-        where TViewModel : class, new()
     {
-        public readonly TView view = new TView();
-        public readonly TViewModel viewModel = new TViewModel();
+        public ComponentCenter() { }
+
+        public ComponentCenter(IComponentViewModel viewModel)
+        {
+            this.viewModel = viewModel;
+        }
+
+        public TView view = new TView();
+        public IComponentViewModel viewModel;
 
         public void BindDataGridColumns()
         {

@@ -26,7 +26,7 @@ namespace Consumption.PC.ViewCenter
     /// 用户菜单控制类
     /// </summary>
     [Module("菜单管理", ModuleType.系统配置)]
-    public class MenuCenter : BusinessCenter<MenuView, MenuDto>
+    public class MenuCenter : ModuleCenter<MenuView, MenuDto>,IMenuCenter
     {
         public MenuCenter(IMenuViewModel viewModel) : base(viewModel)
         { }

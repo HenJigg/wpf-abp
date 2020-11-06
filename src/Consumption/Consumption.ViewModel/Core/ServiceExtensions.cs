@@ -2,42 +2,25 @@
 namespace Consumption.ViewModel.Core
 {
     using Autofac;
-    using Microsoft.Extensions.DependencyInjection;
+    using Consumption.ViewModel.Interfaces;
 
     public static class ServiceExtensions
     {
-        public static ServiceCollection AddCustomRepository<TRepository, IRepository>(this ServiceCollection services)
-        where TRepository : class, IRepository
-        where IRepository : class
+        public static ContainerBuilder AddViewCenter<TCenter, ICenter>(this ContainerBuilder services)
         {
-            services.AddScoped<IRepository, TRepository>();
+            services.RegisterType<TCenter>().Named(typeof(TCenter).Name, typeof(ICenter));
             return services;
         }
 
-        public static ServiceCollection AddCustomViewModel<TRepository, IRepository>(this ServiceCollection services)
-        where TRepository : class, IRepository
-        where IRepository : class
-        {
-            services.AddScoped<IRepository, TRepository>();
-            return services;
-        }
-
-        public static ServiceCollection AddCustomViewCenter<TCenter>(this ServiceCollection services)
-       where TCenter : class
-        {
-            services.AddTransient(typeof(TCenter));
-            return services;
-        }
-
-        public static ContainerBuilder AddCustomRepository<TRepository, IRepository>(this ContainerBuilder services)
-           where TRepository : class
+        public static ContainerBuilder AddRepository<TRepository, IRepository>(this ContainerBuilder services)
+        where TRepository : class
         {
             services.RegisterType<TRepository>().As<IRepository>();
             return services;
         }
 
-        public static ContainerBuilder AddCustomViewModel<TRepository, IRepository>(this ContainerBuilder services)
-          where TRepository : class
+        public static ContainerBuilder AddViewModel<TRepository, IRepository>(this ContainerBuilder services)
+        where TRepository : class
         {
             services.RegisterType<TRepository>().As<IRepository>();
             return services;

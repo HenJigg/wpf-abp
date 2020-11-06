@@ -14,6 +14,8 @@
 namespace Consumption.Shared.Common
 {
     using Autofac;
+    using Microsoft.Extensions.DependencyInjection;
+    using System;
 
     /// <summary>
     /// 服务提供者
@@ -28,19 +30,20 @@ namespace Consumption.Shared.Common
                 Instance = locator;
         }
 
-        public static T Get<T>()
+        public static T Resolve<T>()
         {
-            var tt = typeof(T).Name;
-            if (Instance == null || !Instance.IsRegistered<T>()) return default(T);
+            if (!Instance.IsRegistered<T>())
+                new ArgumentNullException(nameof(T));
+
             return Instance.Resolve<T>();
         }
 
-        public static T Get<T>(string typeName)
+        public static T ResolveNamed<T>(string typeName)
         {
-            if (Instance.IsRegisteredWithName<T>(typeName))
-                return Instance.ResolveNamed<T>(typeName);
-            else
-                return default(T);
+            if (string.IsNullOrWhiteSpace(typeName))
+                new ArgumentNullException(nameof(T));
+
+            return Instance.ResolveNamed<T>(typeName);
         }
     }
 }

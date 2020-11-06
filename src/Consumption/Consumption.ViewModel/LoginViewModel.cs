@@ -30,11 +30,11 @@ namespace Consumption.ViewModel
     /// <summary>
     /// 登录模块
     /// </summary>
-    public class LoginViewModel : BaseDialogViewModel, IBaseDialog
+    public class LoginViewModel : BaseDialogViewModel, ILoginViewModel
     {
-        public LoginViewModel()
+        public LoginViewModel(IUserRepository repository)
         {
-            this.repository = NetCoreProvider.Get<IUserRepository>();
+            this.repository = repository;
             LoginCommand = new RelayCommand(Login);
         }
 
@@ -102,16 +102,13 @@ namespace Consumption.ViewModel
                     SnackBar(authResult.Message);
                     return;
                 }
-
-                var userDto = JsonConvert.DeserializeObject<UserInfoDto>(loginResult.Result.ToString());
-
                 #region 关联用户信息/缓存
 
-                Contract.Account = userDto.User.Account;
-                Contract.UserName = userDto.User.UserName;
-                Contract.IsAdmin = userDto.User.FlagAdmin == 1;
-                Contract.Menus = userDto.Menus; //用户包含的权限信息
-                Contract.AuthItems = JsonConvert.DeserializeObject<List<AuthItem>>(authResult.Result.ToString());
+                Contract.Account = loginResult.Result.User.Account;
+                Contract.UserName = loginResult.Result.User.UserName;
+                Contract.IsAdmin = loginResult.Result.User.FlagAdmin == 1;
+                Contract.Menus = loginResult.Result.Menus; //用户包含的权限信息
+                Contract.AuthItems = authResult.Result;
 
                 #endregion
                 //这行代码会发射到首页,Center中会定义所有的Messenger
