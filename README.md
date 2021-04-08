@@ -5,52 +5,19 @@
 ### 介绍
 本项目主要以C#为核心, 搭建一个多平台的应用示例, 该项目主要包含以下平台:
 1. WPF Core 构建的 DeskTop
-2. Xamarin 构建的 IOS 和 Adnroid 
-3. Blazor 构建的 WebUI
+2. Xamarin 构建的 IOS 和 Adnroid  (未完成)
+3. Blazor 构建的 WebUI   (未完成)
 4. Asp.Net Core WebApi
 
 #### 开发工具
   IDE: Visual Studio 2019 
 
-### 如何运行它?
-[点击观看视频介绍](https://www.bilibili.com/video/BV1954y1i7wM)
-
-### 测试登录?
-
-测试账号:  **Admin** / **123**
-
+#### 说明
 项目默认下载后,已连接至测试服务器, 如果需要本地部署,  只需要配置数据库参数即可.
-
-运行**Consumption.Api** 项目,即可生成对应数据库, 如旧版本已生成, 请手动删除后启动API项目。
-
-### WPF模块介绍
-1.UI框架: [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)  
-2.MVVM框架:[microsoft.Toolkit.Mvvm](https://github.com/windows-toolkit/WindowsCommunityToolkit)  
-3.AOP框架:[aspect-injector](https://github.com/pamidur/aspect-injector)  
-4.IOC组件:[Autofac](https://github.com/autofac/Autofac)  
-5.API组件:[RestSharp](https://github.com/restsharp/RestSharp)  
-6.Log组件:[Nlog](https://github.com/NLog/NLog)  
-7.Chart组件:[LiveChart](https://github.com/Live-Charts/Live-Charts)  
-8.拖拽组件:[Dragablz](https://github.com/ButchersBoy/Dragablz)  
-
-### Xamarin模块介绍
-1.UI框架:[XF.Material](https://github.com/Baseflow/XF-Material-Library)  
-2.IOC组件:[Autofac](https://github.com/autofac/Autofac)  
-3.API组件:[RestSharp](https://github.com/restsharp/RestSharp)  
-4.Log组件:[Nlog](https://github.com/NLog/NLog)  
-
-说明: 该项目在结构处理阶段, 以上为公共的组件模块。
-
-### Blazor模块介绍
-1.UI框架:[AntBlazor](https://github.com/ant-design-blazor/ant-design-blazor)  
-2.IOC组件:[Autofac](https://github.com/autofac/Autofac)  
-3.API组件:[RestSharp](https://github.com/restsharp/RestSharp)  
-4.Log组件:[Nlog](https://github.com/NLog/NLog)  
-
-说明:该项目在结构处理阶段, 以上为公共的组件模块。
+运行**Consumption.Api** 项目,即可生成对应数据库, 生成之前请检查配置文件。
+如旧版本已生成, 请手动删除后启动API项目。
 
 ### 效果预览
-
 #### WPF预览(部分)
 
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Main.png)
@@ -73,7 +40,6 @@
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/XamarinLoginPage.png)
 
 #### Blazor预览
-
 等待更新...
 
 #### OpenApi预览(部分)
@@ -112,11 +78,3 @@
 ### 关于未来
   早些日子,微软公布MAUI计划, 是一个激动人心得计划, 期待MAUI早上上线。而项目会提前在MAUI完成开发, 后期, 会做MAUI的中国首发视频教程与项目实践！
 
-### 关于捐赠？
-  不再提供捐赠通道, 所有捐赠皆来自国内的各大平台的视频收入、打赏、平台补贴。 
-
-### 联系我
-Email: zhouhaogg789@outlook.com
-
-### 结语
-  因为热爱、所以分享。
