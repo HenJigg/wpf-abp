@@ -1,10 +1,10 @@
 ﻿<UserControl
-    x:Class="Consumption.PC.View.UserView"
+    x:Class="Consumption.PC.Views.UserView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:local="clr-namespace:Consumption.PC.View"
+    xmlns:local="clr-namespace:Consumption.PC.Views"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:s="clr-namespace:System;assembly=System.Runtime"
@@ -14,7 +14,7 @@
     <UserControl.Resources>
         <v:IBoolConverter x:Key="vbool" />
     </UserControl.Resources>
-    <materialDesign:Transitioner  SelectedIndex="{Binding SelectPageIndex}">
+    <materialDesign:Transitioner SelectedIndex="{Binding SelectPageIndex}">
         <Grid Margin="10,0,10,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -43,7 +43,8 @@
                 </TextBox>
             </StackPanel>
 
-            <DataGrid x:Name="Grid"
+            <DataGrid
+                x:Name="Grid"
                 Grid.Row="1"
                 AutoGenerateColumns="False"
                 Background="Transparent"

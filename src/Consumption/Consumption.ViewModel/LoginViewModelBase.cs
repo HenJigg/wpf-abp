@@ -11,34 +11,21 @@
 * 项目地址  : https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples
 * 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
 */
+using System.Threading.Tasks;
+using Consumption.ViewModel.Interfaces;
+using Consumption.Shared.Common;
+using Microsoft.Toolkit.Mvvm.Messaging;
+using System;
 
 namespace Consumption.ViewModel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Consumption.ViewModel.Interfaces;
-    using Consumption.Shared.Common;
-    using Consumption.Shared.DataModel;
-    using Consumption.Shared.Dto;
-    using Newtonsoft.Json;
-    using Microsoft.Toolkit.Mvvm.Input;
-    using Microsoft.Toolkit.Mvvm.Messaging;
-    using Org.BouncyCastle.Crypto.Engines;
-
     /// <summary>
     /// 登录模块
     /// </summary>
-    public class LoginViewModel : BaseDialogViewModel, ILoginViewModel
+    public class LoginViewModelBase : BaseDialogViewModel, ILoginViewModel
     {
-        public LoginViewModel(IUserRepository repository)
-        {
-            this.repository = repository;
-            LoginCommand = new RelayCommand(Login);
-        }
-
         #region Property
+
         private string userName;
         private string passWord;
         private string report;
@@ -68,16 +55,27 @@ namespace Consumption.ViewModel
             get { return isCancel; }
             set { isCancel = value; OnPropertyChanged(); }
         }
+
         #endregion
 
-        #region Command
+        public LoginViewModelBase(IUserRepository repository)
+        {
+            this.repository = repository;
+        }
 
-        public RelayCommand LoginCommand { get; private set; }
+        public override async void Execute(string arg)
+        {
+            switch (arg)
+            {
+                case "登录": await Login(); break;
+            }
+            base.Execute(arg);
+        }
 
         /// <summary>
         /// 登录系统
         /// </summary>
-        private async void Login()
+        public virtual async Task Login()
         {
             try
             {
@@ -88,7 +86,6 @@ namespace Consumption.ViewModel
                     return;
                 }
                 DialogIsOpen = true;
-                await Task.Delay(300);
                 var loginResult = await repository.LoginAsync(UserName, PassWord);
 
                 if (loginResult.StatusCode != 200)
@@ -121,13 +118,6 @@ namespace Consumption.ViewModel
             {
                 DialogIsOpen = false;
             }
-        }
-
-        #endregion
-
-        public override void Exit()
-        {
-            WeakReferenceMessenger.Default.Send(string.Empty, "Exit");
         }
     }
 }

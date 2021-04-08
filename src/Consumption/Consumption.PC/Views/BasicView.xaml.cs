@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Consumption.PC.View
+namespace Consumption.PC.Views
 {
     /// <summary>
-    /// MenuView.xaml 的交互逻辑
+    /// BasicView.xaml 的交互逻辑
     /// </summary>
-    public partial class MenuView : UserControl
+    public partial class BasicView : UserControl
     {
-        public MenuView()
+        public BasicView()
         {
             InitializeComponent();
         }

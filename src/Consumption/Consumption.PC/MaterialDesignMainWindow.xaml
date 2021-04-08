@@ -177,17 +177,14 @@
                             <StackPanel />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
-
-                    <ItemsControl.ItemTemplateSelector>
-                        <template:ModuleTemplateSelector ExpanderTemplate="{StaticResource expanderTemplate}" GroupTemplate="{StaticResource groupTemplate}" />
-                    </ItemsControl.ItemTemplateSelector>
                 </ItemsControl>
             </Grid>
 
             <materialDesign:Snackbar
                 x:Name="SnackbarThree"
-                Grid.ColumnSpan="2" Panel.ZIndex="1"
+                Grid.ColumnSpan="2"
                 VerticalAlignment="Top"
+                Panel.ZIndex="1"
                 MessageQueue="{materialDesign:MessageQueue}" />
 
             <Grid Grid.Column="1">

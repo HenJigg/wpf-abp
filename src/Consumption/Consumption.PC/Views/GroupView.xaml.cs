@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Consumption.PC.Template
+namespace Consumption.PC.Views
 {
     /// <summary>
-    /// SwitchModeBar.xaml 的交互逻辑
+    /// GroupView.xaml 的交互逻辑
     /// </summary>
-    public partial class SwitchModeBar : UserControl
+    public partial class GroupView : UserControl
     {
-        public SwitchModeBar()
+        public GroupView()
         {
             InitializeComponent();
         }

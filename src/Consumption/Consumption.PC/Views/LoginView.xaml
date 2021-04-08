@@ -1,16 +1,18 @@
 ﻿<Window
-    x:Class="Consumption.PC.View.LoginView"
+    x:Class="Consumption.PC.Views.LoginView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:local="clr-namespace:Consumption.PC.View"
+    xmlns:local="clr-namespace:Consumption.PC.Views"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
     Title="WELCOME"
     Width="480"
     Height="430"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     Background="{StaticResource MaterialDesignPaper}"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
@@ -38,8 +40,10 @@
                 <Button
                     Height="60"
                     HorizontalAlignment="Right"
-                    Command="{Binding ExitCommand}"
-                    Style="{StaticResource MaterialDesignFlatButton}">
+                    Command="{Binding ExecuteCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    ToolTip="关闭">
                     <materialDesign:PackIcon
                         Width="50"
                         Height="50"
@@ -71,11 +75,12 @@
                 <Button
                     Grid.Row="3"
                     Height="55"
-                    Margin="20,0,20,0"
+                    Margin="20,0"
                     materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding DialogIsOpen}"
                     materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
                     materialDesign:ButtonProgressAssist.Value="-1"
-                    Command="{Binding LoginCommand}"
+                    Command="{Binding ExecuteCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"
                     Content="登录"
                     FontSize="23"
                     Style="{StaticResource MaterialDesignRaisedButton}" />
@@ -83,8 +88,8 @@
             </Grid>
             <materialDesign:Snackbar
                 x:Name="SnackbarThree"
-                VerticalAlignment="Bottom"
-                MessageQueue="{materialDesign:MessageQueue}" />
+                VerticalAlignment="Center"
+                MessageQueue="{Binding SnackbarMessage}" />
         </Grid>
     </materialDesign:DialogHost>
 </Window>

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Consumption.ViewModel;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -11,14 +15,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Consumption.PC.View
+namespace Consumption.PC.Views
 {
     /// <summary>
-    /// BasicView.xaml 的交互逻辑
+    /// HomeView.xaml 的交互逻辑
     /// </summary>
-    public partial class BasicView : UserControl
+    public partial class HomeView : UserControl
     {
-        public BasicView()
+        public HomeView()
         {
             InitializeComponent();
         }

@@ -87,7 +87,5 @@ namespace Consumption.ViewModel.Interfaces
         bool DialogIsOpen { get; set; }
 
         void SnackBar(string msg);
-
-        RelayCommand ExitCommand { get; }
     }
 }

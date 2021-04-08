@@ -6,7 +6,7 @@ using Consumption.ViewModel.Interfaces;
 using Consumption.Shared.DataInterfaces;
 using Prism.DryIoc;
 using Prism.Ioc;
-using Consumption.PC.View;
+using Consumption.PC.Views;
 using Consumption.ViewModel;
 using System;
 
@@ -35,6 +35,7 @@ namespace Consumption.PC
             containerRegistry.Register<IMenuRepository, MenuService>();
             containerRegistry.Register<IBasicRepository, BasicService>();
             containerRegistry.Register<ILog, ConsumptionNLog>();
+
 
             containerRegistry.RegisterForNavigation<HomeView>();
             containerRegistry.RegisterForNavigation<SkinView>();

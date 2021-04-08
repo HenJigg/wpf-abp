@@ -19,6 +19,7 @@ namespace Consumption.ViewModel
     using Microsoft.Toolkit.Mvvm.ComponentModel;
     using Microsoft.Toolkit.Mvvm.Input;
     using Microsoft.Toolkit.Mvvm.Messaging;
+    using System;
 
     /// <summary>
     /// MVVM基类
@@ -27,18 +28,18 @@ namespace Consumption.ViewModel
     {
         public BaseDialogViewModel()
         {
-            ExitCommand = new RelayCommand(Exit);
+            ExecuteCommand = new RelayCommand<string>(Execute);
         }
 
-        public RelayCommand ExitCommand { get; private set; }
-
-        /// <summary>
-        /// 传递True代表需要确认用户是否关闭,你可以选择传递false强制关闭
-        /// </summary>
-        public virtual void Exit()
+        public virtual void Execute(string arg)
         {
-            WeakReferenceMessenger.Default.Send("", "Exit");
+            switch (arg)
+            {
+                case "关闭": WeakReferenceMessenger.Default.Send("", "Exit"); break;
+            }
         }
+
+        public RelayCommand<string> ExecuteCommand { get; private set; }
 
         private bool isOpen;
 
@@ -55,7 +56,7 @@ namespace Consumption.ViewModel
         /// 通知异常
         /// </summary>
         /// <param name="msg"></param>
-        public void SnackBar(string msg)
+        public virtual void SnackBar(string msg)
         {
             WeakReferenceMessenger.Default.Send(msg, "Snackbar");
         }

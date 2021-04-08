@@ -1,0 +1,251 @@
+﻿<UserControl
+    x:Class="Consumption.PC.Views.HomeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lv="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid Margin="10,0,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="2.5*" />
+        </Grid.RowDefinitions>
+
+        <!--  图表区域  -->
+        <UniformGrid Columns="4">
+            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel
+                        Margin="20,10,0,0"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <materialDesign:Card Background="#00BEA9">
+                            <materialDesign:PackIcon
+                                Width="45"
+                                Height="45"
+                                Margin="5"
+                                Foreground="White"
+                                Kind="Database" />
+                        </materialDesign:Card>
+                        <StackPanel Margin="10,0,0,0">
+                            <TextBlock FontSize="14" Text="当月支出" />
+                            <TextBlock
+                                FontSize="28"
+                                FontWeight="Bold"
+                                Text="￥1799" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Border
+                        Grid.Row="1"
+                        Margin="20"
+                        Background="#F9F9F9"
+                        CornerRadius="3">
+                        <TextBlock
+                            Margin="5,0,0,0"
+                            FontFamily="黑体"
+                            FontSize="14"
+                            Foreground="#6C757D"
+                            Text="2020/07/10:￥1799 当月消费已超出预算!" />
+                    </Border>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel
+                        Margin="20,10,0,0"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <materialDesign:Card Background="#FF9100">
+                            <materialDesign:PackIcon
+                                Width="45"
+                                Height="45"
+                                Margin="5"
+                                Foreground="White"
+                                Kind="CashUsd" />
+                        </materialDesign:Card>
+                        <StackPanel Margin="10,0,0,0">
+                            <TextBlock FontSize="14" Text="我的钱包" />
+                            <TextBlock
+                                FontSize="28"
+                                FontWeight="Bold"
+                                Text="$176725" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Border
+                        Grid.Row="1"
+                        Margin="20"
+                        Background="#F9F9F9"
+                        CornerRadius="3">
+                        <TextBlock
+                            Margin="5,0,0,0"
+                            FontFamily="黑体"
+                            FontSize="14"
+                            Foreground="#6C757D"
+                            Text="当年累计金额 ￥8729" />
+                    </Border>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel
+                        Margin="20,10,0,0"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <materialDesign:Card Background="#673AB7">
+                            <materialDesign:PackIcon
+                                Width="45"
+                                Height="45"
+                                Margin="5"
+                                Foreground="White"
+                                Kind="VectorSquare" />
+                        </materialDesign:Card>
+                        <StackPanel Margin="10,0,0,0">
+                            <TextBlock FontSize="14" Text="待处理账单" />
+                            <TextBlock
+                                FontSize="28"
+                                FontWeight="Bold"
+                                Text="2/5" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Border
+                        Grid.Row="1"
+                        Margin="20"
+                        Background="#F9F9F9"
+                        CornerRadius="3">
+                        <TextBlock
+                            Margin="5,0,0,0"
+                            FontFamily="黑体"
+                            FontSize="14"
+                            Foreground="#6C757D"
+                            Text="3个待处理信用消费" />
+                    </Border>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel
+                        Margin="20,10,0,0"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <materialDesign:Card Background="#2196F3">
+                            <materialDesign:PackIcon
+                                Width="45"
+                                Height="45"
+                                Margin="5"
+                                Foreground="White"
+                                Kind="Emoticon" />
+                        </materialDesign:Card>
+                        <StackPanel Margin="10,0,0,0">
+                            <TextBlock FontSize="14" Text="愿望清单" />
+                            <TextBlock
+                                FontSize="28"
+                                FontWeight="Bold"
+                                Text="0/5" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Border
+                        Grid.Row="1"
+                        Margin="20"
+                        Background="#F9F9F9"
+                        CornerRadius="3">
+                        <TextBlock
+                            Margin="5,0,0,0"
+                            FontFamily="黑体"
+                            FontSize="14"
+                            Foreground="#6C757D"
+                            Text="5个愿望清单等待处理" />
+                    </Border>
+                </Grid>
+            </materialDesign:Card>
+        </UniformGrid>
+
+        <materialDesign:Card
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10"
+            materialDesign:ShadowAssist.ShadowDepth="Depth0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Margin="20,20,0,0"
+                    FontSize="22"
+                    Text="收入支出统计" />
+
+                <lv:CartesianChart
+                    Grid.Row="1"
+                    Margin="20"
+                    LegendLocation="Bottom"
+                    Series="{Binding SeriesCollection}">
+                    <lv:CartesianChart.ChartLegend>
+                        <lv:DefaultLegend BulletSize="20" />
+                    </lv:CartesianChart.ChartLegend>
+                    <lv:CartesianChart.VisualElements>
+                        <lv:VisualElement X="100" Y="80">
+                            <lv:VisualElement.UIElement>
+                                <TextBlock FontSize="20" Foreground="Green">
+                                    Hello!, this is a note merged in the chart.
+                                </TextBlock>
+                            </lv:VisualElement.UIElement>
+                        </lv:VisualElement>
+                    </lv:CartesianChart.VisualElements>
+                    <lv:CartesianChart.AxisY>
+                        <lv:Axis Title="金额" LabelFormatter="{Binding YFormatter}">
+                            <lv:Axis.Separator>
+                                <lv:Separator
+                                    Stroke="White"
+                                    StrokeDashArray="30"
+                                    StrokeThickness="0.1" />
+                            </lv:Axis.Separator>
+                        </lv:Axis>
+                    </lv:CartesianChart.AxisY>
+                    <lv:CartesianChart.AxisX>
+                        <lv:Axis
+                            Title="日期"
+                            Labels="{Binding Labels}"
+                            ShowLabels="True">
+                            <lv:Axis.Separator>
+                                <lv:Separator
+                                    Stroke="White"
+                                    StrokeDashArray="30"
+                                    StrokeThickness="0.1" />
+                            </lv:Axis.Separator>
+                        </lv:Axis>
+                    </lv:CartesianChart.AxisX>
+                </lv:CartesianChart>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>
