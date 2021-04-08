@@ -111,7 +111,6 @@ namespace Consumption.ViewModel
                 Contract.AuthItems = authResult.Result;
 
                 #endregion
-                //这行代码会发射到首页,Center中会定义所有的Messenger
                 WeakReferenceMessenger.Default.Send(string.Empty, "NavigationPage");
             }
             catch (Exception ex)

@@ -6,6 +6,9 @@ using Consumption.ViewModel.Interfaces;
 using Consumption.Shared.DataInterfaces;
 using Prism.DryIoc;
 using Prism.Ioc;
+using Consumption.PC.View;
+using Consumption.ViewModel;
+using System;
 
 namespace Consumption.PC
 {
@@ -32,11 +35,30 @@ namespace Consumption.PC
             containerRegistry.Register<IMenuRepository, MenuService>();
             containerRegistry.Register<IBasicRepository, BasicService>();
             containerRegistry.Register<ILog, ConsumptionNLog>();
+
+            containerRegistry.RegisterForNavigation<HomeView>();
+            containerRegistry.RegisterForNavigation<SkinView>();
+            containerRegistry.RegisterForNavigation<BasicView, BasicViewModel>();
+            containerRegistry.RegisterForNavigation<GroupView, GroupViewModel>();
+            containerRegistry.RegisterForNavigation<MenuView, MenuViewModel>();
+            containerRegistry.RegisterForNavigation<UserView, UserViewModel>();
         }
 
         protected override Window CreateShell()
         {
             return Container.Resolve<MainWindow>();
+        }
+
+        protected override void OnInitialized()
+        {
+            var win = Container.Resolve<LoginView>();
+            var result = (bool)win.ShowDialog();
+            if (result)
+            {
+                base.OnInitialized();
+            }
+            else
+                Environment.Exit(0);
         }
     }
 }

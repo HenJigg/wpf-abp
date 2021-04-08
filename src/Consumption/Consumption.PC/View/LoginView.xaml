@@ -28,21 +28,12 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <StackPanel
+                <TextBlock
                     Margin="20,0,0,0"
                     VerticalAlignment="Center"
-                    Orientation="Horizontal">
-                    <TextBlock
-                        VerticalAlignment="Center"
-                        FontSize="35"
-                        FontWeight="Bold"
-                        Text="WELCOME" />
-                    <TextBlock
-                        Margin="10,0,0,0"
-                        VerticalAlignment="Center"
-                        FontSize="35"
-                        Text="WPF" />
-                </StackPanel>
+                    FontSize="35"
+                    FontWeight="Bold"
+                    Text="欢迎使用" />
 
                 <Button
                     Height="60"
@@ -59,7 +50,7 @@
                     Grid.Row="1"
                     Margin="20,0,20,0"
                     VerticalAlignment="Center"
-                    materialDesign:HintAssist.Hint="Account"
+                    materialDesign:HintAssist.Hint="账号"
                     FontSize="22"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     Text="{Binding UserName}" />
@@ -69,7 +60,7 @@
                     Margin="20,0,20,0"
                     VerticalAlignment="Center"
                     local:PasswordBoxHelper.Password="{Binding PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    materialDesign:HintAssist.Hint="PassWord"
+                    materialDesign:HintAssist.Hint="密码"
                     FontSize="22"
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
                     <i:Interaction.Behaviors>
@@ -85,7 +76,7 @@
                     materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
                     materialDesign:ButtonProgressAssist.Value="-1"
                     Command="{Binding LoginCommand}"
-                    Content="LOGIN"
+                    Content="登录"
                     FontSize="23"
                     Style="{StaticResource MaterialDesignRaisedButton}" />
 
