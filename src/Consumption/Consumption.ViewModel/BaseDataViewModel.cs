@@ -25,14 +25,8 @@ namespace Consumption.ViewModel
     using System.Linq;
     using Consumption.Shared.Common;
     using Consumption.ViewModel.Interfaces;
-    using Consumption.Shared.DataModel;
-    using Consumption.ViewModel.Common.Aop;
     using Consumption.Shared.Common.Query;
-    using Consumption.Shared.Common.Aop;
     using Consumption.Shared.Dto;
-    using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
-    using Consumption.Shared.Common.Collections;
-    using Newtonsoft.Json;
     using Microsoft.Toolkit.Mvvm.ComponentModel;
     using Microsoft.Toolkit.Mvvm.Input;
     using Microsoft.Toolkit.Mvvm.Messaging;
@@ -52,7 +46,7 @@ namespace Consumption.ViewModel
             this.repository = repository;
         }
 
-        #region ICrud (增删改查接口~喵)
+        #region ICrud (增删改查接口)
 
         private int selectPageIndex;
         private string search;
@@ -93,7 +87,6 @@ namespace Consumption.ViewModel
         /// 执行方法
         /// </summary>
         /// <param name="arg"></param>
-        [GlobalLoger]
         public virtual async Task Execute(string arg)
         {
             /*
@@ -127,7 +120,7 @@ namespace Consumption.ViewModel
         {
             if (GridModel != null)
             {
-                if (await Msg.Question("确认删除当前选中行数据?"))
+                //if (await Msg.Question("确认删除当前选中行数据?"))
                 {
                     var r = await repository.DeleteAsync(GridModel.Id);
                     if (r.StatusCode == 200)
@@ -138,7 +131,6 @@ namespace Consumption.ViewModel
             }
         }
 
-        [GlobalProgress]
         public virtual async Task SaveAsync()
         {
             //Before you save, you need to verify the validity of the data.
@@ -149,7 +141,6 @@ namespace Consumption.ViewModel
             SelectPageIndex = 0;
         }
 
-        [GlobalProgress]
         public virtual async void UpdateAsync()
         {
             if (GridModel == null) return;
@@ -166,7 +157,7 @@ namespace Consumption.ViewModel
 
         #endregion
 
-        #region IDataPager (数据分页~喵)
+        #region IDataPager (数据分页)
         public AsyncRelayCommand GoHomePageCommand { get { return new AsyncRelayCommand(GoHomePage); } }
         public AsyncRelayCommand GoOnPageCommand { get { return new AsyncRelayCommand(GoOnPage); } }
         public AsyncRelayCommand GoNextPageCommand { get { return new AsyncRelayCommand(GoNextPage); } }
@@ -265,7 +256,7 @@ namespace Consumption.ViewModel
         }
         #endregion
 
-        #region IAuthority (权限内容~)
+        #region IAuthority (权限内容)
 
         /// <summary>
         /// 创建页面默认命令

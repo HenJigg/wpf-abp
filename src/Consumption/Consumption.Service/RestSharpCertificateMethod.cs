@@ -13,12 +13,9 @@
 
 namespace Consumption.Service
 {
-    using Consumption.Shared.Common.Aop;
     using Consumption.Shared.HttpContact;
-    using Consumption.ViewModel.Common.Aop;
     using Newtonsoft.Json;
     using RestSharp;
-    using System.Text;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -35,7 +32,6 @@ namespace Consumption.Service
         /// <param name="isToken">是否Token</param>
         /// <param name="isJson">是否Json</param>
         /// <returns></returns>
-        [GlobalLoger]
         public async Task<Response> RequestBehavior<Response>(string url, Method method, string pms,
             bool isToken = true, bool isJson = true) where Response : class
         {

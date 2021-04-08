@@ -11,11 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ViewCenter\AccountCenter.cs" />
-    <Compile Remove="ViewCenter\BillCenter.cs" />
-    <Compile Remove="ViewCenter\ConsumerCenter.cs" />
-    <Compile Remove="ViewCenter\PlanCenter.cs" />
-    <Compile Remove="ViewCenter\ReportCenter.cs" />
+    <Compile Remove="Properties\PublishProfiles\**" />
+    <EmbeddedResource Remove="Properties\PublishProfiles\**" />
+    <None Remove="Properties\PublishProfiles\**" />
+    <Page Remove="Properties\PublishProfiles\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,8 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspectInjector" Version="2.4.1" />
-    <PackageReference Include="Autofac" Version="5.2.0" />
     <PackageReference Include="AvalonEdit" Version="6.0.1" />
     <PackageReference Include="Dragablz.NetCore" Version="0.3.3" />
     <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
@@ -37,6 +34,7 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
     <PackageReference Include="NLog" Version="4.7.2" />
     <PackageReference Include="NLog.Config" Version="4.7.2" />
+    <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
     <PackageReference Include="ShowMeTheXAML" Version="1.1.0-ci73" />
     <PackageReference Include="ShowMeTheXAML.AvalonEdit" Version="1.1.0-ci73" />
     <PackageReference Include="ShowMeTheXAML.MSBuild" Version="1.1.0-ci73" />
@@ -54,7 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

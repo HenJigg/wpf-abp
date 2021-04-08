@@ -41,7 +41,7 @@ namespace Consumption.ViewModel
 
         public GroupViewModel(IGroupRepository repository) : base(repository)
         {
-            userRepository = NetCoreProvider.Resolve<IUserRepository>();
+            //userRepository = NetCoreProvider.Resolve<IUserRepository>();
             AddUserCommand = new RelayCommand<UserDto>(arg =>
             {
                 if (arg == null) return;
@@ -86,7 +86,7 @@ namespace Consumption.ViewModel
             var g = await groupRepository.GetGroupAsync(GridModel.Id);
             if (g.StatusCode != 200)
             {
-                Msg.Warning(g.Message);
+                //Msg.Warning(g.Message);
                 return;
             }
             //其实这一步操作就是把当前用户组包含的权限,
@@ -118,7 +118,7 @@ namespace Consumption.ViewModel
                 if (string.IsNullOrWhiteSpace(GroupDto.group.GroupCode) ||
                     string.IsNullOrWhiteSpace(GroupDto.group.GroupName))
                 {
-                    Msg.Warning("组代码和名称为必填项！");
+                    //Msg.Warning("组代码和名称为必填项！");
                     return;
                 };
 
@@ -140,7 +140,7 @@ namespace Consumption.ViewModel
                 var r = await groupRepository.SaveGroupAsync(GroupDto);
                 if (r.StatusCode != 200)
                 {
-                    Msg.Error(r.Message);
+                    //Msg.Error(r.Message);
                     return;
                 }
                 await GetPageData(0);
@@ -149,7 +149,7 @@ namespace Consumption.ViewModel
             }
             catch (Exception ex)
             {
-                Msg.Error(ex.Message);
+                //Msg.Error(ex.Message);
             }
         }
 

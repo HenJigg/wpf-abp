@@ -11,6 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
    <Content Update="nlog.config" CopyToOutputDirectory="PreserveNewest" />
    <PackageReference Include="AutoMapper" Version="10.0.0" />
    <PackageReference Include="IGeekFan.AspNetCore.Knife4jUI" Version="0.0.7" />
@@ -33,10 +40,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Consumption.EFCore\Consumption.EFCore.csproj" />
     <ProjectReference Include="..\Consumption.Shared\Consumption.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

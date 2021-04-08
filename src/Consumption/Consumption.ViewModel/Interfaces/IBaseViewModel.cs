@@ -52,10 +52,6 @@ namespace Consumption.ViewModel.Interfaces
     public interface IDashboardViewModel : IComponentViewModel { }
     public interface IHomeViewModel : IComponentViewModel { }
     public interface ILoginViewModel : IBaseDialog { }
-    public interface IMainViewModel : IBaseDialog
-    {
-        Task InitDefaultView();
-    }
 
     #endregion
 
