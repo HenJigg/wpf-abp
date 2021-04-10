@@ -17,9 +17,6 @@ namespace Consumption.PC.Common
     using MaterialDesignColors;
     using MaterialDesignColors.ColorManipulation;
     using MaterialDesignThemes.Wpf;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Windows.Media;
 
     /// <summary>

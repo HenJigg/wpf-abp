@@ -14,14 +14,7 @@
 
 namespace Consumption.PC.Common
 {
-    using System;
-    using System.IO;
     using System.Windows.Media.Imaging;
-    using System.Drawing;
-    using System.Collections.ObjectModel;
-    using System.Windows.Interop;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// 图标操作类

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-/*
+﻿/*
 *
 * 文件名    ：ButtonCommand                             
 * 程序说明  : 动态按钮命令

@@ -1,12 +1,8 @@
-﻿
-
-namespace Consumption.PC.Common
+﻿namespace Consumption.PC.Common
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Reflection;
-    using System.Text;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Data;
@@ -14,7 +10,7 @@ namespace Consumption.PC.Common
     /// <summary>
     /// UI可视化帮助类
     /// </summary>
-    public static class VisualHelper
+    public static class VisualExtensions
     {
         /// <summary>
         /// 设置数据网格列
@@ -23,7 +19,7 @@ namespace Consumption.PC.Common
         /// <param name="frameworkElement"></param>
         /// <param name="name">表格名称</param>
         /// <param name="type">表格绑定的类型</param>
-        public static void SetDataGridColumns<T>(T frameworkElement, string name, Type type) where T : FrameworkElement
+        public static void SetDataGridColumns<T>(this T frameworkElement, string name, Type type) where T : FrameworkElement
         {
             if (frameworkElement == null) throw new ArgumentNullException(nameof(frameworkElement));
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name));

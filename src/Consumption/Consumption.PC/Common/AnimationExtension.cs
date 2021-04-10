@@ -15,15 +15,13 @@
 namespace Consumption.PC.Common
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Windows;
     using System.Windows.Media.Animation;
 
     /// <summary>
     /// 动画帮助类
     /// </summary>
-    public class AnimationHelper
+    public static class AnimationExtension
     {
         /// <summary>
         /// 创建宽度改变动画
@@ -32,7 +30,7 @@ namespace Consumption.PC.Common
         /// <param name="Form">起始值</param>
         /// <param name="To">结束值</param>
         /// <param name="span">间隔</param>
-        public static void CreateWidthChangedAnimation(UIElement element, double Form, double To, TimeSpan span)
+        public static void CreateWidthChangedAnimation(this UIElement element, double Form, double To, TimeSpan span)
         {
             DoubleAnimation doubleAnimation = new DoubleAnimation();
             doubleAnimation.From = Form;

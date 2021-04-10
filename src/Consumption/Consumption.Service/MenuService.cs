@@ -15,7 +15,6 @@
 
 namespace Consumption.Service
 {
-    using Consumption.Shared.DataModel;
     using Consumption.Shared.Dto;
     using Consumption.ViewModel.Interfaces;
 

@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:Consumption.PC.Views"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pass="clr-namespace:Consumption.PC.Common"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
     Title="WELCOME"
@@ -63,12 +64,12 @@
                     Grid.Row="2"
                     Margin="20,0,20,0"
                     VerticalAlignment="Center"
-                    local:PasswordBoxHelper.Password="{Binding PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     materialDesign:HintAssist.Hint="密码"
+                    pass:PassWordExtensions.Password="{Binding PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     FontSize="22"
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
                     <i:Interaction.Behaviors>
-                        <local:PasswordBoxBehavior />
+                        <pass:PasswordBoxBehavior />
                     </i:Interaction.Behaviors>
                 </PasswordBox>
 

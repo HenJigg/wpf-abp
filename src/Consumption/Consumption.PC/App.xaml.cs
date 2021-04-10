@@ -1,14 +1,13 @@
-﻿using Consumption.Service;
-using System.Linq;
-using System.Windows;
-using Consumption.Core.Common;
-using Consumption.ViewModel.Interfaces;
+﻿using Consumption.Core.Common;
+using Consumption.PC.Views;
+using Consumption.Service;
 using Consumption.Shared.DataInterfaces;
+using Consumption.ViewModel;
+using Consumption.ViewModel.Interfaces;
 using Prism.DryIoc;
 using Prism.Ioc;
-using Consumption.PC.Views;
-using Consumption.ViewModel;
 using System;
+using System.Windows;
 
 namespace Consumption.PC
 {

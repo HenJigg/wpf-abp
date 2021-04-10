@@ -19,7 +19,6 @@ namespace Consumption.ViewModel
     using Microsoft.Toolkit.Mvvm.ComponentModel;
     using Microsoft.Toolkit.Mvvm.Input;
     using Microsoft.Toolkit.Mvvm.Messaging;
-    using System;
 
     /// <summary>
     /// MVVM基类
@@ -56,9 +55,6 @@ namespace Consumption.ViewModel
         /// 通知异常
         /// </summary>
         /// <param name="msg"></param>
-        public virtual void SnackBar(string msg)
-        {
-            WeakReferenceMessenger.Default.Send(msg, "Snackbar");
-        }
+        public virtual void SnackBar(string msg) { }
     }
 }
