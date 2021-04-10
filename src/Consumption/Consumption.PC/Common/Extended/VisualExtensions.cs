@@ -1,4 +1,4 @@
-﻿namespace Consumption.PC.Common
+﻿namespace Consumption.PC.Common.Extended
 {
     using System;
     using System.ComponentModel;
