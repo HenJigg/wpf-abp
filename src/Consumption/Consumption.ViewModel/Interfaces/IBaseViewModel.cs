@@ -48,34 +48,7 @@ namespace Consumption.ViewModel.Interfaces
     #region 组件接口
 
     public interface IComponentViewModel { }
-    public interface ISkinViewModel : IComponentViewModel { }
-    public interface IDashboardViewModel : IComponentViewModel { }
-    public interface IHomeViewModel : IComponentViewModel { }
     public interface ILoginViewModel : IBaseDialog { }
-
-    #endregion
-
-    #region ICenter
-
-    public interface ILoginCenter
-    {
-        Task<bool> ShowDialog();
-    }
-    public interface IMainCenter
-    {
-        Task<bool> ShowDialog();
-    }
-    public interface IUserCenter : IBaseCenter { }
-    public interface IMenuCenter : IBaseCenter { }
-    public interface IGroupCenter : IBaseCenter { }
-    public interface IBasicCenter : IBaseCenter { }
-    public interface IHomeCenter : IBaseCenter { }
-    public interface IDashboardCenter : IBaseCenter { }
-    public interface ISkinCenter : IBaseCenter { }
-    public interface IMsgCenter
-    {
-        Task<bool> Show(object obj);
-    }
 
     #endregion
 

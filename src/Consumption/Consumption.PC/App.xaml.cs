@@ -37,12 +37,12 @@ namespace Consumption.PC
             containerRegistry.Register<ILog, ConsumptionNLog>();
 
 
-            containerRegistry.RegisterForNavigation<HomeView>();
-            containerRegistry.RegisterForNavigation<SkinView>();
-            containerRegistry.RegisterForNavigation<BasicView, BasicViewModel>();
-            containerRegistry.RegisterForNavigation<GroupView, GroupViewModel>();
-            containerRegistry.RegisterForNavigation<MenuView, MenuViewModel>();
-            containerRegistry.RegisterForNavigation<UserView, UserViewModel>();
+            containerRegistry.RegisterForNavigation<HomeView>("HomeView");
+            containerRegistry.RegisterForNavigation<SkinView>("SkinView");
+            containerRegistry.RegisterForNavigation<BasicView, BasicViewModel>("BasicView");
+            containerRegistry.RegisterForNavigation<GroupView, GroupViewModel>("GroupView");
+            containerRegistry.RegisterForNavigation<MenuView, MenuViewModel>("MenuView");
+            containerRegistry.RegisterForNavigation<UserView, UserViewModel>("UserView");
         }
 
         protected override Window CreateShell()
