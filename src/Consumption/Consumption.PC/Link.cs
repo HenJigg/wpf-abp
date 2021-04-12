@@ -15,11 +15,8 @@
 
 namespace Consumption.PC
 {
-    using System;
-    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Runtime.InteropServices;
-    using System.Text;
 
     /// <summary>
     /// 配置启动超链接

@@ -15,8 +15,6 @@
 namespace Consumption.Shared.DataInterfaces
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     /// <summary>
     /// 日志接口

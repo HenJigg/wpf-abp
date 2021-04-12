@@ -24,6 +24,7 @@ namespace Consumption.Core.Common
     public class ConsumptionNLog : ILog
     {
         private NLog.Logger logger;
+
         public ConsumptionNLog()
         {
             logger = LogManager.GetCurrentClassLogger();
