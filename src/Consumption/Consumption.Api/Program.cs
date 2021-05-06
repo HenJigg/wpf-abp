@@ -1,14 +1,7 @@
 /*
 *
 * 文件名    ：Program     
-* 更新时间  : 2020-05-21 11:44
-* 联系作者  : QQ:779149549 
-* 开发者群  : QQ群:874752819
-* 邮件联系  : zhouhaogg789@outlook.com
-* 视频教程  : https://space.bilibili.com/32497462
-* 博客地址  : https://www.cnblogs.com/zh7791/
-* 项目地址  : https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples
-* 项目说明  : 以上所有代码均属开源免费使用,禁止个人行为出售本项目源代码
+* 更新时间  : 2020-05-21 11:44 
 */
 
 
@@ -38,8 +31,7 @@ namespace Consumption.Api
         *  2.请确保 数据库的迁移文件已经更新到你的mysql当中。
         *    2.1. 打开程序包管理控制台, 确保API项目为启动项
         *    2.2. 默认项目设定EfCore, 控制台输入 update-database 将当前存在的迁移文件生成到数据库当中
-        *  
-        *  视频说明: https://www.bilibili.com/video/BV1qf4y117c6
+        *   
         */
 
         /// <summary>
