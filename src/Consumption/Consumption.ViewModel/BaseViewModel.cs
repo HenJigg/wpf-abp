@@ -4,7 +4,6 @@ namespace Consumption.ViewModel
     using Consumption.Shared.Common.Events;
     using Microsoft.Toolkit.Mvvm.ComponentModel;
     using Microsoft.Toolkit.Mvvm.Input;
-    using Microsoft.Toolkit.Mvvm.Messaging;
     using Prism.Events;
     using Prism.Ioc;
 
@@ -24,11 +23,17 @@ namespace Consumption.ViewModel
         {
             switch (arg)
             {
-                case "最小化": aggregator.GetEvent<StringMessageEvent>().Publish("Min"); break;
-                case "最大化": aggregator.GetEvent<StringMessageEvent>().Publish("Max"); break;
-                case "关闭": aggregator.GetEvent<StringMessageEvent>().Publish("Exit"); break;
+                case "最小化": ExecuteEvent("Min"); break;
+                case "最大化": ExecuteEvent("Max"); break;
+                case "关闭": ExecuteEvent("Exit"); break;
             }
         }
+
+        /// <summary>
+        /// 执行事件消息
+        /// </summary>
+        /// <param name="command"></param>
+        protected void ExecuteEvent(string command) => aggregator.GetEvent<StringMessageEvent>().Publish(command);
 
         public RelayCommand<string> ExecuteCommand { get; private set; }
 

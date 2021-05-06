@@ -1,7 +1,6 @@
 ﻿
 namespace Consumption.ViewModel
 {
-    using Consumption.ViewModel.Common;
     using System;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
@@ -13,6 +12,7 @@ namespace Consumption.ViewModel
     using Microsoft.Toolkit.Mvvm.ComponentModel;
     using Microsoft.Toolkit.Mvvm.Input;
     using Microsoft.Toolkit.Mvvm.Messaging;
+    using Prism.Ioc;
 
     /// <summary>
     /// 通用基类(实现CRUD/数据分页..)
@@ -20,13 +20,14 @@ namespace Consumption.ViewModel
     /// <typeparam name="TEntity"></typeparam>
     public class BaseRepository<TEntity> : ObservableObject where TEntity : BaseDto, new()
     {
-        public readonly IConsumptionRepository<TEntity> repository;
+        protected readonly IConsumptionRepository<TEntity> repository;
+        protected readonly IContainerProvider containerProvider;
 
-        public BaseRepository() { }
-
-        public BaseRepository(IConsumptionRepository<TEntity> repository)
+        public BaseRepository(IConsumptionRepository<TEntity> repository,
+            IContainerProvider containerProvider)
         {
             this.repository = repository;
+            this.containerProvider = containerProvider;
         }
 
         #region ICrud (增删改查接口)

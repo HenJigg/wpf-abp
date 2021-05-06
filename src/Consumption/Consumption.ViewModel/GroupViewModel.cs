@@ -5,15 +5,13 @@
     using System.Threading.Tasks;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using Consumption.ViewModel.Common;
     using Consumption.ViewModel.Interfaces;
     using Consumption.Shared.DataModel;
     using Consumption.Shared.Common;
     using Consumption.Shared.Dto;
     using Consumption.Shared.Common.Query;
-    using Newtonsoft.Json;
-    using Consumption.Shared.Common.Collections;
     using Microsoft.Toolkit.Mvvm.Input;
+    using Prism.Ioc;
 
 
     /// <summary>
@@ -24,9 +22,9 @@
         private readonly IUserRepository userRepository;
         private readonly IGroupRepository groupRepository;
 
-        public GroupViewModel(IGroupRepository repository) : base(repository)
+        public GroupViewModel(IGroupRepository repository, IContainerProvider containerProvider)
+            : base(repository, containerProvider)
         {
-            //userRepository = NetCoreProvider.Resolve<IUserRepository>();
             AddUserCommand = new RelayCommand<UserDto>(arg =>
             {
                 if (arg == null) return;

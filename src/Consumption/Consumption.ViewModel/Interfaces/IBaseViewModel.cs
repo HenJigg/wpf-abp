@@ -1,12 +1,7 @@
-﻿
-namespace Consumption.ViewModel.Interfaces
+﻿namespace Consumption.ViewModel.Interfaces
 {
     using Consumption.Shared.DataInterfaces;
-    using Consumption.Shared.DataModel;
     using Consumption.Shared.Dto;
-    using Microsoft.Toolkit.Mvvm.ComponentModel;
-    using Microsoft.Toolkit.Mvvm.Input;
-    using System.Threading.Tasks;
 
     #region 模块接口
 

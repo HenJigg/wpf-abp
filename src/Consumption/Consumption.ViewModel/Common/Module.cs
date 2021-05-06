@@ -1,9 +1,7 @@
-﻿
-
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-
-namespace Consumption.ViewModel.Common
+﻿namespace Consumption.ViewModel.Common
 {
+    using Microsoft.Toolkit.Mvvm.ComponentModel;
+
     /// <summary>
     /// 模块
     /// </summary>

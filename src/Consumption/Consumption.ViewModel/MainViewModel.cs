@@ -1,17 +1,12 @@
 ﻿namespace Consumption.ViewModel
 {
-    using Consumption.Shared.Common;
     using Consumption.ViewModel.Common;
-    using Consumption.ViewModel.Interfaces;
     using Microsoft.Toolkit.Mvvm.Input;
     using Microsoft.Toolkit.Mvvm.Messaging;
-    using Org.BouncyCastle.Asn1.X509.Qualified;
     using Prism.Ioc;
     using System;
     using System.Collections.ObjectModel;
-    using System.Diagnostics;
     using System.Linq;
-    using System.Reflection;
     using System.Threading.Tasks;
 
     /// <summary>

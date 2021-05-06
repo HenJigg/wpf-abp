@@ -1,18 +1,17 @@
 ﻿
 namespace Consumption.ViewModel
 {
-    using Consumption.Shared.Common;
     using Consumption.Shared.Dto;
     using Consumption.ViewModel.Interfaces;
+    using Prism.Ioc;
 
     /// <summary>
     /// 菜单业务
     /// </summary>
     public class MenuViewModel : BaseRepository<MenuDto>, IMenuViewModel
     {
-        public MenuViewModel(IMenuRepository repository) : base(repository)
-        {
-
-        }
+        public MenuViewModel(IMenuRepository repository, IContainerProvider containerProvider)
+            : base(repository, containerProvider)
+        { }
     }
 }
