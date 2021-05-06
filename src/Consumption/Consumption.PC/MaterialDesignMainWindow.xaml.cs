@@ -1,4 +1,6 @@
-﻿using Dragablz;
+﻿using Consumption.Shared.Common.Events;
+using Dragablz;
+using Prism.Events;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,9 +20,20 @@ namespace Consumption.PC
     /// </summary>
     public partial class MaterialDesignMainWindow : Window
     {
-        public MaterialDesignMainWindow()
+        public MaterialDesignMainWindow(IEventAggregator aggregator)
         {
             InitializeComponent();
+            aggregator.GetEvent<StringMessageEvent>().Subscribe(Execute);
+        }
+
+        void Execute(string arg)
+        {
+            switch (arg)
+            {
+                case "Min": this.WindowState = WindowState.Minimized; break;
+                case "Max": this.WindowState = WindowState.Maximized; break;
+                case "Exit": Environment.Exit(0); break;
+            }
         }
 
         private void btnGithub(object sender, RoutedEventArgs e)
@@ -37,6 +50,5 @@ namespace Consumption.PC
         {
             Link.OpenInBrowser(" http://qm.qq.com/cgi-bin/qm/qr?k=KpcFszjNfY2g-o0q1eEMIoYWbzjSMO2-&authKey=lg1kMENlcHkLO2gejRLvXmGq9Xy6GGb0X1h%2B9QDMhbNxvLLLugAsDQUIuzPJZhDy&group_code=874752819");
         }
-
     }
 }

@@ -249,7 +249,8 @@
                                 </StackPanel>
                             </materialDesign:PopupBox>
                             <Button
-                                Command="{Binding MinCommand}"
+                                Command="{Binding ExecuteCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=ToolTip}"
                                 Style="{StaticResource MaterialDesignFlatMidBgButton}"
                                 ToolTip="最小化">
                                 <StackPanel Orientation="Horizontal">
@@ -261,7 +262,8 @@
                                 </StackPanel>
                             </Button>
                             <Button
-                                Command="{Binding MaxCommand}"
+                                Command="{Binding ExecuteCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=ToolTip}"
                                 Style="{StaticResource MaterialDesignFlatMidBgButton}"
                                 ToolTip="最大化">
                                 <StackPanel Orientation="Horizontal">
@@ -273,7 +275,8 @@
                                 </StackPanel>
                             </Button>
                             <Button
-                                Command="{Binding ExitCommand}"
+                                Command="{Binding ExecuteCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=ToolTip}"
                                 Style="{StaticResource MaterialDesignFlatMidBgButton}"
                                 ToolTip="退出系统">
                                 <StackPanel Orientation="Horizontal">

@@ -22,6 +22,7 @@ namespace Consumption.PC.Common.Converters
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using Consumption.PC.Common.Helpers;
 
     /// <summary>
     /// 地址转图片转换器

@@ -3,6 +3,7 @@ using Consumption.ViewModel.Interfaces;
 using Consumption.Shared.Common;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
+using Prism.Ioc;
 
 namespace Consumption.ViewModel
 {
@@ -45,7 +46,7 @@ namespace Consumption.ViewModel
 
         #endregion
 
-        public LoginViewModelBase(IUserRepository repository)
+        public LoginViewModelBase(IUserRepository repository, IContainerProvider containerProvider):base(containerProvider)
         {
             this.repository = repository;
         }

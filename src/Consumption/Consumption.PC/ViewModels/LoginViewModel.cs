@@ -1,6 +1,7 @@
 ﻿using Consumption.ViewModel;
 using Consumption.ViewModel.Interfaces;
 using MaterialDesignThemes.Wpf;
+using Prism.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,8 @@ namespace Consumption.PC.ViewModels
 {
     public class LoginViewModel : LoginViewModelBase
     {
-        public LoginViewModel(IUserRepository repository) : base(repository)
+        public LoginViewModel(IUserRepository repository, IContainerProvider containerProvider)
+            : base(repository, containerProvider)
         {
             SnackbarMessage = new SnackbarMessageQueue();
         }

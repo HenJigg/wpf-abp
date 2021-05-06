@@ -6,6 +6,7 @@
     using Microsoft.Toolkit.Mvvm.Input;
     using Microsoft.Toolkit.Mvvm.Messaging;
     using Org.BouncyCastle.Asn1.X509.Qualified;
+    using Prism.Ioc;
     using System;
     using System.Collections.ObjectModel;
     using System.Diagnostics;
@@ -18,7 +19,7 @@
     /// </summary>
     public class MainViewModel : BaseDialogViewModel
     {
-        public MainViewModel()
+        public MainViewModel(IContainerProvider containerProvider) : base(containerProvider)
         {
             OpenPageCommand = new AsyncRelayCommand<string>(OpenPage);
             ClosePageCommand = new RelayCommand<string>(ClosePage);
@@ -92,16 +93,6 @@
         /// 关闭选择页, string: 模块名称
         /// </summary>
         public RelayCommand<string> ClosePageCommand { get; private set; }
-
-        public RelayCommand MinCommand { get; private set; } = new RelayCommand(() =>
-        {
-            WeakReferenceMessenger.Default.Send("", "WindowMinimize");
-        });
-
-        public RelayCommand MaxCommand { get; private set; } = new RelayCommand(() =>
-        {
-            WeakReferenceMessenger.Default.Send("", "WindowMaximize");
-        });
 
         #endregion
 

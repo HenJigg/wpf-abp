@@ -46,7 +46,7 @@ namespace Consumption.PC
 
         protected override Window CreateShell()
         {
-            return Container.Resolve<MainWindow>();
+            return Container.Resolve<MaterialDesignMainWindow>();
         }
 
         protected override void OnInitialized()
