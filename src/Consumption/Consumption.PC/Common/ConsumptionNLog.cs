@@ -1,11 +1,4 @@
-﻿/*
-*
-* 文件名    ：Log                             
-* 程序说明  : 日志管理器
-* 更新时间  : 2020-07-08 12:49
-*/
-
-namespace Consumption.Core.Common
+﻿namespace Consumption.Core.Common
 {
     using Consumption.Shared.DataInterfaces;
     using NLog;

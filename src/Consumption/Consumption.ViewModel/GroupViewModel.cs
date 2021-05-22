@@ -5,13 +5,13 @@
     using System.Threading.Tasks;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using Consumption.ViewModel.Interfaces;
     using Consumption.Shared.DataModel;
-    using Consumption.Shared.Common;
     using Consumption.Shared.Dto;
     using Consumption.Shared.Common.Query;
     using Microsoft.Toolkit.Mvvm.Input;
     using Prism.Ioc;
+    using Consumption.ViewModel.Common;
+    using Consumption.ViewModel.Interfaces;
 
 
     /// <summary>
@@ -130,7 +130,7 @@
                 InitPermissions(this.AuthValue);
                 SelectPageIndex = 0;
             }
-            catch (Exception ex)
+            catch
             {
                 //Msg.Error(ex.Message);
             }

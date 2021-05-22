@@ -1,4 +1,4 @@
-﻿namespace Consumption.ViewModel.Interfaces
+﻿namespace Consumption.ViewModel.Common
 {
     using Consumption.Shared.DataInterfaces;
     using Consumption.Shared.Dto;

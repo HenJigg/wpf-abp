@@ -2,6 +2,7 @@
 namespace Consumption.ViewModel
 {
     using Consumption.Shared.Dto;
+    using Consumption.ViewModel.Common;
     using Consumption.ViewModel.Interfaces;
     using Prism.Ioc;
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Consumption.PC.ViewModels
 {
-    public class LoginViewModel : LoginViewModelBase
+    public class LoginViewModel : LoginBaseViewModel
     {
         public LoginViewModel(IUserRepository repository, IContainerProvider containerProvider)
             : base(repository, containerProvider)
@@ -25,9 +25,6 @@ namespace Consumption.PC.ViewModels
             set { snackbarMessageQueue = value; OnPropertyChanged(); }
         }
 
-        public override void SnackBar(string msg)
-        {
-            SnackbarMessage.Enqueue(msg);
-        }
+        public override void SnackBar(string msg) => SnackbarMessage.Enqueue(msg);
     }
 }

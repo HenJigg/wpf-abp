@@ -80,6 +80,7 @@ namespace Consumption.Api.ApiManager
             }
             catch (Exception ex)
             {
+                logger.LogError(ex.Message);
                 return new ApiResponse(201, "");
             }
         }

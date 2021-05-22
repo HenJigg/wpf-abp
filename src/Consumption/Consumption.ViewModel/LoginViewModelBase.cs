@@ -1,16 +1,18 @@
 ﻿using System.Threading.Tasks;
 using Consumption.ViewModel.Interfaces;
 using Consumption.Shared.Common;
-using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using Prism.Ioc;
+using Prism.Events;
+using Consumption.ViewModel.Common.Events;
+using Consumption.ViewModel.Common;
 
 namespace Consumption.ViewModel
 {
     /// <summary>
     /// 登录模块
     /// </summary>
-    public class LoginViewModelBase : BaseDialogViewModel, ILoginViewModel
+    public class LoginBaseViewModel : BaseDialogViewModel, ILoginViewModel
     {
         #region Property
 
@@ -19,6 +21,7 @@ namespace Consumption.ViewModel
         private string report;
         private string isCancel;
         private readonly IUserRepository repository;
+        private readonly IEventAggregator eventAggregator;
 
         public string UserName
         {
@@ -46,9 +49,11 @@ namespace Consumption.ViewModel
 
         #endregion
 
-        public LoginViewModelBase(IUserRepository repository, IContainerProvider containerProvider):base(containerProvider)
+        public LoginBaseViewModel(IUserRepository repository, IContainerProvider containerProvider)
+            : base(containerProvider)
         {
             this.repository = repository;
+            this.eventAggregator = containerProvider.Resolve<IEventAggregator>();
         }
 
         public override async void Execute(string arg)
@@ -87,6 +92,7 @@ namespace Consumption.ViewModel
                     SnackBar(authResult.Message);
                     return;
                 }
+
                 #region 关联用户信息/缓存
 
                 Contract.Account = loginResult.Result.User.Account;
@@ -96,7 +102,8 @@ namespace Consumption.ViewModel
                 Contract.AuthItems = authResult.Result;
 
                 #endregion
-                WeakReferenceMessenger.Default.Send(string.Empty, "NavigationPage");
+
+                eventAggregator.GetEvent<LoginEvent>().Publish(true);
             }
             catch (Exception ex)
             {

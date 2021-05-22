@@ -1,5 +1,4 @@
-﻿
-namespace Consumption.ViewModel.Interfaces
+﻿namespace Consumption.ViewModel.Common
 {
     using Microsoft.Toolkit.Mvvm.Input;
     using System.Collections.ObjectModel;
