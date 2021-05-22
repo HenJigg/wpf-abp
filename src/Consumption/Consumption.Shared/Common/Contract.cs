@@ -42,7 +42,7 @@ namespace Consumption.Shared.Common
 
         #region 接口地址
 
-        public static string serverUrl = string.Empty;
+        public static string serverUrl = "http://localhost:5015/";
 
         #endregion
     }

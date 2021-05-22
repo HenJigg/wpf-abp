@@ -1,6 +1,4 @@
-﻿
-
-namespace Consumption.EFCore
+﻿namespace Consumption.EFCore
 {
     using System;
     using System.Linq;

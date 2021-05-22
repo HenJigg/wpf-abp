@@ -4,10 +4,7 @@
 * 程序说明  : 数据库上下文帮助类
 * 更新时间  : 2020-05-22 13：48
 * 更新人    : zhouhaogg789@outlook.com
-* 
-*
 */
-
 
 namespace Consumption.EFCore.Context
 {

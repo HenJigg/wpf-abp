@@ -1,10 +1,3 @@
-/*
-*
-* 文件名    ：Program     
-* 更新时间  : 2020-05-21 11:44 
-*/
-
-
 namespace Consumption.Api
 {
     using System;
@@ -21,16 +14,32 @@ namespace Consumption.Api
     using NLog.Web;
 
     /// <summary>
-    /// 
+    /// 应用程序主入口
     /// </summary>
     public class Program
     {
         /*
         *  首次运行项目须知:
-        *  1.请检查 appsettings.json 中 MySqlNoteConnection 连接是否与当前的环境一致
-        *  2.请确保 数据库的迁移文件已经更新到你的mysql当中。
-        *    2.1. 打开程序包管理控制台, 确保API项目为启动项
-        *    2.2. 默认项目设定EfCore, 控制台输入 update-database 将当前存在的迁移文件生成到数据库当中
+        *  1.请检查 appsettings.json 中 Connection 连接是否与当前的环境一致
+        *  
+        *  2.请确保 数据库的迁移文件已经更新到你的数据库当中。
+        *    2.1. 打开程序包管理控制台, 确保 Consumption.Api 项目为启动项
+        *    
+        *    2.2. 首先创建迁移文件,确保默认项目选中为EfCore  
+        *         命令: add-migration firstProjectName
+        *         
+        *    2.3. 然后更新至数据库  命令: update-database
+        *    
+        *    2.4. 启动项目, 如页面成功显示Open API 预览页, 通过设置接口访问数据,
+        *    如正常访问, 则代表配置数据库部分成功。
+        *    
+        *  注意: 关于EfCore 创建迁移, 以及如何将迁移文件生成到数据库当中, 涉及到了解EfCore的相关知识
+        *  
+        *  博客地址: 
+        *  https://www.cnblogs.com/zh7791/p/12931449.html
+        *  
+        *  微软官方文档地址(关于如何创建迁移部分以及根据项目生成数据库):
+        *  https://docs.microsoft.com/zh-cn/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli
         *   
         */
 

@@ -1,16 +1,6 @@
-/*
-*
-* 文件名    ：Startup                          
-* 程序说明  : 启动项配置
-* 更新时间  : 2020-05-21 11:44 
-*/
-
-
 namespace Consumption.Api
 {
     using System;
-    using System.IO;
-    using System.Linq;
     using System.Reflection;
     using AutoMapper;
     using Consumption.Api.ApiManager;
@@ -19,10 +9,8 @@ namespace Consumption.Api
     using Consumption.EFCore.Context;
     using Consumption.Shared.DataInterfaces;
     using Consumption.Shared.DataModel;
-    using IGeekFan.AspNetCore.Knife4jUI;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc.Controllers;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -75,17 +63,17 @@ namespace Consumption.Api
 
             services.AddDbContext<ConsumptionContext>(options =>
             {
-                //迁移至Sqlite
+                //设置至Sqlite
                 //var connectionString = Configuration.GetConnectionString("NoteConnection");
                 //options.UseSqlite(connectionString,sql => sql.MigrationsAssembly(migrationsAssemblyName));
 
-                //迁移至MySql
-                var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
-                options.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
+                //设置至MySql
+                //var connectionString = Configuration.GetConnectionString("MySqlNoteConnection");
+                //options.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
 
-                //迁移至MsSql
-                //var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
-                //options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
+                //设置至MsSql
+                var connectionString = Configuration.GetConnectionString("MsSqlNoteConnection");
+                options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssemblyName));
             })
             .AddUnitOfWork<ConsumptionContext>()
             .AddCustomRepository<User, CustomUserRepository>()

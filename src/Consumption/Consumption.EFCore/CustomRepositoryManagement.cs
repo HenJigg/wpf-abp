@@ -1,6 +1,4 @@
-﻿
-
-namespace Consumption.EFCore
+﻿namespace Consumption.EFCore
 {
     using Consumption.EFCore.Context;
     using Consumption.Shared.DataModel;
