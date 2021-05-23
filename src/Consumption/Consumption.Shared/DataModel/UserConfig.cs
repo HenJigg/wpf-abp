@@ -1,6 +1,4 @@
-﻿
-
-namespace Consumption.Shared.DataModel
+﻿namespace Consumption.Shared.DataModel
 {
     /// <summary>
     /// 用户个性化配置

@@ -1,5 +1,4 @@
-﻿
-namespace Consumption.Shared.Common.Attributes
+﻿namespace Consumption.Shared.Common.Attributes
 {
     using System;
 
@@ -8,6 +7,5 @@ namespace Consumption.Shared.Common.Attributes
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class PreventAttribute : Attribute
-    {
-    }
+    {  }
 }

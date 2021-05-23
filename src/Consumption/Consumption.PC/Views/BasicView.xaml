@@ -16,7 +16,6 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-
         <StackPanel Panel.ZIndex="1" Orientation="Horizontal">
             <materialDesign:PackIcon
                 Width="25"

@@ -1,6 +1,4 @@
-﻿
-
-namespace Consumption.Shared.Common
+﻿namespace Consumption.Shared.Common
 {
     using Consumption.Shared.DataModel;
     using System.Collections.Generic;
@@ -32,11 +30,6 @@ namespace Consumption.Shared.Common
         /// 系统中已定义的功能清单-缓存用于页面验证
         /// </summary>
         public static List<AuthItem> AuthItems;
-
-        /// <summary>
-        /// 获取用户的所有模块
-        /// </summary>
-        public static List<Menu> Menus;
 
         #endregion
 

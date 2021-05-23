@@ -1,5 +1,4 @@
-﻿
-namespace Consumption.Shared.Common
+﻿namespace Consumption.Shared.Common
 {
     /// <summary>
     /// 按钮命令

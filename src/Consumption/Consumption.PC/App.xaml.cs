@@ -1,12 +1,16 @@
 ﻿using Consumption.Core.Common;
+using Consumption.PC.ViewModels;
 using Consumption.PC.Views;
 using Consumption.Service;
 using Consumption.Shared.DataInterfaces;
+using Consumption.Shared.DataModel;
 using Consumption.ViewModel;
 using Consumption.ViewModel.Interfaces;
 using Prism.DryIoc;
 using Prism.Ioc;
+using Prism.Services.Dialogs;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace Consumption.PC
@@ -34,7 +38,9 @@ namespace Consumption.PC
             containerRegistry.Register<IMenuRepository, MenuService>();
             containerRegistry.Register<IBasicRepository, BasicService>();
             containerRegistry.Register<ILog, ConsumptionNLog>();
+            containerRegistry.RegisterForNavigation<MainWindow, MainViewModel>();
 
+            containerRegistry.RegisterDialog<LoginView, LoginViewModel>();
 
             //这里之所以设置参数name, 是由于实际项目可能存在修改控件的名称,导致在Prism当中
             //无法导航的情况
@@ -48,19 +54,28 @@ namespace Consumption.PC
 
         protected override Window CreateShell()
         {
-            return Container.Resolve<MaterialDesignMainWindow>();
+            return Container.Resolve<MainWindow>();
         }
 
         protected override void OnInitialized()
         {
             var win = Container.Resolve<LoginView>();
-            var result = (bool)win.ShowDialog();
-            if (result)
-            {
-                base.OnInitialized();
-            }
-            else
-                Environment.Exit(0);
+
+            var dialogService = Container.Resolve<IDialogService>();
+
+            dialogService.ShowDialog("LoginView", sender =>
+             {
+                 if (sender.Result != ButtonResult.OK)
+                 {
+                     Environment.Exit(0);
+                     return;
+                 }
+
+                 //获取返回的菜单列表
+                 var menus = sender.Parameters.GetValue<List<Menu>>("Value");
+                 (MainWindow.DataContext as MainViewModel).InitDefaultView(menus);
+                 base.OnInitialized();
+             });
         }
     }
 }

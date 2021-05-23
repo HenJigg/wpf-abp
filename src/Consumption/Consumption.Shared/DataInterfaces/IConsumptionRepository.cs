@@ -1,5 +1,4 @@
-﻿
-namespace Consumption.ViewModel.Interfaces
+﻿namespace Consumption.ViewModel.Interfaces
 {
     using Consumption.Shared.Common.Collections;
     using Consumption.Shared.Common.Query;

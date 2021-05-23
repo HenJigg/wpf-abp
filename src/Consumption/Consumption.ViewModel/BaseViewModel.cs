@@ -25,7 +25,7 @@ namespace Consumption.ViewModel
             {
                 case "最小化": ExecuteEvent("Min"); break;
                 case "最大化": ExecuteEvent("Max"); break;
-                case "关闭": ExecuteEvent("Exit"); break;
+                case "退出系统": ExecuteEvent("Exit"); break;
             }
         }
 

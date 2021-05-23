@@ -1,5 +1,4 @@
-﻿
-namespace Consumption.Shared.DataModel
+﻿namespace Consumption.Shared.DataModel
 {
     using System;
     using System.ComponentModel;

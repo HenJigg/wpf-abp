@@ -18,9 +18,9 @@ namespace Consumption.PC
     /// <summary>
     /// MaterialDesignMainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MaterialDesignMainWindow : Window
+    public partial class MainWindow : Window
     {
-        public MaterialDesignMainWindow(IEventAggregator aggregator)
+        public MainWindow(IEventAggregator aggregator)
         {
             InitializeComponent();
             aggregator.GetEvent<StringMessageEvent>().Subscribe(Execute);
@@ -31,7 +31,12 @@ namespace Consumption.PC
             switch (arg)
             {
                 case "Min": this.WindowState = WindowState.Minimized; break;
-                case "Max": this.WindowState = WindowState.Maximized; break;
+                case "Max":
+                    if (WindowState == WindowState.Normal)
+                        this.WindowState = WindowState.Maximized;
+                    else
+                        this.WindowState = WindowState.Normal;
+                    break;
                 case "Exit": Environment.Exit(0); break;
             }
         }

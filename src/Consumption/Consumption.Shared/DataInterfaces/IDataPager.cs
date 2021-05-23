@@ -1,7 +1,4 @@
-﻿
-
-
-namespace Consumption.Shared.DataInterfaces
+﻿namespace Consumption.Shared.DataInterfaces
 {
     using System.Threading.Tasks;
 

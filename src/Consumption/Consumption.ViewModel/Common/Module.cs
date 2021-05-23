@@ -1,6 +1,7 @@
 ﻿namespace Consumption.ViewModel.Common
 {
     using Microsoft.Toolkit.Mvvm.ComponentModel;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// 模块
@@ -46,23 +47,6 @@
         {
             get { return auth; }
             set { auth = value; OnPropertyChanged(); }
-        }
-    }
-
-    /// <summary>
-    /// 模块UI组件
-    /// </summary>
-    public class ModuleUIComponent : Module
-    {
-        private object body;
-
-        /// <summary>
-        /// 页面内容
-        /// </summary>
-        public object Body
-        {
-            get { return body; }
-            set { body = value; OnPropertyChanged(); }
         }
     }
 }

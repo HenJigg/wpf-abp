@@ -15,7 +15,7 @@
         <v:IBoolConverter x:Key="vbool" />
     </UserControl.Resources>
     <materialDesign:Transitioner SelectedIndex="{Binding SelectPageIndex}">
-        <Grid Margin="10,0,10,0">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition />
@@ -47,7 +47,6 @@
                 x:Name="Grid"
                 Grid.Row="1"
                 AutoGenerateColumns="False"
-                Background="Transparent"
                 IsReadOnly="True"
                 ItemsSource="{Binding GridModelList}"
                 SelectedItem="{Binding GridModel}"

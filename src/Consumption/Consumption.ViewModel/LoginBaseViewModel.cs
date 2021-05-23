@@ -6,13 +6,14 @@ using Prism.Ioc;
 using Prism.Events;
 using Consumption.ViewModel.Common.Events;
 using Consumption.ViewModel.Common;
+using Prism.Services.Dialogs;
 
 namespace Consumption.ViewModel
 {
     /// <summary>
     /// 登录模块
     /// </summary>
-    public class LoginBaseViewModel : BaseDialogViewModel, ILoginViewModel
+    public class LoginBaseViewModel : BaseDialogViewModel, IDialogAware, ILoginViewModel
     {
         #region Property
 
@@ -22,6 +23,8 @@ namespace Consumption.ViewModel
         private string isCancel;
         private readonly IUserRepository repository;
         private readonly IEventAggregator eventAggregator;
+
+
 
         public string UserName
         {
@@ -98,12 +101,15 @@ namespace Consumption.ViewModel
                 Contract.Account = loginResult.Result.User.Account;
                 Contract.UserName = loginResult.Result.User.UserName;
                 Contract.IsAdmin = loginResult.Result.User.FlagAdmin == 1;
-                Contract.Menus = loginResult.Result.Menus; //用户包含的权限信息
                 Contract.AuthItems = authResult.Result;
 
                 #endregion
 
-                eventAggregator.GetEvent<LoginEvent>().Publish(true);
+                RequestClose?.Invoke(new DialogResult
+                    (ButtonResult.OK, new DialogParameters()
+                    {
+                        { "Value", loginResult.Result.Menus}
+                    }));
             }
             catch (Exception ex)
             {
@@ -114,5 +120,24 @@ namespace Consumption.ViewModel
                 DialogIsOpen = false;
             }
         }
+
+        #region IDialogService
+
+        public string Title => "Login";
+
+        public event Action<IDialogResult> RequestClose;
+
+        public bool CanCloseDialog()
+        {
+            return true;
+        }
+
+        public void OnDialogClosed()
+        { }
+
+        public void OnDialogOpened(IDialogParameters parameters)
+        { }
+
+        #endregion
     }
 }

@@ -1,6 +1,4 @@
-﻿
-
-namespace Consumption.Shared.Common
+﻿namespace Consumption.Shared.Common
 {
     /// <summary>
     /// 消息提示结构

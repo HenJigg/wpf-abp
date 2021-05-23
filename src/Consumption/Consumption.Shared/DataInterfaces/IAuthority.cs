@@ -1,5 +1,4 @@
-﻿
-namespace Consumption.Shared.DataInterfaces
+﻿namespace Consumption.Shared.DataInterfaces
 {
     using Consumption.Shared.Common;
     using System.Collections.ObjectModel;

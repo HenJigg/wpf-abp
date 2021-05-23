@@ -1,6 +1,4 @@
-﻿
-
-namespace Consumption.Shared.Common.Collections
+﻿namespace Consumption.Shared.Common.Collections
 {
     using System;
     using System.Collections.Generic;
