@@ -2,12 +2,13 @@
 namespace Consumption.ViewModel.Common
 {
     using Microsoft.Toolkit.Mvvm.ComponentModel;
+    using Prism.Mvvm;
     using System.Collections.ObjectModel;
 
     /// <summary>
     /// 模块分组
     /// </summary>
-    public class ModuleGroup : ObservableObject
+    public class ModuleGroup : BindableBase
     {
         private string groupName;
         private bool contractionTemplate = true;
@@ -19,7 +20,7 @@ namespace Consumption.ViewModel.Common
         public string GroupName
         {
             get { return groupName; }
-            set { groupName = value; OnPropertyChanged(); }
+            set { groupName = value; RaisePropertyChanged(); }
         }
 
         /// <summary>
@@ -28,7 +29,7 @@ namespace Consumption.ViewModel.Common
         public bool ContractionTemplate
         {
             get { return contractionTemplate; }
-            set { contractionTemplate = value; OnPropertyChanged(); }
+            set { contractionTemplate = value; RaisePropertyChanged(); }
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace Consumption.ViewModel.Common
         public ObservableCollection<Module> Modules
         {
             get { return modules; }
-            set { modules = value; OnPropertyChanged(); }
+            set { modules = value; RaisePropertyChanged(); }
         }
     }
 }

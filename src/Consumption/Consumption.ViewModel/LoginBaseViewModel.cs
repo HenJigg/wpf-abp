@@ -28,25 +28,25 @@ namespace Consumption.ViewModel
         public string UserName
         {
             get { return userName; }
-            set { userName = value; OnPropertyChanged(); }
+            set { userName = value; RaisePropertyChanged(); }
         }
 
         public string PassWord
         {
             get { return passWord; }
-            set { passWord = value; OnPropertyChanged(); }
+            set { passWord = value; RaisePropertyChanged(); }
         }
 
         public string Report
         {
             get { return report; }
-            set { report = value; OnPropertyChanged(); }
+            set { report = value; RaisePropertyChanged(); }
         }
 
         public string IsCancel
         {
             get { return isCancel; }
-            set { isCancel = value; OnPropertyChanged(); }
+            set { isCancel = value; RaisePropertyChanged(); }
         }
 
         #endregion

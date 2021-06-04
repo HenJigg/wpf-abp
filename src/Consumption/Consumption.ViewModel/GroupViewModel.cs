@@ -1,6 +1,5 @@
 ﻿namespace Consumption.ViewModel
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Collections.ObjectModel;
@@ -12,7 +11,6 @@
     using Prism.Ioc;
     using Consumption.ViewModel.Common;
     using Consumption.ViewModel.Interfaces;
-
 
     /// <summary>
     /// 部门管理
@@ -149,7 +147,7 @@
         public int SelectCardIndex
         {
             get { return selectCardIndex; }
-            set { selectCardIndex = value; OnPropertyChanged(); }
+            set { selectCardIndex = value; RaisePropertyChanged(); }
         }
 
 
@@ -161,7 +159,7 @@
         public string UserSearch
         {
             get { return userSearch; }
-            set { userSearch = value; OnPropertyChanged(); }
+            set { userSearch = value; RaisePropertyChanged(); }
         }
 
         private GroupDataDto groupDto;
@@ -172,7 +170,7 @@
         public GroupDataDto GroupDto
         {
             get { return groupDto; }
-            set { groupDto = value; OnPropertyChanged(); }
+            set { groupDto = value; RaisePropertyChanged(); }
         }
 
         private ObservableCollection<UserDto> gridUserModelList;
@@ -183,7 +181,7 @@
         public ObservableCollection<UserDto> GridUserModelList
         {
             get { return gridUserModelList; }
-            set { gridUserModelList = value; OnPropertyChanged(); }
+            set { gridUserModelList = value; RaisePropertyChanged(); }
         }
 
 
@@ -195,7 +193,7 @@
         public ObservableCollection<MenuModuleGroupDto> MenuModules
         {
             get { return menuModules; }
-            set { menuModules = value; OnPropertyChanged(); }
+            set { menuModules = value; RaisePropertyChanged(); }
         }
 
         #endregion

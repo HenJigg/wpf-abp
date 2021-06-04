@@ -1,12 +1,13 @@
 ﻿namespace Consumption.ViewModel.Common
 {
     using Microsoft.Toolkit.Mvvm.ComponentModel;
+    using Prism.Mvvm;
     using System.Collections.ObjectModel;
 
     /// <summary>
     /// 模块
     /// </summary>
-    public class Module : ObservableObject
+    public class Module : BindableBase
     {
         private string code;
         private string name;
@@ -19,7 +20,7 @@
         public string Code
         {
             get { return code; }
-            set { code = value; OnPropertyChanged(); }
+            set { code = value; RaisePropertyChanged(); }
         }
 
         /// <summary>
@@ -28,7 +29,7 @@
         public string Name
         {
             get { return name; }
-            set { name = value; OnPropertyChanged(); }
+            set { name = value; RaisePropertyChanged(); }
         }
 
         /// <summary>
@@ -37,7 +38,7 @@
         public string TypeName
         {
             get { return typeName; }
-            set { typeName = value; OnPropertyChanged(); }
+            set { typeName = value; RaisePropertyChanged(); }
         }
 
         /// <summary>
@@ -46,7 +47,7 @@
         public int Auth
         {
             get { return auth; }
-            set { auth = value; OnPropertyChanged(); }
+            set { auth = value; RaisePropertyChanged(); }
         }
     }
 }

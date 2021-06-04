@@ -1,4 +1,5 @@
-﻿using Consumption.Core.Common;
+﻿using Consumption.Common;
+using Consumption.Core.Common;
 using Consumption.PC.ViewModels;
 using Consumption.PC.Views;
 using Consumption.Service;
@@ -33,6 +34,9 @@ namespace Consumption.PC
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IDialogService, DialogServices>();
+            containerRegistry.Register<IDialogWindows, Consumption.PC.Template.DialogWindow>();
+
             containerRegistry.Register<IUserRepository, UserService>();
             containerRegistry.Register<IGroupRepository, GroupService>();
             containerRegistry.Register<IMenuRepository, MenuService>();
@@ -50,6 +54,8 @@ namespace Consumption.PC
             containerRegistry.RegisterForNavigation<GroupView, GroupViewModel>("GroupView");
             containerRegistry.RegisterForNavigation<MenuView, MenuViewModel>("MenuView");
             containerRegistry.RegisterForNavigation<UserView, UserViewModel>("UserView");
+
+            containerRegistry.Register<IDialogWindow, DialogWindow>();
         }
 
         protected override Window CreateShell()

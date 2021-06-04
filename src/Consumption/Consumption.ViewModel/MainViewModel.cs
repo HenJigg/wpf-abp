@@ -35,7 +35,7 @@
         public ModuleManager ModuleManager
         {
             get { return moduleManager; }
-            set { moduleManager = value; OnPropertyChanged(); }
+            set { moduleManager = value; RaisePropertyChanged(); }
         }
 
         #endregion

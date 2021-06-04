@@ -22,7 +22,7 @@ namespace Consumption.PC.ViewModels
         public SnackbarMessageQueue SnackbarMessage
         {
             get { return snackbarMessageQueue; }
-            set { snackbarMessageQueue = value; OnPropertyChanged(); }
+            set { snackbarMessageQueue = value; RaisePropertyChanged(); }
         }
 
         public override void SnackBar(string msg) => SnackbarMessage.Enqueue(msg);

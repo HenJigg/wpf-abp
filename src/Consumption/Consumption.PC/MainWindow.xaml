@@ -59,19 +59,6 @@
                             FontSize="28">
                             WPF MVVM SAMPLE
                         </TextBlock>
-
-                        <Border
-                            Margin="10,0"
-                            VerticalAlignment="Center"
-                            Background="#FF7F50"
-                            CornerRadius="2">
-                            <TextBlock
-                                Padding="15,5"
-                                FontSize="15"
-                                Foreground="White"
-                                Text="Prism" />
-                        </Border>
-
                     </StackPanel>
 
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
@@ -160,6 +147,7 @@
 
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                         <Setter Property="BorderThickness" Value="0" />
                         <Setter Property="Background" Value="#5677FC" />

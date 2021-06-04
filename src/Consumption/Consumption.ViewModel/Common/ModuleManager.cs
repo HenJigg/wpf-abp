@@ -3,6 +3,7 @@ namespace Consumption.ViewModel.Common
 {
     using Consumption.Shared.DataModel;
     using Microsoft.Toolkit.Mvvm.ComponentModel;
+    using Prism.Mvvm;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -10,7 +11,7 @@ namespace Consumption.ViewModel.Common
     /// <summary>
     /// 模块管理器
     /// </summary>
-    public class ModuleManager : ObservableObject
+    public class ModuleManager : BindableBase
     {
         public ModuleManager()
         {
@@ -24,7 +25,7 @@ namespace Consumption.ViewModel.Common
         public ObservableCollection<Module> Modules
         {
             get { return modules; }
-            set { modules = value; OnPropertyChanged(); }
+            set { modules = value; RaisePropertyChanged(); }
         }
 
         /// <summary>

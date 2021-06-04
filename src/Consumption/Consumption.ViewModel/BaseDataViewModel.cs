@@ -1,5 +1,4 @@
-﻿
-namespace Consumption.ViewModel
+﻿namespace Consumption.ViewModel
 {
     using System;
     using System.Collections.ObjectModel;
@@ -13,12 +12,14 @@ namespace Consumption.ViewModel
     using Microsoft.Toolkit.Mvvm.Input;
     using Microsoft.Toolkit.Mvvm.Messaging;
     using Prism.Ioc;
+    using Prism.Mvvm;
+    using Prism.Regions;
 
     /// <summary>
     /// 通用基类(实现CRUD/数据分页..)
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class BaseRepository<TEntity> : ObservableObject where TEntity : BaseDto, new()
+    public partial class BaseRepository<TEntity> where TEntity : BaseDto, new()
     {
         protected readonly IConsumptionRepository<TEntity> repository;
         protected readonly IContainerProvider containerProvider;
@@ -39,22 +40,22 @@ namespace Consumption.ViewModel
         public TEntity GridModel
         {
             get { return gridModel; }
-            set { gridModel = value; OnPropertyChanged(); }
+            set { gridModel = value; RaisePropertyChanged(); }
         }
         public int SelectPageIndex
         {
             get { return selectPageIndex; }
-            set { selectPageIndex = value; OnPropertyChanged(); }
+            set { selectPageIndex = value; RaisePropertyChanged(); }
         }
         public string Search
         {
             get { return search; }
-            set { search = value; OnPropertyChanged(); }
+            set { search = value; RaisePropertyChanged(); }
         }
         public ObservableCollection<TEntity> GridModelList
         {
             get { return gridModelList; }
-            set { gridModelList = value; OnPropertyChanged(); }
+            set { gridModelList = value; RaisePropertyChanged(); }
         }
         public AsyncRelayCommand QueryCommand { get { return new AsyncRelayCommand(Query); } }
         public AsyncRelayCommand<string> ExecuteCommand { get { return new AsyncRelayCommand<string>(arg => Execute(arg)); } }
@@ -155,22 +156,22 @@ namespace Consumption.ViewModel
         /// <summary>
         /// 总数
         /// </summary>
-        public int TotalCount { get { return totalCount; } set { totalCount = value; OnPropertyChanged(); } }
+        public int TotalCount { get { return totalCount; } set { totalCount = value; RaisePropertyChanged(); } }
 
         /// <summary>
         /// 当前页大小
         /// </summary>
-        public int PageSize { get { return pageSize; } set { pageSize = value; OnPropertyChanged(); } }
+        public int PageSize { get { return pageSize; } set { pageSize = value; RaisePropertyChanged(); } }
 
         /// <summary>
         /// 当前页
         /// </summary>
-        public int PageIndex { get { return pageIndex; } set { pageIndex = value; OnPropertyChanged(); } }
+        public int PageIndex { get { return pageIndex; } set { pageIndex = value; RaisePropertyChanged(); } }
 
         /// <summary>
         /// 分页总数
         /// </summary>
-        public int PageCount { get { return pageCount; } set { pageCount = value; OnPropertyChanged(); } }
+        public int PageCount { get { return pageCount; } set { pageCount = value; RaisePropertyChanged(); } }
 
         /// <summary>
         /// 首页
@@ -215,7 +216,7 @@ namespace Consumption.ViewModel
         /// 获取数据
         /// </summary>
         /// <param name="pageIndex"></param>
-        public virtual async Task GetPageData(int pageIndex)
+        public virtual async Task GetPageData(int pageIndex = 0)
         {
             var r = await repository.GetAllListAsync(new QueryParameters()
             {
@@ -256,7 +257,7 @@ namespace Consumption.ViewModel
         public ObservableCollection<CommandStruct> ToolBarCommandList
         {
             get { return toolBarCommandList; }
-            set { toolBarCommandList = value; OnPropertyChanged(); }
+            set { toolBarCommandList = value; RaisePropertyChanged(); }
         }
 
         /// <summary>
@@ -282,6 +283,29 @@ namespace Consumption.ViewModel
                     });
             });
         }
+        #endregion
+    }
+
+
+    public partial class BaseRepository<TEntity> : BindableBase, INavigationAware
+    {
+        #region InavigationAware
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+
+        }
+
+        public async void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            await this.GetPageData();
+        }
+
         #endregion
     }
 }

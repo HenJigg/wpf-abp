@@ -6,11 +6,12 @@ namespace Consumption.ViewModel
     using Microsoft.Toolkit.Mvvm.Input;
     using Prism.Events;
     using Prism.Ioc;
+    using Prism.Mvvm;
 
     /// <summary>
     /// MVVM基类
     /// </summary>
-    public class BaseDialogViewModel : ObservableObject
+    public class BaseDialogViewModel : BindableBase
     {
         public BaseDialogViewModel(IContainerProvider containerProvider)
         {
@@ -47,7 +48,7 @@ namespace Consumption.ViewModel
         public bool DialogIsOpen
         {
             get { return isOpen; }
-            set { isOpen = value; OnPropertyChanged(); }
+            set { isOpen = value; RaisePropertyChanged(); }
         }
 
         /// <summary>
