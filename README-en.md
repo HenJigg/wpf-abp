@@ -1,5 +1,3 @@
-# WPF 、Xamarin 、Balzor 、Asp.net Core WebApi
-
 ### Introduced
 This project mainly focuses on C, build a multi-platform application example, the project mainly includes the following platforms:
 1. DeskTop built by WPF Core

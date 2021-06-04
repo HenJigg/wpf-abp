@@ -1,5 +1,3 @@
-# WPF 、Xamarin 、Balzor 、Asp.net Core WebApi
-
 中文 | [English](README-en.md)
 
 ### 介绍
