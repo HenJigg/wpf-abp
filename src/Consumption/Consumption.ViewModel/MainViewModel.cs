@@ -93,6 +93,7 @@
             //创建模块管理器
             ModuleManager = new ModuleManager();
             ModuleManager.LoadAssemblyModule(menus);
+            OpenPage("HomeView");
         }
     }
 }

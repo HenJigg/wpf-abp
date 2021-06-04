@@ -75,7 +75,7 @@
                                 Height="45"
                                 Margin="5"
                                 Foreground="White"
-                                Kind="CashUsd" />
+                                Kind="Money" />
                         </materialDesign:Card>
                         <StackPanel Margin="10,0,0,0">
                             <TextBlock FontSize="14" Text="我的钱包" />

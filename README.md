@@ -22,19 +22,9 @@
 
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Main.png)
 
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/DarkMain.png)
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/DarkSkin.png)
 
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/GroupMenu.gif)
-
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Drag.gif)
-
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Skin.gif)
-
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Show.gif)
-
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Group.png)
-
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Dialog.png)
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Skin.png)
 
 #### Xamarin预览(部分)
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/XamarinLoginPage.png)

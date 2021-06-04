@@ -83,7 +83,7 @@ namespace Consumption.ViewModel
                 DialogIsOpen = true;
                 var loginResult = await repository.LoginAsync(UserName, PassWord);
 
-                if (loginResult.StatusCode != 200)
+                if (loginResult == null || loginResult.StatusCode != 200)
                 {
                     SnackBar(loginResult.Message);
                     return;

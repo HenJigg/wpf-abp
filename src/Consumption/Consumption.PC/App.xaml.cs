@@ -44,8 +44,8 @@ namespace Consumption.PC
 
             //这里之所以设置参数name, 是由于实际项目可能存在修改控件的名称,导致在Prism当中
             //无法导航的情况
-            containerRegistry.RegisterForNavigation<HomeView>("HomeView");
-            containerRegistry.RegisterForNavigation<SkinView,SkinViewModel>("SkinView");
+            containerRegistry.RegisterForNavigation<HomeView, HomeViewModel>("HomeView");
+            containerRegistry.RegisterForNavigation<SkinView, SkinViewModel>("SkinView");
             containerRegistry.RegisterForNavigation<BasicView, BasicViewModel>("BasicView");
             containerRegistry.RegisterForNavigation<GroupView, GroupViewModel>("GroupView");
             containerRegistry.RegisterForNavigation<MenuView, MenuViewModel>("MenuView");

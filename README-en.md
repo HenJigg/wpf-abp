@@ -21,50 +21,14 @@ After the project is downloaded by default, it is connected to the test server, 
 
 You can build the corresponding database by running the .Publish.API project, and if an older version has been built, manually delete it and start the API project.
 
-### WPF Introduced.
-1.UI: [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)  
-2.MVVM:[microsoft.Toolkit.Mvvm](https://github.com/windows-toolkit/WindowsCommunityToolkit)    
-3.AOP:[aspect-injector](https://github.com/pamidur/aspect-injector)  
-4.IOC:[Autofac](https://github.com/autofac/Autofac)  
-5.API:[RestSharp](https://github.com/restsharp/RestSharp)  
-6.Log:[Nlog](https://github.com/NLog/NLog)  
-7.Chart:[LiveChart](https://github.com/Live-Charts/Live-Charts)  
-8.Drag:[Dragablz](https://github.com/ButchersBoy/Dragablz)  
-
-### Xamarin Introduced.
-1.UI:[XF.Material](https://github.com/Baseflow/XF-Material-Library)  
-2.IOC:[Autofac](https://github.com/autofac/Autofac)  
-3.API:[RestSharp](https://github.com/restsharp/RestSharp)  
-4.Log:[Nlog](https://github.com/NLog/NLog)  
-
-Description: The project is in the structural processing phase, the above is a common component module.
-
-### Blazor Introduced.
-1.UI:[AntBlazor](https://github.com/ant-design-blazor/ant-design-blazor)  
-2.IOC:[Autofac](https://github.com/autofac/Autofac)  
-3.API:[RestSharp](https://github.com/restsharp/RestSharp)  
-4.Log:[Nlog](https://github.com/NLog/NLog)  
-
-Description: The project is in the structural processing phase, the above is a common component module.
-
 ### Screenshots.
 
 #### WPF Preview(Part)
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Main.png)
 
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/DarkMain.png)
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/DarkSkin.png)
 
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/GroupMenu.gif)
-
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Drag.gif)
-
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Skin.gif)
-
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Show.gif)
-
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Group.png)
-
-![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Dialog.png)
+![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/Skin.png)
 
 #### Blazor Preview
 Look forward to it....
