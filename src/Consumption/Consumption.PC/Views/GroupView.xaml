@@ -7,7 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:template="clr-namespace:Consumption.PC.Template"
     mc:Ignorable="d">
-    <materialDesign:Transitioner AutoApplyTransitionOrigins="True" SelectedIndex="{Binding SelectPageIndex}">
+    <materialDesign:Transitioner
+        Margin="10"
+        AutoApplyTransitionOrigins="True"
+        SelectedIndex="{Binding SelectPageIndex}">
         <Grid Margin="10,0,10,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -40,7 +43,6 @@
                 x:Name="Grid"
                 Grid.Row="1"
                 AutoGenerateColumns="False"
-                Background="Transparent"
                 IsReadOnly="True"
                 ItemsSource="{Binding GridModelList}"
                 SelectedItem="{Binding GridModel}"
@@ -51,10 +53,16 @@
                         CommandParameter="修改"
                         MouseAction="LeftDoubleClick" />
                 </DataGrid.InputBindings>
-                <!--<DataGrid.Columns>
-                    <DataGridTextColumn Header="部门编号" Width="200" Binding="{Binding GroupCode,UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Header="部门名称" Width="200" Binding="{Binding GroupName,UpdateSourceTrigger=PropertyChanged}"/>
-                </DataGrid.Columns>-->
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="200"
+                        Binding="{Binding GroupCode, UpdateSourceTrigger=PropertyChanged}"
+                        Header="部门编号" />
+                    <DataGridTextColumn
+                        Width="200"
+                        Binding="{Binding GroupName, UpdateSourceTrigger=PropertyChanged}"
+                        Header="部门名称" />
+                </DataGrid.Columns>
             </DataGrid>
             <template:DataPager
                 Grid.Row="2"

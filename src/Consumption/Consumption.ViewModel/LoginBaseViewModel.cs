@@ -4,7 +4,6 @@ using Consumption.Shared.Common;
 using System;
 using Prism.Ioc;
 using Prism.Events;
-using Consumption.ViewModel.Common.Events;
 using Consumption.ViewModel.Common;
 using Prism.Services.Dialogs;
 

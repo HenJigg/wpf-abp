@@ -1,5 +1,6 @@
 ﻿using Consumption.Shared.Common.Events;
-using Dragablz;
+using Consumption.ViewModel;
+using Consumption.ViewModel.Common;
 using Prism.Events;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,14 @@ namespace Consumption.PC
         {
             InitializeComponent();
             aggregator.GetEvent<StringMessageEvent>().Subscribe(Execute);
+            ListBoxMainManager.SelectionChanged += ListBoxMainManager_SelectionChanged;
+        }
+
+        private void ListBoxMainManager_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = ListBoxMainManager.SelectedItem;
+            if (item != null && item is Module m)
+                (DataContext as MainViewModel).OpenPage(m.TypeName);
         }
 
         void Execute(string arg)

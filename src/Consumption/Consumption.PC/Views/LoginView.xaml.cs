@@ -1,6 +1,5 @@
 ﻿namespace Consumption.PC.Views
 {
-    using Consumption.ViewModel.Common.Events;
     using Prism.Events;
     using System.Windows;
     using System.Windows.Controls;

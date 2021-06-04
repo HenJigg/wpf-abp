@@ -10,7 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
@@ -43,16 +43,24 @@
             x:Name="Grid"
             Grid.Row="1"
             AutoGenerateColumns="False"
-            Background="Transparent"
             IsReadOnly="True"
             ItemsSource="{Binding GridModelList}"
             SelectedItem="{Binding GridModel}"
             SelectionMode="Extended">
-            <!--<DataGrid.Columns>
-                <DataGridTextColumn Header="菜单编码" Width="200" Binding="{Binding MenuCode}"/>
-                <DataGridTextColumn Header="菜单名称" Width="200" Binding="{Binding MenuName}"/>
-                <DataGridTextColumn Header="标题" Width="200" Binding="{Binding MenuCaption}"/>
-            </DataGrid.Columns>-->
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding MenuCode}"
+                    Header="菜单编码" />
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding MenuName}"
+                    Header="菜单名称" />
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding MenuCaption}"
+                    Header="标题" />
+            </DataGrid.Columns>
         </DataGrid>
 
         <template:DataPager

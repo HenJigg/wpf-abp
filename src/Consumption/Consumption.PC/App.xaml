@@ -19,90 +19,68 @@
                 <ResourceDictionary Source="pack://application:,,,/ShowMeTheXAML.AvalonEdit;component/Themes/xamldisplayer.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <Style BasedOn="{StaticResource {x:Type showMeTheXaml:XamlDisplay}}" TargetType="showMeTheXaml:XamlDisplay">
-                <Style.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
-                        </ResourceDictionary.MergedDictionaries>
-
-                        <smtxAe:TextDocumentValueConverter x:Key="TextDocumentValueConverter" />
-                    </ResourceDictionary>
-                </Style.Resources>
-                <Setter Property="VerticalContentAlignment" Value="Bottom" />
-                <Setter Property="HorizontalContentAlignment" Value="Right" />
+            <Style x:Key="RadioDefaultButton" TargetType="{x:Type RadioButton}">
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Foreground" Value="White" />
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="showMeTheXaml:XamlDisplay">
-                            <DockPanel>
-                                <materialDesign:PopupBox
-                                    x:Name="PopupBox"
-                                    Padding="10"
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Grid
+                                x:Name="templateRoot"
+                                Background="Transparent"
+                                SnapsToDevicePixels="True">
+                                <Border x:Name="border" SnapsToDevicePixels="True" />
+                                <Border x:Name="bd2" BorderBrush="#FF7F50" />
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    Grid.Column="1"
+                                    Margin="{TemplateBinding Padding}"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    StaysOpen="True">
-                                    <materialDesign:PopupBox.ToggleContent>
-                                        <materialDesign:PackIcon
-                                            Margin="3"
-                                            Background="Transparent"
-                                            Cursor="Hand"
-                                            Foreground="{DynamicResource PrimaryHueDarkBrush}"
-                                            Kind="Xaml"
-                                            ToolTip="View XAML">
-                                            <materialDesign:PackIcon.Style>
-                                                <Style BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}" TargetType="materialDesign:PackIcon">
-                                                    <Setter Property="Opacity" Value="0.2" />
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="Opacity" Value="1" />
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </materialDesign:PackIcon.Style>
-                                        </materialDesign:PackIcon>
-                                    </materialDesign:PopupBox.ToggleContent>
-                                    <Border MaxWidth="800" MaxHeight="600">
-                                        <DockPanel>
-                                            <Button
-                                                Margin="0,10,0,0"
-                                                HorizontalAlignment="Right"
-                                                Command="Copy"
-                                                CommandParameter="{Binding Xaml, RelativeSource={RelativeSource TemplatedParent}}"
-                                                Content="_COPY"
-                                                DockPanel.Dock="Bottom"
-                                                Style="{StaticResource MaterialDesignRaisedButton}"
-                                                Tag="{Binding Xaml, RelativeSource={RelativeSource TemplatedParent}}" />
-                                            <avalonEdit:TextEditor Document="{Binding Xaml, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TextDocumentValueConverter}}" Style="{StaticResource AvalonTextEditorXamlDisplay}" />
-                                        </DockPanel>
-                                    </Border>
-
-                                </materialDesign:PopupBox>
-                                <Grid>
-                                    <AdornerDecorator>
-                                        <Border
-                                            Margin="-5"
-                                            BorderBrush="{DynamicResource SecondaryAccentBrush}"
-                                            Opacity=".4">
-                                            <Border.Style>
-                                                <Style TargetType="Border">
-                                                    <Setter Property="BorderThickness" Value="0" />
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding ElementName=PopupBox, Path=IsPopupOpen}" Value="True">
-                                                            <Setter Property="BorderThickness" Value="5" />
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Border.Style>
-                                        </Border>
-                                    </AdornerDecorator>
-                                    <ContentPresenter />
-                                </Grid>
-                            </DockPanel>
+                                    Content="{TemplateBinding Content}"
+                                    ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    Focusable="False"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="HasContent" Value="True">
+                                    <Setter Property="FocusVisualStyle">
+                                        <Setter.Value>
+                                            <Style>
+                                                <Setter Property="Control.Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Rectangle
+                                                                Margin="14,0,0,0"
+                                                                SnapsToDevicePixels="True"
+                                                                Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                                                                StrokeDashArray="1 2"
+                                                                StrokeThickness="1" />
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Padding" Value="4,-1,0,0" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter Property="Foreground" Value="#FF7F50" />
+                                    <Setter TargetName="bd2" Property="BorderThickness" Value="0,0,0,3" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="{x:Null}" />
+                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+                <Setter Property="MinHeight" Value="34" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
             </Style>
-
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

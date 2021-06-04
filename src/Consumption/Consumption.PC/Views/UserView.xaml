@@ -14,7 +14,7 @@
     <UserControl.Resources>
         <v:IBoolConverter x:Key="vbool" />
     </UserControl.Resources>
-    <materialDesign:Transitioner SelectedIndex="{Binding SelectPageIndex}">
+    <materialDesign:Transitioner Margin="10" SelectedIndex="{Binding SelectPageIndex}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -57,6 +57,15 @@
                         CommandParameter="修改"
                         MouseAction="LeftDoubleClick" />
                 </DataGrid.InputBindings>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Account}" Header="账户名称" />
+                    <DataGridTextColumn Binding="{Binding UserName}" Header="用户名" />
+                    <DataGridTextColumn Binding="{Binding Address}" Header="地址" />
+                    <DataGridTextColumn Binding="{Binding Tel}" Header="电话" />
+                    <DataGridTextColumn Binding="{Binding Email}" Header="邮箱" />
+                </DataGrid.Columns>
+
             </DataGrid>
             <template:DataPager
                 Grid.Row="2"

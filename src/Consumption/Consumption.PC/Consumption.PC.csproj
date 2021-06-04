@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Images\test_user.png" />
+    <None Remove="Images\prism.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <PackageReference Include="AvalonEdit" Version="6.0.1" />
-    <PackageReference Include="Dragablz.NetCore" Version="0.3.3" />
     <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
     <PackageReference Include="MaterialDesignColors" Version="2.0.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
@@ -46,9 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\test_user.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Images\prism.png" />
   </ItemGroup>
 
 </Project>
