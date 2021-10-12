@@ -18,22 +18,22 @@ namespace Consumption.Service
 
     public class UserService : BaseService<UserDto>, IUserRepository
     {
-        public async Task<BaseResponse<List<AuthItem>>> GetAuthListAsync()
+        public async Task<WebResult<List<AuthItem>>> GetAuthListAsync()
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse<List<AuthItem>>>(new AuthItemRequest(), Method.GET);
+            return await new BaseServiceRequest().GetRequest<List<AuthItem>>(new AuthItemRequest(), Method.GET);
         }
 
-        public async Task<BaseResponse> GetUserPermByAccountAsync(string account)
+        public async Task<WebResult> GetUserPermByAccountAsync(string account)
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse>(new UserPermRequest()
+            return await new BaseServiceRequest().GetRequest<WebResult>(new UserPermRequest()
             {
                 account = account
             }, Method.GET);
         }
 
-        public async Task<BaseResponse<UserInfoDto>> LoginAsync(string account, string passWord)
+        public async Task<WebResult<UserInfoDto>> LoginAsync(string account, string passWord)
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse<UserInfoDto>>(new UserLoginRequest()
+            return await new BaseServiceRequest().GetRequest<UserInfoDto>(new UserLoginRequest()
             {
                 Parameter = new LoginDto() { Account = account, PassWord = passWord }
             }, Method.POST);

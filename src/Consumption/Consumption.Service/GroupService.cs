@@ -20,19 +20,19 @@ namespace Consumption.Service
     /// </summary>
     public partial class GroupService : BaseService<GroupDto>, IGroupRepository
     {
-        public async Task<BaseResponse<List<MenuModuleGroupDto>>> GetMenuModuleListAsync()
+        public async Task<WebResult<List<MenuModuleGroupDto>>> GetMenuModuleListAsync()
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse<List<MenuModuleGroupDto>>>(new GroupModuleRequest(), Method.GET);
+            return await new BaseServiceRequest().GetRequest<List<MenuModuleGroupDto>>(new GroupModuleRequest(), Method.GET);
         }
 
-        public async Task<BaseResponse<GroupDataDto>> GetGroupAsync(int id)
+        public async Task<WebResult<GroupDataDto>> GetGroupAsync(int id)
         {
-            return await new BaseServiceRequest().GetRequest<BaseResponse<GroupDataDto>>(new GroupInfoRequest() { id = id }, Method.GET);
+            return await new BaseServiceRequest().GetRequest<GroupDataDto>(new GroupInfoRequest() { id = id }, Method.GET);
         }
 
-        public async Task<BaseResponse> SaveGroupAsync(GroupDataDto group)
+        public async Task<WebResult> SaveGroupAsync(GroupDataDto group)
         {
-            var r = await new BaseServiceRequest().GetRequest<BaseResponse>(new GroupSaveRequest()
+            var r = await new BaseServiceRequest().GetRequest<WebResult>(new GroupSaveRequest()
             { groupDto = group }, Method.POST);
             return r;
         }

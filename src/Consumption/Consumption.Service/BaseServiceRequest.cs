@@ -35,14 +35,13 @@ namespace Consumption.Service
         /// <param name="request">请求参数</param>
         /// <param name="method">方法类型</param>
         /// <returns></returns>
-        public async Task<Response> GetRequest<Response>(BaseRequest request, Method method) where Response : class
+        public async Task<WebResult<T>> GetRequest<T>(BaseRequest request, Method method) where T : class
         {
             string pms = request.GetPropertiesObject();
             string url = requestUrl + request.route;
             if (!string.IsNullOrWhiteSpace(request.getParameter))
                 url += request.getParameter;
-            Response result = await restSharp.RequestBehavior<Response>(url, method, pms);
-            return result;
+            return await restSharp.RequestBehavior<T>(url, method, pms);
         }
 
         /// <summary>
@@ -53,12 +52,11 @@ namespace Consumption.Service
         /// <param name="pms">参数</param>
         /// <param name="method">方法类型</param>
         /// <returns></returns>
-        public async Task<Response> GetRequest<Response>(string route, object obj, Method method) where Response : class
+        public async Task<WebResult<T>> GetRequest<T>(string route, object obj, Method method) where T : class
         {
             string pms = string.Empty;
             if (!string.IsNullOrWhiteSpace(obj?.ToString())) pms = JsonConvert.SerializeObject(obj);
-            Response result = await restSharp.RequestBehavior<Response>(requestUrl + route, method, pms);
-            return result;
+            return await restSharp.RequestBehavior<T>(requestUrl + route, method, pms);
         }
     }
 }

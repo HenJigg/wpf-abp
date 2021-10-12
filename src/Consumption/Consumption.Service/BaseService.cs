@@ -12,53 +12,53 @@ namespace Consumption.Service
     using RestSharp;
     using System.Threading.Tasks;
 
-    public class BaseService<T>
+    public class BaseService<T> where T : class
     {
         private readonly string servicesName;
         public BaseService()
         {
             servicesName = typeof(T).Name.Replace("Dto", string.Empty);
         }
-        public async Task<BaseResponse> AddAsync(T model)
+        public async Task<WebResult> AddAsync(T model)
         {
             var r = await new BaseServiceRequest().
-             GetRequest<BaseResponse>($@"api/{servicesName}/Add", model, Method.POST);
+             GetRequest<WebResult>($@"api/{servicesName}/Add", model, Method.POST);
             return r;
         }
 
-        public async Task<BaseResponse> DeleteAsync(int id)
+        public async Task<WebResult> DeleteAsync(int id)
         {
             var r = await new BaseServiceRequest().
-              GetRequest<BaseResponse>(@$"api/{servicesName}/Delete?id={id}", string.Empty, Method.DELETE);
+              GetRequest<WebResult>(@$"api/{servicesName}/Delete?id={id}", string.Empty, Method.DELETE);
             return r;
         }
 
-        public async Task<BaseResponse<PagedList<T>>> GetAllListAsync(QueryParameters pms)
+        public async Task<WebResult<PagedList<T>>> GetAllListAsync(QueryParameters pms)
         {
             var r = await new BaseServiceRequest().
-               GetRequest<BaseResponse<PagedList<T>>>(@$"api/{servicesName}/GetAll?PageIndex={pms.PageIndex}&PageSize={pms.PageSize}&Search={pms.Search}", string.Empty, Method.GET);
+               GetRequest<PagedList<T>>(@$"api/{servicesName}/GetAll?PageIndex={pms.PageIndex}&PageSize={pms.PageSize}&Search={pms.Search}", string.Empty, Method.GET);
             return r;
         }
 
-        public async Task<BaseResponse<T>> GetAsync(int id)
+        public async Task<WebResult<T>> GetAsync(int id)
         {
             var r = await new BaseServiceRequest().
-               GetRequest<BaseResponse<T>>(@$"api/{servicesName}/Get?id={id}", string.Empty, Method.GET);
+               GetRequest<T>(@$"api/{servicesName}/Get?id={id}", string.Empty, Method.GET);
             return r;
         }
 
 
-        public async Task<BaseResponse> SaveAsync(T model)
+        public async Task<WebResult> SaveAsync(T model)
         {
             var r = await new BaseServiceRequest().
-                GetRequest<BaseResponse>($@"api/{servicesName}/Save", model, Method.POST);
+                GetRequest<WebResult>($@"api/{servicesName}/Save", model, Method.POST);
             return r;
         }
 
-        public async Task<BaseResponse> UpdateAsync(T model)
+        public async Task<WebResult> UpdateAsync(T model)
         {
             var r = await new BaseServiceRequest().
-                GetRequest<BaseResponse>($@"api/{servicesName}/Update", model, Method.POST);
+                GetRequest<WebResult>($@"api/{servicesName}/Update", model, Method.POST);
             return r;
         }
     }

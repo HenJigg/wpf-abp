@@ -25,8 +25,8 @@ namespace Consumption.Service
         /// <param name="isToken">是否Token</param>
         /// <param name="isJson">是否Json</param>
         /// <returns></returns>
-        public async Task<Response> RequestBehavior<Response>(string url, Method method, string pms,
-            bool isToken = true, bool isJson = true) where Response : class
+        public async Task<WebResult<T>> RequestBehavior<T>(string url, Method method, string pms,
+            bool isToken = true, bool isJson = true) where T : class
         {
             RestClient client = new RestClient(url);
             RestRequest request = new RestRequest(method);
@@ -64,13 +64,17 @@ namespace Consumption.Service
             }
             var response = await client.ExecuteAsync(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                return JsonConvert.DeserializeObject<Response>(response.Content);
+            {
+                return JsonConvert.DeserializeObject<WebResult<T>>(response.Content);
+            }
             else
-                return new BaseResponse()
+            {
+                return new WebResult<T>()
                 {
                     StatusCode = (int)response.StatusCode,
                     Message = response.StatusDescription ?? response.ErrorMessage
-                } as Response;
+                };
+            }
         }
     }
 }

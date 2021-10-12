@@ -10,29 +10,29 @@
 
     public interface IConsumptionRepository<T>
     {
-        Task<BaseResponse<PagedList<T>>> GetAllListAsync(QueryParameters parameters);
+        Task<WebResult<PagedList<T>>> GetAllListAsync(QueryParameters parameters);
 
-        Task<BaseResponse<T>> GetAsync(int id);
+        Task<WebResult<T>> GetAsync(int id);
 
-        Task<BaseResponse> SaveAsync(T model);
+        Task<WebResult> SaveAsync(T model);
 
-        Task<BaseResponse> AddAsync(T model);
+        Task<WebResult> AddAsync(T model);
 
-        Task<BaseResponse> DeleteAsync(int id);
+        Task<WebResult> DeleteAsync(int id);
 
-        Task<BaseResponse> UpdateAsync(T model);
+        Task<WebResult> UpdateAsync(T model);
     }
 
     public interface IUserRepository : IConsumptionRepository<UserDto>
     {
-        Task<BaseResponse<UserInfoDto>> LoginAsync(string account, string passWord);
+        Task<WebResult<UserInfoDto>> LoginAsync(string account, string passWord);
 
         /// <summary>
         /// 获取用户的所属权限信息
         /// </summary>
-        Task<BaseResponse> GetUserPermByAccountAsync(string account);
+        Task<WebResult> GetUserPermByAccountAsync(string account);
 
-        Task<BaseResponse<List<AuthItem>>> GetAuthListAsync();
+        Task<WebResult<List<AuthItem>>> GetAuthListAsync();
     }
 
     public interface IGroupRepository : IConsumptionRepository<GroupDto>
@@ -41,21 +41,21 @@
         /// 获取菜单模块列表(包含每个菜单拥有的一些功能)
         /// </summary>
         /// <returns></returns>
-        Task<BaseResponse<List<MenuModuleGroupDto>>> GetMenuModuleListAsync();
+        Task<WebResult<List<MenuModuleGroupDto>>> GetMenuModuleListAsync();
 
         /// <summary>
         /// 根据ID获取用户组信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<BaseResponse<GroupDataDto>> GetGroupAsync(int id);
+        Task<WebResult<GroupDataDto>> GetGroupAsync(int id);
 
         /// <summary>
         /// 保存组数据
         /// </summary>
         /// <param name="group"></param>
         /// <returns></returns>
-        Task<BaseResponse> SaveGroupAsync(GroupDataDto group);
+        Task<WebResult> SaveGroupAsync(GroupDataDto group);
     }
 
     public interface IMenuRepository : IConsumptionRepository<MenuDto>
