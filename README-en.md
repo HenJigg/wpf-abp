@@ -1,9 +1,8 @@
 ### Introduced
 This project mainly focuses on C, build a multi-platform application example, the project mainly includes the following platforms:
 1. DeskTop built by WPF Core
-2. IOS and Adnroid built by Xamarin 
-3. WebUI built by Blazor
-4. Asp.Net Core WebApi
+2. IOS and Adnroid built by Xamarin  
+3. Asp.Net Core WebApi
 
 #### Development tools
   IDE: Visual Studio 2019 
@@ -46,7 +45,7 @@ Look forward to it....
 
   Recording(Video)：
     - [2020-05-01: Part1](https://www.bilibili.com/video/BV1QZ4y1W7Zu) [International Fund for Children's Emergency Relief](https://www.unicef.org/zh)
-        - [2020-08-01: Part2](https://www.bilibili.com/video/BV1Gk4y1m7u2) [Han Hong Love Charitable Foundation](http://www.hhax.org/)
+    - [2020-08-01: Part2](https://www.bilibili.com/video/BV1Gk4y1m7u2) [Han Hong Love Charitable Foundation](http://www.hhax.org/)
 
 ### Donation list
 <a href="https://github.com/zuoyefeng" target="_blank"><img style="border-radius:50%!important" width="64px" src="https://avatars2.githubusercontent.com/u/13931455?s=400&v=4"></a>
