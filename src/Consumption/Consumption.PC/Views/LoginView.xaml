@@ -36,7 +36,7 @@
                     Command="{Binding ExecuteCommand}"
                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ToolTip}"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                    ToolTip="关闭">
+                    ToolTip="退出系统">
                     <materialDesign:PackIcon
                         Width="50"
                         Height="50"
