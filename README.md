@@ -23,7 +23,3 @@
 #### OpenApi预览(部分)
 ![Screenshot](https://github.com/HenJigg/WPF-Xamarin-Blazor-Examples/blob/master/img/MainServicePage.png)
  
-### 关于未来
-  预计在2022年, 会发布全新的跨平台开发案例, 基于WPF以及Xamarin.Forms。后端则会使用大家相对熟悉的ABP。
-  在MAUI正式发布之后, 则会启动MAUI的项目开发模块。
-
