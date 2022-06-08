@@ -5,11 +5,6 @@ VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AFAA0841-BD93-466F-B8F4-FB4EEC86F1FC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D04D9608-9CEB-4E0A-B548-410F7475E9F1}"
-	ProjectSection(SolutionItems) = preProject
-		common.props = common.props
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppFramework.Core.Shared", "src\AppFramework.Core.Shared\AppFramework.Core.Shared.csproj", "{4D6603C1-F7D6-4681-97F8-69B4BBBC0536}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppFramework.Application.Client", "src\AppFramework.Application.Client\AppFramework.Application.Client.csproj", "{572932C8-FC7F-472C-B466-0CC07F29FE7A}"

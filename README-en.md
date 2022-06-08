@@ -1,5 +1,3 @@
-
-
 ## Introduction
 
 This framework is fully developed based on the ABP commercial version framework, realizes the functions in the ABP commercial version, and provides WPF and Xamarin.Forms versions to achieve complete cross-platform application development.
@@ -117,46 +115,46 @@ The following shows the effect through some actual running screenshots, includin
 
 - Home Page
 
-<img src="./img/xf-main.png" style="zoom:25%;" />
+<img src="./img/xf-main.png" width="256" height="480" />
 
 - Menus
 
-<img src="./img/xf-menu.png" style="zoom:25%;" />
+<img src="./img/xf-menu.png" width="256" height="480" />
 
 - organization
 
-<img src="./img/xf-ori.png" style="zoom:25%;" />
+<img src="./img/xf-ori.png" width="256" height="480" />
 
 - Role Page
 
-<img src="./img/xf-role.png" style="zoom:25%;" />
+<img src="./img/xf-role.png" width="256" height="480" />
 
 - User Page
 
-<img src="./img/xf-user.png" style="zoom:25%;" />
+<img src="./img/xf-user.png" width="256" height="480" />
 
 - Audit log page
 
-<img src="./img/xf-log.png" style="zoom:25%;" />
+<img src="./img/xf-log.png" width="256" height="480" />
 
 - Dynamic property page
 
-<img src="./img/xf-dy.png" style="zoom:25%;" />
+<img src="./img/xf-dy.png" width="256" height="480" />
 
 - Tenant page
 
-<img src="./img/xf-v.png" style="zoom:25%;" />
+<img src="./img/xf-v.png" width="256" height="480" />
 
 - Version management
 
-<img src="./img/xf-t.png" style="zoom:25%;" />
+<img src="./img/xf-t.png" width="256" height="480" />
 
 - Language list
 
-<img src="./img/xf-lang.png" style="zoom:25%;" />
+<img src="./img/xf-lang.png" width="256" height="480" />
 
 - theme switch
 
-<img src="./img/xf-skin.png" style="zoom:25%;" />
+<img src="./img/xf-skin.png" width="256" height="480" />
 
-<img src="./img/xf-dark.png" style="zoom:25%;" />
+<img src="./img/xf-dark.png" width="256" height="480" />

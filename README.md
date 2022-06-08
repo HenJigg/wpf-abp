@@ -117,50 +117,50 @@ ABP官方未正式提供完整版本WPF框架, 所以就出现了该套框架，
 
 - 登录页
 
-<img src="./img/xf-login.png" width="256" height="455" />
+<img src="./img/xf-login.png" width="256" height="480" />
 
 - 首页
 
-<img src="./img/xf-main.png" style="zoom:25%;" />
+<img src="./img/xf-main.png" width="256" height="480" />
 
 - 功能页
 
-<img src="./img/xf-menu.png" style="zoom:25%;" />
+<img src="./img/xf-menu.png" width="256" height="480" />
 
 - 组织机构
 
-<img src="./img/xf-ori.png" style="zoom:25%;" />
+<img src="./img/xf-ori.png" width="256" height="480" />
 
 - 角色页
 
-<img src="./img/xf-role.png" style="zoom:25%;" />
+<img src="./img/xf-role.png" width="256" height="480" />
 
 - 用户页
 
-<img src="./img/xf-user.png" style="zoom:25%;" />
+<img src="./img/xf-user.png" width="256" height="480" />
 
 - 审计日志页
 
-<img src="./img/xf-log.png" style="zoom:25%;" />
+<img src="./img/xf-log.png" width="256" height="480" />
 
 - 动态属性页
 
-<img src="./img/xf-dy.png" style="zoom:25%;" />
+<img src="./img/xf-dy.png" width="256" height="480" />
 
 - 租户页
 
-<img src="./img/xf-v.png" style="zoom:25%;" />
+<img src="./img/xf-v.png" width="256" height="480" />
 
 - 版本管理
 
-<img src="./img/xf-t.png" style="zoom:25%;" />
+<img src="./img/xf-t.png" width="256" height="480" />
 
 - 语言列表
 
-<img src="./img/xf-lang.png" style="zoom:25%;" />
+<img src="./img/xf-lang.png" width="256" height="480" />
 
 - 主题切换
 
-<img src="./img/xf-skin.png" style="zoom:25%;" />
+<img src="./img/xf-skin.png" width="256" height="480" />
 
-<img src="./img/xf-dark.png" style="zoom:25%;" />
+<img src="./img/xf-dark.png" width="256" height="480" />
