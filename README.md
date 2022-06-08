@@ -117,7 +117,7 @@ ABP官方未正式提供完整版本WPF框架, 所以就出现了该套框架，
 
 - 登录页
 
-<img src="./img/xf-login.png" style="zoom: 25%;" />
+<img src="./img/xf-login.png" width="256" height="455" />
 
 - 首页
 
