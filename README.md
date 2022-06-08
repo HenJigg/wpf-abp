@@ -39,7 +39,7 @@ ABP官方未正式提供完整版本WPF框架, 所以就出现了该套框架，
 
 ## 视频与文档
 
-关于实际的运行效果图可以参考视频: [WPF ABP框架演示]([WPF开发框架介绍(国内首发)_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Av4y1w7ds?spm_id_from=333.999.0.0))
+关于实际的运行效果图可以参考视频: [WPF ABP框架演示](https://www.bilibili.com/video/BV1Av4y1w7ds?spm_id_from=333.999.0.0)
 
 下面通过一些实际运行的截图来展示效果, 包含桌面端(WPF)以及移动端(Xamarin.Forms)效果图。
 
