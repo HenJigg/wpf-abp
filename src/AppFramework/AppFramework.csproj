@@ -1,0 +1,587 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Fonts\iconfont.ttf" />
+    <None Remove="Assets\Images\back.png" />
+    <None Remove="Assets\Images\color.png" />
+    <None Remove="Assets\Images\DashboardSampleStatistics.png" />
+    <None Remove="Assets\Images\DashboardSampleStatistics2.png" />
+    <None Remove="Assets\Images\flags\ad.png" />
+    <None Remove="Assets\Images\flags\ae.png" />
+    <None Remove="Assets\Images\flags\af.png" />
+    <None Remove="Assets\Images\flags\ag.png" />
+    <None Remove="Assets\Images\flags\ai.png" />
+    <None Remove="Assets\Images\flags\al.png" />
+    <None Remove="Assets\Images\flags\am.png" />
+    <None Remove="Assets\Images\flags\an.png" />
+    <None Remove="Assets\Images\flags\ao.png" />
+    <None Remove="Assets\Images\flags\ar.png" />
+    <None Remove="Assets\Images\flags\as.png" />
+    <None Remove="Assets\Images\flags\at.png" />
+    <None Remove="Assets\Images\flags\au.png" />
+    <None Remove="Assets\Images\flags\aw.png" />
+    <None Remove="Assets\Images\flags\ax.png" />
+    <None Remove="Assets\Images\flags\az.png" />
+    <None Remove="Assets\Images\flags\ba.png" />
+    <None Remove="Assets\Images\flags\bb.png" />
+    <None Remove="Assets\Images\flags\bd.png" />
+    <None Remove="Assets\Images\flags\be.png" />
+    <None Remove="Assets\Images\flags\bf.png" />
+    <None Remove="Assets\Images\flags\bg.png" />
+    <None Remove="Assets\Images\flags\bh.png" />
+    <None Remove="Assets\Images\flags\bi.png" />
+    <None Remove="Assets\Images\flags\bj.png" />
+    <None Remove="Assets\Images\flags\bm.png" />
+    <None Remove="Assets\Images\flags\bn.png" />
+    <None Remove="Assets\Images\flags\bo.png" />
+    <None Remove="Assets\Images\flags\br.png" />
+    <None Remove="Assets\Images\flags\bs.png" />
+    <None Remove="Assets\Images\flags\bt.png" />
+    <None Remove="Assets\Images\flags\bv.png" />
+    <None Remove="Assets\Images\flags\bw.png" />
+    <None Remove="Assets\Images\flags\by.png" />
+    <None Remove="Assets\Images\flags\bz.png" />
+    <None Remove="Assets\Images\flags\ca.png" />
+    <None Remove="Assets\Images\flags\catalonia.png" />
+    <None Remove="Assets\Images\flags\cc.png" />
+    <None Remove="Assets\Images\flags\cd.png" />
+    <None Remove="Assets\Images\flags\cf.png" />
+    <None Remove="Assets\Images\flags\cg.png" />
+    <None Remove="Assets\Images\flags\ch.png" />
+    <None Remove="Assets\Images\flags\ci.png" />
+    <None Remove="Assets\Images\flags\ck.png" />
+    <None Remove="Assets\Images\flags\cl.png" />
+    <None Remove="Assets\Images\flags\cm.png" />
+    <None Remove="Assets\Images\flags\cn.png" />
+    <None Remove="Assets\Images\flags\co.png" />
+    <None Remove="Assets\Images\flags\cr.png" />
+    <None Remove="Assets\Images\flags\cs.png" />
+    <None Remove="Assets\Images\flags\cu.png" />
+    <None Remove="Assets\Images\flags\cv.png" />
+    <None Remove="Assets\Images\flags\cx.png" />
+    <None Remove="Assets\Images\flags\cy.png" />
+    <None Remove="Assets\Images\flags\cz.png" />
+    <None Remove="Assets\Images\flags\de.png" />
+    <None Remove="Assets\Images\flags\dj.png" />
+    <None Remove="Assets\Images\flags\dk.png" />
+    <None Remove="Assets\Images\flags\dm.png" />
+    <None Remove="Assets\Images\flags\do.png" />
+    <None Remove="Assets\Images\flags\dz.png" />
+    <None Remove="Assets\Images\flags\ec.png" />
+    <None Remove="Assets\Images\flags\ee.png" />
+    <None Remove="Assets\Images\flags\eg.png" />
+    <None Remove="Assets\Images\flags\eh.png" />
+    <None Remove="Assets\Images\flags\england.png" />
+    <None Remove="Assets\Images\flags\er.png" />
+    <None Remove="Assets\Images\flags\es.png" />
+    <None Remove="Assets\Images\flags\et.png" />
+    <None Remove="Assets\Images\flags\europeanunion.png" />
+    <None Remove="Assets\Images\flags\fam.png" />
+    <None Remove="Assets\Images\flags\fi.png" />
+    <None Remove="Assets\Images\flags\fj.png" />
+    <None Remove="Assets\Images\flags\fk.png" />
+    <None Remove="Assets\Images\flags\fm.png" />
+    <None Remove="Assets\Images\flags\fo.png" />
+    <None Remove="Assets\Images\flags\fr.png" />
+    <None Remove="Assets\Images\flags\ga.png" />
+    <None Remove="Assets\Images\flags\gb.png" />
+    <None Remove="Assets\Images\flags\gd.png" />
+    <None Remove="Assets\Images\flags\ge.png" />
+    <None Remove="Assets\Images\flags\gf.png" />
+    <None Remove="Assets\Images\flags\gh.png" />
+    <None Remove="Assets\Images\flags\gi.png" />
+    <None Remove="Assets\Images\flags\gl.png" />
+    <None Remove="Assets\Images\flags\gm.png" />
+    <None Remove="Assets\Images\flags\gn.png" />
+    <None Remove="Assets\Images\flags\gp.png" />
+    <None Remove="Assets\Images\flags\gq.png" />
+    <None Remove="Assets\Images\flags\gr.png" />
+    <None Remove="Assets\Images\flags\gs.png" />
+    <None Remove="Assets\Images\flags\gt.png" />
+    <None Remove="Assets\Images\flags\gu.png" />
+    <None Remove="Assets\Images\flags\gw.png" />
+    <None Remove="Assets\Images\flags\gy.png" />
+    <None Remove="Assets\Images\flags\hk.png" />
+    <None Remove="Assets\Images\flags\hm.png" />
+    <None Remove="Assets\Images\flags\hn.png" />
+    <None Remove="Assets\Images\flags\hr.png" />
+    <None Remove="Assets\Images\flags\ht.png" />
+    <None Remove="Assets\Images\flags\hu.png" />
+    <None Remove="Assets\Images\flags\id.png" />
+    <None Remove="Assets\Images\flags\ie.png" />
+    <None Remove="Assets\Images\flags\il.png" />
+    <None Remove="Assets\Images\flags\in.png" />
+    <None Remove="Assets\Images\flags\io.png" />
+    <None Remove="Assets\Images\flags\iq.png" />
+    <None Remove="Assets\Images\flags\ir.png" />
+    <None Remove="Assets\Images\flags\is.png" />
+    <None Remove="Assets\Images\flags\it.png" />
+    <None Remove="Assets\Images\flags\jm.png" />
+    <None Remove="Assets\Images\flags\jo.png" />
+    <None Remove="Assets\Images\flags\jp.png" />
+    <None Remove="Assets\Images\flags\ke.png" />
+    <None Remove="Assets\Images\flags\kg.png" />
+    <None Remove="Assets\Images\flags\kh.png" />
+    <None Remove="Assets\Images\flags\ki.png" />
+    <None Remove="Assets\Images\flags\km.png" />
+    <None Remove="Assets\Images\flags\kn.png" />
+    <None Remove="Assets\Images\flags\kp.png" />
+    <None Remove="Assets\Images\flags\kr.png" />
+    <None Remove="Assets\Images\flags\kw.png" />
+    <None Remove="Assets\Images\flags\ky.png" />
+    <None Remove="Assets\Images\flags\kz.png" />
+    <None Remove="Assets\Images\flags\la.png" />
+    <None Remove="Assets\Images\flags\lb.png" />
+    <None Remove="Assets\Images\flags\lc.png" />
+    <None Remove="Assets\Images\flags\li.png" />
+    <None Remove="Assets\Images\flags\lk.png" />
+    <None Remove="Assets\Images\flags\lr.png" />
+    <None Remove="Assets\Images\flags\ls.png" />
+    <None Remove="Assets\Images\flags\lt.png" />
+    <None Remove="Assets\Images\flags\lu.png" />
+    <None Remove="Assets\Images\flags\lv.png" />
+    <None Remove="Assets\Images\flags\ly.png" />
+    <None Remove="Assets\Images\flags\ma.png" />
+    <None Remove="Assets\Images\flags\mc.png" />
+    <None Remove="Assets\Images\flags\md.png" />
+    <None Remove="Assets\Images\flags\me.png" />
+    <None Remove="Assets\Images\flags\mg.png" />
+    <None Remove="Assets\Images\flags\mh.png" />
+    <None Remove="Assets\Images\flags\mk.png" />
+    <None Remove="Assets\Images\flags\ml.png" />
+    <None Remove="Assets\Images\flags\mm.png" />
+    <None Remove="Assets\Images\flags\mn.png" />
+    <None Remove="Assets\Images\flags\mo.png" />
+    <None Remove="Assets\Images\flags\mp.png" />
+    <None Remove="Assets\Images\flags\mq.png" />
+    <None Remove="Assets\Images\flags\mr.png" />
+    <None Remove="Assets\Images\flags\ms.png" />
+    <None Remove="Assets\Images\flags\mt.png" />
+    <None Remove="Assets\Images\flags\mu.png" />
+    <None Remove="Assets\Images\flags\mv.png" />
+    <None Remove="Assets\Images\flags\mw.png" />
+    <None Remove="Assets\Images\flags\mx.png" />
+    <None Remove="Assets\Images\flags\my.png" />
+    <None Remove="Assets\Images\flags\mz.png" />
+    <None Remove="Assets\Images\flags\na.png" />
+    <None Remove="Assets\Images\flags\nc.png" />
+    <None Remove="Assets\Images\flags\ne.png" />
+    <None Remove="Assets\Images\flags\nf.png" />
+    <None Remove="Assets\Images\flags\ng.png" />
+    <None Remove="Assets\Images\flags\ni.png" />
+    <None Remove="Assets\Images\flags\nl.png" />
+    <None Remove="Assets\Images\flags\no.png" />
+    <None Remove="Assets\Images\flags\np.png" />
+    <None Remove="Assets\Images\flags\nr.png" />
+    <None Remove="Assets\Images\flags\nu.png" />
+    <None Remove="Assets\Images\flags\nz.png" />
+    <None Remove="Assets\Images\flags\om.png" />
+    <None Remove="Assets\Images\flags\pa.png" />
+    <None Remove="Assets\Images\flags\pe.png" />
+    <None Remove="Assets\Images\flags\pf.png" />
+    <None Remove="Assets\Images\flags\pg.png" />
+    <None Remove="Assets\Images\flags\ph.png" />
+    <None Remove="Assets\Images\flags\pk.png" />
+    <None Remove="Assets\Images\flags\pl.png" />
+    <None Remove="Assets\Images\flags\pm.png" />
+    <None Remove="Assets\Images\flags\pn.png" />
+    <None Remove="Assets\Images\flags\pr.png" />
+    <None Remove="Assets\Images\flags\ps.png" />
+    <None Remove="Assets\Images\flags\pt.png" />
+    <None Remove="Assets\Images\flags\pw.png" />
+    <None Remove="Assets\Images\flags\py.png" />
+    <None Remove="Assets\Images\flags\qa.png" />
+    <None Remove="Assets\Images\flags\re.png" />
+    <None Remove="Assets\Images\flags\ro.png" />
+    <None Remove="Assets\Images\flags\rs.png" />
+    <None Remove="Assets\Images\flags\ru.png" />
+    <None Remove="Assets\Images\flags\rw.png" />
+    <None Remove="Assets\Images\flags\sa.png" />
+    <None Remove="Assets\Images\flags\sb.png" />
+    <None Remove="Assets\Images\flags\sc.png" />
+    <None Remove="Assets\Images\flags\scotland.png" />
+    <None Remove="Assets\Images\flags\sd.png" />
+    <None Remove="Assets\Images\flags\se.png" />
+    <None Remove="Assets\Images\flags\sg.png" />
+    <None Remove="Assets\Images\flags\sh.png" />
+    <None Remove="Assets\Images\flags\si.png" />
+    <None Remove="Assets\Images\flags\sj.png" />
+    <None Remove="Assets\Images\flags\sk.png" />
+    <None Remove="Assets\Images\flags\sl.png" />
+    <None Remove="Assets\Images\flags\sm.png" />
+    <None Remove="Assets\Images\flags\sn.png" />
+    <None Remove="Assets\Images\flags\so.png" />
+    <None Remove="Assets\Images\flags\sr.png" />
+    <None Remove="Assets\Images\flags\st.png" />
+    <None Remove="Assets\Images\flags\sv.png" />
+    <None Remove="Assets\Images\flags\sy.png" />
+    <None Remove="Assets\Images\flags\sz.png" />
+    <None Remove="Assets\Images\flags\tc.png" />
+    <None Remove="Assets\Images\flags\td.png" />
+    <None Remove="Assets\Images\flags\tf.png" />
+    <None Remove="Assets\Images\flags\tg.png" />
+    <None Remove="Assets\Images\flags\th.png" />
+    <None Remove="Assets\Images\flags\tj.png" />
+    <None Remove="Assets\Images\flags\tk.png" />
+    <None Remove="Assets\Images\flags\tl.png" />
+    <None Remove="Assets\Images\flags\tm.png" />
+    <None Remove="Assets\Images\flags\tn.png" />
+    <None Remove="Assets\Images\flags\to.png" />
+    <None Remove="Assets\Images\flags\tr.png" />
+    <None Remove="Assets\Images\flags\tt.png" />
+    <None Remove="Assets\Images\flags\tv.png" />
+    <None Remove="Assets\Images\flags\tw.png" />
+    <None Remove="Assets\Images\flags\tz.png" />
+    <None Remove="Assets\Images\flags\ua.png" />
+    <None Remove="Assets\Images\flags\ug.png" />
+    <None Remove="Assets\Images\flags\um.png" />
+    <None Remove="Assets\Images\flags\us.png" />
+    <None Remove="Assets\Images\flags\uy.png" />
+    <None Remove="Assets\Images\flags\uz.png" />
+    <None Remove="Assets\Images\flags\va.png" />
+    <None Remove="Assets\Images\flags\vc.png" />
+    <None Remove="Assets\Images\flags\ve.png" />
+    <None Remove="Assets\Images\flags\vg.png" />
+    <None Remove="Assets\Images\flags\vi.png" />
+    <None Remove="Assets\Images\flags\vn.png" />
+    <None Remove="Assets\Images\flags\vu.png" />
+    <None Remove="Assets\Images\flags\wales.png" />
+    <None Remove="Assets\Images\flags\wf.png" />
+    <None Remove="Assets\Images\flags\ws.png" />
+    <None Remove="Assets\Images\flags\ye.png" />
+    <None Remove="Assets\Images\flags\yt.png" />
+    <None Remove="Assets\Images\flags\za.png" />
+    <None Remove="Assets\Images\flags\zm.png" />
+    <None Remove="Assets\Images\flags\zw.png" />
+    <None Remove="Assets\Images\info.png" />
+    <None Remove="Assets\Images\logo.ico" />
+    <None Remove="Assets\Images\NewSubscriptionAmount.png" />
+    <None Remove="Assets\Images\NewTenants.png" />
+    <None Remove="Assets\Images\Operation.png" />
+    <None Remove="Assets\Images\OrganizationUnit.png" />
+    <None Remove="Assets\Images\question.png" />
+    <None Remove="Assets\Images\theme12.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp" Version="7.1.0" />
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="DryIoc.Microsoft.DependencyInjection" Version="5.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.SfBusyIndicator.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.SfProgressBar.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.SfGrid.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.SfNavigationDrawer.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.SfTreeView.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.SfAccordion.WPF" Version="20.1.0.48" />   
+    <PackageReference Include="Syncfusion.Themes.FluentDark.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.Themes.FluentLight.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.Themes.MaterialDark.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.Themes.MaterialDarkBlue.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.Themes.MaterialLight.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.Themes.MaterialLightBlue.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.Themes.Office2019Black.WPF" Version="20.1.0.48" />
+    <PackageReference Include="Syncfusion.Themes.Office2019White.WPF" Version="20.1.0.48" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppFramework.Application.Client\AppFramework.Application.Client.csproj" />
+    <ProjectReference Include="..\AppFramework.Application.Common\AppFramework.Common.csproj" />
+    <ProjectReference Include="..\AppFramework.Application.Shared\AppFramework.Application.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Fonts\iconfont.ttf" />
+    <Resource Include="Assets\Images\back.png" />
+    <Resource Include="Assets\Images\color.png" />
+    <Resource Include="Assets\Images\DashboardSampleStatistics.png" />
+    <Resource Include="Assets\Images\DashboardSampleStatistics2.png" />
+    <Resource Include="Assets\Images\flags\ad.png" />
+    <Resource Include="Assets\Images\flags\ae.png" />
+    <Resource Include="Assets\Images\flags\af.png" />
+    <Resource Include="Assets\Images\flags\ag.png" />
+    <Resource Include="Assets\Images\flags\ai.png" />
+    <Resource Include="Assets\Images\flags\al.png" />
+    <Resource Include="Assets\Images\flags\am.png" />
+    <Resource Include="Assets\Images\flags\an.png" />
+    <Resource Include="Assets\Images\flags\ao.png" />
+    <Resource Include="Assets\Images\flags\ar.png" />
+    <Resource Include="Assets\Images\flags\as.png" />
+    <Resource Include="Assets\Images\flags\at.png" />
+    <Resource Include="Assets\Images\flags\au.png" />
+    <Resource Include="Assets\Images\flags\aw.png" />
+    <Resource Include="Assets\Images\flags\ax.png" />
+    <Resource Include="Assets\Images\flags\az.png" />
+    <Resource Include="Assets\Images\flags\ba.png" />
+    <Resource Include="Assets\Images\flags\bb.png" />
+    <Resource Include="Assets\Images\flags\bd.png" />
+    <Resource Include="Assets\Images\flags\be.png" />
+    <Resource Include="Assets\Images\flags\bf.png" />
+    <Resource Include="Assets\Images\flags\bg.png" />
+    <Resource Include="Assets\Images\flags\bh.png" />
+    <Resource Include="Assets\Images\flags\bi.png" />
+    <Resource Include="Assets\Images\flags\bj.png" />
+    <Resource Include="Assets\Images\flags\bm.png" />
+    <Resource Include="Assets\Images\flags\bn.png" />
+    <Resource Include="Assets\Images\flags\bo.png" />
+    <Resource Include="Assets\Images\flags\br.png" />
+    <Resource Include="Assets\Images\flags\bs.png" />
+    <Resource Include="Assets\Images\flags\bt.png" />
+    <Resource Include="Assets\Images\flags\bv.png" />
+    <Resource Include="Assets\Images\flags\bw.png" />
+    <Resource Include="Assets\Images\flags\by.png" />
+    <Resource Include="Assets\Images\flags\bz.png" />
+    <Resource Include="Assets\Images\flags\ca.png" />
+    <Resource Include="Assets\Images\flags\catalonia.png" />
+    <Resource Include="Assets\Images\flags\cc.png" />
+    <Resource Include="Assets\Images\flags\cd.png" />
+    <Resource Include="Assets\Images\flags\cf.png" />
+    <Resource Include="Assets\Images\flags\cg.png" />
+    <Resource Include="Assets\Images\flags\ch.png" />
+    <Resource Include="Assets\Images\flags\ci.png" />
+    <Resource Include="Assets\Images\flags\ck.png" />
+    <Resource Include="Assets\Images\flags\cl.png" />
+    <Resource Include="Assets\Images\flags\cm.png" />
+    <Resource Include="Assets\Images\flags\cn.png" />
+    <Resource Include="Assets\Images\flags\co.png" />
+    <Resource Include="Assets\Images\flags\cr.png" />
+    <Resource Include="Assets\Images\flags\cs.png" />
+    <Resource Include="Assets\Images\flags\cu.png" />
+    <Resource Include="Assets\Images\flags\cv.png" />
+    <Resource Include="Assets\Images\flags\cx.png" />
+    <Resource Include="Assets\Images\flags\cy.png" />
+    <Resource Include="Assets\Images\flags\cz.png" />
+    <Resource Include="Assets\Images\flags\de.png" />
+    <Resource Include="Assets\Images\flags\dj.png" />
+    <Resource Include="Assets\Images\flags\dk.png" />
+    <Resource Include="Assets\Images\flags\dm.png" />
+    <Resource Include="Assets\Images\flags\do.png" />
+    <Resource Include="Assets\Images\flags\dz.png" />
+    <Resource Include="Assets\Images\flags\ec.png" />
+    <Resource Include="Assets\Images\flags\ee.png" />
+    <Resource Include="Assets\Images\flags\eg.png" />
+    <Resource Include="Assets\Images\flags\eh.png" />
+    <Resource Include="Assets\Images\flags\england.png" />
+    <Resource Include="Assets\Images\flags\er.png" />
+    <Resource Include="Assets\Images\flags\es.png" />
+    <Resource Include="Assets\Images\flags\et.png" />
+    <Resource Include="Assets\Images\flags\europeanunion.png" />
+    <Resource Include="Assets\Images\flags\fam.png" />
+    <Resource Include="Assets\Images\flags\fi.png" />
+    <Resource Include="Assets\Images\flags\fj.png" />
+    <Resource Include="Assets\Images\flags\fk.png" />
+    <Resource Include="Assets\Images\flags\fm.png" />
+    <Resource Include="Assets\Images\flags\fo.png" />
+    <Resource Include="Assets\Images\flags\fr.png" />
+    <Resource Include="Assets\Images\flags\ga.png" />
+    <Resource Include="Assets\Images\flags\gb.png" />
+    <Resource Include="Assets\Images\flags\gd.png" />
+    <Resource Include="Assets\Images\flags\ge.png" />
+    <Resource Include="Assets\Images\flags\gf.png" />
+    <Resource Include="Assets\Images\flags\gh.png" />
+    <Resource Include="Assets\Images\flags\gi.png" />
+    <Resource Include="Assets\Images\flags\gl.png" />
+    <Resource Include="Assets\Images\flags\gm.png" />
+    <Resource Include="Assets\Images\flags\gn.png" />
+    <Resource Include="Assets\Images\flags\gp.png" />
+    <Resource Include="Assets\Images\flags\gq.png" />
+    <Resource Include="Assets\Images\flags\gr.png" />
+    <Resource Include="Assets\Images\flags\gs.png" />
+    <Resource Include="Assets\Images\flags\gt.png" />
+    <Resource Include="Assets\Images\flags\gu.png" />
+    <Resource Include="Assets\Images\flags\gw.png" />
+    <Resource Include="Assets\Images\flags\gy.png" />
+    <Resource Include="Assets\Images\flags\hk.png" />
+    <Resource Include="Assets\Images\flags\hm.png" />
+    <Resource Include="Assets\Images\flags\hn.png" />
+    <Resource Include="Assets\Images\flags\hr.png" />
+    <Resource Include="Assets\Images\flags\ht.png" />
+    <Resource Include="Assets\Images\flags\hu.png" />
+    <Resource Include="Assets\Images\flags\id.png" />
+    <Resource Include="Assets\Images\flags\ie.png" />
+    <Resource Include="Assets\Images\flags\il.png" />
+    <Resource Include="Assets\Images\flags\in.png" />
+    <Resource Include="Assets\Images\flags\io.png" />
+    <Resource Include="Assets\Images\flags\iq.png" />
+    <Resource Include="Assets\Images\flags\ir.png" />
+    <Resource Include="Assets\Images\flags\is.png" />
+    <Resource Include="Assets\Images\flags\it.png" />
+    <Resource Include="Assets\Images\flags\jm.png" />
+    <Resource Include="Assets\Images\flags\jo.png" />
+    <Resource Include="Assets\Images\flags\jp.png" />
+    <Resource Include="Assets\Images\flags\ke.png" />
+    <Resource Include="Assets\Images\flags\kg.png" />
+    <Resource Include="Assets\Images\flags\kh.png" />
+    <Resource Include="Assets\Images\flags\ki.png" />
+    <Resource Include="Assets\Images\flags\km.png" />
+    <Resource Include="Assets\Images\flags\kn.png" />
+    <Resource Include="Assets\Images\flags\kp.png" />
+    <Resource Include="Assets\Images\flags\kr.png" />
+    <Resource Include="Assets\Images\flags\kw.png" />
+    <Resource Include="Assets\Images\flags\ky.png" />
+    <Resource Include="Assets\Images\flags\kz.png" />
+    <Resource Include="Assets\Images\flags\la.png" />
+    <Resource Include="Assets\Images\flags\lb.png" />
+    <Resource Include="Assets\Images\flags\lc.png" />
+    <Resource Include="Assets\Images\flags\li.png" />
+    <Resource Include="Assets\Images\flags\lk.png" />
+    <Resource Include="Assets\Images\flags\lr.png" />
+    <Resource Include="Assets\Images\flags\ls.png" />
+    <Resource Include="Assets\Images\flags\lt.png" />
+    <Resource Include="Assets\Images\flags\lu.png" />
+    <Resource Include="Assets\Images\flags\lv.png" />
+    <Resource Include="Assets\Images\flags\ly.png" />
+    <Resource Include="Assets\Images\flags\ma.png" />
+    <Resource Include="Assets\Images\flags\mc.png" />
+    <Resource Include="Assets\Images\flags\md.png" />
+    <Resource Include="Assets\Images\flags\me.png" />
+    <Resource Include="Assets\Images\flags\mg.png" />
+    <Resource Include="Assets\Images\flags\mh.png" />
+    <Resource Include="Assets\Images\flags\mk.png" />
+    <Resource Include="Assets\Images\flags\ml.png" />
+    <Resource Include="Assets\Images\flags\mm.png" />
+    <Resource Include="Assets\Images\flags\mn.png" />
+    <Resource Include="Assets\Images\flags\mo.png" />
+    <Resource Include="Assets\Images\flags\mp.png" />
+    <Resource Include="Assets\Images\flags\mq.png" />
+    <Resource Include="Assets\Images\flags\mr.png" />
+    <Resource Include="Assets\Images\flags\ms.png" />
+    <Resource Include="Assets\Images\flags\mt.png" />
+    <Resource Include="Assets\Images\flags\mu.png" />
+    <Resource Include="Assets\Images\flags\mv.png" />
+    <Resource Include="Assets\Images\flags\mw.png" />
+    <Resource Include="Assets\Images\flags\mx.png" />
+    <Resource Include="Assets\Images\flags\my.png" />
+    <Resource Include="Assets\Images\flags\mz.png" />
+    <Resource Include="Assets\Images\flags\na.png" />
+    <Resource Include="Assets\Images\flags\nc.png" />
+    <Resource Include="Assets\Images\flags\ne.png" />
+    <Resource Include="Assets\Images\flags\nf.png" />
+    <Resource Include="Assets\Images\flags\ng.png" />
+    <Resource Include="Assets\Images\flags\ni.png" />
+    <Resource Include="Assets\Images\flags\nl.png" />
+    <Resource Include="Assets\Images\flags\no.png" />
+    <Resource Include="Assets\Images\flags\np.png" />
+    <Resource Include="Assets\Images\flags\nr.png" />
+    <Resource Include="Assets\Images\flags\nu.png" />
+    <Resource Include="Assets\Images\flags\nz.png" />
+    <Resource Include="Assets\Images\flags\om.png" />
+    <Resource Include="Assets\Images\flags\pa.png" />
+    <Resource Include="Assets\Images\flags\pe.png" />
+    <Resource Include="Assets\Images\flags\pf.png" />
+    <Resource Include="Assets\Images\flags\pg.png" />
+    <Resource Include="Assets\Images\flags\ph.png" />
+    <Resource Include="Assets\Images\flags\pk.png" />
+    <Resource Include="Assets\Images\flags\pl.png" />
+    <Resource Include="Assets\Images\flags\pm.png" />
+    <Resource Include="Assets\Images\flags\pn.png" />
+    <Resource Include="Assets\Images\flags\pr.png" />
+    <Resource Include="Assets\Images\flags\ps.png" />
+    <Resource Include="Assets\Images\flags\pt.png" />
+    <Resource Include="Assets\Images\flags\pw.png" />
+    <Resource Include="Assets\Images\flags\py.png" />
+    <Resource Include="Assets\Images\flags\qa.png" />
+    <Resource Include="Assets\Images\flags\re.png" />
+    <Resource Include="Assets\Images\flags\ro.png" />
+    <Resource Include="Assets\Images\flags\rs.png" />
+    <Resource Include="Assets\Images\flags\ru.png" />
+    <Resource Include="Assets\Images\flags\rw.png" />
+    <Resource Include="Assets\Images\flags\sa.png" />
+    <Resource Include="Assets\Images\flags\sb.png" />
+    <Resource Include="Assets\Images\flags\sc.png" />
+    <Resource Include="Assets\Images\flags\scotland.png" />
+    <Resource Include="Assets\Images\flags\sd.png" />
+    <Resource Include="Assets\Images\flags\se.png" />
+    <Resource Include="Assets\Images\flags\sg.png" />
+    <Resource Include="Assets\Images\flags\sh.png" />
+    <Resource Include="Assets\Images\flags\si.png" />
+    <Resource Include="Assets\Images\flags\sj.png" />
+    <Resource Include="Assets\Images\flags\sk.png" />
+    <Resource Include="Assets\Images\flags\sl.png" />
+    <Resource Include="Assets\Images\flags\sm.png" />
+    <Resource Include="Assets\Images\flags\sn.png" />
+    <Resource Include="Assets\Images\flags\so.png" />
+    <Resource Include="Assets\Images\flags\sr.png" />
+    <Resource Include="Assets\Images\flags\st.png" />
+    <Resource Include="Assets\Images\flags\sv.png" />
+    <Resource Include="Assets\Images\flags\sy.png" />
+    <Resource Include="Assets\Images\flags\sz.png" />
+    <Resource Include="Assets\Images\flags\tc.png" />
+    <Resource Include="Assets\Images\flags\td.png" />
+    <Resource Include="Assets\Images\flags\tf.png" />
+    <Resource Include="Assets\Images\flags\tg.png" />
+    <Resource Include="Assets\Images\flags\th.png" />
+    <Resource Include="Assets\Images\flags\tj.png" />
+    <Resource Include="Assets\Images\flags\tk.png" />
+    <Resource Include="Assets\Images\flags\tl.png" />
+    <Resource Include="Assets\Images\flags\tm.png" />
+    <Resource Include="Assets\Images\flags\tn.png" />
+    <Resource Include="Assets\Images\flags\to.png" />
+    <Resource Include="Assets\Images\flags\tr.png" />
+    <Resource Include="Assets\Images\flags\tt.png" />
+    <Resource Include="Assets\Images\flags\tv.png" />
+    <Resource Include="Assets\Images\flags\tw.png" />
+    <Resource Include="Assets\Images\flags\tz.png" />
+    <Resource Include="Assets\Images\flags\ua.png" />
+    <Resource Include="Assets\Images\flags\ug.png" />
+    <Resource Include="Assets\Images\flags\um.png" />
+    <Resource Include="Assets\Images\flags\us.png" />
+    <Resource Include="Assets\Images\flags\uy.png" />
+    <Resource Include="Assets\Images\flags\uz.png" />
+    <Resource Include="Assets\Images\flags\va.png" />
+    <Resource Include="Assets\Images\flags\vc.png" />
+    <Resource Include="Assets\Images\flags\ve.png" />
+    <Resource Include="Assets\Images\flags\vg.png" />
+    <Resource Include="Assets\Images\flags\vi.png" />
+    <Resource Include="Assets\Images\flags\vn.png" />
+    <Resource Include="Assets\Images\flags\vu.png" />
+    <Resource Include="Assets\Images\flags\wales.png" />
+    <Resource Include="Assets\Images\flags\wf.png" />
+    <Resource Include="Assets\Images\flags\ws.png" />
+    <Resource Include="Assets\Images\flags\ye.png" />
+    <Resource Include="Assets\Images\flags\yt.png" />
+    <Resource Include="Assets\Images\flags\za.png" />
+    <Resource Include="Assets\Images\flags\zm.png" />
+    <Resource Include="Assets\Images\flags\zw.png" />
+    <Resource Include="Assets\Images\info.png" />
+    <Resource Include="Assets\Images\logo.ico" />
+    <Resource Include="Assets\Images\NewSubscriptionAmount.png" />
+    <Resource Include="Assets\Images\NewTenants.png" />
+    <Resource Include="Assets\Images\Operation.png" />
+    <Resource Include="Assets\Images\OrganizationUnit.png" />
+    <Resource Include="Assets\Images\question.png" />
+    <Resource Include="Assets\Images\theme12.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\HostMessageBoxView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\HostMessageBoxView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
+</Project>

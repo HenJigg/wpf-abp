@@ -1,0 +1,60 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:skinManager="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF">
+    <Style x:Key="BorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="Opacity" Value="0.2" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="Default">
+                <Setter Property="Background" Value="#FFE0E0E0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="MaterialLight">
+                <Setter Property="Background" Value="#FFE0E0E0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="MaterialDark">
+                <Setter Property="Background" Value="#373737" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="MaterialLightBlue">
+                <Setter Property="Background" Value="#bdd7f1" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="MaterialDarkBlue">
+                <Setter Property="Background" Value="#32456d" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="Office2019Colorful">
+                <Setter Property="Background" Value="#d2d2d2" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="Office2019Black">
+                <Setter Property="Background" Value="#595959" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="Office2019White">
+                <Setter Property="Background" Value="#D2D2D2" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="Office2019DarkGray">
+                <Setter Property="Background" Value="#ABACAB" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="Office2019HighContrast">
+                <Setter Property="Background" Value="#979797" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="Office2019HighContrastWhite">
+                <Setter Property="Background" Value="#000000" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="SystemTheme">
+                <Setter Property="Background" Value="{x:Static SystemColors.ControlDarkBrush}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="FluentLight">
+                <Setter Property="Background" Value="#33000000" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(skinManager:SfSkinManager.Theme).ThemeName, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=Self}}" Value="FluentDark">
+                <Setter Property="Background" Value="#262626" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="HeaderBorderStyle"
+        BasedOn="{StaticResource BorderStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
+</ResourceDictionary>

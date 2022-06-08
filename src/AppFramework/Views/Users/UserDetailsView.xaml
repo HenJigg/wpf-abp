@@ -1,0 +1,207 @@
+﻿<UserControl
+    x:Class="AppFramework.Views.UserDetailsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:AppFramework.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:AppFramework.Extensions"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="800"
+    Height="580"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style BasedOn="{StaticResource WPFCheckBoxStyle}" TargetType="CheckBox">
+            <Setter Property="Margin" Value="0,3" />
+            <Setter Property="DockPanel.Dock" Value="Top" />
+        </Style>
+
+        <Style BasedOn="{StaticResource WPFTextBlockStyle}" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,19,0,0" />
+            <Setter Property="DockPanel.Dock" Value="Top" />
+        </Style>
+
+        <Style BasedOn="{StaticResource WPFTextBoxStyle}" TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0" />
+            <Setter Property="DockPanel.Dock" Value="Top" />
+        </Style>
+
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.RowSpan="3"
+            CornerRadius="0"
+            Opacity="1"
+            Style="{StaticResource BorderStyle}" />
+
+        <TextBlock
+            Margin="15"
+            FontSize="18"
+            FontWeight="Bold"
+            Text="{extensions:Translate CreateNewUser}" />
+
+        <TabControl Grid.Row="1" Margin="10,0">
+            <TabItem Background="Transparent" Header="{extensions:Translate UserInformations}">
+                <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <DockPanel Margin="5" LastChildFill="False">
+                        <TextBlock Text="{extensions:Translate FirstName}" />
+                        <TextBox Text="{Binding Model.User.Name, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+
+                        <TextBlock Text="{extensions:Translate Surname}" />
+                        <TextBox Text="{Binding Model.User.Surname, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+
+                        <TextBlock Text="{extensions:Translate EmailAddress}" />
+                        <TextBox Text="{Binding Model.User.EmailAddress, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+
+                        <TextBlock Text="{extensions:Translate PhoneNumber}" />
+                        <TextBox Text="{Binding Model.User.PhoneNumber, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+
+                        <TextBlock Text="{extensions:Translate UserName}" />
+                        <TextBox Text="{Binding Model.User.UserName, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+
+                        <CheckBox
+                            Margin="0,20,0,0"
+                            Content="{extensions:Translate SetRandomPassword}"
+                            IsChecked="{Binding Input.SetRandomPassword}" />
+
+                        <StackPanel DockPanel.Dock="Top" Visibility="{Binding Input.SetRandomPassword, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <TextBlock Text="{extensions:Translate Password}" />
+                            <TextBox Text="{Binding Model.User.Password}">
+                                <Validation.ErrorTemplate>
+                                    <ControlTemplate>
+                                        <StackPanel>
+                                            <AdornedElementPlaceholder />
+                                            <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </Validation.ErrorTemplate>
+                            </TextBox>
+
+                            <TextBlock Text="{extensions:Translate PasswordRepeat}" />
+                            <TextBox Text="{Binding Model.User.Password}">
+                                <Validation.ErrorTemplate>
+                                    <ControlTemplate>
+                                        <StackPanel>
+                                            <AdornedElementPlaceholder />
+                                            <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}" />
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </Validation.ErrorTemplate>
+                            </TextBox>
+                        </StackPanel>
+
+                        <CheckBox Content="{extensions:Translate ShouldChangePasswordOnNextLogin}" IsChecked="{Binding Model.User.ShouldChangePasswordOnNextLogin}" />
+                        <CheckBox Content="{extensions:Translate SendActivationEmail}" IsChecked="{Binding Input.SendActivationEmail}" />
+                        <CheckBox Content="{extensions:Translate Activate}" IsChecked="{Binding Model.User.IsActive}" />
+                        <CheckBox Content="{extensions:Translate IsLockoutEnabled}" IsChecked="{Binding Model.User.IsLockoutEnabled}" />
+                    </DockPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Background="Transparent" Header="{extensions:Translate Role}">
+                <ListBox Margin="5" ItemsSource="{Binding Model.Roles}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsAssigned}" />
+                                <TextBlock Margin="5,0" Text="{Binding RoleDisplayName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+
+            <TabItem Background="Transparent" Header="{extensions:Translate OrganizationUnits}">
+                <TreeView
+                    x:Name="TreeViewOriganizations"
+                    Margin="5"
+                    DockPanel.Dock="Top"
+                    ItemsSource="{Binding Model.OrganizationUnits}">
+                    <TreeView.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel Margin="0,5">
+                                <CheckBox DockPanel.Dock="Left" IsChecked="{Binding IsAssigned}" />
+                                <Image
+                                    Width="20"
+                                    Height="20"
+                                    Margin="5,0"
+                                    Source="/Assets/Images/OrganizationUnit.png" />
+                                <TextBlock
+                                    Margin="5,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding DisplayName}" />
+                            </DockPanel>
+                        </DataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="15"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                Margin="0,0,10,0"
+                Padding="5"
+                Command="{Binding CancelCommand}"
+                Content="{extensions:Translate Cancel}" />
+            <Button
+                Padding="5"
+                Command="{Binding SaveCommand}"
+                Content="{extensions:Translate Save}" />
+        </StackPanel>
+    </Grid>
+</UserControl>
