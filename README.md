@@ -2,6 +2,8 @@
 
 中文 | [English](./README-en.md)
 
+MAUI 版本的 ABP框架   [点击查看]([HenJigg/maui-abp: MAUI cross-platform application based on ABP framework (github.com)](https://github.com/HenJigg/maui-abp))
+
 ## 前言
 
 本套框架基于ABP商业版框架进行完整开发, 实现了ABP商业版中的功能,  并且提供了WPF以及Xamarin.Forms版本,  实现完整的跨平台应用开发。
