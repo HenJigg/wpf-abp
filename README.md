@@ -2,7 +2,7 @@
 
 中文 | [English](./README-en.md)
 
-MAUI 版本的 ABP框架   [点击查看]([HenJigg/maui-abp: MAUI cross-platform application based on ABP framework (github.com)](https://github.com/HenJigg/maui-abp))
+MAUI 版本的 ABP框架   [点击查看](https://github.com/HenJigg/maui-abp)
 
 ## 前言
 

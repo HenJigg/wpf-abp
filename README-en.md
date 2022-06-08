@@ -1,4 +1,4 @@
-MAUI version of ABP framework   [Click Me]([HenJigg/maui-abp: MAUI cross-platform application based on ABP framework (github.com)](https://github.com/HenJigg/maui-abp))
+MAUI version of ABP framework   [Click Me](https://github.com/HenJigg/maui-abp)
 
 ## Introduction
 
