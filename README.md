@@ -107,3 +107,54 @@ ABP官方未正式提供完整版本WPF框架, 所以就出现了该套框架，
 
 ![](./img/wpf-skin3.png)
 
+#### Xamarin.Forms
+
+- 登录页
+
+![](./img/xf-login.png)
+
+- 首页
+
+![](./img/xf-main.png)
+
+- 功能页
+
+![](./img/xf-menu.png)
+
+- 组织机构
+
+![](./img/xf-ori.png)
+
+- 角色页
+
+![](./img/xf-role.png)
+
+- 用户页
+
+![](./img/xf-user.png)
+
+- 审计日志页
+
+![](./img/xf-log.png)
+
+- 动态属性页
+
+![](./img/xf-dy.png)
+
+- 租户页
+
+![](./img/xf-v.png)
+
+- 版本管理
+
+![](./img/xf-t.png)
+
+- 语言列表
+
+![](./img/xf-lang.png)
+
+- 主题切换
+
+![](./img/xf-skin.png)
+
+![](./img/xf-dark.png)
