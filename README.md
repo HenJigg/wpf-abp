@@ -45,7 +45,12 @@ ABP官方未正式提供完整版本WPF框架, 所以就出现了该套框架，
 
 下面通过一些实际运行的截图来展示效果, 包含桌面端(WPF)以及移动端(Xamarin.Forms)效果图。
 
-## 项目运行截图
+## 更新历史记录
+
+- [WPF ABP框架更新日志(最新2022-07月)](https://www.cnblogs.com/zh7791/p/16510567.html)
+- [WPF ABP框架更新日志(最新2022-08月)](https://www.cnblogs.com/zh7791/p/16655799.html)
+
+## 项目截图(部分)
 
 #### WPF
 
@@ -106,6 +111,10 @@ ABP官方未正式提供完整版本WPF框架, 所以就出现了该套框架，
 ![](./img/wpf-setting2.png)
 
 ![](./img/wpf-setting3.png)
+
+![](./img/wpf-setting4.png)
+
+![](./img/wpf-notify.png)
 
 - 系统主题
 
