@@ -33,10 +33,10 @@ This repository does not contain the complete WPF and Xamarin.Forms code, but on
 ## Update History
 - [WPF ABP (2022-07)](https://www.cnblogs.com/zh7791/p/16510567.html)
 - [WPF ABP (2022-08)](https://www.cnblogs.com/zh7791/p/16655799.html)
-- [WPF ABP (2022-10)](https://www.cnblogs.com/zh7791/p/16839052.html))
+- [WPF ABP (2022-10)](https://www.cnblogs.com/zh7791/p/16839052.html)
 - [WPF ABP (2022-11)](https://www.cnblogs.com/zh7791/p/16930333.html)
 - [WPF ABP (2022-12)](https://www.cnblogs.com/zh7791/p/16984326.html)
-- 
+
 ## Screenshot
 #### WPF
 
