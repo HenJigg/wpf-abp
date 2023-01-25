@@ -1,17 +1,10 @@
-
-
 中文 | [English](./README-en.md)
-
-MAUI 版本的 ABP框架   [点击查看](https://github.com/HenJigg/maui-abp)
-
 ## 亮点
 本套WPF 框架支持多种UI框架, 包含: Syncfusion、HandyControl、MaterialDesign 。
-
 参考更新: [WPF ABP框架重大更新(2022-12月份)](https://www.cnblogs.com/zh7791/p/16984326.html)
 
 ## 框架介绍
 本套框架基于ABP商业版框架进行完整开发, 实现了ABP商业版中的功能,  并且提供了WPF以及Xamarin.Forms版本,  实现完整的跨平台应用开发。
-
 功能包含如下: 
 - 用户与角色管理
 - 组织机构
