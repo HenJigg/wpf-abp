@@ -21,14 +21,9 @@ ABP officially does not officially provide a full version of the WPF framework, 
 
 And in the ABP commercial version, the Xamarin.Forms framework provided is also very simple, so this framework also includes the complete Xamarin.Forms version.
 
-## Authorize (make a friend)
-
-This repository does not contain the complete WPF and Xamarin.Forms code, but only contains part of the business code implementation, which cannot be compiled and run normally. If you are interested in related commercial licenses, you can take the initiative to contact the author for consultation, and please indicate your intention to add.
-
+## (make a friend)
 - QQ：779149549
-- Email:  779149549@qq.com
-
-**Special Note**: All source code for this framework is only $499
+- Email:  779149549@qq.com 
 
 ## Update History
 - [WPF ABP (2022-07)](https://www.cnblogs.com/zh7791/p/16510567.html)
