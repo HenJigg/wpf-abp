@@ -1,0 +1,125 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:control="clr-namespace:AppFramework.Admin.HandyUI.Themes.Controls"
+    xmlns:cv="clr-namespace:AppFramework.Admin.HandyUI.Themes.Controls">
+    <cv:IntToStringConverter x:Key="IntToStringConverter" />
+
+    <Style TargetType="{x:Type control:DataPager}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type control:DataPager}">
+                    <Grid>
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <ComboBox
+                                x:Name="COMBOX_PAGESIZE"
+                                Width="100"
+                                Margin="10,0"
+                                Padding="5"
+                                FontFamily="Microsoft YaHei">
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Content>
+                                        <TextBlock Text="10 条/页" />
+                                    </ComboBoxItem.Content>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Content>
+                                        <TextBlock Text="20 条/页" />
+                                    </ComboBoxItem.Content>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Content>
+                                        <TextBlock Text="50 条/页" />
+                                    </ComboBoxItem.Content>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <ComboBoxItem.Content>
+                                        <TextBlock Text="100 条/页" />
+                                    </ComboBoxItem.Content>
+                                </ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock VerticalAlignment="Center" Text="总页数：" />
+                            <TextBlock
+                                Margin="0,0,10,0"
+                                VerticalAlignment="Center"
+                                Text="{TemplateBinding PageCount,
+                                                       Converter={StaticResource IntToStringConverter}}" />
+
+                            <Button
+                                x:Name="HomePage"
+                                Padding="5,0"
+                                Content="&#xe74c;"
+                                FontFamily="/Assets/Fonts/#iconfont"
+                                FontSize="18" />
+                            <Button
+                                x:Name="PreviousPage"
+                                Margin="5,0"
+                                Padding="5,0"
+                                Content="&#xe77d;"
+                                FontFamily="/Assets/Fonts/#iconfont" />
+                            <ListBox
+                                x:Name="ItemsControl"
+                                Margin="0"
+                                Padding="0"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                BorderThickness="0"
+                                SelectionMode="Single">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Padding" Value="0" />
+                                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <Grid>
+                                                        <Border x:Name="PART_Border">
+                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                        </Border>
+                                                    </Grid>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsSelected" Value="True">
+                                                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryTextBrush}" />
+                                                            <Setter TargetName="PART_Border" Property="BorderThickness" Value="0,0,0,2" />
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Margin="1,0"
+                                            BorderThickness="0"
+                                            Command="{Binding ClickCommand}"
+                                            CommandParameter="{Binding}"
+                                            Content="{Binding Index}" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button
+                                x:Name="NextPage"
+                                Margin="5,0"
+                                Padding="5,0"
+                                Content="&#xe77c;"
+                                FontFamily="/Assets/Fonts/#iconfont" />
+                            <Button
+                                x:Name="EndPage"
+                                Padding="5,0"
+                                Content="&#xe74d;"
+                                FontFamily="/Assets/Fonts/#iconfont"
+                                FontSize="18" />
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

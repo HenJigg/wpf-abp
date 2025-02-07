@@ -1,0 +1,97 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.UserView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:control="clr-namespace:AppFramework.Shared.Controls"
+    xmlns:effect="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:perm="clr-namespace:AppFramework.Shared"
+    xmlns:refresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
+    xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit">
+    <Grid BackgroundColor="{DynamicResource Gray-100}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <SearchBar
+            BackgroundColor="{DynamicResource Gray-100}"
+            FontSize="Small"
+            Placeholder="{extensions:Translate SearchWithThreeDot}"
+            PlaceholderColor="{DynamicResource Gray-700}"
+            Text="{Binding FilterText}"
+            TextColor="{DynamicResource Gray-700}" />
+        <refresh:SfPullToRefresh
+            Grid.Row="1"
+            IsRefreshing="{Binding IsBusy}"
+            RefreshCommand="{Binding RefreshCommand}">
+            <refresh:SfPullToRefresh.PullableContent>
+                <ScrollView>
+                    <StackLayout
+                        x:Name="stackLayoutList"
+                        BindableLayout.ItemsSource="{Binding dataPager.GridModelList}"
+                        Spacing="8">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <control:CustomShadowFrame
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="{DynamicResource Gray-Bg}"
+                                    BorderColor="{DynamicResource Gray-Bg}"
+                                    CornerRadius="4"
+                                    HasShadow="True"
+                                    HeightRequest="80"
+                                    Radius="4">
+                                    <effect:SfEffectsView
+                                        RippleColor="{DynamicResource Gray-300}"
+                                        TouchDownEffects="Ripple"
+                                        TouchUpCommand="{Binding Path=BindingContext.EditCommand, Source={x:Reference stackLayoutList}}"
+                                        TouchUpCommandParameter="{Binding}">
+                                        <Grid
+                                            ColumnDefinitions="Auto, *"
+                                            ColumnSpacing="0"
+                                            RowDefinitions="Auto, Auto"
+                                            RowSpacing="0"
+                                            VerticalOptions="Center">
+
+                                            <toolkit:AvatarView
+                                                Grid.RowSpan="2"
+                                                Margin="10,0,5,0"
+                                                HeightRequest="30"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding Converter={StaticResource UserPhotoConverter}}"
+                                                VerticalOptions="Center"
+                                                WidthRequest="30" />
+
+                                            <StackLayout
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                VerticalOptions="Center">
+                                                <Label
+                                                    FontFamily="Montserrat-SemiBold"
+                                                    FontSize="16"
+                                                    Style="{StaticResource SimpleLabelStyle}"
+                                                    Text="{Binding UserName}" />
+                                                <Label
+                                                    FontSize="12"
+                                                    Style="{StaticResource SimpleLabelStyle}"
+                                                    Text="{Binding EmailAddress}" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </effect:SfEffectsView>
+                                </control:CustomShadowFrame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+            </refresh:SfPullToRefresh.PullableContent>
+        </refresh:SfPullToRefresh>
+        <buttons:SfButton
+            Grid.Row="1"
+            Margin="0,0,10,10"
+            Command="{Binding AddCommand}"
+            IsVisible="{extensions:HasPermission Text={x:Static perm:AppPermissions.UserCreate}}"
+            Style="{StaticResource AddButtonStyle}" />
+    </Grid>
+</ContentView>

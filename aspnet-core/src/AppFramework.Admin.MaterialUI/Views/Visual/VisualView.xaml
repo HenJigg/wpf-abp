@@ -1,0 +1,159 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.MaterialUI.VisualView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:AppFramework.Admin.MaterialUI.Converters"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:local="clr-namespace:AppFramework.Admin.MaterialUI"
+    xmlns:materialDesignColors="clr-namespace:MaterialDesignColors;assembly=MaterialDesignColors"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+    Background="{DynamicResource MaterialDesignCardBackground}">
+    <UserControl.Resources>
+        <converter:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+
+        <DataTemplate x:Key="SwatchColorTemplate" DataType="{x:Type Color}">
+            <Button
+                Width="40"
+                Height="40"
+                Margin="2"
+                Background="{Binding Converter={StaticResource ColorToBrushConverter}}"
+                BorderThickness="0"
+                Command="{Binding DataContext.ChangeHueCommand, RelativeSource={RelativeSource AncestorType={x:Type local:VisualView}}}"
+                CommandParameter="{Binding}" />
+        </DataTemplate>
+    </UserControl.Resources>
+    <md:DialogHost IsOpen="{Binding IsBusy}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <DockPanel Margin="15" LastChildFill="False">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Text="{Binding Title}" />
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="{extensions:Translate UiCustomizationHeaderInfo}" />
+                </StackPanel>
+            </DockPanel>
+
+            <Grid Grid.Row="1" Margin="15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock VerticalAlignment="Center" Text="{extensions:Translate UiCustomization_DarkMode}" />
+
+                    <ToggleButton Margin="8,0,16,0" IsChecked="{Binding IsDarkTheme}" />
+
+                    <TextBlock
+                        Margin="50,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="Color Adjustment" />
+
+                    <ToggleButton Margin="8,0,0,0" IsChecked="{Binding IsColorAdjusted}" />
+
+                    <wpf:PopupBox StaysOpen="True">
+                        <Grid Margin="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="10"
+                                VerticalAlignment="Center"
+                                Text="Desired Contrast Ratio" />
+                            <Slider
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Width="150"
+                                VerticalAlignment="Center"
+                                IsSnapToTickEnabled="True"
+                                Maximum="21"
+                                Minimum="1"
+                                TickFrequency="0.1"
+                                Value="{Binding DesiredContrastRatio}" />
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Width="40"
+                                Margin="8"
+                                VerticalAlignment="Center"
+                                Text="{Binding DesiredContrastRatio, StringFormat={}{0}:1}"
+                                TextAlignment="Right" />
+
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="10"
+                                VerticalAlignment="Center"
+                                Text="Contrast" />
+                            <ComboBox
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                ItemsSource="{Binding ContrastValues}"
+                                SelectedItem="{Binding ContrastValue}" />
+
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Margin="10"
+                                VerticalAlignment="Center"
+                                Text="Color Selection" />
+                            <ComboBox
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                ItemsSource="{Binding ColorSelectionValues}"
+                                SelectedItem="{Binding ColorSelectionValue}" />
+                        </Grid>
+                    </wpf:PopupBox>
+                </StackPanel>
+
+                <ScrollViewer
+                    Grid.Row="1"
+                    Margin="0,20,0,0"
+                    VerticalScrollBarVisibility="Hidden">
+                    <ItemsControl ItemsSource="{Binding Swatches}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type materialDesignColors:ISwatch}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Width="80"
+                                        Margin="5,0"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Name, Mode=OneTime}" />
+                                    <ItemsControl ItemTemplate="{StaticResource SwatchColorTemplate}" ItemsSource="{Binding Hues, Mode=OneTime}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <VirtualizingStackPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </md:DialogHost>
+</UserControl>

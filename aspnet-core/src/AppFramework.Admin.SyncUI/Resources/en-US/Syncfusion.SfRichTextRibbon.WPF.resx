@@ -1,0 +1,951 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddTableToolTip" xml:space="preserve">
+    <value>A table is a great way to organize information with in your document.</value>
+  </data>
+  <data name="AddTableToolTipHeader" xml:space="preserve">
+    <value>Add a Table</value>
+  </data>
+  <data name="AlignCenter" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="AlignCenterToolTip" xml:space="preserve">
+    <value>Center your content on the page.</value>
+  </data>
+  <data name="AlignCenterToolTipHeader" xml:space="preserve">
+    <value>Center (Ctrl+E)</value>
+  </data>
+  <data name="AlignJustify" xml:space="preserve">
+    <value>Justify</value>
+  </data>
+  <data name="AlignJustifyToolTip" xml:space="preserve">
+    <value>Distribute your text evenly between the margin.</value>
+  </data>
+  <data name="AlignJustifyToolTipHeader" xml:space="preserve">
+    <value>Justify (Ctrl+J)</value>
+  </data>
+  <data name="AlignLeft" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="AlignLeftToolTip" xml:space="preserve">
+    <value>Align your content with the left margin.</value>
+  </data>
+  <data name="AlignLeftToolTipHeader" xml:space="preserve">
+    <value>Align Left (Ctrl+L)</value>
+  </data>
+  <data name="AlignRight" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="AlignRightToolTip" xml:space="preserve">
+    <value>Align your content with the right margin.</value>
+  </data>
+  <data name="AlignRightToolTipHeader" xml:space="preserve">
+    <value>Align Right (Ctrl+R)</value>
+  </data>
+  <data name="AvailableTemplates" xml:space="preserve">
+    <value>Available Templates</value>
+  </data>
+  <data name="BlankDocument" xml:space="preserve">
+    <value>Blank Document</value>
+  </data>
+  <data name="BlankDocumentToolTip" xml:space="preserve">
+    <value>It creates the new empty document.</value>
+  </data>
+  <data name="BlueHighlightToolTip" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="Bold" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="BoldToolTip" xml:space="preserve">
+    <value>Make your text bold.</value>
+  </data>
+  <data name="BoldToolTipHeader" xml:space="preserve">
+    <value>Bold (Ctrl+B)</value>
+  </data>
+  <data name="BrightGreenHighlightToolTip" xml:space="preserve">
+    <value>Bright Green</value>
+  </data>
+  <data name="BulletLibrary" xml:space="preserve">
+    <value>Bullet Library</value>
+  </data>
+  <data name="BulletsToolTip" xml:space="preserve">
+    <value>Create bullet list.</value>
+  </data>
+  <data name="BulletsToolTipHeader" xml:space="preserve">
+    <value>Bullets</value>
+  </data>
+  <data name="BulletsToolTipMore" xml:space="preserve">
+    <value>Click the arrow to change look of the bullet.</value>
+  </data>
+  <data name="Clipboard" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="CopyToolTip" xml:space="preserve">
+    <value>Put a copy of the selection on the clipboard so you can paste it somewhere else.</value>
+  </data>
+  <data name="CopyToolTipHeader" xml:space="preserve">
+    <value>Copy (Ctrl+C)</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="CutToolTip" xml:space="preserve">
+    <value>Remove the selection and put it on the Clipboard so you can paste it somewhere else.</value>
+  </data>
+  <data name="CutToolTipHeader" xml:space="preserve">
+    <value>Cut (Ctrl+X)</value>
+  </data>
+  <data name="DarkBlueHighlightToolTip" xml:space="preserve">
+    <value>Dark Blue</value>
+  </data>
+  <data name="DarkRedHighlightToolTip" xml:space="preserve">
+    <value>Dark Red</value>
+  </data>
+  <data name="DarkYellowHighlightToolTip" xml:space="preserve">
+    <value>Dark Yellow</value>
+  </data>
+  <data name="DecreaseFont" xml:space="preserve">
+    <value>Decrease Font</value>
+  </data>
+  <data name="DecreaseFontSizeToolTip" xml:space="preserve">
+    <value>Make your text a bit smaller.</value>
+  </data>
+  <data name="DecreaseFontSizeToolTipHeader" xml:space="preserve">
+    <value>Decrease Font Size (Ctrl+Shift+&lt;) </value>
+  </data>
+  <data name="DecreaseIndentToolTip" xml:space="preserve">
+    <value>Move your paragraph closer to the margin.</value>
+  </data>
+  <data name="DecreaseIndentToolTipHeader" xml:space="preserve">
+    <value>Decrease Indent</value>
+  </data>
+  <data name="DefineList" xml:space="preserve">
+    <value>Define new Multilevel List...</value>
+  </data>
+  <data name="DeleteComment" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteCommentToolTip" xml:space="preserve">
+    <value>Delete the selected comment.</value>
+  </data>
+  <data name="DeleteCommentToolTipHeader" xml:space="preserve">
+    <value>Delete Comment</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Editing</value>
+  </data>
+  <data name="EncryptWithPassword" xml:space="preserve">
+    <value>Encrypt with password</value>
+  </data>
+  <data name="EncryptWithPasswordToolTip" xml:space="preserve">
+    <value>Password-protect this document.</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="FindToolTip" xml:space="preserve">
+    <value>Find text or other content in the document.</value>
+  </data>
+  <data name="FindToolTipHeader" xml:space="preserve">
+    <value>Find (Ctrl+F)</value>
+  </data>
+  <data name="Font" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="FontColor" xml:space="preserve">
+    <value>Font Color</value>
+  </data>
+  <data name="FontColorToolTip" xml:space="preserve">
+    <value>Change the color of you text.</value>
+  </data>
+  <data name="FontSizeToolTip" xml:space="preserve">
+    <value>Change the size of your text.</value>
+  </data>
+  <data name="FontSizeToolTipHeader" xml:space="preserve">
+    <value>Font Size (Ctrl+Shift+P)</value>
+  </data>
+  <data name="FontToolTip" xml:space="preserve">
+    <value>Pick a new font for your text.</value>
+  </data>
+  <data name="FontToolTipHeader" xml:space="preserve">
+    <value>Font (Ctrl+Shift+F)</value>
+  </data>
+  <data name="GettingStarted" xml:space="preserve">
+    <value>Getting Started</value>
+  </data>
+  <data name="GettingStartedToolTip" xml:space="preserve">
+    <value>A complete information on Syncfusion RichTextBox control and its usage.</value>
+  </data>
+  <data name="Gray25HighlightToolTip" xml:space="preserve">
+    <value>Gray-25%</value>
+  </data>
+  <data name="Gray50HighlightToolTip" xml:space="preserve">
+    <value>Gray-50%</value>
+  </data>
+  <data name="GreenHighlightToolTip" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="GrowFont" xml:space="preserve">
+    <value>Grow Font</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="HtmlDocument" xml:space="preserve">
+    <value>Html Document</value>
+  </data>
+  <data name="HtmlDocumentToolTip" xml:space="preserve">
+    <value>Save the file as Html document</value>
+  </data>
+  <data name="Hyperlink" xml:space="preserve">
+    <value>Hyperlink</value>
+  </data>
+  <data name="HyperlinkToolTip" xml:space="preserve">
+    <value>Create a link in your document for quick access to webpage and files.</value>
+  </data>
+  <data name="HyperlinkToolTipHeader" xml:space="preserve">
+    <value>Add a Hyperlink (Ctrl+K)</value>
+  </data>
+  <data name="Illustrations" xml:space="preserve">
+    <value>Illustrations</value>
+  </data>
+  <data name="IncreaseFontSizeToolTip" xml:space="preserve">
+    <value>Make your text a bit bigger.</value>
+  </data>
+  <data name="IncreaseFontSizeToolTipHeader" xml:space="preserve">
+    <value>Increase Font Size (Ctrl+Shift+&gt;) </value>
+  </data>
+  <data name="IncreaseIndentToolTip" xml:space="preserve">
+    <value>Move your paragraph farther away from the margin.</value>
+  </data>
+  <data name="IncreaseIndentToolTipHeader" xml:space="preserve">
+    <value>Increase Indent</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="InsertCommentToolTip" xml:space="preserve">
+    <value>Add a note about this part of the document.</value>
+  </data>
+  <data name="InsertCommentToolTipHeader" xml:space="preserve">
+    <value>Insert a Comment</value>
+  </data>
+  <data name="InsertTable" xml:space="preserve">
+    <value>Insert Table...</value>
+  </data>
+  <data name="Italic" xml:space="preserve">
+    <value>Italic</value>
+  </data>
+  <data name="ItalicToolTip" xml:space="preserve">
+    <value>Italicize your text.</value>
+  </data>
+  <data name="ItalicToolTipHeader" xml:space="preserve">
+    <value>Italic (Ctrl+I)</value>
+  </data>
+  <data name="LineSpacingToolTip" xml:space="preserve">
+    <value>Choose how much space appears between lines of text.</value>
+  </data>
+  <data name="LineSpacingToolTipHeader" xml:space="preserve">
+    <value>Line Spacing</value>
+  </data>
+  <data name="Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="ListLibrary" xml:space="preserve">
+    <value>List Library</value>
+  </data>
+  <data name="MultilevelListToolTip" xml:space="preserve">
+    <value>Create a multilevel list to organize items or create an outline.</value>
+  </data>
+  <data name="MultilevelListToolTipHeader" xml:space="preserve">
+    <value>Multilevel List</value>
+  </data>
+  <data name="MultiplePagesView" xml:space="preserve">
+    <value>Multiple Pages</value>
+  </data>
+  <data name="MultiplePagesViewToolTip" xml:space="preserve">
+    <value>Zoom the document so you can see multiple pages in the window.</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="NewComment" xml:space="preserve">
+    <value>New Comment</value>
+  </data>
+  <data name="NextComment" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="NextCommentToolTip" xml:space="preserve">
+    <value>Jump to the next comment.</value>
+  </data>
+  <data name="NextCommentToolTipHeader" xml:space="preserve">
+    <value>Next Comment</value>
+  </data>
+  <data name="NoColor" xml:space="preserve">
+    <value>No Color</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="NumberingLibrary" xml:space="preserve">
+    <value>Numbering Library</value>
+  </data>
+  <data name="NumberingToolTip" xml:space="preserve">
+    <value>Create numbered list.</value>
+  </data>
+  <data name="NumberingToolTipHeader" xml:space="preserve">
+    <value>Numbering</value>
+  </data>
+  <data name="NumberingToolTipMore" xml:space="preserve">
+    <value>Click the arrow for more numbering formats.</value>
+  </data>
+  <data name="NumberLeftAlignment" xml:space="preserve">
+    <value>Number alignment: Left</value>
+  </data>
+  <data name="NumberRightAlignment" xml:space="preserve">
+    <value>Number alignment: Right</value>
+  </data>
+  <data name="OnePageView" xml:space="preserve">
+    <value>One Page</value>
+  </data>
+  <data name="OnePageViewToolTip" xml:space="preserve">
+    <value>Zoom the document so that you can see the entire page in window.</value>
+  </data>
+  <data name="OnlineHelp" xml:space="preserve">
+    <value>Online Help</value>
+  </data>
+  <data name="OnlineHelpToolTip" xml:space="preserve">
+    <value>UG documents helps understanding the usage of our Syncfusion UI components.</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="PageWidth" xml:space="preserve">
+    <value>Page Width</value>
+  </data>
+  <data name="PageWidthToolTip" xml:space="preserve">
+    <value>Zoom the document so that the width of the page matches the width of the window.</value>
+  </data>
+  <data name="Paragraph" xml:space="preserve">
+    <value>Paragraph</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="PasteToolTip" xml:space="preserve">
+    <value>Add content on the Clipboard to your document.</value>
+  </data>
+  <data name="PasteToolTipHeader" xml:space="preserve">
+    <value>Paste (Ctrl+V)</value>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>Pictures</value>
+  </data>
+  <data name="PictureToolTip" xml:space="preserve">
+    <value>Insert pictures from your computer or from other computers that you're connected to.</value>
+  </data>
+  <data name="PictureToolTipHeader" xml:space="preserve">
+    <value>From File</value>
+  </data>
+  <data name="PinkHighlightToolTip" xml:space="preserve">
+    <value>Pink</value>
+  </data>
+  <data name="PreviousComment" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="PreviousCommentToolTip" xml:space="preserve">
+    <value>Jump to the previous comment.</value>
+  </data>
+  <data name="PreviousCommentToolTipHeader" xml:space="preserve">
+    <value>Previous Comment</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="PrintLayout" xml:space="preserve">
+    <value>Print Layout</value>
+  </data>
+  <data name="PrintLayoutToolTip" xml:space="preserve">
+    <value>Check out how your document will look when it's printed.</value>
+  </data>
+  <data name="ProtectDocument" xml:space="preserve">
+    <value>Protect Document</value>
+  </data>
+  <data name="ProtectDocumentToolTip" xml:space="preserve">
+    <value>Control what types of changes people can make to this document.</value>
+  </data>
+  <data name="ReadOnly" xml:space="preserve">
+    <value>ReadOnly</value>
+  </data>
+  <data name="ReadOnlyToolTip" xml:space="preserve">
+    <value>Restrict the content editing and formatting changes.</value>
+  </data>
+  <data name="RedHighlightToolTip" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="Redo" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="RedoToolTip" xml:space="preserve">
+    <value>Redo (Ctrl+Y)</value>
+  </data>
+  <data name="Replace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="ReplaceToolTip" xml:space="preserve">
+    <value>Search for text you'd like to change and replace it with something else.</value>
+  </data>
+  <data name="ReplaceToolTipHeader" xml:space="preserve">
+    <value>Replace (Ctrl+H)</value>
+  </data>
+  <data name="RestrictEditing" xml:space="preserve">
+    <value>Restrict Editing</value>
+  </data>
+  <data name="RestrictEditingToolTip" xml:space="preserve">
+    <value>Restricts editing to this document.</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>Save as</value>
+  </data>
+  <data name="SaveToolTip" xml:space="preserve">
+    <value>Save (Ctrl+S)</value>
+  </data>
+  <data name="ShowCommentsToolTip" xml:space="preserve">
+    <value>See all the comments alongside the document.</value>
+  </data>
+  <data name="ShowCommentsToolTipHeader" xml:space="preserve">
+    <value>Show Comments</value>
+  </data>
+  <data name="SingleStrike" xml:space="preserve">
+    <value>SingleStrike</value>
+  </data>
+  <data name="StrikethroughToolTip" xml:space="preserve">
+    <value>Cross something out by drawing a line through it.</value>
+  </data>
+  <data name="StrikethroughToolTipHeader" xml:space="preserve">
+    <value>Strikethrough</value>
+  </data>
+  <data name="SubScript" xml:space="preserve">
+    <value>SubScript</value>
+  </data>
+  <data name="SubScriptToolTip" xml:space="preserve">
+    <value>Type very small letter just just above the line of text.</value>
+  </data>
+  <data name="SubScriptToolTipHeader" xml:space="preserve">
+    <value>Subscript (Ctrl+=)</value>
+  </data>
+  <data name="SuperScript" xml:space="preserve">
+    <value>SuperScript</value>
+  </data>
+  <data name="SuperScriptToolTip" xml:space="preserve">
+    <value>Type very small letter just above the line of text.</value>
+  </data>
+  <data name="SuperScriptToolTipHeader" xml:space="preserve">
+    <value>Superscript (Ctrl+Shift++)</value>
+  </data>
+  <data name="Table" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="Tables" xml:space="preserve">
+    <value>Tables</value>
+  </data>
+  <data name="TealHighlightToolTip" xml:space="preserve">
+    <value>Teal</value>
+  </data>
+  <data name="TextDocument" xml:space="preserve">
+    <value>Text Document</value>
+  </data>
+  <data name="TextDocumentToolTip" xml:space="preserve">
+    <value>Save the file as Text document</value>
+  </data>
+  <data name="TextHighlightColor" xml:space="preserve">
+    <value>Text Highlight Color</value>
+  </data>
+  <data name="TextHighlightColorToolTip" xml:space="preserve">
+    <value>Make your text pop by highlighting it in a bright color.</value>
+  </data>
+  <data name="TurquoiseHighlightToolTip" xml:space="preserve">
+    <value>Turquoise</value>
+  </data>
+  <data name="Underline" xml:space="preserve">
+    <value>Underline</value>
+  </data>
+  <data name="UnderlineToolTip" xml:space="preserve">
+    <value>Underline your text.</value>
+  </data>
+  <data name="UnderlineToolTipHeader" xml:space="preserve">
+    <value>Underline (Ctrl+U)</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="UndoToolTip" xml:space="preserve">
+    <value>Undo (Ctrl+Z)</value>
+  </data>
+  <data name="UserInterfaceHelp" xml:space="preserve">
+    <value>Syncfusion User Interface Help</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Views" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="VioletHighlightToolTip" xml:space="preserve">
+    <value>Violet</value>
+  </data>
+  <data name="WebLayout" xml:space="preserve">
+    <value>Web Layout</value>
+  </data>
+  <data name="WebLayoutToolTip" xml:space="preserve">
+    <value>See how your document would look as a webpage. This layout is also great if you have wide tables in your document.</value>
+  </data>
+  <data name="WordDoc" xml:space="preserve">
+    <value>Word 97 - 2003 Document</value>
+  </data>
+  <data name="WordDocToolTip" xml:space="preserve">
+    <value>Save a copy as Word 97-2003</value>
+  </data>
+  <data name="WordDocx" xml:space="preserve">
+    <value>Word Document</value>
+  </data>
+  <data name="WordDocxToolTip" xml:space="preserve">
+    <value>Save the file as Word document</value>
+  </data>
+  <data name="XamlDocument" xml:space="preserve">
+    <value>Xaml Document</value>
+  </data>
+  <data name="XamlDocumentToolTip" xml:space="preserve">
+    <value>Save the file as Xaml document</value>
+  </data>
+  <data name="YellowHighlightToolTip" xml:space="preserve">
+    <value>Yellow</value>
+  </data>
+  <data name="Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="Zoom100" xml:space="preserve">
+    <value>100%</value>
+  </data>
+  <data name="Zoom100ToolTip" xml:space="preserve">
+    <value>Zoom your document to 100%.</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="ZoomInToolTip" xml:space="preserve">
+    <value>Increase the zoom level</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="ZoomOutToolTip" xml:space="preserve">
+    <value>Decrease the zoom level.</value>
+  </data>
+  <data name="RibbonStatusBarPage" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="RibbonStatusBarPageOf" xml:space="preserve">
+    <value>Of</value>
+  </data>
+  <data name="RibbonStatusBarPageToolTip" xml:space="preserve">
+    <value>Page number in document.</value>
+  </data>
+  <data name="Proofing" xml:space="preserve">
+    <value>Proofing</value>
+  </data>
+  <data name="Spelling" xml:space="preserve">
+    <value>Spelling</value>
+  </data>
+  <data name="SpellingToolTip" xml:space="preserve">
+    <value>Typos? Not on our watch. Let us check your spelling.</value>
+  </data>
+  <data name="SpellingToolTipHeader" xml:space="preserve">
+    <value>Spelling (F7)</value>
+  </data>
+  <data name="Alignment" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="CellMargins" xml:space="preserve">
+    <value>Cell Margins</value>
+  </data>
+  <data name="CellMarginsToolTipHeader" xml:space="preserve">
+    <value>Cell Margins</value>
+  </data>
+  <data name="CellMarginsToolTip" xml:space="preserve">
+    <value>Customize cell margins and spacing between cells.</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteToolTipHeader" xml:space="preserve">
+    <value>Delete Table</value>
+  </data>
+  <data name="DeleteToolTip" xml:space="preserve">
+    <value>Delete rows, columns, or the entire table.</value>
+  </data>
+  <data name="InsertRowAbove" xml:space="preserve">
+    <value>Insert Above</value>
+  </data>
+  <data name="InsertRowBelow" xml:space="preserve">
+    <value>Insert Below</value>
+  </data>
+  <data name="InsertColumnLeftToolTipHeader" xml:space="preserve">
+    <value>Insert Columns to the Left</value>
+  </data>
+  <data name="InsertColumnLeftToolTip" xml:space="preserve">
+    <value>Add a new column directly to the left of the current column.</value>
+  </data>
+  <data name="InsertColumnRightToolTipHeader" xml:space="preserve">
+    <value>Insert Columns to the Right</value>
+  </data>
+  <data name="InsertColumnRightToolTip" xml:space="preserve">
+    <value>Add a new column directly to the Right of the current column.</value>
+  </data>
+  <data name="InsertColumnLeft" xml:space="preserve">
+    <value>Insert Left</value>
+  </data>
+  <data name="InsertColumnRight" xml:space="preserve">
+    <value>Insert Right</value>
+  </data>
+  <data name="InsertRowAboveToolTipHeader" xml:space="preserve">
+    <value>Insert Rows Above</value>
+  </data>
+  <data name="InsertRowAboveToolTip" xml:space="preserve">
+    <value>Add a new row directly above the current row.</value>
+  </data>
+  <data name="InsertRowBelowToolTipHeader" xml:space="preserve">
+    <value>Insert Rows Below</value>
+  </data>
+  <data name="InsertRowBelowToolTip" xml:space="preserve">
+    <value>Add a new row directly below the current row.</value>
+  </data>
+  <data name="Layout" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="Merge" xml:space="preserve">
+    <value>Merge</value>
+  </data>
+  <data name="MergeCells" xml:space="preserve">
+    <value>Merge Cells</value>
+  </data>
+  <data name="MergeCellsToolTipHeader" xml:space="preserve">
+    <value>Merge Cells</value>
+  </data>
+  <data name="MergeCellsToolTip" xml:space="preserve">
+    <value>Merge the selected cells into one cell.</value>
+  </data>
+  <data name="TablePropertiesToolTipHeader" xml:space="preserve">
+    <value>Table Properties</value>
+  </data>
+  <data name="TablePropertiesToolTip" xml:space="preserve">
+    <value>Show the Table Properties dialog to change advanced table properties, such as indentation.</value>
+  </data>
+  <data name="RepeatHeaderRows" xml:space="preserve">
+    <value>Repeat Header Rows</value>
+  </data>
+  <data name="RepeatHeaderRowsToolTipHeader" xml:space="preserve">
+    <value>Repeat Header Rows</value>
+  </data>
+  <data name="RepeatHeaderRowsToolTip" xml:space="preserve">
+    <value>Mark multiple rows as header rows. If your table spans multiple pages the header rows will appear on every page for easy reference.</value>
+  </data>
+  <data name="RowsAndColumns" xml:space="preserve">
+    <value>Rows &amp; Columns</value>
+  </data>
+  <data name="TableTools" xml:space="preserve">
+    <value>Table Tools</value>
+  </data>
+  <data name="TableProperties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SelectToolTipHeader" xml:space="preserve">
+    <value>Select Table</value>
+  </data>
+  <data name="SelectToolTip" xml:space="preserve">
+    <value>Select the current cell, row, column, or entire table.</value>
+  </data>
+  <data name="CellContentAlignBottomCenterToolTip" xml:space="preserve">
+    <value>Center text and align it to the bottom of the cell.</value>
+  </data>
+  <data name="CellContentAlignBottomCenterToolTipHeader" xml:space="preserve">
+    <value>Align Bottom Center</value>
+  </data>
+  <data name="CellContentAlignBottomLeftToolTip" xml:space="preserve">
+    <value>Align text to the bottom left corner of the cell.</value>
+  </data>
+  <data name="CellContentAlignBottomLeftToolTipHeader" xml:space="preserve">
+    <value>Align Bottom Left</value>
+  </data>
+  <data name="CellContentAlignBottomRightToolTip" xml:space="preserve">
+    <value>Align text to the bottom right corner of the cell.</value>
+  </data>
+  <data name="CellContentAlignBottomRightToolTipHeader" xml:space="preserve">
+    <value>Align Bottom Right</value>
+  </data>
+  <data name="CellContentAlignCenterLeftToolTip" xml:space="preserve">
+    <value>Center text vertically and align it to the left side of the cell.</value>
+  </data>
+  <data name="CellContentAlignCenterLeftToolTipHeader" xml:space="preserve">
+    <value>Align Center Left</value>
+  </data>
+  <data name="CellContentAlignCenterRightToolTip" xml:space="preserve">
+    <value>Center text vertically and align it to the right side of the cell.</value>
+  </data>
+  <data name="CellContentAlignCenterRightToolTipHeader" xml:space="preserve">
+    <value>Align Center Right</value>
+  </data>
+  <data name="CellContentAlignCenterToolTip" xml:space="preserve">
+    <value>Center text horizontally and vertically within the cell.</value>
+  </data>
+  <data name="CellContentAlignCenterToolTipHeader" xml:space="preserve">
+    <value>Align Center</value>
+  </data>
+  <data name="CellContentAlignTopCenterToolTip" xml:space="preserve">
+    <value>Center text and align it to the top of the cell.</value>
+  </data>
+  <data name="CellContentAlignTopCenterToolTipHeader" xml:space="preserve">
+    <value>Align Top Center</value>
+  </data>
+  <data name="CellContentAlignTopLeftToolTip" xml:space="preserve">
+    <value>Align text to the top left corner of the cell.</value>
+  </data>
+  <data name="CellContentAlignTopLeftToolTipHeader" xml:space="preserve">
+    <value>Align Top Left</value>
+  </data>
+  <data name="CellContentAlignTopRightToolTip" xml:space="preserve">
+    <value>Align text to the top right corner of the cell.</value>
+  </data>
+  <data name="CellContentAlignTopRightToolTipHeader" xml:space="preserve">
+    <value>Align Top Right</value>
+  </data>
+  <data name="DeleteColumns" xml:space="preserve">
+    <value>Delete Columns</value>
+  </data>
+  <data name="DeleteRows" xml:space="preserve">
+    <value>Delete Rows</value>
+  </data>
+  <data name="DeleteTable" xml:space="preserve">
+    <value>Delete Table</value>
+  </data>
+  <data name="SelectCell" xml:space="preserve">
+    <value>Select Cell</value>
+  </data>
+  <data name="SelectColumn" xml:space="preserve">
+    <value>Select Column</value>
+  </data>
+  <data name="SelectRow" xml:space="preserve">
+    <value>Select Row</value>
+  </data>
+  <data name="SelectTable" xml:space="preserve">
+    <value>Select Table</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="LeftToRightToolTip" xml:space="preserve">
+    <value>Set the text to read from left to right.</value>
+  </data>
+  <data name="LeftToRightToolTipHeader" xml:space="preserve">
+    <value>Left-to-Right Text Direction</value>
+  </data>
+  <data name="RightToLeftToolTip" xml:space="preserve">
+    <value>Set the text to read from right to left.</value>
+  </data>
+  <data name="RightToLeftToolTipHeader" xml:space="preserve">
+    <value>Right-to-Left Text Direction</value>
+  </data>
+  <data name="AutoFit" xml:space="preserve">
+    <value>AutoFit</value>
+  </data>
+  <data name="AutoFitContents" xml:space="preserve">
+    <value>AutoFit Contents</value>
+  </data>
+  <data name="AutoFitToolTip" xml:space="preserve">
+    <value>Automatically resize the columns in your table.</value>
+  </data>
+  <data name="AutoFitToolTipHeader" xml:space="preserve">
+    <value>AutoFit</value>
+  </data>
+  <data name="AutoFitWindow" xml:space="preserve">
+    <value>AutoFit Window</value>
+  </data>
+  <data name="FixedColumnWidth" xml:space="preserve">
+    <value>Fixed Column Width</value>
+  </data>
+  <data name="CellSize" xml:space="preserve">
+    <value>Cell Size</value>
+  </data>
+  <data name="PageBreak" xml:space="preserve">
+    <value>Page Break</value>
+  </data>
+  <data name="PageBreakToolTip" xml:space="preserve">
+    <value>End the current page here and move to the next page.</value>
+  </data>
+  <data name="PageBreakToolTipHeader" xml:space="preserve">
+    <value>Insert a Page Break (Ctrl+Return)</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Pages</value>
+  </data>
+  <data name="Styles" xml:space="preserve">
+    <value>Styles</value>
+  </data>
+  <data name="ClearFormatting" xml:space="preserve">
+    <value>Clear Formatting</value>
+  </data>
+  <data name="CreateStyle" xml:space="preserve">
+    <value>Create a Style</value>
+  </data>
+  <data name="PreviewText" xml:space="preserve">
+    <value>AaBbCcDdEe</value>
+  </data>
+</root>

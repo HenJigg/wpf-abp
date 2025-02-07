@@ -1,0 +1,74 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.SyncUI.FirstChangedPwdView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="clr-namespace:AppFramework.Admin.Behaviors;assembly=AppFramework.Admin"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:sync="http://schemas.syncfusion.com/wpf"
+    Width="500"
+    Height="250">
+    <sync:SfBusyIndicator
+        AnimationType="DualRing"
+        IsBusy="{Binding IsBusy}"
+        ViewboxHeight="80"
+        ViewboxWidth="80">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.RowSpan="3"
+                Opacity="1"
+                Style="{StaticResource HeaderBorderStyle}" />
+
+            <TextBlock
+                Margin="15"
+                FontSize="18"
+                FontWeight="Bold"
+                Text="{extensions:Translate ChangePassword}" />
+
+            <TextBlock Style="{StaticResource closeTextBlock}" ToolTip="{extensions:Translate Close}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding CancelCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBlock>
+
+            <StackPanel Grid.Row="1" Margin="20,5">
+                <TextBlock Text="{extensions:Translate PleaseEnterYourNewPassword}" />
+                <PasswordBox Margin="0,10,0,5" b:PasswordExtensions.Password="{Binding PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <i:Interaction.Behaviors>
+                        <b:PasswordBehavior />
+                    </i:Interaction.Behaviors>
+                </PasswordBox>
+                <PasswordBox Margin="0,10,0,5" b:PasswordExtensions.Password="{Binding NewPassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <i:Interaction.Behaviors>
+                        <b:PasswordBehavior />
+                    </i:Interaction.Behaviors>
+                </PasswordBox>
+                <TextBlock Foreground="Red" Text="{Binding ErrorMessage}" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="2"
+                Margin="15"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <Button
+                    Margin="10,0"
+                    Padding="10,5"
+                    Command="{Binding CancelCommand}"
+                    Content="{extensions:Translate Cancel}" />
+                <Button
+                    Padding="10,5"
+                    Command="{Binding SaveCommand}"
+                    Content="{extensions:Translate Save}" />
+            </StackPanel>
+        </Grid>
+    </sync:SfBusyIndicator>
+</UserControl>

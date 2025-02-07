@@ -1,0 +1,43 @@
+﻿<ViewCell
+    x:Class="AppFramework.Shared.Views.SenderImageTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls">
+
+    <ViewCell.View>
+        <controls:CustomShadowFrame
+            Margin="38,12,22,4"
+            Padding="0"
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            BorderWidth="0"
+            CornerRadius="4"
+            HasShadow="True"
+            HorizontalOptions="End">
+            <controls:CustomShadowFrame.Content>
+                <Grid Padding="2" VerticalOptions="FillAndExpand">
+                    <border:SfBorder BorderWidth="0" CornerRadius="5">
+                        <!--  Image  -->
+                        <Image
+                            BackgroundColor="{DynamicResource Gray-200}"
+                            HeightRequest="100"
+                            HorizontalOptions="Start"
+                            Source="{Binding Message, Converter={StaticResource UrlToImageConverter}}"
+                            VerticalOptions="Fill"
+                            WidthRequest="100" />
+                    </border:SfBorder>
+
+                    <!--  Time  -->
+                    <Label
+                        Margin="5,0"
+                        FontFamily="Montserrat-Medium"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        Text="{Binding CreationTime, StringFormat='{0:h:mm tt}'}"
+                        TextColor="{DynamicResource Gray-White}"
+                        VerticalOptions="End" />
+                </Grid>
+            </controls:CustomShadowFrame.Content>
+        </controls:CustomShadowFrame>
+    </ViewCell.View>
+</ViewCell>

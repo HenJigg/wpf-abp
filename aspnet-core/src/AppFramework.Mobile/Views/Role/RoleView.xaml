@@ -1,0 +1,87 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.RoleView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:control="clr-namespace:AppFramework.Shared.Controls"
+    xmlns:effect="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:perm="clr-namespace:AppFramework.Shared"
+    xmlns:refresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms">
+    <Grid BackgroundColor="{DynamicResource Gray-100}">
+        <refresh:SfPullToRefresh IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding RefreshCommand}">
+            <refresh:SfPullToRefresh.PullableContent>
+                <ScrollView>
+                    <StackLayout
+                        x:Name="stackLayoutList"
+                        BindableLayout.ItemsSource="{Binding dataPager.GridModelList}"
+                        Spacing="8">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <control:CustomShadowFrame
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="{DynamicResource Gray-Bg}"
+                                    BorderColor="{DynamicResource Gray-Bg}"
+                                    CornerRadius="4"
+                                    HasShadow="True"
+                                    HeightRequest="80"
+                                    Radius="4">
+                                    <effect:SfEffectsView
+                                        RippleColor="{DynamicResource Gray-300}"
+                                        TouchDownEffects="Ripple"
+                                        TouchUpCommand="{Binding Path=BindingContext.EditCommand, Source={x:Reference stackLayoutList}}"
+                                        TouchUpCommandParameter="{Binding}">
+                                        <Grid
+                                            Padding="10"
+                                            BackgroundColor="{DynamicResource Gray-Bg}"
+                                            RowSpacing="2">
+                                            <StackLayout Margin="5" HorizontalOptions="Start">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Style="{StaticResource SimpleLabelStyle}" Text="{Binding DisplayName}" />
+
+                                                    <border:SfBorder
+                                                        Padding="5,2"
+                                                        BackgroundColor="{DynamicResource PrimaryColor}"
+                                                        BorderWidth="0"
+                                                        CornerRadius="30"
+                                                        IsVisible="{Binding IsStatic}">
+                                                        <Label
+                                                            Style="{StaticResource SimpleLabelStyle}"
+                                                            Text="{extensions:Translate Static}"
+                                                            TextColor="{DynamicResource Gray-White}" />
+                                                    </border:SfBorder>
+
+                                                    <border:SfBorder
+                                                        Padding="5,2"
+                                                        BackgroundColor="#202020"
+                                                        BorderWidth="0"
+                                                        CornerRadius="30"
+                                                        IsVisible="{Binding IsDefault}">
+                                                        <Label
+                                                            Style="{StaticResource SimpleLabelStyle}"
+                                                            Text="{extensions:Translate Default}"
+                                                            TextColor="{DynamicResource Gray-White}" />
+                                                    </border:SfBorder>
+                                                </StackLayout>
+
+                                                <Label Style="{StaticResource SimpleLabelStyle}" Text="{Binding CreationTime}" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </effect:SfEffectsView>
+                                </control:CustomShadowFrame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+            </refresh:SfPullToRefresh.PullableContent>
+        </refresh:SfPullToRefresh>
+
+        <buttons:SfButton
+            Margin="0,0,10,10"
+            Command="{Binding AddCommand}"
+            IsVisible="{extensions:HasPermission Text={x:Static perm:AppPermissions.RoleCreate}}"
+            Style="{StaticResource AddButtonStyle}" />
+    </Grid>
+</ContentView>

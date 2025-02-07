@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CubeDimensionBrowser_RightClick_Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="CubeDimensionBrowser_RightClick_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Caption" xml:space="preserve">
+    <value>Caption</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Expression" xml:space="preserve">
+    <value>Expression</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Format" xml:space="preserve">
+    <value>Format string</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Title" xml:space="preserve">
+    <value>Calculated Member Editor</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Type" xml:space="preserve">
+    <value>Member Type</value>
+  </data>
+  <data name="OlapTools_Editor_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="OlapTools_Editor_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="OlapTools_Editor_MoveDown" xml:space="preserve">
+    <value>Move Down</value>
+  </data>
+  <data name="OlapTools_Editor_MoveUp" xml:space="preserve">
+    <value>Move Up</value>
+  </data>
+  <data name="OlapTools_Editor_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OlapTools_Editor_SplitButton_Delete_ToolTip" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="OlapTools_Editor_SplitButton_MoveDown_ToolTip" xml:space="preserve">
+    <value>Move Down</value>
+  </data>
+  <data name="OlapTools_Editor_SplitButton_MoveUp_ToolTip" xml:space="preserve">
+    <value>Move Up</value>
+  </data>
+  <data name="OlapTools_MeasureEditor_CheckAll_UnCheckAll" xml:space="preserve">
+    <value>Check/Uncheck All</value>
+  </data>
+  <data name="OlapTools_MeasureEditor_Remove_ContextMenu" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="OlapTools_MeasureEditor_Title" xml:space="preserve">
+    <value>Measure Editor</value>
+  </data>
+  <data name="OlapTools_MemberEditor_CheckAll_UnCheckAll" xml:space="preserve">
+    <value>Check / UnCheck All</value>
+  </data>
+  <data name="OlapTools_MemberEditor_Title" xml:space="preserve">
+    <value>Member Editor</value>
+  </data>
+  <data name="OlapTools_SubsetFilter_DropDown_Text" xml:space="preserve">
+    <value>Max number of records to be displayed.</value>
+  </data>
+  <data name="OlapTools_HierarchySelector_Cancel_Button" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="OlapTools_HierarchySelector_Ok_Button" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OlapTools_HierarchySelector_TextBoxTitle" xml:space="preserve">
+    <value>Select Hierarchy</value>
+  </data>
+  <data name="OlapTools_HierarchySelector_Title" xml:space="preserve">
+    <value>Hierarchy Selector</value>
+  </data>
+  <data name="OlapTools_KpiEditor_CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Goal" xml:space="preserve">
+    <value>Goal</value>
+  </data>
+  <data name="OlapTools_KpiEditor_GoalExpression" xml:space="preserve">
+    <value>Goal Expression</value>
+  </data>
+  <data name="OlapTools_KpiEditor_name" xml:space="preserve">
+    <value>KPI Name</value>
+  </data>
+  <data name="OlapTools_KpiEditor_OkButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="OlapTools_KpiEditor_StatusExpression" xml:space="preserve">
+    <value>Status Expression</value>
+  </data>
+  <data name="OlapTools_KpiEditor_StatusIndicator" xml:space="preserve">
+    <value>Status Indicator</value>
+  </data>
+  <data name="OlapTools_KpiEditor_title" xml:space="preserve">
+    <value>KPI Editor</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Trend" xml:space="preserve">
+    <value>Trend</value>
+  </data>
+  <data name="OlapTools_KpiEditor_TrendExpression" xml:space="preserve">
+    <value>Trend Expression</value>
+  </data>
+  <data name="OlapTools_KpiEditor_TrendIndicator" xml:space="preserve">
+    <value>Trend Indicator</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="OlapTools_KpiEditor_ValueExpression" xml:space="preserve">
+    <value>Value Expression</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Shapes" xml:space="preserve">
+    <value>Shapes</value>
+  </data>
+  <data name="OlapTools_KpiEditor_StandardArrow" xml:space="preserve">
+    <value>Standard Arrow</value>
+  </data>
+  <data name="OlapTools_KpiEditor_TrafficLight" xml:space="preserve">
+    <value>Traffic Light</value>
+  </data>
+  <data name="OlapTools_HierarchySelector_Skip_Button" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+  <data name="OlapClient_Loading_Indicator_Text" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="AxisElementBuilder_RightClick_Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="OlapTools_AxisElementBuilder_Warning_Title" xml:space="preserve">
+    <value>Exception Message: AxisElementBuilder</value>
+  </data>
+  <data name="OlapTools_AxisElementBuilder_Exception_MeasureKPI" xml:space="preserve">
+    <value>Measure and KPI should be in same axis</value>
+  </data>
+  <data name="OlapTools_AxisElementBuilder_Exception_ElementExist" xml:space="preserve">
+    <value>This element already exists in the current axis.</value>
+  </data>
+  <data name="OlapTools_AxisElementBuilder_Exception_KpiCalcMeasureSlicer" xml:space="preserve">
+    <value>Since KPI is a calculated measure, it cannot be sliced.</value>
+  </data>
+  <data name="OlapTools_AxisElementBuilder_Exception_MeasureKpiDrop" xml:space="preserve">
+    <value>KPI cannot be dropped without measure.</value>
+  </data>
+  <data name="OlapTools_AxisElementBuilder_Exception_MeasureVirtualKpi" xml:space="preserve">
+    <value>Measure and Virtual KPI should be in same axis.</value>
+  </data>
+  <data name="OlapTools_AxisElementBuilder_Exception_MeasureVirtualKpiDrop" xml:space="preserve">
+    <value>Virtual KPI cannot be dropped without measure.</value>
+  </data>
+  <data name="OlapTools_AxisElementBuilder_Exception_NamedSetSlicer" xml:space="preserve">
+    <value>Named set cannot be present in slicer axis if the parent dimension exists in any other axis.</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Exception_CaptionNameExist" xml:space="preserve">
+    <value>Caption name already exists.</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Exception_CaptionText" xml:space="preserve">
+    <value>Caption text should be non-empty.</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Exception_CaptionTextExist" xml:space="preserve">
+    <value>Either the caption text is empty or already exist.</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Exception_ExpressionText" xml:space="preserve">
+    <value>Expression text should be non-empty.</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Exception_MeasureSlicer" xml:space="preserve">
+    <value>More than one measure cannot be sliced.</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Exception_ParentDimension" xml:space="preserve">
+    <value>Please select the parent dimension.</value>
+  </data>
+  <data name="OlapTools_CubeSelector_Title" xml:space="preserve">
+    <value>Cube Selector</value>
+  </data>
+  <data name="OlapTools_Exception_Title" xml:space="preserve">
+    <value>Exception Message</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Exception_KpiNameExist" xml:space="preserve">
+    <value>KPI with same name already exists. Please enter a different name.</value>
+  </data>
+  <data name="OlapTools_AxisElementBuilder_Exception_VirtualKpiCalcMeasureSlicer" xml:space="preserve">
+    <value>Since Virtual KPI is a calculated measure, it cannot be sliced.</value>
+  </data>
+  <data name="OlapTools_AxisElementBuilder_Exception_OlapDataManager" xml:space="preserve">
+    <value>OlapDataManager is null.</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Exception_GoalExpression" xml:space="preserve">
+    <value>Goal expression should be non-empty.</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Exception_KpiName" xml:space="preserve">
+    <value>KPI Name should be non-empty.</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Exception_StatusExpression" xml:space="preserve">
+    <value>Status expression should be non-empty.</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Exception_TrendExpression" xml:space="preserve">
+    <value>Trend expression should be non-empty.</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Exception_ValueExpression" xml:space="preserve">
+    <value>Value expression should be non-empty.</value>
+  </data>
+  <data name="OlapTools_KpiEditor_Exception_ValueGoalMeasure" xml:space="preserve">
+    <value>Value and Goal expressions should be framed only with measures.</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Dimension" xml:space="preserve">
+    <value>Dimension</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Measure" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Percent" xml:space="preserve">
+    <value>Percent</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Exception_ElementDrop" xml:space="preserve">
+    <value>Expression should be framed only with Measure or Dimension.</value>
+  </data>
+  <data name="OlapTools_CalcMemberEditor_Exception_Title" xml:space="preserve">
+    <value>Update Error</value>
+  </data>
+  <data name="StackTrace_Exception_Description" xml:space="preserve">
+    <value>For more details, please refer the log file from : </value>
+  </data>
+</root>

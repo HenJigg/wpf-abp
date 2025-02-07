@@ -1,0 +1,114 @@
+﻿<ContentPage
+    x:Class="AppFramework.Shared.Views.OrganizationDetailsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls;assembly=AppFramework.Shared"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:tab="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms">
+    <Grid
+        Padding="15"
+        BackgroundColor="{DynamicResource GrayShadowColor}"
+        RowDefinitions="auto,*,auto">
+
+        <StackLayout>
+            <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                <controls:BorderlessEntry
+                    Placeholder="{extensions:Translate OrganizationUnits}"
+                    Style="{StaticResource BorderlessEntryStyle}"
+                    Text="{Binding OrganizationUnit.DisplayName, Mode=TwoWay}" />
+            </border:SfBorder>
+
+            <tab:SfTabView Grid.Row="1" EnableSwiping="False">
+                <tab:SfTabItem Title="{extensions:Translate AddMember}">
+                    <tab:SfTabItem.Content>
+                        <listView:SfListView
+                            x:Name="ListUsersView"
+                            BackgroundColor="{DynamicResource GrayShadowColor}"
+                            ItemsSource="{Binding UserModelList}"
+                            Style="{StaticResource DefaultListViewStyle}">
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <SwipeView BackgroundColor="{DynamicResource Gray-Bg}">
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItem
+                                                    BackgroundColor="{DynamicResource Red}"
+                                                    Command="{Binding Path=BindingContext.DeleteUserCommand, Source={x:Reference ListUsersView}}"
+                                                    CommandParameter="{Binding}"
+                                                    Text="{extensions:Translate Remove}" />
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+
+                                        <Grid Padding="10">
+                                            <Label
+                                                Text="{Binding UserName}"
+                                                TextColor="{DynamicResource Gray-700}"
+                                                VerticalOptions="Center" />
+                                        </Grid>
+                                    </SwipeView>
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>
+                    </tab:SfTabItem.Content>
+                </tab:SfTabItem>
+
+                <tab:SfTabItem Title="{extensions:Translate AddRole}">
+                    <tab:SfTabItem.Content>
+                        <listView:SfListView
+                            x:Name="ListRolesView"
+                            BackgroundColor="{DynamicResource GrayShadowColor}"
+                            ItemsSource="{Binding RolesModelList}"
+                            Style="{StaticResource DefaultListViewStyle}">
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <SwipeView BackgroundColor="{DynamicResource Gray-Bg}">
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItem
+                                                    BackgroundColor="{DynamicResource Red}"
+                                                    Command="{Binding Path=BindingContext.DeleteRoleCommand, Source={x:Reference ListRolesView}}"
+                                                    CommandParameter="{Binding}"
+                                                    Text="{extensions:Translate Remove}" />
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+
+                                        <Grid Padding="10">
+                                            <Label
+                                                Text="{Binding DisplayName}"
+                                                TextColor="{DynamicResource Gray-700}"
+                                                VerticalOptions="Center" />
+                                        </Grid>
+                                    </SwipeView>
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>
+                    </tab:SfTabItem.Content>
+                </tab:SfTabItem>
+            </tab:SfTabView>
+
+            <buttons:SfButton
+                Command="{Binding GoBackCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Cancel}" />
+            <buttons:SfButton
+                Command="{Binding AddUsersCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate AddMember}" />
+            <buttons:SfButton
+                Command="{Binding AddRolesCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate AddRole}" />
+            <buttons:SfButton
+                Command="{Binding SaveCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Save}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

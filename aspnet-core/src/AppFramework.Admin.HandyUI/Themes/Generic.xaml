@@ -1,0 +1,155 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:AppFramework.Admin.HandyUI.Themes.Controls"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Shared;component/Themes/Generic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Admin.HandyUI;component/Themes/DataPager.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Admin.HandyUI;component/Themes/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Admin.HandyUI;component/Themes/Host/DialogHost.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Admin.HandyUI;component/Themes/TabControl.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <controls:NotConverter x:Key="NotConverter" />
+
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+    </Style>
+
+    <Style x:Key="closeTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="15" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Text" Value="{DynamicResource Close}" />
+        <Setter Property="FontFamily" Value="/Assets/Fonts/#iconfont" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Red" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style BasedOn="{StaticResource DataGridBaseStyle}" TargetType="DataGrid">
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="AutoGenerateColumns" Value="False" />
+        <Setter Property="RowHeight" Value="45" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="SelectionMode" Value="Single" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+
+    <Style x:Key="listMenuItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Padding" Value="10,3" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Grid>
+                        <Border
+                            x:Name="htborder"
+                            HorizontalAlignment="Left"
+                            Panel.ZIndex="1"
+                            Background="{DynamicResource PrimaryTextBrush}"
+                            CornerRadius="2"
+                            Opacity="1" />
+                        <Border
+                            x:Name="hdborder"
+                            Margin="0,2"
+                            Background="{DynamicResource BorderBrush}"
+                            CornerRadius="5" />
+                        <Border
+                            x:Name="border"
+                            Margin="0,2"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+                            <Setter TargetName="hdborder" Property="Opacity" Value="1" />
+                            <Setter TargetName="htborder" Property="Width" Value="3" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation
+                                            Storyboard.TargetName="htborder"
+                                            Storyboard.TargetProperty="Margin"
+                                            From="5"
+                                            To="5,10"
+                                            Duration="0:0:.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource BorderBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="hdborder" Property="Opacity" Value="0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:PopupBox}">
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Padding" Value="5,8" />
+        <Setter Property="PopupHorizontalOffset" Value="5" />
+        <Setter Property="PopupUniformCornerRadius" Value="2" />
+        <Setter Property="ToggleContent" Value="{extensions:Translate Actions}" />
+        <Setter Property="PopupVerticalOffset" Value="5" />
+        <Setter Property="ToolTipService.IsEnabled" Value="{Binding IsPopupOpen, RelativeSource={RelativeSource Self}, Converter={StaticResource NotConverter}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:PopupBox}">
+                    <Grid>
+                        <ToggleButton
+                            x:Name="PART_Toggle"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding ToggleContent}"
+                            ContentTemplate="{TemplateBinding ToggleContentTemplate}"
+                            IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsPopupOpen, Mode=TwoWay}"
+                            IsTabStop="{TemplateBinding IsTabStop}"
+                            Style="{StaticResource ToggleButtonDefault}"
+                            TabIndex="{TemplateBinding TabIndex}" />
+                        <controls:PopupEx
+                            x:Name="PART_Popup"
+                            AllowsTransparency="True"
+                            CustomPopupPlacementCallback="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PopupPlacementMethod}"
+                            HorizontalOffset="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PopupHorizontalOffset}"
+                            IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsPopupOpen, Mode=TwoWay}"
+                            Placement="Custom"
+                            PlacementTarget="{Binding ElementName=PART_Toggle}"
+                            PopupAnimation="Fade"
+                            VerticalOffset="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PopupVerticalOffset}">
+                            <controls:Card
+                                Padding="{TemplateBinding Padding}"
+                                Background="{DynamicResource RegionBrush}"
+                                Content="{TemplateBinding PopupContent}"
+                                ContentTemplate="{TemplateBinding PopupContentTemplate}"
+                                Foreground="{DynamicResource MaterialDesignBody}"
+                                RenderOptions.ClearTypeHint="Enabled"
+                                UniformCornerRadius="{TemplateBinding PopupUniformCornerRadius}" />
+                        </controls:PopupEx>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.38" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextElement.FontWeight" Value="Normal" />
+    </Style>
+</ResourceDictionary>

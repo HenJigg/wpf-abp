@@ -1,0 +1,60 @@
+﻿<ContentPage
+    x:Class="AppFramework.Shared.Views.DynamicPropertyDetailsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:combox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls;assembly=AppFramework.Shared"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:list="clr-namespace:System.Collections.Generic;assembly=netstandard">
+    <Grid BackgroundColor="{DynamicResource GrayShadowColor}">
+        <StackLayout Padding="10">
+            <!--  属性名称  -->
+            <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                <controls:BorderlessEntry
+                    Placeholder="{extensions:Translate PropertyName}"
+                    Style="{StaticResource BorderlessEntryStyle}"
+                    Text="{Binding Model.PropertyName}" />
+            </border:SfBorder>
+
+            <!--  显示名称  -->
+            <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                <controls:BorderlessEntry
+                    Placeholder="{extensions:Translate DisplayName}"
+                    Style="{StaticResource BorderlessEntryStyle}"
+                    Text="{Binding Model.DisplayName}" />
+            </border:SfBorder>
+
+            <!--  输入类型  -->
+            <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate InputType}" />
+            <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                <combox:SfComboBox Style="{StaticResource TextInputLayoutComboBoxStyle}" Text="{Binding Model.InputType}">
+                    <combox:SfComboBox.ComboBoxSource>
+                        <list:List x:TypeArguments="x:String">
+                            <x:String>SINGLE_LINE_STRING</x:String>
+                            <x:String>COMBOBOX</x:String>
+                            <x:String>CHECKBOX</x:String>
+                            <x:String>MULTISELECTCOMBOBOX</x:String>
+                        </list:List>
+                    </combox:SfComboBox.ComboBoxSource>
+                </combox:SfComboBox>
+            </border:SfBorder>
+
+            <!--  权限  -->
+            <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate Permissions}" />
+            <Picker Title="{extensions:Translate SelectPermissions}" SelectedItem="{Binding Model.Permission}" />
+
+            <buttons:SfButton
+                Command="{Binding GoBackCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Cancel}" />
+            <buttons:SfButton
+                Command="{Binding SaveCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Save}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

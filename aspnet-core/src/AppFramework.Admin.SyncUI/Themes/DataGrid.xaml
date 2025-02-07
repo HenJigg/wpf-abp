@@ -1,0 +1,36 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:grid="clr-namespace:Syncfusion.UI.Xaml.Grid;assembly=Syncfusion.SfGrid.WPF"
+    xmlns:sync="http://schemas.syncfusion.com/wpf">
+
+    <Style x:Key="DefaultHeaderStyle" TargetType="grid:GridHeaderCellControl">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="SimpleDataGridStyle" TargetType="grid:SfDataGrid">
+        <!--  禁用默认得Ctrl+C 复制行数据,防止模板列导致得复制异常闪退,如果需要启用复制功能,请针对模板列指定MappingName  -->
+        <Setter Property="GridCopyOption" Value="None" />
+        <Setter Property="HeaderLinesVisibility" Value="Horizontal" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="GridLinesVisibility" Value="Horizontal" />
+        <Setter Property="RowHeight" Value="40" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="NavigationMode" Value="Row" />
+        <Setter Property="ColumnSizer" Value="Star" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="AutoGenerateColumns" Value="False" />
+        <Setter Property="AllowDraggingColumns" Value="False" />
+        <!--  启用表格列筛选功能  -->
+        <Setter Property="AllowFiltering" Value="True" />
+        <Setter Property="SelectionMode" Value="Extended" />
+        <!--  列允许设置宽度  -->
+        <Setter Property="AllowResizingColumns" Value="True" />
+        <Setter Property="Margin" Value="10,0" />
+        <Setter Property="HeaderStyle" Value="{StaticResource DefaultHeaderStyle}" />
+    </Style>
+</ResourceDictionary>

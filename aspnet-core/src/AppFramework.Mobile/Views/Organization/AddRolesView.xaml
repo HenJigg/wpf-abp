@@ -1,0 +1,47 @@
+﻿<ContentPage
+    x:Class="AppFramework.Shared.Views.AddRolesView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms">
+    <controls:CustomShadowFrame
+        BackgroundColor="{DynamicResource GrayShadowColor}"
+        BorderWidth="0"
+        CornerRadius="4"
+        HasShadow="True"
+        HorizontalOptions="FillAndExpand"
+        Radius="4">
+        <Grid RowDefinitions="auto,*,auto" RowSpacing="4">
+            <SearchBar Placeholder="{extensions:Translate SearchWithThreeDot}" />
+
+            <listView:SfListView
+                Grid.Row="1"
+                ItemsSource="{Binding Values}"
+                SelectionBackgroundColor="Transparent">
+                <listView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding IsSelected}" />
+                            <Label Text="{Binding Value.Name}" VerticalOptions="Center" />
+                        </StackLayout>
+                    </DataTemplate>
+                </listView:SfListView.ItemTemplate>
+            </listView:SfListView>
+
+            <StackLayout Grid.Row="2">
+                <buttons:SfButton
+                    Command="{Binding GoBackCommand}"
+                    HorizontalOptions="Fill"
+                    Style="{StaticResource GradientButtonStyle}"
+                    Text="{extensions:Translate Cancel}" />
+                <buttons:SfButton
+                    Command="{Binding SaveCommand}"
+                    HorizontalOptions="Fill"
+                    Style="{StaticResource GradientButtonStyle}"
+                    Text="{extensions:Translate Save}" />
+            </StackLayout>
+        </Grid>
+    </controls:CustomShadowFrame>
+</ContentPage>

@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessCalendarText" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="AccessEmptyDateText" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="AccessTodayText" xml:space="preserve">
+    <value>Today :</value>
+  </data>
+  <data name="AccessWatchText" xml:space="preserve">
+    <value>Watch</value>
+  </data>
+  <data name="AddItem" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddToQAT" xml:space="preserve">
+    <value>Add to Quick Access Toolbar</value>
+  </data>
+  <data name="AutoHide" xml:space="preserve">
+    <value>Auto Hide</value>
+  </data>
+  <data name="AwlButtonTooltipText" xml:space="preserve">
+    <value>Auto Hide</value>
+  </data>
+  <data name="BackText" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Buttons" xml:space="preserve">
+    <value>Buttons</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CancelText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Choose commands from</value>
+  </data>
+  <data name="CloseAllButThis" xml:space="preserve">
+    <value>Close All But This</value>
+  </data>
+  <data name="CloseButtonTooltipText" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CloseTooltip" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ContextMenuButtonTooltipText" xml:space="preserve">
+    <value>Context Menu</value>
+  </data>
+  <data name="MaximizeButtonTooltipText" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="MinimizeButtonTooltipText" xml:space="preserve">
+    <value>Minimize</value>
+  </data>
+  <data name="RestoreButtonTooltipText" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="CustomizeQAT" xml:space="preserve">
+    <value>Customize Quick Access Toolbar</value>
+  </data>
+  <data name="CustomizeQATContextMenu" xml:space="preserve">
+    <value>Customize Quick Access Toolbar...</value>
+  </data>
+  <data name="Dockable" xml:space="preserve">
+    <value>Dockable</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="FinishText" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="FloatButtonTooltipText" xml:space="preserve">
+    <value>Float</value>
+  </data>
+  <data name="Floating" xml:space="preserve">
+    <value>Floating</value>
+  </data>
+  <data name="GroupbarMItemAddItem" xml:space="preserve">
+    <value>Add Item</value>
+  </data>
+  <data name="GroupbarMItemAddTab" xml:space="preserve">
+    <value>Add Tab</value>
+  </data>
+  <data name="GroupbarMItemCopy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="GroupbarMItemCut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="GroupbarMItemDeleteItem" xml:space="preserve">
+    <value>Delete Item</value>
+  </data>
+  <data name="GroupbarMItemDeleteTab" xml:space="preserve">
+    <value>Delete Tab</value>
+  </data>
+  <data name="GroupbarMItemListView" xml:space="preserve">
+    <value>List View</value>
+  </data>
+  <data name="GroupbarMItemMoveDown" xml:space="preserve">
+    <value>Move Down</value>
+  </data>
+  <data name="GroupbarMItemMoveUp" xml:space="preserve">
+    <value>Move Up</value>
+  </data>
+  <data name="GroupbarMItemPaste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="GroupbarMItemRenameItem" xml:space="preserve">
+    <value>Rename Item</value>
+  </data>
+  <data name="GroupbarMItemRenameTab" xml:space="preserve">
+    <value>Rename Tab</value>
+  </data>
+  <data name="GroupbarMItemSortAsc" xml:space="preserve">
+    <value>Sort Asc</value>
+  </data>
+  <data name="GroupbarMItemSortDec" xml:space="preserve">
+    <value>Sort Dec</value>
+  </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="MaximizeRibbon" xml:space="preserve">
+    <value>Maximize Ribbon</value>
+  </data>
+  <data name="MaximizeTooltip" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="MDIClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="MDIDockable" xml:space="preserve">
+    <value>Dockable</value>
+  </data>
+  <data name="MDIDocument" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="MDIFloating" xml:space="preserve">
+    <value>Floating</value>
+  </data>
+  <data name="MDIMaximize" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="MDIMinimize" xml:space="preserve">
+    <value>Minimize</value>
+  </data>
+  <data name="MDIMove" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="MDIResize" xml:space="preserve">
+    <value>Resize</value>
+  </data>
+  <data name="MDIRestore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="MinimizeRibbon" xml:space="preserve">
+    <value>Minimize Ribbon</value>
+  </data>
+  <data name="MinimizeTooltip" xml:space="preserve">
+    <value>Minimize</value>
+  </data>
+  <data name="FullScreenTooltip" xml:space="preserve">
+    <value>FullScreenMode</value>
+  </data>
+  <data name="Modify" xml:space="preserve">
+    <value>Modify...</value>
+  </data>
+  <data name="MoveToNextTabGroup" xml:space="preserve">
+    <value>Move To Next Tab Group</value>
+  </data>
+  <data name="MoveToPreviousTabGroup" xml:space="preserve">
+    <value>Move To Previous Tab Group</value>
+  </data>
+  <data name="NewHorizontalTabGroup" xml:space="preserve">
+    <value>New Horizontal Tab Group</value>
+  </data>
+  <data name="NewVerticalTabGroup" xml:space="preserve">
+    <value>New Vertical Tab Group</value>
+  </data>
+  <data name="NextText" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="QAT" xml:space="preserve">
+    <value>Quick Access Toolbar</value>
+  </data>
+  <data name="QATMoreCommands" xml:space="preserve">
+    <value>More Commands...</value>
+  </data>
+  <data name="QATResetContent" xml:space="preserve">
+    <value>Are you sure you want to restore the Quick Access Toolbar to its defaults content?</value>
+  </data>
+  <data name="QATResetTitle" xml:space="preserve">
+    <value>Reset Customizations</value>
+  </data>
+  <data name="QATShowAbove" xml:space="preserve">
+    <value>Show Quick Access Toolbar Above the Ribbon</value>
+  </data>
+  <data name="QATShowBelow" xml:space="preserve">
+    <value>Show Quick Access Toolbar Below the Ribbon</value>
+  </data>
+  <data name="RemoveFromQAT" xml:space="preserve">
+    <value>Remove from Quick Access Toolbar</value>
+  </data>
+  <data name="RemoveItem" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="RestoreTooltip" xml:space="preserve">
+    <value>Restore Down</value>
+  </data>
+  <data name="Showfewerbuttons" xml:space="preserve">
+    <value>Show fewer buttons</value>
+  </data>
+  <data name="Showmorebuttons" xml:space="preserve">
+    <value>Show more buttons</value>
+  </data>
+  <data name="ShowQATBelow" xml:space="preserve">
+    <value>Show Quick Access Toolbar below the Ribbon</value>
+  </data>
+  <data name="Tabbed" xml:space="preserve">
+    <value>Tabbed</value>
+  </data>
+  <data name="TabClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="TabCloseAll" xml:space="preserve">
+    <value>Close All</value>
+  </data>
+  <data name="QATDuplicateAlert" xml:space="preserve">
+    <value>The selected command is already on the Quick Access Toolbar</value>
+  </data>
+  <data name="QATAllCommandsCaption" xml:space="preserve">
+    <value>All Commands</value>
+  </data>
+  <data name="QATRibbonMenuCaption" xml:space="preserve">
+    <value>Ribbon Menu</value>
+  </data>
+  <data name="QATTabCaption" xml:space="preserve">
+    <value>Tab</value>
+  </data>
+  <data name="MenuItemCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="NewTabgroup" xml:space="preserve">
+    <value>New Tab Group</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>Minimize</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="BackStageButtonHeader" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="ApplicationMenuButtonHeader" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="LoadOnDemandHeader" xml:space="preserve">
+    <value>Loading....</value>
+  </data>
+  <data name="CustomizeRibbon" xml:space="preserve">
+    <value>Customize Ribbon</value>
+  </data>
+  <data name="CustomizeRibbonLabel" xml:space="preserve">
+    <value>Customize the Ribbon</value>
+  </data>
+  <data name="DeleteItem" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="NewBar" xml:space="preserve">
+    <value>New Group</value>
+  </data>
+  <data name="NewTab" xml:space="preserve">
+    <value>New Tab</value>
+  </data>
+  <data name="RenameItem" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="CustomizationLabel" xml:space="preserve">
+    <value>Customizations :</value>
+  </data>
+  <data name="CustomizeQATHeader" xml:space="preserve">
+    <value>Customize Ribbon</value>
+  </data>
+  <data name="ResetAll" xml:space="preserve">
+    <value>Reset all customizations</value>
+  </data>
+  <data name="ResetSelectedTab" xml:space="preserve">
+    <value>Reset only selected Ribbon tab</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Display Name :</value>
+  </data>
+  <data name="DeleteSeletedRibbonCustomization" xml:space="preserve">
+    <value>Are you sure want to delete Ribbon tabs/bars customizations?</value>
+  </data>
+  <data name="DeleteAllHeader" xml:space="preserve">
+    <value>Reset Ribbon Customization</value>
+  </data>
+  <data name="DeleteAllRibbonCustomization" xml:space="preserve">
+    <value>Are you sure want to delete all Ribbon customizations?</value>
+  </data>
+  <data name="DeleteCustomizationHeader" xml:space="preserve">
+    <value>Delete Ribbon tabs/bars Customization</value>
+  </data>
+  <data name="NewBarInTreeView" xml:space="preserve">
+    <value>New Bar</value>
+  </data>
+  <data name="CustomizationWarning" xml:space="preserve">
+    <value>Commands can only be added to custom groups.
+
+To add a custom group,click the tab where you want the group to appear,and then click New Group.</value>
+  </data>
+  <data name="CustomizationItemWarning" xml:space="preserve">
+    <value>Selected item already present in that group</value>
+  </data>
+  <data name="WarningHeader" xml:space="preserve">
+    <value>Ribbon Customization</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Topmost" xml:space="preserve">
+    <value>Topmost</value>
+  </data>
+  <data name="QATToolTip" xml:space="preserve">
+    <value>Customize Quick Access Toolbar</value>
+  </data>
+  <data name="CardViewHeader" xml:space="preserve">
+    <value>Drag a column header here to group by that column</value>
+  </data>
+  <data name="CardViewClearFilter" xml:space="preserve">
+    <value>Clear Filter</value>
+  </data>
+  <data name="VerticalSplit" xml:space="preserve">
+    <value>Vertical Split</value>
+  </data>
+  <data name="HorizontalSplit" xml:space="preserve">
+    <value>Horizontal Split</value>
+  </data>
+  <data name="SwapPanes" xml:space="preserve">
+    <value>Swap Panes</value>
+  </data>
+  <data name="CollapsePane" xml:space="preserve">
+    <value>Collapse Pane</value>
+  </data>
+  <data name="ExpandPane" xml:space="preserve">
+    <value>Expand Pane</value>
+  </data>
+  <data name="PinTab" xml:space="preserve">
+    <value>Pin Tab</value>
+  </data>
+  <data name="UnpinTab" xml:space="preserve">
+    <value>Unpin Tab</value>
+  </data>
+  <data name="RenameWindowTitle" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="Dock" xml:space="preserve">
+    <value>Dock</value>
+  </data>
+  <data name="Float" xml:space="preserve">
+    <value>Float</value>
+  </data>
+  <data name="QATCommandsNotInRibbonCaption" xml:space="preserve">
+    <value>Commands Not in the Ribbon</value>
+  </data>
+  <data name="MoreTabs" xml:space="preserve">
+    <value>More Tabs</value>
+  </data>
+  <data name="FirstTab" xml:space="preserve">
+    <value>First Tab</value>
+  </data>
+  <data name="LastTab" xml:space="preserve">
+    <value>Last Tab</value>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Next Page</value>
+  </data>
+  <data name="NextTab" xml:space="preserve">
+    <value>Next Tab</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Previous Page</value>
+  </data>
+  <data name="PreviousTab" xml:space="preserve">
+    <value>Previous Tab</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="NewHorizontalDocumentGroup" xml:space="preserve">
+    <value>New Horizontal Document Group</value>
+  </data>
+  <data name="NewVerticalDocumentGroup" xml:space="preserve">
+    <value>New Vertical Document Group</value>
+  </data>
+  <data name="DockAsTabbedDocument" xml:space="preserve">
+    <value>Dock As Tabbed Document</value>
+  </data>
+</root>

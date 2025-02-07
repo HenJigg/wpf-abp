@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="ReceiverTextTemplate">
+        <Border
+            Padding="10"
+            HorizontalAlignment="Left"
+            Background="WhiteSmoke"
+            CornerRadius="5">
+            <TextBlock Foreground="Black" Text="{Binding Message}" />
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SenderTextTemplate">
+        <Border
+            Margin="5,0"
+            Padding="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Background="WhiteSmoke"
+            CornerRadius="5">
+            <TextBlock Foreground="Black" Text="{Binding Message}" />
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

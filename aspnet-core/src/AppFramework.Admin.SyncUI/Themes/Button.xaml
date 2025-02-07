@@ -1,0 +1,212 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sync="http://schemas.syncfusion.com/wpf">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Syncfusion.Themes.MaterialDark.WPF;component/MSControl/Button.xaml" />
+        <ResourceDictionary Source="/Syncfusion.Themes.MaterialDark.WPF;component/DropDownButtonAdv/DropDownButtonAdv.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="WPFButtonTemplate" TargetType="{x:Type Button}">
+        <Grid>
+            <Border
+                x:Name="border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="3"
+                SnapsToDevicePixels="true">
+                <ContentPresenter
+                    x:Name="contentPresenter"
+                    Margin="{TemplateBinding Padding}"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Focusable="False"
+                    RecognizesAccessKey="True"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                    <ContentPresenter.Resources>
+                        <Style BasedOn="{x:Null}" TargetType="{x:Type TextBlock}" />
+                    </ContentPresenter.Resources>
+                </ContentPresenter>
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsDefaulted" Value="true">
+                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource BorderAlt3}" />
+            </Trigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Opacity" Value="0.6" />
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter TargetName="border" Property="Background" Value="{DynamicResource SecondaryBackgroundDisabled}" />
+                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource SecondaryBorderDisabled}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="SimpleButton" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}" />
+        <Setter Property="Background" Value="{DynamicResource SecondaryBackground}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="MinWidth" Value="50" />
+        <Setter Property="Padding" Value="10,5" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="Microsoft YaHei" />
+        <Setter Property="Template" Value="{StaticResource WPFButtonTemplate}" />
+    </Style>
+
+    <Style
+        x:Key="SearchButtonStyle"
+        BasedOn="{StaticResource SimpleButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Content" Value="&#xe633;" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="FontFamily" Value="/Assets/Fonts/#iconfont" />
+    </Style>
+
+    <Style
+        x:Key="IconButtonStyle"
+        BasedOn="{StaticResource SimpleButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}" />
+        <Setter Property="Background" Value="{DynamicResource SecondaryBackground}" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="FontFamily" Value="/Assets/Fonts/#iconfont" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="OperationButtonStyle" TargetType="{x:Type sync:DropDownButtonAdv}">
+        <Setter Property="FontFamily" Value="Microsoft YaHei" />
+        <Setter Property="Margin" Value="5,0" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackground}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sync:DropDownButtonAdv}">
+                    <Grid>
+                        <Border
+                            Name="ItemBorder"
+                            MinHeight="30"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="3"
+                            SnapsToDevicePixels="True">
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition x:Name="dropDownColumn" Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <TextBlock
+                                        x:Name="PART_Text"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        FontFamily="{TemplateBinding FontFamily}"
+                                        FontSize="{TemplateBinding FontSize}"
+                                        FontWeight="{TemplateBinding FontWeight}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Text="{TemplateBinding Label}" />
+                                </Grid>
+                                <Path
+                                    x:Name="Arrow"
+                                    Grid.Column="1"
+                                    Width="12"
+                                    Height="6"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Fill="{TemplateBinding Foreground}">
+                                    <Path.Data>
+                                        <PathGeometry>M4.9960045,0 L10.008001,5.6040001 9.2630047,6.2709999 4.9960045,1.5 0.74499548,6.2530002 0,5.5860004 z</PathGeometry>
+                                    </Path.Data>
+                                    <Path.Margin>
+                                        <Thickness>0,2,0,0</Thickness>
+                                    </Path.Margin>
+                                    <Path.LayoutTransform>
+                                        <RotateTransform Angle="180" />
+                                    </Path.LayoutTransform>
+                                </Path>
+                            </Grid>
+                        </Border>
+
+                        <Popup
+                            x:Name="PART_DropDown"
+                            AllowsTransparency="True"
+                            Placement="Bottom"
+                            StaysOpen="{TemplateBinding StaysOpen}">
+                            <Border
+                                MinWidth="{TemplateBinding MinWidth}"
+                                MinHeight="{TemplateBinding MinHeight}"
+                                Background="{DynamicResource PopupBackground}"
+                                BorderThickness="1"
+                                CornerRadius="3">
+                                <Border.Margin>
+                                    <Thickness>6,1,6,6</Thickness>
+                                </Border.Margin>
+                                <Border.Padding>
+                                    <Thickness>0,4,0,4</Thickness>
+                                </Border.Padding>
+                                <ContentPresenter />
+                            </Border>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="SizeMode" Value="Small">
+                            <Setter TargetName="dropDownColumn" Property="Width" Value="Auto" />
+                            <Setter TargetName="Arrow" Property="Margin" Value="2,1,2,1" />
+                            <Setter TargetName="PART_Text" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Border.Background" Value="{DynamicResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="ItemBorder" Property="Border.BorderBrush" Value="{DynamicResource SecondaryBorderHovered}" />
+                            <Setter TargetName="PART_Text" Property="TextBlock.Foreground" Value="{DynamicResource SecondaryForegroundHovered}" />
+                            <Setter Property="Foreground" Value="{DynamicResource SecondaryForegroundHovered}" />
+                            <Setter TargetName="Arrow" Property="Path.Fill" Value="{DynamicResource SecondaryForegroundHovered}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="ItemBorder" Property="Border.Background" Value="{DynamicResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="ItemBorder" Property="Border.BorderBrush" Value="{DynamicResource SecondaryBorderHovered}" />
+                            <Setter TargetName="PART_Text" Property="TextBlock.Foreground" Value="{DynamicResource SecondaryForegroundHovered}" />
+                            <Setter Property="Foreground" Value="{DynamicResource SecondaryForegroundHovered}" />
+                            <Setter TargetName="Arrow" Property="Path.Fill" Value="{DynamicResource SecondaryForegroundHovered}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Border.Background" Value="{DynamicResource SecondaryBackgroundSelected}" />
+                            <Setter TargetName="ItemBorder" Property="Border.BorderBrush" Value="{DynamicResource SecondaryBorderSelected}" />
+                            <Setter TargetName="PART_Text" Property="TextBlock.Foreground" Value="{DynamicResource SecondaryForegroundSelected}" />
+                            <Setter Property="Foreground" Value="{DynamicResource SecondaryForegroundSelected}" />
+                            <Setter TargetName="Arrow" Property="Path.Fill" Value="{DynamicResource SecondaryBackgroundSelected}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ItemBorder" Property="Border.Background" Value="{DynamicResource SecondaryBackgroundDisabled}" />
+                            <Setter TargetName="ItemBorder" Property="Border.BorderBrush" Value="{DynamicResource SecondaryBorderDisabled}" />
+                            <Setter TargetName="PART_Text" Property="TextBlock.Foreground" Value="{DynamicResource SecondaryForegroundDisabled}" />
+                            <Setter Property="Foreground" Value="{DynamicResource SecondaryForegroundDisabled}" />
+                            <Setter TargetName="Arrow" Property="Path.Fill" Value="{DynamicResource IconColorDisabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource SimpleButton}" TargetType="{x:Type Button}" />
+
+</ResourceDictionary>

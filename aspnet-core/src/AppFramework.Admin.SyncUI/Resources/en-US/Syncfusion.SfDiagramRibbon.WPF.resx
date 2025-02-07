@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="A3" xml:space="preserve">
+    <value>A3</value>
+  </data>
+  <data name="A4" xml:space="preserve">
+    <value>A4</value>
+  </data>
+  <data name="A5" xml:space="preserve">
+    <value>A5</value>
+  </data>
+  <data name="Abc" xml:space="preserve">
+    <value>Abc</value>
+  </data>
+  <data name="Align" xml:space="preserve">
+    <value>Align</value>
+  </data>
+  <data name="AlignBottomScreenTipText" xml:space="preserve">
+    <value>Align Bottom</value>
+  </data>
+  <data name="AlignBottomText" xml:space="preserve">
+    <value>Align text to the bottom of the text block.</value>
+  </data>
+  <data name="AlignCenterScreenTipText" xml:space="preserve">
+    <value>Align Center</value>
+  </data>
+  <data name="AlignCenterText" xml:space="preserve">
+    <value>Center your content.</value>
+  </data>
+  <data name="AlignLeftScreenTipText" xml:space="preserve">
+    <value>Align Left</value>
+  </data>
+  <data name="AlignLeftText" xml:space="preserve">
+    <value>Align your content to the left.</value>
+  </data>
+  <data name="Alignment" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="AlignmentHeader" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="AlignMiddleScreenTipText" xml:space="preserve">
+    <value>Align Middle</value>
+  </data>
+  <data name="AlignMiddleText" xml:space="preserve">
+    <value>Align text so that it is centered between top and bottom of the text block.</value>
+  </data>
+  <data name="AlignRightScreenTipText" xml:space="preserve">
+    <value>Align Right</value>
+  </data>
+  <data name="AlignRightText" xml:space="preserve">
+    <value>Align your content to the right.</value>
+  </data>
+  <data name="AlignText" xml:space="preserve">
+    <value>Position shapes on the page by changing their alignment.</value>
+  </data>
+  <data name="AlignTopScreenTipText" xml:space="preserve">
+    <value>Align Top</value>
+  </data>
+  <data name="AlignTopText" xml:space="preserve">
+    <value>Align text to the top of the text block.</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="AllowThemes" xml:space="preserve">
+    <value>Allow Themes</value>
+  </data>
+  <data name="ApplyThemesShapes" xml:space="preserve">
+    <value>Apply Themes to New Shapes</value>
+  </data>
+  <data name="Arrange" xml:space="preserve">
+    <value>Arrange</value>
+  </data>
+  <data name="Arrows" xml:space="preserve">
+    <value>Arrows</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="Backgrounds" xml:space="preserve">
+    <value>Backgrounds</value>
+  </data>
+  <data name="BackgroundTooltipText" xml:space="preserve">
+    <value>Apply a background style to the page.</value>
+  </data>
+  <data name="BalancedAccent1" xml:space="preserve">
+    <value>Balanced Effect, Variant Accent1</value>
+  </data>
+  <data name="BalancedAccent2" xml:space="preserve">
+    <value>Balanced Effect, Variant Accent2</value>
+  </data>
+  <data name="BalancedAccent3" xml:space="preserve">
+    <value>Balanced Effect, Variant Accent3</value>
+  </data>
+  <data name="BalancedAccent4" xml:space="preserve">
+    <value>Balanced Effect, Variant Accent4</value>
+  </data>
+  <data name="BalancedAccent5" xml:space="preserve">
+    <value>Balanced Effect, Variant Accent5</value>
+  </data>
+  <data name="BalancedAccent6" xml:space="preserve">
+    <value>Balanced Effect, Variant Accent6</value>
+  </data>
+  <data name="BalancedAccent7" xml:space="preserve">
+    <value>Balanced Effect, Variant Accent7</value>
+  </data>
+  <data name="Bezier" xml:space="preserve">
+    <value>Bezier</value>
+  </data>
+  <data name="BoldScreenTip" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="BoldToolTip" xml:space="preserve">
+    <value>Make your text Bold</value>
+  </data>
+  <data name="Bridging" xml:space="preserve">
+    <value>Bridging</value>
+  </data>
+  <data name="BringForward" xml:space="preserve">
+    <value>Bring Forward</value>
+  </data>
+  <data name="BringForwardTooltipText" xml:space="preserve">
+    <value>Bring the selected object forward one level so that it's hidden behind fewer objects.</value>
+  </data>
+  <data name="BringToFront" xml:space="preserve">
+    <value>Bring To Front</value>
+  </data>
+  <data name="BringToFrontTooltipText" xml:space="preserve">
+    <value>Bring the selected object in front of all other objects.</value>
+  </data>
+  <data name="BubbleTheme" xml:space="preserve">
+    <value>Bubble Theme</value>
+  </data>
+  <data name="Clipboard" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="ClipboardHeader" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CloudsTheme" xml:space="preserve">
+    <value>Clouds Theme</value>
+  </data>
+  <data name="Connector" xml:space="preserve">
+    <value>Connector</value>
+  </data>
+  <data name="Connectors" xml:space="preserve">
+    <value>Connectors</value>
+  </data>
+  <data name="ConnectorsText" xml:space="preserve">
+    <value>Change the appearance of the connectors in the diagram.</value>
+  </data>
+  <data name="ConnectorText" xml:space="preserve">
+    <value>Draw connectors between objects.</value>
+  </data>
+  <data name="ConnectorTooltipText" xml:space="preserve">
+    <value>Add One Connector to the Page.</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="CopyScreenTip" xml:space="preserve">
+    <value>Copy (Ctrl+C)</value>
+  </data>
+  <data name="CopyText" xml:space="preserve">
+    <value>Put a copy of the selection on the clipboard so you paste it somewhere else.</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Custom1Theme" xml:space="preserve">
+    <value>Custom 1 Theme</value>
+  </data>
+  <data name="Custom2Theme" xml:space="preserve">
+    <value>Custom 2 Theme</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="CutScreenTip" xml:space="preserve">
+    <value>Cut (Ctrl+X)</value>
+  </data>
+  <data name="CutText" xml:space="preserve">
+    <value>Remove the selection and put it on the clipboard so you paste it somewhere else.</value>
+  </data>
+  <data name="Dashes" xml:space="preserve">
+    <value>Dashes</value>
+  </data>
+  <data name="DaybreakTheme" xml:space="preserve">
+    <value>Daybreak Theme</value>
+  </data>
+  <data name="Design" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="DiagramParts" xml:space="preserve">
+    <value>Diagram Parts</value>
+  </data>
+  <data name="DrawingTools" xml:space="preserve">
+    <value>Drawing Tools</value>
+  </data>
+  <data name="DrawingToolsText" xml:space="preserve">
+    <value>Use basic drawing tools such as rectangle,ellipse and line.</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Editing</value>
+  </data>
+  <data name="Ellipse" xml:space="preserve">
+    <value>Ellipse</value>
+  </data>
+  <data name="Executive" xml:space="preserve">
+    <value>Executive</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="FacetTheme" xml:space="preserve">
+    <value>Facet Theme</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Fill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="FillText" xml:space="preserve">
+    <value>Fill the selected shape with a solid color,gradient or pattern.</value>
+  </data>
+  <data name="FitToPage" xml:space="preserve">
+    <value>Fit to Window</value>
+  </data>
+  <data name="FitToPageTooltipText" xml:space="preserve">
+    <value>Fit page to current window.</value>
+  </data>
+  <data name="FitToWidth" xml:space="preserve">
+    <value>Fit to Width</value>
+  </data>
+  <data name="FitToWidthTooltipText" xml:space="preserve">
+    <value>Fit page to current width of the window.</value>
+  </data>
+  <data name="FocusedAccent1" xml:space="preserve">
+    <value>Focused Effect, Variant Accent1</value>
+  </data>
+  <data name="FocusedAccent2" xml:space="preserve">
+    <value>Focused Effect, Variant Accent2</value>
+  </data>
+  <data name="FocusedAccent3" xml:space="preserve">
+    <value>Focused Effect, Variant Accent3</value>
+  </data>
+  <data name="FocusedAccent4" xml:space="preserve">
+    <value>Focused Effect, Variant Accent4</value>
+  </data>
+  <data name="FocusedAccent5" xml:space="preserve">
+    <value>Focused Effect, Variant Accent5</value>
+  </data>
+  <data name="FocusedAccent6" xml:space="preserve">
+    <value>Focused Effect, Variant Accent6</value>
+  </data>
+  <data name="FocusedAccent7" xml:space="preserve">
+    <value>Focused Effect, Variant Accent7</value>
+  </data>
+  <data name="FontColorScreenTipText" xml:space="preserve">
+    <value>Font Color</value>
+  </data>
+  <data name="FontColorTooltipText" xml:space="preserve">
+    <value>Change the color of your text.</value>
+  </data>
+  <data name="FontHeader" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="FontSizeScreenTip" xml:space="preserve">
+    <value>Font Size</value>
+  </data>
+  <data name="FontSizeToolTipText" xml:space="preserve">
+    <value>Change the font size of your text.</value>
+  </data>
+  <data name="FontToolTipText" xml:space="preserve">
+    <value>Pick a new font family for your text.</value>
+  </data>
+  <data name="FreeHand" xml:space="preserve">
+    <value>FreeHand</value>
+  </data>
+  <data name="GemstoneTheme" xml:space="preserve">
+    <value>Gemstone Theme</value>
+  </data>
+  <data name="GridLines" xml:space="preserve">
+    <value>Grid Lines</value>
+  </data>
+  <data name="GridlinesTooltipText" xml:space="preserve">
+    <value>The gridlines make it easy for you to align objects with text,other objects or a particular object.</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="GroupObjects" xml:space="preserve">
+    <value>Group Objects</value>
+  </data>
+  <data name="GroupObjectsTooltipText" xml:space="preserve">
+    <value>Join objects together to move and format them as if they were a single object.</value>
+  </data>
+  <data name="GrowFontScreenTipText" xml:space="preserve">
+    <value>Increase Font Size</value>
+  </data>
+  <data name="GrowFontTooltipText" xml:space="preserve">
+    <value>Make your text a bit bigger.</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="HomeCaption" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="HorizontalFlip" xml:space="preserve">
+    <value>Horizontal Flip</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="IntegralTheme" xml:space="preserve">
+    <value>Integral Theme</value>
+  </data>
+  <data name="IntenseAccent1" xml:space="preserve">
+    <value>Intense Effect, Variant Accent1</value>
+  </data>
+  <data name="IntenseAccent2" xml:space="preserve">
+    <value>Intense Effect, Variant Accent2</value>
+  </data>
+  <data name="IntenseAccent3" xml:space="preserve">
+    <value>Intense Effect, Variant Accent3</value>
+  </data>
+  <data name="IntenseAccent4" xml:space="preserve">
+    <value>Intense Effect, Variant Accent4</value>
+  </data>
+  <data name="IntenseAccent5" xml:space="preserve">
+    <value>Intense Effect, Variant Accent5</value>
+  </data>
+  <data name="IntenseAccent6" xml:space="preserve">
+    <value>Intense Effect, Variant Accent6</value>
+  </data>
+  <data name="IntenseAccent7" xml:space="preserve">
+    <value>Intense Effect, Variant Accent7</value>
+  </data>
+  <data name="IonTheme" xml:space="preserve">
+    <value>Ion Theme</value>
+  </data>
+  <data name="ItalicScreenTipText" xml:space="preserve">
+    <value>Italic</value>
+  </data>
+  <data name="ItalicTooltipText" xml:space="preserve">
+    <value>Italicize your text.</value>
+  </data>
+  <data name="JustifyScreenTipText" xml:space="preserve">
+    <value>Justify</value>
+  </data>
+  <data name="JustifyTooltipText" xml:space="preserve">
+    <value>Distribute your text evenly between the margins.</value>
+  </data>
+  <data name="Landscape" xml:space="preserve">
+    <value>Landscape</value>
+  </data>
+  <data name="Legal" xml:space="preserve">
+    <value>Legal</value>
+  </data>
+  <data name="Letter" xml:space="preserve">
+    <value>Letter</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="LinearTheme" xml:space="preserve">
+    <value>Linear Theme</value>
+  </data>
+  <data name="LineText" xml:space="preserve">
+    <value>Specify the color, width and line style for the selected shape.</value>
+  </data>
+  <data name="LoadToolTip" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="ModerateAccent1" xml:space="preserve">
+    <value>Moderate Effect, Variant Accent1</value>
+  </data>
+  <data name="ModerateAccent2" xml:space="preserve">
+    <value>Moderate Effect, Variant Accent2</value>
+  </data>
+  <data name="ModerateAccent3" xml:space="preserve">
+    <value>Moderate Effect, Variant Accent3</value>
+  </data>
+  <data name="ModerateAccent4" xml:space="preserve">
+    <value>Moderate Effect, Variant Accent4</value>
+  </data>
+  <data name="ModerateAccent5" xml:space="preserve">
+    <value>Moderate Effect, Variant Accent5</value>
+  </data>
+  <data name="ModerateAccent6" xml:space="preserve">
+    <value>Moderate Effect, Variant Accent6</value>
+  </data>
+  <data name="ModerateAccent7" xml:space="preserve">
+    <value>Moderate Effect, Variant Accent7</value>
+  </data>
+  <data name="Modern" xml:space="preserve">
+    <value>Modern</value>
+  </data>
+  <data name="MultiplePages" xml:space="preserve">
+    <value>Multiple Pages</value>
+  </data>
+  <data name="MultiplePagesTooltipText" xml:space="preserve">
+    <value>Helps you to create multiple pages depends on page width and page height.</value>
+  </data>
+  <data name="NewToolTip" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="OfficeTheme" xml:space="preserve">
+    <value>Office Theme</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Orientation" xml:space="preserve">
+    <value>Orientation</value>
+  </data>
+  <data name="Orthogonal" xml:space="preserve">
+    <value>Orthogonal</value>
+  </data>
+  <data name="OverviewTitle" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="PageBreaks" xml:space="preserve">
+    <value>Page Breaks</value>
+  </data>
+  <data name="PageBreaksTooltipText" xml:space="preserve">
+    <value>Turn on Page breaks to see what will be printed on each page of your document.</value>
+  </data>
+  <data name="PageOrientation" xml:space="preserve">
+    <value>Page Orientation</value>
+  </data>
+  <data name="PageOrientationTooltipText" xml:space="preserve">
+    <value>Switch page between potrait and landscape layouts.</value>
+  </data>
+  <data name="PageSetup" xml:space="preserve">
+    <value>Page Setup</value>
+  </data>
+  <data name="PageSize" xml:space="preserve">
+    <value>Page Size</value>
+  </data>
+  <data name="PageSizeTooltipText" xml:space="preserve">
+    <value>Choose a page size.</value>
+  </data>
+  <data name="PanTool" xml:space="preserve">
+    <value>Pan Tool</value>
+  </data>
+  <data name="PanToolText" xml:space="preserve">
+    <value>Pan the diagram.</value>
+  </data>
+  <data name="SelectAnnotation" xml:space="preserve">
+    <value>Select Annotation</value>
+  </data>
+  <data name="SelectAnnotationText" xml:space="preserve">
+    <value>Select, move, resize or rotate the annotation within a node/connector.</value>
+  </data>
+  <data name="PanZoom" xml:space="preserve">
+    <value>Pan Zoom</value>
+  </data>
+  <data name="PanZoomTooltipText" xml:space="preserve">
+    <value>Show the Pan Zoom Window.</value>
+  </data>
+  <data name="ParallelTheme" xml:space="preserve">
+    <value>Parallel Theme</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="PasteScreenTip" xml:space="preserve">
+    <value>Paste (Ctrl+V)</value>
+  </data>
+  <data name="PasteText" xml:space="preserve">
+    <value>Add Content on the Clipboard to your document.</value>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="Pictures" xml:space="preserve">
+    <value>Pictures</value>
+  </data>
+  <data name="PicturesTooltipText" xml:space="preserve">
+    <value>Insert pictures from your computer or from other computers that you are connected to.</value>
+  </data>
+  <data name="PointerTool" xml:space="preserve">
+    <value>Pointer Tool</value>
+  </data>
+  <data name="PointerToolText" xml:space="preserve">
+    <value>Select, move and resize objects.</value>
+  </data>
+  <data name="Polyline" xml:space="preserve">
+    <value>Polyline</value>
+  </data>
+  <data name="Portrait" xml:space="preserve">
+    <value>Portrait</value>
+  </data>
+  <data name="PortVisibilityText" xml:space="preserve">
+    <value>Connection Point</value>
+  </data>
+  <data name="PortVisibilityToolTipText" xml:space="preserve">
+    <value>Add, move and control the visibility of the connection points on shapes.
+
+Hold the Ctrl key to add a connection point on shapes.</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="PositionText" xml:space="preserve">
+    <value>Position shapes on the page by changing their alignment,spacing and rotation.</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Professional" xml:space="preserve">
+    <value>Professional</value>
+  </data>
+  <data name="ProminenceTheme" xml:space="preserve">
+    <value>Prominence Theme</value>
+  </data>
+  <data name="RadianceTheme" xml:space="preserve">
+    <value>Radiance Theme</value>
+  </data>
+  <data name="Rectangle" xml:space="preserve">
+    <value>Rectangle</value>
+  </data>
+  <data name="RedoToolTip" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="RefinedAccent1" xml:space="preserve">
+    <value>Refined Effect, Variant Accent1</value>
+  </data>
+  <data name="RefinedAccent2" xml:space="preserve">
+    <value>Refined Effect, Variant Accent2</value>
+  </data>
+  <data name="RefinedAccent3" xml:space="preserve">
+    <value>Refined Effect, Variant Accent3</value>
+  </data>
+  <data name="RefinedAccent4" xml:space="preserve">
+    <value>Refined Effect, Variant Accent4</value>
+  </data>
+  <data name="RefinedAccent5" xml:space="preserve">
+    <value>Refined Effect, Variant Accent5</value>
+  </data>
+  <data name="RefinedAccent6" xml:space="preserve">
+    <value>Refined Effect, Variant Accent6</value>
+  </data>
+  <data name="RefinedAccent7" xml:space="preserve">
+    <value>Refined Effect, Variant Accent7</value>
+  </data>
+  <data name="RemoveThemes" xml:space="preserve">
+    <value>Remove Themes</value>
+  </data>
+  <data name="RetrospectTheme" xml:space="preserve">
+    <value>Retrospect Theme</value>
+  </data>
+  <data name="RotateCounterClockwise" xml:space="preserve">
+    <value>Rotate Counter-Clockwise</value>
+  </data>
+  <data name="RotateClockwise" xml:space="preserve">
+    <value>Rotate Clockwise</value>
+  </data>
+  <data name="Ruler" xml:space="preserve">
+    <value>Ruler</value>
+  </data>
+  <data name="RulerText" xml:space="preserve">
+    <value>View the rulers used to measure and line up objects in the document.</value>
+  </data>
+  <data name="SaveMessage" xml:space="preserve">
+    <value>Do you want to save Diagram?</value>
+  </data>
+  <data name="SaveTitle" xml:space="preserve">
+    <value>SfDiagram</value>
+  </data>
+  <data name="SaveToolTip" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="SelectConnectors" xml:space="preserve">
+    <value>Select Connectors</value>
+  </data>
+  <data name="SelectNodes" xml:space="preserve">
+    <value>Select Nodes</value>
+  </data>
+  <data name="SelectText" xml:space="preserve">
+    <value>Select all objects in your diagram.</value>
+  </data>
+  <data name="SendBackward" xml:space="preserve">
+    <value>Send Backward</value>
+  </data>
+  <data name="SendBackwardTooltipText" xml:space="preserve">
+    <value>Send the selected object back one level so that it's hidden behind more objects.</value>
+  </data>
+  <data name="SendToBack" xml:space="preserve">
+    <value>Send To Back</value>
+  </data>
+  <data name="SendToBackTooltipText" xml:space="preserve">
+    <value>Send the selected object behind all other objects.</value>
+  </data>
+  <data name="SequenceTheme" xml:space="preserve">
+    <value>Sequence Theme</value>
+  </data>
+  <data name="ShapeStyles" xml:space="preserve">
+    <value>Shape Styles</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="ShrinkFontScreenTipText" xml:space="preserve">
+    <value>Decrease Font Size</value>
+  </data>
+  <data name="ShrinkFontTooltipText" xml:space="preserve">
+    <value>Make your text a bit smaller.</value>
+  </data>
+  <data name="SimpleTheme" xml:space="preserve">
+    <value>Simple Theme</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="SliceTheme" xml:space="preserve">
+    <value>Slice Theme</value>
+  </data>
+  <data name="SmokeTheme" xml:space="preserve">
+    <value>Smoke Theme</value>
+  </data>
+  <data name="SnapToGrid" xml:space="preserve">
+    <value>Snap to grid</value>
+  </data>
+  <data name="SnapToGridTooltipText" xml:space="preserve">
+    <value>Helps to snap objects with respect to grid lines in the Diagram.</value>
+  </data>
+  <data name="SnapToObject" xml:space="preserve">
+    <value>Snap to Object</value>
+  </data>
+  <data name="SnapToObjectTooltipText" xml:space="preserve">
+    <value>Turn on guideline that help align objects in the document. Guidelines are dragged out from the horizontal and vertical ruler.</value>
+  </data>
+  <data name="SpaceAcross" xml:space="preserve">
+    <value>Space Across</value>
+  </data>
+  <data name="SpaceDown" xml:space="preserve">
+    <value>Space Down</value>
+  </data>
+  <data name="Statement" xml:space="preserve">
+    <value>Statement</value>
+  </data>
+  <data name="StraightLine" xml:space="preserve">
+    <value>Straight Line</value>
+  </data>
+  <data name="StrikeScreenTipText" xml:space="preserve">
+    <value>StrikeThrough</value>
+  </data>
+  <data name="StrikeTooltipText" xml:space="preserve">
+    <value>Cross something out by drawing a line through it.</value>
+  </data>
+  <data name="SubtlyAccent1" xml:space="preserve">
+    <value>Subtly Effect, Variant Accent1</value>
+  </data>
+  <data name="SubtlyAccent2" xml:space="preserve">
+    <value>Subtly Effect, Variant Accent2</value>
+  </data>
+  <data name="SubtlyAccent3" xml:space="preserve">
+    <value>Subtly Effect, Variant Accent3</value>
+  </data>
+  <data name="SubtlyAccent4" xml:space="preserve">
+    <value>Subtly Effect, Variant Accent4</value>
+  </data>
+  <data name="SubtlyAccent5" xml:space="preserve">
+    <value>Subtly Effect, Variant Accent5</value>
+  </data>
+  <data name="SubtlyAccent6" xml:space="preserve">
+    <value>Subtly Effect, Variant Accent6</value>
+  </data>
+  <data name="SubtlyAccent7" xml:space="preserve">
+    <value>Subtly Effect, Variant Accent7</value>
+  </data>
+  <data name="Tabloid" xml:space="preserve">
+    <value>Tabloid</value>
+  </data>
+  <data name="TaskPanes" xml:space="preserve">
+    <value>Task Panes</value>
+  </data>
+  <data name="TaskPanesTooltipText" xml:space="preserve">
+    <value>Show windows to view shapes and shape data and to easily move around within the diagram.</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="TextTooltipText" xml:space="preserve">
+    <value>Add a text shape.</value>
+  </data>
+  <data name="Themes" xml:space="preserve">
+    <value>Themes</value>
+  </data>
+  <data name="ThemeStyle" xml:space="preserve">
+    <value>Theme Style</value>
+  </data>
+  <data name="ToolsHeader" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="Trendy" xml:space="preserve">
+    <value>Trendy</value>
+  </data>
+  <data name="UnderlineScreenTipText" xml:space="preserve">
+    <value>Underline (Ctrl+U)</value>
+  </data>
+  <data name="UnderlineTooltipText" xml:space="preserve">
+    <value>Underline your text.</value>
+  </data>
+  <data name="UndoToolTip" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="UnGroup" xml:space="preserve">
+    <value>UnGroup</value>
+  </data>
+  <data name="UnGroupObjectsTooltipText" xml:space="preserve">
+    <value>Break the connection between joined objects so that you can move them individually.</value>
+  </data>
+  <data name="Variant1" xml:space="preserve">
+    <value>Variant 1</value>
+  </data>
+  <data name="Variant2" xml:space="preserve">
+    <value>Variant 2</value>
+  </data>
+  <data name="Variant3" xml:space="preserve">
+    <value>Variant 3</value>
+  </data>
+  <data name="Variant4" xml:space="preserve">
+    <value>Variant 4</value>
+  </data>
+  <data name="Variants" xml:space="preserve">
+    <value>Variants</value>
+  </data>
+  <data name="VariantStyle" xml:space="preserve">
+    <value>Variant Style</value>
+  </data>
+  <data name="VerticalFlip" xml:space="preserve">
+    <value>Vertical Flip</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="WhispTheme" xml:space="preserve">
+    <value>Whisp Theme</value>
+  </data>
+  <data name="ZephyrTheme" xml:space="preserve">
+    <value>Zephyr Theme</value>
+  </data>
+  <data name="Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="ZoomInTooltipText" xml:space="preserve">
+    <value>Zoom in to the level that's right for you.</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="ZoomOutTooltipText" xml:space="preserve">
+    <value>Zoom out to the level that's right for you.</value>
+  </data>
+</root>

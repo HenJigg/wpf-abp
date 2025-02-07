@@ -1,0 +1,144 @@
+﻿<ContentPage
+    x:Class="AppFramework.Shared.Views.FriendsChatView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:AppFramework.Shared.Behaviors"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:temp="clr-namespace:AppFramework.Shared.Views.Selectors"
+    BackgroundColor="{DynamicResource Gray-100}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <temp:MessageDataTemplateSelector x:Key="MessageDataTemplateSelector" />
+    </ContentPage.Resources>
+    <Grid>
+        <Image
+            Aspect="AspectFill"
+            Opacity="0.06"
+            Source="ChatMessageBackground.png" />
+
+        <ScrollView>
+
+            <listView:SfListView
+                x:Name="ListView"
+                AutoFitMode="Height"
+                BackgroundColor="{StaticResource Transparent}"
+                FocusBorderThickness="0"
+                IsStickyFooter="True"
+                IsStickyHeader="True"
+                ItemTemplate="{StaticResource MessageDataTemplateSelector}"
+                ItemsSource="{Binding Messages}"
+                RowSpacing="12"
+                SelectionMode="None"
+                VerticalOptions="Fill">
+
+                <listView:SfListView.Behaviors>
+                    <behavior:ChatMessageListViewBehavior />
+                </listView:SfListView.Behaviors>
+
+                <!--  Navigation bar  -->
+                <listView:SfListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="Auto, Auto" RowSpacing="0">
+                            <StackLayout
+                                Padding="4,10,10,10"
+                                BackgroundColor="{DynamicResource Gray-Bg}"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="0"
+                                VerticalOptions="Fill">
+
+                                <!--  Back Button  -->
+                                <buttons:SfButton
+                                    Command="{Binding GoBackCommand}"
+                                    Style="{StaticResource IconButtonStyle}"
+                                    Text="&#xe625;"
+                                    TextColor="{DynamicResource Gray-700}" />
+
+                                <!--  Rounded Profile Image  -->
+                                <Image
+                                    Margin="8,0"
+                                    HeightRequest="35"
+                                    Source="Profile.png"
+                                    WidthRequest="35" />
+
+                                <Label
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding Friend.FriendUserName}"
+                                    TextColor="{DynamicResource Gray-700}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                            <BoxView
+                                Grid.Row="1"
+                                BackgroundColor="{DynamicResource Gray-200}"
+                                HeightRequest="1" />
+                        </Grid>
+                    </DataTemplate>
+                </listView:SfListView.HeaderTemplate>
+
+                <!--  New text entry in the chat conversation  -->
+                <listView:SfListView.FooterTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Padding="16,5,16,24"
+                            ColumnDefinitions="*, Auto"
+                            ColumnSpacing="16"
+                            RowDefinitions="Auto">
+
+                            <border:SfBorder
+                                Padding="5,0"
+                                BorderColor="{DynamicResource Gray-Bg}"
+                                BorderWidth="0"
+                                CornerRadius="5"
+                                HasShadow="True">
+                                <Grid
+                                    ColumnDefinitions="*, Auto, Auto"
+                                    ColumnSpacing="0"
+                                    RowDefinitions="Auto">
+
+                                    <controls:BorderlessEntry
+                                        Margin="5,0"
+                                        Placeholder="在这里输入消息..."
+                                        Style="{StaticResource BorderlessEntryStyle}"
+                                        Text="{Binding Message}" />
+
+                                    <buttons:SfButton
+                                        Grid.Column="1"
+                                        Command="{Binding PickImageCommand}"
+                                        Style="{StaticResource IconButtonStyle}"
+                                        Text="&#xe63e;"
+                                        TextColor="{DynamicResource Gray-700}"
+                                        VerticalOptions="End" />
+
+                                    <buttons:SfButton
+                                        Grid.Column="2"
+                                        Command="{Binding PickFileCommand}"
+                                        Style="{StaticResource IconButtonStyle}"
+                                        Text="&#xe756;"
+                                        TextColor="{DynamicResource Gray-700}"
+                                        VerticalOptions="End" />
+
+                                </Grid>
+                            </border:SfBorder>
+
+                            <buttons:SfButton
+                                Grid.Column="1"
+                                Padding="0,2,2,0"
+                                BackgroundColor="{DynamicResource PrimaryColor}"
+                                Command="{Binding SendCommand}"
+                                HorizontalOptions="End"
+                                Style="{StaticResource IconButtonStyle}"
+                                Text="&#xe64a;"
+                                TextColor="{DynamicResource Gray-White}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </listView:SfListView.FooterTemplate>
+            </listView:SfListView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

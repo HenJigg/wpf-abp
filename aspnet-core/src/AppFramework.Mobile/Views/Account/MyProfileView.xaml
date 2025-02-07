@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="AppFramework.Shared.Views.MyProfileView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls;assembly=AppFramework.Shared"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared">
+    <controls:CustomShadowFrame
+        BackgroundColor="{DynamicResource GrayShadowColor}"
+        CornerRadius="4"
+        HasShadow="True"
+        HeightRequest="400"
+        Radius="4"
+        VerticalOptions="CenterAndExpand"
+        WidthRequest="{OnIdiom Phone=350,
+                               Default=400}">
+        <StackLayout VerticalOptions="Center">
+
+            <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate Name}" />
+            <controls:BorderlessEntry Style="{StaticResource BorderlessEntryStyle}" Text="{Binding UserInfo.Name}" />
+
+            <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate Surname}" />
+            <controls:BorderlessEntry Style="{StaticResource BorderlessEntryStyle}" Text="{Binding UserInfo.Surname}" />
+
+            <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate Email}" />
+            <controls:BorderlessEntry Style="{StaticResource BorderlessEntryStyle}" Text="{Binding UserInfo.EmailAddress}" />
+
+            <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate UserNameOrEmail}" />
+            <controls:BorderlessEntry
+                IsEnabled="false"
+                Style="{StaticResource BorderlessEntryStyle}"
+                Text="{Binding UserInfo.UserName}" />
+
+            <buttons:SfButton
+                Command="{Binding SaveCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Save}" />
+
+            <buttons:SfButton
+                Command="{Binding CancelCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Cancel}" />
+        </StackLayout>
+    </controls:CustomShadowFrame>
+</ContentView>

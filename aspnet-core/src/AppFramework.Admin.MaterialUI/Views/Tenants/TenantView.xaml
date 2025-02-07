@@ -1,0 +1,183 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.MaterialUI.TenantView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:AppFramework.Admin.MaterialUI.Themes.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:perm="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    Background="{DynamicResource MaterialDesignCardBackground}"
+    mc:Ignorable="d">
+    <md:DialogHost IsOpen="{Binding IsBusy}">
+        <md:DialogHost.DialogContent>
+            <StackPanel Orientation="Horizontal">
+                <ProgressBar
+                    Width="30"
+                    Height="30"
+                    Margin="5"
+                    IsIndeterminate="True"
+                    Style="{StaticResource MaterialDesignCircularProgressBar}" />
+            </StackPanel>
+        </md:DialogHost.DialogContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <DockPanel Margin="15" LastChildFill="False">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Text="{Binding Title}" />
+
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="{extensions:Translate TenantsHeaderInfo}" />
+                </StackPanel>
+
+                <Button
+                    VerticalAlignment="Center"
+                    Command="{Binding AddCommand}"
+                    Content="{extensions:Translate CreateNewTenant}"
+                    DockPanel.Dock="Right"
+                    Visibility="{extensions:HasPermission Text={x:Static perm:AppPermissions.TenantCreate}}" />
+            </DockPanel>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid Margin="10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <DockPanel Margin="5">
+                        <Button
+                            Padding="8"
+                            Command="{Binding SearchCommand}"
+                            Content="{StaticResource Search}"
+                            DockPanel.Dock="Right"
+                            Style="{StaticResource IconButtonStyle}" />
+                        <TextBox md:HintAssist.Hint="{extensions:Translate TenantNameOrTenancyCode}" Text="{Binding Filter.Filter}" />
+                    </DockPanel>
+
+                    <ComboBox
+                        Grid.Column="1"
+                        Margin="5"
+                        md:HintAssist.Hint="{extensions:Translate Edition}"
+                        ItemsSource="{Binding Editions}"
+                        SelectedItem="{Binding Edition}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DisplayName}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <CheckBox
+                        Grid.Row="1"
+                        Margin="5"
+                        Content="{extensions:Translate SubscriptionEndDate}"
+                        IsChecked="{Binding IsSubscription, Mode=TwoWay}" />
+
+                    <UniformGrid
+                        Grid.Row="2"
+                        Margin="0,5"
+                        Columns="2">
+                        <DatePicker
+                            Margin="5"
+                            IsEnabled="{Binding IsSubscription, Converter={StaticResource inverseBooleanConverter}}"
+                            SelectedDate="{Binding Filter.SubscriptionEndDateStart}" />
+                        <DatePicker
+                            Margin="5"
+                            IsEnabled="{Binding IsSubscription, Converter={StaticResource inverseBooleanConverter}}"
+                            SelectedDate="{Binding Filter.SubscriptionEndDateEnd}" />
+                    </UniformGrid>
+
+                    <CheckBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="5"
+                        Content="{extensions:Translate CreationTime}"
+                        IsChecked="{Binding IsCreation, Mode=TwoWay}" />
+
+                    <UniformGrid
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="0,5"
+                        Columns="2">
+                        <DatePicker
+                            Margin="5"
+                            IsEnabled="{Binding IsCreation, Converter={StaticResource inverseBooleanConverter}}"
+                            SelectedDate="{Binding Filter.CreationDateStart}" />
+                        <DatePicker
+                            Margin="5"
+                            IsEnabled="{Binding IsCreation, Converter={StaticResource inverseBooleanConverter}}"
+                            SelectedDate="{Binding Filter.CreationDateEnd}" />
+                    </UniformGrid>
+                </Grid>
+
+                <md:Card
+                    Grid.Row="1"
+                    Margin="10,0,10,10"
+                    Background="{DynamicResource MaterialDesignPaper}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid ItemsSource="{Binding dataPager.GridModelList}" SelectedItem="{Binding dataPager.SelectedItem}">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="80" Header="{extensions:Translate Actions}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <md:PopupBox>
+                                                <ItemsControl ItemsSource="{Binding DataContext.proxyService.Permissions, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Button
+                                                                Command="{Binding DataContext.ExecuteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                                                CommandParameter="{Binding Key}"
+                                                                Content="{Binding Name}" />
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </md:PopupBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Binding="{Binding TenancyName}" Header="{extensions:Translate TenancyName}" />
+                                <DataGridTextColumn Binding="{Binding Name}" Header="{extensions:Translate Name}" />
+                                <DataGridTextColumn Binding="{Binding EditionDisplayName}" Header="{extensions:Translate DisplayName}" />
+                                <DataGridTextColumn Binding="{Binding IsActive}" Header="{extensions:Translate IsActive}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <controls:DataPager
+                            Grid.Row="1"
+                            Margin="5"
+                            NumericButtonCount="{Binding dataPager.NumericButtonCount}"
+                            PageCount="{Binding dataPager.PageCount, Mode=TwoWay}"
+                            PageSize="{Binding dataPager.PageSize, Mode=TwoWay}"
+                            PageIndex="{Binding dataPager.PageIndex, Mode=TwoWay}" />
+                    </Grid>
+                </md:Card>
+            </Grid>
+        </Grid>
+    </md:DialogHost>
+</UserControl>

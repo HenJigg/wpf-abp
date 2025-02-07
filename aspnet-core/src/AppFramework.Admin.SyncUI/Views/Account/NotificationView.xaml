@@ -1,0 +1,164 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.SyncUI.NotificationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:sync="http://schemas.syncfusion.com/wpf">
+    <sync:SfBusyIndicator
+        AnimationType="DualRing"
+        FocusVisualStyle="{x:Null}"
+        IsBusy="{Binding IsBusy}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Border Style="{StaticResource HeaderBorderStyle}" />
+
+            <DockPanel Margin="20,15" LastChildFill="False">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock
+                        Text="{Binding Title}"
+                        FontSize="18"
+                        FontWeight="Bold" />
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button
+                        Content="{extensions:Translate NotificationSettings}"
+                        Margin="10,0"
+                        Style="{StaticResource SimpleButton}" />
+                    <Button
+                        Content="{extensions:Translate SetAllAsRead}"
+                        Command="{Binding SetAllNotificationsAsReadCommand}"
+                        Style="{StaticResource SimpleButton}" />
+                </StackPanel>
+            </DockPanel>
+
+            <Grid Grid.Row="1" Margin="0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Border Grid.RowSpan="3" Style="{StaticResource BorderStyle}" />
+
+                <!--  筛选  -->
+                <Grid Margin="0,5,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <UniformGrid Margin="5,0" Columns="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <sync:SfDatePicker BorderThickness="1" Value="{Binding StartDate, Mode=TwoWay}" />
+                            <Border Grid.Column="1" Margin="10,0">
+                                <TextBlock Text="―" VerticalAlignment="Center" />
+                            </Border>
+                            <sync:SfDatePicker Grid.Column="2"
+                                BorderThickness="1"
+                                Value="{Binding EndDate, Mode=TwoWay}" />
+                        </Grid>
+
+                        <ComboBox
+                            Margin="3"
+                            VerticalAlignment="Center"
+                            SelectedIndex="{Binding SelectedIndex}">
+                            <ComboBoxItem Content="{extensions:Translate All}" />
+                            <ComboBoxItem Content="{extensions:Translate Unread}" />
+                        </ComboBox>
+                    </UniformGrid>
+
+                    <StackPanel Grid.Row="1"
+                        Margin="10"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <Button
+                            Content="{extensions:Translate DeleteListedNotifications}"
+                            Command="{Binding DeleteAllUserNotificationsCommand}"
+                            Margin="10,0"
+                            Style="{StaticResource SimpleButton}" />
+                        <Button
+                            Content="{extensions:Translate Refresh}"
+                            Command="{Binding RefreshCommand}"
+                            Style="{StaticResource SimpleButton}" />
+                    </StackPanel>
+                </Grid>
+
+                <sync:SfDataGrid Grid.Row="1"
+                    Margin="15,0"
+                    ItemsSource="{Binding dataPager.GridModelList}"
+                    SelectedItem="{Binding dataPager.SelectedItem}"
+                    Style="{StaticResource SimpleDataGridStyle}">
+                    <sync:SfDataGrid.Columns>
+                        <sync:GridTemplateColumn
+                            Width="120"
+                            AllowFiltering="False"
+                            HeaderText="{extensions:Translate Actions}">
+                            <sync:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <Button
+                                            Content="{StaticResource Sure}"
+                                            Command="{Binding DataContext.SetNotificationAsReadCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=sync:SfDataGrid}}"
+                                            CommandParameter="{Binding}"
+                                            Margin="10,0"
+                                            VerticalAlignment="Center"
+                                            Background="Transparent"
+                                            Style="{StaticResource IconButtonStyle}"
+                                            ToolTip="{extensions:Translate SetAsRead}"
+                                            Visibility="{Binding State, Converter={StaticResource stateConverter}}" />
+
+                                        <Button
+                                            Content="{StaticResource Close}"
+                                            Command="{Binding DataContext.DeleteNotificationCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=sync:SfDataGrid}}"
+                                            CommandParameter="{Binding}"
+                                            VerticalAlignment="Center"
+                                            Background="Transparent"
+                                            Style="{StaticResource IconButtonStyle}"
+                                            ToolTip="{extensions:Translate Delete}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </sync:GridTemplateColumn.CellTemplate>
+                        </sync:GridTemplateColumn>
+                        <sync:GridTextColumn
+                            Width="100"
+                            HeaderText="{extensions:Translate Severity}"
+                            MappingName="Notification.Severity" />
+                        <sync:GridTemplateColumn HeaderText="{extensions:Translate Notifications}" MappingName="Notification">
+                            <sync:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={StaticResource notifycationConverter}}" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </sync:GridTemplateColumn.CellTemplate>
+                        </sync:GridTemplateColumn>
+                        <sync:GridTextColumn
+                            DisplayBinding="{Binding Path=Notification.CreationTime, StringFormat='yyyy-MM-dd hh:mm:ss'}"
+                            HeaderText="{extensions:Translate CreationTime}"
+                            MappingName="Notification.CreationTime" />
+                    </sync:SfDataGrid.Columns>
+                </sync:SfDataGrid>
+
+                <sync:SfDataPager Grid.Row="2"
+                    HorizontalAlignment="Right"
+                    NumericButtonCount="{Binding dataPager.NumericButtonCount}"
+                    PageCount="{Binding dataPager.PageCount, Mode=TwoWay}"
+                    PageSize="{Binding dataPager.PageSize, Mode=TwoWay}"
+                    UseOnDemandPaging="True"
+                    PageIndex="{Binding dataPager.PageIndex, Mode=TwoWay}" />
+            </Grid>
+        </Grid>
+    </sync:SfBusyIndicator>
+</UserControl>

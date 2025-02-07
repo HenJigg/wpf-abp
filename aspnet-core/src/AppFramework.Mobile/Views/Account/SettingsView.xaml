@@ -1,0 +1,70 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.SettingsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared">
+    <Grid
+        Padding="15"
+        ColumnDefinitions="25,*"
+        ColumnSpacing="10"
+        RowDefinitions="auto,auto,auto"
+        RowSpacing="20">
+
+        <Label
+            HorizontalOptions="Center"
+            Style="{StaticResource IconLabelStyle}"
+            Text="{StaticResource ChangeLanguage}"
+            TextColor="{DynamicResource Gray-700}"
+            VerticalOptions="Center" />
+        <Picker
+            Title="{extensions:Translate Languages}"
+            Grid.Row="0"
+            Grid.Column="1"
+            FontSize="14"
+            ItemDisplayBinding="{Binding DisplayName}"
+            ItemsSource="{Binding Languages}"
+            SelectedItem="{Binding SelectedLanguage}"
+            TextColor="{DynamicResource Gray-700}" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalOptions="Center"
+            Style="{StaticResource IconLabelStyle}"
+            Text="{StaticResource ChangePassword}"
+            TextColor="{DynamicResource Gray-700}"
+            VerticalOptions="Center" />
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalOptions="StartAndExpand"
+            Text="{extensions:Translate ChangePassword}"
+            TextColor="{DynamicResource Gray-700}"
+            VerticalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ChangePasswordCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Style="{StaticResource IconLabelStyle}"
+            Text="{StaticResource Logout}"
+            TextColor="{DynamicResource Gray-700}"
+            VerticalOptions="Center" />
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            HorizontalOptions="StartAndExpand"
+            Text="{extensions:Translate Logout}"
+            TextColor="{DynamicResource Gray-700}"
+            VerticalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+    </Grid>
+</ContentView>

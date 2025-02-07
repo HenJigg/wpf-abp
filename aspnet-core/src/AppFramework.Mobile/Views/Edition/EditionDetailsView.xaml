@@ -1,0 +1,152 @@
+﻿<ContentPage
+    x:Class="AppFramework.Shared.Views.EditionDetailsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls;assembly=AppFramework.Shared"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:mask="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
+    xmlns:number="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
+    xmlns:treeview="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms">
+    <Grid
+        Padding="15"
+        BackgroundColor="{DynamicResource GrayShadowColor}"
+        RowDefinitions="auto,auto">
+
+        <ScrollView>
+            <StackLayout>
+                <!--  版本名称  -->
+                <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                    <controls:BorderlessEntry
+                        Placeholder="{extensions:Translate EditionName}"
+                        Style="{StaticResource BorderlessEntryStyle}"
+                        Text="{Binding Model.DisplayName, Mode=TwoWay}" />
+                </border:SfBorder>
+
+                <!--  是否付费  -->
+                <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate SubscriptionPrice}" />
+                <buttons:SfRadioGroup Orientation="Horizontal">
+                    <buttons:SfRadioButton IsChecked="True" Text="{extensions:Translate Free}" />
+                    <buttons:SfRadioButton IsChecked="{Binding IsPaid}" Text="{extensions:Translate Paid}" />
+                </buttons:SfRadioGroup>
+
+                <StackLayout IsVisible="{Binding IsPaid}">
+
+                    <!--  每天定价  -->
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <controls:BorderlessEntry
+                            Placeholder="{extensions:Translate DailyPrice}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Model.DailyPrice, Mode=TwoWay}" />
+                    </border:SfBorder>
+
+                    <!--  每周定价  -->
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <controls:BorderlessEntry
+                            Placeholder="{extensions:Translate WeeklyPrice}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Model.WeeklyPrice, Mode=TwoWay}" />
+                    </border:SfBorder>
+
+                    <!--  每月定价  -->
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <controls:BorderlessEntry
+                            Placeholder="{extensions:Translate MonthlyPrice}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Model.MonthlyPrice, Mode=TwoWay}" />
+                    </border:SfBorder>
+
+                    <!--  每年定价  -->
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <controls:BorderlessEntry
+                            Placeholder="{extensions:Translate AnnualPrice}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Model.AnnualPrice, Mode=TwoWay}" />
+                    </border:SfBorder>
+
+                    <!--  是否试用  -->
+                    <buttons:SfCheckBox IsChecked="{Binding IsTrialActive}" Text="{extensions:Translate IsTrialActive}" />
+                    <StackLayout IsVisible="{Binding IsTrialActive}">
+                        <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate TrialDayCount}" />
+                        <number:SfNumericUpDown
+                            MaximumDecimalDigits="0"
+                            Minimum="0"
+                            StepValue="1"
+                            Value="{Binding Model.TrialDayCount}" />
+                    </StackLayout>
+
+                    <!--  订阅到期后  -->
+                    <buttons:SfCheckBox IsChecked="{Binding IsWaitingDayAfter}" Text="{extensions:Translate WaitAfterSubscriptionExpireDate}" />
+                    <StackLayout IsVisible="{Binding IsWaitingDayAfter}">
+                        <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate WaitingDayAfterExpire}" />
+                        <number:SfNumericUpDown
+                            MaximumDecimalDigits="0"
+                            Minimum="0"
+                            StepValue="1"
+                            Value="{Binding Model.WaitingDayAfterExpire}" />
+                    </StackLayout>
+
+                    <!--  订阅到期后怎么做？  -->
+                    <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate WhatWillDoneAfterSubscriptionExpiry}" />
+                    <buttons:SfRadioGroup Orientation="Horizontal">
+                        <buttons:SfRadioButton Text="{extensions:Translate DeactiveTenant}" />
+                        <buttons:SfRadioButton IsChecked="{Binding IsAssignToAnotherEdition}" Text="{extensions:Translate AssignToAnotherEdition}" />
+                    </buttons:SfRadioGroup>
+
+                    <!--  指定版本  -->
+                    <Picker
+                        Title="{extensions:Translate Edition}"
+                        IsVisible="{Binding IsAssignToAnotherEdition}"
+                        ItemDisplayBinding="{Binding DisplayText}"
+                        ItemsSource="{Binding Editions}"
+                        SelectedItem="{Binding SelectedEdition}" />
+                </StackLayout>
+
+                <!--  功能列表  -->
+                <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate Features}" />
+                <treeview:SfTreeView
+                    CheckBoxMode="Recursive"
+                    ChildPropertyName="Items"
+                    ItemsSource="{Binding Features}"
+                    SelectionBackgroundColor="Transparent">
+                    <treeview:SfTreeView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Horizontal">
+                                        <buttons:SfCheckBox
+                                            IsChecked="{Binding IsChecked}"
+                                            Style="{StaticResource CheckBoxStyle}"
+                                            Text="{Binding DisplayName}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </treeview:SfTreeView.ItemTemplate>
+                </treeview:SfTreeView>
+            </StackLayout>
+        </ScrollView>
+
+        <!--  删除/保存  -->
+        <StackLayout Grid.Row="1">
+            <buttons:SfButton
+                Command="{Binding GoBackCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Cancel}" />
+
+            <buttons:SfButton
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Delete}" />
+
+            <buttons:SfButton
+                Command="{Binding SaveCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Save}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

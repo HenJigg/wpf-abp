@@ -1,0 +1,331 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.HandyUI.Views.AuditLogsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:AppFramework.Admin.HandyUI.Themes.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="clr-namespace:AppFramework.Admin.HandyUI"
+    Background="{DynamicResource SecondaryRegionBrush}"
+    mc:Ignorable="d">
+    <md:DialogHost IsOpen="{Binding IsBusy}">
+        <md:DialogHost.DialogContent>
+            <StackPanel Orientation="Horizontal">
+                <hc:CircleProgressBar
+                    Width="40"
+                    Height="40"
+                    Margin="10"
+                    IsIndeterminate="True" />
+            </StackPanel>
+        </md:DialogHost.DialogContent>
+        <Grid Background="{DynamicResource MaterialDesignCardBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel
+                Margin="15"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <TextBlock
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="{DynamicResource PrimaryTextBrush}"
+                    Text="{Binding Title}" />
+            </StackPanel>
+
+            <TabControl
+                Grid.Row="1"
+                HorizontalContentAlignment="Left"
+                Background="{DynamicResource SecondaryRegionBrush}">
+                <TabItem Header="{extensions:Translate OperationLogs}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--  日期筛选行  -->
+                            <RowDefinition Height="auto" />
+                            <!--  高级筛选行  -->
+                            <RowDefinition Height="auto" />
+                            <!--  按钮行  -->
+                            <RowDefinition Height="auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <!--  日期范围  -->
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <DatePicker Padding="3" Text="{Binding Filter.StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Margin="10,0"
+                                    VerticalAlignment="Center"
+                                    Text="―" />
+                                <DatePicker
+                                    Grid.Column="2"
+                                    Padding="3"
+                                    Text="{Binding Filter.EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+
+                            <!--  用户名  -->
+                            <TextBox
+                                Grid.Column="1"
+                                Margin="10,5"
+                                VerticalAlignment="Center"
+                                hc:InfoElement.Placeholder="{extensions:Translate UserName}"
+                                Text="{Binding Filter.UserName}" />
+                        </Grid>
+
+                        <!--  高级筛选  -->
+                        <Grid Grid.Row="1" Visibility="{Binding IsAdvancedFilter, Converter={StaticResource inverseBoolToVisibility}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <!--  服务  -->
+                            <TextBox
+                                Margin="10,5"
+                                VerticalAlignment="Center"
+                                hc:InfoElement.Placeholder="{extensions:Translate Service}"
+                                Text="{Binding Filter.ServiceName}" />
+
+                            <!--  浏览器  -->
+                            <TextBox
+                                Grid.Column="1"
+                                Margin="10,5"
+                                VerticalAlignment="Center"
+                                hc:InfoElement.Placeholder="{extensions:Translate Browser}"
+                                Text="{Binding Filter.BrowserInfo}" />
+
+                            <!--  操作  -->
+                            <TextBox
+                                Grid.Row="1"
+                                Margin="10,5"
+                                hc:InfoElement.Placeholder="{extensions:Translate Action}"
+                                Text="{Binding Filter.MethodName}" />
+
+                            <Grid
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <!--  持续时间  -->
+                                <DockPanel>
+                                    <TextBlock
+                                        Margin="10,0,0,0"
+                                        VerticalAlignment="Center"
+                                        DockPanel.Dock="Left"
+                                        Text="{extensions:Translate Duration}" />
+                                    <Grid Margin="10,0" VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox Text="{Binding Filter.MinExecutionDuration}" />
+                                        <Border
+                                            Grid.Column="1"
+                                            Width="20"
+                                            Margin="5,0">
+                                            <TextBlock VerticalAlignment="Center" Text="-" />
+                                        </Border>
+                                        <TextBox Grid.Column="2" Text="{Binding Filter.MaxExecutionDuration}" />
+                                    </Grid>
+                                </DockPanel>
+
+                                <!--  错误状态  -->
+                                <DockPanel Grid.Column="1">
+                                    <TextBlock VerticalAlignment="Center" Text="{extensions:Translate ErrorState}" />
+                                    <ComboBox
+                                        Margin="10,0"
+                                        Padding="3"
+                                        VerticalAlignment="Center"
+                                        SelectedIndex="{Binding SelectedIndex}">
+                                        <ComboBoxItem Content="{extensions:Translate All}" />
+                                        <ComboBoxItem Content="{extensions:Translate Success}" />
+                                        <ComboBoxItem Content="{extensions:Translate HasError}" />
+                                    </ComboBox>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+
+                        <Button
+                            Grid.Row="2"
+                            Margin="10"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            BorderThickness="0"
+                            Command="{Binding AdvancedCommand}"
+                            Content="{Binding FilerTitle, Mode=TwoWay}" />
+
+                        <Button
+                            Grid.Row="2"
+                            Margin="10"
+                            Padding="10,5"
+                            HorizontalAlignment="Right"
+                            Command="{Binding SearchCommand}"
+                            Content="{extensions:Translate Search}" />
+
+                        <hc:Card Grid.Row="3" Margin="10,0,10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <DataGrid ItemsSource="{Binding dataPager.GridModelList}" SelectedItem="{Binding dataPager.SelectedItem}">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn Width="60">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button
+                                                        Padding="8"
+                                                        Command="{Binding DataContext.ViewLogCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                                        Content="&#xe633;"
+                                                        Style="{StaticResource IconButtonStyle}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Binding="{Binding UserName}" Header="{extensions:Translate UserName}" />
+                                        <DataGridTextColumn Binding="{Binding ServiceName}" Header="{extensions:Translate Service}" />
+                                        <DataGridTextColumn Binding="{Binding MethodName}" Header="{extensions:Translate Action}" />
+                                        <DataGridTextColumn Binding="{Binding BrowserInfo}" Header="{extensions:Translate Browser}" />
+                                        <DataGridTextColumn Binding="{Binding ClientIpAddress}" Header="{extensions:Translate IpAddress}" />
+                                        <DataGridTextColumn Binding="{Binding ClientName}" Header="{extensions:Translate Client}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                                <controls:DataPager
+                                    Grid.Row="1"
+                                    Margin="5"
+                                    NumericButtonCount="{Binding dataPager.NumericButtonCount}"
+                                    PageCount="{Binding dataPager.PageCount, Mode=TwoWay}"
+                                    PageSize="{Binding dataPager.PageSize, Mode=TwoWay}"
+                                    PageIndex="{Binding dataPager.PageIndex, Mode=TwoWay}" />
+                            </Grid>
+                        </hc:Card>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="{extensions:Translate ChangeLogs}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid Margin="0,10,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <DatePicker Padding="3" Text="{Binding EntityChangeFilter.StartDate}" />
+                                <Border Grid.Column="1" Margin="10,0">
+                                    <TextBlock VerticalAlignment="Center" Text="―" />
+                                </Border>
+                                <DatePicker
+                                    Grid.Column="2"
+                                    Padding="3"
+                                    Text="{Binding EntityChangeFilter.EndDate}" />
+                            </Grid>
+
+                            <!--  用户名  -->
+                            <TextBox
+                                Grid.Column="1"
+                                Margin="10,0"
+                                VerticalAlignment="Center"
+                                hc:InfoElement.Placeholder="{extensions:Translate UserName}"
+                                Text="{Binding EntityChangeFilter.UserName}" />
+
+                            <!--  对象  -->
+                            <DockPanel
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Margin="10,5">
+                                <Button
+                                    Margin="10,0,0,0"
+                                    Padding="10,5"
+                                    Command="{Binding SearchCommand}"
+                                    Content="{extensions:Translate Search}"
+                                    DockPanel.Dock="Right" />
+                                <ComboBox VerticalAlignment="Center" Text="{Binding EntityChangeFilter.EntityTypeFullName}" />
+                            </DockPanel>
+                        </Grid>
+
+                        <hc:Card Grid.Row="1" Margin="10,0,10,10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <DataGrid ItemsSource="{Binding logsdataPager.GridModelList}">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn Width="60">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button
+                                                        Padding="8"
+                                                        Command="{Binding DataContext.ViewChangedLogCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                                        Content="&#xe633;"
+                                                        Style="{StaticResource IconButtonStyle}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Binding="{Binding UserName}" Header="{extensions:Translate Object}" />
+                                        <DataGridTextColumn Binding="{Binding ServiceName}" Header="{extensions:Translate UserName}" />
+                                        <DataGridTextColumn Binding="{Binding MethodName}" Header="{extensions:Translate Time}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                                <controls:DataPager
+                                    Grid.Row="1"
+                                    Margin="5"
+                                    HorizontalAlignment="Right"
+                                    NumericButtonCount="{Binding logsdataPager.NumericButtonCount}"
+                                    PageCount="{Binding logsdataPager.PageCount, Mode=TwoWay}"
+                                    PageSize="{Binding logsdataPager.PageSize, Mode=TwoWay}"
+                                    PageIndex="{Binding logsdataPager.PageIndex, Mode=TwoWay}" />
+                            </Grid>
+                        </hc:Card>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </md:DialogHost>
+</UserControl>

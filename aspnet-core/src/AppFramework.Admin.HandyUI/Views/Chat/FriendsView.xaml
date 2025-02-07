@@ -1,0 +1,114 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.HandyUI.FriendsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="clr-namespace:AppFramework.Admin.HandyUI"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="{DynamicResource SecondaryRegionBrush}"
+    mc:Ignorable="d">
+    <md:DialogHost IsOpen="{Binding chatService.IsBusy}">
+        <md:DialogHost.DialogContent>
+            <StackPanel Orientation="Horizontal">
+                <ProgressBar
+                    Width="30"
+                    Height="30"
+                    Margin="5"
+                    IsIndeterminate="True" />
+            </StackPanel>
+        </md:DialogHost.DialogContent>
+        <Grid>
+            <Grid.Effect>
+                <DropShadowEffect
+                    BlurRadius="20"
+                    Direction="180"
+                    Opacity="0.2"
+                    ShadowDepth="-10"
+                    Color="#1F000000" />
+            </Grid.Effect>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <DockPanel Margin="10">
+                <Button
+                    Command="{Binding AddUserCommand}"
+                    Content="&#xe69b;"
+                    DockPanel.Dock="Right"
+                    Style="{StaticResource IconButtonStyle}" />
+                <TextBox />
+            </DockPanel>
+
+            <ListBox
+                x:Name="ListFriends"
+                Grid.Row="1"
+                HorizontalContentAlignment="Stretch"
+                BorderThickness="0"
+                ItemsSource="{Binding chatService.Friends}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Image
+                                Width="40"
+                                Height="40"
+                                Margin="10,0"
+                                Source="{Binding Photo, Converter={StaticResource bytesToImageConverter}}" />
+
+                            <Border
+                                Width="10"
+                                Height="10"
+                                Margin="5,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                CornerRadius="10">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsOnline}" Value="true">
+                                                <Setter Property="Background" Value="#20c020" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsOnline}" Value="false">
+                                                <Setter Property="Background" Value="#ff4040" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                            </Border>
+
+                            <StackPanel Grid.Column="1">
+                                <TextBlock FontWeight="Bold" Text="{Binding FriendUserName}" />
+                                <TextBlock Margin="0,3" Text="{Binding FriendTenancyName}" />
+                            </StackPanel>
+
+                            <Border
+                                Grid.Column="1"
+                                Width="10"
+                                Height="10"
+                                Margin="10,5"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Background="#ff4040"
+                                CornerRadius="30"
+                                Visibility="{Binding UnreadMessageCount, Converter={StaticResource msgVisibilityConverter}}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding ClickChatCommand}" CommandParameter="{Binding ElementName=ListFriends, Path=SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </Grid>
+    </md:DialogHost>
+</UserControl>

@@ -1,0 +1,68 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.LanguageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:AppFramework.Shared.Controls"
+    xmlns:effect="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:refresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms">
+    <Grid BackgroundColor="{DynamicResource Gray-100}">
+        <refresh:SfPullToRefresh IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding RefreshCommand}">
+            <refresh:SfPullToRefresh.PullableContent>
+                <ScrollView>
+                    <StackLayout
+                        x:Name="stackLayoutList"
+                        BindableLayout.ItemsSource="{Binding dataPager.GridModelList}"
+                        Spacing="8">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <control:CustomShadowFrame
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="{DynamicResource Gray-Bg}"
+                                    BorderColor="{DynamicResource Gray-Bg}"
+                                    CornerRadius="4"
+                                    HasShadow="True"
+                                    HeightRequest="60"
+                                    Radius="4">
+                                    <effect:SfEffectsView
+                                        RippleColor="{DynamicResource Gray-300}"
+                                        TouchDownEffects="Ripple"
+                                        TouchUpCommand="{Binding Path=BindingContext.EditCommand, Source={x:Reference stackLayoutList}}"
+                                        TouchUpCommandParameter="{Binding}">
+                                        <Grid
+                                            Padding="10,0"
+                                            BackgroundColor="{DynamicResource Gray-Bg}"
+                                            RowSpacing="2"
+                                            VerticalOptions="Center">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image
+                                                    HeightRequest="20"
+                                                    HorizontalOptions="Center"
+                                                    Source="{Binding Icon, Converter={StaticResource ImageSourceConverter}}"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="20" />
+
+                                                <StackLayout Margin="5,0" HorizontalOptions="Start">
+                                                    <Label Text="{Binding DisplayName}" TextColor="{DynamicResource Gray-700}" />
+                                                    <Label Text="{Binding Name}" TextColor="{DynamicResource Gray-700}" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Grid>
+                                    </effect:SfEffectsView>
+                                </control:CustomShadowFrame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+
+            </refresh:SfPullToRefresh.PullableContent>
+        </refresh:SfPullToRefresh>
+
+        <!--<buttons:SfButton
+            Margin="0,0,10,10"
+            Command="{Binding AddCommand}"
+            IsVisible="{extensions:HasPermission Text={x:Static perm:AppPermissions.LanguageCreate}}"
+            Style="{StaticResource AddButtonStyle}"
+            VerticalOptions="End" />-->
+    </Grid>
+</ContentView>

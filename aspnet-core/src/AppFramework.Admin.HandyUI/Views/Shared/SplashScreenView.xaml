@@ -1,0 +1,59 @@
+﻿<Window
+    x:Class="AppFramework.Admin.HandyUI.Views.SplashScreenView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    x:Name="ChromelessWindow"
+    Width="940"
+    Height="550"
+    AllowsTransparency="True"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="SizeToContent" Value="WidthAndHeight" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation
+                        Storyboard.TargetName="ChromelessWindow"
+                        Storyboard.TargetProperty="Margin"
+                        From="300,200"
+                        To="0"
+                        Duration="0:0:0.45" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Margin="-10">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Image
+            Grid.RowSpan="2"
+            Source="/Assets/Images/SplashScreen2.png"
+            Stretch="UniformToFill" />
+
+        <StackPanel
+            Grid.Row="1"
+            Margin="50"
+            VerticalAlignment="Bottom">
+            <TextBlock
+                FontSize="18"
+                FontWeight="Bold"
+                Foreground="White"
+                Text="{Binding DisplayText}" />
+
+            <ProgressBar Margin="0,20" IsIndeterminate="True" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConditionalFormatEditor_AddCondition" xml:space="preserve">
+    <value>Add Condition</value>
+  </data>
+  <data name="ConditionalFormatEditor_CellColor" xml:space="preserve">
+    <value>Cell Color</value>
+  </data>
+  <data name="ConditionalFormatEditor_ConditionName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ConditionalFormatEditor_ConditionsList" xml:space="preserve">
+    <value>Conditions</value>
+  </data>
+  <data name="ConditionalFormatEditor_ConditionType" xml:space="preserve">
+    <value>Condition Type</value>
+  </data>
+  <data name="ConditionalFormatEditor_Exception" xml:space="preserve">
+    <value>Please enter the conditional value</value>
+  </data>
+  <data name="ConditionalFormatEditor_ExceptionCaption" xml:space="preserve">
+    <value>Exception Message : Conditional Format Editor</value>
+  </data>
+  <data name="ConditionalFormatEditor_FontStyle" xml:space="preserve">
+    <value>Font Style</value>
+  </data>
+  <data name="ConditionalFormatEditor_FontWeight" xml:space="preserve">
+    <value>Font Weight</value>
+  </data>
+  <data name="ConditionalFormatEditor_Foreground" xml:space="preserve">
+    <value>Foreground</value>
+  </data>
+  <data name="ConditionalFormatEditor_HeaderText" xml:space="preserve">
+    <value>Conditional Format Editor</value>
+  </data>
+  <data name="ConditionalFormatEditor_Measure" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="ConditionalFormatEditor_PredicateType" xml:space="preserve">
+    <value>Predicate Type</value>
+  </data>
+  <data name="ConditionalFormatEditor_Reset" xml:space="preserve">
+    <value>Remove All</value>
+  </data>
+  <data name="ConditionalFormatEditor_Value1" xml:space="preserve">
+    <value>Value1</value>
+  </data>
+  <data name="ConditionalFormatEditor_Value2" xml:space="preserve">
+    <value>Value2</value>
+  </data>
+  <data name="OlapGrid_Column_Tooltip" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="OlapGrid_ContextMenu_Collapse" xml:space="preserve">
+    <value>Collapse</value>
+  </data>
+  <data name="OlapGrid_ContextMenu_Entirely" xml:space="preserve">
+    <value>Entirely</value>
+  </data>
+  <data name="OlapGrid_ContextMenu_Expand" xml:space="preserve">
+    <value>Expand</value>
+  </data>
+  <data name="OlapGrid_ContextMenu_To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="OlapGrid_Dialog_Background_Color" xml:space="preserve">
+    <value>Background Color</value>
+  </data>
+  <data name="OlapGrid_Dialog_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="OlapGrid_Dialog_CellStyles" xml:space="preserve">
+    <value>Cell Styles</value>
+  </data>
+  <data name="OlapGrid_Dialog_ColumnHeader" xml:space="preserve">
+    <value>Column Header</value>
+  </data>
+  <data name="OlapGrid_Dialog_ColumnSummary" xml:space="preserve">
+    <value>Column Summary</value>
+  </data>
+  <data name="OlapGrid_Dialog_Font_Color" xml:space="preserve">
+    <value>Font Color</value>
+  </data>
+  <data name="OlapGrid_Dialog_Font_Name" xml:space="preserve">
+    <value>Font Name</value>
+  </data>
+  <data name="OlapGrid_Dialog_Font_Size" xml:space="preserve">
+    <value>Font Size</value>
+  </data>
+  <data name="OlapGrid_Dialog_Font_Style" xml:space="preserve">
+    <value>Font Style</value>
+  </data>
+  <data name="OlapGrid_Dialog_Foreground_Color" xml:space="preserve">
+    <value>Foreground Color</value>
+  </data>
+  <data name="OlapGrid_Dialog_HeaderFont" xml:space="preserve">
+    <value>Header Font</value>
+  </data>
+  <data name="OlapGrid_Dialog_HeaderStyle" xml:space="preserve">
+    <value>Header Style</value>
+  </data>
+  <data name="OlapGrid_Dialog_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OlapGrid_Dialog_RowHeader" xml:space="preserve">
+    <value>Row Header</value>
+  </data>
+  <data name="OlapGrid_Dialog_RowSummary" xml:space="preserve">
+    <value>Row Summary</value>
+  </data>
+  <data name="OlapGrid_Dialog_SummaryFont" xml:space="preserve">
+    <value>Summary Font</value>
+  </data>
+  <data name="OlapGrid_Dialog_SummaryStyle" xml:space="preserve">
+    <value>Summary Style</value>
+  </data>
+  <data name="OlapGrid_Dialog_Title" xml:space="preserve">
+    <value>Apply Style</value>
+  </data>
+  <data name="OlapGrid_Measure_Tooltip" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="OlapGrid_Row_Tooltip" xml:space="preserve">
+    <value>Row</value>
+  </data>
+  <data name="OlapGrid_Value_Tooltip" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="ConditionalFormatEditor_InvalidNameInfo" xml:space="preserve">
+    <value>Please provide an alternate name. A condition already exists as</value>
+  </data>
+  <data name="ConditionalFormatEditor_MessageBoxErrorInfo" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ConditionalFormatEditor_NoMeasureInfo" xml:space="preserve">
+    <value>No Measure element is associated with the current report</value>
+  </data>
+  <data name="ConditionalFormatEditor_NoNameInfo" xml:space="preserve">
+    <value>Please provide a name for the specified Conditional format</value>
+  </data>
+  <data name="ConditionalFormatEditor_InvalidValuesInfo" xml:space="preserve">
+    <value>Invalid values: The value 1 must be lower than the value 2</value>
+  </data>
+  <data name="ConditionalFormatEditor_RemoveCondition" xml:space="preserve">
+    <value>The selected condition will be removed. Are you sure you want to remove the condition?</value>
+  </data>
+  <data name="ConditionalFormatEditor_RemoveAllConditionsInfo" xml:space="preserve">
+    <value>All the applied Conditional formats will be removed. Are you sure to proceed?</value>
+  </data>
+  <data name="ConditionalFormatEditor_MessageInfo" xml:space="preserve">
+    <value>Remove Condition</value>
+  </data>
+  <data name="ConditionalFormatEditor_RemoveButtonToolTip" xml:space="preserve">
+    <value>Removes the current condition</value>
+  </data>
+  <data name="OlapGrid_HexStringToColor_Exception" xml:space="preserve">
+    <value>Invalid Hexadecimal string</value>
+  </data>
+  <data name="OlapGrid_PageNotFound_Exception" xml:space="preserve">
+    <value>Page not found for the specified index in the paging grid.</value>
+  </data>
+  <data name="StackTrace_Exception_Description" xml:space="preserve">
+    <value>For more details, please refer the log file from : </value>
+  </data>
+</root>

@@ -1,0 +1,80 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.MaterialUI.EditionView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    Background="{DynamicResource MaterialDesignCardBackground}"
+    mc:Ignorable="d">
+    <md:DialogHost IsOpen="{Binding IsBusy}">
+        <md:DialogHost.DialogContent>
+            <StackPanel Orientation="Horizontal">
+                <ProgressBar
+                    Width="30"
+                    Height="30"
+                    Margin="5"
+                    IsIndeterminate="True"
+                    Style="{StaticResource MaterialDesignCircularProgressBar}" />
+            </StackPanel>
+        </md:DialogHost.DialogContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <DockPanel Margin="15" LastChildFill="False">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Text="{Binding Title}" />
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="{extensions:Translate EditionsHeaderInfo}" />
+                </StackPanel>
+
+                <Button
+                    VerticalAlignment="Center"
+                    Command="{Binding AddCommand}"
+                    Content="{extensions:Translate CreateNewEdition}"
+                    DockPanel.Dock="Right"
+                    Visibility="{extensions:HasPermission Text={x:Static extensions:AppPermissions.EditionCreate}}" />
+            </DockPanel>
+
+            <md:Card Grid.Row="1">
+                <DataGrid
+                    Margin="10,0,10,10"
+                    ItemsSource="{Binding dataPager.GridModelList}"
+                    SelectedItem="{Binding dataPager.SelectedItem}">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Width="80" Header="{extensions:Translate Actions}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <md:PopupBox>
+                                        <ItemsControl ItemsSource="{Binding DataContext.proxyService.Permissions, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Button
+                                                        Command="{Binding DataContext.ExecuteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                                                        CommandParameter="{Binding Key}"
+                                                        Content="{Binding Name}" />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </md:PopupBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Binding="{Binding DisplayName}" Header="{extensions:Translate DisplayName}" />
+                        <DataGridTextColumn Binding="{Binding WaitingDayAfterExpire}" Header="{extensions:Translate WaitingDayAfterExpire}" />
+                        <DataGridTextColumn Binding="{Binding TrialDayCount}" Header="{extensions:Translate TrialDayCount}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </md:Card>
+        </Grid>
+    </md:DialogHost>
+</UserControl>

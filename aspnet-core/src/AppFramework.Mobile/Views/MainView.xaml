@@ -1,0 +1,123 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.MainView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:manager="clr-namespace:AppFramework.Shared"
+    xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:tree="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms"
+    xmlns:views="clr-namespace:AppFramework.Shared.Views"
+    BackgroundColor="{DynamicResource PrimaryColor}">
+    <navigationdrawer:SfNavigationDrawer x:Name="navigationDrawer" DrawerFooterHeight="0">
+        <navigationdrawer:SfNavigationDrawer.ContentView>
+            <Grid BackgroundColor="{DynamicResource GrayShadowBackgroundColor}" RowDefinitions="auto,*">
+                <StackLayout BackgroundColor="{DynamicResource PrimaryColor}" Orientation="Horizontal">
+                    <Button
+                        BackgroundColor="{DynamicResource PrimaryColor}"
+                        Clicked="btnHeaderClick"
+                        FontSize="20"
+                        HeightRequest="50"
+                        HorizontalOptions="Start"
+                        ImageSource="Menu.png"
+                        TextColor="White"
+                        WidthRequest="50" />
+                </StackLayout>
+
+                <Label
+                    BackgroundColor="{DynamicResource PrimaryColor}"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    Text="{Binding appService.ApplicationName}"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+
+                <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                    <buttons:SfButton
+                        Command="{Binding GoChatCommand}"
+                        Style="{StaticResource IconButtonStyle}"
+                        Text="{StaticResource Message}" />
+
+                    <buttons:SfButton
+                        Clicked="btnSettingsClick"
+                        Style="{StaticResource IconButtonStyle}"
+                        Text="{StaticResource Settings}" />
+                </StackLayout>
+
+                <ContentView
+                    x:Name="DisplayView"
+                    Grid.Row="1"
+                    prism:RegionManager.RegionName="{x:Static manager:AppRegions.Main}" />
+
+                <views:SkinView x:Name="viewSetting" Grid.RowSpan="2" />
+            </Grid>
+        </navigationdrawer:SfNavigationDrawer.ContentView>
+        <navigationdrawer:SfNavigationDrawer.DrawerContentView>
+            <tree:SfTreeView
+                x:Name="SfTreeView"
+                BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
+                ChildPropertyName="Items"
+                ExpandActionTarget="Node"
+                FocusBorderThickness="0"
+                FullRowSelect="True"
+                ItemHeight="45"
+                ItemsSource="{Binding appService.NavigationItems}"
+                SelectionBackgroundColor="Transparent">
+                <tree:SfTreeView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5,10" ColumnDefinitions="auto,*">
+                            <Label
+                                Style="{StaticResource IconLabelStyle}"
+                                Text="{Binding Icon}"
+                                TextColor="{DynamicResource Gray-900}" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="5,0,0,0"
+                                Text="{Binding Title}"
+                                TextColor="{DynamicResource Gray-900}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </tree:SfTreeView.ItemTemplate>
+            </tree:SfTreeView>
+        </navigationdrawer:SfNavigationDrawer.DrawerContentView>
+        <navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+            <Grid BackgroundColor="{DynamicResource GrayShadowBackgroundColor}" RowDefinitions="auto,auto">
+
+                <Frame
+                    Margin="5,10,5,0"
+                    Padding="0"
+                    CornerRadius="50"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    IsClippedToBounds="True"
+                    WidthRequest="50">
+                    <Image Source="{Binding appService.Photo, Converter={StaticResource ByteToImageConverter}}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding ExecuteCommand}"
+                                CommandParameter="ShowProfilePhoto"
+                                NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Frame>
+
+                <StackLayout Grid.Row="1">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding appService.UserNameAndSurname}"
+                        TextColor="{DynamicResource Gray-900}"
+                        VerticalOptions="Center" />
+                    <buttons:SfButton
+                        Margin="5"
+                        Command="{Binding ExecuteCommand}"
+                        CommandParameter="MyProfile"
+                        HorizontalOptions="Fill"
+                        Style="{StaticResource GradientButtonStyle}"
+                        Text="{extensions:Translate UserInformations}" />
+                </StackLayout>
+            </Grid>
+        </navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+    </navigationdrawer:SfNavigationDrawer>
+</ContentView>

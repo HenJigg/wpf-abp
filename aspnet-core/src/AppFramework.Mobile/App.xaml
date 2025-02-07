@@ -1,0 +1,25 @@
+﻿<prism:PrismApplication
+    x:Class="AppFramework.Shared.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:AppFramework.Shared.Converters;assembly=AppFramework.Shared"
+    xmlns:prism="http://prismlibrary.com">
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:UserPhotoConverter x:Key="UserPhotoConverter" />
+            <converters:DatetimeConverter x:Key="DatetimeConverter" />
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+            <converters:BoolToYesNoConverter x:Key="BoolToYesNoConverter" />
+            <converters:ImageSourceConverter x:Key="ImageSourceConverter" />
+            <converters:ByteToImageConverter x:Key="ByteToImageConverter" />
+            <converters:BackgroundColorConverter x:Key="BackgroundColorConverter" />
+            <converters:IndentConverter x:Key="IndentConverter" />
+            <converters:StringToBadgeIconConverter x:Key="BadgeConverter" />
+            <converters:StringFormatConverter x:Key="StringFormatConverter" />
+            <converters:UrlToImageConverter x:Key="UrlToImageConverter" />
+            <converters:IntToVisibilityConverter x:Key="IntToVisibilityConverter" />
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

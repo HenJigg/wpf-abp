@@ -1,7 +1,8 @@
 中文 | [English](./README-en.md)
 ## 亮点
 本套WPF 框架支持多种UI框架, 包含: Syncfusion、HandyControl、MaterialDesign 。
-参考更新: [WPF ABP框架重大更新(2022-12月份)](https://www.cnblogs.com/zh7791/p/16984326.html)
+
+本套框架基于ASP.NET Core Zero(ABP) 商业版进行开发，前端WPF部分开源。
 
 ## 框架介绍
 本套框架基于ABP商业版框架进行完整开发, 实现了ABP商业版中的功能,  并且提供了WPF以及Xamarin.Forms版本,  实现完整的跨平台应用开发。
@@ -31,12 +32,7 @@ ABP官方未正式提供完整版本WPF框架, 所以就出现了该套框架，
 关于实际的运行效果图可以参考视频: [WPF ABP框架演示](https://www.bilibili.com/video/BV1Av4y1w7ds?spm_id_from=333.999.0.0)
 下面通过一些实际运行的截图来展示效果, 包含桌面端(WPF)以及移动端(Xamarin.Forms)效果图。
 
-## 更新历史记录
-- [WPF ABP框架更新日志(最新2022-07月)](https://www.cnblogs.com/zh7791/p/16510567.html)
-- [WPF ABP框架更新日志(最新2022-08月)](https://www.cnblogs.com/zh7791/p/16655799.html)
-- [WPF ABP框架更新日志(最新2022-10月)](https://www.cnblogs.com/zh7791/p/16839052.html))
-- [WPF ABP框架更新日志(最新2022-11月)](https://www.cnblogs.com/zh7791/p/16930333.html)
-- [WPF ABP框架更新日志(最新2022-12月)](https://www.cnblogs.com/zh7791/p/16984326.html)
+
 
 ## 框架截图(部分 新/旧)
 

@@ -1,0 +1,90 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.SelectionUserOrRoleView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:tab="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+    IsVisible="false">
+    <Grid>
+        <BoxView
+            x:Name="ShadowView"
+            BackgroundColor="Gray"
+            IsVisible="False"
+            Opacity="0.5">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CloseSelectionUserOrRoleView" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <Grid
+            x:Name="MainContent"
+            BackgroundColor="{DynamicResource GrayShadowColor}"
+            Opacity="0"
+            RowDefinitions="8, 20, Auto, 44, Auto"
+            TranslationY="300"
+            VerticalOptions="EndAndExpand">
+
+            <Frame
+                Grid.Row="0"
+                Margin="0,-14,0,0"
+                Padding="0"
+                BackgroundColor="{DynamicResource GrayShadowColor}"
+                CornerRadius="14"
+                HasShadow="False" />
+
+            <StackLayout
+                Grid.Row="1"
+                Margin="0,-20,0,0"
+                Orientation="Horizontal"
+                Spacing="0">
+                <Label
+                    Margin="16,0,0,0"
+                    FontFamily="Montserrat-SemiBold"
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource SimpleLabelStyle}"
+                    Text="{extensions:Translate AddUserOrRole}"
+                    VerticalOptions="Center" />
+            </StackLayout>
+
+            <tab:SfTabView Grid.Row="2" Margin="16,0">
+                <tab:SfTabItem Title="{extensions:Translate Roles}">
+                    <tab:SfTabItem.Content>
+                        <StackLayout BindableLayout.ItemsSource="{Binding Model.Roles}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="5,0" ColumnDefinitions="*,auto">
+                                        <Label Style="{StaticResource SimpleLabelStyle}" Text="{Binding RoleDisplayName}" />
+                                        <Switch Grid.Column="1" IsToggled="{Binding IsAssigned}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </tab:SfTabItem.Content>
+                </tab:SfTabItem>
+
+                <tab:SfTabItem Title="{extensions:Translate OrganizationUnits}">
+                    <tab:SfTabItem.Content>
+                        <StackLayout BindableLayout.ItemsSource="{Binding Model.OrganizationUnits}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid
+                                        Padding="5,0"
+                                        ColumnDefinitions="auto,*,auto"
+                                        ColumnSpacing="0">
+                                        <Label Style="{StaticResource SimpleLabelStyle}" Text="{Binding Code, Converter={StaticResource IndentConverter}, ConverterParameter=··}" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Style="{StaticResource SimpleLabelStyle}"
+                                            Text="{Binding DisplayName}" />
+                                        <Switch Grid.Column="2" IsToggled="{Binding IsAssigned}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </tab:SfTabItem.Content>
+                </tab:SfTabItem>
+            </tab:SfTabView>
+        </Grid>
+    </Grid>
+</ContentView>

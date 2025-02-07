@@ -1,0 +1,76 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.MaterialUI.SelectTenantView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    Width="500"
+    Height="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Margin="15"
+            FontSize="18"
+            FontWeight="Bold"
+            Text="{extensions:Translate ChangeTenant}" />
+
+        <Grid
+            Grid.Row="1"
+            Margin="20,0"
+            VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="{extensions:Translate LoginForTenants}" />
+            <CheckBox
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                Content="{extensions:Translate Enable}"
+                IsChecked="{Binding IsLoginForTenants}" />
+
+            <TextBlock
+                Grid.Row="1"
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="{extensions:Translate TenancyName}" />
+
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0,20,0,0"
+                VerticalAlignment="Center"
+                Text="{Binding TenancyName}" />
+        </Grid>
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="15"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                Margin="10,0"
+                Padding="10,5"
+                Command="{Binding CancelCommand}"
+                Content="{extensions:Translate Cancel}" />
+            <Button
+                Padding="10,5"
+                Command="{Binding SaveCommand}"
+                Content="{extensions:Translate Save}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

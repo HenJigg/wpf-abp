@@ -1,0 +1,175 @@
+﻿<ContentPage
+    x:Class="AppFramework.Shared.Views.UserDetailsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls;assembly=AppFramework.Shared"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:image="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:views="clr-namespace:AppFramework.Shared.Views">
+    <ScrollView>
+        <Grid BackgroundColor="{DynamicResource GrayShadowColor}">
+            <StackLayout Margin="10,0">
+                <StackLayout>
+                    <!--  用户头像、姓名、邮箱地址  -->
+                    <image:CircleImage
+                        Margin="0,10,0,0"
+                        Aspect="AspectFit"
+                        BorderColor="White"
+                        BorderThickness="3"
+                        HeightRequest="80"
+                        HorizontalOptions="Center"
+                        Source="{Binding Model.Photo}"
+                        VerticalOptions="Center"
+                        WidthRequest="80" />
+                    <Label
+                        HorizontalOptions="Center"
+                        Style="{StaticResource SimpleLabelStyle}"
+                        Text="{Binding Model.FullName}" />
+                    <Label
+                        HorizontalOptions="Center"
+                        Style="{StaticResource SimpleLabelStyle}"
+                        Text="{Binding Model.User.EmailAddress}" />
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <!--  用户名  -->
+                        <controls:BorderlessEntry
+                            Placeholder="{extensions:Translate UserNameOrEmail}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Model.User.UserName, Mode=TwoWay}" />
+                    </border:SfBorder>
+
+                    <Grid ColumnDefinitions="0.5*,0.5*">
+                        <StackLayout>
+                            <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                                <!--  名字  -->
+                                <controls:BorderlessEntry
+                                    Placeholder="{extensions:Translate Name}"
+                                    Style="{StaticResource BorderlessEntryStyle}"
+                                    Text="{Binding Model.User.Name, Mode=TwoWay}" />
+                            </border:SfBorder>
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1">
+                            <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                                <!--  姓氏  -->
+                                <controls:BorderlessEntry
+                                    Placeholder="{extensions:Translate Surname}"
+                                    Style="{StaticResource BorderlessEntryStyle}"
+                                    Text="{Binding Model.User.Surname, Mode=TwoWay}" />
+                            </border:SfBorder>
+                        </StackLayout>
+                    </Grid>
+
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <!--  邮箱地址  -->
+                        <controls:BorderlessEntry
+                            Placeholder="{extensions:Translate Email}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Model.User.EmailAddress, Mode=TwoWay}" />
+                    </border:SfBorder>
+
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <!--  手机号码  -->
+                        <controls:BorderlessEntry
+                            Placeholder="{extensions:Translate PhoneNumber}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Model.User.PhoneNumber, Mode=TwoWay}" />
+                    </border:SfBorder>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate SetRandomPassword}" />
+
+                        <!--  是否随机密码？  -->
+                        <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding UserInput.SetRandomPassword}" />
+                    </StackLayout>
+
+                    <StackLayout IsVisible="{Binding UserInput.SetRandomPassword, Converter={StaticResource InverseBooleanConverter}}">
+                        <StackLayout>
+                            <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate NewPassword}" />
+
+                            <!--  密码  -->
+                            <controls:BorderlessEntry
+                                IsPassword="True"
+                                Placeholder="Password"
+                                Style="{StaticResource BorderlessEntryStyle}"
+                                Text="{Binding Model.User.Password, Mode=TwoWay}" />
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate NewPasswordRepeat}" />
+
+                            <!--  确认密码  -->
+                            <controls:BorderlessEntry
+                                IsPassword="True"
+                                Placeholder="NewPassword"
+                                Style="{StaticResource BorderlessEntryStyle}"
+                                Text="{Binding Model.User.Password, Mode=TwoWay}" />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!--  下次登录时应更改密码  -->
+                    <StackLayout Orientation="Horizontal">
+                        <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate ShouldChangePasswordOnNextLogin}" />
+                        <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding Model.User.ShouldChangePasswordOnNextLogin}" />
+                    </StackLayout>
+
+                    <!--  发送激活邮件  -->
+                    <StackLayout Orientation="Horizontal">
+                        <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate SendActivationEmail}" />
+                        <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding UserInput.SendActivationEmail}" />
+                    </StackLayout>
+
+                    <!--  是否锁定  -->
+                    <StackLayout Orientation="Horizontal">
+                        <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate IsLockoutEnabled}" />
+                        <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding Model.User.IsLockoutEnabled}" />
+                    </StackLayout>
+
+                    <!--  激活  -->
+                    <StackLayout Orientation="Horizontal">
+                        <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate Active}" />
+                        <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding Model.User.IsActive}" />
+                    </StackLayout>
+                </StackLayout>
+                <!--  解锁、取消、保存  -->
+                <StackLayout IsVisible="{Binding Source={x:Reference selectionUserOrRoleView}, Path=IsVisible, Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                    <buttons:SfButton
+                        Command="{Binding AddUserOrRoleCommand}"
+                        HorizontalOptions="Fill"
+                        Style="{StaticResource GradientButtonStyle}"
+                        Text="{extensions:Translate AddUserOrRole}" />
+
+                    <!--<buttons:SfButton
+                        Command="{Binding GoBackCommand}"
+                        HorizontalOptions="Fill"
+                        Style="{StaticResource GradientButtonStyle}"
+                        Text="{extensions:Translate Cancel}" />
+
+                    <buttons:SfButton
+                        Command="{Binding DeleteCommand}"
+                        HorizontalOptions="Fill"
+                        IsVisible="{Binding IsUnlockButtonVisible}"
+                        Style="{StaticResource GradientButtonStyle}"
+                        Text="{extensions:Translate Delete}" />
+
+                    <buttons:SfButton
+                        Command="{Binding ExecuteCommand}"
+                        CommandParameter="Unlock"
+                        HorizontalOptions="Fill"
+                        IsVisible="{Binding IsUnlockButtonVisible}"
+                        Style="{StaticResource GradientButtonStyle}"
+                        Text="{extensions:Translate Unlock}" />-->
+
+                    <buttons:SfButton
+                        Command="{Binding SaveCommand}"
+                        HorizontalOptions="Fill"
+                        Style="{StaticResource GradientButtonStyle}"
+                        Text="{extensions:Translate Save}" />
+                </StackLayout>
+            </StackLayout>
+
+            <views:SelectionUserOrRoleView x:Name="selectionUserOrRoleView" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,81 @@
+﻿<ContentPage
+    x:Class="AppFramework.Shared.Views.RoleDetailsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls;assembly=AppFramework.Shared"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:treeview="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms">
+    <Grid
+        Padding="15"
+        BackgroundColor="{DynamicResource GrayShadowColor}"
+        RowDefinitions="auto,*,auto">
+        <StackLayout>
+            <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                <controls:BorderlessEntry
+                    Placeholder="{extensions:Translate RoleName}"
+                    Style="{StaticResource BorderlessEntryStyle}"
+                    Text="{Binding Role.DisplayName, Mode=TwoWay}" />
+            </border:SfBorder>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate Default}" />
+                <Switch IsToggled="{Binding Role.IsDefault, Mode=TwoWay}" />
+                <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate DefaultRole_Description}" />
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1">
+            <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate Permission}" />
+
+            <treeview:SfTreeView
+                x:Name="sfTreeView"
+                CheckBoxMode="Recursive"
+                CheckedItems="{Binding treesService.SelectedItems}"
+                ChildPropertyName="Items"
+                ItemTemplateContextType="Node"
+                ItemsSource="{Binding treesService.Permissions}"
+                SelectionBackgroundColor="Transparent"
+                SelectionMode="Multiple">
+                <treeview:SfTreeView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <buttons:SfCheckBox
+                                IsChecked="{Binding IsChecked}"
+                                Style="{StaticResource CheckBoxStyle}"
+                                VerticalOptions="Center" />
+                            <Label
+                                Style="{StaticResource SimpleLabelStyle}"
+                                Text="{Binding Content.DisplayName}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </DataTemplate>
+                </treeview:SfTreeView.ItemTemplate>
+            </treeview:SfTreeView>
+        </StackLayout>
+
+        <StackLayout Grid.Row="2">
+            <buttons:SfButton
+                Command="{Binding GoBackCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Cancel}" />
+
+            <!--  删除按钮  -->
+            <buttons:SfButton
+                Command="{Binding DeleteCommand}"
+                HorizontalOptions="Fill"
+                IsVisible="{Binding IsDeleteButtonVisible}"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Delete}" />
+
+            <buttons:SfButton
+                Command="{Binding SaveCommand}"
+                CommandParameter="Save"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Save}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,39 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.MessageBoxView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared">
+    <controls:CustomShadowFrame
+        BackgroundColor="{DynamicResource GrayShadowColor}"
+        BorderWidth="0"
+        CornerRadius="4"
+        HasShadow="True"
+        HorizontalOptions="Fill"
+        Radius="4">
+        <Grid RowDefinitions="auto,*,auto" RowSpacing="8">
+            <Label Text="{extensions:Translate Actions}" />
+
+            <Label
+                Grid.Row="1"
+                Margin="0,10"
+                Text="{extensions:Translate AreYouSure}" />
+
+            <StackLayout
+                Grid.Row="2"
+                HorizontalOptions="End"
+                Orientation="Horizontal">
+                <buttons:SfButton
+                    Command="{Binding CancelCommand}"
+                    Style="{StaticResource TransparentButtonStyle}"
+                    Text="{extensions:Translate Cancel}" />
+                <buttons:SfButton
+                    Margin="10,0"
+                    Command="{Binding SaveCommand}"
+                    Style="{StaticResource TransparentButtonStyle}"
+                    Text="{extensions:Translate Save}" />
+            </StackLayout>
+        </Grid>
+    </controls:CustomShadowFrame>
+</ContentView>

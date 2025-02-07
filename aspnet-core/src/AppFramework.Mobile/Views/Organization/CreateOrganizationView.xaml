@@ -1,0 +1,67 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.CreateOrganizationView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls;assembly=AppFramework.Shared"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    IsVisible="false">
+    <Grid>
+        <BoxView
+            x:Name="ShadowView"
+            BackgroundColor="Gray"
+            IsVisible="False"
+            Opacity="0.5">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CloseOrganizationView" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <Grid
+            x:Name="MainContent"
+            BackgroundColor="{DynamicResource GrayShadowColor}"
+            Opacity="0"
+            RowDefinitions="8, 20, Auto, 44, Auto"
+            TranslationY="300"
+            VerticalOptions="EndAndExpand">
+
+            <Frame
+                Grid.Row="0"
+                Margin="0,-14,0,0"
+                Padding="0"
+                BackgroundColor="{DynamicResource GrayShadowColor}"
+                CornerRadius="14"
+                HasShadow="False" />
+
+            <StackLayout
+                Grid.Row="1"
+                Margin="0,-20,0,0"
+                Orientation="Horizontal"
+                Spacing="0">
+                <Label
+                    Margin="16,0,0,0"
+                    FontFamily="Montserrat-SemiBold"
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource SimpleLabelStyle}"
+                    Text="{extensions:Translate NewOrganizationUnit}"
+                    VerticalOptions="Center" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Margin="16,0">
+                <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate OrganizationUnits}" />
+
+                <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                    <controls:BorderlessEntry Style="{StaticResource BorderlessEntryStyle}" Text="{Binding OrganizationName}" />
+                </border:SfBorder>
+
+                <buttons:SfButton
+                    Command="{Binding SaveCommand}"
+                    HorizontalOptions="Fill"
+                    Style="{StaticResource GradientButtonStyle}"
+                    Text="{extensions:Translate Save}" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentView>

@@ -1,0 +1,28 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:AppFramework.Converters">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Shared;component/Themes/FontIcons.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Shared;component/Themes/Templates/FileTemplate.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Shared;component/Themes/Templates/ImageTemplate.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Shared;component/Themes/Templates/TextTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <converter:ImageConverter x:Key="imageConvert" />
+    <converter:UrlToImageConverter x:Key="urlImageConverter" />
+    <converter:MenuImageConverter x:Key="menuConverter" />
+    <converter:ByteToImageConverter x:Key="bytesToImageConverter" />
+    <converter:BoolToVisibilityConverter x:Key="boolToVisibility" />
+    <converter:StateToVisibilityConverter x:Key="stateConverter" />
+    <converter:UnreadMessageCountToVisibilityConverter x:Key="msgVisibilityConverter" />
+    <converter:InverseBoolToVisibilityConverter x:Key="inverseBoolToVisibility" />
+    <converter:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+    <converter:BoolToYesNoStrConverter x:Key="boolToYesNoStrConverter" />
+    <converter:BoolToBackgroundConverter x:Key="boolToBackgroundConverter" />
+    <converter:NotificationToMessageConverter x:Key="notifycationConverter" />
+    <converter:InverseBoolToYesNoStrConverter x:Key="inverseboolToYesNoStrConverter" />
+    <converter:InverseBoolToBackgroundConverter x:Key="inverseboolToBackgroundConverter" />
+    <converter:DateTimeToStringConverter x:Key="dateTimeToStringConverter" />
+</ResourceDictionary>

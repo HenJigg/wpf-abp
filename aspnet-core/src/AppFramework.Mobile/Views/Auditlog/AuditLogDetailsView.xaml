@@ -1,0 +1,220 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.AuditLogDetailsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    IsVisible="false">
+    <Grid>
+        <BoxView
+            x:Name="ShadowView"
+            BackgroundColor="Gray"
+            IsVisible="False"
+            Opacity="0.5">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CloseAuditLogDetails" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <Grid
+            x:Name="MainContent"
+            BackgroundColor="{DynamicResource GrayShadowColor}"
+            Opacity="0"
+            RowDefinitions="8, 20, Auto, 44, Auto"
+            TranslationY="300"
+            VerticalOptions="EndAndExpand">
+
+            <Frame
+                Grid.Row="0"
+                Margin="0,-14,0,0"
+                Padding="0"
+                BackgroundColor="{DynamicResource GrayShadowColor}"
+                CornerRadius="14"
+                HasShadow="False" />
+
+            <StackLayout
+                Grid.Row="1"
+                Margin="0,-20,0,0"
+                Orientation="Horizontal"
+                Spacing="0">
+                <Label
+                    Margin="16,0,0,0"
+                    FontFamily="Montserrat-SemiBold"
+                    FontSize="16"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource SimpleLabelStyle}"
+                    Text="{extensions:Translate AuditLogDetail}"
+                    VerticalOptions="Center" />
+            </StackLayout>
+
+            <ScrollView
+                Grid.Row="2"
+                Margin="15,0"
+                HeightRequest="300">
+                <Grid RowDefinitions="auto,auto,*">
+                    <!--  User Infomation  -->
+                    <Grid ColumnDefinitions="150,*" RowDefinitions="auto,auto,auto,auto,auto">
+
+                        <Label
+                            Grid.ColumnSpan="2"
+                            Margin="0,5"
+                            FontSize="14"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate UserInformations}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate UserName}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.UserName}" />
+
+                        <Label
+                            Grid.Row="2"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate IpAddress}" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.ClientIpAddress}" />
+
+                        <Label
+                            Grid.Row="3"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate Client}" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.ClientName}" />
+
+                        <Label
+                            Grid.Row="4"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate Browser}" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.BrowserInfo}" />
+                    </Grid>
+
+                    <!--  Action Infomation  -->
+                    <Grid
+                        Grid.Row="1"
+                        ColumnDefinitions="150,*"
+                        RowDefinitions="auto,auto,auto,auto,auto,auto">
+                        <Label
+                            Grid.ColumnSpan="2"
+                            Margin="0,5"
+                            FontSize="14"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate ActionInformations}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate Service}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.ServiceName}" />
+
+                        <Label
+                            Grid.Row="2"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate Action}" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.MethodName}" />
+
+                        <Label
+                            Grid.Row="3"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate Time}" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.ExecutionTime}" />
+
+                        <Label
+                            Grid.Row="4"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate Duration}" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.ExecutionDuration}" />
+
+                        <Label
+                            Grid.Row="5"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate Parameters}" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.Parameters}" />
+                    </Grid>
+
+                    <!--  Custom Data  -->
+                    <Grid Grid.Row="2" RowDefinitions="auto,auto,auto,auto">
+
+                        <Label
+                            Grid.ColumnSpan="2"
+                            Margin="0,5"
+                            FontSize="14"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate CustomData}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.CustomData}" />
+
+                        <Label
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Margin="0,5"
+                            FontSize="18"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{extensions:Translate ErrorState}" />
+
+                        <Label
+                            Grid.Row="3"
+                            Margin="0"
+                            Style="{StaticResource SimpleLabelStyle}"
+                            Text="{Binding AuditLog.Exception}" />
+                    </Grid>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentView>

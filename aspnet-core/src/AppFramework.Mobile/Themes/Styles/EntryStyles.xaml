@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    x:Class="AppFramework.Shared.EntryStyles"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:AppFramework.Shared.Controls"
+    xmlns:number="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms">
+
+    <!--  Common style for borderless entries  -->
+    <Style x:Key="BorderlessEntryStyle" TargetType="control:BorderlessEntry">
+        <Setter Property="FontFamily" Value="Montserrat-Regular" />
+        <Setter Property="PlaceholderColor" Value="{DynamicResource Gray-700}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="ReturnType" Value="Done" />
+    </Style>
+
+    <Style TargetType="number:SfNumericUpDown">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+</ResourceDictionary>

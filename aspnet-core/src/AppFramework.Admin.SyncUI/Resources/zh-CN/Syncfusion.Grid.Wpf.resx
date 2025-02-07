@@ -1,0 +1,680 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AllowDrag" xml:space="preserve">
+    <value>Allow Drag</value>
+  </data>
+  <data name="AllowFilter" xml:space="preserve">
+    <value>Allow Filter</value>
+  </data>
+  <data name="AllowGroup" xml:space="preserve">
+    <value>Allow Group</value>
+  </data>
+  <data name="AllowResize" xml:space="preserve">
+    <value>Allow Resize</value>
+  </data>
+  <data name="AllowSort" xml:space="preserve">
+    <value>Allow Sort</value>
+  </data>
+  <data name="AND" xml:space="preserve">
+    <value>And</value>
+  </data>
+  <data name="ApplyWidthSettings" xml:space="preserve">
+    <value>Apply Width Settings</value>
+  </data>
+  <data name="AutoFit" xml:space="preserve">
+    <value>Auto Fit</value>
+  </data>
+  <data name="CanntPerformSortMessage" xml:space="preserve">
+    <value>The underlying data source cannot perform sort</value>
+  </data>
+  <data name="ClipboardCopyPaste" xml:space="preserve">
+    <value>Clipboard CopyPaste</value>
+  </data>
+  <data name="ColumnFormat" xml:space="preserve">
+    <value>ColumnFormat</value>
+  </data>
+  <data name="ConfirmDeleteMessage" xml:space="preserve">
+    <value>Confirm delete</value>
+  </data>
+  <data name="Contains" xml:space="preserve">
+    <value>Contains...</value>
+  </data>
+  <data name="DeleteMessage" xml:space="preserve">
+    <value>Do you want to remove the selected record(s)?</value>
+  </data>
+  <data name="DragDropText" xml:space="preserve">
+    <value>Drag and drop columns here</value>
+  </data>
+  <data name="DynamicOptions" xml:space="preserve">
+    <value>Dynamic Options:</value>
+  </data>
+  <data name="EndsWith" xml:space="preserve">
+    <value>EndsWith</value>
+  </data>
+  <data name="EnterFilterValue" xml:space="preserve">
+    <value>Enter Filter Value..</value>
+  </data>
+  <data name="SlideToFilter" xml:space="preserve">
+    <value>Slide To Filter..</value>
+  </data>
+  <data name="SelectFilterDate" xml:space="preserve">
+    <value>Select Filter Date..</value>
+  </data>
+  <data name="FilterDateTo" xml:space="preserve">
+    <value>Filter Date To..</value>
+  </data>
+  <data name="EqualsString" xml:space="preserve">
+    <value>Equals...</value>
+  </data>
+  <data name="GreaterThan" xml:space="preserve">
+    <value>GreaterThan...</value>
+  </data>
+  <data name="GreaterThanOrEqual" xml:space="preserve">
+    <value>GreaterThanOrEqual</value>
+  </data>
+  <data name="HCenter" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="HeaderText" xml:space="preserve">
+    <value>Header Text:</value>
+  </data>
+  <data name="HLeft" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="Horizontal" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="HRight" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="HStretch" xml:space="preserve">
+    <value>Stretch</value>
+  </data>
+  <data name="InvalidColumn" xml:space="preserve">
+    <value>Invalid Column added</value>
+  </data>
+  <data name="InvalidDataTime" xml:space="preserve">
+    <value>Invalid DataTime</value>
+  </data>
+  <data name="InvalidDataToFilter" xml:space="preserve">
+    <value>Invalid Data Filter</value>
+  </data>
+  <data name="IsReadOnly" xml:space="preserve">
+    <value>Is ReadOnly</value>
+  </data>
+  <data name="LessThan" xml:space="preserve">
+    <value>LessThan</value>
+  </data>
+  <data name="LessThanOrEqual" xml:space="preserve">
+    <value>LessThanOrEqual</value>
+  </data>
+  <data name="MatchCase" xml:space="preserve">
+    <value>Match Case</value>
+  </data>
+  <data name="NoMoreItemRemoveMessage" xml:space="preserve">
+    <value>There are no more items to remove or it is not supported in the underlying data source</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="NoRecordsfound" xml:space="preserve">
+    <value>No Records found</value>
+  </data>
+  <data name="NotEnoughSpaceMessage" xml:space="preserve">
+    <value>There is not enough space, Do you wish to Continue?</value>
+  </data>
+  <data name="NotEquals" xml:space="preserve">
+    <value>NotEquals</value>
+  </data>
+  <data name="NotSupportDeletingItemMessage" xml:space="preserve">
+    <value>Underlying data source does not supports deleting items, Try binding an IList source</value>
+  </data>
+  <data name="OR" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="SelectAllFilter" xml:space="preserve">
+    <value>(Select All)</value>
+  </data>
+  <data name="StartsWith" xml:space="preserve">
+    <value>StartsWith</value>
+  </data>
+  <data name="Between" xml:space="preserve">
+    <value>Between...</value>
+  </data>
+  <data name="TextAlignment" xml:space="preserve">
+    <value>Text Alignment:</value>
+  </data>
+  <data name="VBottom" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="VCenter" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="Vertical" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="VStretch" xml:space="preserve">
+    <value>Stretch</value>
+  </data>
+  <data name="VTop" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="WidthOptions" xml:space="preserve">
+    <value>Width Options</value>
+  </data>
+  <data name="CurrentPageText" xml:space="preserve">
+    <value>Page {0} of {1}</value>
+  </data>
+  <data name="First" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Last</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="PageSizes" xml:space="preserve">
+    <value>Page Sizes</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="PrintOutputColor" xml:space="preserve">
+    <value>Print Output Color</value>
+  </data>
+  <data name="PrintText" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="PrintZoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="AutoEllipsisString" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="AutomationPeerName_TotalPageCountKnown" xml:space="preserve">
+    <value>Page {0} of {1}</value>
+  </data>
+  <data name="AutomationPeerName_TotalPageCountUnknown" xml:space="preserve">
+    <value>Page {0}</value>
+  </data>
+  <data name="CurrentPagePrefix_TotalPageCountKnown" xml:space="preserve">
+    <value>Page</value>
+    <comment>Either CurrentPagePrefix_TotalPageCountKnown or CurrentPageSuffix_TotalPageCountKnown should include a {0} to display the total number of pages</comment>
+  </data>
+  <data name="CurrentPagePrefix_TotalPageCountUnknown" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="CurrentPageSuffix_TotalPageCountKnown" xml:space="preserve">
+    <value>of {0}</value>
+  </data>
+  <data name="CurrentPageSuffix_TotalPageCountUnknown" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InvalidButtonPanelContent" xml:space="preserve">
+    <value>The NumericButtonPanel contains invalid children.</value>
+  </data>
+  <data name="InvalidTimeSpan" xml:space="preserve">
+    <value>The {0} time span must be strictly positive.</value>
+  </data>
+  <data name="PageIndexMustBeNegativeOne" xml:space="preserve">
+    <value>The PageIndex property can only be set to -1 when the Source property is null or the PageSize property is 0.</value>
+  </data>
+  <data name="UnderlyingPropertyIsReadOnly" xml:space="preserve">
+    <value>{0} cannot be set because the underlying property is read only.</value>
+  </data>
+  <data name="ValueMustBeGreaterThanOrEqualTo" xml:space="preserve">
+    <value>{0} must be greater than or equal to {1}.</value>
+  </data>
+  <data name="SetFrozenColumn" xml:space="preserve">
+    <value>SetFrozenColumn</value>
+  </data>
+  <data name="CommandChangeCells" xml:space="preserve">
+    <value>Change Cells {0}</value>
+  </data>
+  <data name="CommandCurrentCellValue" xml:space="preserve">
+    <value>Change CurrentCell Value Row {0} Column {1}</value>
+  </data>
+  <data name="CommandSelectionState" xml:space="preserve">
+    <value>Change Selection State Row {0} Column {1}</value>
+  </data>
+  <data name="DescriptionChangeCells" xml:space="preserve">
+    <value>Description  Change Cells</value>
+  </data>
+  <data name="CommandAddCoveredRanges" xml:space="preserve">
+    <value>Add Covered Range {0}</value>
+  </data>
+  <data name="CommandRemoveCoveredRanges" xml:space="preserve">
+    <value>Remove Covered Range {0}</value>
+  </data>
+  <data name="CommandInsertColumns" xml:space="preserve">
+    <value>Insert {0} columns at column {1}</value>
+  </data>
+  <data name="CommandInsertRows" xml:space="preserve">
+    <value>Insert {0} rows at row {1}</value>
+  </data>
+  <data name="CommandMoveColumns" xml:space="preserve">
+    <value>Move {1} column from {0} to {2}</value>
+  </data>
+  <data name="CommandMoveRows" xml:space="preserve">
+    <value>Move {1} rows from {0} to {2}</value>
+  </data>
+  <data name="CommandRemoveColumns" xml:space="preserve">
+    <value>Remove Column {0} to {1}</value>
+  </data>
+  <data name="CommandRemoveRows" xml:space="preserve">
+    <value>Remove Row {0} to {1}</value>
+  </data>
+  <data name="CommandDefaultColumnSize" xml:space="preserve">
+    <value>Change Default Column Width {0}</value>
+  </data>
+  <data name="CommandDefaultRowSize" xml:space="preserve">
+    <value>Change Default Row Height to {0}</value>
+  </data>
+  <data name="CommandFrozenColumnsCount" xml:space="preserve">
+    <value>{0} Frozen Columns</value>
+  </data>
+  <data name="CommandFrozenRowsCount" xml:space="preserve">
+    <value>{0} Frozen Rows</value>
+  </data>
+  <data name="CommandFooterColumnsCount" xml:space="preserve">
+    <value>{0} Footer Columms</value>
+  </data>
+  <data name="CommandFooterRowsCount" xml:space="preserve">
+    <value>{0} Footer Rows</value>
+  </data>
+  <data name="CommandHeaderColumnsCount" xml:space="preserve">
+    <value>{0} Header Columms</value>
+  </data>
+  <data name="CommandHeaderRowsCount" xml:space="preserve">
+    <value>{0} Header Rows</value>
+  </data>
+  <data name="CommandColumnWidth" xml:space="preserve">
+    <value>Column Width {0} to {1}</value>
+  </data>
+  <data name="CommandRowHeight" xml:space="preserve">
+    <value>Row Height {0} to {1}</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>SelectAll</value>
+  </data>
+  <data name="BeginsWith" xml:space="preserve">
+    <value>begins with</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="ContainsSmall" xml:space="preserve">
+    <value>contains</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="DoesNotBeginsWith" xml:space="preserve">
+    <value>does not begins with</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="DoesNotContain" xml:space="preserve">
+    <value>does not contain</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="DoesNotEndWith" xml:space="preserve">
+    <value>does not end with</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="DoesNotEquals" xml:space="preserve">
+    <value>does not equal</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="EndsWithSmall" xml:space="preserve">
+    <value>ends with</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="EqualsSmall" xml:space="preserve">
+    <value>equals</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="IsGreaterThan" xml:space="preserve">
+    <value>is greater than</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="IsGreaterThanOrEqualto" xml:space="preserve">
+    <value>is greater than or equal to</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="IsLessThan" xml:space="preserve">
+    <value>is less than</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="IsLessThanorEqualto" xml:space="preserve">
+    <value>is less than or equal to</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="ShowRowsWhere" xml:space="preserve">
+    <value>Show rows where :</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="UseSeriesCharacter" xml:space="preserve">
+    <value>Use * to represent any series of characters</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="UseSingleCharacter" xml:space="preserve">
+    <value>Use ? to represent any single character</value>
+    <comment>For ExcelLikeFiltering AdvanceFiltering ComboBoxItem</comment>
+  </data>
+  <data name="AboveAverage" xml:space="preserve">
+    <value>Above Average</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="After" xml:space="preserve">
+    <value>After...</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="Before" xml:space="preserve">
+    <value>Before...</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="BeginsWithCaps" xml:space="preserve">
+    <value>Begins With...</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="BelowAverage" xml:space="preserve">
+    <value>Below Average</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="DateFilters" xml:space="preserve">
+    <value>Date Filters</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="DoesNotContainCaps" xml:space="preserve">
+    <value>Does Not Contain</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="DoesNotEqual" xml:space="preserve">
+    <value>Does Not Equal...</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="EndsWithCaps" xml:space="preserve">
+    <value>Ends With...</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="GreaterThanOrEqualTo" xml:space="preserve">
+    <value>Greater Than Or Equal To...</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="isafter" xml:space="preserve">
+    <value>is after</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="isafterorequalto" xml:space="preserve">
+    <value>is after or equal to</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="isbefore" xml:space="preserve">
+    <value>is before</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="isbeforeorequalto" xml:space="preserve">
+    <value>is before or equal to</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="LastMonth" xml:space="preserve">
+    <value>Last Month</value>
+    <comment>For ExeclLikeFiltering</comment>
+  </data>
+  <data name="LastWeek" xml:space="preserve">
+    <value>Last Week</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="LastYear" xml:space="preserve">
+    <value>Last Year</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="LessThanOrEqualTo" xml:space="preserve">
+    <value>Less Than Or Equal To...</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="LessThanWithSpace" xml:space="preserve">
+    <value>Less Than...</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="NextMonth" xml:space="preserve">
+    <value>Next Month</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="NextWeek" xml:space="preserve">
+    <value>Next Week</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="NextYear" xml:space="preserve">
+    <value>Next Year</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="NumberFilters" xml:space="preserve">
+    <value>Number Filters</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="TextFilters" xml:space="preserve">
+    <value>Text Filters</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="ThisMonth" xml:space="preserve">
+    <value>This Month</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>This Week</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="ThisYear" xml:space="preserve">
+    <value>This Year</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Today</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="Tomorrow" xml:space="preserve">
+    <value>Tomorrow</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="Top10" xml:space="preserve">
+    <value>Top 10</value>
+    <comment>For ExcelLikeFiltering</comment>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+    <comment>ForExcelLikeFiltering</comment>
+  </data>
+  <data name="NoItemMatch" xml:space="preserve">
+    <value>No items match your search.</value>
+    <comment>ForExcelLikeFiltering</comment>
+  </data>
+  <data name="CustomAutoFilter" xml:space="preserve">
+    <value>Custom AutoFilter</value>
+    <comment>ForExcelLikeFiltering</comment>
+  </data>
+  <data name="DateTimeAscending" xml:space="preserve">
+    <value>Sort Oldest to Newest</value>
+    <comment>ForExcelLike Filtering</comment>
+  </data>
+  <data name="DateTimeDescending" xml:space="preserve">
+    <value>Sort Newest to Oldest</value>
+    <comment>ForExcelLike Filtering</comment>
+  </data>
+  <data name="NumberAscending" xml:space="preserve">
+    <value>Sort Smallest to Largest</value>
+    <comment>ForExcelLike Filtering</comment>
+  </data>
+  <data name="NumberDescending" xml:space="preserve">
+    <value>Sort Largest to Smallest</value>
+    <comment>ForExcelLike Filtering</comment>
+  </data>
+  <data name="StringAscending" xml:space="preserve">
+    <value>Sort A to Z</value>
+    <comment>ForExcelLike Filtering</comment>
+  </data>
+  <data name="StringDescending" xml:space="preserve">
+    <value>Sort Z to A</value>
+    <comment>ForExcelLike Filtering</comment>
+  </data>
+  <data name="AdvanceFilteringContainsString" xml:space="preserve">
+    <value>Contains</value>
+    <comment>For AdvanceFilering</comment>
+  </data>
+  <data name="AdvanceFilteringEqualsString" xml:space="preserve">
+    <value>Equals</value>
+    <comment>For Advance Filtering</comment>
+  </data>
+  <data name="AdvanceFilteringGreaterThanString" xml:space="preserve">
+    <value>GreaterThan</value>
+    <comment>For AdvanceFiltering</comment>
+  </data>
+  <data name="AdvnaceFilteringBetweenString" xml:space="preserve">
+    <value>Between</value>
+    <comment>For Advance Filtering</comment>
+  </data>
+  <data name="BlankFilterText" xml:space="preserve">
+    <value>(Blanks)</value>
+    <comment>For Filtering</comment>
+  </data>
+  <data name="ClearFilter" xml:space="preserve">
+    <value>Clear Filter</value>
+  </data>
+  <data name="ShowColumnOptionsFilter" xml:space="preserve">
+    <value>Show Column Options</value>
+  </data>
+  <data name="AllFilter" xml:space="preserve">
+    <value>(All)</value>
+  </data>
+</root>

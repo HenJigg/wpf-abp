@@ -1,0 +1,45 @@
+﻿<ContentPage
+    x:Class="AppFramework.Shared.Views.LanguageDetailsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:refresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms">
+    <Grid>
+        <refresh:SfPullToRefresh IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding RefreshCommand}">
+            <refresh:SfPullToRefresh.PullableContent>
+                <listView:SfListView
+                    x:Name="SfListView"
+                    ItemsSource="{Binding dataPager.GridModelList}"
+                    RowSpacing="4"
+                    Style="{StaticResource DefaultListViewStyle}">
+                    <listView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <border:SfBorder Style="{StaticResource SimpleBorderStyle}">
+                                <Grid
+                                    Padding="10"
+                                    BackgroundColor="{DynamicResource Gray-Bg}"
+                                    RowSpacing="2">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image
+                                            HeightRequest="20"
+                                            HorizontalOptions="Center"
+                                            Source="{Binding Icon, Converter={StaticResource ImageSourceConverter}}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="20" />
+
+                                        <StackLayout Margin="5,0" HorizontalOptions="Start">
+                                            <Label Text="{Binding DisplayName}" TextColor="{DynamicResource Gray-700}" />
+                                            <Label Text="{Binding Name}" TextColor="{DynamicResource Gray-700}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </border:SfBorder>
+                        </DataTemplate>
+                    </listView:SfListView.ItemTemplate>
+                </listView:SfListView>
+            </refresh:SfPullToRefresh.PullableContent>
+        </refresh:SfPullToRefresh>
+    </Grid>
+</ContentPage>

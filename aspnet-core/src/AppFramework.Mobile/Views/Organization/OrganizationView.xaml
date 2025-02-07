@@ -1,0 +1,55 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.OrganizationView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:effect="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:refresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
+    xmlns:tree="clr-namespace:Syncfusion.XForms.TreeView;assembly=Syncfusion.SfTreeView.XForms"
+    xmlns:views="clr-namespace:AppFramework.Shared.Views">
+    <Grid BackgroundColor="{DynamicResource GrayShadowColor}">
+        <refresh:SfPullToRefresh>
+            <refresh:SfPullToRefresh.PullableContent>
+                <tree:SfTreeView
+                    x:Name="SfTreeView"
+                    ChildPropertyName="Items"
+                    ExpandActionTarget="Node"
+                    FocusBorderThickness="0"
+                    FullRowSelect="True"
+                    ItemHeight="55"
+                    ItemsSource="{Binding dataPager.GridModelList}"
+                    SelectionBackgroundColor="Transparent">
+                    <tree:SfTreeView.ItemTemplate>
+                        <DataTemplate>
+                            <effect:SfEffectsView
+                                RippleColor="{DynamicResource Gray-300}"
+                                TouchDownEffects="Ripple"
+                                TouchUpCommand="{Binding Path=BindingContext.EditCommand, Source={x:Reference SfTreeView}}"
+                                TouchUpCommandParameter="{Binding}">
+                                <StackLayout Padding="5,10" Orientation="Horizontal">
+                                    <Label
+                                        Style="{StaticResource IconLabelStyle}"
+                                        Text="&#xe66e;"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Margin="5,0,0,0"
+                                        Style="{StaticResource SimpleLabelStyle}"
+                                        Text="{Binding DisplayName}" />
+                                </StackLayout>
+                            </effect:SfEffectsView>
+                        </DataTemplate>
+                    </tree:SfTreeView.ItemTemplate>
+                </tree:SfTreeView>
+            </refresh:SfPullToRefresh.PullableContent>
+        </refresh:SfPullToRefresh>
+
+        <views:CreateOrganizationView x:Name="viewCreateOrganization" />
+
+        <buttons:SfButton
+            Margin="0,0,10,10"
+            Command="{Binding AddCommand}"
+            IsVisible="{Binding Source={x:Reference viewCreateOrganization}, Path=IsVisible, Converter={StaticResource InverseBoolToVisibilityConverter}}"
+            Style="{StaticResource AddButtonStyle}"
+            VerticalOptions="End" />
+    </Grid>
+</ContentView>

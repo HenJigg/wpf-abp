@@ -1,0 +1,957 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ContextMenuComment" xml:space="preserve">
+    <value>New Comment</value>
+  </data>
+  <data name="ContextMenuCopy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="ContextMenuCopyHyperlink" xml:space="preserve">
+    <value>Copy Hyperlink</value>
+  </data>
+  <data name="ContextMenuCut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="ContextMenuDeleteComment" xml:space="preserve">
+    <value>Delete Comment</value>
+  </data>
+  <data name="ContextMenuEditHyperlink" xml:space="preserve">
+    <value>Edit Hyperlink</value>
+  </data>
+  <data name="ContextMenuFontDialog" xml:space="preserve">
+    <value>Font...</value>
+  </data>
+  <data name="ContextMenuHyperlink" xml:space="preserve">
+    <value>Hyperlink</value>
+  </data>
+  <data name="ContextMenuInsertLeftColumn" xml:space="preserve">
+    <value>Insert Columns to the Left</value>
+  </data>
+  <data name="ContextMenuInsertRightColumn" xml:space="preserve">
+    <value>Insert Columns to the Right</value>
+  </data>
+  <data name="ContextMenuInsertRowAbove" xml:space="preserve">
+    <value>Insert Rows Above</value>
+  </data>
+  <data name="ContextMenuInsertRowBelow" xml:space="preserve">
+    <value>Insert Rows Below</value>
+  </data>
+  <data name="ContextMenuInsertTable" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="ContextMenuMergeCell" xml:space="preserve">
+    <value>Merge Cells</value>
+  </data>
+  <data name="ContextMenuOpenHyperlink" xml:space="preserve">
+    <value>Open Hyperlink</value>
+  </data>
+  <data name="ContextMenuParagraphDialog" xml:space="preserve">
+    <value>Paragraph...</value>
+  </data>
+  <data name="ContextMenuPaste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="ContextMenuRemoveHyperlink" xml:space="preserve">
+    <value>Remove Hyperlink</value>
+  </data>
+  <data name="MiniToolBarDeleteTable" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DialogBoxCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Modify" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="DialogBoxOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="FindReplaceDialogFind" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="FindReplaceDialogFindNext" xml:space="preserve">
+    <value>Find Next</value>
+  </data>
+  <data name="FindReplaceDialogFindText" xml:space="preserve">
+    <value>Find what</value>
+  </data>
+  <data name="FindReplaceDialogLessOption" xml:space="preserve">
+    <value>Less</value>
+  </data>
+  <data name="FindReplaceDialogMatchCase" xml:space="preserve">
+    <value>Match case</value>
+  </data>
+  <data name="FindReplaceDialogMoreOption" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="FindReplaceDialogRegularExpression" xml:space="preserve">
+    <value>Use regular expression</value>
+  </data>
+  <data name="FindReplaceDialogReplaceAll" xml:space="preserve">
+    <value>Replace All</value>
+  </data>
+  <data name="FindReplaceDialogReplace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="FindReplaceDialogReplaceText" xml:space="preserve">
+    <value>Replace with</value>
+  </data>
+  <data name="FindReplaceDialogWholeWord" xml:space="preserve">
+    <value>Find whole words only</value>
+  </data>
+  <data name="FontDialogAutomaticColor" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="FontDialogDoubleStrikeThrough" xml:space="preserve">
+    <value>Double strikethrough</value>
+  </data>
+  <data name="FontDialogEffects" xml:space="preserve">
+    <value>Effects</value>
+  </data>
+  <data name="FontDialogFontColor" xml:space="preserve">
+    <value>Font Color</value>
+  </data>
+  <data name="FontDialogFontSize" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="FontDialogFontStyle" xml:space="preserve">
+    <value>Font Style</value>
+  </data>
+  <data name="FontDialogFontText" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="FontDialogNoFontColor" xml:space="preserve">
+    <value>No Color</value>
+  </data>
+  <data name="FontDialogPreview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="FontDialogStrikeThrough" xml:space="preserve">
+    <value>Strikethrough</value>
+  </data>
+  <data name="FontDialogSubscript" xml:space="preserve">
+    <value>Subscript</value>
+  </data>
+  <data name="FontDialogSuperscript" xml:space="preserve">
+    <value>Superscript</value>
+  </data>
+  <data name="FontDialogUnderline" xml:space="preserve">
+    <value>Underline</value>
+  </data>
+  <data name="HyperlinkDialogAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="HyperlinkDialogDisplayText" xml:space="preserve">
+    <value>Text to Display</value>
+  </data>
+  <data name="MiniToolBarInsertTable" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="ListDialogChooseLevel" xml:space="preserve">
+    <value>Choose Level to modify</value>
+  </data>
+  <data name="ListDialogFormattingNumber" xml:space="preserve">
+    <value>Formatting for number</value>
+  </data>
+  <data name="ListDialogIndents" xml:space="preserve">
+    <value>Indents</value>
+  </data>
+  <data name="ListDialogListLevel" xml:space="preserve">
+    <value>List Level</value>
+  </data>
+  <data name="ListDialogNumberFollow" xml:space="preserve">
+    <value>Follow number with</value>
+  </data>
+  <data name="ListDialogNumberFormat" xml:space="preserve">
+    <value>Number Format</value>
+  </data>
+  <data name="ListDialogNumberStyle" xml:space="preserve">
+    <value>Number style for this level</value>
+  </data>
+  <data name="ListDialogRestart" xml:space="preserve">
+    <value>Restart by</value>
+  </data>
+  <data name="ListDialogStartAt" xml:space="preserve">
+    <value>Start at</value>
+  </data>
+  <data name="ListDialogLeftIndents" xml:space="preserve">
+    <value>Text indent at</value>
+  </data>
+  <data name="MiniToolBarAlignmentToolTip" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="MiniToolBarBlackHighlightToolTip" xml:space="preserve">
+    <value>Black</value>
+  </data>
+  <data name="MiniToolBarBlueHighlightToolTip" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="MiniToolBarBoldToolTip" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="MiniToolBarBrightGreenHighlightToolTip" xml:space="preserve">
+    <value>BrightGreen</value>
+  </data>
+  <data name="MiniToolBarBulletsHeader" xml:space="preserve">
+    <value>Bullet Library</value>
+  </data>
+  <data name="MiniToolBarBulletToolTip" xml:space="preserve">
+    <value>Bullets</value>
+  </data>
+  <data name="MiniToolBarDarkBlueHighlightToolTip" xml:space="preserve">
+    <value>DarkBlue</value>
+  </data>
+  <data name="MiniToolBarDarkRedHighlightToolTip" xml:space="preserve">
+    <value>DarkRed</value>
+  </data>
+  <data name="MiniToolBarDarkYelowHighlightToolTip" xml:space="preserve">
+    <value>DarkYellow</value>
+  </data>
+  <data name="MiniToolBarDecreaseFontToolTip" xml:space="preserve">
+    <value>Decrease Font Size</value>
+  </data>
+  <data name="MiniToolBarDeleteTableColumns" xml:space="preserve">
+    <value>Delete Columns</value>
+  </data>
+  <data name="MiniToolBarDeleteTableRows" xml:space="preserve">
+    <value>Delete Rows</value>
+  </data>
+  <data name="MiniToolBarDeleteTableToolTip" xml:space="preserve">
+    <value>Delete Table</value>
+  </data>
+  <data name="MiniToolBarFontColorToolTip" xml:space="preserve">
+    <value>Font Color</value>
+  </data>
+  <data name="MiniToolBarFontSizeToolTip" xml:space="preserve">
+    <value>FontSize</value>
+  </data>
+  <data name="MiniToolBarFontToolTip" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="MiniToolBarGray25HighlightToolTip" xml:space="preserve">
+    <value>Gray-25%</value>
+  </data>
+  <data name="MiniToolBarGray50HighlightToolTip" xml:space="preserve">
+    <value>Gray-50%</value>
+  </data>
+  <data name="MiniToolBarGreenHighlightToolTip" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="MiniToolBarHighlightColorToolTip" xml:space="preserve">
+    <value>Text Highlight Color</value>
+  </data>
+  <data name="MiniToolBarIncreaseFontToolTip" xml:space="preserve">
+    <value>Increase Font Size</value>
+  </data>
+  <data name="MiniToolBarInsertTableAbove" xml:space="preserve">
+    <value>Insert Above</value>
+  </data>
+  <data name="MiniToolBarInsertTableBelow" xml:space="preserve">
+    <value>Insert Below</value>
+  </data>
+  <data name="MiniToolBarInsertTableLeft" xml:space="preserve">
+    <value>Insert Left</value>
+  </data>
+  <data name="MiniToolBarInsertTableRight" xml:space="preserve">
+    <value>Insert Right</value>
+  </data>
+  <data name="MiniToolBarInsertTableToolTip" xml:space="preserve">
+    <value>Insert Table</value>
+  </data>
+  <data name="MiniToolBarItalicToolTip" xml:space="preserve">
+    <value>Italic</value>
+  </data>
+  <data name="MiniToolBarNoHighlightToolTip" xml:space="preserve">
+    <value>No Color</value>
+  </data>
+  <data name="MiniToolBarNoListToolTip" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="MiniToolBarNumberingAlignLeftToolTip" xml:space="preserve">
+    <value>Number Alignment: Left</value>
+  </data>
+  <data name="MiniToolBarNumberingAlignRightToolTip" xml:space="preserve">
+    <value>Number Alignment: Right</value>
+  </data>
+  <data name="MiniToolBarNumberingHeader" xml:space="preserve">
+    <value>Numbering Library</value>
+  </data>
+  <data name="MiniToolBarNumberingToolTip" xml:space="preserve">
+    <value>Numbering</value>
+  </data>
+  <data name="MiniToolBarPinkHighlightToolTip" xml:space="preserve">
+    <value>Pink</value>
+  </data>
+  <data name="MiniToolBarRedHighlightToolTip" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="MiniToolBarTealHighlightToolTip" xml:space="preserve">
+    <value>Teal</value>
+  </data>
+  <data name="MiniToolBarTurquoiseHighlightToolTip" xml:space="preserve">
+    <value>Turquoise</value>
+  </data>
+  <data name="MiniToolBarUnderlineToolTip" xml:space="preserve">
+    <value>Underline</value>
+  </data>
+  <data name="MiniToolBarVioletHighlightToolTip" xml:space="preserve">
+    <value>Violet</value>
+  </data>
+  <data name="MiniToolBarYellowHighlightToolTip" xml:space="preserve">
+    <value>Yellow</value>
+  </data>
+  <data name="OptionsPaneSearch" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="ParagraphDialogAfterSpacing" xml:space="preserve">
+    <value>After</value>
+  </data>
+  <data name="ParagraphDialogAlignment" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="ParagraphDialogLineSpacingAt" xml:space="preserve">
+    <value>At</value>
+  </data>
+  <data name="ParagraphDialogBeforeSpacing" xml:space="preserve">
+    <value>Before</value>
+  </data>
+  <data name="ParagraphDialogSpecialIndentBy" xml:space="preserve">
+    <value>By</value>
+  </data>
+  <data name="ParagraphDialogGeneralHeader" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="StylesDialogGeneralHeader" xml:space="preserve">
+    <value>Styles</value>
+  </data>
+  <data name="StyleDialogGeneralHeader" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="StyleDialogFormattingHeader" xml:space="preserve">
+    <value>Formatting</value>
+  </data>
+  <data name="StyleDialogName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="StyleDialogBasedOn" xml:space="preserve">
+    <value>Style based on</value>
+  </data>
+  <data name="StyleDialogStyleType" xml:space="preserve">
+    <value>Style type</value>
+  </data>
+  <data name="StyleDialogFollowingParagraph" xml:space="preserve">
+    <value>Style for following paragraph</value>
+  </data>
+  <data name="ParagraphDialogIndentHeader" xml:space="preserve">
+    <value>Indentation</value>
+  </data>
+  <data name="ParagraphDialogLeftIndentValue" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="ParagraphDialogLineSpacingType" xml:space="preserve">
+    <value>Line Spacing</value>
+  </data>
+  <data name="ParagraphDialogRightIndent" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="ParagraphDialogSpacingHeader" xml:space="preserve">
+    <value>Spacing</value>
+  </data>
+  <data name="ParagraphDialogSpecialIndent" xml:space="preserve">
+    <value>Special</value>
+  </data>
+  <data name="PasswordDialogEnterPassword" xml:space="preserve">
+    <value>Enter the password</value>
+  </data>
+  <data name="OptionsPaneResultsHeader" xml:space="preserve">
+    <value>RESULTS</value>
+  </data>
+  <data name="OptionsPaneDescription" xml:space="preserve">
+    <value>Use search box for find text in the document.</value>
+  </data>
+  <data name="TableDialogColumnSize" xml:space="preserve">
+    <value>Column size</value>
+  </data>
+  <data name="TableDialogRowSize" xml:space="preserve">
+    <value>Row size</value>
+  </data>
+  <data name="FindReplaceDialogTitle" xml:space="preserve">
+    <value>Find and Replace</value>
+  </data>
+  <data name="FontDialogTitle" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="FontDialogNoUnderline" xml:space="preserve">
+    <value>(none)</value>
+  </data>
+  <data name="HyperlinkDialogTitle" xml:space="preserve">
+    <value>Insert Hyperlink</value>
+  </data>
+  <data name="ArabicList" xml:space="preserve">
+    <value>Arabic</value>
+  </data>
+  <data name="BulletList" xml:space="preserve">
+    <value>Bullet</value>
+  </data>
+  <data name="FarEastList" xml:space="preserve">
+    <value>FarEast</value>
+  </data>
+  <data name="FollowNumberWithNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="FollowNumberWithSpace" xml:space="preserve">
+    <value>Space</value>
+  </data>
+  <data name="FollowNumberWithTab" xml:space="preserve">
+    <value>Tab</value>
+  </data>
+  <data name="LeadingZeroList" xml:space="preserve">
+    <value>LeadingZero</value>
+  </data>
+  <data name="ListLevelOne" xml:space="preserve">
+    <value>Level 1</value>
+  </data>
+  <data name="ListLevelTwo" xml:space="preserve">
+    <value>Level 2</value>
+  </data>
+  <data name="ListLevelThree" xml:space="preserve">
+    <value>Level 3</value>
+  </data>
+  <data name="ListLevelFour" xml:space="preserve">
+    <value>Level 4</value>
+  </data>
+  <data name="ListLevelFive" xml:space="preserve">
+    <value>Level 5</value>
+  </data>
+  <data name="ListLevelSix" xml:space="preserve">
+    <value>Level 6</value>
+  </data>
+  <data name="ListLevelSeven" xml:space="preserve">
+    <value>Level 7</value>
+  </data>
+  <data name="ListLevelEight" xml:space="preserve">
+    <value>Level 8</value>
+  </data>
+  <data name="ListLevelNine" xml:space="preserve">
+    <value>Level 9</value>
+  </data>
+  <data name="LowLetterList" xml:space="preserve">
+    <value>LowLetter</value>
+  </data>
+  <data name="LowRomanList" xml:space="preserve">
+    <value>LowRoman</value>
+  </data>
+  <data name="NumberList" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="OrdinalList" xml:space="preserve">
+    <value>Ordinal</value>
+  </data>
+  <data name="OrdinalTextList" xml:space="preserve">
+    <value>OrdinalText</value>
+  </data>
+  <data name="SpecialList" xml:space="preserve">
+    <value>Special</value>
+  </data>
+  <data name="ListDialogTitle" xml:space="preserve">
+    <value>Define List</value>
+  </data>
+  <data name="UpLetterList" xml:space="preserve">
+    <value>UpLetter</value>
+  </data>
+  <data name="UpRomanList" xml:space="preserve">
+    <value>UpRoman</value>
+  </data>
+  <data name="CenteredAlignment" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="JustifiedAlignment" xml:space="preserve">
+    <value>Justify</value>
+  </data>
+  <data name="LeftAlignment" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="RightAlignment" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="ParagraphDialogFirstLineIndent" xml:space="preserve">
+    <value>First line</value>
+  </data>
+  <data name="ParagraphDialogHangingIndent" xml:space="preserve">
+    <value>Hanging</value>
+  </data>
+  <data name="LineSpacingAtleast" xml:space="preserve">
+    <value>Atleast</value>
+  </data>
+  <data name="LineSpacingExactly" xml:space="preserve">
+    <value>Exactly</value>
+  </data>
+  <data name="LineSpacingMultiple" xml:space="preserve">
+    <value>Multiple</value>
+  </data>
+  <data name="ParagraphDialogNoIndent" xml:space="preserve">
+    <value>(None)</value>
+  </data>
+  <data name="ParagraphDialogTitle" xml:space="preserve">
+    <value>Paragraph</value>
+  </data>
+  <data name="StylesDialogTitle" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="NewStyleDialogTitle" xml:space="preserve">
+    <value>Create New Style</value>
+  </data>
+  <data name="BulletsAndNumberingDialogTitle" xml:space="preserve">
+    <value>Numbering and Bullets</value>
+  </data>
+  <data name="ModifyStyleDialogTitle" xml:space="preserve">
+    <value>Modify Style</value>
+  </data>
+  <data name="PasswordDialogTitle" xml:space="preserve">
+    <value>Encrypt Document</value>
+  </data>
+  <data name="TableDialogTitle" xml:space="preserve">
+    <value>Insert Table</value>
+  </data>
+  <data name="ListDialogFirstLineIndent" xml:space="preserve">
+    <value>Aligned at</value>
+  </data>
+  <data name="FindReplaceDialogErrorMessage" xml:space="preserve">
+    <value>We couldn't find what you were looking for.</value>
+  </data>
+  <data name="FindReplaceDialogSuccessMessage1" xml:space="preserve">
+    <value>All done. We made </value>
+  </data>
+  <data name="FindReplaceDialogSuccessMessage2" xml:space="preserve">
+    <value> replacement.</value>
+  </data>
+  <data name="OptionsPaneSearchErrorMessage" xml:space="preserve">
+    <value>We couldn't find what you were looking for.</value>
+  </data>
+  <data name="OptionsPaneSearchInformation" xml:space="preserve">
+    <value>Use search box for find text in the document.</value>
+  </data>
+  <data name="OptionsPaneSearchNoResult" xml:space="preserve">
+    <value>No results found</value>
+  </data>
+  <data name="OptionsPaneSearchOneResult" xml:space="preserve">
+    <value>1 result found</value>
+  </data>
+  <data name="OptionsPaneSearchPaused" xml:space="preserve">
+    <value>Search paused</value>
+  </data>
+  <data name="OptionsPaneSearchResult" xml:space="preserve">
+    <value>Result </value>
+  </data>
+  <data name="OptionsPaneSearchResultOf" xml:space="preserve">
+    <value> of </value>
+  </data>
+  <data name="OptionsPaneSearchManyResultsInfo" xml:space="preserve">
+    <value>That's shows up a lot.</value>
+  </data>
+  <data name="SearchButtonToolTip" xml:space="preserve">
+    <value>Search for more things</value>
+  </data>
+  <data name="HyperlinkToolTipContent" xml:space="preserve">
+    <value>Click to follow link</value>
+  </data>
+  <data name="SpellingPaneAddToDictionary" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="SpellingPaneChange" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="SpellingPaneChangeAll" xml:space="preserve">
+    <value>Change All</value>
+  </data>
+  <data name="SpellingPaneIgnoreAll" xml:space="preserve">
+    <value>Ignore All</value>
+  </data>
+  <data name="SpellingPaneResume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="SpellingPaneSpelling" xml:space="preserve">
+    <value>Spelling</value>
+  </data>
+  <data name="SpellingPaneSuccessMessage" xml:space="preserve">
+    <value>Spelling check complete. You're good to go!</value>
+  </data>
+  <data name="ContextMenuAddToDictionary" xml:space="preserve">
+    <value>Add to Dictionary</value>
+  </data>
+  <data name="ContextMenuIgnoreAll" xml:space="preserve">
+    <value>Ignore All</value>
+  </data>
+  <data name="DialogCloseButtonToolTip" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="OptionPaneCloseButtonToolTip" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="LoadingPage" xml:space="preserve">
+    <value>Loading page</value>
+  </data>
+  <data name="TableDialogAlignment" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="TableDialogLeftIndent" xml:space="preserve">
+    <value>Indent from Left</value>
+  </data>
+  <data name="TableDialogRightAlignment" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="Row" xml:space="preserve">
+    <value>Row</value>
+  </data>
+  <data name="TablePropertiesDialogTitle" xml:space="preserve">
+    <value>Table Properties</value>
+  </data>
+  <data name="TableDialogRowHeightType" xml:space="preserve">
+    <value>Row height is</value>
+  </data>
+  <data name="TableDialogRowHeight" xml:space="preserve">
+    <value>Specify height</value>
+  </data>
+  <data name="CellOptionsDialogTitle" xml:space="preserve">
+    <value>Cell Options</value>
+  </data>
+  <data name="TableDialogAllowRowBreak" xml:space="preserve">
+    <value>Allow row to break across pages</value>
+  </data>
+  <data name="TableDialogCellOptions" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="TableDialogVerticalAlignment" xml:space="preserve">
+    <value>Vertical alignment</value>
+  </data>
+  <data name="TableDialogRepeatHeader" xml:space="preserve">
+    <value>Repeat as header row at the top of each page</value>
+  </data>
+  <data name="TableOptionsDialogTitle" xml:space="preserve">
+    <value>Table Options</value>
+  </data>
+  <data name="ContextMenuTableProperties" xml:space="preserve">
+    <value>Table Properties...</value>
+  </data>
+  <data name="Percent" xml:space="preserve">
+    <value>Percent</value>
+  </data>
+  <data name="Pixel" xml:space="preserve">
+    <value>Pixel</value>
+  </data>
+  <data name="TableDialogPreferredWidth" xml:space="preserve">
+    <value>Preferred width</value>
+  </data>
+  <data name="TableDialogSize" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="TableDialogPreferredWidthType" xml:space="preserve">
+    <value>Measure in</value>
+  </data>
+  <data name="Atleast" xml:space="preserve">
+    <value>At least</value>
+  </data>
+  <data name="Exactly" xml:space="preserve">
+    <value>Exactly</value>
+  </data>
+  <data name="DialogBoxOptions" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="TableDialogAllowCellSpacing" xml:space="preserve">
+    <value>Allow spacing between cells</value>
+  </data>
+  <data name="BottomMargin" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="LeftMargin" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="RightMargin" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="TopMargin" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="TableDialogDefaultCellMargin" xml:space="preserve">
+    <value>Default cell margins</value>
+  </data>
+  <data name="TableDialogDefaultCellSpacing" xml:space="preserve">
+    <value>Default cell spacing</value>
+  </data>
+  <data name="TableDialogCellMargin" xml:space="preserve">
+    <value>Cell margins</value>
+  </data>
+  <data name="TableDialogMarginSameAsTable" xml:space="preserve">
+    <value>Same as the whole table</value>
+  </data>
+  <data name="BottomAlignment" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="TopAlignment" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="BordersShadingDialogTitle" xml:space="preserve">
+    <value>Borders and Shading</value>
+  </data>
+  <data name="BordersShadingDialogApplyTo" xml:space="preserve">
+    <value>Apply To</value>
+  </data>
+  <data name="BordersShadingDialogBorders" xml:space="preserve">
+    <value>Borders</value>
+  </data>
+  <data name="BordersShadingDialogColor" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="BordersShadingDialogFill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="BordersShadingDialogShading" xml:space="preserve">
+    <value>Shading</value>
+  </data>
+  <data name="BordersShadingDialogStyle" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="BordersShadingDialogWidth" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="Cell" xml:space="preserve">
+    <value>Cell</value>
+  </data>
+  <data name="Table" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="BordersShadingDialogAllBorder" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="BordersShadingDialogBoxBorder" xml:space="preserve">
+    <value>Box</value>
+  </data>
+  <data name="BordersShadingDialogCustomBorder" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="BordersShadingDialogNoBorder" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="BordersShadingDialogSetting" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="BordersShadingDialogPreview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="AlternativeText" xml:space="preserve">
+    <value>Alt Text</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="ParagraphDialogDirection" xml:space="preserve">
+    <value>Direction:</value>
+  </data>
+  <data name="DirectionLeftToRight" xml:space="preserve">
+    <value>Left-to-right</value>
+  </data>
+  <data name="DirectionRightToLeft" xml:space="preserve">
+    <value>Right-to-left</value>
+  </data>
+  <data name="TableDialogRightIndent" xml:space="preserve">
+    <value>Indent from Right</value>
+  </data>
+  <data name="TableDialogTableDirection" xml:space="preserve">
+    <value>Table direction</value>
+  </data>
+  <data name="ContextMenuAutoFit" xml:space="preserve">
+    <value>AutoFit</value>
+  </data>
+  <data name="ContextMenuAutoFitToContents" xml:space="preserve">
+    <value>AutoFit to Contents</value>
+  </data>
+  <data name="ContextMenuAutoFitToWindow" xml:space="preserve">
+    <value>AutoFit to Window</value>
+  </data>
+  <data name="ContextMenuFixedColumnWidth" xml:space="preserve">
+    <value>Fixed Column Width</value>
+  </data>
+  <data name="TableOptionsDialogAllowAutoFit" xml:space="preserve">
+    <value>Automatically resize to fit contents</value>
+  </data>
+  <data name="TableOptionsDialogOptions" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Heading1" xml:space="preserve">
+    <value>Heading 1</value>
+  </data>
+  <data name="Heading2" xml:space="preserve">
+    <value>Heading 2</value>
+  </data>
+  <data name="Heading3" xml:space="preserve">
+    <value>Heading 3</value>
+  </data>
+  <data name="Heading4" xml:space="preserve">
+    <value>Heading 4</value>
+  </data>
+  <data name="Heading5" xml:space="preserve">
+    <value>Heading 5</value>
+  </data>
+  <data name="Heading6" xml:space="preserve">
+    <value>Heading 6</value>
+  </data>
+  <data name="Character" xml:space="preserve">
+    <value>Character</value>
+  </data>
+  <data name="Linked" xml:space="preserve">
+    <value>Linked (paragraph and character)</value>
+  </data>
+  <data name="MiniToolBarNoColorHighlight" xml:space="preserve">
+    <value>No Color</value>
+  </data>
+  <data name="HyperlinkDialogScreenTipText" xml:space="preserve">
+    <value>ScreenTip Text</value>
+  </data>
+  <data name="SuggestionBoxErrorMessage" xml:space="preserve">
+    <value>We couldn’t find the person you were looking for.</value>
+  </data>
+  <data name="HyperlinkDialogTargetFrameText" xml:space="preserve">
+    <value>Target Frame</value>
+  </data>
+  <data name="HyperlinkTargetNewWindow" xml:space="preserve">
+    <value>New window</value>
+  </data>
+  <data name="HyperlinkTargetNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="HyperlinkTargetParentFrame" xml:space="preserve">
+    <value>Parent frame</value>
+  </data>
+  <data name="HyperlinkTargetSameFrame" xml:space="preserve">
+    <value>Same frame</value>
+  </data>
+  <data name="HyperlinkTargetWholePage" xml:space="preserve">
+    <value>Whole page</value>
+  </data>
+</root>

@@ -1,0 +1,80 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.AuditLogView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:effect="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:refresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
+    xmlns:views="clr-namespace:AppFramework.Shared.Views">
+    <Grid BackgroundColor="{DynamicResource GrayShadowColor}">
+        <refresh:SfPullToRefresh IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding RefreshCommand}">
+            <refresh:SfPullToRefresh.PullableContent>
+                <listView:SfListView x:Name="sfListView"
+                    ItemsSource="{Binding dataPager.GridModelList}"
+                    LoadMoreCommand="{Binding LoadMoreCommand}"
+                    LoadMoreOption="AutoOnScroll"
+                    Style="{StaticResource DefaultListViewStyle}">
+                    <listView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <border:SfBorder Style="{StaticResource SimpleBorderStyle}">
+                                <effect:SfEffectsView
+                                    RippleColor="{DynamicResource Gray-300}"
+                                    TouchDownEffects="Ripple"
+                                    TouchUpCommand="{Binding Path=BindingContext.DetailsCommand, Source={x:Reference sfListView}}"
+                                    TouchUpCommandParameter="{Binding}">
+                                    <Grid
+                                        Padding="10"
+                                        BackgroundColor="{DynamicResource Gray-Bg}"
+                                        RowDefinitions="auto,auto,auto"
+                                        RowSpacing="2">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                Text="{StaticResource API}"
+                                                Style="{StaticResource IconLabelStyle}"
+                                                TextColor="{DynamicResource Gray-700}" />
+
+                                            <!--<Label Style="{StaticResource SimpleLabelStyle}" Text="{Binding ServiceName}" />-->
+                                            <Label Text="{Binding MethodName}" Style="{StaticResource SimpleLabelStyle}" />
+                                        </StackLayout>
+
+                                        <border:SfBorder Grid.Row="2"
+                                            Padding="5,2"
+                                            BackgroundColor="{DynamicResource PrimaryColor}"
+                                            BorderWidth="0"
+                                            CornerRadius="30"
+                                            HorizontalOptions="End">
+                                            <Label Text="{Binding ExecutionDuration, StringFormat='{0}ms'}" TextColor="{DynamicResource Gray-White}" />
+                                        </border:SfBorder>
+
+                                        <StackLayout Grid.Row="1" Orientation="Horizontal">
+                                            <Label
+                                                Text="{StaticResource WebBrowser}"
+                                                Style="{StaticResource IconLabelStyle}"
+                                                TextColor="{DynamicResource Gray-700}" />
+                                            <!--<Label Style="{StaticResource SimpleLabelStyle}" Text="{Binding BrowserInfo}" />-->
+                                            <Label Text="{Binding ClientIpAddress}" Style="{StaticResource SimpleLabelStyle}" />
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Row="2"
+                                            Margin="0,2,0,0"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                Text="{StaticResource Interval}"
+                                                Style="{StaticResource IconLabelStyle}"
+                                                TextColor="{DynamicResource Gray-700}" />
+                                            <Label Text="{Binding ExecutionTime}" Style="{StaticResource SimpleLabelStyle}" />
+                                            <Label Text="{Binding UserName}" Style="{StaticResource SimpleLabelStyle}" />
+                                        </StackLayout>
+                                    </Grid>
+                                </effect:SfEffectsView>
+                            </border:SfBorder>
+                        </DataTemplate>
+                    </listView:SfListView.ItemTemplate>
+                </listView:SfListView>
+            </refresh:SfPullToRefresh.PullableContent>
+        </refresh:SfPullToRefresh>
+
+        <views:AuditLogDetailsView />
+    </Grid>
+</ContentView>

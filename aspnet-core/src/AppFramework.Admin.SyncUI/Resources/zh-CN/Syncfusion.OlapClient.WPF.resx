@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="OlapClient_ChartTabHeader" xml:space="preserve">
+    <value>Chart</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartColorPalette_ToolTip" xml:space="preserve">
+    <value>Chart Color Palette</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_ToolTip" xml:space="preserve">
+    <value>Chart Types</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ExportPdf_ToolTip" xml:space="preserve">
+    <value>Export to Pdf</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ExportWord_ToolTip" xml:space="preserve">
+    <value>Export to Word</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_Export_ToolTip" xml:space="preserve">
+    <value>Exports Chart as an Image</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_PrintMode_ToolTip" xml:space="preserve">
+    <value>Print Mode</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_Print_ToolTip" xml:space="preserve">
+    <value>Print Chart</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ShowAppearanceDialog_ToolTip" xml:space="preserve">
+    <value>Show Chart Appearance Dialog</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ShowLegend_ToolTip" xml:space="preserve">
+    <value>Show Legend</value>
+  </data>
+  <data name="OlapClient_ColumnAxis_HeaderText" xml:space="preserve">
+    <value>Columns (Categorical)</value>
+  </data>
+  <data name="OlapClient_ColumnRowSubsetFilter_ToolTip" xml:space="preserve">
+    <value>Subset Filter</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Connection_String_Header" xml:space="preserve">
+    <value>Connection String</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Credential" xml:space="preserve">
+    <value>Credential</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_DatabaseName" xml:space="preserve">
+    <value>Database Name</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Data_Source_Header" xml:space="preserve">
+    <value>Data Source</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_EnterCredential_Header" xml:space="preserve">
+    <value>Enter credentials</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Header" xml:space="preserve">
+    <value>Server options</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Offline_Cube_Header" xml:space="preserve">
+    <value>Offline Cube</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_ServerName" xml:space="preserve">
+    <value>Server Name</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Server_Header" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_User_Name" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="OlapClient_CubeDimensionBrowser_HeaderText" xml:space="preserve">
+    <value>MetaTree</value>
+  </data>
+  <data name="OlapClient_CubeDimensionBrowser_SearchBoxText" xml:space="preserve">
+    <value>Search here...</value>
+  </data>
+  <data name="OlapClient_CubeSeletor_HeaderText" xml:space="preserve">
+    <value>Cubes</value>
+  </data>
+  <data name="OlapClient_CubeSeletor_ToolTip" xml:space="preserve">
+    <value>Cube Selector</value>
+  </data>
+  <data name="OlapClient_GridTabHeader" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="OlapClient_GridToolbar_ExportExcel_ToolTip" xml:space="preserve">
+    <value>Export to Excel</value>
+  </data>
+  <data name="OlapClient_GridToolbar_ExportPdf_ToolTip" xml:space="preserve">
+    <value>Export to Pdf</value>
+  </data>
+  <data name="OlapClient_GridToolbar_ExportWord_ToolTip" xml:space="preserve">
+    <value>Export to Word</value>
+  </data>
+  <data name="OlapClient_GridToolbar_ExportCsv_ToolTip" xml:space="preserve">
+    <value>Export to CSV</value>
+  </data>
+  <data name="OlapClient_GridToolbar_FreezeHeaders_ToolTip" xml:space="preserve">
+    <value>Freeze Headers</value>
+  </data>
+  <data name="OlapClient_GridToolbar_GridLayout_ToolTip" xml:space="preserve">
+    <value>Grid Layouts</value>
+  </data>
+  <data name="OlapClient_GridToolbar_GridStyleDialog_ToolTip" xml:space="preserve">
+    <value>Show Grid Style Dialog</value>
+  </data>
+  <data name="OlapClient_GridToolbar_HeaderCellTooltip_ToolTip" xml:space="preserve">
+    <value>Show Header Cell Tooltip</value>
+  </data>
+  <data name="OlapClient_GridToolbar_ValueCellTooltip_ToolTip" xml:space="preserve">
+    <value>Show Value Cell ToolTip</value>
+  </data>
+  <data name="OlapClient_RowAxis_HeaderText" xml:space="preserve">
+    <value>Rows (Series)</value>
+  </data>
+  <data name="OlapClient_SlicerAxis_HeaderText" xml:space="preserve">
+    <value>Slicer</value>
+  </data>
+  <data name="OlapClient_TogglePivot_ToolTip" xml:space="preserve">
+    <value>Toggle Pivot</value>
+  </data>
+  <data name="OlapClient_Toolbar_AddReport_ToolTip" xml:space="preserve">
+    <value>Add Report</value>
+  </data>
+  <data name="OlapClient_Toolbar_ColumnFilter_ToolTip" xml:space="preserve">
+    <value>Column Filter</value>
+  </data>
+  <data name="OlapClient_Toolbar_ConnectionOption_ToolTip" xml:space="preserve">
+    <value>Connect to Server</value>
+  </data>
+  <data name="OlapClient_Toolbar_LoadReport_ToolTip" xml:space="preserve">
+    <value>Load Report</value>
+  </data>
+  <data name="OlapClient_Toolbar_NewReport_ToolTip" xml:space="preserve">
+    <value>New Report</value>
+  </data>
+  <data name="OlapClient_Toolbar_RemoveReport_ToolTip" xml:space="preserve">
+    <value>Remove Report</value>
+  </data>
+  <data name="OlapClient_Toolbar_RenameReport_ToolTip" xml:space="preserve">
+    <value>Rename Report</value>
+  </data>
+  <data name="OlapClient_Toolbar_ReportList_ToolTip" xml:space="preserve">
+    <value>Report List</value>
+  </data>
+  <data name="OlapClient_Toolbar_RowFilter_ToolTip" xml:space="preserve">
+    <value>Row Filter</value>
+  </data>
+  <data name="OlapClient_Toolbar_SaveAsReport_ToolTip" xml:space="preserve">
+    <value>Save As Report</value>
+  </data>
+  <data name="OlapClient_Toolbar_SaveReport_ToolTip" xml:space="preserve">
+    <value>Save Report</value>
+  </data>
+  <data name="OlapClient_Toolbar_ShowExpanders_ToolTip" xml:space="preserve">
+    <value>Show Expanders</value>
+  </data>
+  <data name="OlapClient_Toolbar_SortingColumn_ToolTip" xml:space="preserve">
+    <value>Sorting Column</value>
+  </data>
+  <data name="OlapClient_Toolbar_SortingRow_ToolTip" xml:space="preserve">
+    <value>Sorting Row</value>
+  </data>
+  <data name="OlapClient_ReportName_Dlg_ReportName" xml:space="preserve">
+    <value>Report Name</value>
+  </data>
+  <data name="OlapClient_ConnectOptions_Dlg_Title" xml:space="preserve">
+    <value>Connection Option</value>
+  </data>
+  <data name="OlapClient_Loading_Indicator_Text" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="OlapClient_MdxQuery_Dlg_Title" xml:space="preserve">
+    <value>MDX Query</value>
+  </data>
+  <data name="OlapClient_Toolbar_AutoExecute_Tooltip" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="OlapClient_Toolbar_ShowMdx_Tooltip" xml:space="preserve">
+    <value>Analysis Service MDX Query</value>
+  </data>
+  <data name="OlapClient_MdxQuery_Dlg_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OlapClient_Toolbar_ShowCalcMember_Tooltip" xml:space="preserve">
+    <value>Enable or disable the calculated members</value>
+  </data>
+  <data name="OlapClient_Toolbar_CreateCalcMember_Tooltip" xml:space="preserve">
+    <value>Create a calculated measure or member</value>
+  </data>
+  <data name="OlapClient_Toolbar_CreateVirtualKpi_Tooltip" xml:space="preserve">
+    <value>Create a VirtualKPI Element</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Provider_Name_ActivePivot" xml:space="preserve">
+    <value>Active Pivot</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Provider_Name_ActivePivot_ToolTip" xml:space="preserve">
+    <value>QuartetFS' Active Pivot XMLA Services</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Provider_Name_Header" xml:space="preserve">
+    <value>Provider Name</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Provider_Name_Mondrian" xml:space="preserve">
+    <value>Mondrian</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Provider_Name_Mondrian_ToolTip" xml:space="preserve">
+    <value>Mondrian XMLA Services</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Provider_Name_SSAS" xml:space="preserve">
+    <value>SSAS</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Provider_Name_SSAS_ToolTip" xml:space="preserve">
+    <value>Microsoft's SQLServer Analysis Services</value>
+  </data>
+  <data name="OlapClient_GridToolBar_GridStyle_ExcelLike" xml:space="preserve">
+    <value>ExcelLike</value>
+  </data>
+  <data name="OlapClient_GridToolBar_GridStyle_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="OlapClient_GridToolBar_GridStyle_NormalTopSummary" xml:space="preserve">
+    <value>NormalTopSummary</value>
+  </data>
+  <data name="OlapClient_GridToolBar_GridStyle_NoSummaries" xml:space="preserve">
+    <value>NoSummaries</value>
+  </data>
+  <data name="OlapChart_ChartToolbar_ChartColorPalette_Analog" xml:space="preserve">
+    <value>Analog</value>
+  </data>
+  <data name="OlapChart_ChartToolbar_ChartColorPalette_Colorful" xml:space="preserve">
+    <value>Colorful</value>
+  </data>
+  <data name="OlapChart_ChartToolbar_ChartColorPalette_Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="OlapChart_ChartToolbar_ChartColorPalette_Earthtone" xml:space="preserve">
+    <value>Earth Tone</value>
+  </data>
+  <data name="OlapChart_ChartToolbar_ChartColorPalette_GrayScale" xml:space="preserve">
+    <value>Gray Scale</value>
+  </data>
+  <data name="OlapChart_ChartToolbar_ChartColorPalette_Nature" xml:space="preserve">
+    <value>Nature</value>
+  </data>
+  <data name="OlapChart_ChartToolbar_ChartColorPalette_Pastel" xml:space="preserve">
+    <value>Pastel</value>
+  </data>
+  <data name="OlapChart_ChartToolbar_ChartColorPalette_Triad" xml:space="preserve">
+    <value>Triad</value>
+  </data>
+  <data name="OlapChart_ChartToolbar_ChartColorPalette_WarmCold" xml:space="preserve">
+    <value>Warm Cold</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartColorPalette_Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartColorPalette_DefaultAlpha" xml:space="preserve">
+    <value>Default Alpha</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_Area" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_Bar" xml:space="preserve">
+    <value>Bar</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_Column" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_Line" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_RotatedSpline" xml:space="preserve">
+    <value>Rotated Spline</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_Scatter" xml:space="preserve">
+    <value>Scatter</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_Spline" xml:space="preserve">
+    <value>Spline</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_SplineArea" xml:space="preserve">
+    <value>Spline Area</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_StackingArea" xml:space="preserve">
+    <value>Stacking Area</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_StackingBar" xml:space="preserve">
+    <value>Stacking Bar</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_StackingColumn" xml:space="preserve">
+    <value>Stacking Column</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_StackingColumn100" xml:space="preserve">
+    <value>Stacking Column 100</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_StepArea" xml:space="preserve">
+    <value>Step Area</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_StepLine" xml:space="preserve">
+    <value>Step Line</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_Pie" xml:space="preserve">
+    <value>Pie</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_Radar" xml:space="preserve">
+    <value>Radar</value>
+  </data>
+  <data name="OlapClient_ChartToolbar_ChartTypes_Funnel" xml:space="preserve">
+    <value>Funnel</value>
+  </data>
+  <data name="Axis_Element_Builder_TogglePanel_Text" xml:space="preserve">
+    <value>Axis Element Builder</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_ButtonContent" xml:space="preserve">
+    <value>Browse </value>
+  </data>
+  <data name="OlapClient_RemoveReport_MessageBox_Text" xml:space="preserve">
+    <value>Please select a report to remove and ensure that OLAP Client has more than one report in its report list.</value>
+  </data>
+  <data name="OlapClient_Report_MessageBox_Caption" xml:space="preserve">
+    <value>OLAP Client</value>
+  </data>
+  <data name="OlapClient_Report_MessageBox_Text" xml:space="preserve">
+    <value>Do you want to save changes to the report?</value>
+  </data>
+  <data name="OlapClient_ColumnFilter_Text" xml:space="preserve">
+    <value>Categorical axis does not contain any element for filtering. Please add elements and try again.</value>
+  </data>
+  <data name="OlapClient_ColumnSorting_Text" xml:space="preserve">
+    <value>Categorical axis does not contain any element for sorting. Please add elements and try again.</value>
+  </data>
+  <data name="OlapClient_ConnectColumnSorting_Caption" xml:space="preserve">
+    <value>Server connection does not found.</value>
+  </data>
+  <data name="OlapClient_ConnectColumnSorting_Text" xml:space="preserve">
+    <value>Please connect to the server first and then try to load the report.</value>
+  </data>
+  <data name="OlapClient_RowFilter_Text" xml:space="preserve">
+    <value>Serial axis does not contain any element for filtering. Please add elements and try again.</value>
+  </data>
+  <data name="OlapClient_RowSorting_Text" xml:space="preserve">
+    <value>Serial axis does not contain any element for sorting. Please add elements and try again.</value>
+  </data>
+  <data name="OlapClient_Exception_Caption" xml:space="preserve">
+    <value>Exception Message: OlapClient</value>
+  </data>
+  <data name="OlapClient_Exception_ConnectOption" xml:space="preserve">
+    <value>Error occurred while connecting to server.</value>
+  </data>
+  <data name="OlapClient_Exception_Databind" xml:space="preserve">
+    <value>Error in Binding Model.</value>
+  </data>
+  <data name="CubeBrowser_TogglePanel_Text" xml:space="preserve">
+    <value>Cube Selector and Cube Dimension Browser</value>
+  </data>
+  <data name="OlapClient_CsvExport_Success" xml:space="preserve">
+    <value>CSV document has been created successfully. Do you want to view the document?</value>
+  </data>
+  <data name="OlapClient_Exception_SetExecute" xml:space="preserve">
+    <value>Error occurred while executing the query.</value>
+  </data>
+  <data name="OlapClient_OptionWindow_Exception" xml:space="preserve">
+    <value>Error occurred while displaying the connection option dialog.</value>
+  </data>
+  <data name="OlapClient_SaveAsReport_Exception" xml:space="preserve">
+    <value>Report Builder</value>
+  </data>
+  <data name="OlapClient_SaveReport_ExceptionCaption" xml:space="preserve">
+    <value>Error occured while saving the report.</value>
+  </data>
+  <data name="OlapClient_Toolbar_CreateEnablePaging_Tooltip" xml:space="preserve">
+    <value>Enable/Disable Paging</value>
+  </data>
+  <data name="TabControlExt_ToolTip" xml:space="preserve">
+    <value>Context</value>
+  </data>
+  <data name="OlapClient_ExcelExport_Success" xml:space="preserve">
+    <value>Excel document has been created successfully. Do you want to view the document?</value>
+  </data>
+  <data name="OlapClient_PdfExport_Success" xml:space="preserve">
+    <value>PDF document has been created successfully. Do you want to view the document?</value>
+  </data>
+  <data name="OlapClient_WordExport_Success" xml:space="preserve">
+    <value>Word document has been created successfully. Do you want to view the document?</value>
+  </data>
+  <data name="OlapClient_AddReport_ExceptionCaption" xml:space="preserve">
+    <value>A report already exists with the same name.</value>
+  </data>
+  <data name="OlapClient_RemoveReport_ExceptionCaption" xml:space="preserve">
+    <value>The report does not exist in the report collection.</value>
+  </data>
+  <data name="OlapClient_RemoveReport_Approve_Text" xml:space="preserve">
+    <value>Are you sure you want to delete the report?</value>
+  </data>
+  <data name="OlapClient_Toolbar_AddReport_Title" xml:space="preserve">
+    <value>Add Report</value>
+  </data>
+  <data name="OlapClient_Toolbar_RenameReport_Title" xml:space="preserve">
+    <value>Rename Report</value>
+  </data>
+  <data name="Report_Caption" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="OlapClient_Exception_ConnectionString_Message" xml:space="preserve">
+    <value>Please enter the valid connection string.</value>
+  </data>
+  <data name="OlapClient_Exception_ConnectionString_Title" xml:space="preserve">
+    <value>Connection String Error</value>
+  </data>
+  <data name="OlapClient_Exception_DatabaseName" xml:space="preserve">
+    <value>Please enter the database name.</value>
+  </data>
+  <data name="OlapClient_Exception_DrillThrough_Title" xml:space="preserve">
+    <value>Drill Through</value>
+  </data>
+  <data name="OlapClient_Exception_Error_Title" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="OlapClient_Exception_FileNotFound_Message" xml:space="preserve">
+    <value>Specified file not found.</value>
+  </data>
+  <data name="OlapClient_Exception_FileNotFound_Title" xml:space="preserve">
+    <value>File Not Found</value>
+  </data>
+  <data name="OlapClient_Exception_ReportName" xml:space="preserve">
+    <value>The specified name already exists. Please specify a new name for the report.</value>
+  </data>
+  <data name="OlapClient_Exception_ServerName" xml:space="preserve">
+    <value>Please enter the server name.</value>
+  </data>
+  <data name="OlapClient_Exception_DrillThrough_Message" xml:space="preserve">
+    <value>Drill through is not applicable for Calculated Members, Calculated Measures, KPI and Virtual KPI.</value>
+  </data>
+  <data name="OlapClient_Exception_DrillThrough_Measure" xml:space="preserve">
+    <value>Drill through is not applicable for the selected measure since its member type is "Formula".</value>
+  </data>
+  <data name="OlapClient_Exception_DrillThrough_NonMeasure" xml:space="preserve">
+    <value>Please add at least one measure element in the report.</value>
+  </data>
+  <data name="OlapClient_GridToolbar_ConditionalFormat_ToolTip" xml:space="preserve">
+    <value>Create ConditionalFormat</value>
+  </data>
+  <data name="OlapClient_PdfExport_Message_Title" xml:space="preserve">
+    <value>PDF Export</value>
+  </data>
+  <data name="OlapClient_WordExport_Message_Title" xml:space="preserve">
+    <value>Word Export</value>
+  </data>
+  <data name="OlapClient_CsvExport_Message_Title" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="OlapClient_ExcelExport_Message_Title" xml:space="preserve">
+    <value>Excel Export</value>
+  </data>
+  <data name="OlapClient_ReportName_ExceptionText" xml:space="preserve">
+    <value>Report name should be non empty.</value>
+  </data>
+  <data name="OlapClient_CubeConnection_Exception" xml:space="preserve">
+    <value>Recommended version of Microsoft ADOMD.Net is not installed in your machine</value>
+  </data>
+  <data name="OlapClient_CubeConnection_ExceptionHeader" xml:space="preserve">
+    <value>Loading error</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Provider_Name_SAPBW" xml:space="preserve">
+    <value>SAP BW</value>
+  </data>
+  <data name="OlapClient_Connect_Dlg_Provider_Name_SAPBW_ToolTip" xml:space="preserve">
+    <value>SAP BW XMLA Sevices</value>
+  </data>
+  <data name="StackTrace_Exception_Description" xml:space="preserve">
+    <value>For more details, please refer the log file from : </value>
+  </data>
+</root>

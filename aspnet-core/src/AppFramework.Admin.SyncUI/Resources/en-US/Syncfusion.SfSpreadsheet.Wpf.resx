@@ -1,0 +1,2560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accounting" xml:space="preserve">
+    <value>Accounting</value>
+  </data>
+  <data name="Alignment" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="AllBorder" xml:space="preserve">
+    <value>All Borders</value>
+  </data>
+  <data name="Border" xml:space="preserve">
+    <value>Border</value>
+  </data>
+  <data name="BottomBorder" xml:space="preserve">
+    <value>Bottom Border</value>
+  </data>
+  <data name="Caption" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Clipboard" xml:space="preserve">
+    <value>Clipboard</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ExistingName" xml:space="preserve">
+    <value>Cannot rename a sheet to the same name as other sheet</value>
+  </data>
+  <data name="Font" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="ValidationMessage_FileOpen" xml:space="preserve">
+    <value>Cannot open the specified file.</value>
+  </data>
+  <data name="HLink_BrowseFilter" xml:space="preserve">
+    <value>Office Files</value>
+  </data>
+  <data name="HLink_Change" xml:space="preserve">
+    <value>Change...</value>
+  </data>
+  <data name="HLink_DefaultCell" xml:space="preserve">
+    <value>A1</value>
+  </data>
+  <data name="HLink_Document" xml:space="preserve">
+    <value>Create New Document</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>HOME</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>You typed invalid name for a sheet. Make sure that:
+
+1. The name that you type does not exceed 31 characters.
+2. The name does not contain any of following characters:  : \ / ? * [ or ]
+3. You did not leave the name blank.</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="LeftBorder" xml:space="preserve">
+    <value>Left Border</value>
+  </data>
+  <data name="LongDate" xml:space="preserve">
+    <value>Long Date</value>
+  </data>
+  <data name="MergeAcross" xml:space="preserve">
+    <value>Merge Across</value>
+  </data>
+  <data name="MergeAndCenter" xml:space="preserve">
+    <value>Merge &amp; Center</value>
+  </data>
+  <data name="MergeCells" xml:space="preserve">
+    <value>Merge Cells</value>
+  </data>
+  <data name="NoBorder" xml:space="preserve">
+    <value>No Border</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="OutSideBorder" xml:space="preserve">
+    <value>Outside Borders</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="Protect" xml:space="preserve">
+    <value>Protect Sheet...</value>
+  </data>
+  <data name="ProtectSheetDesc" xml:space="preserve">
+    <value>Protect worksheet and contents of locked cells</value>
+  </data>
+  <data name="ProtectSheetDescription" xml:space="preserve">
+    <value>Password to unprotect sheet:</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="RightBorder" xml:space="preserve">
+    <value>Right Border</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>(Select All)</value>
+  </data>
+  <data name="SheetProtected" xml:space="preserve">
+    <value>The Cell that you are trying to change is Protected and therefore read only</value>
+  </data>
+  <data name="ShortDate" xml:space="preserve">
+    <value>Short Date</value>
+  </data>
+  <data name="ThickBoxBorder" xml:space="preserve">
+    <value>Thick Box Border</value>
+  </data>
+  <data name="ThickBottomBorder" xml:space="preserve">
+    <value>Thick Bottom Border</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="TopAndBottomBorder" xml:space="preserve">
+    <value>Top And Bottom Border</value>
+  </data>
+  <data name="TopandThickBottomBorder" xml:space="preserve">
+    <value>Top and Thick Bottom Border</value>
+  </data>
+  <data name="TopBorder" xml:space="preserve">
+    <value>Top Border</value>
+  </data>
+  <data name="UnHide" xml:space="preserve">
+    <value>UnHide...</value>
+  </data>
+  <data name="UnHideDescription" xml:space="preserve">
+    <value>Select the Sheet to be hided</value>
+  </data>
+  <data name="UnMergeCells" xml:space="preserve">
+    <value>Unmerge Cells</value>
+  </data>
+  <data name="UnProtect" xml:space="preserve">
+    <value>UnProtect Sheet...</value>
+  </data>
+  <data name="UnProtectSheetDesc" xml:space="preserve">
+    <value>Enter Password to UnProtect the Sheet</value>
+  </data>
+  <data name="WrapText" xml:space="preserve">
+    <value>Wrap Text</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>The Password you supplied is not correct. Verify that CAPSLOCK is off and try again</value>
+  </data>
+  <data name="ConditionalFormatting" xml:space="preserve">
+    <value>Conditional Formatting</value>
+  </data>
+  <data name="EncryptWithPassword" xml:space="preserve">
+    <value>Encrypt with Password</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Permissions" xml:space="preserve">
+    <value>Permissions</value>
+  </data>
+  <data name="PermissionsDescription" xml:space="preserve">
+    <value>PermissionsDescription</value>
+  </data>
+  <data name="ProtectCurrentSheet" xml:space="preserve">
+    <value>Protect Current Sheet</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="Styles" xml:space="preserve">
+    <value>Styles</value>
+  </data>
+  <data name="Between" xml:space="preserve">
+    <value>Between...</value>
+  </data>
+  <data name="BottomAlign" xml:space="preserve">
+    <value>BottomAlign</value>
+  </data>
+  <data name="CenterAlign" xml:space="preserve">
+    <value>CenterAlign</value>
+  </data>
+  <data name="ClearRules" xml:space="preserve">
+    <value>Clear Rules</value>
+  </data>
+  <data name="ClearRules_FromEntireSheet" xml:space="preserve">
+    <value>Clear Rules from Entire Sheet</value>
+  </data>
+  <data name="ClearRules_FromSelectedCells" xml:space="preserve">
+    <value>Clear Rules from Selected Cells</value>
+  </data>
+  <data name="ColumnWidth" xml:space="preserve">
+    <value>Column Width...</value>
+  </data>
+  <data name="CommaStyle" xml:space="preserve">
+    <value>CommaStyle</value>
+  </data>
+  <data name="DecreaseIndent" xml:space="preserve">
+    <value>DecreaseIndent</value>
+  </data>
+  <data name="DeleteColumn" xml:space="preserve">
+    <value>Delete Sheet Columns</value>
+  </data>
+  <data name="DeleteRow" xml:space="preserve">
+    <value>Delete Sheet Rows</value>
+  </data>
+  <data name="DeleteSheet" xml:space="preserve">
+    <value>Delete Sheet</value>
+  </data>
+  <data name="EqualTo" xml:space="preserve">
+    <value>Equal To...</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="GreaterThan" xml:space="preserve">
+    <value>Greater Than...</value>
+  </data>
+  <data name="HideAndUnhide" xml:space="preserve">
+    <value>Hide &amp; Unhide</value>
+  </data>
+  <data name="HighlightCellRules" xml:space="preserve">
+    <value>Highlight Cells Rules</value>
+  </data>
+  <data name="IncreaseIndent" xml:space="preserve">
+    <value>IncreaseIndent</value>
+  </data>
+  <data name="AngleCounterclockwise" xml:space="preserve">
+    <value>Angle Counterclockwise</value>
+  </data>
+  <data name="AngleClockwise" xml:space="preserve">
+    <value>Angle Clockwise</value>
+  </data>
+  <data name="RotateTextUp" xml:space="preserve">
+    <value>Rotate Text Up</value>
+  </data>
+  <data name="RotateTextDown" xml:space="preserve">
+    <value>Rotate Text Down</value>
+  </data>
+  <data name="FormatCellAlignment" xml:space="preserve">
+    <value>Format Cell Alignment</value>
+  </data>
+  <data name="InsertColumn" xml:space="preserve">
+    <value>Insert Sheet Columns</value>
+  </data>
+  <data name="InsertRow" xml:space="preserve">
+    <value>Insert Sheet Rows</value>
+  </data>
+  <data name="InsertSheet" xml:space="preserve">
+    <value>Insert Sheet</value>
+  </data>
+  <data name="LeftAlign" xml:space="preserve">
+    <value>LeftAlign</value>
+  </data>
+  <data name="LessThan" xml:space="preserve">
+    <value>Less Than...</value>
+  </data>
+  <data name="MiddleAlign" xml:space="preserve">
+    <value>MiddleAlign</value>
+  </data>
+  <data name="RightAlign" xml:space="preserve">
+    <value>RightAlign</value>
+  </data>
+  <data name="RowHeight" xml:space="preserve">
+    <value>Row Height...</value>
+  </data>
+  <data name="TopAlign" xml:space="preserve">
+    <value>TopAlign</value>
+  </data>
+  <data name="HideColumns" xml:space="preserve">
+    <value>Hide Columns</value>
+  </data>
+  <data name="HideRows" xml:space="preserve">
+    <value>Hide Rows</value>
+  </data>
+  <data name="HideSheet" xml:space="preserve">
+    <value>Hide Sheet</value>
+  </data>
+  <data name="UnHideColumns" xml:space="preserve">
+    <value>Unhide Columns</value>
+  </data>
+  <data name="UnHideRows" xml:space="preserve">
+    <value>Unhide Rows</value>
+  </data>
+  <data name="UnHideSheet" xml:space="preserve">
+    <value>Unhide Sheet...</value>
+  </data>
+  <data name="Cells" xml:space="preserve">
+    <value>Cells</value>
+  </data>
+  <data name="DateOccuring" xml:space="preserve">
+    <value>A Date Occurring...</value>
+  </data>
+  <data name="FormatAsTable" xml:space="preserve">
+    <value>Format as Table</value>
+  </data>
+  <data name="TextContains" xml:space="preserve">
+    <value>Text that Contains...</value>
+  </data>
+  <data name="AvailableTemplate" xml:space="preserve">
+    <value>Available Template</value>
+  </data>
+  <data name="BlankWorkbook" xml:space="preserve">
+    <value>Blank workbook</value>
+  </data>
+  <data name="BlankWorkbookDescription" xml:space="preserve">
+    <value>Creates an Empty Workbook</value>
+  </data>
+  <data name="CellStyles" xml:space="preserve">
+    <value>Cell Styles</value>
+  </data>
+	<data name="FillSeries" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+	<data name="Fill_Left" xml:space="preserve">
+    <value>Left</value>
+  </data>
+	<data name="Fill_Right" xml:space="preserve">
+    <value>Right</value>
+  </data>
+	<data name="Fill_Up" xml:space="preserve">
+    <value>Up</value>
+  </data>
+	<data name="Fill_Down" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="DocumentProperties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="DocumentProperty_AppName" xml:space="preserve">
+    <value>AppName</value>
+  </data>
+  <data name="DocumentProperty_Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="DocumentProperty_Category" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="DocumentProperty_Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="DocumentProperty_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="DocumentProperty_Manager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="DocumentProperty_RelatedPeople" xml:space="preserve">
+    <value>Related People</value>
+  </data>
+  <data name="DocumentProperty_Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="DocumentProperty_Tag" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="DocumentProperty_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="ShowAllProperties" xml:space="preserve">
+    <value>Show All Properties</value>
+  </data>
+  <data name="DataValidation" xml:space="preserve">
+    <value>Data Validation</value>
+  </data>
+  <data name="DeleteComment" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="EditComment" xml:space="preserve">
+    <value>Edit Comment</value>
+  </data>
+  <data name="Freeze" xml:space="preserve">
+    <value>Freeze</value>
+  </data>
+  <data name="FreezeFirstColumn" xml:space="preserve">
+    <value>Freeze First Column</value>
+  </data>
+  <data name="FreezePanes" xml:space="preserve">
+    <value>Freeze Panes</value>
+  </data>
+  <data name="FreezeTopRow" xml:space="preserve">
+    <value>Freeze Top Row</value>
+  </data>
+  <data name="Hyperlink" xml:space="preserve">
+    <value>Hyperlink</value>
+  </data>
+  <data name="Illustrations" xml:space="preserve">
+    <value>Illustrations</value>
+  </data>
+  <data name="NewComment" xml:space="preserve">
+    <value>New Comment</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="AutoFitColumnWidth" xml:space="preserve">
+    <value>AutoFit Column Width</value>
+  </data>
+  <data name="AutoFitRowHeight" xml:space="preserve">
+    <value>AutoFit Row Height</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>and</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ValidNameRange" xml:space="preserve">
+    <value>You must enter a Valid reference you want to go to, or type a valid name for selection</value>
+  </data>
+  <data name="With" xml:space="preserve">
+    <value>with</value>
+  </data>
+  <data name="BetweenWindowDescription" xml:space="preserve">
+    <value>Format cells that are BETWEEN:</value>
+  </data>
+  <data name="BetweenWindowTitle" xml:space="preserve">
+    <value>Between</value>
+  </data>
+  <data name="EqualToWindowDescription" xml:space="preserve">
+    <value>Format cells that are EQUAL TO:</value>
+  </data>
+  <data name="EqualToWindowTitle" xml:space="preserve">
+    <value>Equal To</value>
+  </data>
+  <data name="SortAndFilter" xml:space="preserve">
+    <value>Sort &amp; Filter</value>
+  </data>
+  <data name="FilterErrorMessage" xml:space="preserve">
+    <value>This can't be applied to the selected range. Select a single cell in a range and try again.</value>
+  </data>
+  <data name="Filter_NoMatches" xml:space="preserve">
+    <value>No Matches</value>
+  </data>
+  <data name="Filter_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SortAscending" xml:space="preserve">
+    <value>Sort Ascending</value>
+  </data>
+  <data name="SortDescending" xml:space="preserve">
+    <value>Sort Descending</value>
+  </data>
+  <data name="Blanks" xml:space="preserve">
+    <value>(Blanks)</value>
+  </data>
+  <data name="GreaterThanWindowDescription" xml:space="preserve">
+    <value>Format cells that are GREATER THAN: </value>
+  </data>
+  <data name="GreaterThanWindowTitle" xml:space="preserve">
+    <value>Greater Than</value>
+  </data>
+  <data name="GreenFillWithDarkGreenText" xml:space="preserve">
+    <value>Green Fill with Dark Green Text</value>
+  </data>
+  <data name="LessThanWindowDescription" xml:space="preserve">
+    <value>Format cells that are LESS THAN:</value>
+  </data>
+  <data name="LessThanWindowTitle" xml:space="preserve">
+    <value>Less Than</value>
+  </data>
+  <data name="LightRedFill" xml:space="preserve">
+    <value>Light Red Fill</value>
+  </data>
+  <data name="LightRedFillWithDarkRedText" xml:space="preserve">
+    <value>Light Red Fill with Dark Red Text</value>
+  </data>
+  <data name="NotBetweenWindowDescription" xml:space="preserve">
+    <value>Format cells that are NOT BETWEEN:</value>
+  </data>
+  <data name="NotBetweenWindowTitle" xml:space="preserve">
+    <value>Not Between</value>
+  </data>
+  <data name="RedBorder" xml:space="preserve">
+    <value>Red Border</value>
+  </data>
+  <data name="RedText" xml:space="preserve">
+    <value>Red Text</value>
+  </data>
+  <data name="ValidationMessage_EnteredInvalidData" xml:space="preserve">
+    <value>The value you entered is not a valid number, date, time or string </value>
+  </data>
+  <data name="YellowFillWithDarkYellowText" xml:space="preserve">
+    <value>Yellow Fill with Dark Yellow Text</value>
+  </data>
+  <data name="ContainsTextDescription" xml:space="preserve">
+    <value>Format cells that contain the text:</value>
+  </data>
+  <data name="ContainsTextTitle" xml:space="preserve">
+    <value>Text That Contains</value>
+  </data>
+  <data name="DateOccuringDescription" xml:space="preserve">
+    <value>Format cells that contain a date occurring:</value>
+  </data>
+  <data name="DateOccuringTitle" xml:space="preserve">
+    <value>A Date Occurring</value>
+  </data>
+  <data name="Inthelast7days" xml:space="preserve">
+    <value>In the last 7 days</value>
+  </data>
+  <data name="LastMonth" xml:space="preserve">
+    <value>Last Month</value>
+  </data>
+  <data name="LastWeek" xml:space="preserve">
+    <value>Last Week</value>
+  </data>
+  <data name="NextMonth" xml:space="preserve">
+    <value>Next Month</value>
+  </data>
+  <data name="NextWeek" xml:space="preserve">
+    <value>Next Week</value>
+  </data>
+  <data name="ThisMonth" xml:space="preserve">
+    <value>This Month</value>
+  </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>This Week</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Tomorrow" xml:space="preserve">
+    <value>Tomorrow</value>
+  </data>
+  <data name="ValidationMessage_DeleteSheet" xml:space="preserve">
+    <value>You can't undo deleting sheets, and you might be removing some data. If you don't need it, click OK.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="ErrorMessage_DeleteSheet" xml:space="preserve">
+    <value>A workbook must contain atleast one visible sheet.                                  To hide, delete or move the selected sheet(s), you must first insert a new sheet or unhide a sheet which is already hidden.</value>
+  </data>
+  <data name="ColumnWidthDescription" xml:space="preserve">
+    <value>Column width:</value>
+  </data>
+  <data name="RowHeightDescription" xml:space="preserve">
+    <value>Row height:</value>
+  </data>
+  <data name="ExceedColumnWidthWarning" xml:space="preserve">
+    <value>Column width must be between 0 and 255 characters.</value>
+  </data>
+  <data name="ExceedRowHeightWarning" xml:space="preserve">
+    <value>Row height must be between 0 and 409</value>
+  </data>
+  <data name="FormatAsTableDescription" xml:space="preserve">
+    <value>Where is the data for your table?</value>
+  </data>
+  <data name="FormatAsTableWindowTitle" xml:space="preserve">
+    <value>Format As Table</value>
+  </data>
+  <data name="ValidationMessage_EnterValidRange" xml:space="preserve">
+    <value>Enter a valid Range</value>
+  </data>
+  <data name="CellSize" xml:space="preserve">
+    <value>Cell Size</value>
+  </data>
+  <data name="OrganizeSheets" xml:space="preserve">
+    <value>Organize Sheets</value>
+  </data>
+  <data name="ProtectSheet" xml:space="preserve">
+    <value>Protect Sheet</value>
+  </data>
+  <data name="RenameSheet" xml:space="preserve">
+    <value>Rename Sheet</value>
+  </data>
+  <data name="Visibility" xml:space="preserve">
+   <value>Visibility</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password (optional):</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>DATA</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Hyperlinks" xml:space="preserve">
+    <value>Hyperlinks</value>
+  </data>
+  <data name="Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="Outline" xml:space="preserve">
+    <value>Outline</value>
+  </data>
+  <data name="Ungroup" xml:space="preserve">
+    <value>Ungroup</value>
+  </data>
+  <data name="Allow" xml:space="preserve">
+    <value>Allow :</value>
+  </data>
+  <data name="AnyValue" xml:space="preserve">
+    <value>Any value</value>
+  </data>
+  <data name="Between_Lower" xml:space="preserve">
+    <value>between</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Datatitle" xml:space="preserve">
+    <value>Data :</value>
+  </data>
+  <data name="Datatools" xml:space="preserve">
+    <value>Data Tools</value>
+  </data>
+  <data name="DateAndTime" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Decimal" xml:space="preserve">
+    <value>Decimal</value>
+  </data>
+  <data name="Equalto_Lower" xml:space="preserve">
+    <value>equal to</value>
+  </data>
+  <data name="ErrorAlert" xml:space="preserve">
+    <value>Error Alert</value>
+  </data>
+  <data name="ErrorAlertDescription" xml:space="preserve">
+    <value>When user enters invalid data, show this error alert:</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Error message:</value>
+  </data>
+  <data name="FormulaBar" xml:space="preserve">
+    <value>Formula Bar</value>
+  </data>
+  <data name="GreaterThanOrEqualTo_Lower" xml:space="preserve">
+    <value>greater than or equal to</value>
+  </data>
+  <data name="GreaterThan_Lower" xml:space="preserve">
+    <value>greater than</value>
+  </data>
+  <data name="Gridlines" xml:space="preserve">
+    <value>Gridlines</value>
+  </data>
+  <data name="Headings" xml:space="preserve">
+    <value>Headings</value>
+  </data>
+  <data name="InputMessage" xml:space="preserve">
+    <value>Input Message</value>
+  </data>
+  <data name="Inputmessagedesc" xml:space="preserve">
+    <value>Input message:</value>
+  </data>
+  <data name="InputmessageDescription" xml:space="preserve">
+    <value>When cell is selected, show this input message:</value>
+  </data>
+  <data name="LessThanOrEqualTo_Lower" xml:space="preserve">
+    <value>less than or equal to</value>
+  </data>
+  <data name="Lessthan_Lower" xml:space="preserve">
+    <value>less than</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="NotBetween" xml:space="preserve">
+    <value>Not Between</value>
+  </data>
+  <data name="Notbetween_Lower" xml:space="preserve">
+    <value>not between</value>
+  </data>
+  <data name="NotEqualTo_Lower" xml:space="preserve">
+    <value>not equal to</value>
+  </data>
+  <data name="ProtectSheetLarge" xml:space="preserve">
+    <value>Protect Sheet</value>
+  </data>
+  <data name="ProtectWorkbook" xml:space="preserve">
+    <value>Protect Workbook</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Sheet" xml:space="preserve">
+    <value>Sheet</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="TextLength" xml:space="preserve">
+    <value>Text Length</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title:</value>
+  </data>
+  <data name="ValidationCriteria" xml:space="preserve">
+    <value>Validation criteria</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>VIEW</value>
+  </data>
+  <data name="WholeNumber" xml:space="preserve">
+    <value>Whole number</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date :</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End date :</value>
+  </data>
+  <data name="Maximum" xml:space="preserve">
+    <value>Maximum :</value>
+  </data>
+  <data name="Minimum" xml:space="preserve">
+    <value>Minimum :</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source :</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start date :</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value:</value>
+  </data>
+  <data name="ProtectWorkbookDescription" xml:space="preserve">
+    <value>Protect workbook for</value>
+  </data>
+  <data name="ProtectWorkbookDescriptionText" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="ProtectWorkbookTitle" xml:space="preserve">
+    <value>Protect Structure and Windows</value>
+  </data>
+  <data name="Structure" xml:space="preserve">
+    <value>Structure</value>
+  </data>
+  <data name="UnprotectWorkbookTitle" xml:space="preserve">
+    <value>Unprotect Workbook</value>
+  </data>
+  <data name="ValidationMessage_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ValidationMessage_InCorrectPassword" xml:space="preserve">
+    <value>The password you supplied is not correct. Verify that the CAPS LOCK key is off and be sure to use correct capitalization.</value>
+  </data>
+  <data name="Windows" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="Columns" xml:space="preserve">
+    <value>Columns</value>
+  </data>
+  <data name="Rows" xml:space="preserve">
+    <value>Rows</value>
+  </data>
+  <data name="UnfreezePanes" xml:space="preserve">
+    <value>Unfreeze Panes</value>
+  </data>
+  <data name="ShowErrorMessage" xml:space="preserve">
+    <value>Show error alert after invalid data is entered</value>
+  </data>
+  <data name="ShowInputMessage" xml:space="preserve">
+    <value>Show input message when cell is selected</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment:</value>
+  </data>
+  <data name="IgnoreBlank" xml:space="preserve">
+    <value>Ignore blank</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="DocumentMask_AppName" xml:space="preserve">
+    <value>Add an application name</value>
+  </data>
+  <data name="DocumentMask_Author" xml:space="preserve">
+    <value>Add an author</value>
+  </data>
+  <data name="DocumentMask_Category" xml:space="preserve">
+    <value>Add a category</value>
+  </data>
+  <data name="DocumentMask_Company" xml:space="preserve">
+    <value>Specify the company</value>
+  </data>
+  <data name="DocumentMask_Manager" xml:space="preserve">
+    <value>Specify the manager</value>
+  </data>
+  <data name="DocumentMask_Subject" xml:space="preserve">
+    <value>Specify the subject</value>
+  </data>
+  <data name="DocumentMask_Title" xml:space="preserve">
+    <value>Add a title</value>
+  </data>
+  <data name="NewNameRange" xml:space="preserve">
+    <value>New Name</value>
+  </data>
+  <data name="DocumentMask_Comments" xml:space="preserve">
+    <value>Add comments</value>
+  </data>
+  <data name="DocumentMask_Tag" xml:space="preserve">
+    <value>Add a tag</value>
+  </data>
+  <data name="NameManager" xml:space="preserve">
+    <value>Name Manager</value>
+  </data>
+  <data name="DeleteNameRange" xml:space="preserve">
+    <value>Are you sure you want to delete the name </value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="Refers_To" xml:space="preserve">
+    <value>Refers to:</value>
+  </data>
+  <data name="Scope" xml:space="preserve">
+    <value>Scope:</value>
+  </data>
+  <data name="Validation_Edit_NameRanges" xml:space="preserve">
+    <value>The name you entered is invalid. Reasons for this can include :                  1.The name does not begin with a letter or underscore.                              2.The name contains white spaces or special characters.                          3.The name conflicts with an Excel built-in name or the name of another object in the workbook.</value>
+  </data>
+  <data name="Validation_Edit_NameRanges_Refers_To" xml:space="preserve">
+    <value>The Formula you typed contains an error.</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="ClearFilter" xml:space="preserve">
+    <value>Clear Filter</value>
+  </data>
+  <data name="DefinedNames" xml:space="preserve">
+    <value>Defined Names</value>
+  </data>
+  <data name="EditName" xml:space="preserve">
+    <value>Edit Name</value>
+  </data>
+  <data name="NamesScopedtoWorkbook" xml:space="preserve">
+    <value>Names Scoped to Workbook</value>
+  </data>
+  <data name="NamesScopedtoWorksheet" xml:space="preserve">
+    <value>Names Scoped to Worksheet</value>
+  </data>
+  <data name="NameswithErrors" xml:space="preserve">
+    <value>Names with Errors</value>
+  </data>
+  <data name="NameswithoutErrors" xml:space="preserve">
+    <value>Names without Errors</value>
+  </data>
+  <data name="TableNames" xml:space="preserve">
+    <value>Table Names</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Create New Document</value>
+  </data>
+  <data name="LinkTo" xml:space="preserve">
+    <value>LinkTo:</value>
+  </data>
+  <data name="Mail" xml:space="preserve">
+    <value>E-Mail Address</value>
+  </data>
+  <data name="Reference" xml:space="preserve">
+    <value>Place in This Document</value>
+  </data>
+  <data name="Web" xml:space="preserve">
+    <value>Existing File or Web Page</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>Change...</value>
+  </data>
+  <data name="EditLater" xml:space="preserve">
+    <value>Edit the new document later</value>
+  </data>
+  <data name="EditNow" xml:space="preserve">
+    <value>Edit the new document now</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>E-mail address:</value>
+  </data>
+  <data name="FullPath" xml:space="preserve">
+    <value>FullPath:</value>
+  </data>
+  <data name="HyperlinkAddress" xml:space="preserve">
+    <value>Address:</value>
+  </data>
+  <data name="HyperlinkCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="HyperlinkOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Nameofnewdocument" xml:space="preserve">
+    <value>Name of new document:</value>
+  </data>
+  <data name="RemoveLink" xml:space="preserve">
+    <value>RemoveLink</value>
+  </data>
+  <data name="ScreenTip" xml:space="preserve">
+    <value>ScreenTip:</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="TexttoDisplay" xml:space="preserve">
+    <value>Text to Display:</value>
+  </data>
+  <data name="Typethecellreference" xml:space="preserve">
+    <value>Type the cell reference:</value>
+  </data>
+  <data name="Whentoedit" xml:space="preserve">
+    <value>When to edit:</value>
+  </data>
+  <data name="H_Workbook" xml:space="preserve">
+    <value>Workbook</value>
+  </data>
+  <data name="H_www" xml:space="preserve">
+    <value>www.</value>
+  </data>
+  <data name="H_Xlsx" xml:space="preserve">
+    <value>.xlsx</value>
+  </data>
+  <data name="H_Xlsx2" xml:space="preserve">
+    <value>(xlsx)</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Do you want to save changes you made to the name reference?</value>
+  </data>
+  <data name="EndDateErrorText" xml:space="preserve">
+    <value>You must enter a End Date.</value>
+  </data>
+  <data name="EndDateStartDateErrorText" xml:space="preserve">
+    <value>You must enter both a End Date and a Start Date</value>
+  </data>
+  <data name="Formula" xml:space="preserve">
+    <value>Formula</value>
+  </data>
+  <data name="MaximumErrorText" xml:space="preserve">
+    <value>You must enter a Maximum.</value>
+  </data>
+  <data name="MinimumErrorText" xml:space="preserve">
+    <value>You must enter a Minimum.</value>
+  </data>
+  <data name="MinimumMaximumErrorText" xml:space="preserve">
+    <value>You must enter both a Maximum and a Minimum.</value>
+  </data>
+  <data name="SourceErrorText" xml:space="preserve">
+    <value>You must enter the Source.</value>
+  </data>
+  <data name="StartDateErrorText" xml:space="preserve">
+    <value>You must enter a Start Date.</value>
+  </data>
+  <data name="ValueErrorText" xml:space="preserve">
+    <value>You must enter a Value.</value>
+  </data>
+  <data name="EnterMinMaxValue" xml:space="preserve">
+    <value>You must enter both a Maximum and a Minimum. </value>
+  </data>
+  <data name="EnterValue" xml:space="preserve">
+    <value>You must enter a Value.</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>End time:</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>FILE</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Start time:</value>
+  </data>
+  <data name="EnterDate" xml:space="preserve">
+    <value>You must enter a Date.</value>
+  </data>
+  <data name="EnterStartEndDate" xml:space="preserve">
+    <value>You must enter both an End Date and a Start Date.</value>
+  </data>
+  <data name="EnterStartEndTime" xml:space="preserve">
+    <value>You must enter both an End Time and a Start Time.</value>
+  </data>
+  <data name="EnterTime" xml:space="preserve">
+    <value>You must enter a Time.</value>
+  </data>
+  <data name="InCellDropDown" xml:space="preserve">
+    <value>In-cell Dropdown</value>
+  </data>
+  <data name="PasswordtoUnProtect" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="DeleteCells" xml:space="preserve">
+    <value>Delete Cells...</value>
+  </data>
+  <data name="EntireColumn" xml:space="preserve">
+    <value>Entire column</value>
+  </data>
+  <data name="EntireRow" xml:space="preserve">
+    <value>Entire row</value>
+  </data>
+  <data name="InsertCells" xml:space="preserve">
+    <value>Insert Cells...</value>
+  </data>
+  <data name="MinMaxError" xml:space="preserve">
+    <value>The Maximum must be greater than or equal to the Minimum.</value>
+  </data>
+  <data name="MinMaxDateError" xml:space="preserve">
+    <value>The End Date must be greater than or equal to the Start Date.</value>
+  </data>
+  <data name="DateError" xml:space="preserve">
+    <value>The date you entered for the Date is invalid.</value>
+  </data>
+  <data name="EndDateError" xml:space="preserve">
+    <value>The date you entered for the End Date is invalid.</value>
+  </data>
+  <data name="EndTimeError" xml:space="preserve">
+    <value>The time you entered for the End Time is invalid.</value>
+  </data>
+  <data name="MinMaxTimeError" xml:space="preserve">
+    <value>The End Time must be greater than or equal to Start Time.</value>
+  </data>
+  <data name="NameRangeError" xml:space="preserve">
+    <value>A named range you specified cannot be found.</value>
+  </data>
+  <data name="NumericValueError" xml:space="preserve">
+    <value>The Value must be a numeric value, numeric expression, or refer to a cell containing a numeric value.</value>
+  </data>
+  <data name="ReferenceError" xml:space="preserve">
+    <value>This type of reference cannot be used in a Data Validation formula.  Change the reference to a single cell, or use a reference with worksheet function, such as =SUM(A1:E5).</value>
+  </data>
+  <data name="StartDateError" xml:space="preserve">
+    <value>The date you entered for the Start Date is invalid.</value>
+  </data>
+  <data name="StartTimeError" xml:space="preserve">
+    <value>The time you entered for the Start Time is invalid.</value>
+  </data>
+  <data name="TimeError" xml:space="preserve">
+    <value>The time you entered for the Time is invalid.</value>
+  </data>
+  <data name="WholeNumberError" xml:space="preserve">
+    <value>Decimal values cannot be used for Whole Number conditions.</value>
+  </data>
+  <data name="FormulaError" xml:space="preserve">
+    <value>The formula you typed contains an error.</value>
+  </data>
+  <data name="MaxNumericValueError" xml:space="preserve">
+    <value>The Maximum must be a numeric value, numeric expression, or refer to a cell containing a numeric value.</value>
+  </data>
+  <data name="MinNumericValueError" xml:space="preserve">
+    <value>The Minimum must be a numeric value, numeric expression, or refer to a cell containing a numeric value.</value>
+  </data>
+  <data name="UnProtectSheet" xml:space="preserve">
+    <value>Unprotect Sheet</value>
+  </data>
+  <data name="EnterSource" xml:space="preserve">
+    <value>You must enter a Source.</value>
+  </data>
+  <data name="EnterFormula" xml:space="preserve">
+    <value>You must enter a Formula.</value>
+  </data>
+  <data name="ProtectWorkbookText" xml:space="preserve">
+    <value>Control what type of changes people can make to this workbook</value>
+  </data>
+  <data name="InsertDeleteCellsError" xml:space="preserve">
+    <value>Unable to perform this action on multiple ranges. Select a single range and try again.</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Caution" xml:space="preserve">
+    <value>Caution: If you lose or forget the password, it cannot be recovered. It is advisable to keep a list of passwords and their corresponding document names in a safe place.(Remember that passwords are case sensitive.)</value>
+  </data>
+  <data name="EncryptDescription" xml:space="preserve">
+    <value>Encrypt the contents of this file</value>
+  </data>
+  <data name="EncryptDocument" xml:space="preserve">
+    <value>Encrypt Document</value>
+  </data>
+  <data name="CellStyles_GoodBadNeutral" xml:space="preserve">
+    <value>Good, Bad and Neutral</value>
+  </data>
+  <data name="CellStyles_NumberFormat" xml:space="preserve">
+    <value>Number Format</value>
+  </data>
+  <data name="CellStyles_ThemedCellStyles" xml:space="preserve">
+    <value>Themed Cell Styles</value>
+  </data>
+  <data name="CellStyles_TitlesAndHeadings" xml:space="preserve">
+    <value>Titles and Headings</value>
+  </data>
+  <data name="Protection" xml:space="preserve">
+    <value>Protection</value>
+  </data>
+  <data name="DoubleValueError" xml:space="preserve">
+    <value>Your entry cannot be used. An integer or decimal number may be required.</value>
+  </data>
+  <data name="ProtectWorkbookStructure" xml:space="preserve">
+    <value>Protect Workbook Structure</value>
+  </data>
+  <data name="EncryptWithPasswordDesc" xml:space="preserve">
+    <value>Require a password to open this workbook.</value>
+  </data>
+  <data name="ProtectCurrentSheetDesc" xml:space="preserve">
+    <value>Control what types of changes people can make to the current sheet.</value>
+  </data>
+  <data name="ProtectWorkbookStructureDesc" xml:space="preserve">
+    <value>Prevent unwanted changes to the structure of the workbook, such as adding sheets.</value>
+  </data>
+  <data name="DocumentProperty_Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="DocumentProperty_LastModified" xml:space="preserve">
+    <value>Last Modified</value>
+  </data>
+  <data name="DocumentProperty_LastModifiedBy" xml:space="preserve">
+    <value>Last Modified By</value>
+  </data>
+  <data name="DocumentProperty_LastPrinted" xml:space="preserve">
+    <value>Last Printed</value>
+  </data>
+  <data name="DocumentProperty_RelatedDates" xml:space="preserve">
+    <value>Related Dates</value>
+  </data>
+  <data name="NotSavedYet" xml:space="preserve">
+    <value>Not saved yet</value>
+  </data>
+  <data name="ConditionValueError" xml:space="preserve">
+    <value>Please enter only numeric values, cannot apply condition value as string value.</value>
+  </data>
+  <data name="DocumentProperty_RelatedDocuments" xml:space="preserve">
+    <value>Related Documents</value>
+  </data>
+  <data name="InformationAbout" xml:space="preserve">
+    <value>Information about</value>
+  </data>
+  <data name="OpenFileLocation" xml:space="preserve">
+    <value>Open File Location</value>
+  </data>
+  <data name="ColumnWidthTitle" xml:space="preserve">
+    <value>Column Width</value>
+  </data>
+  <data name="RowHeightTitle" xml:space="preserve">
+    <value>Row Height</value>
+  </data>
+  <data name="UnHideSheetDescription" xml:space="preserve">
+    <value>Unhide Sheet:</value>
+  </data>
+  <data name="EnterLength" xml:space="preserve">
+    <value>You must enter a Length.</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Length:</value>
+  </data>
+  <data name="NewName" xml:space="preserve">
+    <value>New...</value>
+  </data>
+  <data name="EnterEndDate" xml:space="preserve">
+    <value>You must enter a End Date.</value>
+  </data>
+  <data name="EnterEndTime" xml:space="preserve">
+    <value>You must enter a End Time.</value>
+  </data>
+  <data name="EnterMaximum" xml:space="preserve">
+    <value>You must enter a Maximum</value>
+  </data>
+  <data name="ValidationMessage_SaveChanges" xml:space="preserve">
+    <value>Do you want to save changes that you made to this file?</value>
+  </data>
+  <data name="FontSizeError" xml:space="preserve">
+    <value>Font size must be between 1 and 409 points</value>
+  </data>
+  <data name="DefaultWidth" xml:space="preserve">
+    <value>Default Width...  </value>
+  </data>
+  <data name="EnterMinimum" xml:space="preserve">
+    <value>You must enter a Minimum.</value>
+  </data>
+  <data name="EnterStartDate" xml:space="preserve">
+    <value>You must enter a Start Date.</value>
+  </data>
+  <data name="EnterStartTime" xml:space="preserve">
+    <value>You must enter a Start Time.</value>
+  </data>
+  <data name="HLink_EditWindowName" xml:space="preserve">
+    <value>Edit Hyperlink</value>
+  </data>
+  <data name="HLink_EditLater" xml:space="preserve">
+    <value>Edit the new document later</value>
+  </data>
+  <data name="HLink_EditNow" xml:space="preserve">
+    <value>Edit the new document now</value>
+  </data>
+  <data name="HLink_EmailAddress" xml:space="preserve">
+    <value>E-mail address:</value>
+  </data>
+  <data name="HLink_Exist" xml:space="preserve">
+    <value>Existing File or Web Page</value>
+  </data>
+  <data name="HLink_File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="HLink_FullPath" xml:space="preserve">
+    <value>Full path:</value>
+  </data>
+  <data name="HLink_HyperlinkAddress" xml:space="preserve">
+    <value>Address:</value>
+  </data>
+  <data name="ValidationMessage_FileExist1" xml:space="preserve">
+    <value>You already have a file named</value>
+  </data>
+  <data name="ValidationMessage_FileExist2" xml:space="preserve">
+    <value>Do you want to replace it with this one</value>
+  </data>
+  <data name="ValidationMessage_InavalidFile" xml:space="preserve">
+    <value>Invalid file name</value>
+  </data>
+  <data name="ValidationMessage_CreateFiles" xml:space="preserve">
+    <value>No procedure for creating files of this type is registered with the shell.Do you want to create an empty file</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="HLink_InsertWindowName" xml:space="preserve">
+    <value>Insert Hyperlink</value>
+  </data>
+  <data name="ValidationMessage_InvalidRerence" xml:space="preserve">
+    <value>Reference is not valid</value>
+  </data>
+  <data name="HLink_LinkTo" xml:space="preserve">
+    <value>Link to:</value>
+  </data>
+  <data name="HLink_Mail" xml:space="preserve">
+    <value>E-mail Address</value>
+  </data>
+  <data name="HLink_MailTo" xml:space="preserve">
+    <value>mailto</value>
+  </data>
+  <data name="HLink_Nameofnewdocument" xml:space="preserve">
+    <value>Name of new document:</value>
+  </data>
+  <data name="HLink_Reference" xml:space="preserve">
+    <value>Place in This Document</value>
+  </data>
+  <data name="HLink_RemoveLink" xml:space="preserve">
+    <value>Remove Link</value>
+  </data>
+  <data name="HLink_ScreenTip" xml:space="preserve">
+    <value>ScreenTip:</value>
+  </data>
+  <data name="HLink_SelectInDocument" xml:space="preserve">
+    <value>&lt;&lt;Selection in Document&gt;&gt;</value>
+  </data>
+  <data name="HLink_Subject" xml:space="preserve">
+    <value>Subject:</value>
+  </data>
+  <data name="HLink_TexttoDisplay" xml:space="preserve">
+    <value>Text to display:</value>
+  </data>
+  <data name="HLink_ToolTip" xml:space="preserve">
+    <value>Click once to follow </value>
+  </data>
+  <data name="HLink_Typethecellreference" xml:space="preserve">
+    <value>Type the cell reference:</value>
+  </data>
+  <data name="HLink_Whentoedit" xml:space="preserve">
+    <value>When to edit:</value>
+  </data>
+  <data name="ValidationMessage_ClipboardPaste" xml:space="preserve">
+    <value>The data you're pasting isn't the same size as your selection, Do you want to paste anyway?</value>
+  </data>
+  <data name="ValidationMessage_MergeCells" xml:space="preserve">
+    <value>We can't do that to a merged cell</value>
+  </data>
+  <data name="ValidationMessage_MergeCutCells" xml:space="preserve">
+    <value>This operation will cause some merged cells to unmerge, Do you wish to continue?</value>
+  </data>
+  <data name="ValidationMessage_MultipleSelections" xml:space="preserve">
+    <value>That command cannot be used on multiple selections</value>
+  </data>
+  <data name="ValidationMessage_NotEnoughSpaceToPaste" xml:space="preserve">
+    <value>We can't paste because the Copy area and paste area aren't the same size</value>
+  </data>
+  <data name="ValidationMessage_ReadOnlyCells" xml:space="preserve">
+    <value>The cell that you are trying to change is on a protected sheet and therefore readonly.</value>
+  </data>
+  <data name="FreezeFirstColumnDescription" xml:space="preserve">
+    <value>Keep the first column visible while scrolling through the rest of the worksheet.</value>
+  </data>
+  <data name="FreezePanesDescription" xml:space="preserve">
+    <value>Keep rows and columns visible while the rest of the worksheet scrolls(based on current selection).</value>
+  </data>
+  <data name="FreezeTopRowDescription" xml:space="preserve">
+    <value>Keep the top row visible while scrolling through the rest of the worksheet.</value>
+  </data>
+  <data name="StandardWidth" xml:space="preserve">
+    <value>Standard Width</value>
+  </data>
+  <data name="StandardWidthError" xml:space="preserve">
+    <value>Your entry cannot be used. An integer or decimal number may be required.</value>
+  </data>
+  <data name="StandardWidthText" xml:space="preserve">
+    <value>Standard column width:</value>
+  </data>
+  <data name="EssentialXlsio" xml:space="preserve">
+    <value>EssentialXlsio</value>
+  </data>
+  <data name="DefaultValidationError" xml:space="preserve">
+    <value>The value you entered is not valid.                                                                   A user has restricted values that can be entered into this cell.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit...</value>
+  </data>
+  <data name="ShowFewerProperties" xml:space="preserve">
+    <value>Show Fewer Properties</value>
+  </data>
+  <data name="PasswordTitle" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Direction" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="IsSummaryColumnAtRight" xml:space="preserve">
+    <value>Summary columns to right of detail</value>
+  </data>
+  <data name="IsSummaryRowBelow" xml:space="preserve">
+    <value>Summary rows below detail</value>
+  </data>
+  <data name="MultipleSelectionsError" xml:space="preserve">
+    <value>The command you chose cannot be performed with multiple selections. Select a single range and click the command again.</value>
+  </data>
+  <data name="UngroupError" xml:space="preserve">
+    <value>Cannot ungroup. To start an outline, select the detail rows or columns and group them.</value>
+  </data>
+  <data name="Warning_GroupingWholeTable" xml:space="preserve">
+    <value>Cannot Group the Whole Table. To start an outline, select the detail rows or columns and group them.</value>
+  </data>
+  <data name="TableFormatDark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="TableFormatLight" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="TableFormatMedium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="TableFormatTextBlockText" xml:space="preserve">
+    <value>Where is the data for your table?</value>
+  </data>
+  <data name="ValidationMessage_MergedTableFormat" xml:space="preserve">
+    <value>This operation was not allowed. Merging over the table format cells was restricted.</value>
+  </data>
+  <data name="ValidationMessage_TableFormatInvalidFormula" xml:space="preserve">
+    <value>We found problem with this formula. We couldn't find a range reference or a defined name.</value>
+  </data>
+  <data name="ValidationMessage_TableFormatInvalidRange" xml:space="preserve">
+    <value>This operation is not allowed. The operation is attempting to shift cells in a table on your worksheet.</value>
+  </data>
+  <data name="Window" xml:space="preserve">
+    <value>Window</value>
+  </data>
+  <data name="TableFormat_CheckBoxContent" xml:space="preserve">
+    <value>My table has headers</value>
+  </data>
+  <data name="NameAlreadyExist" xml:space="preserve">
+    <value>The name entered already exists. Enter a unique name.</value>
+  </data>
+  <data name="ValidationMessage_CutTablePartially" xml:space="preserve">
+    <value>This operation is not allowed.The operation is attempting to shift cells in a table on your worksheet</value>
+  </data>
+  <data name="UnfreezePanesDescription" xml:space="preserve">
+    <value>Unlock all rows and columns to scroll through the entire worksheet.</value>
+  </data>
+  <data name="ValidationMessage_InvalidFileVersion" xml:space="preserve">
+    <value>File version is not supported</value>
+  </data>
+  <data name="ValidationMessage_ContainsMutidatavalidation1" xml:space="preserve">
+    <value>The selection contains more than one type of validation.</value>
+  </data>
+  <data name="ValidationMessage_ContainsMutidatavalidation2" xml:space="preserve">
+    <value>Erase current settings and continue</value>
+  </data>
+  <data name="ValidationMessage_ContainsValidationWithNormalCell" xml:space="preserve">
+    <value>The selection contains some cells without Data Validation settings. Do you want to extend Data Validation to these results?</value>
+  </data>
+  <data name="UnhideSheet_Title" xml:space="preserve">
+    <value>Unhide</value>
+  </data>
+  <data name="DefaultValidationMessage" xml:space="preserve">
+    <value>The value you entered is not valid.
+A user has restricted value that can be entered into this cell.</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="Context_ClearContents" xml:space="preserve">
+    <value>Clear Contents</value>
+  </data>
+  <data name="Context_DefineName" xml:space="preserve">
+    <value>Define Name...</value>
+  </data>
+  <data name="Context_Delete" xml:space="preserve">
+    <value>Delete...</value>
+  </data>
+  <data name="Context_DeleteComment" xml:space="preserve">
+    <value>Delete Comment</value>
+  </data>
+  <data name="Context_EditComment" xml:space="preserve">
+    <value>Edit Comment</value>
+  </data>
+  <data name="Context_EditHyperlink" xml:space="preserve">
+    <value>Edit Hyperlink...</value>
+  </data>
+  <data name="Context_Hyperlink" xml:space="preserve">
+    <value>Hyperlink...</value>
+  </data>
+  <data name="Context_Insert" xml:space="preserve">
+    <value>Insert...</value>
+  </data>
+  <data name="Context_InsertComment" xml:space="preserve">
+    <value>Insert Comment</value>
+  </data>
+  <data name="Context_OpenHyperlink" xml:space="preserve">
+    <value>Open Hyperlink</value>
+  </data>
+  <data name="Context_RemoveHyperlink" xml:space="preserve">
+    <value>Remove Hyperlink</value>
+  </data>
+  <data name="PasteOptions" xml:space="preserve">
+    <value>Paste Options:</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Context_PasteAll" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="Context_PasteFormat" xml:space="preserve">
+    <value>Formatting</value>
+  </data>
+  <data name="Context_PasteFormulas" xml:space="preserve">
+    <value>Formulas</value>
+  </data>
+  <data name="Context_PasteValues" xml:space="preserve">
+    <value>Values</value>
+  </data>
+  <data name="Context_KeepTextOnly" xml:space="preserve">
+    <value>Keep Text Only</value>
+  </data>
+  <data name="Context_ValuesAndFormatting" xml:space="preserve">
+    <value>Values &amp; Formatting</value>
+  </data>
+  <data name="ColorScales" xml:space="preserve">
+    <value>Color Scales</value>
+  </data>
+  <data name="DataBars" xml:space="preserve">
+    <value>Data Bars</value>
+  </data>
+  <data name="IconSets" xml:space="preserve">
+    <value>Icon Sets</value>
+  </data>
+  <data name="GradientFill" xml:space="preserve">
+    <value>Gradient Fill</value>
+  </data>
+  <data name="SolidFill" xml:space="preserve">
+    <value>Solid Fill</value>
+  </data>
+  <data name="CF_IconSets_Directional" xml:space="preserve">
+    <value>Directional</value>
+  </data>
+  <data name="CF_IconSets_Indicators" xml:space="preserve">
+    <value>Indicators</value>
+  </data>
+  <data name="CF_IconSets_Ratings" xml:space="preserve">
+    <value>Ratings</value>
+  </data>
+  <data name="CF_IconSets_Shapes" xml:space="preserve">
+    <value>Shapes</value>
+  </data>
+  <data name="ProtectSheetLabel" xml:space="preserve">
+    <value>Allow all users of this worksheet to:</value>
+  </data>
+  <data name="DelCols" xml:space="preserve">
+    <value>Delete columns</value>
+  </data>
+  <data name="DelRows" xml:space="preserve">
+    <value>Delete rows</value>
+  </data>
+  <data name="EditObjs" xml:space="preserve">
+    <value>Edit objects</value>
+  </data>
+  <data name="Formatcells" xml:space="preserve">
+    <value>Format cells</value>
+  </data>
+  <data name="FormatCols" xml:space="preserve">
+    <value>Format columns</value>
+  </data>
+  <data name="FormatRows" xml:space="preserve">
+    <value>Format rows</value>
+  </data>
+  <data name="InsCols" xml:space="preserve">
+    <value>Insert columns</value>
+  </data>
+  <data name="InsHyper" xml:space="preserve">
+    <value>Insert hyperlinks</value>
+  </data>
+  <data name="InsRows" xml:space="preserve">
+    <value>Insert rows</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>Select locked cells</value>
+  </data>
+  <data name="Unlocked" xml:space="preserve">
+    <value>Select unlocked cells</value>
+  </data>
+  <data name="ProtectOptions_Deletecolumns" xml:space="preserve">
+    <value>Delete columns</value>
+  </data>
+  <data name="ProtectOptions_Deleterows" xml:space="preserve">
+    <value>Delete rows</value>
+  </data>
+  <data name="ProtectOptions_EditObjects" xml:space="preserve">
+    <value>Edit objects</value>
+  </data>
+  <data name="ProtectOptions_Formatcells" xml:space="preserve">
+    <value>Format cells</value>
+  </data>
+  <data name="ProtectOptions_Formatcolumns" xml:space="preserve">
+    <value>Format columns</value>
+  </data>
+  <data name="ProtectOptions_Formatrows" xml:space="preserve">
+    <value>Format rows</value>
+  </data>
+  <data name="ProtectOptions_Insertcolumns" xml:space="preserve">
+    <value>Insert columns</value>
+  </data>
+  <data name="ProtectOptions_InsertHyperlink" xml:space="preserve">
+    <value>Insert hyperlinks</value>
+  </data>
+  <data name="ProtectOptions_Insertrows" xml:space="preserve">
+    <value>Insert rows</value>
+  </data>
+  <data name="ProtectOptions_Locked" xml:space="preserve">
+    <value>Select locked cells</value>
+  </data>
+  <data name="ProtectOptions_Unlocked" xml:space="preserve">
+    <value>Select unlocked cells</value>
+  </data>
+  <data name="LockCell" xml:space="preserve">
+    <value>Lock Cell</value>
+  </data>
+  <data name="Formulas" xml:space="preserve">
+    <value>Formulas</value>
+  </data>
+  <data name="Context_PasteOptions" xml:space="preserve">
+    <value>PasteOptions</value>
+  </data>
+  <data name="Context_FormatCells" xml:space="preserve">
+    <value>Format Cells...</value>
+  </data>
+  <data name="FormatCells_Accounting_Instruction" xml:space="preserve">
+    <value>Accounting formats line up the currency symbols and decimal points in a column.</value>
+  </data>
+  <data name="FormatCells_BackgroundColor" xml:space="preserve">
+    <value>Background Color:</value>
+  </data>
+  <data name="FormatCells_Bold" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="FormatCells_BoldItalic" xml:space="preserve">
+    <value>BoldItalic</value>
+  </data>
+  <data name="FormatCells_Border_FooterText" xml:space="preserve">
+    <value>The selected border style can be applied by clicking the presets, preview diagram or the buttons above.</value>
+  </data>
+  <data name="FormatCells_Bottom" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="FormatCells_Category" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="FormatCells_Center" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="FormatCells_Color" xml:space="preserve">
+    <value>Color:</value>
+  </data>
+  <data name="FormatCells_Currency_Instruction" xml:space="preserve">
+    <value>Currency formats are used for general monetary values. Use Accounting formats to align decimal points in a column.</value>
+  </data>
+  <data name="FormatCells_Custom_Instruction" xml:space="preserve">
+    <value>Type the number format code, using one of the existing codes as a starting point.</value>
+  </data>
+  <data name="FormatCells_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="FormatCells_Datelist1" xml:space="preserve">
+    <value>* wednesday,March 14,2012</value>
+  </data>
+  <data name="FormatCells_Datelist2" xml:space="preserve">
+    <value>14-Mar</value>
+  </data>
+  <data name="FormatCells_Datelist3" xml:space="preserve">
+    <value>14-Mar-12</value>
+  </data>
+  <data name="FormatCells_Datelist4" xml:space="preserve">
+    <value>Mar-12</value>
+  </data>
+  <data name="FormatCells_Datelist5" xml:space="preserve">
+    <value>March-12</value>
+  </data>
+  <data name="FormatCells_Datelist6" xml:space="preserve">
+    <value>March 14,2012</value>
+  </data>
+  <data name="FormatCells_Datelist7" xml:space="preserve">
+    <value>14-Mar-2012</value>
+  </data>
+  <data name="FormatCells_Date_Instruction" xml:space="preserve">
+    <value>Date formats display date and time serial numbers as date values. Date formats that begin with an asterisk(*) respond to changes in regional date and time settings that are specified for the operating system. Formats without an asterisk are not affected by operating system settings.</value>
+  </data>
+  <data name="FormatCells_DecimalPlaces" xml:space="preserve">
+    <value>Decimal places:</value>
+  </data>
+  <data name="FormatCells_Fill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="FormatCells_Font" xml:space="preserve">
+    <value>Font:</value>
+  </data>
+  <data name="FormatCells_FontSize" xml:space="preserve">
+    <value>Size:</value>
+  </data>
+  <data name="FormatCells_FontStyle" xml:space="preserve">
+    <value>Font Style:</value>
+  </data>
+  <data name="FormatCells_Font_FooterText" xml:space="preserve">
+    <value>This is a true type font. The same font will be used on both your printer and your screen.</value>
+  </data>
+  <data name="FormatCells_FractionType1" xml:space="preserve">
+    <value>Up to one digit(1/4)</value>
+  </data>
+  <data name="FormatCells_FractionType2" xml:space="preserve">
+    <value>Up to two digits(21/25)</value>
+  </data>
+  <data name="FormatCells_FractionType3" xml:space="preserve">
+    <value>Up to three digits(312/943)</value>
+  </data>
+  <data name="FormatCells_FractionType4" xml:space="preserve">
+    <value>As halves(1/2)</value>
+  </data>
+  <data name="FormatCells_FractionType5" xml:space="preserve">
+    <value>As quarters(2/4)</value>
+  </data>
+  <data name="FormatCells_FractionType6" xml:space="preserve">
+    <value>As eighths(4/8)</value>
+  </data>
+  <data name="FormatCells_FractionType7" xml:space="preserve">
+    <value>As sixteenths(8/16)</value>
+  </data>
+  <data name="FormatCells_FractionType8" xml:space="preserve">
+    <value>As tenths(3/10)</value>
+  </data>
+  <data name="FormatCells_FractionType9" xml:space="preserve">
+    <value>As hundredths(30/100)</value>
+  </data>
+  <data name="FormatCells_General_Instruction" xml:space="preserve">
+    <value>General format cells have no specific number format</value>
+  </data>
+  <data name="FormatCells_HeaderFont" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="FormatCells_Hidden" xml:space="preserve">
+    <value>Hidden</value>
+  </data>
+  <data name="FormatCells_Indent" xml:space="preserve">
+    <value>Indent:</value>
+  </data>
+  <data name="FormatCells_Inside" xml:space="preserve">
+    <value>Inside</value>
+  </data>
+  <data name="FormatCells_Italic" xml:space="preserve">
+    <value>Italic</value>
+  </data>
+  <data name="FormatCells_LeftIndent" xml:space="preserve">
+    <value>Left(Indent)</value>
+  </data>
+  <data name="FormatCells_Line" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="FormatCells_Locked" xml:space="preserve">
+    <value>Locked</value>
+  </data>
+  <data name="FormatCells_NegativeNumber" xml:space="preserve">
+    <value>Negative number:</value>
+  </data>
+  <data name="FormatCells_NoColor" xml:space="preserve">
+    <value>No Color</value>
+  </data>
+  <data name="FormatCells_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="FormatCells_NormalFont" xml:space="preserve">
+    <value>Normal Font</value>
+  </data>
+  <data name="FormatCells_Number_Instruction" xml:space="preserve">
+    <value>Number is used for general display of numbers. Currency And Accounting offer specialized formatting for monetary value.</value>
+  </data>
+  <data name="FormatCells_Outline" xml:space="preserve">
+    <value>Outline</value>
+  </data>
+  <data name="FormatCells_Percentage_Instruction" xml:space="preserve">
+    <value>Percentage formats multiply the cell value by 100 and display the result with a percent symbol.</value>
+  </data>
+  <data name="FormatCells_Presets" xml:space="preserve">
+    <value>Presets</value>
+  </data>
+  <data name="FormatCells_Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="FormatCells_Protection" xml:space="preserve">
+    <value>Protection</value>
+  </data>
+  <data name="FormatCells_Protection_FooterText" xml:space="preserve">
+    <value>Locking cells or hiding formulas has no effect until you protect the worksheet(View tab,Protect sheet button).</value>
+  </data>
+  <data name="FormatCells_Regular" xml:space="preserve">
+    <value>Regular</value>
+  </data>
+  <data name="FormatCells_RightIndent" xml:space="preserve">
+    <value>Right(Indent)</value>
+  </data>
+  <data name="FormatCells_Sample" xml:space="preserve">
+    <value>Sample</value>
+  </data>
+  <data name="FormatCells_Single" xml:space="preserve">
+    <value>Single</value>
+  </data>
+  <data name="FormatCells_Special1" xml:space="preserve">
+    <value>Zip Code</value>
+  </data>
+  <data name="FormatCells_Special2" xml:space="preserve">
+    <value>Zip Code +4</value>
+  </data>
+  <data name="FormatCells_Special3" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="FormatCells_Special4" xml:space="preserve">
+    <value>Social Security Number</value>
+  </data>
+  <data name="FormatCells_Special_Instruction" xml:space="preserve">
+    <value>Special formats are useful for tracking list and database values.</value>
+  </data>
+  <data name="FormatCells_Style" xml:space="preserve">
+    <value>Style:</value>
+  </data>
+  <data name="FormatCells_Symbol" xml:space="preserve">
+    <value>Symbol:</value>
+  </data>
+  <data name="FormatCells_TextControl" xml:space="preserve">
+    <value>Text Control</value>
+  </data>
+  <data name="FormatCells_Time_Instruction" xml:space="preserve">
+    <value>Time formats display date and time serial numbers as date values. Date formats that begin with an asterisk(*) respond to changes in regional date and time settings that are specified for the operating system. Formats without an asterisk are not affected by operating system settings.</value>
+  </data>
+  <data name="FormatCells_Title" xml:space="preserve">
+    <value>Format Cells</value>
+  </data>
+  <data name="FormatCells_Top" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="FormatCells_Type" xml:space="preserve">
+    <value>Type:</value>
+  </data>
+  <data name="FormatCells_Underline" xml:space="preserve">
+    <value>Underline:</value>
+  </data>
+  <data name="FormatCells_Vertical" xml:space="preserve">
+    <value>Vertical:</value>
+  </data>
+  <data name="Fraction" xml:space="preserve">
+    <value>Fraction</value>
+  </data>
+  <data name="Scientific" xml:space="preserve">
+    <value>Scientific</value>
+  </data>
+  <data name="Special" xml:space="preserve">
+    <value>Special</value>
+  </data>
+  <data name="FormatCells_TextAlignment" xml:space="preserve">
+    <value>Text Alignment</value>
+  </data>
+  <data name="FormatCells_DoubleUnderline" xml:space="preserve">
+    <value>Double</value>
+  </data>
+  <data name="FormatCells_Effects" xml:space="preserve">
+    <value>Effects</value>
+  </data>
+  <data name="FormatCells_Strikethrough" xml:space="preserve">
+    <value>Strikethrough</value>
+  </data>
+  <data name="FormatCells_Horizontal" xml:space="preserve">
+    <value>Horizontal:</value>
+  </data>
+  <data name="FormatCells_SeparatorText" xml:space="preserve">
+    <value>Use 1000 Separator (,)</value>
+  </data>
+  <data name="MoreBorders" xml:space="preserve">
+    <value>More Borders...</value>
+  </data>
+  <data name="FormatCells_Left" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="FormatCells_Right" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="FormatCells_Degrees" xml:space="preserve">
+    <value>Degrees</value>
+  </data>
+  <data name="Spreadsheet" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ValidationMessage_MergeAndCenter" xml:space="preserve">
+    <value>Merging cells only keeps the upper-left cell value, and discards the other values.</value>
+  </data>
+  <data name="ValidationMessage_Fill_MergeError" xml:space="preserve">
+    <value>To do this, all the merged cells need to be the same size.</value>
+  </data>
+  <data name="Find_Find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="Find_FindAll" xml:space="preserve">
+    <value>Find All</value>
+  </data>
+  <data name="Find_FindNext" xml:space="preserve">
+    <value>Find Next</value>
+  </data>
+  <data name="Find_FindWhat" xml:space="preserve">
+    <value>Find what:</value>
+  </data>
+  <data name="Find_Lookin" xml:space="preserve">
+    <value>Look in:</value>
+  </data>
+  <data name="Find_MatchCase" xml:space="preserve">
+    <value>Match case</value>
+  </data>
+  <data name="Find_MatchEntireCellContents" xml:space="preserve">
+    <value>Match entire cell contents</value>
+  </data>
+  <data name="Find_Replace" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="Find_ReplaceAll" xml:space="preserve">
+    <value>Replace All</value>
+  </data>
+  <data name="Find_ReplaceWith" xml:space="preserve">
+    <value>Replace with:</value>
+  </data>
+  <data name="Find_Search" xml:space="preserve">
+    <value>Search:</value>
+  </data>
+  <data name="Find_Within" xml:space="preserve">
+    <value>Within:</value>
+  </data>
+  <data name="Find_RibbonComments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Find_RibbonConstants" xml:space="preserve">
+    <value>Constants</value>
+  </data>
+  <data name="Find_RibbonFormulas" xml:space="preserve">
+    <value>Formulas</value>
+  </data>
+  <data name="Find_RibbonGoTo" xml:space="preserve">
+    <value>Go To...</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Editing</value>
+  </data>
+  <data name="Find_FindAndReplace" xml:space="preserve">
+    <value>Find and Replace</value>
+  </data>
+  <data name="Find_RibbonFind" xml:space="preserve">
+    <value>Find...</value>
+  </data>
+  <data name="Find_RibbonReplace" xml:space="preserve">
+    <value>Replace...</value>
+  </data>
+  <data name="Find_OptionsExpand" xml:space="preserve">
+    <value>Options &gt;&gt;</value>
+  </data>
+  <data name="Find_ByColumns" xml:space="preserve">
+    <value>By Columns</value>
+  </data>
+  <data name="Find_ByRows" xml:space="preserve">
+    <value>By Rows</value>
+  </data>
+  <data name="Find_RibbonFindAndSelect" xml:space="preserve">
+    <value>Find &amp; Select</value>
+  </data>
+  <data name="Find_Workbook" xml:space="preserve">
+    <value>Workbook</value>
+  </data>
+  <data name="Find_OptionsCollapse" xml:space="preserve">
+    <value>Options &lt;&lt;</value>
+  </data>
+  <data name="Find_Book" xml:space="preserve">
+    <value>Book</value>
+  </data>
+  <data name="Find_Cell" xml:space="preserve">
+    <value>Cell</value>
+  </data>
+  <data name="Find_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Find_Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="FindError" xml:space="preserve">
+    <value>We could not find what you were looking for. Click options for more ways to search.</value>
+  </data>
+  <data name="ReplaceError" xml:space="preserve">
+    <value>Cannot find a match.</value>
+  </data>
+  <data name="Find_CellsFoundDetail" xml:space="preserve">
+    <value>cell(s) found</value>
+  </data>
+  <data name="Find_GoTo" xml:space="preserve">
+    <value>Go to:</value>
+  </data>
+  <data name="Find_GoToTitle" xml:space="preserve">
+    <value>Go To</value>
+  </data>
+  <data name="Find_Reference" xml:space="preserve">
+    <value>Reference:</value>
+  </data>
+  <data name="Find_GoToCellReferenceWarning" xml:space="preserve">
+    <value>This formula is missing a range reference or a defined name.</value>
+  </data>
+  <data name="Find_GoToSheetReferenceWarning" xml:space="preserve">
+    <value>Reference isn't valid.</value>
+  </data>
+  <data name="Find_RibbonItemsWarning" xml:space="preserve">
+    <value>No cells were found.</value>
+  </data>
+  <data name="ReplaceAllWarning" xml:space="preserve">
+    <value>We couldn't find anything to replace. Click options for more ways to search.
+
+FYI: It's possible the data you're trying to replace is in a protected sheet. Can't replace data in protected sheets.</value>
+  </data>
+  <data name="ReplaceAllEndMessage" xml:space="preserve">
+    <value>replacements.</value>
+  </data>
+  <data name="ReplaceAllStartMessage" xml:space="preserve">
+    <value>All done. We made </value>
+  </data>
+  <data name="ReplaceProtectedSheetWarning" xml:space="preserve">
+    <value>You cannot use this command on a protected sheet, you must first unprotect the sheet (View tab, Unprotect the sheet button). You may prompted for a password.</value>
+  </data>
+  <data name="ValidationMessage_InsertRowsColumns" xml:space="preserve">
+    <value>Spreadsheet can’t insert new cells because it would push non-empty cells off the end of the worksheet. These cells might appear empty but have blank values, some formatting, or a formula. Delete enough rows or columns to make room for what you want to insert and then try again.</value>
+  </data>
+  <data name="ArrayFormula_Error" xml:space="preserve">
+    <value>You can't change part of an array.</value>
+  </data>
+  <data name="Context_FormulaFormatting" xml:space="preserve">
+    <value>Formula and SourceFormatting</value>
+  </data>
+  <data name="Context_ValueFormatting" xml:space="preserve">
+    <value>Values and SourceFormatting</value>
+  </data>
+  <data name="File_InfoNever" xml:space="preserve">
+    <value>Never</value>
+  </data>
+  <data name="NameRange_RefersTo" xml:space="preserve">
+    <value>RefersTo</value>
+  </data>
+  <data name="NameRange_Scope" xml:space="preserve">
+    <value>Scope</value>
+  </data>
+  <data name="ThemeColorsText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CellStyles_Accent" xml:space="preserve">
+    <value>Accent</value>
+  </data>
+  <data name="CellStyles_Bad" xml:space="preserve">
+    <value>Bad</value>
+  </data>
+  <data name="CellStyles_Comma" xml:space="preserve">
+    <value>Comma</value>
+  </data>
+  <data name="CellStyles_Good" xml:space="preserve">
+    <value>Good</value>
+  </data>
+  <data name="CellStyles_Heading1" xml:space="preserve">
+    <value>Heading 1</value>
+  </data>
+  <data name="CellStyles_Neutral" xml:space="preserve">
+    <value>Neutral</value>
+  </data>
+  <data name="CellStyles_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="CellStyles_Percent" xml:space="preserve">
+    <value>Percent</value>
+  </data>
+  <data name="CellStyles_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="CellStyles_Heading4" xml:space="preserve">
+    <value>Heading 4</value>
+  </data>
+  <data name="CellStyles_Heading3" xml:space="preserve">
+    <value>Heading 3</value>
+  </data>
+  <data name="CellStyles_Heading2" xml:space="preserve">
+    <value>Heading 2</value>
+  </data>
+  <data name="CellStyles_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="CellStyles_Accent1_40" xml:space="preserve">
+    <value>40% - Accent1</value>
+  </data>
+  <data name="CellStyles_Accent1_60" xml:space="preserve">
+    <value>60% - Accent1</value>
+  </data>
+  <data name="CellStyles_Accent5" xml:space="preserve">
+    <value>Accent5</value>
+  </data>
+  <data name="CellStyles_Accent4" xml:space="preserve">
+    <value>Accent4</value>
+  </data>
+  <data name="CellStyles_Accent6_40" xml:space="preserve">
+    <value>40% - Accent6</value>
+  </data>
+  <data name="CellStyles_Accent6_60" xml:space="preserve">
+    <value>60% - Accent6</value>
+  </data>
+  <data name="CellStyles_Accent3_40" xml:space="preserve">
+    <value>40% - Accent3</value>
+  </data>
+  <data name="CellStyles_Accent3_60" xml:space="preserve">
+    <value>60% - Accent3</value>
+  </data>
+  <data name="CellStyles_Accent1" xml:space="preserve">
+    <value>Accent1</value>
+  </data>
+  <data name="CellStyles_Accent2_40" xml:space="preserve">
+    <value>40% - Accent2</value>
+  </data>
+  <data name="CellStyles_Accent2_60" xml:space="preserve">
+    <value>60% - Accent2</value>
+  </data>
+  <data name="CellStyles_Accent5_40" xml:space="preserve">
+    <value>40% - Accent5</value>
+  </data>
+  <data name="CellStyles_Accent5_60" xml:space="preserve">
+    <value>60% - Accent5</value>
+  </data>
+  <data name="CellStyles_Accent6" xml:space="preserve">
+    <value>Accent6</value>
+  </data>
+  <data name="CellStyles_Accent3" xml:space="preserve">
+    <value>Accent3</value>
+  </data>
+  <data name="CellStyles_Accent2" xml:space="preserve">
+    <value>Accent2</value>
+  </data>
+  <data name="CellStyles_Accent4_40" xml:space="preserve">
+    <value>40% - Accent4</value>
+  </data>
+  <data name="CellStyles_Accent4_60" xml:space="preserve">
+    <value>60% - Accent4</value>
+  </data>
+  <data name="CellStyles_CommaZero" xml:space="preserve">
+    <value>Comma [0]</value>
+  </data>
+  <data name="CellStyles_Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="CellStyles_CurrencyZero" xml:space="preserve">
+    <value>Currency [0]</value>
+  </data>
+  <data name="CellStyles_Accent1_20" xml:space="preserve">
+    <value>20% - Accent1</value>
+  </data>
+  <data name="CellStyles_Accent6_20" xml:space="preserve">
+    <value>20% - Accent6</value>
+  </data>
+  <data name="CellStyles_Accent3_20" xml:space="preserve">
+    <value>20% - Accent3</value>
+  </data>
+  <data name="CellStyles_Accent2_20" xml:space="preserve">
+    <value>20% - Accent2</value>
+  </data>
+  <data name="CellStyles_Accent5_20" xml:space="preserve">
+    <value>20% - Accent5</value>
+  </data>
+  <data name="CellStyles_Accent4_20" xml:space="preserve">
+    <value>20% - Accent4</value>
+  </data>
+  <data name="CellStyles_97to2003Warning" xml:space="preserve">
+    <value>Built-in cell styles are not supported in Excel 97-2003 file format.</value>
+  </data>
+  <data name="NumberFormat" xml:space="preserve">
+    <value>Number Format</value>
+  </data>
+	<data name="NumberSettingsToolTip" xml:space="preserve">
+    <value>See the number formatting options.</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="FormatCells_Text_Instruction" xml:space="preserve">
+    <value>Text format cells are treated as text even when a number is in the cell. The cell is displayed exactly as entered.</value>
+  </data>
+  <data name="NewCommentToolTip" xml:space="preserve">
+    <value>Add the comments to the cells.</value>
+  </data>
+  <data name="DeleteCommentToolTip" xml:space="preserve">
+    <value>Remove the comment from the selected cell.</value>
+  </data>
+  <data name="EditCommentToolTip" xml:space="preserve">
+    <value>Edit the comment on selected cell.</value>
+  </data>
+	<data name="GridlinesToolTip" xml:space="preserve">
+    <value>Show the lines in the sheet between rows and columns to make the sheet easier to read.</value>
+  </data>
+	<data name="FormulaBarToolTip" xml:space="preserve">
+    <value>Show the Formula bar to see the formulas in the cells.</value>
+  </data>
+	<data name="ShowHeadingsToolTip" xml:space="preserve">
+    <value>Show column headers and row numbers.</value>
+  </data>
+	<data name="FreezePanesToolTip" xml:space="preserve">
+    <value>Freeze a portion of the sheet to keep it visible while scrolling through the rest of the sheet. </value>
+  </data>
+    <data name="ProtectWorksheetToolTip" xml:space="preserve">
+    <value>All cells are locked while you protect a sheet, except those that you have specifically unlocked.&#x0a;For Example you are preventing the user from changing values in cells and making other changes to the worksheet.</value>
+  </data>
+    <data name="ProtectWorkBookToolTip" xml:space="preserve">
+    <value>Protect the structure of workbook by prevent a user from adding or deleting worksheets or from displaying hidden worksheets.</value>
+  </data>
+   <data name="HyperLinksToolTip" xml:space="preserve">
+    <value>Create a link in your document for quick access to webpages and files.</value>
+  </data>
+  <data name="GroupToolTip" xml:space="preserve">
+    <value>Group row or column, or automatically outline a worksheet.</value>
+  </data>
+  <data name="UngroupToolTip" xml:space="preserve">
+    <value>Ungroup row or column, or remove an outline.</value>
+  </data>
+  <data name="DataValidationToolTip" xml:space="preserve">
+    <value>Pick from a list of rules to limit the type of data that can be entered in a cell.</value>
+  </data>
+  <data name="NameManagerToolTip" xml:space="preserve">
+    <value>Create, edit, delete, and find other names in workbook.&#x0a;Names can be used as substitutes for cell references in formulas.&#x0a;For example, =SUM(Sales) instead of =SUM (C20:C30).</value>
+  </data>
+  <data name="FilterToolTip" xml:space="preserve">
+    <value>Enable filtering for the selected cells.&#x0a;Then, click the arrow in the column header to narrow down the data.</value>
+  </data>
+	<data name="OutlineToolTip" xml:space="preserve">
+    <value>Checkout advanced options to create outlines.</value>
+  </data>
+	<data name="PasteToolTipHeader" xml:space="preserve">
+    <value>Paste (Ctrl+V)</value>
+  </data>
+	<data name="CopyToolTipHeader" xml:space="preserve">
+    <value>Copy (Ctrl+C)</value>
+  </data>
+	<data name="CutToolTipHeader" xml:space="preserve">
+    <value>Cut (Ctrl+X)</value>
+  </data>
+	<data name="BoldToolTipHeader" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+	<data name="ItalicToolTipHeader" xml:space="preserve">
+    <value>Italic</value>
+  </data>
+	<data name="UnderLineToolTipHeader" xml:space="preserve">
+    <value>UnderLine</value>
+  </data>
+	<data name="BottomBorderToolTipHeader" xml:space="preserve">
+    <value>Bottom Border</value>
+  </data>
+	<data name="FontToolTipHeader" xml:space="preserve">
+    <value>Font</value>
+  </data>
+	<data name="FontSizeToolTipHeader" xml:space="preserve">
+    <value>Font Size</value>
+  </data>
+	<data name="IncreaseFontSizeToolTipHeader" xml:space="preserve">
+    <value>Increase Font Size</value>
+  </data>
+	<data name="DecreaseFontSizeToolTipHeader" xml:space="preserve">
+    <value>Decrease Font Size</value>
+  </data>
+	<data name="FillColorToolTipHeader" xml:space="preserve">
+    <value>Fill Color</value>
+  </data>
+	<data name="FontColorToolTipHeader" xml:space="preserve">
+    <value>Font Color</value>
+  </data>
+	<data name="AlignmentSettingsToolTipHeader" xml:space="preserve">
+    <value>Alignment Settings</value>
+  </data>
+	<data name="TopAlignToolTipHeader" xml:space="preserve">
+    <value>Top Align</value>
+  </data>
+	<data name="BottomAlignToolTipHeader" xml:space="preserve">
+    <value>Bottom Align</value>
+  </data>
+	<data name="MiddleAlignToolTipHeader" xml:space="preserve">
+    <value>Middle Align</value>
+  </data>
+	<data name="LeftAlignToolTipHeader" xml:space="preserve">
+    <value>Left Align</value>
+  </data>
+	<data name="RightAlignToolTipHeader" xml:space="preserve">
+    <value>Right Align</value>
+  </data>
+	<data name="CenterAlignToolTipHeader" xml:space="preserve">
+    <value>Center Align</value>
+  </data>
+	<data name="OrientationToolTipHeader" xml:space="preserve">
+    <value>Orientation</value>
+  </data>
+	<data name="FontSettingsToolTipHeader" xml:space="preserve">
+    <value>Font Settings</value>
+  </data>
+	<data name="DecreaseIndentToolTipHeader" xml:space="preserve">
+    <value>Decrease Indent</value>
+  </data>
+	<data name="IncreaseIndentToolTipHeader" xml:space="preserve">
+    <value>Increase Indent</value>
+  </data>
+	<data name="NumberFormatToolTipHeader" xml:space="preserve">
+    <value>Number Format</value>
+  </data>
+	<data name="AccountingNumberFormatToolTipHeader" xml:space="preserve">
+    <value>Accounting Number Format</value>
+  </data>
+	<data name="PercentageFormatToolTipHeader" xml:space="preserve">
+    <value>Percentage Format</value>
+  </data>
+	<data name="CommaStyleToolTipHeader" xml:space="preserve">
+    <value>Comma Style</value>
+  </data>
+	<data name="IncreaseDecimalToolTipHeader" xml:space="preserve">
+    <value>Increase Decimal</value>
+  </data>
+	<data name="DecreaseDecimalToolTipHeader" xml:space="preserve">
+    <value>Decrease Decimal</value>
+  </data>
+  <data name="PasteToolTip" xml:space="preserve">
+    <value>Paste the contents on the Clipboard to document.</value>
+  </data>
+  <data name="CutToolTip" xml:space="preserve">
+    <value>Remove the selection from document and put it on the clipboard.</value>
+  </data>
+  <data name="CopyToolTip" xml:space="preserve">
+    <value>Copy the selection and put it on the Clipboard.</value>
+  </data>
+  <data name="BoldToolTip" xml:space="preserve">
+    <value>Make the selected text bold.</value>
+  </data>
+	<data name="ItalicToolTip" xml:space="preserve">
+    <value>Italicize the selected text.</value>
+  </data>
+  <data name="UnderLineToolTip" xml:space="preserve">
+    <value>Underline the selected text.</value>
+  </data>
+	<data name="BottomBorderToolTip" xml:space="preserve">
+    <value>Apply borders to the selected cells.</value>
+  </data>
+	<data name="FontToolTip" xml:space="preserve">
+    <value>Choose a new font for text.</value>
+  </data>
+	<data name="FontSizeToolTip" xml:space="preserve">
+    <value>Change the size of text.</value>
+  </data>
+	<data name="IncreaseFontSizeToolTip" xml:space="preserve">
+    <value>Increase the text size.</value>
+  </data>
+	<data name="DecreaseFontSizeToolTip" xml:space="preserve">
+    <value>Decrease the text size.</value>
+  </data>
+	<data name="FillColorToolTip" xml:space="preserve">
+    <value>Change the color of the background of the selected cells.</value>
+  </data>
+	<data name="FontColorToolTip" xml:space="preserve">
+    <value>Change the color of text.</value>
+  </data>
+	<data name="FontSettingsToolTip" xml:space="preserve">
+    <value>Customize the text so that it looks exactly what you want.</value>
+  </data>
+	<data name="TopAlignToolTip" xml:space="preserve">
+    <value>Align text to the top of the cell.</value>
+  </data>
+	<data name="BottomAlignToolTip" xml:space="preserve">
+    <value>Align text to the bottom of the cell.</value>
+  </data>
+	<data name="MiddleAlignToolTip" xml:space="preserve">
+    <value>Align the text to be centered between the top and bottom of the cell.</value>
+  </data>
+	<data name="LeftAlignToolTip" xml:space="preserve">
+    <value>Align the contents to the left.</value>
+  </data>
+	<data name="RightAlignToolTip" xml:space="preserve">
+    <value>Align the contents to the right.</value>
+  </data>
+	<data name="CenterAlignToolTip" xml:space="preserve">
+    <value>Center content.</value>
+  </data>
+	<data name="OrientationToolTip" xml:space="preserve">
+    <value>Rotate the text diagonally and vertically.</value>
+  </data>
+	<data name="DecreaseIndentToolTip" xml:space="preserve">
+    <value>Decrease the margin between the border and the text in the cell.</value>
+  </data>
+	<data name="IncreaseIndentToolTip" xml:space="preserve">
+    <value>Increase the margin between the border and the text in the cell.</value>
+  </data>
+	<data name="WrapTextToolTip" xml:space="preserve">
+    <value>Make the long text visible by wrapping it into multiple lines.</value>
+  </data>
+	<data name="MergeAndCenterToolTip" xml:space="preserve">
+    <value>Merge two or more cells or split the merged cells into individual cells.</value>
+  </data>
+	<data name="NumberFormatToolTip" xml:space="preserve">
+    <value>Choose the cell format, such as percentage, currency, date or time.</value>
+  </data>
+	<data name="AccountingNumberFormatToolTip" xml:space="preserve">
+    <value>Set the currency format for the selected cell.</value>
+  </data>
+	<data name="PercentageStyleToolTip" xml:space="preserve">
+    <value>Set the percentage format for the selected cell.</value>
+  </data>
+	<data name="CommaStyleToolTip" xml:space="preserve">
+    <value>Shows the text with a thousands separator.</value>
+  </data>
+	<data name="IncreaseDecimalToolTip" xml:space="preserve">
+    <value>Shows more decimal places for a more precise value.</value>
+  </data>
+	<data name="DecreaseDecimalToolTip" xml:space="preserve">
+    <value>Shows fewer decimal places.</value>
+  </data>
+	<data name="ConditionalFormattingToolTip" xml:space="preserve">
+    <value>Highlight the cells and visualize the data using bars, colors and icons based on criteria.</value>
+  </data>
+	<data name="FormatAsTableToolTip" xml:space="preserve">
+    <value>Quickly convert a range of cells to a table of its own style.</value>
+  </data>
+	<data name="CellStylesToolTip" xml:space="preserve">
+    <value>Quickly format the cells by choosing from predefined styles.</value>
+  </data>
+	<data name="InsertCellsToolTip" xml:space="preserve">
+    <value>Insert cells, rows, or columns into the sheet or table, or add a sheet to the workbook.</value>
+  </data>
+	<data name="DeleteCellsToolTip" xml:space="preserve">
+    <value>Delete cells, rows, or columns from the sheet or table, or remove a sheet from the workbook.</value>
+  </data>
+	<data name="FormatCellsToolTip" xml:space="preserve">
+    <value>Change the row height or column width, organize sheets, or protect or hide cells.</value>
+  </data>
+	<data name="FindAndSelectToolTip" xml:space="preserve">
+    <value>Click to see the options for finding text in  document.&#x0a;&#x0a;You can also replace the existing text with a new text or format.</value>
+  </data>
+	<data name="FindToolTip" xml:space="preserve">
+    <value>Find and select the specific text.</value>
+  </data>
+	<data name="FillToolTip" xml:space="preserve">
+    <value>Fills your data or formula into adjacent cells.</value>
+  </data>
+	<data name="ReplaceToolTip" xml:space="preserve">
+    <value>Find and select the specific text, and replace it new text or formatting.</value>
+  </data>
+	<data name="GoToToolTip" xml:space="preserve">
+    <value>Go To lets you jump right to a specific cell range in your document.</value>
+  </data>
+	<data name="GoToFormulasToolTip" xml:space="preserve">
+    <value>Go To Formulas</value>
+  </data>
+  <data name="GoToConditionalFormattingToolTip" xml:space="preserve">
+    <value>Go To Conditional Formatting</value>
+  </data>
+	<data name="GoToConstantsToolTip" xml:space="preserve">
+    <value>Go To Constants</value>
+  </data>
+	<data name="GoToDataValidationToolTip" xml:space="preserve">
+    <value>Go To Data Validation</value>
+  </data>
+	<data name="LockCellToolTip" xml:space="preserve">
+    <value>Lock the selected cells to keep people from making changes to them.&#x0a;&#x0a;You must turn on Protect Sheet in order for this feature to work.</value>
+  </data>
+	<data name="CellsToolTip" xml:space="preserve">
+    <value>Insert or delete the cells, rows or columns or table and organize the sheets.</value>
+  </data>
+  <data name="AlignmentSettingsToolTip" xml:space="preserve">
+    <value>See the cell alignment options.</value>
+  </data>
+</root>

@@ -1,0 +1,36 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:AppFramework.Converters">
+    <converter:UrlToImageConverter x:Key="urlImageConverter" />
+
+    <DataTemplate x:Key="ReceiverImageTemplate">
+        <StackPanel HorizontalAlignment="Left">
+            <Border
+                Padding="3"
+                Background="WhiteSmoke"
+                CornerRadius="5">
+                <Image
+                    Width="150"
+                    Height="150"
+                    Source="{Binding Message, Converter={StaticResource urlImageConverter}}"
+                    Stretch="UniformToFill" />
+            </Border>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SenderImageTemplate">
+        <StackPanel Margin="5,0" HorizontalAlignment="Right">
+            <Border
+                Padding="3"
+                Background="WhiteSmoke"
+                CornerRadius="5">
+                <Image
+                    Width="150"
+                    Height="150"
+                    Source="{Binding Message, Converter={StaticResource urlImageConverter}}"
+                    Stretch="UniformToFill" />
+            </Border>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

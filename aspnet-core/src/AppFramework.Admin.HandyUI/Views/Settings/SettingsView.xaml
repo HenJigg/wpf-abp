@@ -1,0 +1,326 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.HandyUI.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="clr-namespace:AppFramework.Admin.HandyUI"
+    Background="{DynamicResource SecondaryRegionBrush}"
+    mc:Ignorable="d">
+    <md:DialogHost IsOpen="{Binding IsBusy}">
+        <md:DialogHost.DialogContent>
+            <StackPanel Orientation="Horizontal">
+                <hc:CircleProgressBar
+                    Width="40"
+                    Height="40"
+                    Margin="10"
+                    IsIndeterminate="True" />
+            </StackPanel>
+        </md:DialogHost.DialogContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <DockPanel Margin="15" LastChildFill="False">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Text="{Binding Title}" />
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="{extensions:Translate SettingsHeaderInfo}" />
+                </StackPanel>
+
+                <Button
+                    VerticalAlignment="Center"
+                    Command="{Binding SaveCommand}"
+                    Content="{extensions:Translate SaveAll}"
+                    DockPanel.Dock="Right" />
+            </DockPanel>
+
+            <Grid Grid.Row="1">
+                <TabControl HorizontalContentAlignment="Left" Background="{DynamicResource SecondaryRegionBrush}">
+                    <TabItem Header="{extensions:Translate TenantManagement}">
+                        <StackPanel Margin="15">
+                            <!--  允许租户注册到系统。  -->
+                            <TextBlock FontWeight="Bold" Text="{extensions:Translate FormBasedRegistration}" />
+                            <CheckBox
+                                Margin="0,15,0,5"
+                                Content="{extensions:Translate AllowTenantsToRegisterThemselves}"
+                                IsChecked="{Binding Setting.TenantManagement.AllowSelfRegistration}" />
+                            <StackPanel Visibility="{Binding Setting.TenantManagement.AllowSelfRegistration, Converter={StaticResource inverseBoolToVisibility}}">
+
+                                <!--  如果您禁用此，创建租户只能在租户管理页，并且需要管理员权限  -->
+                                <TextBlock Opacity="0.7" Text="{extensions:Translate AllowTenantsToRegisterThemselves_Hint}" />
+
+                                <!--  新注册的默认租户。  -->
+                                <CheckBox
+                                    Margin="0,15,0,5"
+                                    Content="{extensions:Translate NewRegisteredTenantsIsActiveByDefault}"
+                                    IsChecked="{Binding Setting.TenantManagement.IsNewRegisteredTenantActiveByDefault}" />
+                                <!--  如果您禁用这个，新的租户将不启用（和不能登录），直到管理员手动激活帐户。  -->
+                                <TextBlock Opacity="0.7" Text="{extensions:Translate NewRegisteredTenantsIsActiveByDefault_Hint}" />
+                                <!--  用户注册时使用图片验证码(captcha).  -->
+                                <CheckBox
+                                    Margin="0,15,0,0"
+                                    Content="{extensions:Translate UseCaptchaOnRegistration}"
+                                    IsChecked="{Binding Setting.TenantManagement.UseCaptchaOnRegistration}" />
+                            </StackPanel>
+
+                            <!--  版本  -->
+                            <TextBlock Margin="0,10,0,0" Text="{extensions:Translate Edition}" />
+                            <ComboBox ItemsSource="{Binding Editions}" SelectedItem="{Binding SelectedEdition}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding DisplayText}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="{extensions:Translate UserManagement}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="15">
+                                <!--  必须验证邮箱地址后才能登录.  -->
+                                <CheckBox Content="{extensions:Translate EmailConfirmationRequiredForLogin}" IsChecked="{Binding Setting.UserManagement.IsEmailConfirmationRequiredForLogin}" />
+                                <!--  启用电话号码验证（通过短信）  -->
+                                <CheckBox
+                                    Margin="0,10"
+                                    Content="{extensions:Translate SmsVerificationEnabled}"
+                                    IsChecked="{Binding Setting.UserManagement.SmsVerificationEnabled}" />
+                                <CheckBox Content="{extensions:Translate UseCaptchaOnLogin}" IsChecked="{Binding Setting.UserManagement.UseCaptchaOnLogin}" />
+
+                                <TextBlock
+                                    Margin="0,10,0,0"
+                                    FontWeight="Bold"
+                                    Text="{extensions:Translate CookieConsent}" />
+                                <CheckBox
+                                    Margin="0,5"
+                                    Content="{extensions:Translate IsCookieConsentEnabled}"
+                                    IsChecked="{Binding Setting.UserManagement.IsCookieConsentEnabled}" />
+
+                                <!--  会话超时设置  -->
+                                <TextBlock
+                                    Margin="0,10,0,0"
+                                    FontWeight="Bold"
+                                    Text="{extensions:Translate SessionTimeOut}" />
+                                <CheckBox
+                                    Margin="0,5"
+                                    Content="{extensions:Translate IsSessionTimeOutEnabled}"
+                                    IsChecked="{Binding Setting.UserManagement.SessionTimeOutSettings.IsEnabled}" />
+
+                                <StackPanel Visibility="{Binding Setting.UserManagement.SessionTimeOutSettings.IsEnabled, Converter={StaticResource inverseBoolToVisibility}}">
+                                    <!--  超时时显示锁定屏幕  -->
+                                    <CheckBox Content="{extensions:Translate ShowLockScreenWhenTimedOut}" IsChecked="{Binding Setting.UserManagement.SessionTimeOutSettings.ShowLockScreenWhenTimedOut}" />
+                                    <TextBlock Margin="0,10,0,5" Text="{extensions:Translate TimeoutSecond}" />
+                                    <TextBox Text="{Binding Setting.UserManagement.SessionTimeOutSettings.TimeOutSecond}" />
+
+                                    <TextBlock Margin="0,10,0,5" Text="{extensions:Translate CountdownModalWaitTime}" />
+                                    <TextBox Text="{Binding Setting.UserManagement.SessionTimeOutSettings.ShowTimeOutNotificationSecond}" />
+                                </StackPanel>
+
+                                <!--  个人信息  -->
+                                <TextBlock
+                                    Margin="0,10,0,0"
+                                    FontWeight="Bold"
+                                    Text="{extensions:Translate PersonalInformations}" />
+                                <CheckBox
+                                    Margin="0,5"
+                                    Content="{extensions:Translate AllowUsingGravatarProfilePicture}"
+                                    IsChecked="{Binding Setting.UserManagement.AllowUsingGravatarProfilePicture}" />
+
+                                <!--  密码  -->
+                                <TextBlock
+                                    Margin="0,10,0,0"
+                                    FontWeight="Bold"
+                                    Text="{extensions:Translate Password}" />
+
+                                <!--  防止用户的新密码与任何最后 x 个密码相同  -->
+                                <CheckBox
+                                    Margin="0,5"
+                                    Content="{extensions:Translate EnableCheckingLastXPasswordWhenPasswordChangeSettingLabel}"
+                                    IsChecked="{Binding Setting.UserManagement.UserPasswordSettings.EnableCheckingLastXPasswordWhenPasswordChange}" />
+
+                                <StackPanel Visibility="{Binding Setting.UserManagement.UserPasswordSettings.EnableCheckingLastXPasswordWhenPasswordChange, Converter={StaticResource inverseBoolToVisibility}}">
+                                    <TextBlock Text="{extensions:Translate CheckingLastXPasswordCountSettingLabel}" />
+                                    <TextBox Text="{Binding Setting.UserManagement.UserPasswordSettings.CheckingLastXPasswordCount}" />
+                                </StackPanel>
+
+                                <!--  启用密码过期  -->
+                                <CheckBox
+                                    Margin="0,5"
+                                    Content="{extensions:Translate EnablePasswordExpirationSettingLabel}"
+                                    IsChecked="{Binding Setting.UserManagement.UserPasswordSettings.EnablePasswordExpiration}" />
+
+                                <StackPanel Visibility="{Binding Setting.UserManagement.UserPasswordSettings.EnablePasswordExpiration, Converter={StaticResource inverseBoolToVisibility}}">
+                                    <TextBlock Text="{extensions:Translate PasswordExpirationDayCountSettingLabel}" />
+                                    <TextBox Text="{Binding Setting.UserManagement.UserPasswordSettings.PasswordExpirationDayCount}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="{extensions:Translate Security}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="15">
+                                <!--  密码复杂性  -->
+                                <TextBlock FontWeight="Bold" Text="{extensions:Translate PasswordComplexity}" />
+                                <!--  使用默认设置  -->
+                                <CheckBox
+                                    Margin="0,10"
+                                    Content="{extensions:Translate UseDefaultSettings}"
+                                    IsChecked="{Binding Setting.Security.UseDefaultPasswordComplexitySettings}" />
+
+                                <StackPanel Margin="15,0" IsEnabled="{Binding Setting.Security.UseDefaultPasswordComplexitySettings, Converter={StaticResource inverseBooleanConverter}}">
+                                    <!--  缺少数字  -->
+                                    <CheckBox Content="{extensions:Translate PasswordComplexity_RequireDigit}" IsChecked="{Binding Setting.Security.PasswordComplexity.RequireDigit}" />
+                                    <!--  缺少小写字母  -->
+                                    <CheckBox
+                                        Margin="0,5"
+                                        Content="{extensions:Translate PasswordComplexity_RequireLowercase}"
+                                        IsChecked="{Binding Setting.Security.PasswordComplexity.RequireLowercase}" />
+                                    <!--  缺少特殊字符  -->
+                                    <CheckBox Content="{extensions:Translate PasswordComplexity_RequireNonAlphanumeric}" IsChecked="{Binding Setting.Security.PasswordComplexity.RequireNonAlphanumeric}" />
+                                    <!--  缺少大写字母  -->
+                                    <CheckBox
+                                        Margin="0,5"
+                                        Content="{extensions:Translate PasswordComplexity_RequireUppercase}"
+                                        IsChecked="{Binding Setting.Security.PasswordComplexity.RequireUppercase}" />
+                                    <TextBlock Text="{extensions:Translate PasswordComplexity_RequiredLength}" />
+                                    <!--  长度不足  -->
+                                    <TextBox Text="{Binding Setting.Security.PasswordComplexity.RequiredLength}" />
+                                </StackPanel>
+
+                                <!--  用户锁定  -->
+                                <TextBlock
+                                    Margin="0,10,0,0"
+                                    FontWeight="Bold"
+                                    Text="{extensions:Translate UserLockOut}" />
+                                <!--  登录失败后启用用户的帐户锁定  -->
+                                <CheckBox
+                                    Margin="0,10"
+                                    Content="{extensions:Translate EnableUserAccountLockingOnFailedLoginAttempts}"
+                                    IsChecked="{Binding Setting.Security.UserLockOut.IsEnabled}" />
+
+                                <StackPanel Visibility="{Binding Setting.Security.UserLockOut.IsEnabled, Converter={StaticResource inverseBoolToVisibility}}">
+                                    <!--  在锁定帐户之前的累计登录失败的最大数量  -->
+                                    <TextBlock Text="{extensions:Translate MaxFailedAccessAttemptsBeforeLockout}" />
+                                    <TextBox Margin="0,5" Text="{Binding Setting.Security.UserLockOut.MaxFailedAccessAttemptsBeforeLockout}" />
+
+                                    <!--  帐户锁定持续时间（秒）  -->
+                                    <TextBlock Margin="0,5,0,0" Text="{extensions:Translate DefaultAccountLockoutDurationAsSeconds}" />
+                                    <TextBox Text="{Binding Setting.Security.UserLockOut.DefaultAccountLockoutSeconds}" />
+                                </StackPanel>
+
+                                <!--  双重认证登录  -->
+                                <TextBlock Margin="0,10" Text="{extensions:Translate TwoFactorLogin}" />
+                                <CheckBox Content="{extensions:Translate EnableTwoFactorLogin}" IsChecked="{Binding Setting.Security.TwoFactorLogin.IsEnabled}" />
+
+                                <StackPanel Visibility="{Binding Setting.Security.TwoFactorLogin.IsEnabled, Converter={StaticResource inverseBoolToVisibility}}">
+                                    <CheckBox
+                                        Margin="0,4"
+                                        Content="{extensions:Translate IsEmailVerificationEnabled}"
+                                        IsChecked="{Binding Setting.Security.TwoFactorLogin.IsEmailProviderEnabled}" />
+                                    <CheckBox
+                                        Margin="0,4"
+                                        Content="{extensions:Translate IsSmsVerificationEnabled}"
+                                        IsChecked="{Binding Setting.Security.TwoFactorLogin.IsSmsProviderEnabled}" />
+                                    <CheckBox
+                                        Margin="0,4"
+                                        Content="{extensions:Translate IsGoogleAuthenticatorEnabled}"
+                                        IsChecked="{Binding Setting.Security.TwoFactorLogin.IsGoogleAuthenticatorEnabled}" />
+                                    <CheckBox
+                                        Margin="0,4"
+                                        Content="{extensions:Translate AllowToRememberBrowserForTwoFactorLogin}"
+                                        IsChecked="{Binding Setting.Security.TwoFactorLogin.IsRememberBrowserEnabled}" />
+                                </StackPanel>
+                                <!--  每个用户只能同时登录一次  -->
+                                <TextBlock Margin="0,10" Text="{extensions:Translate OneConcurrentLoginPerUser}" />
+                                <CheckBox Content="{extensions:Translate OneConcurrentLoginPerUserActive}" IsChecked="{Binding Setting.Security.AllowOneConcurrentLoginPerUser}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="{extensions:Translate EmailSmtp}">
+                        <StackPanel Margin="15">
+                            <!--  默认发送邮箱地址  -->
+                            <TextBlock Text="{extensions:Translate DefaultFromAddress}" />
+                            <TextBox Margin="0,5" Text="{Binding Setting.Email.DefaultFromAddress}" />
+
+                            <!--  默认发送人名字  -->
+                            <TextBlock Margin="0,10,0,0" Text="{extensions:Translate DefaultFromDisplayName}" />
+                            <TextBox Margin="0,5" Text="{Binding Setting.Email.DefaultFromDisplayName}" />
+
+                            <!--  SMTP服务器  -->
+                            <TextBlock Margin="0,10,0,0" Text="{extensions:Translate SmtpHost}" />
+                            <TextBox Margin="0,5" Text="{Binding Setting.Email.SmtpHost}" />
+
+                            <!--  SMTP端口  -->
+                            <TextBlock Margin="0,10,0,0" Text="{extensions:Translate SmtpPort}" />
+                            <TextBox Margin="0,5" Text="{Binding Setting.Email.SmtpPort}" />
+
+                            <!--  使用SSL  -->
+                            <CheckBox
+                                Margin="0,10,0,5"
+                                Content="{extensions:Translate UseSsl}"
+                                IsChecked="{Binding Setting.Email.SmtpEnableSsl}" />
+                            <!--  默认身份验证  -->
+                            <CheckBox Content="{extensions:Translate UseDefaultCredentials}" IsChecked="{Binding Setting.Email.SmtpUseDefaultCredentials}" />
+
+                            <StackPanel Visibility="{Binding Setting.Email.SmtpUseDefaultCredentials, Converter={StaticResource boolToVisibility}}">
+                                <TextBlock Text="{extensions:Translate DomainName}" />
+                                <TextBox Text="{Binding Setting.Email.SmtpDomain}" />
+
+                                <TextBlock Margin="0,10,0,0" Text="{extensions:Translate UserName}" />
+                                <TextBox Text="{Binding Setting.Email.SmtpUserName}" />
+
+                                <TextBlock Margin="0,10,0,0" Text="{extensions:Translate Password}" />
+                                <TextBox Text="{Binding Setting.Email.SmtpPassword}" />
+                            </StackPanel>
+
+                            <!--  测试发送(测试邮件设置)  -->
+                            <TextBlock
+                                Margin="0,15,0,5"
+                                FontWeight="Bold"
+                                Text="{extensions:Translate TestEmailSettingsHeader}" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Width="300" />
+                                <Button
+                                    Margin="10,0,0,0"
+                                    Padding="5"
+                                    Content="{extensions:Translate SendTestEmail}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="{extensions:Translate Invoice}">
+                        <StackPanel Margin="15">
+                            <TextBlock FontWeight="Bold" Text="{extensions:Translate InvoiceInformation}" />
+                            <!--  法定名称  -->
+                            <TextBlock Margin="0,15,0,10" Text="{extensions:Translate LegalName}" />
+                            <TextBox Text="{Binding Setting.Billing.LegalName}" />
+
+                            <!--  地址  -->
+                            <TextBlock Margin="0,15,0,10" Text="{extensions:Translate Address}" />
+                            <TextBox Text="{Binding Setting.Billing.Address}" />
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="{extensions:Translate OtherSettings}">
+                        <StackPanel Margin="15">
+                            <!--  快速主题选择  -->
+                            <TextBlock FontWeight="Bold" Text="{extensions:Translate QuickThemeSelection}" />
+                            <!--  是否启用了快速主题选择  -->
+                            <CheckBox
+                                Margin="0,10,0,0"
+                                Content="{extensions:Translate IsQuickThemeSelectEnabled}"
+                                IsChecked="{Binding Setting.OtherSettings.IsQuickThemeSelectEnabled}" />
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Grid>
+    </md:DialogHost>
+</UserControl>

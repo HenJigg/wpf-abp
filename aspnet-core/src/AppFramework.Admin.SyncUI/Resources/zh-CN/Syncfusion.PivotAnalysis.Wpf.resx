@@ -1,0 +1,699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="MoreButton" xml:space="preserve">
+    <value>Mo_re Options...</value>
+  </data>
+  <data name="PivotGrid_Collapse_All_Header" xml:space="preserve">
+    <value>_Collapse All Nodes</value>
+  </data>
+  <data name="ShowFieldsButton" xml:space="preserve">
+    <value>Show Fields</value>
+  </data>
+  <data name="PivotGrid_ComputationList_Title" xml:space="preserve">
+    <value>Computation List</value>
+  </data>
+  <data name="PivotGrid_Collapse_Header" xml:space="preserve">
+    <value>C_ollapse This Node</value>
+  </data>
+  <data name="PivotGrid_ContextMenu_Order" xml:space="preserve">
+    <value>_Order</value>
+  </data>
+  <data name="PivotGrid_ContextMenu_ReloadData" xml:space="preserve">
+    <value>_Reload Data</value>
+  </data>
+  <data name="PivotGrid_BusyIndicator" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PivotGrid_BusyIndicator_Loading" xml:space="preserve">
+    <value> Waiting for pivot to load. This window will close when the operation is complete.</value>
+  </data>
+  <data name="PivotGrid_ContextMenu_ShowFieldList" xml:space="preserve">
+    <value>Show _Field List</value>
+  </data>
+  <data name="PivotGrid_ContextMenu_CalculatedField" xml:space="preserve">
+    <value>Calculated F_ield</value>
+  </data>
+  <data name="CalculatedField_Dialog_HeaderText" xml:space="preserve">
+    <value>Insert CalculatedField</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Name" xml:space="preserve">
+    <value>_Name</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Formula" xml:space="preserve">
+    <value>For_mula</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Add" xml:space="preserve">
+    <value>_Add</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Delete" xml:space="preserve">
+    <value>_Delete</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_InsertField" xml:space="preserve">
+    <value>Insert Fi_eld</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Fields" xml:space="preserve">
+    <value>_Fields</value>
+  </data>
+  <data name="PivotGrid_ContextSubMenu_Beginning" xml:space="preserve">
+    <value>Move to Be_ginning</value>
+  </data>
+  <data name="PivotGrid_ContextSubMenu_End" xml:space="preserve">
+    <value>Move to _End</value>
+  </data>
+  <data name="PivotGrid_ContextSubMenu_Ascending" xml:space="preserve">
+    <value>_Smallest to largest</value>
+  </data>
+  <data name="PivotGrid_ContextSubMenu_Descending" xml:space="preserve">
+    <value>_Largest to smallest</value>
+  </data>
+  <data name="PivotGrid_ContextSubMenu_Left" xml:space="preserve">
+    <value>Move to L_eft</value>
+  </data>
+  <data name="PivotGrid_ContextSubMenu_Right" xml:space="preserve">
+    <value>Move to _Right</value>
+  </data>
+  <data name="PivotGrid_DropColumnFields" xml:space="preserve">
+    <value>Drop Column Fields Here</value>
+  </data>
+  <data name="PivotGrid_DropRowFields" xml:space="preserve">
+    <value>Drop Row Fields Here</value>
+  </data>
+  <data name="PivotGrid_Expand_All_Header" xml:space="preserve">
+    <value>_Expand All Nodes</value>
+  </data>
+  <data name="PivotGrid_Collapse_EntireField" xml:space="preserve">
+    <value>Colla_pse Entire Field</value>
+  </data>
+  <data name="PivotGrid_Expand_EntireField" xml:space="preserve">
+    <value>Expand E_ntire Field</value>
+  </data>
+  <data name="PivotGrid_Expand_Collapse_Header" xml:space="preserve">
+    <value>Expand/Collapse</value>
+  </data>
+  <data name="PivotGrid_Expand_Header" xml:space="preserve">
+    <value>E_xpand This Node</value>
+  </data>
+  <data name="PivotGrid_GroupingBar_DropFilterFileds" xml:space="preserve">
+    <value>Drop Filter Fields Here</value>
+  </data>
+  <data name="PivotGrid_GroupingBar_DropCalculations" xml:space="preserve">
+    <value>Drop Calculations Here</value>
+  </data>
+  <data name="PivotGrid_Header_GrandTotal" xml:space="preserve">
+    <value>Grand</value>
+  </data>
+  <data name="PivotGrid_Header_SubTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="PivotSchema_Button_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="PivotSchema_CheckBox_DeferUpdate" xml:space="preserve">
+    <value>Defer Layout Update</value>
+  </data>
+  <data name="PivotSchema_CheckBox_ShowCalulation" xml:space="preserve">
+    <value>Show Calculations as column</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Caption_Description" xml:space="preserve">
+    <value>_Description</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Caption_Fieldname" xml:space="preserve">
+    <value>Field Name</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Caption_Format" xml:space="preserve">
+    <value>For_mat </value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Caption_SummaryType" xml:space="preserve">
+    <value>_Summarize Value By</value>
+  </data>
+  <data name="PivotSchema_FilterWindow_Popup_Caption_Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="PivotSchema_HeaderPanel_Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="PivotSchema_Header_AddReport" xml:space="preserve">
+    <value>Choose Field to add to report</value>
+  </data>
+  <data name="PivotSchema_Header_DragArea" xml:space="preserve">
+    <value>Drag fields between areas below:</value>
+  </data>
+  <data name="PivotSchema_Header_PivotTableFieldList" xml:space="preserve">
+    <value>PivotTable Field List</value>
+  </data>
+  <data name="PivotSchema_ListBox_ColumnLabel" xml:space="preserve">
+    <value>Column Label</value>
+  </data>
+  <data name="PivotSchema_ListBox_ReportFilter" xml:space="preserve">
+    <value>Report Filter</value>
+  </data>
+  <data name="PivotSchema_ListBox_RowLabel" xml:space="preserve">
+    <value>Row Label</value>
+  </data>
+  <data name="PivotSchema_ListBox_Values" xml:space="preserve">
+    <value>Values</value>
+  </data>
+  <data name="ShowFieldList_Dialog_HeaderText" xml:space="preserve">
+    <value>PivotTable Field List</value>
+  </data>
+  <data name="PivotGrid_ToolTip_Column" xml:space="preserve">
+    <value>Column: </value>
+  </data>
+  <data name="PivotGrid_ToolTip_Row" xml:space="preserve">
+    <value>Row: </value>
+  </data>
+  <data name="PivotGrid_ToolTip_Value" xml:space="preserve">
+    <value>Value: </value>
+  </data>
+  <data name="PivotGrid_ToolTip_Empty" xml:space="preserve">
+    <value>(Empty)</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Caption_CalculationType" xml:space="preserve">
+    <value>Show V_alue As</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Caption_BaseField" xml:space="preserve">
+    <value>Base _Field</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_Caption_BaseItem" xml:space="preserve">
+    <value>Base _Item</value>
+  </data>
+  <data name="PivotSchema_ComputationalInfoDialog_FilterHeader" xml:space="preserve">
+    <value>Field _Header</value>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>Move _Down</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>Move _Up</value>
+  </data>
+  <data name="Pivot_Value_Chooser" xml:space="preserve">
+    <value>Pivot Value Chooser</value>
+  </data>
+  <data name="Insert_Calculated_Field" xml:space="preserve">
+    <value>Insert Calculated Field</value>
+  </data>
+  <data name="PopUp_Window" xml:space="preserve">
+    <value>PopUpWindow</value>
+  </data>
+  <data name="Pivot_Computation_Information" xml:space="preserve">
+    <value>Pivot Computation Information</value>
+  </data>
+  <data name="Double_Total_Sum" xml:space="preserve">
+    <value>DoubleTotalSum</value>
+  </data>
+  <data name="Double_Average" xml:space="preserve">
+    <value>DoubleAverage</value>
+  </data>
+  <data name="Double_Maximun" xml:space="preserve">
+    <value>DoubleMaximum</value>
+  </data>
+  <data name="Double_Minimun" xml:space="preserve">
+    <value>DoubleMinimum</value>
+  </data>
+  <data name="Double_StandardDeviation" xml:space="preserve">
+    <value>DoubleStandardDeviation</value>
+  </data>
+  <data name="Double_Variance" xml:space="preserve">
+    <value>DoubleVariance</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="Decimal_Total_Sum" xml:space="preserve">
+    <value>DecimalTotalSum</value>
+  </data>
+  <data name="Int_Total_Sum" xml:space="preserve">
+    <value>IntTotalSum</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Display_IfDiscrete_ValuesEqual" xml:space="preserve">
+    <value>DisplayIfDiscreteValuesEqual</value>
+  </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="Max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="CountNumbers" xml:space="preserve">
+    <value>CountNumbers</value>
+  </data>
+  <data name="Var" xml:space="preserve">
+    <value>Var</value>
+  </data>
+  <data name="VarP" xml:space="preserve">
+    <value>VarP</value>
+  </data>
+  <data name="StdDev" xml:space="preserve">
+    <value>StdDev</value>
+  </data>
+  <data name="StdDevP" xml:space="preserve">
+    <value>StdDevP</value>
+  </data>
+  <data name="No_Calculation" xml:space="preserve">
+    <value>NoCalculation</value>
+  </data>
+  <data name="PercentageOf_GrandTotal" xml:space="preserve">
+    <value>PercentageOfGrandTotal</value>
+  </data>
+  <data name="PercentageOf_ColumnTotal" xml:space="preserve">
+    <value>PercentageOfColumnTotal</value>
+  </data>
+  <data name="PercentageOf_RowTotal" xml:space="preserve">
+    <value>PercentageOfRowTotal</value>
+  </data>
+  <data name="PercentageOf_Parent_ColumnTotal" xml:space="preserve">
+    <value>PercentageOfParentColumnTotal</value>
+  </data>
+  <data name="PercentageOf_Parent_RowTotal" xml:space="preserve">
+    <value>PercentageOfParentRowTotal</value>
+  </data>
+  <data name="PercentageOf_Parent_Total" xml:space="preserve">
+    <value>PercentageOfParentTotal</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Formula" xml:space="preserve">
+    <value>Formula</value>
+  </data>
+  <data name="PercentageOf" xml:space="preserve">
+    <value>PercentageOf</value>
+  </data>
+  <data name="Difference_From" xml:space="preserve">
+    <value>DifferenceFrom</value>
+  </data>
+  <data name="PercentageOf_Difference_From" xml:space="preserve">
+    <value>PercentageOfDifferenceFrom</value>
+  </data>
+  <data name="Running_TotalIn" xml:space="preserve">
+    <value>RunningTotalIn</value>
+  </data>
+  <data name="PercentageOf_Running_TotalIn" xml:space="preserve">
+    <value>PercentageOfRunningTotalIn</value>
+  </data>
+  <data name="Rank_SmallestToLargest" xml:space="preserve">
+    <value>RankSmallestToLargest</value>
+  </data>
+  <data name="Rank_LargestToSmallest" xml:space="preserve">
+    <value>RankLargestToSmallest</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="ContextMenu_AllowFiltering" xml:space="preserve">
+    <value>Allow _Filtering</value>
+  </data>
+  <data name="ContextMenu_AllowSorting" xml:space="preserve">
+    <value>Allow _Sorting</value>
+  </data>
+  <data name="ContextMenu_ClearFilters" xml:space="preserve">
+    <value>Clear Filters</value>
+  </data>
+  <data name="ContextMenu_ClearSorts" xml:space="preserve">
+    <value>Clear Sorts</value>
+  </data>
+  <data name="ContextMenu_DisableFiltering" xml:space="preserve">
+    <value>_Disable Filtering</value>
+  </data>
+  <data name="ContextMenu_DisableSorting" xml:space="preserve">
+    <value>Disable So_rting</value>
+  </data>
+  <data name="ContextMenu_HideColumn" xml:space="preserve">
+    <value>Hide Column</value>
+  </data>
+  <data name="ContextMenu_ShowPivotValueChooser" xml:space="preserve">
+    <value>Show Pivot Value Chooser</value>
+  </data>
+  <data name="PivotGrid_Collapse_Group" xml:space="preserve">
+    <value>Collap_se To</value>
+  </data>
+  <data name="PivotGrid_Expand_Group" xml:space="preserve">
+    <value>Exp_and To</value>
+  </data>
+  <data name="FilterPopUp_All" xml:space="preserve">
+    <value>(All)</value>
+  </data>
+  <data name="PivotSchema_ContextMenu_Beginning" xml:space="preserve">
+    <value>Move to Be_ginning</value>
+  </data>
+  <data name="PivotSchema_ContextMenu_Down" xml:space="preserve">
+    <value>Move _Down</value>
+  </data>
+  <data name="PivotSchema_ContextMenu_End" xml:space="preserve">
+    <value>Move to _End</value>
+  </data>
+  <data name="PivotSchema_ContextMenu_Up" xml:space="preserve">
+    <value>Move _Up</value>
+  </data>
+  <data name="PivotSchema_ContextMenu_ToColumn" xml:space="preserve">
+    <value>Move to Column</value>
+  </data>
+  <data name="PivotSchema_ContextMenu_ToFilter" xml:space="preserve">
+    <value>Move to Filter</value>
+  </data>
+  <data name="PivotSchema_ContextMenu_ToRow" xml:space="preserve">
+    <value>Move to Row</value>
+  </data>
+  <data name="PivotSchema_ContextMenu_ToValues" xml:space="preserve">
+    <value>Move to Values</value>
+  </data>
+  <data name="PivotSchema_ContextMenu_Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="PivotSchema_ContextMenu_RemoveField" xml:space="preserve">
+    <value>Remove Field</value>
+  </data>
+  <data name="Filter_ComboBox_BeginsWith" xml:space="preserve">
+    <value>begins with</value>
+  </data>
+  <data name="Filter_ContextMenu_BeginsWith" xml:space="preserve">
+    <value>Begins W_ith...</value>
+  </data>
+  <data name="Filter_ComboBox_Between" xml:space="preserve">
+    <value>between</value>
+  </data>
+  <data name="Filter_ComboBox_Contains" xml:space="preserve">
+    <value>contains</value>
+  </data>
+  <data name="Filter_ContextMenu_Between" xml:space="preserve">
+    <value>Bet_ween...</value>
+  </data>
+  <data name="Filter_ContextMenu_DoesNotContains" xml:space="preserve">
+    <value>_Does Not Contains...</value>
+  </data>
+  <data name="Filter_ContextMenu_DoesnotBeginsWith" xml:space="preserve">
+    <value>Does No_t Begins With...</value>
+  </data>
+  <data name="Filter_ComboBox_DoesnotBeginsWith" xml:space="preserve">
+    <value>does not begins with</value>
+  </data>
+  <data name="Filter_ContextMenu_NotBetween" xml:space="preserve">
+    <value>Not _Between...</value>
+  </data>
+  <data name="Filter_ComboBox_DoesNotContains" xml:space="preserve">
+    <value>does not contains</value>
+  </data>
+  <data name="Filter_ContextMenu_DoesnotEndsWith" xml:space="preserve">
+    <value>Does Not Ends Wit_h...</value>
+  </data>
+  <data name="Filter_ComboBox_DoesnotEndsWith" xml:space="preserve">
+    <value>does not ends with</value>
+  </data>
+  <data name="Filter_ContextMenu_NotEquals" xml:space="preserve">
+    <value>Does _Not Equal...</value>
+  </data>
+  <data name="Filter_ComboBox_NotEquals" xml:space="preserve">
+    <value>does not equals</value>
+  </data>
+  <data name="Filter_ComboBox_EndsWith" xml:space="preserve">
+    <value>ends with</value>
+  </data>
+  <data name="Filter_ContextMenu_EndsWith" xml:space="preserve">
+    <value>Ends Wi_th...</value>
+  </data>
+  <data name="Filter_ComboBox_Equals" xml:space="preserve">
+    <value>equals</value>
+  </data>
+  <data name="Filter_ContextMenu_Equals" xml:space="preserve">
+    <value>_Equals...</value>
+  </data>
+  <data name="Filter_ContextMenu_GreaterThan" xml:space="preserve">
+    <value>_GreaterThan...</value>
+  </data>
+  <data name="Filter_ContextMenu_GreaterThanOrEqual" xml:space="preserve">
+    <value>Greater Than _Or Equal To...</value>
+  </data>
+  <data name="Filter_ContextMenu_Contains" xml:space="preserve">
+    <value>Cont_ains...</value>
+  </data>
+  <data name="Filter_ComboBox_GreaterThan" xml:space="preserve">
+    <value>is greater than</value>
+  </data>
+  <data name="Filter_ComboBox_GreaterThanOrEqual" xml:space="preserve">
+    <value>is greater than or equal to</value>
+  </data>
+  <data name="Filter_ComboBox_LessThan" xml:space="preserve">
+    <value>is less than</value>
+  </data>
+  <data name="Filter_ComboBox_LessThanOrEqual" xml:space="preserve">
+    <value>is less than or equal to</value>
+  </data>
+  <data name="Filter_ContextMenu_LessThan" xml:space="preserve">
+    <value>_Less Than...</value>
+  </data>
+  <data name="Filter_ContextMenu_LessThanOrEqual" xml:space="preserve">
+    <value>Less Than Or E_qual To...</value>
+  </data>
+  <data name="Filter_ComboBox_NotBetween" xml:space="preserve">
+    <value>not between</value>
+  </data>
+  <data name="Top10" xml:space="preserve">
+    <value>_Top10 Filter</value>
+  </data>
+  <data name="Filter_TextBlock_And" xml:space="preserve">
+    <value>and</value>
+  </data>
+  <data name="Filter_TextBlock_LabelFilterTextWildCharacter" xml:space="preserve">
+    <value>Use ? to represent any single character</value>
+  </data>
+  <data name="Filter_TextBlock_LabelFilterTextWildCharacterforseries" xml:space="preserve">
+    <value>Use * to represent any series of characters</value>
+  </data>
+  <data name="Filter_TextBlock_ShowItems" xml:space="preserve">
+    <value>Show Items For Which</value>
+  </data>
+  <data name="MoreSortOptions_TextBlock_ShowItems" xml:space="preserve">
+    <value>Sort options</value>
+  </data>
+  <data name="MoreOptions_TextBlock_ShowItems" xml:space="preserve">
+    <value>AutoSort</value>
+  </data>
+  <data name="MoreOptions_TextBlock1_ShowItems" xml:space="preserve">
+    <value>First key sort order</value>
+  </data>
+  <data name="MoreOptions_TextBlock2_ShowItems" xml:space="preserve">
+    <value>Sort By</value>
+  </data>
+  <data name="MoreOptions_CheckBox_ShowItems" xml:space="preserve">
+    <value>_Sort automatically every time the report is updated</value>
+  </data>
+  <data name="MoreSortOptions_TextBlock_SummaryShowItems" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="MoreSortOptions_RadioButton1_ShowItems" xml:space="preserve">
+    <value>_Manual (you can drag items to rearrange them)</value>
+  </data>
+  <data name="MoreSortOptions_RadioButton2_ShowItems" xml:space="preserve">
+    <value>_Ascending (A to Z) by:</value>
+  </data>
+  <data name="MoreSortOptions_RadioButton3_ShowItems" xml:space="preserve">
+    <value>_Descending (Z to A) by:</value>
+  </data>
+  <data name="MoreOptions_RadioButton1_ShowItems" xml:space="preserve">
+    <value>Grand Total</value>
+  </data>
+  <data name="LabelFilter_Window_Title" xml:space="preserve">
+    <value>Label Filter</value>
+  </data>
+  <data name="MoreSortOptions_Window_Title" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="MoreOptions_Window_Title" xml:space="preserve">
+    <value>More Sort Options</value>
+  </data>
+  <data name="Top10Filter_ComboBox_Bottom" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="Top10Filter_ComboBox_Items" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="Top10Filter_ComboBox_Percent" xml:space="preserve">
+    <value>Percent</value>
+  </data>
+  <data name="Top10Filter_ComboBox_Sum" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="Top10Filter_ComboBox_Top" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="Top10Filter_TextBlock_By" xml:space="preserve">
+    <value>by</value>
+  </data>
+  <data name="Top10Filter_Window_Title" xml:space="preserve">
+    <value>Top10 Filter</value>
+  </data>
+  <data name="ValueFilter_Window_Title" xml:space="preserve">
+    <value>Value Filter</value>
+  </data>
+  <data name="CalculatedField_Decimal_Operator" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="Filter_ContextMenu_ClearFilters" xml:space="preserve">
+    <value>_Clear Filters</value>
+  </data>
+  <data name="Filter_ContextMenu_LabelFilters" xml:space="preserve">
+    <value>_Label Filters</value>
+  </data>
+  <data name="Filter_ContextMenu_ValueFilters" xml:space="preserve">
+    <value>_Value Filters</value>
+  </data>
+  <data name="Filter_ContextMenu_SortAscending" xml:space="preserve">
+    <value>_Sort A to Z</value>
+  </data>
+  <data name="Filter_ContextMenu_SortDescending" xml:space="preserve">
+    <value>S_ort Z to A</value>
+  </data>
+  <data name="Filter_ContextMenu_MoreSortOptions" xml:space="preserve">
+    <value>_More Sort Options...</value>
+  </data>
+  <data name="AddDuplicateCalculatedFieldErrorMessage" xml:space="preserve">
+    <value>CalculatedField with same name is already exist.</value>
+  </data>
+  <data name="AddEmptyCalculatedFieldFormulaErrorMessage" xml:space="preserve">
+    <value>Please provide formula to add new calculated field into PivotCalculations.</value>
+  </data>
+  <data name="AddEmptyCalculatedFieldNameErrorMessage" xml:space="preserve">
+    <value>Please provide name of the field to insert.</value>
+  </data>
+  <data name="CalculatedFieldFormulaErrorMessage" xml:space="preserve">
+    <value>Please provide formula to the calculated field.</value>
+  </data>
+  <data name="CalculatedFieldOkButtonErrorMessage" xml:space="preserve">
+    <value>Please add a new calculated field into PivotCalculations before pressing the OK button.</value>
+  </data>
+  <data name="IncompleteFormula" xml:space="preserve">
+    <value>Formula is incomplete. Please check with the formula you have provided.</value>
+  </data>
+</root>

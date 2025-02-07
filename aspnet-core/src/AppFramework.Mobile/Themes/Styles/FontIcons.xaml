@@ -1,0 +1,51 @@
+﻿<ResourceDictionary
+    x:Class="AppFramework.Shared.FontIcons"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!--  iconfont.ttf 图标资源清单  -->
+    <x:String x:Key="API">&#xe774;</x:String>
+    <x:String x:Key="Interval">&#xe630;</x:String>
+    <x:String x:Key="WebBrowser">&#xe639;</x:String>
+    <x:String x:Key="IP">&#xe6d0;</x:String>
+    <x:String x:Key="Add">&#xe607;</x:String>
+    <x:String x:Key="Reduce">&#xe729;</x:String>
+    <x:String x:Key="Remove">&#xe65c;</x:String>
+    <x:String x:Key="Position">&#xe62f;</x:String>
+    <x:String x:Key="Edit">&#xe651;</x:String>
+    <x:String x:Key="Email">&#xe7dc;</x:String>
+    <x:String x:Key="Statistics">&#xe664;</x:String>
+    <x:String x:Key="Analyze">&#xe656;</x:String>
+    <x:String x:Key="Approaching">&#xe602;</x:String>
+    <x:String x:Key="AddUser">&#xe69b;</x:String>
+    <x:String x:Key="Left">&#xe625;</x:String>
+    <x:String x:Key="Right">&#xe608;</x:String>
+    <x:String x:Key="Print">&#xe9bd;</x:String>
+    <x:String x:Key="Excel">&#xe83b;</x:String>
+    <x:String x:Key="Search">&#xe633;</x:String>
+    <x:String x:Key="Cloud">&#xe6ab;</x:String>
+    <x:String x:Key="Video">&#xe610;</x:String>
+    <x:String x:Key="Module">&#xec07;</x:String>
+    <x:String x:Key="Message">&#xe73c;</x:String>
+    <x:String x:Key="Notice">&#xe67f;</x:String>
+    <x:String x:Key="Settings">&#xe600;</x:String>
+    <x:String x:Key="Language">&#xe62e;</x:String>
+    <x:String x:Key="User">&#xe658;</x:String>
+    <x:String x:Key="Property">&#xe634;</x:String>
+    <x:String x:Key="Skin">&#xe7e8;</x:String>
+    <x:String x:Key="Menu">&#xe650;</x:String>
+    <x:String x:Key="KanBan">&#xe6c4;</x:String>
+    <x:String x:Key="Data">&#xe657;</x:String>
+    <x:String x:Key="Role">&#xe787;</x:String>
+    <x:String x:Key="Tenant">&#xe635;</x:String>
+    <x:String x:Key="WebHook">&#xe64e;</x:String>
+    <x:String x:Key="Organization">&#xe66e;</x:String>
+    <x:String x:Key="Audit">&#xe617;</x:String>
+    <x:String x:Key="ChangeLanguage">&#xe62e;</x:String>
+    <x:String x:Key="Logout">&#xe652;</x:String>
+    <x:String x:Key="ChangePassword">&#xe609;</x:String>
+    <x:String x:Key="Picture">&#xe63e;</x:String>
+    <x:String x:Key="Send">&#xe64a;</x:String>
+    <x:String x:Key="Link">&#xe756;</x:String>
+    <x:String x:Key="Tel">&#xe953;</x:String>
+</ResourceDictionary>

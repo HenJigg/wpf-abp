@@ -1,0 +1,43 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.HandyUI.VisualView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:md="clr-namespace:AppFramework.Admin.HandyUI">
+    <md:DialogHost IsOpen="{Binding IsBusy}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <DockPanel Margin="15" LastChildFill="False">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Text="{Binding Title}" />
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="{extensions:Translate UiCustomizationHeaderInfo}" />
+                </StackPanel>
+            </DockPanel>
+
+            <Grid Grid.Row="1" Margin="15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="{extensions:Translate UiCustomization_DarkMode}" />
+                    <ToggleButton
+                        Margin="8,0"
+                        IsChecked="{Binding IsDarkTheme}"
+                        Style="{StaticResource ToggleButtonSwitch}" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </md:DialogHost>
+</UserControl>

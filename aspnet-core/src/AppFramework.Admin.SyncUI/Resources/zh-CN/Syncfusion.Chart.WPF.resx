@@ -1,0 +1,726 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Analog" xml:space="preserve">
+    <value>Analog</value>
+  </data>
+  <data name="Area" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="Bar" xml:space="preserve">
+    <value>Bar</value>
+  </data>
+  <data name="BoxAndWhisker" xml:space="preserve">
+    <value>Box And Whisker</value>
+  </data>
+  <data name="Bubble" xml:space="preserve">
+    <value>Bubble</value>
+  </data>
+  <data name="Candle" xml:space="preserve">
+    <value>Candle</value>
+  </data>
+  <data name="ChangeType" xml:space="preserve">
+    <value>Change Type</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Colorful" xml:space="preserve">
+    <value>Colorful</value>
+  </data>
+  <data name="ColorPalette" xml:space="preserve">
+    <value>Color Palette</value>
+  </data>
+  <data name="Column" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="contextMenuPalettes" xml:space="preserve">
+    <value>Palettes</value>
+  </data>
+  <data name="contextMenuSeries" xml:space="preserve">
+    <value>Series</value>
+  </data>
+  <data name="contextMenuZoomAll" xml:space="preserve">
+    <value>Zoom All</value>
+  </data>
+  <data name="contextMenuZooming" xml:space="preserve">
+    <value>Zooming</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="DefaultAlpha" xml:space="preserve">
+    <value>DefaultAlpha</value>
+  </data>
+  <data name="DefaultDark" xml:space="preserve">
+    <value>DefaultDark</value>
+  </data>
+  <data name="Doughnut" xml:space="preserve">
+    <value>Doughnut</value>
+  </data>
+  <data name="EarthTone" xml:space="preserve">
+    <value>EarthTone</value>
+  </data>
+  <data name="EnableZooming" xml:space="preserve">
+    <value>Enable Zooming</value>
+  </data>
+  <data name="FastColumn" xml:space="preserve">
+    <value>FastColumn</value>
+  </data>
+  <data name="FastHiLoOpenClose" xml:space="preserve">
+    <value>FastHiLoOpenClose</value>
+  </data>
+  <data name="FastLine" xml:space="preserve">
+    <value>FastLine</value>
+  </data>
+  <data name="FastScatter" xml:space="preserve">
+    <value>FastScatter</value>
+  </data>
+  <data name="FastStackingColumn" xml:space="preserve">
+    <value>FastStackingColumn</value>
+  </data>
+  <data name="Funnel" xml:space="preserve">
+    <value>Funnel</value>
+  </data>
+  <data name="Gantt" xml:space="preserve">
+    <value>Gantt</value>
+  </data>
+  <data name="Gradient" xml:space="preserve">
+    <value>Gradient</value>
+  </data>
+  <data name="Grayscale" xml:space="preserve">
+    <value>Grayscale</value>
+  </data>
+  <data name="HiLo" xml:space="preserve">
+    <value>HiLo</value>
+  </data>
+  <data name="HiLoArea" xml:space="preserve">
+    <value>HiLoArea</value>
+  </data>
+  <data name="HiLoOpenClose" xml:space="preserve">
+    <value>HiLoOpenClose</value>
+  </data>
+  <data name="Histogram" xml:space="preserve">
+    <value>Histogram</value>
+  </data>
+  <data name="Kagi" xml:space="preserve">
+    <value>Kagi</value>
+  </data>
+  <data name="LegendWindowCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="LegendWindowCheckBox" xml:space="preserve">
+    <value>CheckBox</value>
+  </data>
+  <data name="LegendWindowIcon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="LegendWindowOK" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="LegendWindowTitle" xml:space="preserve">
+    <value>Chart Legend Properties</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="Nature" xml:space="preserve">
+    <value>Nature</value>
+  </data>
+  <data name="Office2007Black" xml:space="preserve">
+    <value>Office2007Black</value>
+  </data>
+  <data name="Office2007Blue" xml:space="preserve">
+    <value>Office2007Blue</value>
+  </data>
+  <data name="Office2007Silver" xml:space="preserve">
+    <value>Office2007Silver</value>
+  </data>
+  <data name="MixedGray" xml:space="preserve">
+    <value>BrightGray</value>
+  </data>
+  <data name="BlueScale" xml:space="preserve">
+    <value>BlueWave</value>
+  </data>
+  <data name="MaroonRed" xml:space="preserve">
+    <value>MaroonRed</value>
+  </data>
+  <data name="GreenScale" xml:space="preserve">
+    <value>SpringGreen</value>
+  </data>
+  <data name="MixedViolet" xml:space="preserve">
+    <value>MixedViolet</value>
+  </data>
+  <data name="CoolBlueScale" xml:space="preserve">
+    <value>CoolBlue</value>
+  </data>
+  <data name="ChocolateOrange" xml:space="preserve">
+    <value>ChocolateOrange</value>
+  </data>
+  <data name="MixedFantasy" xml:space="preserve">
+    <value>MixedFantasy</value>
+  </data>
+  <data name="Panning" xml:space="preserve">
+    <value>Panning</value>
+  </data>
+  <data name="Pastel" xml:space="preserve">
+    <value>Pastel</value>
+  </data>
+  <data name="Pie" xml:space="preserve">
+    <value>Pie</value>
+  </data>
+  <data name="PointAndFigure" xml:space="preserve">
+    <value>PointAndFigure</value>
+  </data>
+  <data name="Polar" xml:space="preserve">
+    <value>Polar</value>
+  </data>
+  <data name="printDialogAdvanced" xml:space="preserve">
+    <value>Advanced...</value>
+  </data>
+  <data name="printDialogBWMode" xml:space="preserve">
+    <value>Black And White Mode</value>
+  </data>
+  <data name="printDialogCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="printDialogColorMode" xml:space="preserve">
+    <value>Color Mode</value>
+  </data>
+  <data name="printDialogPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="printDialogPrintStretch" xml:space="preserve">
+    <value>Print Stretch</value>
+  </data>
+  <data name="printDialogPrintMode" xml:space="preserve">
+    <value>Print Mode</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="Pyramid" xml:space="preserve">
+    <value>Pyramid</value>
+  </data>
+  <data name="Radar" xml:space="preserve">
+    <value>Radar</value>
+  </data>
+  <data name="RangeArea" xml:space="preserve">
+    <value>Range Area</value>
+  </data>
+  <data name="RangeColumn" xml:space="preserve">
+    <value>Range Column</value>
+  </data>
+  <data name="Renko" xml:space="preserve">
+    <value>Renko</value>
+  </data>
+  <data name="ResetZoom" xml:space="preserve">
+    <value>Reset Zoom</value>
+  </data>
+  <data name="RotatedSpline" xml:space="preserve">
+    <value>RotatedSpline</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Scatter" xml:space="preserve">
+    <value>Scatter</value>
+  </data>
+  <data name="Spline" xml:space="preserve">
+    <value>Spline</value>
+  </data>
+  <data name="SplineArea" xml:space="preserve">
+    <value>SplineArea</value>
+  </data>
+  <data name="StackingArea" xml:space="preserve">
+    <value>StackingArea</value>
+  </data>
+  <data name="StackingLine" xml:space="preserve">
+    <value>StackingLine</value>
+  </data>
+  <data name="StackingLine100" xml:space="preserve">
+    <value>StackingLine100</value>
+  </data>
+  <data name="StackingSpline" xml:space="preserve">
+    <value>StackingSpline</value>
+  </data>
+  <data name="StackingSpline100" xml:space="preserve">
+    <value>StackingSpline100</value>
+  </data>
+  <data name="StackingSplineArea" xml:space="preserve">
+    <value>StackingSplineArea</value>
+  </data>
+  <data name="StackingSplineArea100" xml:space="preserve">
+    <value>StackingSplineArea100</value>
+  </data>
+  <data name="StackingBar" xml:space="preserve">
+    <value>StackingBar</value>
+  </data>
+  <data name="StackingBar100" xml:space="preserve">
+    <value>StackingBar100</value>
+  </data>
+  <data name="StackingColumn" xml:space="preserve">
+    <value>StackingColumn</value>
+  </data>
+  <data name="StackingColumn100" xml:space="preserve">
+    <value>StackingColumn100</value>
+  </data>
+  <data name="StepArea" xml:space="preserve">
+    <value>StepArea</value>
+  </data>
+  <data name="StepLine" xml:space="preserve">
+    <value>StepLine</value>
+  </data>
+  <data name="style" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="ThreeLineBreak" xml:space="preserve">
+    <value>ThreeLineBreak</value>
+  </data>
+  <data name="ToolbarLegend" xml:space="preserve">
+    <value>Show/Hide Legend</value>
+  </data>
+  <data name="ToolbarPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="ToolbarSwitchPrint" xml:space="preserve">
+    <value>Switch Print Mode</value>
+  </data>
+  <data name="Tornado" xml:space="preserve">
+    <value>Tornado</value>
+  </data>
+  <data name="Triad" xml:space="preserve">
+    <value>Triad</value>
+  </data>
+  <data name="WarmCold" xml:space="preserve">
+    <value>WarmCold</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="AlternatingGridBackground" xml:space="preserve">
+    <value>Background :</value>
+  </data>
+  <data name="AlternatingGridBackgrounDirection" xml:space="preserve">
+    <value>Background Direction :</value>
+  </data>
+  <data name="AlternatingGridBackgrounMode" xml:space="preserve">
+    <value>Background Mode :</value>
+  </data>
+  <data name="AnimationOption" xml:space="preserve">
+    <value>Animation Option :</value>
+  </data>
+  <data name="Appearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="AutoSetRange" xml:space="preserve">
+    <value>Auto Set Range</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background :</value>
+  </data>
+  <data name="BorderBrush" xml:space="preserve">
+    <value>Border Brush :</value>
+  </data>
+  <data name="BorderThickness" xml:space="preserve">
+    <value>Border Thickness :</value>
+  </data>
+  <data name="ChartAxis" xml:space="preserve">
+    <value>Chart Axis</value>
+  </data>
+  <data name="ChartVisualStyle" xml:space="preserve">
+    <value>Chart Visual Style</value>
+  </data>
+  <data name="ChartArea" xml:space="preserve">
+    <value>Chart Area</value>
+  </data>
+  <data name="ChartAreaLegend" xml:space="preserve">
+    <value>Chart Area Legend</value>
+  </data>
+  <data name="ChartLegend" xml:space="preserve">
+    <value>Chart Legend</value>
+  </data>
+  <data name="ChartSeries" xml:space="preserve">
+    <value>Chart Series</value>
+  </data>
+  <data name="CheckBoxVisibility" xml:space="preserve">
+    <value>Checkbox Visibility :</value>
+  </data>
+  <data name="CornerRadius" xml:space="preserve">
+    <value>Corner Radius :</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="DateTimeInterval" xml:space="preserve">
+    <value>DateTime Interval :</value>
+  </data>
+  <data name="DateTimeRange" xml:space="preserve">
+    <value>DateTime Range :</value>
+  </data>
+  <data name="DesiredIntervalCount" xml:space="preserve">
+    <value>Desired Interval Count :</value>
+  </data>
+  <data name="EdgeLabelDrawingMode" xml:space="preserve">
+    <value>Edge Label DrawingMode :</value>
+  </data>
+  <data name="EmptyPointsInterior" xml:space="preserve">
+    <value>Empty Points Interior :</value>
+  </data>
+  <data name="EnableContextMenu" xml:space="preserve">
+    <value>Enable ContextMenu</value>
+  </data>
+  <data name="EnableZoomOnScroll" xml:space="preserve">
+    <value>Enable Zoom On Scroll</value>
+  </data>
+  <data name="Foreground" xml:space="preserve">
+    <value>Foreground :</value>
+  </data>
+  <data name="GridRegionProperties" xml:space="preserve">
+    <value>Alternative Background </value>
+  </data>
+  <data name="GridBackground" xml:space="preserve">
+    <value>Grid Background :</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Header  :</value>
+  </data>
+  <data name="HeaderAlignment" xml:space="preserve">
+    <value>Header Alignment :</value>
+  </data>
+  <data name="HidePartialLabels" xml:space="preserve">
+    <value>Hide Partial Labels</value>
+  </data>
+  <data name="IconVisibility" xml:space="preserve">
+    <value>Icon Visibility :</value>
+  </data>
+  <data name="InteractiveFeatures" xml:space="preserve">
+    <value>Interactive Features</value>
+  </data>
+  <data name="Interior" xml:space="preserve">
+    <value>Interior :</value>
+  </data>
+  <data name="IntersectAction" xml:space="preserve">
+    <value>Intersect Action :</value>
+  </data>
+  <data name="Interval" xml:space="preserve">
+    <value>Interval :</value>
+  </data>
+  <data name="IsRotated" xml:space="preserve">
+    <value>Is Rotated</value>
+  </data>
+  <data name="IsSorted" xml:space="preserve">
+    <value>Is Sorted</value>
+  </data>
+  <data name="IsVisibleOnLegend" xml:space="preserve">
+    <value>Is Visible on Legend</value>
+  </data>
+  <data name="IsZoomable" xml:space="preserve">
+    <value>Is Zoomable</value>
+  </data>
+  <data name="IsLograthimic" xml:space="preserve">
+    <value>Is Lograthimic</value>
+  </data>
+  <data name="LabelBorderBrush" xml:space="preserve">
+    <value>Label Border Brush :</value>
+  </data>
+  <data name="LabelBorderThickness" xml:space="preserve">
+    <value>Label Border Thickness :</value>
+  </data>
+  <data name="LabelCornerRadius" xml:space="preserve">
+    <value>Label Corner Radius :</value>
+  </data>
+  <data name="LabelDateTimeFormat" xml:space="preserve">
+    <value>Label DateTime Format :</value>
+  </data>
+  <data name="LabelForeground" xml:space="preserve">
+    <value>Label Foreground :</value>
+  </data>
+  <data name="LabelFormat" xml:space="preserve">
+    <value>Label Format :</value>
+  </data>
+  <data name="LabelRotateAngle" xml:space="preserve">
+    <value>Label Rotate Angle :</value>
+  </data>
+  <data name="LabelsMode" xml:space="preserve">
+    <value>Labels Mode :</value>
+  </data>
+  <data name="LagrathimicRange" xml:space="preserve">
+    <value>Lagrathimic Range</value>
+  </data>
+  <data name="Legend" xml:space="preserve">
+    <value>Legend</value>
+  </data>
+  <data name="LegendIcon" xml:space="preserve">
+    <value>Legend Icon :</value>
+  </data>
+  <data name="LegendLabel" xml:space="preserve">
+    <value>Legend Label :</value>
+  </data>
+  <data name="LineStroke" xml:space="preserve">
+    <value>Line Stroke :</value>
+  </data>
+  <data name="LograthimicBase" xml:space="preserve">
+    <value>Lograthimic Base :</value>
+  </data>
+  <data name="Margin" xml:space="preserve">
+    <value>Margin :</value>
+  </data>
+  <data name="OpposedPosition" xml:space="preserve">
+    <value>Opposed Position</value>
+  </data>
+  <data name="Orientation" xml:space="preserve">
+    <value>Orientation :</value>
+  </data>
+  <data name="Origin" xml:space="preserve">
+    <value>Origin :</value>
+  </data>
+  <data name="Padding" xml:space="preserve">
+    <value>Padding :</value>
+  </data>
+  <data name="Range" xml:space="preserve">
+    <value>Range :</value>
+  </data>
+  <data name="RangeCalculationMode" xml:space="preserve">
+    <value>Range Calculation Mode :</value>
+  </data>
+  <data name="RangePadding" xml:space="preserve">
+    <value>Range Padding :</value>
+  </data>
+  <data name="SelectChartArea" xml:space="preserve">
+    <value>Select Chart Area:</value>
+  </data>
+  <data name="SelectChartAxis" xml:space="preserve">
+    <value>Select Chart Axis</value>
+  </data>
+  <data name="SelectChartLegend" xml:space="preserve">
+    <value>Select Chart Legend</value>
+  </data>
+  <data name="SelectChartSeries" xml:space="preserve">
+    <value>Select Chart Series</value>
+  </data>
+  <data name="ShowSeriesEmptyPoints" xml:space="preserve">
+    <value>Show Series Empty Points</value>
+  </data>
+  <data name="ShowSymbol" xml:space="preserve">
+    <value>Show Symbol</value>
+  </data>
+  <data name="SmallTickLinesStroke" xml:space="preserve">
+    <value>Small Tick Lines Stroke :</value>
+  </data>
+  <data name="SmallTickSize" xml:space="preserve">
+    <value>Small Tick Size :</value>
+  </data>
+  <data name="SmallTicksPerInterval" xml:space="preserve">
+    <value>Small Ticks Per Interval :</value>
+  </data>
+  <data name="Stroke" xml:space="preserve">
+    <value>Stroke :</value>
+  </data>
+  <data name="StrokeThickness" xml:space="preserve">
+    <value>Stroke Thickness :</value>
+  </data>
+  <data name="TickLineStroke" xml:space="preserve">
+    <value>Tick Line Stroke :</value>
+  </data>
+  <data name="TickSize" xml:space="preserve">
+    <value>Tick Size :</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Value Type" xml:space="preserve">
+    <value>Value Type</value>
+  </data>
+  <data name="VisualStyle" xml:space="preserve">
+    <value>Visual Style</value>
+  </data>
+  <data name="AnimateSeriesonebyone" xml:space="preserve">
+    <value>Animate Series one by one</value>
+  </data>
+  <data name="EmptyPointsStyle" xml:space="preserve">
+    <value>Empty Point Style :</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="LabelBackground" xml:space="preserve">
+    <value>Label Background :</value>
+  </data>
+  <data name="ValueType" xml:space="preserve">
+    <value>Value Type :</value>
+  </data>
+  <data name="AxisHeader" xml:space="preserve">
+    <value>Axis Header</value>
+  </data>
+  <data name="AxisPosition" xml:space="preserve">
+    <value>Axis Position</value>
+  </data>
+  <data name="AxisType" xml:space="preserve">
+    <value>Axis Type</value>
+  </data>
+  <data name="LabelSettings" xml:space="preserve">
+    <value>Label Settings</value>
+  </data>
+  <data name="RangeAndInterval" xml:space="preserve">
+    <value>Range and Interval</value>
+  </data>
+  <data name="EnableAnimation" xml:space="preserve">
+    <value>Enable Animation</value>
+  </data>
+  <data name="LograthimicRange" xml:space="preserve">
+    <value>Lograthimic Range :</value>
+  </data>
+  <data name="ChartType" xml:space="preserve">
+    <value>Chart Type :</value>
+  </data>
+  <data name="ChartProperties" xml:space="preserve">
+    <value>Chart Properties</value>
+  </data>
+  <data name="LegendPosition" xml:space="preserve">
+    <value>Legend Position</value>
+  </data>
+  <data name="Chart" xml:space="preserve">
+    <value>Chart</value>
+  </data>
+  <data name="ChartPropertiesDialogTitle" xml:space="preserve">
+    <value>Chart Properties Dialog</value>
+  </data>
+  <data name="ChartTypeHeader" xml:space="preserve">
+    <value>Chart Type</value>
+  </data>
+  <data name="HeaderSettings" xml:space="preserve">
+    <value>Header</value>
+  </data>
+  <data name="FastBar" xml:space="preserve">
+    <value>FastBar</value>
+  </data>
+  <data name="StackingArea100" xml:space="preserve">
+    <value>StackingArea100</value>
+  </data>
+</root>

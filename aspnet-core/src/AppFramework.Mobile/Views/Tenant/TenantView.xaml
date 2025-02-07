@@ -1,0 +1,84 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.TenantView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:control="clr-namespace:AppFramework.Shared.Controls"
+    xmlns:effect="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:perm="clr-namespace:AppFramework.Shared"
+    xmlns:refresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
+    x:Name="TenantsPage">
+    <Grid BackgroundColor="{DynamicResource Gray-100}">
+        <refresh:SfPullToRefresh IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding RefreshCommand}">
+            <refresh:SfPullToRefresh.PullableContent>
+                <ScrollView>
+                    <StackLayout
+                        x:Name="stackLayoutList"
+                        BindableLayout.ItemsSource="{Binding dataPager.GridModelList}"
+                        Spacing="8">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <control:CustomShadowFrame
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="{DynamicResource Gray-Bg}"
+                                    BorderColor="{DynamicResource Gray-Bg}"
+                                    CornerRadius="4"
+                                    HasShadow="True"
+                                    HeightRequest="100"
+                                    Radius="4">
+                                    <effect:SfEffectsView
+                                        RippleColor="{DynamicResource Gray-300}"
+                                        TouchDownEffects="Ripple"
+                                        TouchUpCommand="{Binding Path=BindingContext.EditCommand, Source={x:Reference stackLayoutList}}"
+                                        TouchUpCommandParameter="{Binding}">
+                                        <Grid
+                                            Padding="10,0"
+                                            ColumnDefinitions="auto,0.8*"
+                                            HorizontalOptions="FillAndExpand"
+                                            RowDefinitions="0.3*,0.3*,0.3*"
+                                            RowSpacing="2"
+                                            VerticalOptions="Center">
+                                            <Label Text="{extensions:Translate TenancyName}" TextColor="{DynamicResource Gray-900}" />
+                                            <Label
+                                                Grid.Column="1"
+                                                Text="{Binding TenancyName}"
+                                                TextColor="{DynamicResource Gray-700}" />
+
+                                            <Label
+                                                Grid.Row="1"
+                                                Text="{extensions:Translate Name}"
+                                                TextColor="{DynamicResource Gray-900}" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Text="{Binding Name}"
+                                                TextColor="{DynamicResource Gray-700}" />
+
+                                            <Label
+                                                Grid.Row="2"
+                                                Text="{extensions:Translate Edition}"
+                                                TextColor="{DynamicResource Gray-900}" />
+                                            <Label
+                                                Grid.Row="2"
+                                                Grid.Column="1"
+                                                Text="{Binding EditionDisplayName}"
+                                                TextColor="{DynamicResource Gray-700}" />
+                                        </Grid>
+                                    </effect:SfEffectsView>
+                                </control:CustomShadowFrame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+            </refresh:SfPullToRefresh.PullableContent>
+        </refresh:SfPullToRefresh>
+
+        <buttons:SfButton
+            Margin="0,0,10,10"
+            Command="{Binding AddCommand}"
+            IsVisible="{extensions:HasPermission Text={x:Static perm:AppPermissions.TenantCreate}}"
+            Style="{StaticResource AddButtonStyle}" />
+    </Grid>
+</ContentView>

@@ -1,0 +1,181 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.DashboardView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls"
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:mark="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared">
+    <ScrollView>
+        <Grid RowDefinitions="auto,auto,auto">
+            <listView:SfListView
+                AutoFitMode="Height"
+                IsScrollingEnabled="False"
+                ItemSpacing="4"
+                ItemsSource="{Binding TopDashBoards}"
+                SelectionMode="None">
+                <listView:SfListView.LayoutManager>
+                    <listView:GridLayout SpanCount="2" />
+                </listView:SfListView.LayoutManager>
+                <listView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <border:SfBorder
+                            Padding="0"
+                            BackgroundColor="{DynamicResource GrayShadowColor}"
+                            BorderWidth="0"
+                            CornerRadius="4"
+                            HasShadow="True">
+                            <Grid>
+                                <gradient:SfGradientView>
+                                    <gradient:SfGradientView.BackgroundBrush>
+                                        <gradient:SfLinearGradientBrush>
+                                            <gradient:SfLinearGradientBrush.GradientStops>
+                                                <gradient:SfGradientStop Offset="0.0" Color="{Binding BackgroundGradientStart}" />
+                                                <gradient:SfGradientStop Offset="1.0" Color="{Binding BackgroundGradientEnd}" />
+                                            </gradient:SfLinearGradientBrush.GradientStops>
+                                        </gradient:SfLinearGradientBrush>
+                                    </gradient:SfGradientView.BackgroundBrush>
+                                </gradient:SfGradientView>
+
+                                <StackLayout Margin="15" Spacing="5">
+                                    <Label
+                                        FontFamily="Montserrat-SemiBold"
+                                        FontSize="12"
+                                        LineHeight="{OnPlatform Android=1.25,
+                                                                Default=-1}"
+                                        Text="{Binding Title}"
+                                        TextColor="{DynamicResource Gray-White}" />
+                                    <Label
+                                        FontFamily="Montserrat-SemiBold"
+                                        FontSize="24"
+                                        LineHeight="{OnPlatform Android=1.25,
+                                                                Default=-1}"
+                                        Text="{Binding Amount}"
+                                        TextColor="{DynamicResource Gray-White}" />
+                                </StackLayout>
+                                <Image
+                                    Margin="15"
+                                    HeightRequest="40"
+                                    HorizontalOptions="End"
+                                    Source="{Binding Logo}"
+                                    VerticalOptions="Start"
+                                    WidthRequest="40" />
+                            </Grid>
+                        </border:SfBorder>
+                    </DataTemplate>
+                </listView:SfListView.ItemTemplate>
+            </listView:SfListView>
+
+            <border:SfBorder
+                Grid.Row="1"
+                Margin="4,2"
+                BackgroundColor="{DynamicResource GrayShadowColor}"
+                BorderWidth="0"
+                CornerRadius="4">
+                <Grid RowDefinitions="auto,*">
+                    <StackLayout Margin="5" Orientation="Horizontal">
+                        <Label
+                            Text="{mark:Translate EditionStatistics}"
+                            TextColor="{DynamicResource Gray-900}"
+                            VerticalOptions="Center" />
+                        <Label
+                            Margin="5,0"
+                            Text="{Binding TimeInterval}"
+                            TextColor="{DynamicResource Gray-900}"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <chart:SfChart
+                        Grid.Row="1"
+                        BackgroundColor="{DynamicResource GrayShadowColor}"
+                        HeightRequest="200">
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend DockPosition="Bottom" />
+                        </chart:SfChart.Legend>
+                        <chart:SfChart.Series>
+                            <chart:DoughnutSeries
+                                x:Name="doughnutSeries"
+                                CapStyle="BothCurve"
+                                DoughnutCoefficient="0.6"
+                                EnableAnimation="True"
+                                EndAngle="270"
+                                IsStackedDoughnut="True"
+                                ItemsSource="{Binding EditionStatistics}"
+                                MaximumValue="100"
+                                Spacing="0.2"
+                                StartAngle="-90"
+                                StrokeWidth="10"
+                                XBindingPath="Category"
+                                YBindingPath="Expenditure">
+                                <chart:DoughnutSeries.ColorModel>
+                                    <chart:ChartColorModel Palette="Natural" />
+                                </chart:DoughnutSeries.ColorModel>
+                            </chart:DoughnutSeries>
+                        </chart:SfChart.Series>
+                    </chart:SfChart>
+                </Grid>
+            </border:SfBorder>
+
+            <border:SfBorder
+                Grid.Row="2"
+                Margin="4,2"
+                BackgroundColor="{DynamicResource GrayShadowColor}"
+                BorderWidth="0"
+                CornerRadius="4">
+                <Grid RowDefinitions="auto,*">
+                    <Label
+                        Margin="5"
+                        Text="{mark:Translate IncomeStatistics}"
+                        TextColor="{DynamicResource Gray-900}"
+                        VerticalOptions="Center" />
+
+                    <buttons:SfRadioGroup
+                        Margin="5"
+                        HorizontalOptions="End"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <buttons:SfRadioButton
+                            IsChecked="{Binding IsDaily}"
+                            Style="{StaticResource RadioButtonStyle}"
+                            Text="{mark:Translate Daily}" />
+                        <buttons:SfRadioButton
+                            IsChecked="{Binding IsWeekly}"
+                            Style="{StaticResource RadioButtonStyle}"
+                            Text="{mark:Translate Weekly}" />
+                        <buttons:SfRadioButton
+                            IsChecked="{Binding IsMonthly}"
+                            Style="{StaticResource RadioButtonStyle}"
+                            Text="{mark:Translate Monthly}" />
+                    </buttons:SfRadioGroup>
+
+                    <chart:SfChart
+                        Grid.Row="1"
+                        BackgroundColor="{DynamicResource GrayShadowColor}"
+                        HeightRequest="200">
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis />
+                        </chart:SfChart.PrimaryAxis>
+
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis />
+                        </chart:SfChart.SecondaryAxis>
+
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend DockPosition="Bottom" />
+                        </chart:SfChart.Legend>
+
+                        <chart:SplineSeries
+                            EnableAnimation="True"
+                            EnableTooltip="True"
+                            ItemsSource="{Binding IncomeStatistics}"
+                            XBindingPath="Date"
+                            YBindingPath="Amount" />
+                    </chart:SfChart>
+                </Grid>
+            </border:SfBorder>
+        </Grid>
+    </ScrollView>
+</ContentView>

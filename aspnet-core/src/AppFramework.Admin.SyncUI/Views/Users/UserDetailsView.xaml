@@ -1,0 +1,143 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.SyncUI.UserDetailsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="800"
+    Height="580"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style BasedOn="{StaticResource WPFCheckBoxStyle}" TargetType="CheckBox">
+            <Setter Property="Margin" Value="0,3" />
+            <Setter Property="DockPanel.Dock" Value="Top" />
+        </Style>
+
+        <Style BasedOn="{StaticResource WPFTextBlockStyle}" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,19,0,0" />
+            <Setter Property="DockPanel.Dock" Value="Top" />
+        </Style>
+
+        <Style BasedOn="{StaticResource WPFTextBoxStyle}" TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0" />
+            <Setter Property="DockPanel.Dock" Value="Top" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.RowSpan="3"
+            CornerRadius="0"
+            Opacity="1"
+            Style="{StaticResource BorderStyle}" />
+
+        <TextBlock
+            Text="{extensions:Translate CreateNewUser}"
+            Margin="15"
+            FontSize="18"
+            FontWeight="Bold" />
+
+        <TextBlock Style="{StaticResource closeTextBlock}" ToolTip="{extensions:Translate Close}">
+            <b:Interaction.Triggers>
+                <b:EventTrigger EventName="MouseLeftButtonDown">
+                    <b:InvokeCommandAction Command="{Binding CancelCommand}" />
+                </b:EventTrigger>
+            </b:Interaction.Triggers>
+        </TextBlock>
+
+        <TabControl Grid.Row="1" Margin="10,0">
+            <TabItem Background="Transparent" Header="{extensions:Translate UserInformations}">
+                <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="5,0">
+                        <TextBlock Text="{extensions:Translate FirstName}" />
+                        <TextBox Text="{Binding Model.User.Name, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" />
+
+                        <TextBlock Text="{extensions:Translate Surname}" />
+                        <TextBox Text="{Binding Model.User.Surname, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" />
+
+                        <TextBlock Text="{extensions:Translate EmailAddress}" />
+                        <TextBox Text="{Binding Model.User.EmailAddress, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" />
+
+                        <TextBlock Text="{extensions:Translate PhoneNumber}" />
+                        <TextBox Text="{Binding Model.User.PhoneNumber, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" />
+
+                        <TextBlock Text="{extensions:Translate UserName}" />
+                        <TextBox Text="{Binding Model.User.UserName, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" />
+
+                        <CheckBox
+                            Content="{extensions:Translate SetRandomPassword}"
+                            IsChecked="{Binding Input.SetRandomPassword}"
+                            Margin="0,20,0,0" />
+
+                        <StackPanel DockPanel.Dock="Top" Visibility="{Binding Input.SetRandomPassword, Converter={StaticResource boolToVisibility}}">
+                            <TextBlock Text="{extensions:Translate Password}" />
+                            <TextBox Text="{Binding Model.User.Password}" />
+
+                            <TextBlock Text="{extensions:Translate PasswordRepeat}" />
+                            <TextBox Text="{Binding Model.User.Password}" />
+                        </StackPanel>
+
+                        <CheckBox Content="{extensions:Translate ShouldChangePasswordOnNextLogin}" IsChecked="{Binding Model.User.ShouldChangePasswordOnNextLogin}" />
+                        <CheckBox Content="{extensions:Translate SendActivationEmail}" IsChecked="{Binding Input.SendActivationEmail}" />
+                        <CheckBox Content="{extensions:Translate Activate}" IsChecked="{Binding Model.User.IsActive}" />
+                        <CheckBox Content="{extensions:Translate IsLockoutEnabled}" IsChecked="{Binding Model.User.IsLockoutEnabled}" />
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Background="Transparent" Header="{extensions:Translate Role}">
+                <ListBox Margin="5" ItemsSource="{Binding Model.Roles}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsAssigned}" />
+                                <TextBlock
+                                    Text="{Binding RoleDisplayName}"
+                                    Margin="5,0"
+                                    VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+
+            <TabItem Background="Transparent" Header="{extensions:Translate OrganizationUnits}">
+                <TreeView x:Name="TreeViewOriganizations" ItemsSource="{Binding Model.OrganizationUnits}">
+                    <TreeView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="2" Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsAssigned}" DockPanel.Dock="Left" />
+                                <TextBlock
+                                    Text="{Binding DisplayName}"
+                                    Margin="5,0"
+                                    VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Grid.Row="2"
+            Margin="15"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                Content="{extensions:Translate Cancel}"
+                Command="{Binding CancelCommand}"
+                Margin="0,0,10,0"
+                Padding="5" />
+            <Button
+                Content="{extensions:Translate Save}"
+                Command="{Binding SaveCommand}"
+                Padding="5" />
+        </StackPanel>
+    </Grid>
+</UserControl>

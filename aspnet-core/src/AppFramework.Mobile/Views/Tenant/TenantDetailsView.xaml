@@ -1,0 +1,188 @@
+﻿<ContentPage
+    x:Class="AppFramework.Shared.Views.TenantDetailsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls;assembly=AppFramework.Shared"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared">
+    <ScrollView BackgroundColor="{DynamicResource GrayShadowColor}">
+        <StackLayout Padding="15">
+            <!--  租户名称  -->
+            <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                <controls:BorderlessEntry
+                    IsEnabled="{Binding IsNewCeate}"
+                    Placeholder="{extensions:Translate TenancyName}"
+                    Style="{StaticResource BorderlessEntryStyle}"
+                    Text="{Binding Model.TenancyName}" />
+            </border:SfBorder>
+
+            <!--  姓名  -->
+            <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                <controls:BorderlessEntry
+                    Placeholder="{extensions:Translate Name}"
+                    Style="{StaticResource BorderlessEntryStyle}"
+                    Text="{Binding Model.Name}" />
+            </border:SfBorder>
+
+            <!--  使用主机数据库  -->
+            <StackLayout IsVisible="{Binding IsNewCeate}" Orientation="Horizontal">
+                <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate UseHostDatabase}" />
+                <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding UseHostDatabase}" />
+            </StackLayout>
+
+            <!--  连接字符串  -->
+            <StackLayout IsVisible="{Binding UseHostDatabase, Converter={StaticResource InverseBooleanConverter}}">
+                <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                    <controls:BorderlessEntry
+                        Placeholder="{extensions:Translate DatabaseConnectionString}"
+                        Style="{StaticResource BorderlessEntryStyle}"
+                        Text="{Binding Model.ConnectionString}" />
+                </border:SfBorder>
+
+                <!--  连接字符串更改警告  -->
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsNewCeate, Converter={StaticResource InverseBooleanConverter}}"
+                    Orientation="Horizontal"
+                    Spacing="0">
+
+                    <Label
+                        Margin="5"
+                        HorizontalOptions="StartAndExpand"
+                        MinimumWidthRequest="15"
+                        Text="fas-info-circle"
+                        TextColor="{StaticResource TextMutedColor}"
+                        VerticalOptions="StartAndExpand" />
+
+                    <Label
+                        Margin="5"
+                        Text="{extensions:Translate TenantDatabaseConnectionStringChangeWarningMessage}"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding IsNewCeate}">
+                <!--  管理员邮箱  -->
+                <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                    <controls:BorderlessEntry
+                        Placeholder="{extensions:Translate AdminEmailAddress}"
+                        Style="{StaticResource BorderlessEntryStyle}"
+                        Text="{Binding Model.AdminEmailAddress}" />
+                </border:SfBorder>
+
+                <!--  设置随机密码  -->
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate SetRandomPassword}" />
+                    <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding IsSetRandomPassword}" />
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding IsSetRandomPassword, Converter={StaticResource InverseBooleanConverter}}" Orientation="Vertical">
+
+                    <!--  管理员密码  -->
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <controls:BorderlessEntry
+                            IsPassword="True"
+                            Placeholder="{extensions:Translate AdminPassword}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding AdminPassword}" />
+                    </border:SfBorder>
+
+                    <!--  管理员密码重复  -->
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <controls:BorderlessEntry
+                            IsPassword="True"
+                            Placeholder="{extensions:Translate AdminPasswordRepeat}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding AdminPasswordRepeat}" />
+                    </border:SfBorder>
+                </StackLayout>
+            </StackLayout>
+
+            <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate Edition}" />
+            <Picker
+                Title="{extensions:Translate Edition}"
+                ItemDisplayBinding="{Binding DisplayText}"
+                ItemsSource="{Binding Editions}"
+                SelectedItem="{Binding SelectedEdition}" />
+
+            <StackLayout IsVisible="{Binding IsSubscriptionFieldVisible}" Orientation="Vertical">
+
+                <!--  无限时间订阅  -->
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate UnlimitedTimeSubscription}" />
+                    <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding IsUnlimitedTimeSubscription}" />
+                </StackLayout>
+
+                <!--  选择到期时间  -->
+                <controls:ExtendedDatePicker
+                    Format="{extensions:Translate DateFormatShort}"
+                    HasBorder="False"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsUnlimitedTimeSubscription, Converter={StaticResource InverseBooleanConverter}}"
+                    MinimumDate="{Binding Today}"
+                    NullableDate="{Binding Model.SubscriptionEndDateUtc}"
+                    Placeholder="{extensions:Translate SelectDate}"
+                    XAlign="Start" />
+
+                <!--  试用期  -->
+                <StackLayout IsVisible="{Binding IsUnlimitedTimeSubscription, Converter={StaticResource InverseBooleanConverter}}" Orientation="Horizontal">
+                    <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate IsInTrialPeriod}" />
+                    <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding Model.IsInTrialPeriod}" />
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding IsSelectedEditionFree}" Orientation="Horizontal">
+                    <Label
+                        Margin="10,10,0,10"
+                        Text="fas-info-circle"
+                        TextColor="{StaticResource TextMutedColor}" />
+                    <Label
+                        Margin="5"
+                        HorizontalTextAlignment="Start"
+                        Text="{extensions:Translate FreeEditionsCannotHaveTrialVersions}"
+                        VerticalOptions="Center" />
+                </StackLayout>
+
+                <!--  下一次登录修改密码？  -->
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate ShouldChangePasswordOnNextLogin}" />
+                    <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding Model.ShouldChangePasswordOnNextLogin}" />
+                </StackLayout>
+
+                <!--  发送激活邮件  -->
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate EmailActivation}" />
+                    <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding Model.SendActivationEmail}" />
+                </StackLayout>
+
+                <!--  是否激活  -->
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource SimpleLabelStyle}" Text="{extensions:Translate Active}" />
+                    <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding Model.IsActive}" />
+                </StackLayout>
+            </StackLayout>
+
+            <!--  取消按钮  -->
+            <buttons:SfButton
+                Command="{Binding GoBackCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Cancel}" />
+
+            <!--  删除按钮  -->
+            <buttons:SfButton
+                Command="{Binding DeleteCommand}"
+                HorizontalOptions="Fill"
+                IsVisible="{Binding IsDeleteButtonVisible}"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Delete}" />
+
+            <!--  保存按钮  -->
+            <buttons:SfButton
+                Command="{Binding SaveCommand}"
+                HorizontalOptions="Fill"
+                Style="{StaticResource GradientButtonStyle}"
+                Text="{extensions:Translate Save}" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

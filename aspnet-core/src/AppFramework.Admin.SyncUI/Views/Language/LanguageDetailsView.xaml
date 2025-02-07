@@ -1,0 +1,90 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.SyncUI.LanguageDetailsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sync="http://schemas.syncfusion.com/wpf"
+    Width="600"
+    Height="280"
+    mc:Ignorable="d">
+    <sync:SfBusyIndicator AnimationType="DualRing" IsBusy="{Binding IsBusy}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.RowSpan="3"
+                CornerRadius="0"
+                Opacity="1"
+                Style="{StaticResource BorderStyle}" />
+
+            <TextBlock
+                Margin="15"
+                FontSize="18"
+                FontWeight="Bold"
+                Text="{extensions:Translate CreateNewLanguage}" />
+
+            <TextBlock Style="{StaticResource closeTextBlock}" ToolTip="{extensions:Translate Close}">
+                <b:Interaction.Triggers>
+                    <b:EventTrigger EventName="MouseLeftButtonDown">
+                        <b:InvokeCommandAction Command="{Binding CancelCommand}" />
+                    </b:EventTrigger>
+                </b:Interaction.Triggers>
+            </TextBlock>
+
+            <StackPanel Grid.Row="1" Margin="15">
+                <ComboBox ItemsSource="{Binding LanguageNames}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DisplayText}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <ComboBox
+                    Margin="0,15"
+                    ItemsSource="{Binding Flags}"
+                    SelectedItem="{Binding SelectedFlag, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal">
+                                <Image
+                                    Width="18"
+                                    Height="18"
+                                    Source="{Binding Value, Converter={StaticResource imageConvert}}" />
+                                <TextBlock Margin="10,0,0,0" Text="{Binding DisplayText}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <CheckBox Content="{extensions:Translate IsEnabled}" IsChecked="{Binding IsEnabled}" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="2"
+                Margin="15"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <Button
+                    Margin="0,0,10,0"
+                    Padding="10,5"
+                    Command="{Binding CancelCommand}"
+                    Content="{extensions:Translate Cancel}" />
+                <Button
+                    Padding="10,5"
+                    Command="{Binding SaveCommand}"
+                    Content="{extensions:Translate Save}" />
+            </StackPanel>
+        </Grid>
+    </sync:SfBusyIndicator>
+</UserControl>

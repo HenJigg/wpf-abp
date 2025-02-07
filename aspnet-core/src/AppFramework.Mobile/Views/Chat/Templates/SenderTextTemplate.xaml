@@ -1,0 +1,41 @@
+﻿<ViewCell
+    x:Class="AppFramework.Shared.Views.SenderTextTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls">
+    <ViewCell.View>
+        <controls:CustomShadowFrame
+            Margin="38,12,22,4"
+            Padding="0"
+            BackgroundColor="{DynamicResource PrimaryLight}"
+            BorderWidth="0"
+            CornerRadius="4"
+            HasShadow="True"
+            HorizontalOptions="End">
+            <controls:CustomShadowFrame.Content>
+                <StackLayout Margin="8" VerticalOptions="FillAndExpand">
+                    <!--  Message Text  -->
+                    <Label
+                        FontFamily="Montserrat-Medium"
+                        FontSize="12"
+                        HorizontalOptions="Start"
+                        LineHeight="1.25"
+                        Text="{Binding Message}"
+                        TextColor="{DynamicResource Gray-Black}"
+                        VerticalOptions="Fill" />
+
+                    <!--  Time  -->
+                    <Label
+                        FontFamily="Montserrat-Medium"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        LineHeight="1.25"
+                        Text="{Binding CreationTime, StringFormat='{0:h:mm tt}'}"
+                        TextColor="{DynamicResource Gray-Black}"
+                        VerticalOptions="Fill" />
+                </StackLayout>
+
+            </controls:CustomShadowFrame.Content>
+        </controls:CustomShadowFrame>
+    </ViewCell.View>
+</ViewCell>

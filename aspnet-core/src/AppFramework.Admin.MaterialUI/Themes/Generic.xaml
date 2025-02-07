@@ -1,0 +1,354 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Shared;component/Themes/Generic.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Admin.MaterialUI;component/Themes/DataPager.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Admin.MaterialUI;component/Themes/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/AppFramework.Admin.MaterialUI;component/Themes/TabControl.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="closeTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="15" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Text" Value="{DynamicResource Close}" />
+        <Setter Property="FontFamily" Value="/Assets/Fonts/#iconfont" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Red" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+    </Style>
+
+    <Style BasedOn="{StaticResource MaterialDesignDataGrid}" TargetType="DataGrid">
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="AutoGenerateColumns" Value="False" />
+        <Setter Property="RowHeight" Value="38" />
+        <Setter Property="Margin" Value="5,0" />
+        <Setter Property="SelectionMode" Value="Single" />
+    </Style>
+
+    <Style
+        x:Key="DefaultTreeViewItem"
+        BasedOn="{StaticResource MaterialDesignTreeViewItem}"
+        TargetType="{x:Type TreeViewItem}">
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style x:Key="MaterialDesignDefaultTabItem" TargetType="{x:Type TabItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+        <!--  Foreground is for the content, not the header  -->
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=(TextElement.Foreground)}" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="MinWidth" Value="90" />
+        <Setter Property="Padding" Value="16,12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="SelectHorizontalTabItem">
+                            <DoubleAnimation
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="0"
+                                To="1"
+                                Duration="0" />
+                            <DoubleAnimation
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="0"
+                                To="1"
+                                Duration="0:0:0.3">
+                                <DoubleAnimation.EasingFunction>
+                                    <SineEase EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                BeginTime="0:0:0.3"
+                                Storyboard.TargetName="PART_BackgroundSelection"
+                                Storyboard.TargetProperty="Opacity"
+                                To="0.12"
+                                Duration="0" />
+                        </Storyboard>
+                        <Storyboard x:Key="SelectVerticalTabItem">
+                            <DoubleAnimation
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="0"
+                                To="1"
+                                Duration="0" />
+                            <DoubleAnimation
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="0"
+                                To="1"
+                                Duration="0:0:0.3">
+                                <DoubleAnimation.EasingFunction>
+                                    <SineEase EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                            <DoubleAnimation
+                                BeginTime="0:0:0.3"
+                                Storyboard.TargetName="PART_BackgroundSelection"
+                                Storyboard.TargetProperty="Opacity"
+                                To="0.12"
+                                Duration="0" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="Root">
+                        <!--  This is the Header label ColorZone.  -->
+                        <wpf:ColorZone
+                            x:Name="ColorZoneHeader"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Panel.ZIndex="1"
+                            wpf:ColorZoneAssist.Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(wpf:ColorZoneAssist.Background)}"
+                            wpf:ColorZoneAssist.Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(wpf:ColorZoneAssist.Foreground)}"
+                            Focusable="False"
+                            Mode="Custom">
+                            <wpf:Ripple
+                                x:Name="contentPresenter"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Content="{TemplateBinding Header}"
+                                ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                Focusable="False"
+                                Opacity=".82"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                TextBlock.FontSize="14"
+                                TextBlock.FontWeight="Medium"
+                                TextOptions.TextFormattingMode="Ideal"
+                                TextOptions.TextRenderingMode="Auto"
+                                Typography.Capitals="{TemplateBinding Typography.Capitals}" />
+                        </wpf:ColorZone>
+                        <Border
+                            x:Name="SelectionHighlightBorder"
+                            BorderBrush="{Binding Path=Foreground, ElementName=ColorZoneHeader}"
+                            BorderThickness="0,0,0,2"
+                            RenderTransformOrigin="0.5,0.5"
+                            Visibility="Hidden">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="ScaleTransform" ScaleX="0" ScaleY="0" />
+                            </Border.RenderTransform>
+                            <Rectangle
+                                x:Name="PART_BackgroundSelection"
+                                Fill="{TemplateBinding Background}"
+                                Opacity="0.0" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.38" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="SelectionHighlightBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="contentPresenter" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom">
+                            <Setter TargetName="SelectionHighlightBorder" Property="BorderThickness" Value="0,2,0,0" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left">
+                            <Setter TargetName="SelectionHighlightBorder" Property="BorderThickness" Value="0,0,2,0" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right">
+                            <Setter TargetName="SelectionHighlightBorder" Property="BorderThickness" Value="2,0,0,0" />
+                        </DataTrigger>
+
+                        <!--  Selected TabItem animations (vary depending on TabControl.TabStripPlacement value)  -->
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource SelectHorizontalTabItem}" />
+                            </MultiDataTrigger.EnterActions>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource SelectHorizontalTabItem}" />
+                            </MultiDataTrigger.EnterActions>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource SelectVerticalTabItem}" />
+                            </MultiDataTrigger.EnterActions>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                                <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource SelectVerticalTabItem}" />
+                            </MultiDataTrigger.EnterActions>
+                        </MultiDataTrigger>
+
+                        <!--  Force the header foreground do be MaterialDesignBody by default (only for not filled tabs)  -->
+                        <Trigger Property="wpf:TabAssist.HasFilledTab" Value="False">
+                            <Setter TargetName="ColorZoneHeader" Property="wpf:ColorZoneAssist.Foreground" Value="{DynamicResource MaterialDesignBody}" />
+                        </Trigger>
+
+                        <!--  The header foreground color change when focused (only for not filled tabs)  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="wpf:TabAssist.HasFilledTab" Value="False" />
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="wpf:ColorZoneAssist.Mode" Value="Standard" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ColorZoneHeader" Property="wpf:ColorZoneAssist.Foreground" Value="{DynamicResource MaterialDesignBody}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="wpf:TabAssist.HasFilledTab" Value="False" />
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="wpf:ColorZoneAssist.Mode" Value="PrimaryLight" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ColorZoneHeader" Property="wpf:ColorZoneAssist.Foreground" Value="{DynamicResource PrimaryHueLightBrush}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="wpf:TabAssist.HasFilledTab" Value="False" />
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="wpf:ColorZoneAssist.Mode" Value="PrimaryMid" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ColorZoneHeader" Property="wpf:ColorZoneAssist.Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="wpf:TabAssist.HasFilledTab" Value="False" />
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="wpf:ColorZoneAssist.Mode" Value="PrimaryDark" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ColorZoneHeader" Property="wpf:ColorZoneAssist.Foreground" Value="{DynamicResource PrimaryHueDarkBrush}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="wpf:TabAssist.HasFilledTab" Value="False" />
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="wpf:ColorZoneAssist.Mode" Value="SecondaryLight" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ColorZoneHeader" Property="wpf:ColorZoneAssist.Foreground" Value="{DynamicResource SecondaryHueLightBrush}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="wpf:TabAssist.HasFilledTab" Value="False" />
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="wpf:ColorZoneAssist.Mode" Value="SecondaryMid" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ColorZoneHeader" Property="wpf:ColorZoneAssist.Foreground" Value="{DynamicResource SecondaryHueMidBrush}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="wpf:TabAssist.HasFilledTab" Value="False" />
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="wpf:ColorZoneAssist.Mode" Value="SecondaryDark" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ColorZoneHeader" Property="wpf:ColorZoneAssist.Foreground" Value="{DynamicResource SecondaryHueDarkBrush}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="wpf:TabAssist.HasFilledTab" Value="False" />
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="wpf:ColorZoneAssist.Mode" Value="Custom" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ColorZoneHeader" Property="wpf:ColorZoneAssist.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(wpf:ColorZoneAssist.Foreground)}" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="wpf:ColorZoneAssist.Background" Value="Transparent" />
+        <Setter Property="wpf:ColorZoneAssist.Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=(wpf:ColorZoneAssist.Foreground)}" />
+        <Setter Property="wpf:ColorZoneAssist.Mode" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=(wpf:ColorZoneAssist.Mode)}" />
+        <Setter Property="wpf:RippleAssist.Feedback" Value="{DynamicResource MaterialDesignFlatButtonRipple}" />
+        <Setter Property="wpf:TabAssist.HasFilledTab" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabControl}}, Path=(wpf:TabAssist.HasFilledTab)}" />
+    </Style>
+
+    <Style
+        x:Key="DefaultTabItemStyle"
+        BasedOn="{StaticResource MaterialDesignDefaultTabItem}"
+        TargetType="{x:Type TabItem}">
+        <Setter Property="Padding" Value="10,0,0,0" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="MinWidth" Value="60" />
+    </Style>
+
+    <Style x:Key="listMenuItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Padding" Value="10,3" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Grid>
+                        <Border
+                            x:Name="htborder"
+                            HorizontalAlignment="Left"
+                            Panel.ZIndex="1"
+                            Background="{DynamicResource PrimaryHueMidBrush}"
+                            CornerRadius="2"
+                            Opacity="1" />
+                        <Border
+                            x:Name="hdborder"
+                            Margin="0,2"
+                            Background="{DynamicResource MaterialDesignCardBackground}"
+                            CornerRadius="5" />
+                        <Border
+                            x:Name="border"
+                            Margin="0,2"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
+                            <Setter TargetName="hdborder" Property="Opacity" Value="1" />
+                            <Setter TargetName="htborder" Property="Width" Value="3" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation
+                                            Storyboard.TargetName="htborder"
+                                            Storyboard.TargetProperty="Margin"
+                                            From="5"
+                                            To="5,10"
+                                            Duration="0:0:.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" />
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource MaterialDesignCardBackground}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="hdborder" Property="Opacity" Value="0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

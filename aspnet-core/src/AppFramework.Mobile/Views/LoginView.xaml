@@ -1,0 +1,111 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.LoginView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:AppFramework.Shared.Controls;assembly=AppFramework.Shared"
+    xmlns:extensions="clr-namespace:AppFramework.Shared.Extensions.MarkupExtensions;assembly=AppFramework.Shared"
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
+    <Grid RowDefinitions="*,*">
+        <gradient:SfGradientView Grid.RowSpan="2" Style="{StaticResource VioletGradientStyle}" />
+
+        <Image
+            Aspect="AspectFit"
+            HeightRequest="250"
+            HorizontalOptions="Center"
+            Source="dotnetbot.png"
+            VerticalOptions="FillAndExpand"
+            WidthRequest="250" />
+
+        <Grid
+            Grid.RowSpan="2"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <border:SfBorder
+                BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
+                BorderWidth="0"
+                CornerRadius="4"
+                HeightRequest="400"
+                Opacity="0.9"
+                WidthRequest="{OnIdiom Phone=350,
+                                       Default=400}" />
+
+            <Grid Padding="20" RowDefinitions="auto,auto">
+                <StackLayout IsVisible="{Binding IsMultiTenancyEnabled}">
+                    <Grid ColumnSpacing="5" HorizontalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*" />
+                            <ColumnDefinition Width="0.5*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label LineBreakMode="WordWrap" Text="{extensions:Translate CurrentTenant}" />
+
+                        <Label
+                            Grid.Column="1"
+                            LineBreakMode="WordWrap"
+                            Text="{Binding CurrentTenancyNameOrDefault}" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand">
+                    <Label
+                        Margin="0,0,0,10"
+                        FontSize="20"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="AppFramework"
+                        TextColor="{DynamicResource Gray-700}" />
+
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <controls:BorderlessEntry
+                            Placeholder="{extensions:Translate UserNameOrEmail}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding UserName, Mode=TwoWay}" />
+                    </border:SfBorder>
+
+                    <border:SfBorder Style="{StaticResource EntryBorderStyle}">
+                        <controls:BorderlessEntry
+                            IsPassword="True"
+                            Placeholder="{extensions:Translate Password}"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Password, Mode=TwoWay}" />
+                    </border:SfBorder>
+
+                    <buttons:SfButton
+                        Margin="0,10,0,0"
+                        Command="{Binding ExecuteCommand}"
+                        CommandParameter="LoginUser"
+                        HorizontalOptions="Fill"
+                        IsEnabled="{Binding IsLoginEnabled}"
+                        Style="{StaticResource GradientButtonStyle}"
+                        Text="{extensions:Translate LogIn}" />
+
+                    <buttons:SfButton
+                        Command="{Binding ExecuteCommand}"
+                        CommandParameter="ForgotPassword"
+                        FontSize="12"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TransparentButtonStyle}"
+                        Text="{extensions:Translate ForgotPassword}"
+                        TextColor="{DynamicResource Gray-700}" />
+
+                    <buttons:SfButton
+                        Command="{Binding ExecuteCommand}"
+                        CommandParameter="EmailActivation"
+                        FontSize="12"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TransparentButtonStyle}"
+                        Text="{extensions:Translate EmailActivation}"
+                        TextColor="{DynamicResource Gray-700}" />
+
+                    <Picker
+                        Title="{extensions:Translate Languages}"
+                        FontSize="12"
+                        ItemDisplayBinding="{Binding DisplayName}"
+                        ItemsSource="{Binding Languages}"
+                        SelectedItem="{Binding SelectedLanguage}"
+                        TextColor="{DynamicResource Gray-700}" />
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentView>

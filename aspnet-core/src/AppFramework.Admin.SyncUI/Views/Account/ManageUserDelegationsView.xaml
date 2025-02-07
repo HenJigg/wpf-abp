@@ -1,0 +1,109 @@
+﻿<UserControl
+    x:Class="AppFramework.Admin.SyncUI.ManageUserDelegationsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:extensions="clr-namespace:AppFramework.Shared;assembly=AppFramework.Shared"
+    xmlns:host="clr-namespace:AppFramework.Admin.SyncUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sync="http://schemas.syncfusion.com/wpf"
+    Width="800"
+    Height="450">
+    <host:DialogHost Identifier="ManageUserDelegationsView">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.RowSpan="3"
+                CornerRadius="0"
+                Opacity="1"
+                Style="{StaticResource BorderStyle}" />
+
+            <TextBlock
+                Margin="25"
+                FontSize="18"
+                FontWeight="Bold"
+                Text="{extensions:Translate UserDelegations}" />
+
+            <Button
+                Margin="25"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Command="{Binding AddCommand}"
+                Content="{extensions:Translate DelegateNewUser}"
+                Style="{StaticResource SimpleButton}" />
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <sync:SfDataGrid
+                    Margin="25,0"
+                    ItemsSource="{Binding dataPager.GridModelList}"
+                    SelectedItem="{Binding dataPager.SelectedItem}"
+                    Style="{StaticResource SimpleDataGridStyle}">
+                    <sync:SfDataGrid.Columns>
+                        <sync:GridTextColumn HeaderText="{extensions:Translate UserName}" MappingName="Username" />
+                        <sync:GridTextColumn
+                            DisplayBinding="{Binding Path=StartTime, StringFormat='yyyy-MM-dd hh:mm:ss'}"
+                            HeaderText="{extensions:Translate StartTime}"
+                            MappingName="StartTime" />
+                        <sync:GridTextColumn
+                            DisplayBinding="{Binding Path=EndTime, StringFormat='yyyy-MM-dd hh:mm:ss'}"
+                            HeaderText="{extensions:Translate EndTime}"
+                            MappingName="EndTime" />
+                        <sync:GridTemplateColumn
+                            Width="60"
+                            AllowFiltering="False"
+                            AllowSorting="False">
+                            <sync:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Background="Transparent"
+                                        Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=sync:SfDataGrid}}"
+                                        CommandParameter="{Binding}"
+                                        ToolTip="{extensions:Translate Delete}">
+                                        <Button.Content>
+                                            <Image
+                                                Width="20"
+                                                Height="20"
+                                                Source="/Assets/Images/delete.png" />
+                                        </Button.Content>
+                                    </Button>
+                                </DataTemplate>
+                            </sync:GridTemplateColumn.CellTemplate>
+                        </sync:GridTemplateColumn>
+                    </sync:SfDataGrid.Columns>
+                </sync:SfDataGrid>
+
+                <sync:SfDataPager
+                    Grid.Row="1"
+                    Margin="20,0"
+                    HorizontalAlignment="Right"
+                    NumericButtonCount="{Binding dataPager.NumericButtonCount}"
+                    PageCount="{Binding dataPager.PageCount, Mode=TwoWay}"
+                    PageSize="{Binding dataPager.PageSize, Mode=TwoWay}"
+                    UseOnDemandPaging="True"
+                    PageIndex="{Binding dataPager.PageIndex, Mode=TwoWay}" />
+            </Grid>
+
+            <StackPanel
+                Grid.Row="2"
+                Margin="15"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <Button
+                    Command="{Binding CancelCommand}"
+                    Content="{extensions:Translate Close}"
+                    Style="{StaticResource SimpleButton}" />
+            </StackPanel>
+        </Grid>
+    </host:DialogHost>
+</UserControl>

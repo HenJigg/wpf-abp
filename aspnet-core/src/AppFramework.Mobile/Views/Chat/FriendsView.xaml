@@ -1,0 +1,75 @@
+﻿<ContentView
+    x:Class="AppFramework.Shared.Views.FriendsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:refresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms">
+    <Grid>
+        <refresh:SfPullToRefresh>
+            <refresh:SfPullToRefresh.PullableContent>
+                <listView:SfListView
+                    x:Name="SfListView"
+                    ItemsSource="{Binding chatService.Friends}"
+                    Style="{StaticResource DefaultListViewStyle}"
+                    TapCommand="{Binding ClickChatCommand}">
+                    <listView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="16,12" ColumnDefinitions="Auto, *, Auto">
+                                <badge:SfBadgeView x:Name="BadgeView" VerticalOptions="Center">
+                                    <badge:SfBadgeView.Content>
+                                        <border:SfBorder
+                                            BackgroundColor="{DynamicResource Gray-200}"
+                                            BorderColor="{DynamicResource Gray-Bg}"
+                                            Style="{StaticResource ProfileBorderStyle}">
+                                            <Image
+                                                HeightRequest="40"
+                                                Source="Profile.png"
+                                                WidthRequest="40" />
+                                        </border:SfBorder>
+                                    </badge:SfBadgeView.Content>
+
+                                    <badge:SfBadgeView.BadgeSettings>
+                                        <badge:BadgeSetting
+                                            BackgroundColor="#20c020"
+                                            BadgeAlignment="End"
+                                            BadgeIcon="{Binding IsOnline, Converter={StaticResource BadgeConverter}}"
+                                            BadgePosition="BottomRight"
+                                            BadgeType="None"
+                                            Stroke="{DynamicResource Gray-Bg}"
+                                            StrokeWidth="1" />
+                                    </badge:SfBadgeView.BadgeSettings>
+                                </badge:SfBadgeView>
+
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="NoWrap"
+                                        Text="{Binding FriendUserName}"
+                                        TextColor="{DynamicResource Gray-900}" />
+
+                                    <Label
+                                        Style="{StaticResource SimpleLabelStyle}"
+                                        Text="{Binding FriendTenancyName}"
+                                        TextColor="{DynamicResource Gray-800}" />
+                                </StackLayout>
+
+                                <Label
+                                    Grid.Column="2"
+                                    Padding="5"
+                                    HorizontalOptions="End"
+                                    IsVisible="{Binding UnreadMessageCount, Converter={StaticResource IntToVisibilityConverter}}"
+                                    Text="{Binding UnreadMessageCount, Converter={StaticResource StringFormatConverter}}"
+                                    TextColor="{DynamicResource Gray-800}" />
+                            </Grid>
+                        </DataTemplate>
+                    </listView:SfListView.ItemTemplate>
+                </listView:SfListView>
+            </refresh:SfPullToRefresh.PullableContent>
+        </refresh:SfPullToRefresh>
+    </Grid>
+</ContentView>
